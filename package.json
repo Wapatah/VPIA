@@ -18,11 +18,11 @@
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "2.4.0",
-    "body-parser": "1.15.2",
+    "body-parser": "^1.19.0",
     "bookshelf": "0.10.0",
-    "express": "4.14.0",
+    "express": "^4.17.1",
     "jsonwebtoken": "7.1.9",
-    "knex": "0.11.10",
+    "knex": "^0.19.4",
     "multer": "1.2.1",
     "mysql": "^2.17.1",
     "react": "15.3.0",
@@ -39,10 +39,10 @@
     "babel-preset-react": "6.22.0",
     "cross-env": "3.1.4",
     "react-hot-loader": "3.0.0-beta.6",
+    "testcafe": "^15.1.317922",
     "webpack": "2.2.0",
     "webpack-dev-middleware": "1.9.0",
-    "webpack-dev-server": "2.2.0",
-    "webpack-hot-middleware": "2.15.0",
-    "testcafe": "0.13.0"
+    "webpack-dev-server": "^3.8.0",
+    "webpack-hot-middleware": "2.15.0"
   }
 }
