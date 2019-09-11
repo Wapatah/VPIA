@@ -6,7 +6,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.prod.js --progress --profile --colors",
     "dev": "node index.js",
-    "start": "npm run build && cross-env NODE_ENV=production node index.js"
+    "start": "npm run build && cross-env NODE_ENV=production node index.js",
+    "prettier": "prettier --write '**/*.{js,jsx}' --ignore-path .gitignore"
   },
   "bin": {
     "wiki": "./install.js"
@@ -38,6 +39,7 @@
     "babel-preset-es2015": "6.22.0",
     "babel-preset-react": "6.22.0",
     "cross-env": "3.1.4",
+    "prettier": "1.18.2",
     "react-hot-loader": "3.0.0-beta.6",
     "webpack": "2.2.0",
     "webpack-dev-middleware": "1.9.0",

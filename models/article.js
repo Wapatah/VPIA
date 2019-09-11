@@ -1,20 +1,20 @@
-var bookshelf = require('../config/bookshelf');
-bookshelf.plugin('registry');
-var Topic = require('./topic');
-var Archives = require('./archive');
-var User = require('./user')
+var bookshelf = require("../config/bookshelf");
+bookshelf.plugin("registry");
+var Topic = require("./topic");
+var Archives = require("./archive");
+var User = require("./user");
 
 var Article = bookshelf.Model.extend({
-  tableName: 'articles',
+  tableName: "articles",
   topic: function() {
-    return this.belongsTo('Topic','topic_id');
+    return this.belongsTo("Topic", "topic_id");
   },
   user: function() {
-    return this.belongsTo('User','user_id');
+    return this.belongsTo("User", "user_id");
   },
-  archives: function(){
-    return this.hasMany('Archives');
+  archives: function() {
+    return this.hasMany("Archives");
   }
 });
 
-module.exports = bookshelf.model('Article',Article);
+module.exports = bookshelf.model("Article", Article);
