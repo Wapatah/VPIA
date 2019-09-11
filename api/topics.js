@@ -7,8 +7,6 @@ comment in the articles.js (same directory).
 // Importing the topics model
 var Topics = require("../models/topic.js");
 
-var db = require("../config/db.js"); //this file contains the knex file import. it's equal to knex=require('knex')
-
 module.exports = function(app) {
     app.get("/topics", function(req, res) {
     /*

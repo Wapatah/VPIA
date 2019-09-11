@@ -18,7 +18,6 @@ DELETE /articles
 */
 
 var multer = require("multer");
-var path = require("path");
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, "./client/assets"); // Make sure this folder exists
@@ -32,7 +31,6 @@ var upload = multer({ storage: storage }).single("logo");
 // Importing the topics model
 var Topics = require("../models/topic.js");
 var Articles = require("../models/article.js");
-var db = require("../config/db.js"); //this file contains the knex file import. it's equal to knex=require('knex')
 
 module.exports = function(app) {
     app.post("/topics", function(req, res) {

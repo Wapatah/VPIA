@@ -39,7 +39,7 @@ module.exports = function(app) {
                     data: collection.toJSON()
                 });
             })
-            .catch(function(error) {
+            .catch(function() {
                 res.status(500).json({
                     error: {
                         error: true,

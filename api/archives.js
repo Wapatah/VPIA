@@ -2,14 +2,10 @@
 This file contains all endpoints related to archives
 */
 
-var Articles = require("../models/article.js");
-var Topics = require("../models/topic.js");
 var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
 
-var db = require("../config/db.js"); //this file contains the knex file import. it's equal to knex=require('knex')
-
-module.exports = function(app) {
+module.exports = function(app, archiveObj, userObj) {
     app.get("/archives/:id/", function(req, res) {
     /*
     This is a GET endpoint that responds with one article of the specific ID (identified through the ID param)

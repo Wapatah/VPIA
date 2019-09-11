@@ -9,7 +9,6 @@ var Users = require("../models/user.js");
 var bcrypt = require("bcryptjs");
 var Articles = require("../models/article.js");
 const saltRounds = 10;
-var db = require("../config/db.js"); //this file contains the knex file import. it's equal to knex=require('knex')
 
 module.exports = function(app) {
     app.post("/users", function(req, res) {
@@ -100,7 +99,7 @@ module.exports = function(app) {
                         password: hash,
                         about: req.body.about
                     })
-                    .then(function(collection) {
+                    .then(function() {
                         res.json({
                             error: {
                                 error: false,
@@ -164,7 +163,7 @@ module.exports = function(app) {
         Users.where({ id: req.body.id })
             .fetch({ withRelated: ["articles"] })
             .then(function(user) {
-                var user = user.toJSON();
+                user = user.toJSON();
                 var articles = user.articles;
                 for (var i = 0; i < articles.length; i++) {
                     Articles.forge({ id: articles[i].id }).save({

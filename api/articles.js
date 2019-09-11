@@ -13,9 +13,7 @@ var Topics = require("../models/topic.js");
 var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
 
-var db = require("../config/db.js"); //this file contains the knex file import. it's equal to knex=require('knex')
-
-module.exports = function(app) {
+module.exports = function(app, result, articleObj, topicObj, userObj) {
     app.post("/articles", function(req, res) {
     /*
     This endpoint takes the article title, article body, and topic id from the request body.

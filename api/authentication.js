@@ -8,8 +8,6 @@ comment in the articles.js (same directory).
 var Users = require("../models/user.js");
 var jwt = require("jsonwebtoken"); // used to create, sign, and verify tokens
 var bcrypt = require("bcryptjs");
-const saltRounds = 10;
-var db = require("../config/db"); //this file contains the knex file import. it's equal to knex=require('knex')
 
 module.exports = function(app) {
     app.post("/api/authenticate", function(req, res) {
