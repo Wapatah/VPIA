@@ -1,4 +1,4 @@
-exports.up = function(knex, Promise) {
+exports.up = function(knex) {
     return knex.schema.createTable("archives", function(table) {
         table.increments().primary();
         table
@@ -15,6 +15,6 @@ exports.up = function(knex, Promise) {
     });
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function(knex) {
     return knex.schema.dropTable("archives");
 };

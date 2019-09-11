@@ -1,4 +1,4 @@
-exports.up = function(knex, Promise) {
+exports.up = function(knex) {
     return knex.schema.table("articles", function(table) {
         table
             .integer("topic_id", 10)
@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
     });
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function(knex) {
     return knex.schema.table("articles", function(table) {
         table.dropColumn("topic_id");
     });
