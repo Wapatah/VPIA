@@ -6,13 +6,13 @@ Once we have enough endpoints defined we start breaking them into modules for be
 // Importing all the required libraries
 var express = require("express");
 var bodyParser = require("body-parser"); //body parser to parse the request body
-var db = require("./config/db"); //this file contains the knex file import. it's equal to knex=require('knex')
+var db = require("./config/db"); // eslint-disable-line
 var app = express();
-var fs = require("fs");
+var fs = require("fs"); // eslint-disable-line
 var apiRoutes = express.Router();
 var apiRoutesAdmin = express.Router();
 var jwt = require("jsonwebtoken");
-var misc = require("./config/misc");
+var misc = require("./config/misc"); // eslint-disable-line
 var config = require("./config/config"); //config file in the app directory which contains the JWT key
 
 process.env.PORT = process.env.PORT || 5000;
