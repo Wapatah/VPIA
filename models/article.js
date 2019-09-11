@@ -1,8 +1,5 @@
 var bookshelf = require("../config/bookshelf");
 bookshelf.plugin("registry");
-var Topic = require("./topic");
-var Archives = require("./archive");
-var User = require("./user");
 
 var Article = bookshelf.Model.extend({
     tableName: "articles",
