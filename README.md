@@ -16,3 +16,9 @@ TODO: add Matterwiki's api documentation
 * `migrations/` are the added schemas to the database. 
 
 * `models/` has the bookshelf database models that work with SQLite and MySQL. TODO: see if Postgres works too and if we can swap it for Mongoose and Mongo if need be.
+
+## Tidying up files
+* `npm run lint` - fixes and adheres to javascript design
+* `npm run prettier` - makes code structure nicer to look at
+
+Eslint is currently not fixing the Jsx files in the app folder due to breaking changes (automatic fix breaks the engine) and possible lack of backwards compatibility. We should fix this in the future but we must prioritize elsewhere.

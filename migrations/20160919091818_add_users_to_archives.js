@@ -1,14 +1,14 @@
 exports.up = function(knex) {
-    return knex.schema.table("archives", function(table) {
-        table
-            .integer("user_id", 10)
-            .unsigned()
-            .references("users.id");
-    });
+  return knex.schema.table("archives", function(table) {
+    table
+      .integer("user_id", 10)
+      .unsigned()
+      .references("users.id");
+  });
 };
 
 exports.down = function(knex) {
-    return knex.schema.table("archives", function(table) {
-        table.dropColumn("user_id");
-    });
+  return knex.schema.table("archives", function(table) {
+    table.dropColumn("user_id");
+  });
 };
