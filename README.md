@@ -22,3 +22,6 @@ TODO: add Matterwiki's api documentation
 * `npm run prettier` - makes code structure nicer to look at
 
 Eslint is currently not fixing the Jsx files in the app folder due to breaking changes (automatic fix breaks the engine) and possible lack of backwards compatibility. We should fix this in the future but we must prioritize elsewhere.
+
+## Running Documentation
+* `npm run docs` - A few docs are currently available. 

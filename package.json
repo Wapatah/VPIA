@@ -8,7 +8,8 @@
     "dev": "node index.js",
     "start": "npm run build && cross-env NODE_ENV=production node index.js",
     "prettier": "prettier --write '**/*.{js,jsx}' --ignore-path .gitignore",
-    "lint": "eslint '**/*.js' --fix --ignore-path .gitignore"
+    "lint": "eslint '**/*.js' --fix --ignore-path .gitignore",
+    "docs": " npm start --prefix docs/website"
   },
   "bin": {
     "wiki": "./install.js"

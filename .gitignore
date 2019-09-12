@@ -38,3 +38,17 @@ jspm_packages
 
 client/public
 client/assets
+
+# Docusaurus ignores
+.DS_Store
+
+docs/node_modules
+
+docs/lib/core/metadata.js
+docs/lib/core/MetadataBlog.js
+
+docs/website/translated_docs
+docs/website/build/
+docs/website/yarn.lock
+docs/website/node_modules
+docs/website/i18n/*
