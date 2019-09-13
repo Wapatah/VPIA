@@ -25,3 +25,40 @@ Eslint is currently not fixing the Jsx files in the app folder due to breaking c
 
 ## Running Documentation
 * `npm run docs` - A few docs are currently available. 
+
+
+## Common Errors
+You must install MySQL before running the project. You can modify the `knexfile.js` to include your root username, and your password and whatever database you want.
+If you get an error like:
+```javascript
+Unhandled rejection Error: ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requested by server; consider upgrading MySQL client
+```
+You need to run this command in the MySQL commandline, substituting `root` as your user `localhost` as your URL and `password` as your password:
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
+```
+
+If you get an error like: 
+```javascript
+Unhandled rejection Error: ER_BAD_DB_ERROR: Unknown database 'myapp_test'
+```
+Where `myapp_test` is either that or whatever custom database you inputted. You need to manually create the database. 
+Run:
+```sql
+CREATE DATABASE myapp_test;
+```
+
+---
+
+Approved fonts:  
+* [ ] Baskerville  
+* [ ] Futura
+* [ ] Univers
+
+Approved Hex colours:  
+`Orange-yellow` - #FFA500  
+`Red` - #D60812  
+`Green-blue` - #208778    
+`Blackish` - #0D1319  
+`Cool gray` - #75777B  
+`Pale grey` - #D0CFCD  
