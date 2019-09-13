@@ -13,6 +13,7 @@ body{
 
 .content {
   margin-bottom: 3em;
+  margin-top: 3em;
 }
 
 .login-box {
@@ -61,7 +62,7 @@ padding: 10px 20px;
 }
 
 .article-item-title a:hover {
-  color: #ff0066;
+  color: #208778;
 }
 
 .article-item-description {
@@ -78,8 +79,8 @@ padding: 10px 20px;
 .page-title {
   margin-bottom: 2em;
   font-size: 1.5em;
-  border-bottom: 1px solid #ff0066;
-  color: #ff0066;
+  border-bottom: 1px solid #208778;
+  color: #208778;
 }
 
 .single-article-title {
@@ -139,7 +140,7 @@ textarea {
 }
 
 .color-text {
-  color: #ff0066;
+  color: #208778;
 }
 
 
@@ -195,8 +196,8 @@ textarea {
 }
 
 .navbar-login-logo img {
-  max-height: 50px;
-  width: auto;
+  max-height: 300px;
+  width: 300px;
   margin-top: 3em;
 }
 
@@ -255,7 +256,7 @@ textarea {
   margin: 0px auto;
   width: 30px;
   height: 30px;
-  border: 0.25rem solid #ff0066;
+  border: 0.25rem solid #208778;
   border-top-color: white;
   -webkit-animation: spin 1s infinite linear;
           animation: spin 1s infinite linear;
@@ -433,7 +434,7 @@ textarea {
 }
 
 .number-bullet {
-  background: #ff0066;
+  background: #208778;
 color: #fff;
 padding: 0.5em;
 font-weight: 700;

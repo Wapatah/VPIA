@@ -295,12 +295,12 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #ff0066;
+  color: #208778;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #ff0066;
+  color: #208778;
   text-decoration: none;
 }
 a:focus {
@@ -2091,7 +2091,7 @@ select[multiple].input-lg {
 }
 .help-block {
   display: block;
-  margin-top: 5px;
+  margin-top: 20px;
   margin-bottom: 10px;
   color: #737373;
 }
@@ -2240,24 +2240,24 @@ fieldset[disabled] a.btn {
 }
 .btn-default {
   color: #fff;
-  background-color: #ff0066;
-  border: 1px solid #da045a;
+  background-color: #208778;
+  border: 1px solid #1c776a;
 }
 .btn-default:focus,
 .btn-default.focus {
   color: #fff;
-  background-color: #da045a;
+  background-color: #1c776a;
 }
 
 .btn-default:hover {
   color: #fff;
-  background-color: #da045a;
+  background-color: #1c776a;
 }
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
   color: #fff;
-  background-color: #ff0066;
+  background-color: #208778;
 }
 .btn-default:active:hover,
 .btn-default.active:hover,
@@ -2269,7 +2269,7 @@ fieldset[disabled] a.btn {
 .btn-default.active.focus,
 .open > .dropdown-toggle.btn-default.focus {
   color: #fff;
-  background-color: #ff0066;
+  background-color: #208778;
 }
 .btn-default:active,
 .btn-default.active,
@@ -2285,7 +2285,7 @@ fieldset[disabled] .btn-default:focus,
 .btn-default.disabled.focus,
 .btn-default[disabled].focus,
 fieldset[disabled] .btn-default.focus {
-  background-color: #ff0066;
+  background-color: #208778;
 }
 .btn-default .badge {
   color: #fff;
@@ -3159,7 +3159,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:focus {
   text-decoration: none;
   background-color: transparent;
-  border-bottom: 1px solid #ff0066;
+  border-bottom: 1px solid #208778;
 }
 .nav > li.disabled > a {
   color: #777;
@@ -3438,7 +3438,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  height: 60px;
+  height: 150px;
   padding: 12px 10px;
   font-size: 18px;
   line-height: 20px;
@@ -3648,9 +3648,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-right {
     float: right !important;
     margin-right: -15px;
+    margin-top: 55px;
   }
   .navbar-right ~ .navbar-right {
     margin-right: 0;
+    margin-top: 60px;
   }
 }
 .navbar-default {
