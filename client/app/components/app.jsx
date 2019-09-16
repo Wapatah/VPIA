@@ -84,11 +84,12 @@ class App extends React.Component {
           )}
         </nav>
         <div className="content container">{that.props.children}</div>
-        <div className="footer center-align">
-          <p className="help-block">
+        {/* @Mordax - this doesn't centre with the rest of the content container, fix later. */}
+        {/* <div className="footer center-align">
+          <div className="help-block">
             Powered by <a href="http://matterwiki.com">Matterwiki</a>
-          </p>
-        </div>
+          </div>
+        </div> */}
         <Alert stack={{ limit: 3 }} position="bottom" />
       </div>
     );

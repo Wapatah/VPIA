@@ -1,11 +1,13 @@
 /*
+@Matterwiki
 This is main file which will contain all of our endpoints.
 Once we have enough endpoints defined we start breaking them into modules for better code readability
 */
 
-// Importing all the required libraries
+// @Matterwiki - Importing all the required libraries
 var express = require("express");
-var bodyParser = require("body-parser"); //body parser to parse the request body
+// @Matterwiki - body parser to parse the request body
+var bodyParser = require("body-parser");
 var db = require("./config/db"); // eslint-disable-line
 var app = express();
 var fs = require("fs"); // eslint-disable-line
@@ -13,25 +15,26 @@ var apiRoutes = express.Router();
 var apiRoutesAdmin = express.Router();
 var jwt = require("jsonwebtoken");
 var misc = require("./config/misc"); // eslint-disable-line
-var config = require("./config/config"); //config file in the app directory which contains the JWT key
+//@Matterwiki - config file in the app directory which contains the JWT key
+var config = require("./config/config");
 
 process.env.PORT = process.env.PORT || 5000;
 
 console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV !== "production") {
-  // add some patchwork for the devserver to work!
+  // @Matterwiki - add some patchwork for the devserver to work!
   require("./config/webpack-middleware")(app);
 }
 
 app.set("superSecret", config.auth_secret); // secret variable
 
-// Using the body parser middleware to parse request body
+// @Matterwiki - Using the body parser middleware to parse request body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get("/api", function(req, res) {
-  // Should change this into a nice display - Mordax
+  // @Mordax - Should change this into a nice display
   res.send("List of API endpoints");
 });
 
@@ -40,6 +43,9 @@ require("./api/authentication")(app);
 
 // Importing the setup endpoint
 require("./api/setup")(app);
+
+// @Mordax - importing the users endpoint for sign up capabilties.
+require("./api/users")(app);
 
 apiRoutes.use(function(req, res, next) {
   // check header or url parameters or post parameters for token
