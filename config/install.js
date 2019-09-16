@@ -8,5 +8,7 @@ Creating tables. Filling them with initial data. Creating the first user.
 We're still looking for better names for the command. Should be matterwiki or just wiki?
 
 TODO: Figure out how to create the database setup script integrating with knex and bookshelf.
+@Mordax
+We may just delete this and the subsequent bin key in package.json due to lack of implementation.
 */
 console.log("Installation started!");

@@ -1,8 +1,10 @@
-var config = require("../config/knexfile.js"); //requiring the knexfile that contains our connection object.
-var knex = require("knex")(config); // imports knex with our connection object (found in knexfile).
+// @Matterwiki - requiring the knexfile that contains our connection object.
+var config = require("../config/knexfile.js");
+// @Matterwiki - imports knex with our connection object (found in knexfile).
+var knex = require("knex")(config);
 
-// Export the knex library for use. All knex commands remain the same.
+// @Matterwiki - Export the knex library for use. All knex commands remain the same.
 module.exports = knex;
 
-// Run the latest DB migrations whenever the server starts.
+// @Matterwiki - Run the latest DB migrations whenever the server starts.
 knex.migrate.latest([config]);

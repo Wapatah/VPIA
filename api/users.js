@@ -1,23 +1,25 @@
 /*
+@Matterwiki
 This file contains all the endpoints related to users.
 For the method we use to categorize endpoints in file please read the top
 comment in the articles.js (same directory).
 */
 
-// Importing the topics model
+// @Matterwiki - Importing the models
 var Users = require("../models/user.js");
 var bcrypt = require("bcryptjs");
 var Articles = require("../models/article.js");
 const saltRounds = 10;
 
 module.exports = function(app) {
+  /*
+  @Matterwiki
+  This is a POST endpoint which takes the user name, email, password, and about to create
+  a new user profile.
+  It responds with the created user object in the data key.
+  the error key in the returning object is a boolen which is false if there is no error and true otherwise
+  */
   app.post("/users", function(req, res) {
-    /*
-    This is a POST endpoint which takes the user name, email, password, and about to create
-    a new user profile.
-    It responds with the created user object in the data key.
-    the error key in the returning object is a boolen which is false if there is no error and true otherwise
-    */
     bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
       Users.forge()
         .save({
@@ -83,13 +85,14 @@ module.exports = function(app) {
       });
   });
 
+  /*
+  @Matterwiki
+  This is a PUT endpoint which takes the user's ID, name, email, password, and about to create
+  a update the user profile of the given ID.
+  It responds with the updated user object in the data key.
+  the error key in the returning object is a boolen which is false if there is no error and true otherwise
+  */
   app.put("/users", function(req, res) {
-    /*
-    This is a PUT endpoint which takes the user's ID, name, email, password, and about to create
-    a update the user profile of the given ID.
-    It responds with the updated user object in the data key.
-    the error key in the returning object is a boolen which is false if there is no error and true otherwise
-    */
     if (req.body.password != null) {
       bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
         Users.forge({ id: req.body.id })
@@ -154,12 +157,13 @@ module.exports = function(app) {
     }
   });
 
+  /*
+  @Matterwiki
+  This is a DELETE endpoint for delete a user from the database.
+  It takes the id of the user and then deletes that record from the database.
+  the error key in the returning object is a boolen which is false if there is no error and true otherwise
+  */
   app.delete("/users", function(req, res) {
-    /*
-      This is a DELETE endpoint for delete a user from the database.
-      It takes the id of the user and then deletes that record from the database.
-      the error key in the returning object is a boolen which is false if there is no error and true otherwise
-      */
     Users.where({ id: req.body.id })
       .fetch({ withRelated: ["articles"] })
       .then(function(user) {
@@ -201,12 +205,12 @@ module.exports = function(app) {
       });
   });
 
+  /*
+  This is a GET endpoint that responds with the user (with the given id)
+  the user is present in the data object in the returning object.
+  the error key in the returning object is a boolen which is false if there is no error and true otherwise
+  */
   app.get("/users/:id", function(req, res) {
-    /*
-          This is a GET endpoint that responds with the user (with the given id)
-          the user is present in the data object in the returning object.
-          the error key in the returning object is a boolen which is false if there is no error and true otherwise
-          */
     Users.forge({ id: req.params.id })
       .query(function(qb) {
         qb.select("id", "name", "about", "email");

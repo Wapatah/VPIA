@@ -1,6 +1,9 @@
-var config = require("./knexfile.js"); //requiring the knexfile that contains our connection object.
-var knex = require("knex")(config); // imports knex with our connection object (found in knexfile).
-var bookshelf = require("bookshelf")(knex); //imports bookshelf along with our knex config.
+// @Matterwiki - requiring the knexfile that contains our connection object.
+var config = require("./knexfile.js");
+// @Matterwiki - imports knex with our connection object (found in knexfile).
+var knex = require("knex")(config);
+// @Matterwiki - imports bookshelf along with our knex config.
+var bookshelf = require("bookshelf")(knex);
 
-// Exporting the bookshelf module for use in other files.
+// @Matterwiki - Exporting the bookshelf module for use in other files.
 module.exports = bookshelf;

@@ -1,21 +1,23 @@
 /*
+@Matterwiki
 This file contains all the endpoints related to user authentication.
 For the method we use to categorize endpoints in file please read the top
 comment in the articles.js (same directory).
 */
 
-// Importing the topics model
+// @Matterwiki - Importing the models
 var Users = require("../models/user.js");
-var jwt = require("jsonwebtoken"); // used to create, sign, and verify tokens
+var jwt = require("jsonwebtoken"); // @Matterwiki - used to create, sign, and verify tokens
 var bcrypt = require("bcryptjs");
 
 module.exports = function(app) {
+  /*
+  @Matterwiki
+  This is a POST endpoint that takes the email and password and returns the JWT
+  the token is present in the token key in the data object.
+  the error key in the returning object is a boolen which is false if there is no error and true otherwise
+  */
   app.post("/api/authenticate", function(req, res) {
-    /*
-    This is a POST endpoint that takes the email and password and returns the JWT
-    the token is present in the token key in the data object.
-    the error key in the returning object is a boolen which is false if there is no error and true otherwise
-    */
     Users.forge({ email: req.body.email })
       .fetch()
       .then(function(user) {

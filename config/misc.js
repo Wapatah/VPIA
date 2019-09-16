@@ -1,4 +1,5 @@
 /*
+@Matterwiki
 This file contains miscallaneous functions which are used throughout the app.
 Custom conversions, like the JS date object to SQLite timestamp conversion function
 we have is defined in this file. This file is imported in every endpoint file.

@@ -41,7 +41,7 @@ class App extends React.Component {
                 <span className="icon-bar"></span>
               </button>
               <Link to="home" className="navbar-brand">
-                <img  class="navbar-brand" src="../assets/logo.png"></img>
+                <img class="navbar-brand" src="../assets/logo.png"></img>
               </Link>
             </div>
           ) : (

@@ -1,19 +1,21 @@
 /*
+@Matterwiki
 This file contains all the endpoints related to topics.
 For the method we use to categorize endpoints in file please read the top
 comment in the articles.js (same directory).
 */
 
-// Importing the topics model
+// @Matterwiki - Importing the topics model
 var Topics = require("../models/topic.js");
 
 module.exports = function(app) {
+  /*
+  @Matterwiki
+  This is a GET endpoint that responds with the list of all the topics in the topics table
+  the topics are present in the data object in the returning object.
+  the error key in the returning object is a boolen which is false if there is no error and true otherwise
+  */
   app.get("/topics", function(req, res) {
-    /*
-    This is a GET endpoint that responds with the list of all the topics in the topics table
-    the topics are present in the data object in the returning object.
-    the error key in the returning object is a boolen which is false if there is no error and true otherwise
-    */
     Topics.forge()
       .fetchAll()
       .then(function(collection) {
@@ -38,12 +40,13 @@ module.exports = function(app) {
       });
   });
 
+  /*
+  @Matterwiki
+  This is a GET endpoint that responds with the topic which has the given ID
+  the topic is present in the data object in the returning object.
+  the error key in the returning object is a boolen which is false if there is no error and true otherwise
+  */
   app.get("/topics/:id", function(req, res) {
-    /*
-      This is a GET endpoint that responds with the topic which has the given ID
-      the topic is present in the data object in the returning object.
-      the error key in the returning object is a boolen which is false if there is no error and true otherwise
-      */
     Topics.forge({ id: req.params.id })
       .fetch()
       .then(function(topic) {
@@ -68,12 +71,13 @@ module.exports = function(app) {
       });
   });
 
+  /*
+  @Matterwiki
+  This is a GET endpoint that responds with the list of all the articles that belong to a particular topic (topic of given id param)
+  the articles are present in the data object in the returning object.
+  the error key in the returning object is a boolen which is false if there is no error and true otherwise
+  */
   app.get("/topic/:id/articles", function(req, res) {
-    /*
-    This is a GET endpoint that responds with the list of all the articles that belong to a particular topic (topic of given id param)
-    the articles are present in the data object in the returning object.
-    the error key in the returning object is a boolen which is false if there is no error and true otherwise
-    */
     Topics.where({ id: req.params.id })
       .fetch({
         withRelated: [

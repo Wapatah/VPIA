@@ -1,4 +1,5 @@
 /*
+@Matterwiki
 This file contains all endpoints related to archives
 */
 
@@ -6,12 +7,13 @@ var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
 
 module.exports = function(app, archiveObj, userObj) {
+  /*
+  @Matterwiki
+  This is a GET endpoint that responds with one article of the specific ID (identified through the ID param)
+  the article is present in the data object in the returning object.
+  the error key in the returning object is a boolen which is false if there is no error and true otherwise
+  */
   app.get("/archives/:id/", function(req, res) {
-    /*
-    This is a GET endpoint that responds with one article of the specific ID (identified through the ID param)
-    the article is present in the data object in the returning object.
-    the error key in the returning object is a boolen which is false if there is no error and true otherwise
-    */
     Archives.forge({ id: req.params.id })
       .fetch()
       .then(function(archive) {
