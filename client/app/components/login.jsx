@@ -1,5 +1,5 @@
 import React from "react";
-import { hashHistory } from "react-router";
+import { hashHistory, Link } from "react-router";
 import Alert from "react-s-alert";
 
 class Login extends React.Component {
@@ -74,8 +74,12 @@ class Login extends React.Component {
                 onClick={this.handleSubmit}
                 className="btn btn-default btn-block btn-lg"
               >
-                Sign in
+                Log in
               </button>
+            </div>
+            <div className="col-sm-12 form-group">
+              Don't have an account?<br/>
+              <Link to="/user_signup">Sign up</Link>
             </div>
           </form>
         </div>

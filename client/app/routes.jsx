@@ -13,6 +13,7 @@ import Admin from "./components/admin.jsx";
 import Setup from "./components/setup.jsx";
 import EditTopic from "./components/edit_topics.jsx";
 import EditUser from "./components/edit_users.jsx";
+import UserSignup from "./components/user_signup.jsx";
 
 export default function() {
   return (
@@ -29,6 +30,7 @@ export default function() {
       <Route path="user/edit/:userId" component={EditUser} />
       <Route path="search" component={Search} />
       <Route path="setup" component={Setup} />
+      <Route path="user_signup" component={UserSignup} />
     </Route>
   );
 }

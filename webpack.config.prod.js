@@ -6,10 +6,10 @@ const APP_DIR = path.resolve(__dirname, "client/app");
 
 module.exports = {
   entry: [
-    // polyfill for fetch API (Safari)
+    // @Matterwiki - polyfill for fetch API (Safari)
     // TODO a better way to handle this, maybe?
     "whatwg-fetch",
-    // entry point
+    // @Matterwiki - entry point
     APP_DIR + "/index.jsx"
   ],
   output: {
