@@ -59,6 +59,7 @@ class Login extends React.Component {
                 className="form-control"
                 id="inputEmail"
                 placeholder="Email"
+                aria-label="Email"
               />
             </div>
             <div className="col-sm-12 form-group">
@@ -67,6 +68,7 @@ class Login extends React.Component {
                 className="form-control"
                 id="inputPassword"
                 placeholder="Password"
+                aria-label="Password"
               />
             </div>
             <div className="col-sm-12 form-group">

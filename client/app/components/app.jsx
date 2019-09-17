@@ -47,7 +47,7 @@ class App extends React.Component {
           ) : (
             <center>
               <a className="navbar-login-logo" href="#">
-                <img src="../assets/logo.png"></img>
+                <img src="../assets/logo.png" alt="Site logo"></img>
               </a>
             </center>
           )}
