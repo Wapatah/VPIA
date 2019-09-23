@@ -2,6 +2,12 @@
 
 This platform uses Matterwiki as the underlying wiki engine. This will most likely be heavily customized. Currently using MySQL.
 
+### Instructions
+1. Install [node](https://nodejs.org/en/)
+2. Navigate to the project folder
+3. Install dependencies: `npm install`
+4. Run the application: `npm run start`
+
 ### Navigating the folders
 * `api/` directory contains code for node backend.
 TODO: add Matterwiki's api documentation
