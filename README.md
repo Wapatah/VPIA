@@ -29,10 +29,6 @@ TODO: add Matterwiki's api documentation
 
 Eslint is currently not fixing the Jsx files in the app folder due to breaking changes (automatic fix breaks the engine) and possible lack of backwards compatibility. We should fix this in the future but we must prioritize elsewhere.
 
-## Running Documentation
-* `npm run docs` - A few docs are currently available.
-
-
 ## Common Errors
 You must install MySQL before running the project. You can modify the `knexfile.js` to include your root username, and your password and whatever database you want.
 If you get an error like:
