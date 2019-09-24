@@ -80,7 +80,8 @@ class Login extends React.Component {
               </button>
             </div>
             <div className="col-sm-12 form-group">
-              Don't have an account?<br/>
+              Don't have an account?
+              <br />
               <Link to="/user_signup">Sign up</Link>
             </div>
           </form>
