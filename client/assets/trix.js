@@ -2753,8 +2753,9 @@ http://trix-editor.org/
                   t.quote +
                   '" tabindex="-1">' +
                   t.quote +
-                  '</button>\n    <button type="button" class="trix-button trix-button--icon trix-button--icon-code" data-trix-attribute="code" title="' +
-                  t.code +
+                  // Turn off the code button 
+                  // '</button>\n    <button type="button" class="trix-button trix-button--icon trix-button--icon-code" data-trix-attribute="code" title="' +
+                  // t.code +
                   '" tabindex="-1">' +
                   t.code +
                   '</button>\n    <button type="button" class="trix-button trix-button--icon trix-button--icon-bullet-list" data-trix-attribute="bullet" title="' +
