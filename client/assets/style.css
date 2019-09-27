@@ -506,8 +506,7 @@ border: 1px solid #efefef;
 .no-results .fa {
   font-size: 200px;
 }
-
+/* hide no file select alert */
 input[type='file'] {
-  color: transparent;
   display: none;
 }
