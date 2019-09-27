@@ -506,3 +506,8 @@ border: 1px solid #efefef;
 .no-results .fa {
   font-size: 200px;
 }
+
+input[type='file'] {
+  color: transparent;
+  display: none;
+}
