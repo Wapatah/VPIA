@@ -40,8 +40,8 @@ class App extends React.Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link to="home" className="navbar-brand">
-                <img class="navbar-brand" src="../assets/logo.png"></img>
+              <Link to="home" className="navbar-brand" aria-label="homepage link">
+                <img class="navbar-brand" src="../assets/logo.png" alt="VPIA logo" aria-label="VPIA logo"></img>
               </Link>
             </div>
           ) : (

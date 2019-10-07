@@ -51,7 +51,7 @@ class Login extends React.Component {
     return (
       <div className="container login-box row">
         <div className="col-md-12 col-sm-12">
-          <h3>Login</h3>
+          <h1>Login</h1>
           <form>
             <div className="col-sm-12 form-group">
               <input
@@ -80,7 +80,8 @@ class Login extends React.Component {
               </button>
             </div>
             <div className="col-sm-12 form-group">
-              Don't have an account?<br/>
+              Don't have an account?
+              <br />
               <Link to="/user_signup">Sign up</Link>
             </div>
           </form>

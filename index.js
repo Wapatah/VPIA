@@ -6,6 +6,8 @@ Once we have enough endpoints defined we start breaking them into modules for be
 
 // @Matterwiki - Importing all the required libraries
 var express = require("express");
+// @Mordax - adding middleman compression scheme
+var compression = require("compression");
 // @Matterwiki - body parser to parse the request body
 var bodyParser = require("body-parser");
 var db = require("./config/db"); // eslint-disable-line
@@ -15,8 +17,11 @@ var apiRoutes = express.Router();
 var apiRoutesAdmin = express.Router();
 var jwt = require("jsonwebtoken");
 var misc = require("./config/misc"); // eslint-disable-line
-//@Matterwiki - config file in the app directory which contains the JWT key
+// @Matterwiki - config file in the app directory which contains the JWT key
 var config = require("./config/config");
+
+// @Mordax - using gzip compression to speed up app performance
+app.use(compression());
 
 process.env.PORT = process.env.PORT || 5000;
 

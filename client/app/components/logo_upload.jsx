@@ -58,6 +58,7 @@ class LogoUpload extends React.Component {
               type="submit"
               value="Upload Logo"
               className="btn btn-default btn-block btn-lg"
+              aria-label="Upload Logo"
             />
           </form>
         </div>
