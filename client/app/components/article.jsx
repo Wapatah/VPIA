@@ -72,6 +72,7 @@ class ViewArticle extends React.Component {
       this.state.article.topic &&
       this.state.article.user
     ) {
+      console.log(this.state.article);
       return (
         <div>
           <div className="row">
@@ -84,7 +85,14 @@ class ViewArticle extends React.Component {
                   Last updated on{" "}
                   {new Date(
                     this.state.article.updated_at.replace(" ", "T")
-                  ).toDateString()}
+                  ).toLocaleString("en-US", {
+                    weekday: 'short',
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: "2-digit",
+                    minute: "2-digit"
+                  })}
                 </div>
               </div>
               <div
