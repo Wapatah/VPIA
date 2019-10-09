@@ -16,7 +16,6 @@ var fs = require("fs"); // eslint-disable-line
 var apiRoutes = express.Router();
 var apiRoutesAdmin = express.Router();
 var jwt = require("jsonwebtoken");
-var misc = require("./config/misc"); // eslint-disable-line
 // @Matterwiki - config file in the app directory which contains the JWT key
 var config = require("./config/config");
 

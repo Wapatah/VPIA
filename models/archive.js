@@ -1,4 +1,4 @@
-var bookshelf = require("../config/bookshelf");
+var bookshelf = require("../config/db");
 bookshelf.plugin("registry");
 
 var Archives = bookshelf.Model.extend({
