@@ -1,3 +1,4 @@
+
 $(".modal-fullscreen").on("show.bs.modal", function() {
     setTimeout(function() {
         $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
@@ -8,7 +9,7 @@ $(".modal-fullscreen").on("hidden.bs.modal", function() {
 });
 
 $(window).scroll(function() {
-    if ($(this).scrollTop() > 135) {
+    if ($(this).scrollTop() > 232 ) {
         $("#my_toolbar").addClass("fixed");
         $("#my_toolbar .dialogs").addClass("fixed");
     } else {
