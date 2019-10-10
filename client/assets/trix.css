@@ -21,18 +21,15 @@ trix-toolbar .trix-button-row {
 }
 trix-toolbar .trix-button-group {
   display: flex;
-  margin-bottom: 10px;
 }
-trix-toolbar .trix-button-group:not(:first-child) {
-  margin-left: 1.5vw;
-}
+
 @media (max-device-width: 768px) {
   trix-toolbar .trix-button-group:not(:first-child) {
     margin-left: 0;
   }
 }
 trix-toolbar .trix-button-group-spacer {
-  flex-grow: 1;
+  flex-grow: 0;
 }
 @media (max-device-width: 768px) {
   trix-toolbar .trix-button-group-spacer {
@@ -43,13 +40,13 @@ trix-toolbar .trix-button {
   position: relative;
   float: left;
   font-size: 2em;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   padding: 0;
   margin: 0;
   outline: none;
   border: none;
   border-radius: 0;
-  background: transparent;
+  background: #fff;
 }
 trix-toolbar .trix-button.trix-active {
   background: #efefef;
@@ -79,6 +76,20 @@ trix-toolbar .trix-button--icon {
   trix-toolbar .trix-button--icon {
     height: 2em;
     max-width: calc(0.8em + 3.5vw);
+  }
+}
+/* Large and Medium Smartphones (portrait) ----------- */
+@media only screen and (max-width: 425px) {
+  trix-toolbar .trix-button--icon {
+    font-size: inherit;
+    max-width: calc(0.8em + 3.5vw);
+  }
+}
+/* Small Smartphones (portrait) ----------- */
+@media only screen and (max-width: 320px) {
+  trix-toolbar .trix-button--icon {
+    font-size: inherit;
+    max-width: calc(0.8em + 2.5vw);
   }
 }
 trix-toolbar .trix-button--icon::before {
