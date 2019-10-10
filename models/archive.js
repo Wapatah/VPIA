@@ -1,4 +1,4 @@
-var bookshelf = require("../config/db");
+/* var bookshelf = require("../config/db");
 bookshelf.plugin("registry");
 
 var Archives = bookshelf.Model.extend({
@@ -8,4 +8,17 @@ var Archives = bookshelf.Model.extend({
   }
 });
 
-module.exports = bookshelf.model("Archives", Archives);
+module.exports = bookshelf.model("Archives", Archives); */
+var schema = require("../config/db");
+
+var Archive = schema.define("archive", {
+  title: { type: schema.String, limit: 255 }, 
+  body: { type: schema.Text },
+  updated_at: { type: schema.Date },
+  what_changed: { type: schema.String, limit: 255 },
+});
+
+schema.automigrate();
+
+module.exports = Archive;
+
