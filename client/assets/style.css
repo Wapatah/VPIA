@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
 
+@font-face {
+    font-family: "FuturaStdHeavy";
+    src: url("./fonts/Futura-Std-Heavy.otf");
+}
+
+@font-face {
+    font-family: "FuturaStdMedium";
+    src: url("./fonts/Futura-Std-Medium.otf");
+}
+
+@font-face {
+    font-family: "Baskerville";
+    src: url("./fonts/Baskerville.ttc");
+}
+
 .primary-logo {
   height: 4em;
   margin-top: 2em;
@@ -9,6 +24,7 @@ body{
   background-color: #ffffff;
   color: #4d4d4d;
   letter-spacing: 1px;
+  font-family: "FuturaStdHeavy";
 }
 
 .content {
@@ -66,6 +82,7 @@ padding: 10px 20px;
 }
 
 .article-item-description {
+  font-family: "Baskerville";
   color: #595959;
 }
 
@@ -97,7 +114,7 @@ padding: 10px 20px;
 }
 
 .single-article-body {
-  font-family: "Merriweather", sans-serif;
+  font-family: "FuturaStdHeavy";
   font-size: 1.5em;
   margin-bottom: 2em;
 padding: 0em 1em;
