@@ -21,17 +21,15 @@ module.exports = function(app) {
   */
   app.post("/setup", function(req, res) {
     bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-      Users.forge()
-        .save({
-          id: 1,
-          name: req.body.name,
-          email: req.body.email,
-          password: hash,
-          about: req.body.about
-        })
+      Users.create({
+        id: 1,
+        name: req.body.name,
+        email: req.body.email,
+        password: hash,
+        about: req.body.about
+      })
         .then(function(collection) {
-          Topics.forge()
-            .save({ name: "general", description: "knowledge for everyone" })
+          Topics.create({ name: "general", description: "knowledge for everyone" })
             .then(function() {
               res.json({
                 error: {

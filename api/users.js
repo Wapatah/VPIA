@@ -21,13 +21,12 @@ module.exports = function(app) {
   */
   app.post("/users", function(req, res) {
     bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-      Users.forge()
-        .save({
-          name: req.body.name,
-          email: req.body.email,
-          password: hash,
-          about: req.body.about
-        })
+      Users.create({
+        name: req.body.name,
+        email: req.body.email,
+        password: hash,
+        about: req.body.about
+      })
         .then(function(collection) {
           res.json({
             error: {

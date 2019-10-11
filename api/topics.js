@@ -16,8 +16,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/topics", function(req, res) {
-    Topics.forge()
-      .fetchAll()
+    Topics.all({where: {}})
       .then(function(collection) {
         res.json({
           error: {
@@ -25,7 +24,7 @@ module.exports = function(app) {
             message: ""
           },
           code: "B123",
-          data: collection.toJSON()
+          data: collection
         });
       })
       .catch(function(error) {

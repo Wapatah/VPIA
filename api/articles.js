@@ -60,12 +60,7 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles", function(req, res) {
-    Articles.forge()
-      .query(function(qb) {
-        if (req.query.count) qb.limit(req.query.count);
-        qb.orderBy("updated_at", "DESC");
-      })
-      .fetchAll()
+    Articles.all({where: {}})
       .then(function(collection) {
         res.json({
           error: {
@@ -73,7 +68,7 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
             message: ""
           },
           code: "B105",
-          data: collection.toJSON()
+          data: collection
         });
       })
       .catch(function(error) {
