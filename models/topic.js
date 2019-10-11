@@ -19,6 +19,6 @@ var Topic = schema.define("topic", {
   updated_at: { type: schema.Date }
 });
 
-schema.automigrate();
+schema.autoupdate();
 
 module.exports = Topic;

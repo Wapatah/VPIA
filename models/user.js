@@ -21,6 +21,10 @@ var User = schema.define("user", {
   updated_at: { type: schema.Date }
 });
 
-schema.automigrate();
+User.validatesPresenceOf("name", "email", "about");
+User.validatesLengthOf("password", {min: 5, message: {min: "Password is too short"}});
+User.validatesUniquenessOf("email", {message: "email is not unique"});
+
+schema.autoupdate();
 
 module.exports = User;

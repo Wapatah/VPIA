@@ -18,7 +18,7 @@ var Archive = schema.define("archive", {
   what_changed: { type: schema.String, limit: 255 },
 });
 
-schema.automigrate();
+schema.autoupdate();
 
 module.exports = Archive;
 

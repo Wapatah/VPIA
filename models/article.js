@@ -24,10 +24,8 @@ var Article = schema.define("article", {
   created_at: { type: schema.Date },
   updated_at: { type: schema.Date },
   what_changed: { type: schema.String, limit: 255 },
-  user_id: { type: schema.Integer },
-  topic_id: { type: schema.String }
 });
 
-schema.automigrate();
+schema.autoupdate();
 
 module.exports = Article;
