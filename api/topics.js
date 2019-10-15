@@ -16,7 +16,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/topics", function(req, res) {
-    Topics.forge()
+    /* Topics.forge()
       .fetchAll()
       .then(function(collection) {
         res.json({
@@ -37,7 +37,7 @@ module.exports = function(app) {
           code: "B124",
           data: {}
         });
-      });
+      }); */
   });
 
   /*
@@ -47,7 +47,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/topics/:id", function(req, res) {
-    Topics.forge({ id: req.params.id })
+    /* Topics.forge({ id: req.params.id })
       .fetch()
       .then(function(topic) {
         res.json({
@@ -68,7 +68,7 @@ module.exports = function(app) {
           code: "B124",
           data: {}
         });
-      });
+      }); */
   });
 
   /*
@@ -78,7 +78,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/topic/:id/articles", function(req, res) {
-    Topics.where({ id: req.params.id })
+    /* Topics.where({ id: req.params.id })
       .fetch({
         withRelated: [
           {
@@ -108,6 +108,6 @@ module.exports = function(app) {
           code: "B130",
           data: {}
         });
-      });
+      }); */
   });
 };

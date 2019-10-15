@@ -101,7 +101,7 @@ module.exports = function(app) {
   TODO: Add updates only for columns that are in the request body. Handle exceptions.
   */
   app.put("/topics", function(req, res) {
-    Topics.forge({ id: req.body.id })
+    /* Topics.forge({ id: req.body.id })
       .save({ name: req.body.name, description: req.body.description })
       .then(function(topic) {
         res.json({
@@ -122,7 +122,7 @@ module.exports = function(app) {
           code: "B126",
           data: {}
         });
-      });
+      }); */
   });
 
   /*
@@ -133,7 +133,7 @@ module.exports = function(app) {
   is no error and true otherwise
   */
   app.delete("/topics", function(req, res) {
-    if (req.body.id === 1) {
+    /* if (req.body.id === 1) {
       res.status(403).json({
         error: {
           error: true,
@@ -196,7 +196,8 @@ module.exports = function(app) {
             data: {}
           });
         });
-    }
+    } */
+
   });
 
   /*
@@ -206,7 +207,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.delete("/articles", function(req, res) {
-    Articles.forge({ id: req.body.id })
+    /* Articles.forge({ id: req.body.id })
       .destroy()
       .then(function() {
         res.json({
@@ -227,11 +228,12 @@ module.exports = function(app) {
           code: "B110",
           data: {}
         });
-      });
+      }); */
+      
   });
 
   app.post("/logo", function(req, res) {
-    upload(req, res, function(err) {
+   /*  upload(req, res, function(err) {
       if (err) {
         res.json({
           error: {
@@ -251,6 +253,7 @@ module.exports = function(app) {
           data: {}
         });
       }
-    });
+    }); */
+
   });
 };

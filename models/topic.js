@@ -1,4 +1,4 @@
-var bookshelf = require("../config/bookshelf");
+/* var bookshelf = require("../config/bookshelf");
 bookshelf.plugin("registry");
 
 var Topic = bookshelf.Model.extend({
@@ -9,3 +9,4 @@ var Topic = bookshelf.Model.extend({
 });
 
 module.exports = bookshelf.model("Topic", Topic);
+ */

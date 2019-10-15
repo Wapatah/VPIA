@@ -18,7 +18,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.post("/api/authenticate", function(req, res) {
-    Users.forge({ email: req.body.email })
+    /*  Users.forge({ email: req.body.email })
       .fetch()
       .then(function(user) {
         if (!user) {
@@ -76,6 +76,6 @@ module.exports = function(app) {
           code: "B120",
           data: {}
         });
-      });
+      }); */
   });
 };

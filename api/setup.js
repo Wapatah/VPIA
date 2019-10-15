@@ -20,7 +20,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.post("/setup", function(req, res) {
-    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+    /* bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
       Users.forge()
         .save({
           id: 1,
@@ -54,6 +54,6 @@ module.exports = function(app) {
               });
             });
         });
-    });
+    }); */
   });
 };

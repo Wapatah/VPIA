@@ -11,6 +11,8 @@ var bcrypt = require("bcryptjs");
 var Articles = require("../models/article.js");
 const saltRounds = 10;
 
+const manager - 
+
 module.exports = function(app) {
   /*
   @Matterwiki
@@ -20,7 +22,8 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.post("/users", function(req, res) {
-    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+
+   /*  bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
       Users.forge()
         .save({
           name: req.body.name,
@@ -48,7 +51,7 @@ module.exports = function(app) {
             data: {}
           });
         });
-    });
+    }); */
   });
 
   app.get("/users", function(req, res) {
@@ -57,7 +60,7 @@ module.exports = function(app) {
     the topics are present in the data object in the returning object.
     the error key in the returning object is a boolen which is false if there is no error and true otherwise
     */
-    Users.forge()
+    /* Users.forge()
       .query(function(qb) {
         qb.select("id", "name", "about", "email");
         qb.orderBy("created_at", "DESC");
@@ -82,7 +85,7 @@ module.exports = function(app) {
           code: "B134",
           data: {}
         });
-      });
+      }); */
   });
 
   /*
@@ -93,7 +96,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.put("/users", function(req, res) {
-    if (req.body.password != null) {
+    /* if (req.body.password != null) {
       bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
         Users.forge({ id: req.body.id })
           .save({
@@ -154,7 +157,7 @@ module.exports = function(app) {
             data: {}
           });
         });
-    }
+    } */
   });
 
   /*
@@ -164,7 +167,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.delete("/users", function(req, res) {
-    Users.where({ id: req.body.id })
+   /*  Users.where({ id: req.body.id })
       .fetch({ withRelated: ["articles"] })
       .then(function(user) {
         user = user.toJSON();
@@ -202,7 +205,7 @@ module.exports = function(app) {
           code: "B138",
           data: {}
         });
-      });
+      }); */
   });
 
   /*
@@ -211,7 +214,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/users/:id", function(req, res) {
-    Users.forge({ id: req.params.id })
+   /*  Users.forge({ id: req.params.id })
       .query(function(qb) {
         qb.select("id", "name", "about", "email");
       })
@@ -235,6 +238,6 @@ module.exports = function(app) {
           code: "B134",
           data: {}
         });
-      });
+      }); */
   });
 };

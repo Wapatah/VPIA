@@ -21,7 +21,7 @@ module.exports = function(app) {
   The endpoint only searches article titles as of now.
   */
   app.get("/search", function(req, res) {
-    var SearchQuery = req.query.query;
+    /* var SearchQuery = req.query.query;
     SearchQuery = "%" + SearchQuery + "%";
     Articles.query(function(qb) {
       qb.where("title", "LIKE", SearchQuery).orWhere(
@@ -51,6 +51,6 @@ module.exports = function(app) {
           code: "B132",
           data: {}
         });
-      });
+      }); */
   });
 };

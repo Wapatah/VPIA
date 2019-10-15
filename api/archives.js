@@ -14,7 +14,7 @@ module.exports = function(app, archiveObj, userObj) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/archives/:id/", function(req, res) {
-    Archives.forge({ id: req.params.id })
+    /* Archives.forge({ id: req.params.id })
       .fetch()
       .then(function(archive) {
         Users.forge({ id: archive.attributes.user_id })
@@ -49,6 +49,7 @@ module.exports = function(app, archiveObj, userObj) {
           code: "B114",
           data: {}
         });
-      });
+      }); */
+      
   });
 };

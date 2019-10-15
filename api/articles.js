@@ -23,7 +23,7 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   TODO: create formal guidelines for different object structures and follow that throughout the API.
   */
   app.post("/articles", function(req, res) {
-    Articles.forge()
+    /* Articles.forge()
       .save({
         title: req.body.title,
         body: req.body.body,
@@ -50,7 +50,8 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
           code: "B104",
           data: {}
         });
-      });
+      }); */
+
   });
 
   /*
@@ -60,7 +61,7 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles", function(req, res) {
-    Articles.forge()
+    /* Articles.forge()
       .query(function(qb) {
         if (req.query.count) qb.limit(req.query.count);
         qb.orderBy("updated_at", "DESC");
@@ -85,7 +86,8 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
           code: "B106",
           data: {}
         });
-      });
+      }); */
+
   });
 
   /*
@@ -96,7 +98,7 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   TODO: Add updates only for columns that are in the request body. Handle exceptions.
   */
   app.put("/articles", function(req, res) {
-    Articles.forge({ id: req.body.id })
+    /* Articles.forge({ id: req.body.id })
       .fetch()
       .then(function(article) {
         Articles.forge({ id: req.body.id })
@@ -137,7 +139,8 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
           code: "B108",
           data: {}
         });
-      });
+      }); */
+
   });
 
   /*
@@ -153,7 +156,7 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   The error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/compare", function(req, res) {
-    Articles.forge({ id: req.query.article1 })
+   /*  Articles.forge({ id: req.query.article1 })
       .fetch()
       .then(function(article1) {
         Articles.forge({ id: req.query.article2 })
@@ -183,7 +186,8 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
           code: "B112",
           data: {}
         });
-      });
+      }); */
+
   });
 
   /*
@@ -193,7 +197,7 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/", function(req, res) {
-    Articles.forge({ id: req.params.id })
+    /* Articles.forge({ id: req.params.id })
       .fetch()
       .then(function(article) {
         Topics.forge({ id: article.attributes.topic_id })
@@ -236,7 +240,8 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
           code: "B114",
           data: {}
         });
-      });
+      }); */
+
   });
 
   /*
@@ -247,7 +252,7 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   The error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/history", function(req, res) {
-    Articles.where({ id: req.params.id })
+    /* Articles.where({ id: req.params.id })
       .fetch({
         withRelated: [
           {
@@ -276,6 +281,6 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
           code: "B116",
           data: {}
         });
-      });
+      }); */
   });
 };
