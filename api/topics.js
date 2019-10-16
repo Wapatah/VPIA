@@ -7,6 +7,7 @@ comment in the articles.js (same directory).
 
 // @Matterwiki - Importing the topics model
 var Topics = require("../models/topic.js");
+var Articles = require("../models/article");
 
 module.exports = function(app) {
   /*
@@ -77,25 +78,15 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/topic/:id/articles", function(req, res) {
-    Topics.where({ id: req.params.id })
-      .fetch({
-        withRelated: [
-          {
-            articles: function(qb) {
-              if (req.query.count) qb.limit(req.query.count);
-              qb.orderBy("updated_at", "DESC");
-            }
-          }
-        ]
-      })
-      .then(function(topic) {
+    Articles.find({ where: {topic_id: req.params.id} })
+      .then(function(article) {
         res.status(200).json({
           error: {
             error: false,
             message: ""
           },
           code: "B129",
-          data: topic.related("articles")
+          data: article
         });
       })
       .catch(function(error) {

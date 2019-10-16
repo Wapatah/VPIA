@@ -19,6 +19,9 @@ var jwt = require("jsonwebtoken");
 // @Matterwiki - config file in the app directory which contains the JWT key
 var config = require("./config/config");
 
+var relations = require("./models/relations");
+relations.load(app);
+
 // @Mordax - using gzip compression to speed up app performance
 app.use(compression());
 
