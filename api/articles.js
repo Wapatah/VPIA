@@ -23,14 +23,13 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   TODO: create formal guidelines for different object structures and follow that throughout the API.
   */
   app.post("/articles", function(req, res) {
-    Articles.forge()
-      .save({
-        title: req.body.title,
-        body: req.body.body,
-        topic_id: req.body.topic_id,
-        user_id: req.body.user_id,
-        what_changed: "Another drop in the ocean of knowledge"
-      })
+    Articles.create({
+      title: req.body.title,
+      body: req.body.body,
+      topic_id: req.body.topic_id,
+      user_id: req.body.user_id,
+      what_changed: "Another drop in the ocean of knowledge"
+    })
       .then(function(article) {
         res.json({
           error: {
