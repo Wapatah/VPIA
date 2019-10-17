@@ -187,27 +187,19 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/", function(req, res) {
-    Articles.forge({ id: req.params.id })
-      .fetch()
+    Articles.create({ id: req.params.id });
+    Articles.find({ where: { id: req.params.id }})
       .then(function(article) {
-        Topics.forge({ id: article.attributes.topic_id })
-          .fetch()
+        Topics.create({ id: article[0].topic_id });
+        Topics.find({where: {id: article[0].topic_id}})
           .then(function(topic) {
-            articleObj = article.toJSON();
-            topicObj = topic.toJSON();
-            articleObj.topic = topicObj;
+            article[0].topics(topic);
           })
           .then(function() {
-            Users.forge({ id: articleObj.user_id })
-              .fetch()
+            Users.create({ id: article[0].user_id });
+            Users.find({ where: { id: article[0].user_id}})
               .then(function(user) {
-                userObj = user.toJSON();
-                articleObj.user = {
-                  id: userObj.id,
-                  name: userObj.name,
-                  email: userObj.email,
-                  about: userObj.about
-                };
+                article[0].users(user);
               })
               .then(function() {
                 res.json({
@@ -216,7 +208,7 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
                     message: ""
                   },
                   code: "B113",
-                  data: articleObj
+                  data: article
                 });
               });
           });
