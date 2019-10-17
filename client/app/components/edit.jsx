@@ -45,7 +45,7 @@ class EditArticle extends React.Component {
           "&topic_id=" +
           topicId +
           "&user_id=" +
-          window.localStorage.getItem("userId") +
+          window.localStorage.getItem("user_id") +
           "&what_changed=" +
           what_changed
       };

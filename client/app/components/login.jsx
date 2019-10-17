@@ -39,7 +39,7 @@ class Login extends React.Component {
         if (response.error.error) Alert.error(response.error.message);
         else {
           window.localStorage.setItem("userToken", response.data.token);
-          window.localStorage.setItem("userId", response.data.user.id);
+          window.localStorage.setItem("user_id", response.data.user.id);
           window.localStorage.setItem("userEmail", response.data.user.token);
           hashHistory.push("home");
           Alert.success("You are now logged in");

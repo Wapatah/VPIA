@@ -33,7 +33,7 @@ class EditUser extends React.Component {
     });
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
-    fetch("/api/users/" + this.props.params.userId, myInit)
+    fetch("/api/users/" + this.props.params.user_id, myInit)
       .then(function(response) {
         return response.json();
       })
@@ -56,7 +56,7 @@ class EditUser extends React.Component {
       about: encodeURIComponent(this.refs.user_about.value),
       email: encodeURIComponent(this.refs.user_email.value),
       password: encodeURIComponent(this.refs.user_password.value),
-      id: encodeURIComponent(this.props.params.userId)
+      id: encodeURIComponent(this.props.params.user_id)
     };
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
