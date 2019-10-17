@@ -81,9 +81,9 @@ class EditArticle extends React.Component {
         if (response.error.error) Alert.error(response.error.message);
         else {
           that.setState({
-            body: response.data.body,
-            title: response.data.title,
-            topic_id: response.data.topic_id
+            body: response.data[0].body,
+            title: response.data[0].title,
+            topic_id: response.data[0].topic_id
           });
         }
         that.setState({ loading: false });
