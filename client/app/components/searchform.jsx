@@ -14,19 +14,24 @@ class SearchForm extends React.Component {
 
   render() {
     return (
-      <form className="navbar-form navbar-right" onSubmit={this.searchWiki}>
-        <div className="form-group">
+
+      <form onSubmit={this.searchWiki}>
+
+        <div className="input-group searchcustom">
           <input
             type="text"
             className="form-control search-input"
-            placeholder="Search"
+            placeholder="Search Artwork"
             ref="search"
           />
+          <span className="input-group-btn">
+          <button type="submit" className="btn search-button">
+            <i className="fa fa-search"></i>
+          </button>
+          </span>
         </div>
-        <button type="submit" className="btn search-button">
-          <i className="fa fa-search"></i>
-        </button>
       </form>
+
     );
   }
 }
