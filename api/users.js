@@ -161,33 +161,48 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.delete("/users", function(req, res) {
-    Users.where({ id: req.body.id })
-      .fetch({ withRelated: ["articles"] })
-      .then(function(user) {
-        user = user.toJSON();
-        var articles = user.articles;
-        for (var i = 0; i < articles.length; i++) {
-          Articles.forge({ id: articles[i].id }).save({
-            title: articles[i].title,
-            body: articles[i].body,
-            topic_id: articles[i].topic_id,
-            what_changed: articles[i].what_changed,
-            user_id: 1
-          });
-        }
-      })
+    Users.destroyById(req.body.id)
       .then(function() {
-        Users.forge({ id: req.body.id })
-          .destroy()
-          .then(function() {
-            res.json({
-              error: {
-                error: false,
-                message: ""
-              },
-              code: "B137",
-              data: {}
-            });
+        Articles.find( {where: { user_id: req.body.id }})
+          .then(collection => {
+            if (collection) {
+              Articles.update({
+                where: {
+                  user_id: req.body.id
+                }
+              },{
+                user_id: 1
+              })
+                .then(() => {
+                  res.json({
+                    error: {
+                      error: false,
+                      message: ""
+                    },
+                    code: "B127",
+                    data: {}
+                  });
+                })
+                .catch(error => {
+                  res.status(500).json({
+                    error: {
+                      error: true,
+                      message: error.message
+                    },
+                    code: "",
+                    data: {}
+                  });
+                });
+            } else {
+              res.json({
+                error: {
+                  error: false,
+                  message: ""
+                },
+                code: "B127",
+                data: {}
+              });
+            }
           });
       })
       .catch(function(error) {
@@ -196,7 +211,7 @@ module.exports = function(app) {
             error: true,
             message: error.message
           },
-          code: "B138",
+          code: "B128",
           data: {}
         });
       });
