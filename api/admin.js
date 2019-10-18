@@ -141,17 +141,18 @@ module.exports = function(app) {
         data: {}
       });
     } else {
-      Topics.forge({ id: req.body.id })
-        .destroy()
+      Topics.destroyById(req.body.id)
         .then(function() {
-          Articles.forge()
-            .where({ topic_id: req.body.id })
-            .fetch()
+          Articles.find( {where: { topic_id: req.body.id }})
             .then(collection => {
               if (collection) {
-                Articles.forge()
-                  .where({ topic_id: req.body.id })
-                  .save({ topic_id: 1 }, { patch: true })
+                Articles.update({
+                  where: {
+                    topic_id: req.body.id
+                  }
+                },{
+                  topic_id: 1
+                })
                   .then(() => {
                     res.json({
                       error: {
