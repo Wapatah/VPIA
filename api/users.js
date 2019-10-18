@@ -56,12 +56,7 @@ module.exports = function(app) {
     the topics are present in the data object in the returning object.
     the error key in the returning object is a boolen which is false if there is no error and true otherwise
     */
-    Users.forge()
-      .query(function(qb) {
-        qb.select("id", "name", "about", "email");
-        qb.orderBy("created_at", "DESC");
-      })
-      .fetchAll()
+    Users.all({where: {}})
       .then(function(collection) {
         res.json({
           error: {
@@ -69,7 +64,7 @@ module.exports = function(app) {
             message: ""
           },
           code: "B133",
-          data: collection.toJSON()
+          data: collection
         });
       })
       .catch(function(error) {
@@ -92,15 +87,17 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.put("/users", function(req, res) {
+    console.log(JSON.stringify(req.body));
     if (req.body.password != null) {
       bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-        Users.forge({ id: req.body.id })
-          .save({
-            name: req.body.name,
-            email: req.body.email,
-            password: hash,
-            about: req.body.about
-          })
+        Users.update({
+          id: req.body.id
+        }, {
+          name: req.body.name,
+          email: req.body.email,
+          password: hash,
+          about: req.body.about
+        })
           .then(function() {
             res.json({
               error: {
@@ -127,12 +124,13 @@ module.exports = function(app) {
           });
       });
     } else {
-      Users.forge({ id: req.body.id })
-        .save({
-          name: req.body.name,
-          email: req.body.email,
-          about: req.body.about
-        })
+      Users.update({
+        id: req.body.id
+      }, {
+        name: req.body.name,
+        email: req.body.email,
+        about: req.body.about
+      })
         .then(function(collection) {
           res.json({
             error: {
@@ -140,7 +138,7 @@ module.exports = function(app) {
               message: ""
             },
             code: "B135",
-            data: collection.toJSON()
+            data: collection
           });
         })
         .catch(function(error) {
@@ -210,11 +208,8 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/users/:id", function(req, res) {
-    Users.forge({ id: req.params.id })
-      .query(function(qb) {
-        qb.select("id", "name", "about", "email");
-      })
-      .fetch()
+    Users.create({ id: req.params.id })
+    Users.find({ where: {id: req.params.id }})
       .then(function(user) {
         res.json({
           error: {
@@ -222,7 +217,7 @@ module.exports = function(app) {
             message: ""
           },
           code: "B133",
-          data: user.toJSON()
+          data: user
         });
       })
       .catch(function(error) {
