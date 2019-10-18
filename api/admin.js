@@ -206,8 +206,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.delete("/articles", function(req, res) {
-    Articles.forge({ id: req.body.id })
-      .destroy()
+    Articles.destroyById(req.body.id)
       .then(function() {
         res.json({
           error: {
@@ -219,6 +218,7 @@ module.exports = function(app) {
         });
       })
       .catch(function(error) {
+        console.log(JSON.stringify(error));
         res.status(500).json({
           error: {
             error: true,
