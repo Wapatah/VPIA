@@ -42,22 +42,10 @@ module.exports = function(app) {
   It then saves those values in the database using the insert query.
   */
   app.post("/topics", function(req, res) {
-    Topics.where({ name: req.body.name })
-      .fetch({ require: true })
-      .then(topic => {
-        res.json({
-          error: {
-            error: true,
-            message: `Topic ${topic.get("name")} exists!`
-          },
-          code: "",
-          data: {}
-        });
-      })
-      .catch(error => {
-        if (error.message === "EmptyResponse") {
-          Topics.forge()
-            .save({ name: req.body.name, description: req.body.description })
+    Topics.find({ where: {name: req.body.name}})
+      .then(function(response) {
+        if(response.length === 0){
+          Topics.create({ name: req.body.name, description: req.body.description })
             .then(function(topic) {
               res.json({
                 error: {
@@ -65,7 +53,7 @@ module.exports = function(app) {
                   message: ""
                 },
                 code: "B121",
-                data: topic.toJSON()
+                data: topic
               });
             })
             .catch(function(error) {
@@ -78,16 +66,26 @@ module.exports = function(app) {
                 data: {}
               });
             });
-        } else {
-          res.status(500).json({
+        }else{
+          res.json({
             error: {
               error: true,
-              message: error.message
+              message: "Topic exists!"
             },
             code: "",
             data: {}
           });
         }
+      })
+      .catch(error => {
+        res.status(500).json({
+          error: {
+            error: true,
+            message: error.message
+          },
+          code: "",
+          data: {}
+        });
       });
   });
 
