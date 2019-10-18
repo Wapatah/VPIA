@@ -87,7 +87,6 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.put("/users", function(req, res) {
-    console.log(JSON.stringify(req.body));
     if (req.body.password != null) {
       bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
         Users.update({
@@ -223,7 +222,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/users/:id", function(req, res) {
-    Users.create({ id: req.params.id })
+    Users.create({ id: req.params.id });
     Users.find({ where: {id: req.params.id }})
       .then(function(user) {
         res.json({

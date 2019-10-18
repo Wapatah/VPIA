@@ -99,8 +99,12 @@ module.exports = function(app) {
   TODO: Add updates only for columns that are in the request body. Handle exceptions.
   */
   app.put("/topics", function(req, res) {
-    Topics.forge({ id: req.body.id })
-      .save({ name: req.body.name, description: req.body.description })
+    Topics.update({ 
+      id: req.body.id 
+    }, {
+      name: req.body.name,
+      description: req.body.description
+    })
       .then(function(topic) {
         res.json({
           error: {
@@ -217,7 +221,6 @@ module.exports = function(app) {
         });
       })
       .catch(function(error) {
-        console.log(JSON.stringify(error));
         res.status(500).json({
           error: {
             error: true,
