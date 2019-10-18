@@ -1,15 +1,9 @@
-/* var bookshelf = require("../config/db");
-bookshelf.plugin("registry");
-
-var User = bookshelf.Model.extend({
-  tableName: "users",
-  articles: function() {
-    return this.hasMany("Article");
-  }
-});
-
-module.exports = bookshelf.model("User", User);
- */
+/* 
+@Mordax
+The User schema - if data types need to be added or modified, it is done here.
+Calls config for the database object.
+Autoupdates instead of running migrations.
+*/
 var schema = require("../config/db");
 
 var User = schema.define("user", {
@@ -20,10 +14,6 @@ var User = schema.define("user", {
   created_at: { type: schema.Date },
   updated_at: { type: schema.Date }
 });
-
-User.validatesPresenceOf("name", "email", "about");
-User.validatesLengthOf("password", {min: 5, message: {min: "Password is too short"}});
-User.validatesUniquenessOf("email", {message: "email is not unique"});
 
 schema.autoupdate();
 

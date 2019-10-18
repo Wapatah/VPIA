@@ -1,3 +1,16 @@
+/* 
+@Mordax
+The relationship mapper - this gets loaded inside of the root index.js.
+Please closely examine the naming structure. 
+
+Model.relationship(OtherModel, {as: "name", foreignkey: "identifier"})
+
+HasMany relationship uses a foreign key relating to the Model.
+BelongsTo relationship uses a foreign key relating to the OtherModel.
+"name" is used when calling the associated object (i.e. User.articles(), where it was defined us as: "articles")
+
+Add relationships in this file.
+*/
 module.exports.load = (app) => {
   let Archive = require("../models/archive");
   let Article = require("../models/article");

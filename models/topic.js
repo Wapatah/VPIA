@@ -1,15 +1,9 @@
-/* var bookshelf = require("../config/db");
-bookshelf.plugin("registry");
-
-var Topic = bookshelf.Model.extend({
-  tableName: "topics",
-  articles: function() {
-    return this.hasMany("Article");
-  }
-});
-
-module.exports = bookshelf.model("Topic", Topic);
- */
+/* 
+@Mordax
+The Topic schema - if data types need to be added or modified, it is done here.
+Calls config for the database object.
+Autoupdates instead of running migrations.
+*/
 var schema = require("../config/db");
 
 var Topic = schema.define("topic", {

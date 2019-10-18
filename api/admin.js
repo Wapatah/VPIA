@@ -20,17 +20,6 @@ DELETE /articles
 Multer is a node.js middleware for handling multipart/form-data, 
 which is primarily used for uploading files.
 */
-var multer = require("multer");
-var storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, "./client/assets"); // @Matterwiki - Make sure this folder exists
-  },
-  filename: function(req, file, cb) {
-    cb(null, "logo.png");
-  }
-});
-var upload = multer({ storage: storage }).single("logo");
-
 // @Matterwiki - Importing the models
 var Topics = require("../models/topic.js");
 var Articles = require("../models/article.js");
@@ -230,29 +219,5 @@ module.exports = function(app) {
           data: {}
         });
       });
-  });
-
-  app.post("/logo", function(req, res) {
-    upload(req, res, function(err) {
-      if (err) {
-        res.json({
-          error: {
-            error: true,
-            message: "There was a problem uploading the logo"
-          },
-          code: "LOGODIDNTUPLOAD",
-          data: {}
-        });
-      } else {
-        res.json({
-          error: {
-            error: false,
-            message: ""
-          },
-          code: "LOGOUPLOADED",
-          data: {}
-        });
-      }
-    });
   });
 };

@@ -1,14 +1,9 @@
-/* var bookshelf = require("../config/db");
-bookshelf.plugin("registry");
-
-var Archives = bookshelf.Model.extend({
-  tableName: "archives",
-  articles: function() {
-    return this.belongsTo("Articles", "article_id");
-  }
-});
-
-module.exports = bookshelf.model("Archives", Archives); */
+/* 
+@Mordax
+The Archive schema - if data types need to be added or modified, it is done here.
+Calls config for the database object.
+Autoupdates instead of running migrations.
+*/
 var schema = require("../config/db");
 
 var Archive = schema.define("archive", {
