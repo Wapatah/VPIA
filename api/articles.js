@@ -230,24 +230,15 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   The error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/history", function(req, res) {
-    Articles.where({ id: req.params.id })
-      .fetch({
-        withRelated: [
-          {
-            archives: function(qb) {
-              qb.orderBy("updated_at", "DESC");
-            }
-          }
-        ]
-      })
-      .then(function(article) {
+    Archives.find({ where: {article_id: req.params.id} })
+      .then(function(archive) {
         res.status(200).json({
           error: {
             error: false,
             message: ""
           },
           code: "B115",
-          data: article.related("archives")
+          data: archive
         });
       })
       .catch(function(error) {
