@@ -40,32 +40,46 @@ class App extends React.Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link to="landing" className="navbar-brand" aria-label="homepage link">
-                <img class="navbar-brand" src="../assets/logo.png" alt="VPIA logo" aria-label="VPIA logo"></img>
+              <Link
+                to="landing"
+                className="navbar-brand"
+                aria-label="homepage link"
+              >
+                <img
+                  class="navbar-brand"
+                  src="../assets/logo.png"
+                  alt="VPIA logo"
+                  aria-label="VPIA logo"
+                ></img>
               </Link>
             </div>
           ) : (
             <div class="container-fluid">
-            <nav className=" navbar-static-top">
-            <div class="navbar-header">
-            <Link to="landing" className="navbar-brand" aria-label="homepage link">
-              <img class="navbar-brand" src="../assets/logo.png" alt="VPIA logo" aria-label="VPIA logo"></img>
-            </Link>
+              <nav className=" navbar-static-top">
+                <div class="navbar-header">
+                  <Link
+                    to="landing"
+                    className="navbar-brand"
+                    aria-label="homepage link"
+                  >
+                    <img
+                      class="navbar-brand"
+                      src="../assets/logo.png"
+                      alt="VPIA logo"
+                      aria-label="VPIA logo"
+                    ></img>
+                  </Link>
+                </div>
+                <div className="container-fluid navbar-right">
+                  <button type="button" className="btn navbar-btn join-btn">
+                    <Link to="/user_signup">Join Now!</Link>
+                  </button>
+                  <button type="button" className="btn navbar-btn signin-btn">
+                    <Link to="login">Sign In</Link>
+                  </button>
+                </div>
+              </nav>
             </div>
-             <div className="container-fluid navbar-right">
-             <button type="button" className="btn navbar-btn join-btn">
-             <Link to = "login">
-             Join Now!
-             </Link>
-            </button>
-            <button type="button" className="btn navbar-btn signin-btn">
-            <Link to="/user_signup">
-             Sign In
-             </Link>
-            </button>
-            </div>
-             </nav>
-             </div>
           )}
           {window.localStorage.getItem("userToken") ? (
             <div
