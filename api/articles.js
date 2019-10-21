@@ -14,7 +14,7 @@ var Topics = require("../models/topic.js");
 var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
 
-module.exports = function(app, result, articleObj, topicObj, userObj) {
+module.exports = function(app) {
   /*
   @Matterwiki
   This endpoint takes the article title, article body, and topic id from the request body.
@@ -59,7 +59,10 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles", function(req, res) {
-    Articles.all({where: {}})
+    Articles.all({
+      where: {},
+      order: "updated_at DESC"
+    })
       .then(function(collection) {
         res.json({
           error: {
@@ -90,34 +93,36 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   TODO: Add updates only for columns that are in the request body. Handle exceptions.
   */
   app.put("/articles", function(req, res) {
-    Articles.find({ where: {id: req.body.id }})
+    Articles.find({ where: { id: req.body.id } })
       .then(function(article) {
-        Articles.update({
-          id: req.body.id
-        }, {
-          title: req.body.title,
-          body: req.body.body,
-          topic_id: req.body.topic_id,
-          what_changed: req.body.what_changed,
-          user_id: req.body.user_id
-        });
+        Articles.update(
+          {
+            id: req.body.id
+          },
+          {
+            title: req.body.title,
+            body: req.body.body,
+            topic_id: req.body.topic_id,
+            what_changed: req.body.what_changed,
+            user_id: req.body.user_id
+          }
+        );
         Archives.create({
           article_id: req.body.id,
           title: article[0].title,
           body: article[0].body,
           what_changed: article[0].what_changed,
           user_id: article[0].user_id
-        })
-          .then(function(article) {
-            res.json({
-              error: {
-                error: false,
-                message: ""
-              },
-              code: "B107",
-              data: article
-            });
+        }).then(function(article) {
+          res.json({
+            error: {
+              error: false,
+              message: ""
+            },
+            code: "B107",
+            data: article
           });
+        });
       })
       .catch(function(error) {
         res.status(500).json({
@@ -139,16 +144,16 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   */
   app.get("/articles/:id/", function(req, res) {
     Articles.create({ id: req.params.id });
-    Articles.find({ where: { id: req.params.id }})
+    Articles.find({ where: { id: req.params.id } })
       .then(function(article) {
         Topics.create({ id: article[0].topic_id });
-        Topics.find({where: {id: article[0].topic_id}})
+        Topics.find({ where: { id: article[0].topic_id } })
           .then(function(topic) {
             article[0].topics(topic);
           })
           .then(function() {
             Users.create({ id: article[0].user_id });
-            Users.find({ where: { id: article[0].user_id}})
+            Users.find({ where: { id: article[0].user_id } })
               .then(function(user) {
                 article[0].users(user);
               })
@@ -184,7 +189,10 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   The error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/history", function(req, res) {
-    Archives.find({ where: {article_id: req.params.id}, order: "updated_at DESC"})
+    Archives.find({
+      where: { article_id: req.params.id },
+      order: "updated_at DESC"
+    })
       .then(function(archive) {
         res.status(200).json({
           error: {

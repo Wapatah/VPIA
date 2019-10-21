@@ -22,7 +22,7 @@ module.exports = function(app) {
   */
   app.get("/search", function(req, res) {
     var SearchInput = req.query.query;
-    Articles.find({where: { title: SearchInput}})
+    Articles.find({ where: { title: SearchInput } })
       .then(function(collection) {
         res.json({
           error: {

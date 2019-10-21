@@ -35,7 +35,7 @@ class ViewArticle extends React.Component {
         that.setState({ loading: false });
       });
   }
-   
+
   deleteArticle(e) {
     e.preventDefault();
     var myHeaders = new Headers({

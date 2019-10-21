@@ -18,7 +18,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.post("/api/authenticate", function(req, res) {
-    Users.find({ where: { email: req.body.email }})
+    Users.find({ where: { email: req.body.email } })
       //@Mordax - the user that was returned in bookshelf was an object. Caminte returns an array
       .then(function(user) {
         if (!user) {
@@ -30,8 +30,7 @@ module.exports = function(app) {
             code: "B117",
             data: {}
           });
-        } else { 
-
+        } else {
           /*
           @Mordax 
           Due to Caminte returning an array, we have to change the user to 

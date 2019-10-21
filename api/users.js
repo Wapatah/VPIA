@@ -56,7 +56,7 @@ module.exports = function(app) {
     the topics are present in the data object in the returning object.
     the error key in the returning object is a boolen which is false if there is no error and true otherwise
     */
-    Users.all({where: {}})
+    Users.all({ where: {} })
       .then(function(collection) {
         res.json({
           error: {
@@ -89,14 +89,17 @@ module.exports = function(app) {
   app.put("/users", function(req, res) {
     if (req.body.password != null) {
       bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-        Users.update({
-          id: req.body.id
-        }, {
-          name: req.body.name,
-          email: req.body.email,
-          password: hash,
-          about: req.body.about
-        })
+        Users.update(
+          {
+            id: req.body.id
+          },
+          {
+            name: req.body.name,
+            email: req.body.email,
+            password: hash,
+            about: req.body.about
+          }
+        )
           .then(function() {
             res.json({
               error: {
@@ -123,13 +126,16 @@ module.exports = function(app) {
           });
       });
     } else {
-      Users.update({
-        id: req.body.id
-      }, {
-        name: req.body.name,
-        email: req.body.email,
-        about: req.body.about
-      })
+      Users.update(
+        {
+          id: req.body.id
+        },
+        {
+          name: req.body.name,
+          email: req.body.email,
+          about: req.body.about
+        }
+      )
         .then(function(collection) {
           res.json({
             error: {
@@ -162,47 +168,49 @@ module.exports = function(app) {
   app.delete("/users", function(req, res) {
     Users.destroyById(req.body.id)
       .then(function() {
-        Articles.find( {where: { user_id: req.body.id }})
-          .then(collection => {
-            if (collection) {
-              Articles.update({
+        Articles.find({ where: { user_id: req.body.id } }).then(collection => {
+          if (collection) {
+            Articles.update(
+              {
                 where: {
                   user_id: req.body.id
                 }
-              },{
+              },
+              {
                 user_id: 1
-              })
-                .then(() => {
-                  res.json({
-                    error: {
-                      error: false,
-                      message: ""
-                    },
-                    code: "B127",
-                    data: {}
-                  });
-                })
-                .catch(error => {
-                  res.status(500).json({
-                    error: {
-                      error: true,
-                      message: error.message
-                    },
-                    code: "",
-                    data: {}
-                  });
+              }
+            )
+              .then(() => {
+                res.json({
+                  error: {
+                    error: false,
+                    message: ""
+                  },
+                  code: "B127",
+                  data: {}
                 });
-            } else {
-              res.json({
-                error: {
-                  error: false,
-                  message: ""
-                },
-                code: "B127",
-                data: {}
+              })
+              .catch(error => {
+                res.status(500).json({
+                  error: {
+                    error: true,
+                    message: error.message
+                  },
+                  code: "",
+                  data: {}
+                });
               });
-            }
-          });
+          } else {
+            res.json({
+              error: {
+                error: false,
+                message: ""
+              },
+              code: "B127",
+              data: {}
+            });
+          }
+        });
       })
       .catch(function(error) {
         res.status(500).json({
@@ -223,7 +231,7 @@ module.exports = function(app) {
   */
   app.get("/users/:id", function(req, res) {
     Users.create({ id: req.params.id });
-    Users.find({ where: {id: req.params.id }})
+    Users.find({ where: { id: req.params.id } })
       .then(function(user) {
         res.json({
           error: {

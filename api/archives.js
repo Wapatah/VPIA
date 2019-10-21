@@ -6,7 +6,7 @@ This file contains all endpoints related to archives
 var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
 
-module.exports = function(app, archiveObj, userObj) {
+module.exports = function(app) {
   /*
   @Matterwiki
   This is a GET endpoint that responds with one article of the specific ID (identified through the ID param)
@@ -15,10 +15,10 @@ module.exports = function(app, archiveObj, userObj) {
   */
   app.get("/archives/:id/", function(req, res) {
     Archives.create({ id: req.params.id });
-    Archives.find({ where : {id: req.params.id }})
+    Archives.find({ where: { id: req.params.id } })
       .then(function(archive) {
         Users.create({ id: archive[0].user_id });
-        Users.find({ where: { id: archive[0].user_id}})
+        Users.find({ where: { id: archive[0].user_id } })
           .then(function(user) {
             archive[0].users(user);
           })

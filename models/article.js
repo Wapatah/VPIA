@@ -11,7 +11,7 @@ var Article = schema.define("article", {
   body: { type: schema.Text },
   created_at: { type: schema.Date, default: Date.now },
   updated_at: { type: schema.Date, default: Date.now },
-  what_changed: { type: schema.String, limit: 255 },
+  what_changed: { type: schema.String, limit: 255 }
 });
 
 schema.autoupdate();

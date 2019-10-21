@@ -31,10 +31,13 @@ module.exports = function(app) {
   It then saves those values in the database using the insert query.
   */
   app.post("/topics", function(req, res) {
-    Topics.find({ where: {name: req.body.name}})
+    Topics.find({ where: { name: req.body.name } })
       .then(function(response) {
-        if(response.length === 0){
-          Topics.create({ name: req.body.name, description: req.body.description })
+        if (response.length === 0) {
+          Topics.create({
+            name: req.body.name,
+            description: req.body.description
+          })
             .then(function(topic) {
               res.json({
                 error: {
@@ -55,7 +58,7 @@ module.exports = function(app) {
                 data: {}
               });
             });
-        }else{
+        } else {
           res.json({
             error: {
               error: true,
@@ -88,12 +91,15 @@ module.exports = function(app) {
   TODO: Add updates only for columns that are in the request body. Handle exceptions.
   */
   app.put("/topics", function(req, res) {
-    Topics.update({ 
-      id: req.body.id 
-    }, {
-      name: req.body.name,
-      description: req.body.description
-    })
+    Topics.update(
+      {
+        id: req.body.id
+      },
+      {
+        name: req.body.name,
+        description: req.body.description
+      }
+    )
       .then(function(topic) {
         res.json({
           error: {
@@ -136,16 +142,19 @@ module.exports = function(app) {
     } else {
       Topics.destroyById(req.body.id)
         .then(function() {
-          Articles.find( {where: { topic_id: req.body.id }})
-            .then(collection => {
+          Articles.find({ where: { topic_id: req.body.id } }).then(
+            collection => {
               if (collection) {
-                Articles.update({
-                  where: {
-                    topic_id: req.body.id
+                Articles.update(
+                  {
+                    where: {
+                      topic_id: req.body.id
+                    }
+                  },
+                  {
+                    topic_id: 1
                   }
-                },{
-                  topic_id: 1
-                })
+                )
                   .then(() => {
                     res.json({
                       error: {
@@ -176,7 +185,8 @@ module.exports = function(app) {
                   data: {}
                 });
               }
-            });
+            }
+          );
         })
         .catch(function(error) {
           res.status(500).json({

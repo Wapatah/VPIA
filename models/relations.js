@@ -11,20 +11,21 @@ BelongsTo relationship uses a foreign key relating to the OtherModel.
 
 Add relationships in this file.
 */
-module.exports.load = (app) => {
+// eslint-disable-next-line no-unused-vars
+module.exports.load = app => {
   let Archive = require("../models/archive");
   let Article = require("../models/article");
   let Topic = require("../models/topic");
   let User = require("../models/user");
 
-  Archive.belongsTo(Article, {as: "articles", foreignKey: "article_id" });
-  Archive.belongsTo(User, {as: "users", foreignKey:"user_id"});
-  
-  Article.belongsTo(Topic, {as: "topics", foreignKey: "topic_id"});
-  Article.belongsTo(User, {as: "users", foreignKey: "user_id"});
-  Article.hasMany(Archive, {as: "archives", foreignKey: "article_id"});
+  Archive.belongsTo(Article, { as: "articles", foreignKey: "article_id" });
+  Archive.belongsTo(User, { as: "users", foreignKey: "user_id" });
 
-  Topic.hasMany(Article, {as: "articles", foreignKey: "topic_id"});
+  Article.belongsTo(Topic, { as: "topics", foreignKey: "topic_id" });
+  Article.belongsTo(User, { as: "users", foreignKey: "user_id" });
+  Article.hasMany(Archive, { as: "archives", foreignKey: "article_id" });
 
-  User.hasMany(Article, {as: "articles", foreignKey: "user_id"});
-}
+  Topic.hasMany(Article, { as: "articles", foreignKey: "topic_id" });
+
+  User.hasMany(Article, { as: "articles", foreignKey: "user_id" });
+};
