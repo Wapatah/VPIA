@@ -77,7 +77,7 @@ class Search extends React.Component {
                   </div>
                   <div className="article-item-description">
                     Last updated on{" "}
-                    {new Date(article.updated_at).toDateString()}
+                    {new Date(article.updated_at).toUTCString()}
                   </div>
                   <hr className="article-separator"></hr>
                 </div>

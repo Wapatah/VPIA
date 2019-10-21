@@ -184,7 +184,7 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   The error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/history", function(req, res) {
-    Archives.find({ where: {article_id: req.params.id} })
+    Archives.find({ where: {article_id: req.params.id}, order: "updated_at DESC"})
       .then(function(archive) {
         res.status(200).json({
           error: {

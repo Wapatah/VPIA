@@ -82,9 +82,9 @@ class ViewArticle extends React.Component {
                 </h1>
                 <div className="single-article-meta">
                   Last updated on{" "}
-                  {/*new Date(
+                  {new Date(
                     this.state.article[0].updated_at.replace(" ", "T")
-                  ).toDateString()*/}
+                  ).toUTCString()}
                 </div>
               </div>
               <div

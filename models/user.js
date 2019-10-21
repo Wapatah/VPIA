@@ -11,8 +11,8 @@ var User = schema.define("user", {
   email: { type: schema.String, limit: 255 },
   password: { type: schema.String, limit: 255 },
   about: { type: schema.String, limit: 255 },
-  created_at: { type: schema.Date },
-  updated_at: { type: schema.Date }
+  created_at: { type: schema.Date, default: Date.now },
+  updated_at: { type: schema.Date, default: Date.now }
 });
 
 schema.autoupdate();

@@ -9,8 +9,8 @@ var schema = require("../config/db");
 var Topic = schema.define("topic", {
   name: { type: schema.String, limit: 255 },
   description: { type: schema.String, limit: 255 },
-  created_at: { type: schema.Date },
-  updated_at: { type: schema.Date }
+  created_at: { type: schema.Date, default: Date.now },
+  updated_at: { type: schema.Date, default: Date.now }
 });
 
 schema.autoupdate();
