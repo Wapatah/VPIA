@@ -43,7 +43,7 @@ class SimpleArticle extends React.Component {
                 {this.state.article[0].title}
               </h1>
               <div className="single-article-meta">
-                Edited by <b>{this.state.article[0].user_id.name}</b>
+                Edited by <b>{this.state.article[0].user_id[0].name}</b>
               </div>
             </div>
             <div
