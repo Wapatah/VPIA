@@ -37,6 +37,5 @@ jspm_packages
 .node_repl_history
 
 client/public
-client/assets
 
 .DS_Store

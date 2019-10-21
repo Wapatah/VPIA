@@ -7,6 +7,12 @@ class UserSignup extends React.Component {
   constructor(props) {
     super(props);
     this.handleSignUp = this.handleSignUp.bind(this);
+    this.state = {
+      email: "",
+      password: ""
+    };
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
   handleSignUp() {
@@ -46,7 +52,23 @@ class UserSignup extends React.Component {
       });
   }
 
+  handleEmailChange(event) {
+    this.setState({ email: event.target.value });
+  }
+
+  handlePasswordChange(event) {
+    this.setState({ password: event.target.value });
+  }
+
+  handleSubmit() {
+    const { email, password } = this.state;
+    alert(`Signed up with email: ${email} password: ${password}`);
+  }
+
   render() {
+    const { email, password } = this.state;
+    const isEnabled = email.length > 0 && password.length > 0;
+
     return (
       <div className=" setup-form container">
         <div className="row">
@@ -60,7 +82,7 @@ class UserSignup extends React.Component {
             <br />
           </div>
           <div className="col-md-6">
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <div className="col-sm-12 form-group">
                 <input
                   type="text"
@@ -86,6 +108,8 @@ class UserSignup extends React.Component {
                   ref="user_email"
                   id="inputUserEmail"
                   placeholder="Email"
+                  value={this.state.email}
+                  onChange={this.handleEmailChange}
                 />
               </div>
               <div className="col-sm-12 form-group">
@@ -95,11 +119,14 @@ class UserSignup extends React.Component {
                   ref="user_password"
                   id="inputUserPassword"
                   placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.handlePasswordChange}
                 />
               </div>
               <div className="col-sm-12 form-group">
                 <button
                   onClick={this.handleSignUp}
+                  disabled={!isEnabled}
                   className="btn btn-default btn-block btn-lg"
                 >
                   Sign Up

@@ -18,8 +18,8 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.post("/api/authenticate", function(req, res) {
-    Users.forge({ email: req.body.email })
-      .fetch()
+    Users.find({ where: { email: req.body.email } })
+      //@Mordax - the user that was returned in bookshelf was an object. Caminte returns an array
       .then(function(user) {
         if (!user) {
           res.json({
@@ -31,8 +31,16 @@ module.exports = function(app) {
             data: {}
           });
         } else {
-          user = user.toJSON();
-          bcrypt.compare(req.body.password, user.password, function(
+          /*
+          @Mordax 
+          Due to Caminte returning an array, we have to change the user to 
+          an object so the rest of code can continue to work.
+          This is not a very elegant solution, we should change it later.
+          */
+          user = JSON.stringify(Object.assign({}, user));
+          user = JSON.parse(user);
+
+          bcrypt.compare(req.body.password, user[0].password, function(
             err,
             result
           ) {
@@ -48,8 +56,8 @@ module.exports = function(app) {
                 code: "B118",
                 data: {
                   user: {
-                    email: user.email,
-                    id: user.id
+                    email: user[0].email,
+                    id: user[0].id
                   },
                   token: token
                 }
@@ -58,7 +66,7 @@ module.exports = function(app) {
               res.json({
                 error: {
                   error: true,
-                  message: "Email or Password is wrong"
+                  message: "Email or Password is wrong wow"
                 },
                 code: "B119",
                 data: {}

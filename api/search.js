@@ -21,16 +21,8 @@ module.exports = function(app) {
   The endpoint only searches article titles as of now.
   */
   app.get("/search", function(req, res) {
-    var SearchQuery = req.query.query;
-    SearchQuery = "%" + SearchQuery + "%";
-    Articles.query(function(qb) {
-      qb.where("title", "LIKE", SearchQuery).orWhere(
-        "body",
-        "LIKE",
-        SearchQuery
-      );
-    })
-      .fetchAll()
+    var SearchInput = req.query.query;
+    Articles.find({ where: { title: SearchInput } })
       .then(function(collection) {
         res.json({
           error: {
@@ -38,7 +30,7 @@ module.exports = function(app) {
             message: ""
           },
           code: "B131",
-          data: collection.toJSON()
+          data: collection
         });
       })
       .catch(function() {

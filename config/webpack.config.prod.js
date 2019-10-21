@@ -1,8 +1,8 @@
 const webpack = require("webpack");
 const path = require("path");
 
-const BUILD_DIR = path.resolve(__dirname, "client/public");
-const APP_DIR = path.resolve(__dirname, "client/app");
+const BUILD_DIR = path.resolve(__dirname, "../client/public");
+const APP_DIR = path.resolve(__dirname, "../client/app");
 
 module.exports = {
   entry: [

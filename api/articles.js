@@ -14,7 +14,7 @@ var Topics = require("../models/topic.js");
 var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
 
-module.exports = function(app, result, articleObj, topicObj, userObj) {
+module.exports = function(app) {
   /*
   @Matterwiki
   This endpoint takes the article title, article body, and topic id from the request body.
@@ -23,14 +23,13 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   TODO: create formal guidelines for different object structures and follow that throughout the API.
   */
   app.post("/articles", function(req, res) {
-    Articles.forge()
-      .save({
-        title: req.body.title,
-        body: req.body.body,
-        topic_id: req.body.topic_id,
-        user_id: req.body.user_id,
-        what_changed: "Another drop in the ocean of knowledge"
-      })
+    Articles.create({
+      title: req.body.title,
+      body: req.body.body,
+      topic_id: req.body.topic_id,
+      user_id: req.body.user_id,
+      what_changed: "Another drop in the ocean of knowledge"
+    })
       .then(function(article) {
         res.json({
           error: {
@@ -60,12 +59,10 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles", function(req, res) {
-    Articles.forge()
-      .query(function(qb) {
-        if (req.query.count) qb.limit(req.query.count);
-        qb.orderBy("updated_at", "DESC");
-      })
-      .fetchAll()
+    Articles.all({
+      where: {},
+      order: "updated_at DESC"
+    })
       .then(function(collection) {
         res.json({
           error: {
@@ -73,7 +70,7 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
             message: ""
           },
           code: "B105",
-          data: collection.toJSON()
+          data: collection
         });
       })
       .catch(function(error) {
@@ -96,37 +93,36 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   TODO: Add updates only for columns that are in the request body. Handle exceptions.
   */
   app.put("/articles", function(req, res) {
-    Articles.forge({ id: req.body.id })
-      .fetch()
+    Articles.find({ where: { id: req.body.id } })
       .then(function(article) {
-        Articles.forge({ id: req.body.id })
-          .save({
+        Articles.update(
+          {
+            id: req.body.id
+          },
+          {
             title: req.body.title,
             body: req.body.body,
             topic_id: req.body.topic_id,
             what_changed: req.body.what_changed,
             user_id: req.body.user_id
-          })
-          .then(function() {
-            Archives.forge()
-              .save({
-                article_id: req.body.id,
-                title: article.attributes.title,
-                body: article.attributes.body,
-                what_changed: article.attributes.what_changed,
-                user_id: article.attributes.user_id
-              })
-              .then(function(article) {
-                res.json({
-                  error: {
-                    error: false,
-                    message: ""
-                  },
-                  code: "B107",
-                  data: article
-                });
-              });
+          }
+        );
+        Archives.create({
+          article_id: req.body.id,
+          title: article[0].title,
+          body: article[0].body,
+          what_changed: article[0].what_changed,
+          user_id: article[0].user_id
+        }).then(function(article) {
+          res.json({
+            error: {
+              error: false,
+              message: ""
+            },
+            code: "B107",
+            data: article
           });
+        });
       })
       .catch(function(error) {
         res.status(500).json({
@@ -142,78 +138,24 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
 
   /*
   @Matterwiki
-  This is a GET endpoint that takes IDs of two articles as parameters.
-  It then returns both the article which could then be compared with each other
-  through diffing which will be done on the front-end.
-  The IDs params names are:
-  article1: id of the first article
-  article2: id of the second article
-  The article with ID article1 is the first object in the Data array.
-  The article with ID article2 is the second object in the Data array.
-  The error key in the returning object is a boolen which is false if there is no error and true otherwise
-  */
-  app.get("/articles/compare", function(req, res) {
-    Articles.forge({ id: req.query.article1 })
-      .fetch()
-      .then(function(article1) {
-        Articles.forge({ id: req.query.article2 })
-          .fetch()
-          .then(function(article2) {
-            result = [];
-            result.push(article1.toJSON());
-            result.push(article2.toJSON());
-          })
-          .then(function() {
-            res.json({
-              error: {
-                error: false,
-                message: ""
-              },
-              code: "B111",
-              data: result
-            });
-          });
-      })
-      .catch(function(error) {
-        res.status(500).json({
-          error: {
-            error: true,
-            message: error.message
-          },
-          code: "B112",
-          data: {}
-        });
-      });
-  });
-
-  /*
-  @Matterwiki
   This is a GET endpoint that responds with one article of the specific ID (identified through the ID param)
   the article is present in the data object in the returning object.
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/", function(req, res) {
-    Articles.forge({ id: req.params.id })
-      .fetch()
+    Articles.create({ id: req.params.id });
+    Articles.find({ where: { id: req.params.id } })
       .then(function(article) {
-        Topics.forge({ id: article.attributes.topic_id })
-          .fetch()
+        Topics.create({ id: article[0].topic_id });
+        Topics.find({ where: { id: article[0].topic_id } })
           .then(function(topic) {
-            articleObj = article.toJSON();
-            topicObj = topic.toJSON();
-            articleObj.topic = topicObj;
+            article[0].topics(topic);
           })
           .then(function() {
-            Users.forge({ id: articleObj.user_id })
-              .fetch()
+            Users.create({ id: article[0].user_id });
+            Users.find({ where: { id: article[0].user_id } })
               .then(function(user) {
-                userObj = user.toJSON();
-                articleObj.user = {
-                  id: userObj.id,
-                  name: userObj.name,
-                  email: userObj.email,
-                  about: userObj.about
-                };
+                article[0].users(user);
               })
               .then(function() {
                 res.json({
@@ -222,7 +164,7 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
                     message: ""
                   },
                   code: "B113",
-                  data: articleObj
+                  data: article
                 });
               });
           });
@@ -247,24 +189,18 @@ module.exports = function(app, result, articleObj, topicObj, userObj) {
   The error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/history", function(req, res) {
-    Articles.where({ id: req.params.id })
-      .fetch({
-        withRelated: [
-          {
-            archives: function(qb) {
-              qb.orderBy("updated_at", "DESC");
-            }
-          }
-        ]
-      })
-      .then(function(article) {
+    Archives.find({
+      where: { article_id: req.params.id },
+      order: "updated_at DESC"
+    })
+      .then(function(archive) {
         res.status(200).json({
           error: {
             error: false,
             message: ""
           },
           code: "B115",
-          data: article.related("archives")
+          data: archive
         });
       })
       .catch(function(error) {

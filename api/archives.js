@@ -6,7 +6,7 @@ This file contains all endpoints related to archives
 var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
 
-module.exports = function(app, archiveObj, userObj) {
+module.exports = function(app) {
   /*
   @Matterwiki
   This is a GET endpoint that responds with one article of the specific ID (identified through the ID param)
@@ -14,20 +14,13 @@ module.exports = function(app, archiveObj, userObj) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/archives/:id/", function(req, res) {
-    Archives.forge({ id: req.params.id })
-      .fetch()
+    Archives.create({ id: req.params.id });
+    Archives.find({ where: { id: req.params.id } })
       .then(function(archive) {
-        Users.forge({ id: archive.attributes.user_id })
-          .fetch()
+        Users.create({ id: archive[0].user_id });
+        Users.find({ where: { id: archive[0].user_id } })
           .then(function(user) {
-            archiveObj = archive.toJSON();
-            userObj = user.toJSON();
-            archiveObj.user = {
-              id: userObj.id,
-              name: userObj.name,
-              email: userObj.email,
-              about: userObj.about
-            };
+            archive[0].users(user);
           })
           .then(function() {
             res.json({
@@ -36,7 +29,7 @@ module.exports = function(app, archiveObj, userObj) {
                 message: ""
               },
               code: "B113",
-              data: archiveObj
+              data: archive
             });
           });
       })

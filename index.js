@@ -16,9 +16,11 @@ var fs = require("fs"); // eslint-disable-line
 var apiRoutes = express.Router();
 var apiRoutesAdmin = express.Router();
 var jwt = require("jsonwebtoken");
-var misc = require("./config/misc"); // eslint-disable-line
 // @Matterwiki - config file in the app directory which contains the JWT key
 var config = require("./config/config");
+
+var relations = require("./models/relations");
+relations.load(app);
 
 // @Mordax - using gzip compression to speed up app performance
 app.use(compression());
@@ -109,7 +111,7 @@ apiRoutesAdmin.use(function(req, res, next) {
           data: {}
         });
       } else {
-        if (decoded.id == 1) {
+        if (decoded[0].id == 1) {
           // if everything is good, save to request for use in other routes
           req.decoded = decoded;
           next();

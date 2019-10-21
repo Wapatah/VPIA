@@ -29,20 +29,21 @@ class SimpleArticle extends React.Component {
   }
 
   getRawMarkupBody() {
-    return { __html: this.state.article.body };
+    return { __html: this.state.article[0].body };
   }
 
   render() {
-    if (this.state.article && this.state.article.user) {
+    if (this.state.loading) return <Loader />;
+    if (this.state.article[0] && this.state.article[0].user_id) {
       return (
         <div className="row">
           <div className="col-md-12">
             <div className="article-heading">
               <h1 className="single-article-title">
-                {this.state.article.title}
+                {this.state.article[0].title}
               </h1>
               <div className="single-article-meta">
-                Edited by <b>{this.state.article.user.name}</b>
+                Edited by <b>{this.state.article[0].user_id[0].name}</b>
               </div>
             </div>
             <div
