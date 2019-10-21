@@ -20,17 +20,6 @@ DELETE /articles
 Multer is a node.js middleware for handling multipart/form-data, 
 which is primarily used for uploading files.
 */
-var multer = require("multer");
-var storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, "./client/assets"); // @Matterwiki - Make sure this folder exists
-  },
-  filename: function(req, file, cb) {
-    cb(null, "logo.png");
-  }
-});
-var upload = multer({ storage: storage }).single("logo");
-
 // @Matterwiki - Importing the models
 var Topics = require("../models/topic.js");
 var Articles = require("../models/article.js");
@@ -42,22 +31,13 @@ module.exports = function(app) {
   It then saves those values in the database using the insert query.
   */
   app.post("/topics", function(req, res) {
-    Topics.where({ name: req.body.name })
-      .fetch({ require: true })
-      .then(topic => {
-        res.json({
-          error: {
-            error: true,
-            message: `Topic ${topic.get("name")} exists!`
-          },
-          code: "",
-          data: {}
-        });
-      })
-      .catch(error => {
-        if (error.message === "EmptyResponse") {
-          Topics.forge()
-            .save({ name: req.body.name, description: req.body.description })
+    Topics.find({ where: { name: req.body.name } })
+      .then(function(response) {
+        if (response.length === 0) {
+          Topics.create({
+            name: req.body.name,
+            description: req.body.description
+          })
             .then(function(topic) {
               res.json({
                 error: {
@@ -65,7 +45,7 @@ module.exports = function(app) {
                   message: ""
                 },
                 code: "B121",
-                data: topic.toJSON()
+                data: topic
               });
             })
             .catch(function(error) {
@@ -79,15 +59,25 @@ module.exports = function(app) {
               });
             });
         } else {
-          res.status(500).json({
+          res.json({
             error: {
               error: true,
-              message: error.message
+              message: "Topic exists!"
             },
             code: "",
             data: {}
           });
         }
+      })
+      .catch(error => {
+        res.status(500).json({
+          error: {
+            error: true,
+            message: error.message
+          },
+          code: "",
+          data: {}
+        });
       });
   });
 
@@ -101,8 +91,15 @@ module.exports = function(app) {
   TODO: Add updates only for columns that are in the request body. Handle exceptions.
   */
   app.put("/topics", function(req, res) {
-    Topics.forge({ id: req.body.id })
-      .save({ name: req.body.name, description: req.body.description })
+    Topics.update(
+      {
+        id: req.body.id
+      },
+      {
+        name: req.body.name,
+        description: req.body.description
+      }
+    )
       .then(function(topic) {
         res.json({
           error: {
@@ -143,17 +140,21 @@ module.exports = function(app) {
         data: {}
       });
     } else {
-      Topics.forge({ id: req.body.id })
-        .destroy()
+      Topics.destroyById(req.body.id)
         .then(function() {
-          Articles.forge()
-            .where({ topic_id: req.body.id })
-            .fetch()
-            .then(collection => {
+          Articles.find({ where: { topic_id: req.body.id } }).then(
+            collection => {
               if (collection) {
-                Articles.forge()
-                  .where({ topic_id: req.body.id })
-                  .save({ topic_id: 1 }, { patch: true })
+                Articles.update(
+                  {
+                    where: {
+                      topic_id: req.body.id
+                    }
+                  },
+                  {
+                    topic_id: 1
+                  }
+                )
                   .then(() => {
                     res.json({
                       error: {
@@ -184,7 +185,8 @@ module.exports = function(app) {
                   data: {}
                 });
               }
-            });
+            }
+          );
         })
         .catch(function(error) {
           res.status(500).json({
@@ -206,8 +208,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.delete("/articles", function(req, res) {
-    Articles.forge({ id: req.body.id })
-      .destroy()
+    Articles.destroyById(req.body.id)
       .then(function() {
         res.json({
           error: {
@@ -228,29 +229,5 @@ module.exports = function(app) {
           data: {}
         });
       });
-  });
-
-  app.post("/logo", function(req, res) {
-    upload(req, res, function(err) {
-      if (err) {
-        res.json({
-          error: {
-            error: true,
-            message: "There was a problem uploading the logo"
-          },
-          code: "LOGODIDNTUPLOAD",
-          data: {}
-        });
-      } else {
-        res.json({
-          error: {
-            error: false,
-            message: ""
-          },
-          code: "LOGOUPLOADED",
-          data: {}
-        });
-      }
-    });
   });
 };

@@ -1,26 +1,23 @@
-// @Matterwiki - requiring the knexfile that contains our connection object.
+/* 
+@Mordax
+The Database config file. This is were Caminte (an database agnostic Javascript ORM)
+is configured. If you require a different database, Caminte's github has 
+examples of how to specify configs for various drivers.
+Caminte supports SQL (like MySQL), and NoSQL (like Mongo and Neo4j).
+*/
+var caminte = require("caminte");
+var Schema = caminte.Schema;
+
 var config = {
-  client: "mysql",
-  connection: {
-    host: "127.0.0.1",
-    user: "root",
-    password: "wapatah1",
-    database: "myapp_test"
-  },
-  useNullAsDefault: true
+  driver: "mysql", // or mariadb
+  host: "localhost",
+  port: "3306",
+  username: "root",
+  password: "wapatah1",
+  database: "myapp_test",
+  pool: true // optional for use pool directly
 };
 
-// @Matterwiki - imports knex with our connection object (found in knexfile).
-var knex = require("knex")(config);
+var schema = new Schema(config.driver, config);
 
-// @Matterwiki - Export the knex library for use. All knex commands remain the same.
-module.exports = knex;
-
-// @Matterwiki - Run the latest DB migrations whenever the server starts.
-knex.migrate.latest([config]);
-
-// @Matterwiki - imports bookshelf along with our knex config.
-var bookshelf = require("bookshelf")(knex);
-
-// @Matterwiki - Exporting the bookshelf module for use in other files.
-module.exports = bookshelf;
+module.exports = schema;
