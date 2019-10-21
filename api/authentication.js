@@ -18,7 +18,6 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.post("/api/authenticate", function(req, res) {
-    Users.create({ email: req.body.email });
     Users.find({ where: { email: req.body.email }})
       //@Mordax - the user that was returned in bookshelf was an object. Caminte returns an array
       .then(function(user) {
