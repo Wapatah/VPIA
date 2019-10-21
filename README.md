@@ -12,16 +12,15 @@ This platform uses Matterwiki as the underlying wiki engine. This will most like
 * `api/` directory contains code for node backend.
 TODO: add Matterwiki's api documentation
 
-* `config/` is the folder where most of the specific configurations should live.
+* `config/` is the folder where most of the specific configurations should live. This is where webpack is (dev, prod, and middleware for making the debugging process easier.), where Babel is, auth secret, the Caminte database config file and the Eslint configuration file. 
 
 * `client/`directory contains the React jsx files and almost all the front end. Main index.html is here.  
     * `client/app/` where the shared resources of the app live such as routes, index, etc.
     * `client/app/components/` is where the specific components live. As this gets more complex, it may be beneficial to move the folders.
     * `client/assets/` - self explanatory. This is also where the [trix](https://github.com/basecamp/trix) (wysiwyg editor) code lives. Potentially we can swap it out/modify it to support videos, images, etc.
 
-* `migrations/` are the added schemas to the database.
-
-* `models/` has the bookshelf database models that work with SQLite and MySQL. TODO: see if Postgres works too and if we can swap it for Mongoose and Mongo if need be.
+* `models/` Has the database schemas/models. Any change to the structure of tables should be done here.
+    * `models/relations` defines the relationships between the models. Very simple hasMany, belongsTo relationships. We are using Caminte, a database agnostic ORM (object relational mapping for representing Javascript objects in databases). Caminte uses adapters for various DBs and has a generic approach for defining relationships. Please read more here: http://www.camintejs.com/.
 
 ## Tidying up files
 * `npm run lint` - fixes and adheres to javascript design

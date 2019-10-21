@@ -8,7 +8,7 @@
     "dev": "node index.js",
     "start": "npm run build && cross-env NODE_ENV=production node index.js && SET AUTOUPDATE=1",
     "prettier": "prettier --write \"**/*.{js,jsx}\" --ignore-path .gitignore",
-    "lint": "eslint \"**/*.js\" --fix --ignore-path .gitignore"
+    "lint": "eslint --config ./config/.eslintrc.js \"**/*.js\" --fix --ignore-path .gitignore"
   },
   "engines": {
     "node": "~0.12.0 || ^4.2.0 || ^6.5.0"
