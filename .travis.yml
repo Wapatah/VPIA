@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "node"
+services: mysql
+os: 
+  - linux
+  - osx
+  - windows
+before_install:
+  - mysql --user=root --password=wapatah1
+  - mysql -e "CREATE DATABASE myapp_test;"
+install: npm i --force
+script: npm run start
