@@ -12,6 +12,7 @@ const path = require("path");
 const BUILD_DIR = path.resolve(__dirname, "../client/public");
 const APP_DIR = path.resolve(__dirname, "../client/app");
 module.exports = {
+  mode: "production",
   entry: [
     // @Matterwiki - react HMR specific stuff
     "react-hot-loader/patch",
@@ -38,22 +39,19 @@ module.exports = {
     contentBase: BUILD_DIR,
     publicPath: "/public/"
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("dev")
-    })
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?/,
-        loader: "babel-loader",
         include: APP_DIR,
         exclude: /node_modules/,
-        query: {
-          presets: ["es2015", "react"]
+        type: "javascript/auto",
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"]
+          }
         }
       }
     ]
