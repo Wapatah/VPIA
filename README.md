@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/Mordax/VPIA.svg?token=9JzkqwDk7NTPWEGwRNt4&branch=master)](https://travis-ci.com/Mordax/VPIA)
 ## VPIA
 
 This platform uses Matterwiki as the underlying wiki engine. This will most likely be heavily customized. Currently using MySQL.
