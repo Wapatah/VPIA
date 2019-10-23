@@ -22,6 +22,7 @@ module.exports = function(app) {
   app.post("/users", function(req, res) {
     bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
       Users.create({
+        admin: false,
         name: req.body.name,
         email: req.body.email,
         password: hash,
@@ -41,7 +42,7 @@ module.exports = function(app) {
           res.status(500).json({
             error: {
               error: true,
-              message: error.message
+              message: "POST: /users " + error.message
             },
             code: "B132",
             data: {}
@@ -71,7 +72,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "GET: /users" + error.message
           },
           code: "B134",
           data: {}
@@ -118,7 +119,7 @@ module.exports = function(app) {
             res.status(500).json({
               error: {
                 error: true,
-                message: error.message
+                message: "PUT: /users " + error.message
               },
               code: "B136",
               data: {}
@@ -150,7 +151,7 @@ module.exports = function(app) {
           res.status(500).json({
             error: {
               error: true,
-              message: error.message
+              message: "PUT: /users (no password) " + error.message
             },
             code: "B136",
             data: {}
@@ -194,7 +195,7 @@ module.exports = function(app) {
                 res.status(500).json({
                   error: {
                     error: true,
-                    message: error.message
+                    message: "DELETE: /users (articles)" + error.message
                   },
                   code: "",
                   data: {}
@@ -216,7 +217,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "DELETE: /users " + error.message
           },
           code: "B128",
           data: {}
@@ -230,7 +231,6 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/users/:id", function(req, res) {
-    Users.create({ id: req.params.id });
     Users.find({ where: { id: req.params.id } })
       .then(function(user) {
         res.json({
@@ -246,7 +246,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "GET: /users/:id" + error.message
           },
           code: "B134",
           data: {}

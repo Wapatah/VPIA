@@ -13,6 +13,7 @@ var Articles = require("../models/article.js");
 var Topics = require("../models/topic.js");
 var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
+var ObjectId = require("mongodb").ObjectId;
 
 module.exports = function(app) {
   /*
@@ -44,7 +45,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "POST: /articles/ " + error.message
           },
           code: "B104",
           data: {}
@@ -77,7 +78,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "GET: /articles/ " + error.message
           },
           code: "B106",
           data: {}
@@ -93,11 +94,12 @@ module.exports = function(app) {
   TODO: Add updates only for columns that are in the request body. Handle exceptions.
   */
   app.put("/articles", function(req, res) {
-    Articles.find({ where: { id: req.body.id } })
+    var id = new ObjectId(req.body.id);
+    Articles.find({ where: { "_id": id } })
       .then(function(article) {
         Articles.update(
           {
-            id: req.body.id
+            "_id": id
           },
           {
             title: req.body.title,
@@ -108,7 +110,7 @@ module.exports = function(app) {
           }
         );
         Archives.create({
-          article_id: req.body.id,
+          article_id: id,
           title: article[0].title,
           body: article[0].body,
           what_changed: article[0].what_changed,
@@ -128,7 +130,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "PUT: /articles/ " + error.message
           },
           code: "B108",
           data: {}
@@ -143,17 +145,17 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/", function(req, res) {
-    Articles.create({ id: req.params.id });
-    Articles.find({ where: { id: req.params.id } })
+    var id = new ObjectId(req.params.id);
+    Articles.find({ where: { "_id": id } })
       .then(function(article) {
-        Topics.create({ id: article[0].topic_id });
-        Topics.find({ where: { id: article[0].topic_id } })
+        var topic_id = new ObjectId(article[0].topic_id);
+        Topics.find({ where: { "_id": topic_id } })
           .then(function(topic) {
             article[0].topics(topic);
           })
           .then(function() {
-            Users.create({ id: article[0].user_id });
-            Users.find({ where: { id: article[0].user_id } })
+            var user_id = new ObjectId(article[0].user_id);
+            Users.find({ where: { "_id": user_id } })
               .then(function(user) {
                 article[0].users(user);
               })
@@ -173,7 +175,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "/articles/:id/ " + error.message
           },
           code: "B114",
           data: {}
@@ -189,8 +191,9 @@ module.exports = function(app) {
   The error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/history", function(req, res) {
+    var id = new ObjectId(req.params.id);
     Archives.find({
-      where: { article_id: req.params.id },
+      where: { article_id: id },
       order: "updated_at DESC"
     })
       .then(function(archive) {
@@ -207,7 +210,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "/articles/:id/history" + error.message
           },
           code: "B116",
           data: {}

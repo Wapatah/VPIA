@@ -66,7 +66,7 @@ module.exports = function(app) {
               res.json({
                 error: {
                   error: true,
-                  message: "Email or Password is wrong wow"
+                  message: "Email or Password is wrong"
                 },
                 code: "B119",
                 data: {}
