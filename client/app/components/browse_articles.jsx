@@ -75,14 +75,7 @@ class BrowseArticles extends React.Component {
                   Last updated on{" "}
                   {new Date(
                     article.updated_at.replace(" ", "T")
-                  ).toLocaleString("en-US", {
-                    weekday: 'short',
-                    day: 'numeric',
-                    month: 'short',
-                    year: 'numeric',
-                    hour: "2-digit",
-                    minute: "2-digit"
-                  })}
+                  ).toLocaleString()}
                 </div>
                 <hr className="article-separator"></hr>
               </div>
