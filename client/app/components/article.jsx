@@ -81,7 +81,6 @@ class ViewArticle extends React.Component {
                   {this.state.article.title}
                 </h1>
                 <div className="single-article-meta">
-<<<<<<< HEAD
                   Created on{" "}
                   {new Date(
                     this.state.article.created_at.replace(" ", "T")
@@ -92,10 +91,8 @@ class ViewArticle extends React.Component {
                   {new Date(
                     this.state.article.updated_at.replace(" ", "T")
                   ).toLocaleString()}
-=======
                   </div>
                   <div className="single-article-meta">
->>>>>>> dcf0cd9c39f0986ab9e8daf44a5ff64db5b4af2a
                 </div>
               </div>
               <div
