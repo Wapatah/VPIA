@@ -2,19 +2,33 @@
 
 @font-face {
     font-family: "FuturaStdHeavy";
-    src: url("./fonts/Futura-Std-Heavy.otf");
+    src: url("./fonts/Futura Std Heavy.otf");
 }
 
 @font-face {
     font-family: "FuturaStdMedium";
-    src: url("./fonts/Futura-Std-Medium.otf");
+    src: url("./fonts/Futura Std Medium.otf");
+}
+
+@font-face {
+    font-family: "FuturaStdLight";
+    src: url("./fonts/Futura Std Light.otf");
+}
+
+@font-face {
+    font-family: "FuturaStdLightCondensedOblique";
+    src: url("./fonts/Futura Std Light Condensed Oblique.otf");
+}
+
+@font-face {
+    font-family: "FuturaStdHeavyOblique";
+    src: url("./fonts/Futura Std Heavy Oblique.otf");
 }
 
 @font-face {
     font-family: "Baskerville";
     src: url("./fonts/Baskerville.ttc");
 }
-
 .primary-logo {
   height: 4em;
   margin-top: 2em;
