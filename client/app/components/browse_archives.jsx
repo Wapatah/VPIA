@@ -72,9 +72,12 @@ class BrowseArchives extends React.Component {
                 onClick={e => this.archiveSelect(archive.id, e)}
               >
                 <h4 className="list-group-item-heading">
+<<<<<<< HEAD
                   {new Date(
                     archive.updated_at.replace(" ", "T")
                   ).toLocaleString()}
+=======
+>>>>>>> dcf0cd9c39f0986ab9e8daf44a5ff64db5b4af2a
                 </h4>
                 <p className="list-group-item-text">{archive.what_changed}</p>
               </a>
