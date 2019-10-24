@@ -108,13 +108,23 @@ module.exports = function(app) {
             what_changed: req.body.what_changed,
             user_id: req.body.user_id
           }
-        );
+        )
+        .catch(function(error) {
+          res.status(500).json({
+            error: {
+              error: true,
+              message: "WTF" + error.message
+            },
+            code: "B108",
+            data: {}
+          });
+        });
         Archives.create({
-          article_id: id,
           title: article[0].title,
           body: article[0].body,
           what_changed: article[0].what_changed,
-          user_id: article[0].user_id
+          user_id: article[0].user_id,
+          article_id: article[0].id,
         }).then(function(article) {
           res.json({
             error: {
@@ -124,13 +134,23 @@ module.exports = function(app) {
             code: "B107",
             data: article
           });
+        })
+        .catch(function(error) {
+          res.status(500).json({
+            error: {
+              error: true,
+              message: "FUCK " + error.message
+            },
+            code: "B108",
+            data: {}
+          });
         });
       })
       .catch(function(error) {
         res.status(500).json({
           error: {
             error: true,
-            message: "PUT: /articles/ " + error.message
+            message: "PUT: /articles/ ertrerte" + error.message
           },
           code: "B108",
           data: {}
@@ -191,7 +211,7 @@ module.exports = function(app) {
   The error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/history", function(req, res) {
-    var id = new ObjectId(req.params.id);
+    var id = new ObjectId(req.params.id)
     Archives.find({
       where: { article_id: id },
       order: "updated_at DESC"

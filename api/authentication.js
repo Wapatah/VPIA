@@ -57,7 +57,8 @@ module.exports = function(app) {
                 data: {
                   user: {
                     email: user[0].email,
-                    id: user[0].id
+                    id: user[0].id,
+                    admin: user[0].admin
                   },
                   token: token
                 }
