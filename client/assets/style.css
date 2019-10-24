@@ -1,15 +1,12 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
 @import url("https://fonts.googleapis.com/css?family=Merriweather");
 
 @font-face {
-<<<<<<< HEAD
-  font-family: "FuturaStdHeavy";
-  src: url("./fonts/Futura-Std-Heavy.otf");
-}
-
-@font-face {
-  font-family: "FuturaStdMedium";
-  src: url("./fonts/Futura-Std-Medium.otf");
-=======
     font-family: "FuturaStdHeavy";
     src: url("./fonts/Futura Std Heavy.otf");
 }
@@ -32,7 +29,6 @@
 @font-face {
     font-family: "FuturaStdHeavyOblique";
     src: url("./fonts/Futura Std Heavy Oblique.otf");
->>>>>>> NewFonts
 }
 
 @font-face {
