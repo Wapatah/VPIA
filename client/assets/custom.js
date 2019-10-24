@@ -1,4 +1,3 @@
-
 $(".modal-fullscreen").on("show.bs.modal", function() {
     setTimeout(function() {
         $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
