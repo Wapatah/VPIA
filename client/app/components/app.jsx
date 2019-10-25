@@ -25,9 +25,9 @@ class App extends React.Component {
     var that = this;
     return (
       <div>
-        <nav className="navbar container-fluid navbar-default">
+        <nav className="navbar navbar-expand-lg navbar-light">
           {window.localStorage.getItem("userToken") ? (
-            <div className="navbar-header">
+            <div className="navbar">
               <button
                 type="button"
                 className="navbar-toggle collapsed"
@@ -41,13 +41,15 @@ class App extends React.Component {
                 <span className="icon-bar"></span>
               </button>
               <Link
-                to="landing"
+                to="home"
                 className="navbar-brand"
                 aria-label="homepage link"
               >
                 <img
                   class="navbar-brand"
                   src="../assets/logo.png"
+                  width="181"
+                  height="166"
                   alt="VPIA logo"
                   aria-label="VPIA logo"
                 ></img>
@@ -55,8 +57,8 @@ class App extends React.Component {
             </div>
           ) : (
             <div class="container-fluid">
-              <nav className=" navbar-static-top">
-                <div class="navbar-header">
+              <nav className="navbar navbar-light">
+                <div class="navbar-brand">
                   <Link
                     to="landing"
                     className="navbar-brand"
@@ -65,16 +67,24 @@ class App extends React.Component {
                     <img
                       class="navbar-brand"
                       src="../assets/logo.png"
+                      width="181"
+                      height="166"
                       alt="VPIA logo"
                       aria-label="VPIA logo"
                     ></img>
                   </Link>
                 </div>
                 <div className="container-fluid navbar-right">
-                  <button type="button" className="btn navbar-btn join-btn">
+                  <button
+                    type="button"
+                    className="btn btn-outline-success"
+                  >
                     <Link to="/user_signup">Join Now!</Link>
                   </button>
-                  <button type="button" className="btn navbar-btn signin-btn">
+                  <button
+                    type="button"
+                    className="btn btn-outline-success"
+                  >
                     <Link to="login">Sign In</Link>
                   </button>
                 </div>

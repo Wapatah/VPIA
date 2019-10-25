@@ -20,19 +20,19 @@ class Landing extends React.Component {
                 Virtual Platform for Indigenous Art
               </h1>
 
-              <div className="col-md-8 col-centered nav-centered">
-                <nav className="nav navbar-default">
-                  <ul className="nav navbar-nav">
-                    <li>
+              <div className="col-md-8">
+                <nav className="nav">
+                  <ul className="nav justify-content-center">
+                    <li className="nav-item">
                       <a href="#">Home</a>
                     </li>
-                    <li>
+                    <li className="nav-item">
                       <a href="#">About VPIA</a>
                     </li>
-                    <li>
+                    <li className="nav-item">
                       <a href="#">Artwork</a>
                     </li>
-                    <li>
+                    <li className="nav-item">
                       <a href="#">Conversation</a>
                     </li>
                   </ul>
