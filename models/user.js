@@ -7,7 +7,7 @@ Autoupdates instead of running migrations.
 var schema = require("../config/db");
 
 var User = schema.define("user", {
-  admin: {type: schema.Boolean},
+  admin: { type: schema.Boolean },
   name: { type: schema.String, limit: 255 },
   email: { type: schema.String, limit: 255 },
   password: { type: schema.String, limit: 255 },

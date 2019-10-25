@@ -1,11 +1,12 @@
 ## VPIA
 
-This platform uses Matterwiki as the underlying wiki engine. This will most likely be heavily customized. Currently using MySQL.
+This platform uses Matterwiki as the underlying wiki engine. This will most likely be heavily customized. We have switched from Bookshelf.js and Knex that Matterwiki uses over to Caminte. And we have managed to switch to MongoDB. 
 
 ### Instructions
 1. Install [node](https://nodejs.org/en/)
+2. Install [MongoDB - Community Edition](https://www.mongodb.com/download-center/community)
 2. Navigate to the project folder
-3. Install dependencies: `npm install`
+3. Install dependencies: `npm install` (if on Windows, you may have to pass the `--force` flag)
 4. Run the application: `npm run start`
 
 ### Navigating the folders
@@ -29,34 +30,9 @@ TODO: add Matterwiki's api documentation
 Eslint is currently not fixing the Jsx files in the app folder due to breaking changes (automatic fix breaks the engine) and possible lack of backwards compatibility. We should fix this in the future but we must prioritize elsewhere.
 
 ## Common Errors
-You must install MySQL before running the project. You can modify the `knexfile.js` to include your root username, and your password and whatever database you want.
-If you get an error like:
-```javascript
-Unhandled rejection Error: ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requested by server; consider upgrading MySQL client
-```
-You need to run this command in the MySQL commandline, substituting `root` as your user `localhost` as your URL and `password` as your password:
-```sql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
-```
+MongoDB complaining of depreciation, error with .then(all).
 
-If you get an error like:
-```javascript
-Unhandled rejection Error: ER_BAD_DB_ERROR: Unknown database 'myapp_test'
-```
-Where `myapp_test` is either that or whatever custom database you inputted. You need to manually create the database.
-Run:
-```sql
-CREATE DATABASE myapp_test;
-```
-### Run MySQL
-Step 1: Create a new entry
-```
-export PATH=${PATH}:/usr/local/mysql/bin/
-```
-Step 2: Log in through root user password
-```
-mysql -u root -p
-```
+These are directly related to and can be fixed in Caminte. At the moment, we will have to fixure out how to republish the package with the fixes. 
 
 ---
 
@@ -72,3 +48,11 @@ Approved Hex colours:
 `Blackish` - #0D1319  
 `Cool gray` - #75777B  
 `Pale grey` - #D0CFCD  
+
+---
+
+## Caminte
+
+Caminte is a database agnostic ORM. However, the tool has been dead the past year. Some of the adapters are not working (for example, ArangoDB). There's still a lot of modification that needs to be done to make sure it's working perfectly. Some of the commands are also depreciated. 
+
+We will probably have to fork it, re-publish on NPM in order to make sure we can continue to update it. We'll have to figure out the best way to achieve this. 

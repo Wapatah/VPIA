@@ -68,7 +68,7 @@ class App extends React.Component {
               id="bs-example-navbar-collapse-1"
             >
               <ul className="nav navbar-nav navbar-right">
-                { window.localStorage.getItem("admin") === "true" ? (
+                {window.localStorage.getItem("admin") === "true" ? (
                   <li>
                     <Link to="admin" className="">
                       Admin

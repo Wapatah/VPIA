@@ -13,6 +13,13 @@ var Articles = require("../models/article.js");
 var Topics = require("../models/topic.js");
 var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
+
+/* 
+@Mordax
+Mongo represents it's unique IDs as BSON objects, so we need to convert
+the API request identifiers to BSON to properly find documents.
+*/
+
 var ObjectId = require("mongodb").ObjectId;
 
 module.exports = function(app) {
@@ -95,11 +102,11 @@ module.exports = function(app) {
   */
   app.put("/articles", function(req, res) {
     var id = new ObjectId(req.body.id);
-    Articles.find({ where: { "_id": id } })
+    Articles.find({ where: { _id: id } })
       .then(function(article) {
         Articles.update(
           {
-            "_id": id
+            _id: id
           },
           {
             title: req.body.title,
@@ -108,12 +115,12 @@ module.exports = function(app) {
             what_changed: req.body.what_changed,
             user_id: req.body.user_id
           }
-        )
-        .catch(function(error) {
+        ).catch(function(error) {
           res.status(500).json({
             error: {
               error: true,
-              message: "WTF" + error.message
+              message:
+                "PUT: /articles (error updating article) " + error.message
             },
             code: "B108",
             data: {}
@@ -124,33 +131,35 @@ module.exports = function(app) {
           body: article[0].body,
           what_changed: article[0].what_changed,
           user_id: article[0].user_id,
-          article_id: article[0].id,
-        }).then(function(article) {
-          res.json({
-            error: {
-              error: false,
-              message: ""
-            },
-            code: "B107",
-            data: article
-          });
+          article_id: article[0].id
         })
-        .catch(function(error) {
-          res.status(500).json({
-            error: {
-              error: true,
-              message: "FUCK " + error.message
-            },
-            code: "B108",
-            data: {}
+          .then(function(article) {
+            res.json({
+              error: {
+                error: false,
+                message: ""
+              },
+              code: "B107",
+              data: article
+            });
+          })
+          .catch(function(error) {
+            res.status(500).json({
+              error: {
+                error: true,
+                message:
+                  "PUT: /articles (error creating archives)" + error.message
+              },
+              code: "B108",
+              data: {}
+            });
           });
-        });
       })
       .catch(function(error) {
         res.status(500).json({
           error: {
             error: true,
-            message: "PUT: /articles/ ertrerte" + error.message
+            message: "PUT: /articles/ " + error.message
           },
           code: "B108",
           data: {}
@@ -166,16 +175,16 @@ module.exports = function(app) {
   */
   app.get("/articles/:id/", function(req, res) {
     var id = new ObjectId(req.params.id);
-    Articles.find({ where: { "_id": id } })
+    Articles.find({ where: { _id: id } })
       .then(function(article) {
         var topic_id = new ObjectId(article[0].topic_id);
-        Topics.find({ where: { "_id": topic_id } })
+        Topics.find({ where: { _id: topic_id } })
           .then(function(topic) {
             article[0].topics(topic);
           })
           .then(function() {
             var user_id = new ObjectId(article[0].user_id);
-            Users.find({ where: { "_id": user_id } })
+            Users.find({ where: { _id: user_id } })
               .then(function(user) {
                 article[0].users(user);
               })
@@ -211,7 +220,7 @@ module.exports = function(app) {
   The error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/history", function(req, res) {
-    var id = new ObjectId(req.params.id)
+    var id = new ObjectId(req.params.id);
     Archives.find({
       where: { article_id: id },
       order: "updated_at DESC"

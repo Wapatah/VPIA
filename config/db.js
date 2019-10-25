@@ -9,10 +9,10 @@ var caminte = require("caminte");
 var Schema = caminte.Schema;
 
 var config = {
-  driver: "mongodb", // or mariadb
+  driver: "mongodb",
   host: "localhost",
   database: "myapp_test",
-  pool: false // optional for use pool directly
+  pool: false
 };
 
 var schema = new Schema(config.driver, config);
