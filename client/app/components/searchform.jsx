@@ -17,18 +17,18 @@ class SearchForm extends React.Component {
 
       <form onSubmit={this.searchWiki}>
 
-        <div className="input-group searchcustom">
+        <div className="input-group mb-3">
           <input
             type="text"
-            className="form-control search-input"
+            className="form-control"
             placeholder="Search Artwork"
             ref="search"
           />
-          <span className="input-group-btn">
-          <button type="submit" className="btn search-button">
+          <div className="input-group-append">
+          <button type="submit" className="btn search-button btn-outline-secondary">
             <i className="fa fa-search"></i>
           </button>
-          </span>
+          </div>
         </div>
       </form>
 

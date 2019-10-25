@@ -56,37 +56,37 @@ class App extends React.Component {
               </Link>
             </div>
           ) : (
-            <div class="container-fluid">
-              <nav className="navbar navbar-light">
-                <div class="navbar-brand">
-                  <Link
-                    to="landing"
+            <div className="container-fluid">
+              <div className="navbar-brand nav-left">
+                <Link
+                  to="landing"
+                  className="navbar-brand"
+                  aria-label="homepage link"
+                >
+                  <img
                     className="navbar-brand"
-                    aria-label="homepage link"
-                  >
-                    <img
-                      class="navbar-brand"
-                      src="../assets/logo.png"
-                      width="181"
-                      height="166"
-                      alt="VPIA logo"
-                      aria-label="VPIA logo"
-                    ></img>
-                  </Link>
-                </div>
-                <div className="container-fluid navbar-right">
-                  <button
-                    type="button"
-                    className="btn btn-outline-success"
-                  >
-                    <Link to="/user_signup">Join Now!</Link>
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-success"
-                  >
-                    <Link to="login">Sign In</Link>
-                  </button>
+                    src="../assets/logo.png"
+                    width="181"
+                    height="166"
+                    alt="VPIA logo"
+                    aria-label="VPIA logo"
+                  ></img>
+                </Link>
+              </div>
+              <nav className="navbar navbar-expand-md">
+                <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                  <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                      <button type="button" className="btn">
+                        <Link to="/user_signup" className="joinnow-text">Join Now!</Link>
+                      </button>
+                    </li>
+                    <li className="nav-item">
+                      <button type="button" className="btn signin-btn">
+                        <Link to="login" className="signin-text">Sign In</Link>
+                      </button>
+                    </li>
+                  </ul>
                 </div>
               </nav>
             </div>
