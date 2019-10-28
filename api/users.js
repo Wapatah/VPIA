@@ -194,7 +194,9 @@ module.exports = function(app) {
                 res.status(500).json({
                   error: {
                     error: true,
-                    message:  "DELETE /users (failed to move Articles): " + error.message
+                    message:
+                      "DELETE /users (failed to move Articles): " +
+                      error.message
                   },
                   code: "",
                   data: {}
@@ -216,7 +218,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message:  "DELETE /users: " + error.message
+            message: "DELETE /users: " + error.message
           },
           code: "B128",
           data: {}

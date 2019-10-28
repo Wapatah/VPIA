@@ -36,7 +36,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message:  "GET /archives/:id/: " + error.message
+            message: "GET /archives/:id/: " + error.message
           },
           code: "B114",
           data: {}

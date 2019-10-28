@@ -128,7 +128,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message:  "PUT /articles: " + error.message
+            message: "PUT /articles: " + error.message
           },
           code: "B108",
           data: {}
@@ -170,7 +170,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message:  "GET /articles/:id/: " + error.message
+            message: "GET /articles/:id/: " + error.message
           },
           code: "B114",
           data: {}
@@ -204,7 +204,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message:  "GET /articles/:id/history: " + error.message
+            message: "GET /articles/:id/history: " + error.message
           },
           code: "B116",
           data: {}
