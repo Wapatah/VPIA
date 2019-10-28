@@ -13,6 +13,9 @@ module.exports = {
     // @Matterwiki - entry point
     APP_DIR + "/index.jsx"
   ],
+  performance: {
+    hints: false // @Mordax - removes performance warning popups for now
+  },
   output: {
     path: BUILD_DIR,
     filename: "bundle.js",
