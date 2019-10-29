@@ -22,6 +22,7 @@ module.exports = {
     publicPath: BUILD_DIR
   },
   devtool: "source-map",
+  performance: { hints: false },
   module: {
     rules: [
       {

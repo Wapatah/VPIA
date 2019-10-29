@@ -22,7 +22,7 @@ module.exports = function(app) {
   app.post("/setup", function(req, res) {
     bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
       Users.create({
-        id: 1,
+        admin: true,
         name: req.body.name,
         email: req.body.email,
         password: hash,
