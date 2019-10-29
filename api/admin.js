@@ -60,7 +60,7 @@ module.exports = function(app) {
               res.status(500).json({
                 error: {
                   error: true,
-                  message: error.message
+                  message: "POST /topics: failed to create " + error.message
                 },
                 code: "B122",
                 data: {}
@@ -81,7 +81,8 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message:
+              "POST /topics: failed to find existing topics " + error.message
           },
           code: "",
           data: {}
@@ -123,7 +124,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "PUT /topics: " + error.message
           },
           code: "B126",
           data: {}
@@ -178,7 +179,9 @@ module.exports = function(app) {
                     res.status(500).json({
                       error: {
                         error: true,
-                        message: error.message
+                        message:
+                          "DELETE /articles: Article update failed " +
+                          error.message
                       },
                       code: "",
                       data: {}
@@ -201,7 +204,7 @@ module.exports = function(app) {
           res.status(500).json({
             error: {
               error: true,
-              message: error.message
+              message: "DELETE /topics: " + error.message
             },
             code: "B128",
             data: {}
@@ -232,7 +235,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "DELETE /articles: " + error.message
           },
           code: "B110",
           data: {}

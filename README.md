@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/Mordax/VPIA.svg?token=9JzkqwDk7NTPWEGwRNt4&branch=master)](https://travis-ci.com/Mordax/VPIA)
 ## VPIA
 
 This platform uses Matterwiki as the underlying wiki engine. This will most likely be heavily customized. We have switched from Bookshelf.js and Knex that Matterwiki uses over to Caminte. And we have managed to switch to MongoDB. 

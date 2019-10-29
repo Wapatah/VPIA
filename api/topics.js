@@ -32,7 +32,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "GET /topics: " + error.message
           },
           code: "B124",
           data: {}
@@ -62,7 +62,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "GET /topics/:id/: " + error.message
           },
           code: "B124",
           data: {}
@@ -92,7 +92,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "GET /topics/:id/articles: " + error.message
           },
           code: "B130",
           data: {}

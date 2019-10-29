@@ -50,7 +50,7 @@ module.exports = function(app) {
           res.status(500).json({
             error: {
               error: true,
-              message: "POST: /users " + error.message
+              message: "POST /users: " + error.message
             },
             code: "B132",
             data: {}
@@ -80,7 +80,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: "GET: /users" + error.message
+            message: "GET /users: " + error.message
           },
           code: "B134",
           data: {}
@@ -127,7 +127,7 @@ module.exports = function(app) {
           res.status(500).json({
             error: {
               error: true,
-              message: "PUT: /users " + error.message
+              message: "PUT /users: " + error.message
             },
             code: "B136",
             data: {}
@@ -171,7 +171,9 @@ module.exports = function(app) {
                 res.status(500).json({
                   error: {
                     error: true,
-                    message: "DELETE: /users (articles)" + error.message
+                    message:
+                      "DELETE /users (failed to move Articles): " +
+                      error.message
                   },
                   code: "",
                   data: {}
@@ -193,7 +195,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: "DELETE: /users " + error.message
+            message: "DELETE /users: " + error.message
           },
           code: "B128",
           data: {}
@@ -222,7 +224,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: "GET: /users/:id" + error.message
+            message: "GET /use/:id/: " + error.message
           },
           code: "B134",
           data: {}

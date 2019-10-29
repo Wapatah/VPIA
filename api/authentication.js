@@ -80,7 +80,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "POST /api/authenticate: " + error.message
           },
           code: "B120",
           data: {}
