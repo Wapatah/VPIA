@@ -10,12 +10,6 @@ class ViewArticle extends React.Component {
     this.state = { article: {}, loading: true };
   }
 
-  componentDidUpdate() {
-    if (this.props.location.query.new) {
-      $("#myModal").modal("show");
-    }
-  }
-
   componentDidMount() {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",

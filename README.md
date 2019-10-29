@@ -19,7 +19,7 @@ TODO: add Matterwiki's api documentation
 * `client/`directory contains the React jsx files and almost all the front end. Main index.html is here.  
     * `client/app/` where the shared resources of the app live such as routes, index, etc.
     * `client/app/components/` is where the specific components live. As this gets more complex, it may be beneficial to move the folders.
-    * `client/assets/` - self explanatory. This is also where the [trix](https://github.com/basecamp/trix) (wysiwyg editor) code lives. Potentially we can swap it out/modify it to support videos, images, etc.
+    * `client/assets/` - self explanatory. 
 
 * `models/` Has the database schemas/models. Any change to the structure of tables should be done here.
     * `models/relations` defines the relationships between the models. Very simple hasMany, belongsTo relationships. We are using Caminte, a database agnostic ORM (object relational mapping for representing Javascript objects in databases). Caminte uses adapters for various DBs and has a generic approach for defining relationships. Please read more here: http://www.camintejs.com/.
