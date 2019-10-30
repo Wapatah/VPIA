@@ -49,7 +49,7 @@ class App extends React.Component {
                   class="navbar-brand"
                   src="../assets/logo.png"
                   width="181"
-                  height="166"
+                  height="auto"
                   alt="VPIA logo"
                   aria-label="VPIA logo"
                 ></img>
@@ -67,7 +67,7 @@ class App extends React.Component {
                     className="navbar-brand"
                     src="../assets/logo.png"
                     width="181"
-                    height="166"
+                    height="auto"
                     alt="VPIA logo"
                     aria-label="VPIA logo"
                   ></img>
@@ -78,12 +78,16 @@ class App extends React.Component {
                   <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
                       <button type="button" className="btn">
-                        <Link to="/user_signup" className="joinnow-text">Join Now!</Link>
+                        <Link to="/user_signup" className="joinnow-text">
+                          Join Now!
+                        </Link>
                       </button>
                     </li>
                     <li className="nav-item">
                       <button type="button" className="btn signin-btn">
-                        <Link to="login" className="signin-text">Sign In</Link>
+                        <Link to="login" className="signin-text">
+                          Sign In
+                        </Link>
                       </button>
                     </li>
                   </ul>
@@ -122,13 +126,80 @@ class App extends React.Component {
             <div />
           )}
         </nav>
-        <div className="content container">{that.props.children}</div>
-        {/* @Mordax - this doesn't centre with the rest of the content container, fix later. */}
-        {/* <div className="footer center-align">
-          <div className="help-block">
-            Powered by <a href="http://matterwiki.com">Matterwiki</a>
+        <div className="content">{that.props.children}</div>
+        <footer className="footer">
+          <div className="container bottom_border">
+            <div className="row">
+              <div className="col col-lg-2">
+                <img
+                  src="../assets/logo.png"
+                  width="auto"
+                  height="76"
+                  alt="VPIA logo"
+                  aria-label="VPIA logo"
+                ></img>
+              </div>
+              <div className="col col-lg-2">
+                <ul className="footer_ul">
+                  <li>
+                    <a href="">Home</a>
+                  </li>
+
+                  <li>
+                    <a href="">VPIA</a>
+                  </li>
+
+                  <li>
+                    <a href="">Artwork</a>
+                  </li>
+
+                  <li>
+                    <a href="">Contact</a>
+                  </li>
+                </ul>
+              </div>
+              <div className="col col-lg-2">
+                <ul className="footer_ul">
+                  <li>
+                    <a href="">Help</a>
+                  </li>
+
+                  <li>
+                    <a href="">Terms</a>
+                  </li>
+
+                  <li>
+                    <a href="">Tutorials</a>
+                  </li>
+
+                  <li>
+                    <a href="">Careers</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="col-sm-4 col-4 col">
+                <div className="input-group mb-3">
+                  <input
+                    type="text"
+                    className="form-control email-form"
+                    placeholder="Email"
+                    ref="search"
+                  />
+                  <div className="input-group-append">
+                    <button
+                      type="submit"
+                      className="btn btn-outline-secondary email-button"
+                    >
+                      <i className="fa fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </div>
+                <p>Stay in touch with us!</p>
+              </div>
+            </div>
           </div>
-        </div> */}
+        </footer>
         <Alert stack={{ limit: 3 }} position="bottom" />
       </div>
     );
