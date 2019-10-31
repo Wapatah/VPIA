@@ -64,23 +64,26 @@ class BrowseArticles extends React.Component {
       );
     } else {
       return (
-        <div>
-          <div className="article-list">
-            {this.state.articles.map(article => (
-              <div key={article.id} className="article-item">
-                <div className="article-item-title">
+        <div className="card-deck">
+          {this.state.articles.map(article => (
+            <div key={article.id} className="card">
+              <img src="..." className="card-img-top" alt="..."></img>
+              <div className="card-body">
+                <h5 className="card-title">
                   <Link to={"/article/" + article.id}>{article.title}</Link>
-                </div>
-                <div className="article-item-description">
-                  Last updated on{" "}
-                  {new Date(
-                    article.updated_at.replace(" ", "T")
-                  ).toLocaleString()}
-                </div>
-                <hr className="article-separator"></hr>
+                </h5>
+                <p className="card-text"></p>
+                <p className="card-text">
+                  <small class="text-muted">
+                    Last updated on{" "}
+                    {new Date(
+                      article.updated_at.replace(" ", "T")
+                    ).toLocaleString()}
+                  </small>
+                </p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       );
     }

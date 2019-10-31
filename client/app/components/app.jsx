@@ -77,15 +77,18 @@ class App extends React.Component {
                 <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                   <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
-                      <button type="button" className="btn">
-                        <Link to="/user_signup" className="joinnow-text">
+                      <button type="button" className="btn btn-secondary">
+                        <Link to="/user_signup" className="btn-text">
                           Join Now!
                         </Link>
                       </button>
                     </li>
                     <li className="nav-item">
-                      <button type="button" className="btn signin-btn">
-                        <Link to="login" className="signin-text">
+                      <button
+                        type="button"
+                        className="btn btn-primary signin-btn"
+                      >
+                        <Link to="login" className="btn-text">
                           Sign In
                         </Link>
                       </button>
@@ -96,29 +99,32 @@ class App extends React.Component {
             </div>
           )}
           {window.localStorage.getItem("userToken") ? (
-            <div
-              className="collapse navbar-collapse"
-              id="bs-example-navbar-collapse-1"
-            >
-              <ul className="nav navbar-nav navbar-right">
+            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+              <ul className="navbar-nav ml-auto">
                 {window.localStorage.getItem("userId") == 1 ? (
-                  <li>
-                    <Link to="admin" className="">
-                      Admin
-                    </Link>
+                  <li className="nav-item">
+                    <button type="button" className="btn btn-primary">
+                      <Link to="admin" className="btn-text">
+                        Admin
+                      </Link>
+                    </button>
                   </li>
                 ) : (
                   ""
                 )}
-                <li>
-                  <Link to="article/new" className="">
-                    New Article
-                  </Link>
+                <li className="nav-item">
+                  <button type="button" className="btn btn-primary">
+                    <Link to="article/new" className="btn-text">
+                      New Article
+                    </Link>
+                  </button>
                 </li>
-                <li>
-                  <a href="" onClick={this.handleLogout}>
-                    Logout
-                  </a>
+                <li className="nav-item">
+                  <button type="button" className="btn btn-primary">
+                    <a href="" className="btn-text" onClick={this.handleLogout}>
+                      Logout
+                    </a>
+                  </button>
                 </li>
               </ul>
             </div>

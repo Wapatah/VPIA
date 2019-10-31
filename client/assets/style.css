@@ -572,8 +572,8 @@ a.deco-none: {
   color: #000000 !important;
   text-decoration: none;
 }
-a.joinnow-text {
-  color: #208778 !important;
+a.btn-text {
+  color: white !important;
   text-decoration: none;
 }
 
@@ -651,9 +651,16 @@ footer p {
   border: none;
   background-color: #ffa500;
 }
-#VPIA-intro.jumbotron {
-  width: 66%;
-}
+
 #VPIA-intro.container-fluid {
   padding-left: 0;
+}
+#VPIA-intro-right {
+  margin-top: 5%;
+}
+#VPIA-intro-right p {
+  font-family: "Baskerville";
+}
+#VPIA-intro-right h5 {
+  color: #208778;
 }

@@ -23,12 +23,11 @@ class Home extends React.Component {
     if (this.state.loading) return <Loader />;
     else
       return (
-        <div className="row">
-          <div className="col-md-3">
-            <BrowseTopics topicChange={this.handleUpdate} />
-          </div>
-          <div className="col-md-9">
-            <BrowseArticles topicId={this.state.topicId} />
+        <div className="container-fluid">
+          <div className="row justify-content-md-center">
+            <div className="col-8">
+              <BrowseArticles topicId={this.state.topicId} />
+            </div>
           </div>
         </div>
       );
