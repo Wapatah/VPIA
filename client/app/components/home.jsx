@@ -26,6 +26,7 @@ class Home extends React.Component {
         <div className="container-fluid">
           <div className="row justify-content-md-center">
             <div className="col-8">
+              <h2>Recent Artworks</h2>
               <BrowseArticles topicId={this.state.topicId} />
             </div>
           </div>

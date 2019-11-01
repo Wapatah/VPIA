@@ -3,6 +3,7 @@ import Login from "./login.jsx";
 import SearchForm from "./searchform.jsx";
 import { Link, hashHistory } from "react-router";
 import Alert from "react-s-alert";
+import MainNav from "./main_nav.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -25,77 +26,39 @@ class App extends React.Component {
     var that = this;
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light">
+        <nav className="navbar navbar-expand-md mainheader">
           {window.localStorage.getItem("userToken") ? (
             <div className="navbar">
               <button
                 type="button"
-                className="navbar-toggle collapsed"
+                className="navbar-toggler"
                 data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1"
-                aria-expanded="false"
+                data-target="#collapsibleNavbar"
               >
                 <span className="sr-only">Toggle navigation</span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link
-                to="home"
-                className="navbar-brand"
-                aria-label="homepage link"
-              >
-                <img
-                  class="navbar-brand"
-                  src="../assets/logo.png"
-                  width="181"
-                  height="auto"
-                  alt="VPIA logo"
-                  aria-label="VPIA logo"
-                ></img>
-              </Link>
             </div>
           ) : (
-            <div className="container-fluid">
-              <div className="navbar-brand nav-left">
-                <Link
-                  to="landing"
-                  className="navbar-brand"
-                  aria-label="homepage link"
-                >
-                  <img
-                    className="navbar-brand"
-                    src="../assets/logo.png"
-                    width="181"
-                    height="auto"
-                    alt="VPIA logo"
-                    aria-label="VPIA logo"
-                  ></img>
-                </Link>
-              </div>
-              <nav className="navbar navbar-expand-md">
-                <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                  <ul className="navbar-nav ml-auto">
-                    <li className="nav-item">
-                      <button type="button" className="btn btn-secondary">
-                        <Link to="/user_signup" className="btn-text">
-                          Join Now!
-                        </Link>
-                      </button>
-                    </li>
-                    <li className="nav-item">
-                      <button
-                        type="button"
-                        className="btn btn-primary signin-btn"
-                      >
-                        <Link to="login" className="btn-text">
-                          Sign In
-                        </Link>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
+            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <button type="button" className="btn btn-secondary">
+                    <Link to="/user_signup" className="btn-text">
+                      Join Now!
+                    </Link>
+                  </button>
+                </li>
+                <li className="nav-item">
+                  <button type="button" className="btn btn-primary signin-btn">
+                    <Link to="login" className="btn-text">
+                      Sign In
+                    </Link>
+                  </button>
+                </li>
+              </ul>
             </div>
           )}
           {window.localStorage.getItem("userToken") ? (
@@ -103,7 +66,7 @@ class App extends React.Component {
               <ul className="navbar-nav ml-auto">
                 {window.localStorage.getItem("userId") == 1 ? (
                   <li className="nav-item">
-                    <button type="button" className="btn btn-primary">
+                    <button type="button" className="btn btn-secondary">
                       <Link to="admin" className="btn-text">
                         Admin
                       </Link>
@@ -113,14 +76,14 @@ class App extends React.Component {
                   ""
                 )}
                 <li className="nav-item">
-                  <button type="button" className="btn btn-primary">
+                  <button type="button" className="btn btn-secondary">
                     <Link to="article/new" className="btn-text">
                       New Article
                     </Link>
                   </button>
                 </li>
                 <li className="nav-item">
-                  <button type="button" className="btn btn-primary">
+                  <button type="button" className="btn btn-secondary">
                     <a href="" className="btn-text" onClick={this.handleLogout}>
                       Logout
                     </a>
@@ -132,6 +95,7 @@ class App extends React.Component {
             <div />
           )}
         </nav>
+        <MainNav />
         <div className="content">{that.props.children}</div>
         <footer className="footer">
           <div className="container bottom_border">

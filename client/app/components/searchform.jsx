@@ -14,9 +14,7 @@ class SearchForm extends React.Component {
 
   render() {
     return (
-
       <form onSubmit={this.searchWiki}>
-
         <div className="input-group mb-3">
           <input
             type="text"
@@ -25,13 +23,12 @@ class SearchForm extends React.Component {
             ref="search"
           />
           <div className="input-group-append">
-          <button type="submit" className="btn search-button btn-outline-secondary">
-            <i className="fa fa-search"></i>
-          </button>
+            <button type="submit" className="btn search-button">
+              <i className="fa fa-search"></i>
+            </button>
           </div>
         </div>
       </form>
-
     );
   }
 }
