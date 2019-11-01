@@ -77,7 +77,10 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/topic/:id/articles", function(req, res) {
-    Articles.find({ where: { topic_id: req.params.id } })
+    Articles.find({
+      where: { topic_id: req.params.id },
+      order: "updated_at DESC"
+    })
       .then(function(article) {
         res.status(200).json({
           error: {

@@ -2,6 +2,13 @@ import React from "react";
 import { hashHistory } from "react-router";
 import Loader from "./loader.jsx";
 import Alert from "react-s-alert";
+import CKEditor from "ckeditor4-react";
+import EditorPreview from "./helpers/editor_preview.jsx";
+
+// @Mordax - CKEditor file was made for easy configuration and DRY reasons
+import CKConfig from "../../../config/ckeditor";
+// @Mordax - This is a basic HTML module template for organizating the editor structure
+import Template from "../../../config/editor_template";
 
 class NewArticle extends React.Component {
   constructor(props) {
@@ -11,8 +18,11 @@ class NewArticle extends React.Component {
     this.state = { body: "", topics: [], error: "", loading: true };
   }
 
-  handleChange() {
-    this.setState({ body: this.refs.body.value });
+  handleChange(data) {
+    this.refs.body.value = data.getData();
+    if (data) {
+      this.setState({ body: this.refs.body.value });
+    }
   }
 
   componentDidMount() {
@@ -92,20 +102,17 @@ class NewArticle extends React.Component {
           <br />
           <div className="row">
             <div className="col-md-12 new-article-form">
-              <trix-toolbar id="my_toolbar"></trix-toolbar>
-              <trix-editor
-                toolbar="my_toolbar"
-                input="my_input"
-                placeholder="Start writing here...."
-                class="input-body"
-              ></trix-editor>
-              <input
-                id="my_input"
-                type="hidden"
-                value=""
+              <CKEditor
+                onBeforeLoad={() => (CKEDITOR.disableAutoInline = true)}
+                id="cktextarea"
+                data={Template.html}
                 ref="body"
-                onChange={this.handleChange}
+                onChange={() => this.handleChange(CKEDITOR.currentInstance)}
+                type="classic"
+                config={CKConfig}
               />
+              <br />
+              <EditorPreview data={this.state.body} />
               <br />
               <label>Choose topic</label>
               <select className="form-control topic-select" ref="topic">

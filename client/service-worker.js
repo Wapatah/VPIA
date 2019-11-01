@@ -6,6 +6,7 @@ Stale while Revalidate allows the user to access the old cached version -
 if there's a change, it will asynchronously update the cache with the 
 latest version.
 */
+/*eslint-disable no-undef */
 
 importScripts(
   "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js"
