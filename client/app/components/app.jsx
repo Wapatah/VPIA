@@ -44,9 +44,9 @@ class App extends React.Component {
           ) : (
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
               <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
+                <li className="nav-item px-2">
                   <button type="button" className="btn btn-secondary">
-                    <Link to="/user_signup" className="btn-text">
+                    <Link to="user_signup" className="btn-text">
                       Join Now!
                     </Link>
                   </button>
@@ -65,7 +65,7 @@ class App extends React.Component {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
               <ul className="navbar-nav ml-auto">
                 {window.localStorage.getItem("userId") == 1 ? (
-                  <li className="nav-item">
+                  <li className="nav-item px-2">
                     <button type="button" className="btn btn-secondary">
                       <Link to="admin" className="btn-text">
                         Admin
@@ -75,7 +75,7 @@ class App extends React.Component {
                 ) : (
                   ""
                 )}
-                <li className="nav-item">
+                <li className="nav-item px-2">
                   <button type="button" className="btn btn-secondary">
                     <Link to="article/new" className="btn-text">
                       New Article

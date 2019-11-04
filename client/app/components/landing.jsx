@@ -29,16 +29,16 @@ class Landing extends React.Component {
               </div>
             </div>
             <div id="VPIA-intro-right" className="col-4">
-              <h6>VPIA Project in a Glance!</h6>
-              <h5>How to Use the VPIA?</h5>
-              <h6>Tutorial</h6>
-              <p>
+              <h5>Project in a Glance!</h5>
+              <h6>How to Use the VPIA?</h6>
+              <p className="article-title">Tutorial</p>
+              <p className="description">
                 Lorem ipsum dolor sit amet, ipsum labitur lucilius mel id, ad
                 has appareat…
               </p>
-              <h5>Contributors</h5>
-              <h6>Article title</h6>
-              <p>
+              <h6>Contributors</h6>
+              <p className="article-title">Article title</p>
+              <p p className="description">
                 Lorem ipsum dolor sit amet, ipsum labitur lucilius mel id, ad
                 has appareat…
               </p>
@@ -46,9 +46,6 @@ class Landing extends React.Component {
           </div>
         </div>
         <Home />
-        <div className="container-fluid">
-          <div className="row"></div>
-        </div>
       </div>
     );
   }

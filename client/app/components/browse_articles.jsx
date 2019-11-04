@@ -69,13 +69,15 @@ class BrowseArticles extends React.Component {
             <div key={article.id} className="card">
               <img src="..." className="card-img-top" alt="..."></img>
               <div className="card-body">
-                <h5 className="card-title">
-                  <Link to={"/article/" + article.id}>{article.title}</Link>
-                </h5>
+                <p className="article-title">
+                  <Link to={"/article/" + article.id} className="text-dark">
+                    {article.title}
+                  </Link>
+                </p>
                 <p className="card-text"></p>
                 <p className="card-text">
                   <small class="text-muted">
-                    Last updated on{" "}
+                    <i className="fa fa-clock-o"></i>{" "}
                     {new Date(
                       article.updated_at.replace(" ", "T")
                     ).toLocaleString()}

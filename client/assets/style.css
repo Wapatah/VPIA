@@ -29,6 +29,12 @@
   font-family: "Baskerville";
   src: url("./fonts/Baskerville.ttc");
 }
+
+@font-face {
+  font-family: "Baskerville-BoldItalic";
+  src: url("./fonts/MBaskerville-BoldItalic.otf");
+}
+
 .primary-logo {
   height: 4em;
   margin-top: 2em;
@@ -565,10 +571,7 @@ input[type="file"] {
   left: 0;
   text-align: center;
 }
-a.deco-none: {
-  color: #000000 !important;
-  text-decoration: none;
-}
+
 a.btn-text {
   color: #ffffff !important;
   text-decoration: none;
@@ -658,11 +661,17 @@ footer p {
 #VPIA-intro-right {
   margin-top: 5%;
 }
-#VPIA-intro-right p {
-  font-family: "Baskerville";
-}
+
 #VPIA-intro-right h5 {
   color: #208778;
+}
+p.article-title {
+  font-family: "Baskerville-BoldItalic";
+  color: #0d1319;
+  text-decoration: none;
+}
+p.description {
+  font-family: "Baskerville";
 }
 #mainheader.container-fluid {
   background-color: #208778;
