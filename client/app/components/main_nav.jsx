@@ -56,7 +56,7 @@ class MainNav extends React.Component {
           </div>
         </div>
         <div id="searchform" className="container-fluid">
-          <div className="col-md-8 col-centered">
+          <div className="col-md-4 col-centered">
             <SearchForm />
           </div>
         </div>

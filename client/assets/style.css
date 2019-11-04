@@ -659,10 +659,11 @@ footer p {
   padding-left: 0;
 }
 #VPIA-intro-right {
-  margin-top: 5%;
+  margin-top: 3%;
 }
 
 #VPIA-intro-right h5 {
+  font-size: 30px;
   color: #208778;
 }
 p.article-title {
@@ -698,4 +699,29 @@ input[type="text"]:focus,
 select.form-control:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+ul.social-network {
+  list-style: none;
+  margin-left: 0 !important;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+}
+
+ul.social-network li {
+  font-size: 20px;
+  margin: 0 5px;
+}
+.social-icons {
+  width: 100%;
+}
+.social-network a {
+  color: #ffffff;
+}
+
+.social-network a:hover {
+  color: #208778;
 }

@@ -148,12 +148,36 @@ class App extends React.Component {
                 </ul>
               </div>
 
-              <div className="col-sm-4 col-4 col">
+              <div className="col-sm-3 col-6 col">
+                <div className="social-icons">
+                  <ul className="social-network">
+                    <li>
+                      <a href="#">
+                        <i className="fa fa-instagram"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i className="fa fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i className="fa fa-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i className="fa fa-globe"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
                 <div className="input-group mb-3">
                   <input
                     type="text"
                     className="form-control email-form"
-                    placeholder="Email"
+                    placeholder="Stay in touch"
                     ref="search"
                   />
                   <div className="input-group-append">
@@ -165,7 +189,6 @@ class App extends React.Component {
                     </button>
                   </div>
                 </div>
-                <p>Stay in touch with us!</p>
               </div>
             </div>
           </div>

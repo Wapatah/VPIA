@@ -29,7 +29,7 @@ class Landing extends React.Component {
               </div>
             </div>
             <div id="VPIA-intro-right" className="col-4">
-              <h5>Project in a Glance!</h5>
+              <h5>Project at a Glance!</h5>
               <h6>How to Use the VPIA?</h6>
               <p className="article-title">Tutorial</p>
               <p className="description">
