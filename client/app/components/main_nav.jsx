@@ -11,45 +11,44 @@ class MainNav extends React.Component {
     return (
       <div>
         <div id="mainheader" className="container-fluid">
-          <div id="mainlogo">
-            <Link to="landing">
-              <img
-                src="../assets/logo-white.png"
-                width="auto"
-                height="180px"
-                alt="VPIA logo"
-                aria-label="VPIA logo"
-              />
-            </Link>
-          </div>
           <div className="row row-centered">
-            <div className="col align-self-center">
-              <div className="col-md-8 col-centered">
-                <div className="navcontainer">
-                  <div className="main-nav">
-                    <a href="#">
-                      <i className="fa fa-home"></i>
-                      <span>Home</span>
-                    </a>
-                  </div>
-                  <div className="main-nav">
-                    <a href="#">
-                      <i className="fa fa-image"></i>
-                      <span>About</span>
-                    </a>
-                  </div>
-                  <div className="main-nav">
-                    <a href="#">
-                      <i className="fa fa-image"></i>
-                      <span>Artwork</span>
-                    </a>
-                  </div>
-                  <div className="main-nav">
-                    <a href="#">
-                      <i className="fa fa-comment"></i>
-                      <span>Conversation</span>
-                    </a>
-                  </div>
+            <div id="mainlogo" className="col-md-2">
+              <Link to="landing">
+                <img
+                  src="../assets/logos/logo-white.png"
+                  width="auto"
+                  height="180px"
+                  alt="VPIA logo"
+                  aria-label="VPIA logo"
+                />
+              </Link>
+            </div>
+
+            <div className="col-md-8 col-md-offset-2 align-self-end">
+              <div className="navcontainer">
+                <div className="main-nav-item">
+                  <a href="#">
+                    <i className="fa fa-home"></i>
+                    <span>Home</span>
+                  </a>
+                </div>
+                <div className="main-nav-item">
+                  <a href="#">
+                    <i className="fa fa-image"></i>
+                    <span>About</span>
+                  </a>
+                </div>
+                <div className="main-nav-item">
+                  <a href="#">
+                    <i className="fa fa-image"></i>
+                    <span>Artwork</span>
+                  </a>
+                </div>
+                <div className="main-nav-item">
+                  <a href="#">
+                    <i className="fa fa-comment"></i>
+                    <span>Conversation</span>
+                  </a>
                 </div>
               </div>
             </div>

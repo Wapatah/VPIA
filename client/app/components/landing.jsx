@@ -12,10 +12,10 @@ class Landing extends React.Component {
   render() {
     return (
       <div>
-        <div className="container-fluid">
+        <div id="VPIA-intro" className="container-fluid">
           <div className="row">
             <div className="col-8">
-              <div id="VPIA-intro" className="jumbotron">
+              <div id="VPIA-intro" className="jumbotron image-bg">
                 <h1 className="display-4">VPIA</h1>
                 <p className="lead">Search and edit 2000 indigenous Artworks</p>
                 <hr className="my-4"></hr>
@@ -23,7 +23,11 @@ class Landing extends React.Component {
                   It uses utility classes for typography and spacing to space
                   content out within the larger container.
                 </p>
-                <a className="btn btn-secondary btn-lg" href="#" role="button">
+                <a
+                  className="btn btn-outline-light btn-lg"
+                  href="#"
+                  role="button"
+                >
                   Learn more
                 </a>
               </div>

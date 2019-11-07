@@ -45,14 +45,14 @@ class App extends React.Component {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item px-2">
-                  <button type="button" className="btn btn-secondary">
-                    <Link to="user_signup" className="btn-text">
+                  <button type="button" className="btn btn-outline-light">
+                    <Link to="user_signup" className="none-deco">
                       Join Now!
                     </Link>
                   </button>
                 </li>
                 <li className="nav-item">
-                  <button type="button" className="btn btn-primary signin-btn">
+                  <button type="button" className="btn btn-secondary">
                     <Link to="login" className="btn-text">
                       Sign In
                     </Link>
@@ -96,20 +96,20 @@ class App extends React.Component {
           )}
         </nav>
         <MainNav />
-        <div className="content">{that.props.children}</div>
+        <div>{that.props.children}</div>
         <footer className="footer">
           <div className="container bottom_border">
             <div className="row">
               <div className="col col-lg-2">
                 <img
-                  src="../assets/logo.png"
+                  src="../assets/logos/logo-white.png"
                   width="auto"
                   height="76"
                   alt="VPIA logo"
                   aria-label="VPIA logo"
                 ></img>
               </div>
-              <div className="col col-lg-2">
+              <div className="col col-2">
                 <ul className="footer_ul">
                   <li>
                     <a href="">Home</a>
@@ -128,7 +128,7 @@ class App extends React.Component {
                   </li>
                 </ul>
               </div>
-              <div className="col col-lg-2">
+              <div className="col col-2">
                 <ul className="footer_ul">
                   <li>
                     <a href="">Help</a>
@@ -189,6 +189,24 @@ class App extends React.Component {
                     </button>
                   </div>
                 </div>
+              </div>
+              <div className="col col-md-3 ml-md-auto">
+                <img
+                  src="../assets/logos/logo-ocad.png"
+                  width="auto"
+                  height="54"
+                  className="float-right"
+                  alt="VPIA logo"
+                  aria-label="VPIA logo"
+                ></img>
+                <img
+                  src="../assets/logos/logo-wapatah.png"
+                  width="auto"
+                  height="54"
+                  className="float-right"
+                  alt="VPIA logo"
+                  aria-label="VPIA logo"
+                ></img>
               </div>
             </div>
           </div>
