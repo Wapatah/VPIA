@@ -41,7 +41,7 @@ class Login extends React.Component {
           window.localStorage.setItem("userToken", response.data.token);
           window.localStorage.setItem("userId", response.data.user.id);
           window.localStorage.setItem("userEmail", response.data.user.token);
-          hashHistory.push("home");
+          hashHistory.push("landing");
           Alert.success("You are now logged in");
         }
       });

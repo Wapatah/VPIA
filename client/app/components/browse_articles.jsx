@@ -54,6 +54,7 @@ class BrowseArticles extends React.Component {
         that.setState({ loading: false });
       });
   }
+
   render() {
     if (this.state.loading) return <Loader />;
     if (this.state.articles.length < 1) {
@@ -65,8 +66,8 @@ class BrowseArticles extends React.Component {
     } else {
       return (
         <div className="card-deck">
-          {this.state.articles.map(article => (
-            <div key={article.id} className="card">
+          {this.state.articles.slice(0, 4).map(article => (
+            <div key={article.id} className="card card-block">
               <img src="..." className="card-img-top" alt="..."></img>
               <div className="card-body">
                 <p className="article-title">

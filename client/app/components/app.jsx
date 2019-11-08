@@ -45,14 +45,17 @@ class App extends React.Component {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item px-2">
-                  <button type="button" className="btn btn-outline-light">
+                  <button
+                    type="button"
+                    className="btn btn-outline-light btn-round"
+                  >
                     <Link to="user_signup" className="none-deco">
                       Join Now!
                     </Link>
                   </button>
                 </li>
                 <li className="nav-item">
-                  <button type="button" className="btn btn-secondary">
+                  <button type="button" className="btn btn-secondary btn-round">
                     <Link to="login" className="btn-text">
                       Sign In
                     </Link>
@@ -66,7 +69,10 @@ class App extends React.Component {
               <ul className="navbar-nav ml-auto">
                 {window.localStorage.getItem("userId") == 1 ? (
                   <li className="nav-item px-2">
-                    <button type="button" className="btn btn-secondary">
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-round"
+                    >
                       <Link to="admin" className="btn-text">
                         Admin
                       </Link>
@@ -76,14 +82,14 @@ class App extends React.Component {
                   ""
                 )}
                 <li className="nav-item px-2">
-                  <button type="button" className="btn btn-secondary">
+                  <button type="button" className="btn btn-secondary btn-round">
                     <Link to="article/new" className="btn-text">
                       New Article
                     </Link>
                   </button>
                 </li>
                 <li className="nav-item">
-                  <button type="button" className="btn btn-secondary">
+                  <button type="button" className="btn btn-secondary btn-round">
                     <a href="" className="btn-text" onClick={this.handleLogout}>
                       Logout
                     </a>

@@ -227,13 +227,10 @@ textarea {
 .modal-fullscreen .form-control {
   border: 1px solid #ccc;
 }
-
-.navbar-login-logo img {
-  max-height: 300px;
-  width: 300px;
-  margin-top: 3em;
+.navbar {
+  padding-top: 3em;
+  padding-right: 3em;
 }
-
 .list-group-item {
   border: none;
 }
@@ -592,7 +589,6 @@ a.none-deco {
   text-align: center;
   display: inline-block;
   height: 50px;
-  text-decoration: none;
 }
 .main-nav-item i {
   display: block;
@@ -609,6 +605,18 @@ a.none-deco {
 }
 .main-nav-item span {
   color: #ffffff;
+}
+.main-nav-item span.active {
+  border-bottom: 3px solid #ffb600;
+}
+.main-icon {
+  fill: #ffffff;
+}
+.main-nav-item :hover .main-icon {
+  fill: #ffb600;
+}
+.main-nav-item :hover {
+  color: #ffb600;
 }
 footer {
   width: 100%;
@@ -648,8 +656,9 @@ footer p {
 }
 .btn-secondary {
   background-color: #fefefe;
+  border: none;
 }
-.btn {
+.btn-round {
   border-radius: 20px;
 }
 .mainheader {
@@ -664,10 +673,37 @@ footer p {
   margin-top: 3%;
 }
 
-#VPIA-intro-right h5 {
+h5.title-primary {
   font-size: 30px;
   color: #208778;
 }
+
+h5.underline-brush {
+  background: url("../assets/icons/line.svg");
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  position: relative;
+  display: inline-block;
+  height: 40px;
+}
+
+h5.underline-brush :before,
+h5.underline-brush :after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: -20px;
+  width: 20px;
+  height: 100%;
+  background: inherit;
+  background-position: 100% 100%;
+}
+h5.underline-brush :before {
+  left: -20px;
+  background-position: 0 100%;
+}
+
 p.article-title {
   font-family: "Baskerville-BoldItalic";
   color: #0d1319;
