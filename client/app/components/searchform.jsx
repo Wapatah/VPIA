@@ -16,14 +16,16 @@ class SearchForm extends React.Component {
     return (
       <form onSubmit={this.searchWiki}>
         <div className="input-group mb-3">
+          
           <input
             type="text"
             className="form-control"
             placeholder="Search Artwork"
             ref="search"
+            aria-label="Search Artwork Tab"
           />
           <div className="input-group-append">
-            <button type="submit" className="btn search-button">
+            <button type="submit" className="btn search-button" aria-label="Search Button">
               <i className="fa fa-search"></i>
             </button>
           </div>

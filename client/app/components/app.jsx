@@ -160,22 +160,22 @@ class App extends React.Component {
                 <div className="social-icons">
                   <ul className="social-network">
                     <li>
-                      <a href="#">
+                      <a href="#" aria-label="Instagram icon">
                         <i className="fa fa-instagram"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="#" aria-label="Twitter icon">
                         <i className="fa fa-twitter"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="#" aria-label="Facebook icon">
                         <i className="fa fa-facebook"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="#" aria-label="Website icon">
                         <i className="fa fa-globe"></i>
                       </a>
                     </li>
@@ -187,11 +187,13 @@ class App extends React.Component {
                     className="form-control email-form"
                     placeholder="Stay in touch"
                     ref="search"
+                    aria-label="Write an Email here"
                   />
                   <div className="input-group-append">
                     <button
                       type="submit"
                       className="btn btn-outline-secondary email-button"
+                      aria-label="Email button"
                     >
                       <i className="fa fa-paper-plane"></i>
                     </button>
