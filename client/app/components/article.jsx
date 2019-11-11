@@ -78,7 +78,7 @@ class ViewArticle extends React.Component {
                   Created on{" "}
                   {new Date(
                     this.state.article[0].created_at.replace(" ", "T")
-                  ).toLocaleString()}
+                  ).toUTCString()}
                 </div>
                 <div className="single-article-meta">
                   Last updated on{" "}

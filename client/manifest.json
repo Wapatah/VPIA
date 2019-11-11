@@ -3,12 +3,12 @@
   "name": "Virtual Platform for Indigenous Art",
   "icons": [
     {
-      "src": "/assets/logo.png",
+      "src": "/assets//logos/logo.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/assets/logo.png",
+      "src": "/assets/logos/logo.png",
       "type": "image/png",
       "sizes": "512x512"
     }
