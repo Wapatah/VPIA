@@ -19,6 +19,8 @@ class App extends React.Component {
 
   handleLogout() {
     window.localStorage.setItem("userToken", "");
+    window.localStorage.setItem("user_id", "");
+    window.localStorage.setItem("admin", "");
     Alert.success("You've been successfully logged out");
   }
 
@@ -67,7 +69,7 @@ class App extends React.Component {
           {window.localStorage.getItem("userToken") ? (
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
               <ul className="navbar-nav ml-auto">
-                {window.localStorage.getItem("userId") == 1 ? (
+                {window.localStorage.getItem("admin") === "true" ? (
                   <li className="nav-item px-2">
                     <button
                       type="button"

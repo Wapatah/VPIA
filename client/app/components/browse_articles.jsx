@@ -81,7 +81,7 @@ class BrowseArticles extends React.Component {
                     <i className="fa fa-clock-o"></i>{" "}
                     {new Date(
                       article.updated_at.replace(" ", "T")
-                    ).toLocaleString()}
+                    ).toUTCString()}
                   </small>
                 </p>
               </div>

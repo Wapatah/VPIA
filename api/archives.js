@@ -6,7 +6,15 @@ This file contains all endpoints related to archives
 var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
 
-module.exports = function(app, archiveObj, userObj) {
+/* 
+@Mordax
+Mongo represents it's unique IDs as BSON objects, so we need to convert
+the API request identifiers to BSON to properly find documents.
+*/
+
+var ObjectId = require("mongodb").ObjectId;
+
+module.exports = function(app) {
   /*
   @Matterwiki
   This is a GET endpoint that responds with one article of the specific ID (identified through the ID param)
@@ -14,20 +22,13 @@ module.exports = function(app, archiveObj, userObj) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/archives/:id/", function(req, res) {
-    Archives.forge({ id: req.params.id })
-      .fetch()
+    var id = new ObjectId(req.params.id);
+    Archives.find({ where: { _id: id } })
       .then(function(archive) {
-        Users.forge({ id: archive.attributes.user_id })
-          .fetch()
+        var user_id = new ObjectId(archive[0].user_id);
+        Users.find({ where: { _id: user_id } })
           .then(function(user) {
-            archiveObj = archive.toJSON();
-            userObj = user.toJSON();
-            archiveObj.user = {
-              id: userObj.id,
-              name: userObj.name,
-              email: userObj.email,
-              about: userObj.about
-            };
+            archive[0].users(user);
           })
           .then(function() {
             res.json({
@@ -36,7 +37,7 @@ module.exports = function(app, archiveObj, userObj) {
                 message: ""
               },
               code: "B113",
-              data: archiveObj
+              data: archive
             });
           });
       })
@@ -44,7 +45,7 @@ module.exports = function(app, archiveObj, userObj) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "GET: /archives/:id " + error.message
           },
           code: "B114",
           data: {}

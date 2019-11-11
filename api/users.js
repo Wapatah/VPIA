@@ -11,6 +11,14 @@ var bcrypt = require("bcryptjs");
 var Articles = require("../models/article.js");
 const saltRounds = 10;
 
+/* 
+@Mordax
+Mongo represents it's unique IDs as BSON objects, so we need to convert
+the API request identifiers to BSON to properly find documents.
+*/
+
+var ObjectId = require("mongodb").ObjectId;
+
 module.exports = function(app) {
   /*
   @Matterwiki
@@ -21,13 +29,13 @@ module.exports = function(app) {
   */
   app.post("/users", function(req, res) {
     bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-      Users.forge()
-        .save({
-          name: req.body.name,
-          email: req.body.email,
-          password: hash,
-          about: req.body.about
-        })
+      Users.create({
+        admin: false,
+        name: req.body.name,
+        email: req.body.email,
+        password: hash,
+        about: req.body.about
+      })
         .then(function(collection) {
           res.json({
             error: {
@@ -42,7 +50,7 @@ module.exports = function(app) {
           res.status(500).json({
             error: {
               error: true,
-              message: error.message
+              message: "POST /users: " + error.message
             },
             code: "B132",
             data: {}
@@ -57,12 +65,7 @@ module.exports = function(app) {
     the topics are present in the data object in the returning object.
     the error key in the returning object is a boolen which is false if there is no error and true otherwise
     */
-    Users.forge()
-      .query(function(qb) {
-        qb.select("id", "name", "about", "email");
-        qb.orderBy("created_at", "DESC");
-      })
-      .fetchAll()
+    Users.all({ where: {} })
       .then(function(collection) {
         res.json({
           error: {
@@ -70,14 +73,14 @@ module.exports = function(app) {
             message: ""
           },
           code: "B133",
-          data: collection.toJSON()
+          data: collection
         });
       })
       .catch(function(error) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "GET /users: " + error.message
           },
           code: "B134",
           data: {}
@@ -93,68 +96,44 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.put("/users", function(req, res) {
-    if (req.body.password != null) {
-      bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-        Users.forge({ id: req.body.id })
-          .save({
-            name: req.body.name,
-            email: req.body.email,
-            password: hash,
-            about: req.body.about
-          })
-          .then(function() {
-            res.json({
-              error: {
-                error: false,
-                message: ""
-              },
-              code: "B135",
-              data: {
-                name: req.body.name,
-                email: req.body.email,
-                about: req.body.about
-              }
-            });
-          })
-          .catch(function(error) {
-            res.status(500).json({
-              error: {
-                error: true,
-                message: error.message
-              },
-              code: "B136",
-              data: {}
-            });
-          });
-      });
-    } else {
-      Users.forge({ id: req.body.id })
-        .save({
+    var id = new ObjectId(req.body.id);
+    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+      Users.update(
+        {
+          _id: id
+        },
+        {
           name: req.body.name,
           email: req.body.email,
+          password: hash,
           about: req.body.about
-        })
-        .then(function(collection) {
+        }
+      )
+        .then(function() {
           res.json({
             error: {
               error: false,
               message: ""
             },
             code: "B135",
-            data: collection.toJSON()
+            data: {
+              name: req.body.name,
+              email: req.body.email,
+              about: req.body.about
+            }
           });
         })
         .catch(function(error) {
           res.status(500).json({
             error: {
               error: true,
-              message: error.message
+              message: "PUT /users: " + error.message
             },
             code: "B136",
             data: {}
           });
         });
-    }
+    });
   });
 
   /*
@@ -164,42 +143,61 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.delete("/users", function(req, res) {
-    Users.where({ id: req.body.id })
-      .fetch({ withRelated: ["articles"] })
-      .then(function(user) {
-        user = user.toJSON();
-        var articles = user.articles;
-        for (var i = 0; i < articles.length; i++) {
-          Articles.forge({ id: articles[i].id }).save({
-            title: articles[i].title,
-            body: articles[i].body,
-            topic_id: articles[i].topic_id,
-            what_changed: articles[i].what_changed,
-            user_id: 1
-          });
-        }
-      })
+    Users.destroyById(req.body.id)
       .then(function() {
-        Users.forge({ id: req.body.id })
-          .destroy()
-          .then(function() {
+        Articles.find({ where: { user_id: req.body.id } }).then(collection => {
+          if (collection) {
+            Articles.update(
+              {
+                where: {
+                  user_id: req.body.id
+                }
+              },
+              {
+                user_id: 1
+              }
+            )
+              .then(() => {
+                res.json({
+                  error: {
+                    error: false,
+                    message: ""
+                  },
+                  code: "B127",
+                  data: {}
+                });
+              })
+              .catch(error => {
+                res.status(500).json({
+                  error: {
+                    error: true,
+                    message:
+                      "DELETE /users (failed to move Articles): " +
+                      error.message
+                  },
+                  code: "",
+                  data: {}
+                });
+              });
+          } else {
             res.json({
               error: {
                 error: false,
                 message: ""
               },
-              code: "B137",
+              code: "B127",
               data: {}
             });
-          });
+          }
+        });
       })
       .catch(function(error) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "DELETE /users: " + error.message
           },
-          code: "B138",
+          code: "B128",
           data: {}
         });
       });
@@ -211,11 +209,7 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/users/:id", function(req, res) {
-    Users.forge({ id: req.params.id })
-      .query(function(qb) {
-        qb.select("id", "name", "about", "email");
-      })
-      .fetch()
+    Users.find({ where: { id: req.params.id } })
       .then(function(user) {
         res.json({
           error: {
@@ -223,14 +217,14 @@ module.exports = function(app) {
             message: ""
           },
           code: "B133",
-          data: user.toJSON()
+          data: user
         });
       })
       .catch(function(error) {
         res.status(500).json({
           error: {
             error: true,
-            message: error.message
+            message: "GET /use/:id/: " + error.message
           },
           code: "B134",
           data: {}

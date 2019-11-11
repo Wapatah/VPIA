@@ -29,7 +29,7 @@ export default function() {
       <Route path="article/:articleId" component={Article} />
       <Route path="admin" component={Admin} />
       <Route path="topic/edit/:topicId" component={EditTopic} />
-      <Route path="user/edit/:userId" component={EditUser} />
+      <Route path="user/edit/:user_id" component={EditUser} />
       <Route path="search" component={Search} />
       <Route path="setup" component={Setup} />
       <Route path="user_signup" component={UserSignup} />

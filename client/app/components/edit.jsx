@@ -2,6 +2,11 @@ import React from "react";
 import { hashHistory } from "react-router";
 import Alert from "react-s-alert";
 import Loader from "./loader.jsx";
+import CKEditor from "ckeditor4-react";
+import EditorPreview from "./helpers/editor_preview.jsx";
+
+//@Mordax - you can edit the ckeditor file to add and remove plugins
+import CKConfig from "../../../config/ckeditor.js";
 
 class EditArticle extends React.Component {
   constructor(props) {
@@ -17,8 +22,10 @@ class EditArticle extends React.Component {
     };
   }
 
-  handleChange() {
-    this.setState({ body: this.refs.body.value, title: this.refs.title.value });
+  handleChange(data) {
+    this.setState({ title: this.refs.title.value });
+    this.refs.body.value = data.getData();
+    this.setState({ body: this.refs.body.value });
   }
 
   handleSubmit(e) {
@@ -45,7 +52,7 @@ class EditArticle extends React.Component {
           "&topic_id=" +
           topicId +
           "&user_id=" +
-          window.localStorage.getItem("userId") +
+          window.localStorage.getItem("user_id") +
           "&what_changed=" +
           what_changed
       };
@@ -81,9 +88,9 @@ class EditArticle extends React.Component {
         if (response.error.error) Alert.error(response.error.message);
         else {
           that.setState({
-            body: response.data.body,
-            title: response.data.title,
-            topic_id: response.data.topic_id
+            body: response.data[0].body,
+            title: response.data[0].title,
+            topic_id: response.data[0].topic_id
           });
         }
         that.setState({ loading: false });
@@ -124,20 +131,17 @@ class EditArticle extends React.Component {
           <br />
           <div className="row">
             <div className="col-md-12 new-article-form">
-              <trix-toolbar id="my_toolbar"></trix-toolbar>
-              <trix-editor
-                toolbar="my_toolbar"
-                input="my_input"
-                placeholder="Start writing here...."
-                class="input-body"
-              ></trix-editor>
-              <input
-                id="my_input"
-                type="hidden"
-                value={this.state.body}
+              <CKEditor
+                onBeforeLoad={() => (CKEDITOR.disableAutoInline = true)}
+                id="cktextarea"
+                data={this.state.body}
                 ref="body"
-                onChange={this.handleChange}
+                onChange={() => this.handleChange(CKEDITOR.currentInstance)}
+                type="classic"
+                config={CKConfig}
               />
+              <br />
+              <EditorPreview data={this.state.body} />
               <br />
               <label>Choose topic</label>
               <select

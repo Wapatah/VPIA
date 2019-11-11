@@ -1,10 +1,10 @@
 $(".modal-fullscreen").on("show.bs.modal", function() {
-    setTimeout(function() {
-        $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
-    }, 0);
+  setTimeout(function() {
+    $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+  }, 0);
 });
 $(".modal-fullscreen").on("hidden.bs.modal", function() {
-    $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+  $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
 });
 
 $(window).scroll(function() {

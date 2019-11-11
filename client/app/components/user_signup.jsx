@@ -3,7 +3,6 @@ import { hashHistory, Link } from "react-router";
 import Alert from "react-s-alert";
 import Loader from "./loader.jsx";
 
-
 class UserSignup extends React.Component {
   constructor(props) {
     super(props);
@@ -53,15 +52,15 @@ class UserSignup extends React.Component {
       });
   }
 
-  handleEmailChange (event){
+  handleEmailChange(event) {
     this.setState({ email: event.target.value });
   }
 
-  handlePasswordChange (event) {
+  handlePasswordChange(event) {
     this.setState({ password: event.target.value });
   }
 
-  handleSubmit (){
+  handleSubmit() {
     const { email, password } = this.state;
     alert(`Signed up with email: ${email} password: ${password}`);
   }

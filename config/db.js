@@ -1,10 +1,20 @@
-// @Matterwiki - requiring the knexfile that contains our connection object.
-var config = require("../config/knexfile.js");
-// @Matterwiki - imports knex with our connection object (found in knexfile).
-var knex = require("knex")(config);
+/* 
+@Mordax
+The Database config file. This is were Caminte (an database agnostic Javascript ORM)
+is configured. If you require a different database, Caminte's github has 
+examples of how to specify configs for various drivers.
+Caminte supports SQL (like MySQL), and NoSQL (like Mongo and Neo4j).
+*/
+var caminte = require("caminte");
+var Schema = caminte.Schema;
 
-// @Matterwiki - Export the knex library for use. All knex commands remain the same.
-module.exports = knex;
+var config = {
+  driver: "mongodb",
+  host: "localhost",
+  database: "myapp_test",
+  pool: false
+};
 
-// @Matterwiki - Run the latest DB migrations whenever the server starts.
-knex.migrate.latest([config]);
+var schema = new Schema(config.driver, config);
+
+module.exports = schema;

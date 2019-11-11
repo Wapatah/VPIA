@@ -1,10 +1,11 @@
 const webpack = require("webpack");
 const path = require("path");
 
-const BUILD_DIR = path.resolve(__dirname, "client/public");
-const APP_DIR = path.resolve(__dirname, "client/app");
+const BUILD_DIR = path.resolve(__dirname, "../client/public");
+const APP_DIR = path.resolve(__dirname, "../client/app");
 
 module.exports = {
+  mode: "production",
   entry: [
     // @Matterwiki - polyfill for fetch API (Safari)
     // TODO a better way to handle this, maybe?
@@ -12,6 +13,9 @@ module.exports = {
     // @Matterwiki - entry point
     APP_DIR + "/index.jsx"
   ],
+  performance: {
+    hints: false // @Mordax - removes performance warning popups for now
+  },
   output: {
     path: BUILD_DIR,
     filename: "bundle.js",
@@ -19,27 +23,20 @@ module.exports = {
   },
   devtool: "source-map",
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?/,
-        loader: "babel-loader",
         include: APP_DIR,
         exclude: /node_modules/,
-        query: {
-          presets: ["es2015", "react"]
+        type: "javascript/auto",
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"]
+          }
         }
       }
     ]
   },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
-    })
-  ]
+  plugins: []
 };
