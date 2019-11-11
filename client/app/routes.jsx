@@ -14,12 +14,14 @@ import Setup from "./components/setup.jsx";
 import EditTopic from "./components/edit_topics.jsx";
 import EditUser from "./components/edit_users.jsx";
 import UserSignup from "./components/user_signup.jsx";
+import Landing from "./components/landing.jsx";
 
 export default function() {
   return (
     <Route path="/" component={App}>
-      <IndexRoute component={Login} />
+      <IndexRoute component={Landing} />
       <Route path="home" component={Home} />
+      <Route path="landing" component={Landing} />
       <Route path="login" component={Login} />
       <Route path="article/new" component={NewArticle} />
       <Route path="article/edit/:articleId" component={EditArticle} />

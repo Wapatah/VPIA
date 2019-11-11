@@ -11,6 +11,14 @@ var bcrypt = require("bcryptjs");
 var Articles = require("../models/article.js");
 const saltRounds = 10;
 
+/* 
+@Mordax
+Mongo represents it's unique IDs as BSON objects, so we need to convert
+the API request identifiers to BSON to properly find documents.
+*/
+
+var ObjectId = require("mongodb").ObjectId;
+
 module.exports = function(app) {
   /*
   @Matterwiki
@@ -22,6 +30,7 @@ module.exports = function(app) {
   app.post("/users", function(req, res) {
     bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
       Users.create({
+        admin: false,
         name: req.body.name,
         email: req.body.email,
         password: hash,
@@ -87,76 +96,44 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.put("/users", function(req, res) {
-    if (req.body.password != null) {
-      bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-        Users.update(
-          {
-            id: req.body.id
-          },
-          {
-            name: req.body.name,
-            email: req.body.email,
-            password: hash,
-            about: req.body.about
-          }
-        )
-          .then(function() {
-            res.json({
-              error: {
-                error: false,
-                message: ""
-              },
-              code: "B135",
-              data: {
-                name: req.body.name,
-                email: req.body.email,
-                about: req.body.about
-              }
-            });
-          })
-          .catch(function(error) {
-            res.status(500).json({
-              error: {
-                error: true,
-                message: "PUT /users (with password): " + error.message
-              },
-              code: "B136",
-              data: {}
-            });
-          });
-      });
-    } else {
+    var id = new ObjectId(req.body.id);
+    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
       Users.update(
         {
-          id: req.body.id
+          _id: id
         },
         {
           name: req.body.name,
           email: req.body.email,
+          password: hash,
           about: req.body.about
         }
       )
-        .then(function(collection) {
+        .then(function() {
           res.json({
             error: {
               error: false,
               message: ""
             },
             code: "B135",
-            data: collection
+            data: {
+              name: req.body.name,
+              email: req.body.email,
+              about: req.body.about
+            }
           });
         })
         .catch(function(error) {
           res.status(500).json({
             error: {
               error: true,
-              message: "PUT /users (no password): " + error.message
+              message: "PUT /users: " + error.message
             },
             code: "B136",
             data: {}
           });
         });
-    }
+    });
   });
 
   /*
@@ -194,7 +171,9 @@ module.exports = function(app) {
                 res.status(500).json({
                   error: {
                     error: true,
-                    message:  "DELETE /users (failed to move Articles): " + error.message
+                    message:
+                      "DELETE /users (failed to move Articles): " +
+                      error.message
                   },
                   code: "",
                   data: {}
@@ -216,7 +195,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message:  "DELETE /users: " + error.message
+            message: "DELETE /users: " + error.message
           },
           code: "B128",
           data: {}

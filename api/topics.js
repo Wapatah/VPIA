@@ -32,7 +32,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message:  "GET /topics: " + error.message
+            message: "GET /topics: " + error.message
           },
           code: "B124",
           data: {}
@@ -62,7 +62,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message:  "GET /topics/:id/: " + error.message
+            message: "GET /topics/:id/: " + error.message
           },
           code: "B124",
           data: {}
@@ -77,7 +77,10 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/topic/:id/articles", function(req, res) {
-    Articles.find({ where: { topic_id: req.params.id } })
+    Articles.find({
+      where: { topic_id: req.params.id },
+      order: "updated_at DESC"
+    })
       .then(function(article) {
         res.status(200).json({
           error: {
@@ -92,7 +95,7 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message:  "GET /topics/:id/articles: " + error.message
+            message: "GET /topics/:id/articles: " + error.message
           },
           code: "B130",
           data: {}

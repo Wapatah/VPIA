@@ -10,12 +10,6 @@ class ViewArticle extends React.Component {
     this.state = { article: {}, loading: true };
   }
 
-  componentDidUpdate() {
-    if (this.props.location.query.new) {
-      $("#myModal").modal("show");
-    }
-  }
-
   componentDidMount() {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
@@ -81,6 +75,12 @@ class ViewArticle extends React.Component {
                   {this.state.article[0].title}
                 </h1>
                 <div className="single-article-meta">
+                  Created on{" "}
+                  {new Date(
+                    this.state.article[0].created_at.replace(" ", "T")
+                  ).toUTCString()}
+                </div>
+                <div className="single-article-meta">
                   Last updated on{" "}
                   {new Date(
                     this.state.article[0].updated_at.replace(" ", "T")
@@ -126,7 +126,7 @@ class ViewArticle extends React.Component {
               >
                 History
               </Link>
-              {window.localStorage.getItem("user_id") == 1 ? (
+              {window.localStorage.getItem("admin") === "true" ? (
                 <button
                   className="btn btn-default btn-block btn-lg"
                   onClick={this.deleteArticle}

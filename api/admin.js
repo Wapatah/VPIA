@@ -24,6 +24,14 @@ which is primarily used for uploading files.
 var Topics = require("../models/topic.js");
 var Articles = require("../models/article.js");
 
+/* 
+@Mordax
+Mongo represents it's unique IDs as BSON objects, so we need to convert
+the API request identifiers to BSON to properly find documents.
+*/
+
+var ObjectId = require("mongodb").ObjectId;
+
 module.exports = function(app) {
   /*
   @Matterwiki
@@ -52,7 +60,7 @@ module.exports = function(app) {
               res.status(500).json({
                 error: {
                   error: true,
-                  message:  "POST /topics: failed to create " + error.message
+                  message: "POST /topics: failed to create " + error.message
                 },
                 code: "B122",
                 data: {}
@@ -73,7 +81,8 @@ module.exports = function(app) {
         res.status(500).json({
           error: {
             error: true,
-            message:  "POST /topics: failed to find existing topics " + error.message
+            message:
+              "POST /topics: failed to find existing topics " + error.message
           },
           code: "",
           data: {}
@@ -91,9 +100,10 @@ module.exports = function(app) {
   TODO: Add updates only for columns that are in the request body. Handle exceptions.
   */
   app.put("/topics", function(req, res) {
+    var id = new ObjectId(req.body.id);
     Topics.update(
       {
-        id: req.body.id
+        _id: id
       },
       {
         name: req.body.name,
@@ -169,7 +179,9 @@ module.exports = function(app) {
                     res.status(500).json({
                       error: {
                         error: true,
-                        message:  "DELETE /articles: Article update failed " + error.message
+                        message:
+                          "DELETE /articles: Article update failed " +
+                          error.message
                       },
                       code: "",
                       data: {}
@@ -192,7 +204,7 @@ module.exports = function(app) {
           res.status(500).json({
             error: {
               error: true,
-              message:  "DELETE /topics: " + error.message
+              message: "DELETE /topics: " + error.message
             },
             code: "B128",
             data: {}

@@ -54,6 +54,7 @@ class BrowseArticles extends React.Component {
         that.setState({ loading: false });
       });
   }
+
   render() {
     if (this.state.loading) return <Loader />;
     if (this.state.articles.length < 1) {
@@ -64,21 +65,28 @@ class BrowseArticles extends React.Component {
       );
     } else {
       return (
-        <div>
-          <div className="article-list">
-            {this.state.articles.map(article => (
-              <div key={article.id} className="article-item">
-                <div className="article-item-title">
-                  <Link to={"/article/" + article.id}>{article.title}</Link>
-                </div>
-                <div className="article-item-description">
-                  Last updated on{" "}
-                  {new Date(article.updated_at.replace(" ", "T")).toUTCString()}
-                </div>
-                <hr className="article-separator"></hr>
+        <div className="card-deck">
+          {this.state.articles.slice(0, 4).map(article => (
+            <div key={article.id} className="card card-block">
+              <img src="..." className="card-img-top" alt="..."></img>
+              <div className="card-body">
+                <p className="article-title">
+                  <Link to={"/article/" + article.id} className="text-dark">
+                    {article.title}
+                  </Link>
+                </p>
+                <p className="card-text"></p>
+                <p className="card-text">
+                  <small class="text-muted">
+                    <i className="fa fa-clock-o"></i>{" "}
+                    {new Date(
+                      article.updated_at.replace(" ", "T")
+                    ).toUTCString()}
+                  </small>
+                </p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       );
     }

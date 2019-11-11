@@ -3,6 +3,7 @@ import Login from "./login.jsx";
 import SearchForm from "./searchform.jsx";
 import { Link, hashHistory } from "react-router";
 import Alert from "react-s-alert";
+import MainNav from "./main_nav.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends React.Component {
   handleLogout() {
     window.localStorage.setItem("userToken", "");
     window.localStorage.setItem("user_id", "");
+    window.localStorage.setItem("admin", "");
     Alert.success("You've been successfully logged out");
   }
 
@@ -26,80 +28,199 @@ class App extends React.Component {
     var that = this;
     return (
       <div>
-        <nav className="navbar container-fluid navbar-default">
+        <nav className="navbar navbar-expand-md mainheader">
           {window.localStorage.getItem("userToken") ? (
-            <div className="navbar-header">
+            <div className="navbar">
               <button
                 type="button"
-                className="navbar-toggle collapsed"
+                className="navbar-toggler"
                 data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1"
-                aria-expanded="false"
+                data-target="#collapsibleNavbar"
               >
                 <span className="sr-only">Toggle navigation</span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link
-                to="home"
-                className="navbar-brand"
-                aria-label="homepage link"
-              >
-                <img
-                  class="navbar-brand"
-                  src="../assets/logo.png"
-                  alt="VPIA logo"
-                  aria-label="VPIA logo"
-                ></img>
-              </Link>
             </div>
           ) : (
-            <center>
-              <a className="navbar-login-logo" href="#">
-                <img src="../assets/logo.png" alt="Site logo"></img>
-              </a>
-            </center>
+            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item px-2">
+                  <button
+                    type="button"
+                    className="btn btn-outline-light btn-round"
+                  >
+                    <Link to="user_signup" className="none-deco">
+                      Join Now!
+                    </Link>
+                  </button>
+                </li>
+                <li className="nav-item">
+                  <button type="button" className="btn btn-secondary btn-round">
+                    <Link to="login" className="btn-text">
+                      Sign In
+                    </Link>
+                  </button>
+                </li>
+              </ul>
+            </div>
           )}
           {window.localStorage.getItem("userToken") ? (
-            <div
-              className="collapse navbar-collapse"
-              id="bs-example-navbar-collapse-1"
-            >
-              <ul className="nav navbar-nav navbar-right">
-                {window.localStorage.getItem("user_id") == 1 ? (
-                  <li>
-                    <Link to="admin" className="">
-                      Admin
-                    </Link>
+            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+              <ul className="navbar-nav ml-auto">
+                {window.localStorage.getItem("admin") === "true" ? (
+                  <li className="nav-item px-2">
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-round"
+                    >
+                      <Link to="admin" className="btn-text">
+                        Admin
+                      </Link>
+                    </button>
                   </li>
                 ) : (
                   ""
                 )}
-                <li>
-                  <Link to="article/new" className="">
-                    New Article
-                  </Link>
+                <li className="nav-item px-2">
+                  <button type="button" className="btn btn-secondary btn-round">
+                    <Link to="article/new" className="btn-text">
+                      New Article
+                    </Link>
+                  </button>
                 </li>
-                <li>
-                  <a href="" onClick={this.handleLogout}>
-                    Logout
-                  </a>
+                <li className="nav-item">
+                  <button type="button" className="btn btn-secondary btn-round">
+                    <a href="" className="btn-text" onClick={this.handleLogout}>
+                      Logout
+                    </a>
+                  </button>
                 </li>
               </ul>
-              <SearchForm />
             </div>
           ) : (
             <div />
           )}
         </nav>
-        <div className="content container">{that.props.children}</div>
-        {/* @Mordax - this doesn't centre with the rest of the content container, fix later. */}
-        {/* <div className="footer center-align">
-          <div className="help-block">
-            Powered by <a href="http://matterwiki.com">Matterwiki</a>
+        <MainNav />
+        <div>{that.props.children}</div>
+        <footer className="footer">
+          <div className="container bottom_border">
+            <div className="row">
+              <div className="col col-lg-2">
+                <img
+                  src="../assets/logos/logo-white.png"
+                  width="auto"
+                  height="76"
+                  alt="VPIA logo"
+                  aria-label="VPIA logo"
+                ></img>
+              </div>
+              <div className="col col-2">
+                <ul className="footer_ul">
+                  <li>
+                    <a href="">Home</a>
+                  </li>
+
+                  <li>
+                    <a href="">VPIA</a>
+                  </li>
+
+                  <li>
+                    <a href="">Artwork</a>
+                  </li>
+
+                  <li>
+                    <a href="">Contact</a>
+                  </li>
+                </ul>
+              </div>
+              <div className="col col-2">
+                <ul className="footer_ul">
+                  <li>
+                    <a href="">Help</a>
+                  </li>
+
+                  <li>
+                    <a href="">Terms</a>
+                  </li>
+
+                  <li>
+                    <a href="">Tutorials</a>
+                  </li>
+
+                  <li>
+                    <a href="">Careers</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="col-sm-3 col-6 col">
+                <div className="social-icons">
+                  <ul className="social-network">
+                    <li>
+                      <a href="#" aria-label="Instagram icon">
+                        <i className="fa fa-instagram"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" aria-label="Twitter icon">
+                        <i className="fa fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" aria-label="Facebook icon">
+                        <i className="fa fa-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" aria-label="Website icon">
+                        <i className="fa fa-globe"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="input-group mb-3">
+                  <input
+                    type="text"
+                    className="form-control email-form"
+                    placeholder="Stay in touch"
+                    ref="search"
+                    aria-label="Write an Email here"
+                  />
+                  <div className="input-group-append">
+                    <button
+                      type="submit"
+                      className="btn btn-outline-secondary email-button"
+                      aria-label="Email button"
+                    >
+                      <i className="fa fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="col col-md-3 ml-md-auto">
+                <img
+                  src="../assets/logos/logo-ocad.png"
+                  width="auto"
+                  height="54"
+                  className="float-right"
+                  alt="VPIA logo"
+                  aria-label="VPIA logo"
+                ></img>
+                <img
+                  src="../assets/logos/logo-wapatah.png"
+                  width="auto"
+                  height="54"
+                  className="float-right"
+                  alt="VPIA logo"
+                  aria-label="VPIA logo"
+                ></img>
+              </div>
+            </div>
           </div>
-        </div> */}
+        </footer>
         <Alert stack={{ limit: 3 }} position="bottom" />
       </div>
     );
