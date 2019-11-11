@@ -42,7 +42,7 @@ class Login extends React.Component {
           window.localStorage.setItem("admin", response.data.user.admin);
           window.localStorage.setItem("user_id", response.data.user.id);
           window.localStorage.setItem("userEmail", response.data.user.token);
-          hashHistory.push("home");
+          hashHistory.push("landing");
           Alert.success("You are now logged in");
         }
       });
