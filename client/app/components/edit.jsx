@@ -1,8 +1,9 @@
 import React from "react";
 import { hashHistory } from "react-router";
-import Alert from "react-s-alert";
+//import Alert from "react-s-alert";
 import Loader from "./loader.jsx";
-import CKEditor from "ckeditor4-react";
+import CKEditor from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import EditorPreview from "./helpers/editor_preview.jsx";
 
 //@Mordax - you can edit the ckeditor file to add and remove plugins
@@ -30,7 +31,7 @@ class EditArticle extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    var body = this.refs.body.value;
+    var body = this.state.body;
     var title = this.refs.title.value;
     var topicId = this.refs.topic.value;
     var what_changed = this.refs.what_changed.value;
@@ -62,14 +63,14 @@ class EditArticle extends React.Component {
           return response.json();
         })
         .then(function(response) {
-          if (response.error.error) Alert.error(response.error.message);
+          if (response.error.error){} //Alert.error(response.error.message);
           else {
-            Alert.success("Article has been successfully saved");
+            //Alert.success("Article has been successfully saved");
             hashHistory.push("article/" + that.props.params.articleId);
           }
         });
     } else {
-      Alert.error("Article Body, Title, Topic and Change Info is required.");
+      //Alert.error("Article Body, Title, Topic and Change Info is required.");
     }
   }
 
@@ -85,7 +86,7 @@ class EditArticle extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error){} //Alert.error(response.error.message);
         else {
           that.setState({
             body: response.data[0].body,
@@ -106,7 +107,7 @@ class EditArticle extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error){} //Alert.error(response.error.message);
         else {
           that.setState({ topics: response.data });
         }
@@ -132,12 +133,15 @@ class EditArticle extends React.Component {
           <div className="row">
             <div className="col-md-12 new-article-form">
               <CKEditor
-                onBeforeLoad={() => (CKEDITOR.disableAutoInline = true)}
-                id="cktextarea"
+                editor={ClassicEditor}
+                onInit={()=> {
+                  console.log("Editor is ready.");
+              } }
                 data={this.state.body}
-                ref="body"
-                onChange={() => this.handleChange(CKEDITOR.currentInstance)}
-                type="classic"
+                onChange={ (event, editor) => {
+                  let body = this.state.body;
+                  this.setState({ body: editor.getData()});
+                }}
                 config={CKConfig}
               />
               <br />
