@@ -6,12 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Description" content="VPIA: Virtual Platform for Indigenous Art">
-
-    <!-- @Mordax - Manifest used for PWA and downloading the application onto other devices -->
-    <link rel="manifest" href="./manifest.json" />
-    <link rel="apple-touch-icon" href="./images.png" />
-    <meta name="theme-color" content="#208778" />
-
+    
     <noscript>
       Javascript is required to be enabled to view this site properly.
     </noscript>
@@ -30,17 +25,5 @@
     -->
     <div id="app" class="container" />
     <script src="public/bundle.js" type="text/javascript" async></script>
-    <!--
-      @Mordax
-      Registering a Service Worker for caching pages offline
-    -->
-    <script>
-      if('serviceWorker' in navigator) {
-        navigator.serviceWorker
-           .register('./service-worker.js')
-           .then(function() { console.log("Service Worker Registered"); });
-      }
-    </script>
-
   </body>
 </html>
