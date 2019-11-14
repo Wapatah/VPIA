@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import Loader from "./loader.jsx";
-import Alert from "react-s-alert";
+//import Alert from "react-s-alert";
 
 class SimpleArticle extends React.Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class SimpleArticle extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error){} //Alert.error(response.error.message);
         else {
           that.setState({ article: response.data });
         }
