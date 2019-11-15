@@ -2,8 +2,9 @@ import React from "react";
 import { hashHistory } from "react-router";
 //import Alert from "react-s-alert";
 import Loader from "./loader.jsx";
+
 import CKEditor from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import EditorPreview from "./helpers/editor_preview.jsx";
 
 //@Mordax - you can edit the ckeditor file to add and remove plugins

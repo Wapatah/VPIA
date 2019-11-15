@@ -2,12 +2,14 @@ import React from "react";
 import { hashHistory } from "react-router";
 import Loader from "./loader.jsx";
 //import Alert from "react-s-alert";
+
 import CKEditor from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import EditorPreview from "./helpers/editor_preview.jsx";
 
 // @Mordax - CKEditor file was made for easy configuration and DRY reasons
 import CKConfig from "../../../config/ckeditor";
+
 
 class NewArticle extends React.Component {
   constructor(props) {
