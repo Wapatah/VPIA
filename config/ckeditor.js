@@ -14,16 +14,20 @@ import HorizontalLine from "@ckeditor/ckeditor5-horizontal-line/src/horizontalli
 
 import Image from "@ckeditor/ckeditor5-image/src/image";
 import ImageToolbar from "@ckeditor/ckeditor5-image/src/imagetoolbar";
-import ImageCaption from "@ckeditor/ckeditor5-image/src/imagecaption";
 import ImageStyle from "@ckeditor/ckeditor5-image/src/imagestyle";
 import ImageResize from "@ckeditor/ckeditor5-image/src/imageresize";
 import ImageUpload from "@ckeditor/ckeditor5-image/src/imageupload";
 
+import Undo from "@ckeditor/ckeditor5-undo/src/undo";
+import Redo from "@ckeditor/ckeditor5-undo/src/redocommand";
+
 import SimpleUploadAdapter from "@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter";
 
+import Link from "@ckeditor/ckeditor5-link/src/link";
+
 let config = {
-  plugins: [ Essentials, Bold, Italic, Paragraph, Underline, Heading, HorizontalLine, Image, ImageToolbar, ImageCaption, ImageStyle, ImageResize, ImageUpload, SimpleUploadAdapter ],
-  toolbar: [ "bold", "italic", "underline", "heading", "horizontalLine", "imageTextAlternative", "|", "imageStyle:full", "imageStyle:side", "ImageUpload"],
+  plugins: [ Essentials, Bold, Italic, Paragraph, Underline, Heading, HorizontalLine, Image, ImageToolbar, ImageStyle, ImageResize, ImageUpload, SimpleUploadAdapter, Link, Undo, Redo ],
+  toolbar: [ "bold", "italic", "underline", "|", "link", "heading", "horizontalLine", "ImageUpload", "undo", "redoCommand"],
   image: {
     toolbar: ["imageTextAlternative", "|", "imageStyle:full", "imageStyle:side" ]
   },
