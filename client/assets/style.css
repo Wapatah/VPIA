@@ -768,6 +768,7 @@ ul.social-network li {
 .image-bg {
   background: #75777b80;
 }
+
 /* equal card height */
 .row-equal > div[class*="col-"] {
   display: flex;
@@ -790,10 +791,4 @@ ul.social-network li {
 .carousel-inner > .row-equal.active.right {
   opacity: 0.5;
   display: flex;
-}
-
-/* control image height */
-.card-img-top-250 {
-  max-height: 250px;
-  overflow: hidden;
 }

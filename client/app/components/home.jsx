@@ -24,8 +24,8 @@ class Home extends React.Component {
     else
       return (
         <div className="container-fluid">
-          <div className="row justify-content-md-center lex-row flex-nowrap">
-            <div className="col-8">
+          <div className="row justify-content-md-center">
+            <div className="container p-t-3">
               <h5 className="title-primary underline-brush">Recent Artworks</h5>
               <BrowseArticles topicId={this.state.topicId} />
             </div>

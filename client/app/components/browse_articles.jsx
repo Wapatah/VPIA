@@ -65,19 +65,25 @@ class BrowseArticles extends React.Component {
       );
     } else {
       return (
-        <div className="carousel slide" data-ride="carousel">
-          <div className="container">
+        <div
+          className="carousel slide"
+          data-ride="carousel"
+          id="carouselExampleControls"
+        >
+          <div className="container-fluid">
             <div className="row">
               <div className="col-12 text-right mb-4">
                 <a
-                  className="btn btn-outline-secondary prev"
+                  className="btn prev"
+                  href="#carouselExampleControls"
                   title="go back"
                   data-slide="prev"
                 >
                   <i className="fa fa-lg fa-chevron-left"></i>
                 </a>
                 <a
-                  className="btn btn-outline-secondary next"
+                  className="btn next"
+                  href="#carouselExampleControls"
                   title="more"
                   data-slide="next"
                 >
@@ -89,8 +95,8 @@ class BrowseArticles extends React.Component {
 
           <div className="container p-t-0 m-t-2 carousel-inner">
             <div className="row row-equal carousel-item active m-t-0">
-              {this.state.articles.slice(0, 3).map(article => (
-                <div key={article.id} className="col-md-4">
+              {this.state.articles.slice(0, 4).map(article => (
+                <div key={article.id} className="col-md-3">
                   <div className="card">
                     <img
                       src="../assets/Placeholder.jpeg"
@@ -121,8 +127,8 @@ class BrowseArticles extends React.Component {
               ))}
             </div>
             <div className="row row-equal carousel-item m-t-0">
-              {this.state.articles.slice(3, 8).map(article => (
-                <div key={article.id} className="col-md-4">
+              {this.state.articles.slice(4, 8).map(article => (
+                <div key={article.id} className="col-md-3">
                   <div className="card">
                     <img
                       src="../assets/Placeholder.jpeg"
