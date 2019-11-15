@@ -17,11 +17,19 @@ import ImageToolbar from "@ckeditor/ckeditor5-image/src/imagetoolbar";
 import ImageCaption from "@ckeditor/ckeditor5-image/src/imagecaption";
 import ImageStyle from "@ckeditor/ckeditor5-image/src/imagestyle";
 import ImageResize from "@ckeditor/ckeditor5-image/src/imageresize";
+import ImageUpload from "@ckeditor/ckeditor5-image/src/imageupload";
 
+import SimpleUploadAdapter from "@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter";
 
 let config = {
-  plugins: [ Essentials, Bold, Italic, Paragraph, Underline, Heading, HorizontalLine,  Image, ImageToolbar, ImageCaption, ImageStyle, ImageResize ],
-  toolbar: [ "bold", "italic", "underline", "heading", "horizontalLine", "imageTextAlternative", "|", "imageStyle:full", "imageStyle:side", "image"],
+  plugins: [ Essentials, Bold, Italic, Paragraph, Underline, Heading, HorizontalLine, Image, ImageToolbar, ImageCaption, ImageStyle, ImageResize, ImageUpload, SimpleUploadAdapter ],
+  toolbar: [ "bold", "italic", "underline", "heading", "horizontalLine", "imageTextAlternative", "|", "imageStyle:full", "imageStyle:side", "ImageUpload"],
+  image: {
+    toolbar: ["imageTextAlternative", "|", "imageStyle:full", "imageStyle:side" ]
+  },
+  simpleUpload: {
+    uploadUrl: "https://storage.localtunnel.me/upload",
+  }
 };
 
 export default config;
