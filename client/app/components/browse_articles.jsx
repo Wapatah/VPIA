@@ -93,70 +93,74 @@ class BrowseArticles extends React.Component {
             </div>
           </div>
 
-          <div className="container p-t-0 m-t-2 carousel-inner">
-            <div className="row row-equal carousel-item active m-t-0">
-              {this.state.articles.slice(0, 4).map(article => (
-                <div key={article.id} className="col-md-3">
-                  <div className="card">
-                    <img
-                      src="../assets/Placeholder.jpeg"
-                      className="card-img-top"
-                      alt="..."
-                    ></img>
-                    <div className="card-body">
-                      <p className="article-title">
-                        <Link
-                          to={"/article/" + article.id}
-                          className="text-dark"
-                        >
-                          {article.title}
-                        </Link>
-                      </p>
-                      <p className="card-text"></p>
-                      <p className="card-text">
-                        <small className="text-muted">
-                          <i className="fa fa-clock-o"></i>{" "}
-                          {new Date(
-                            article.updated_at.replace(" ", "T")
-                          ).toUTCString()}
-                        </small>
-                      </p>
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <div className="row">
+                {this.state.articles.slice(0, 4).map(article => (
+                  <div key={article.id} className="col-md-3">
+                    <div className="card">
+                      <img
+                        src="../assets/Placeholder.jpeg"
+                        className="card-img-top"
+                        alt="..."
+                      ></img>
+                      <div className="card-body">
+                        <p className="article-title">
+                          <Link
+                            to={"/article/" + article.id}
+                            className="text-dark"
+                          >
+                            {article.title}
+                          </Link>
+                        </p>
+                        <p className="card-text"></p>
+                        <p className="card-text">
+                          <small className="text-muted">
+                            <i className="fa fa-clock-o"></i>{" "}
+                            {new Date(
+                              article.updated_at.replace(" ", "T")
+                            ).toUTCString()}
+                          </small>
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-            <div className="row row-equal carousel-item m-t-0">
-              {this.state.articles.slice(4, 8).map(article => (
-                <div key={article.id} className="col-md-3">
-                  <div className="card">
-                    <img
-                      src="../assets/Placeholder.jpeg"
-                      className="card-img-top"
-                      alt="..."
-                    ></img>
-                    <div className="card-body">
-                      <p className="article-title">
-                        <Link
-                          to={"/article/" + article.id}
-                          className="text-dark"
-                        >
-                          {article.title}
-                        </Link>
-                      </p>
-                      <p className="card-text"></p>
-                      <p className="card-text">
-                        <small className="text-muted">
-                          <i className="fa fa-clock-o"></i>{" "}
-                          {new Date(
-                            article.updated_at.replace(" ", "T")
-                          ).toUTCString()}
-                        </small>
-                      </p>
+            <div className="carousel-item">
+              <div className="row">
+                {this.state.articles.slice(4, 8).map(article => (
+                  <div key={article.id} className="col-md-3">
+                    <div className="card">
+                      <img
+                        src="../assets/Placeholder.jpeg"
+                        className="card-img-top"
+                        alt="..."
+                      ></img>
+                      <div className="card-body">
+                        <p className="article-title">
+                          <Link
+                            to={"/article/" + article.id}
+                            className="text-dark"
+                          >
+                            {article.title}
+                          </Link>
+                        </p>
+                        <p className="card-text"></p>
+                        <p className="card-text">
+                          <small className="text-muted">
+                            <i className="fa fa-clock-o"></i>{" "}
+                            {new Date(
+                              article.updated_at.replace(" ", "T")
+                            ).toUTCString()}
+                          </small>
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
