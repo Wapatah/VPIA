@@ -36,7 +36,8 @@ class Login extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error){} //Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           window.localStorage.setItem("userToken", response.data.token);
           window.localStorage.setItem("admin", response.data.user.admin);

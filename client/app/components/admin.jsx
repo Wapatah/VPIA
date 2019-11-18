@@ -30,7 +30,8 @@ class Admin extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error){} //Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({ topics: response.data, loading_topics: false });
         }
@@ -41,7 +42,8 @@ class Admin extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error){} //Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({ users: response.data, loading_users: false });
         }
@@ -78,7 +80,8 @@ class Admin extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error){} //Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           $("#addUser").modal("hide");
           var users = that.state.users;
@@ -135,7 +138,8 @@ class Admin extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error){} //Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           topics = that.state.topics;
           var topics = $.grep(topics, function(e) {
@@ -164,7 +168,8 @@ class Admin extends React.Component {
           return response.json();
         })
         .then(function(response) {
-          if (response.error.error){} //Alert.error(response.error.message);
+          if (response.error.error) {
+          } //Alert.error(response.error.message);
           else {
             users = that.state.users;
             var users = $.grep(users, function(e) {
