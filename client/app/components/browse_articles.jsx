@@ -22,7 +22,8 @@ class BrowseArticles extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error){} //Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({ articles: response.data });
         }
@@ -47,7 +48,8 @@ class BrowseArticles extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error){} //Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({ articles: response.data });
         }

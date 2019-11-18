@@ -26,13 +26,41 @@ import SimpleUploadAdapter from "@ckeditor/ckeditor5-upload/src/adapters/simpleu
 import Link from "@ckeditor/ckeditor5-link/src/link";
 
 let config = {
-  plugins: [ Essentials, Bold, Italic, Paragraph, Underline, Heading, HorizontalLine, Image, ImageToolbar, ImageStyle, ImageResize, ImageUpload, SimpleUploadAdapter, Link, Undo, Redo ],
-  toolbar: [ "bold", "italic", "underline", "|", "link", "heading", "horizontalLine", "ImageUpload", "undo", "redoCommand"],
+  plugins: [
+    Essentials,
+    Bold,
+    Italic,
+    Paragraph,
+    Underline,
+    Heading,
+    HorizontalLine,
+    Image,
+    ImageToolbar,
+    ImageStyle,
+    ImageResize,
+    ImageUpload,
+    SimpleUploadAdapter,
+    Link,
+    Undo,
+    Redo
+  ],
+  toolbar: [
+    "bold",
+    "italic",
+    "underline",
+    "|",
+    "link",
+    "heading",
+    "horizontalLine",
+    "ImageUpload",
+    "undo",
+    "redoCommand"
+  ],
   image: {
-    toolbar: ["imageTextAlternative", "|", "imageStyle:full", "imageStyle:side" ]
+    toolbar: ["imageTextAlternative", "|", "imageStyle:full", "imageStyle:side"]
   },
   simpleUpload: {
-    uploadUrl: "https://storage.localtunnel.me/upload",
+    uploadUrl: "https://storage.localtunnel.me/upload"
   }
 };
 

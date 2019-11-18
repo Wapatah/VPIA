@@ -12,11 +12,6 @@ const path = require("path");
 const BUILD_DIR = path.resolve(__dirname, "../client/public");
 const APP_DIR = path.resolve(__dirname, "../client/app");
 
-const { styles } = require( "@ckeditor/ckeditor5-dev-utils" );
-
-const cssRegex = /\.css$/;
-const cssModuleRegex = /\.module\.css$/;
-
 module.exports = {
   mode: "production",
   entry: [

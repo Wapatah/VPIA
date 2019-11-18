@@ -3,8 +3,8 @@ import { hashHistory } from "react-router";
 //import Alert from "react-s-alert";
 import Loader from "./loader.jsx";
 
-import CKEditor from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import EditorPreview from "./helpers/editor_preview.jsx";
 
 //@Mordax - you can edit the ckeditor file to add and remove plugins
@@ -64,7 +64,8 @@ class EditArticle extends React.Component {
           return response.json();
         })
         .then(function(response) {
-          if (response.error.error){} //Alert.error(response.error.message);
+          if (response.error.error) {
+          } //Alert.error(response.error.message);
           else {
             //Alert.success("Article has been successfully saved");
             hashHistory.push("article/" + that.props.params.articleId);
@@ -87,7 +88,8 @@ class EditArticle extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error){} //Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({
             body: response.data[0].body,
@@ -108,7 +110,8 @@ class EditArticle extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error){} //Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({ topics: response.data });
         }
@@ -135,13 +138,13 @@ class EditArticle extends React.Component {
             <div className="col-md-12 new-article-form">
               <CKEditor
                 editor={ClassicEditor}
-                onInit={()=> {
+                onInit={() => {
                   console.log("Editor is ready.");
-              } }
+                }}
                 data={this.state.body}
-                onChange={ (event, editor) => {
+                onChange={(event, editor) => {
                   let body = this.state.body;
-                  this.setState({ body: editor.getData()});
+                  this.setState({ body: editor.getData() });
                 }}
                 config={CKConfig}
               />

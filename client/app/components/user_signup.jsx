@@ -44,7 +44,8 @@ class UserSignup extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error){} //Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           //Alert.success("User generated");
           hashHistory.push("login");

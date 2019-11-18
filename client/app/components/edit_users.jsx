@@ -38,7 +38,8 @@ class EditUser extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error){} //Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({
             name: response.data.name,
@@ -83,7 +84,8 @@ class EditUser extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error){} //Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           //Alert.success("User has been edited");
           hashHistory.push("admin");
