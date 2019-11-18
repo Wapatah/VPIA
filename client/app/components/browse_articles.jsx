@@ -99,11 +99,7 @@ class BrowseArticles extends React.Component {
                 {this.state.articles.slice(0, 4).map(article => (
                   <div key={article.id} className="col-md-3">
                     <div className="card">
-                      <img
-                        src="../assets/Placeholder.jpeg"
-                        className="card-img-top"
-                        alt="..."
-                      ></img>
+                      <img src="..." className="card-img-top" alt="..."></img>
                       <div className="card-body">
                         <p className="article-title">
                           <Link
@@ -133,11 +129,7 @@ class BrowseArticles extends React.Component {
                 {this.state.articles.slice(4, 8).map(article => (
                   <div key={article.id} className="col-md-3">
                     <div className="card">
-                      <img
-                        src="../assets/Placeholder.jpeg"
-                        className="card-img-top"
-                        alt="..."
-                      ></img>
+                      <img src="..." className="card-img-top" alt="..."></img>
                       <div className="card-body">
                         <p className="article-title">
                           <Link
