@@ -69,7 +69,7 @@ class App extends React.Component {
           {window.localStorage.getItem("userToken") ? (
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
               <ul className="navbar-nav ml-auto">
-                {window.localStorage.getItem("admin") === "true" ? (
+                {window.localStorage.getItem("admin") === "1" ? (
                   <li className="nav-item px-2">
                     <button
                       type="button"

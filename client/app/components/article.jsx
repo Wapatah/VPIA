@@ -128,7 +128,7 @@ class ViewArticle extends React.Component {
               >
                 History
               </Link>
-              {window.localStorage.getItem("admin") === "true" ? (
+              {window.localStorage.getItem("admin") === "1" ? (
                 <button
                   className="btn btn-default btn-block btn-lg"
                   onClick={this.deleteArticle}
