@@ -2,7 +2,7 @@ import React from "react";
 import Login from "./login.jsx";
 import SearchForm from "./searchform.jsx";
 import { Link, hashHistory } from "react-router";
-import Alert from "react-s-alert";
+//import Alert from "react-s-alert";
 import MainNav from "./main_nav.jsx";
 
 class App extends React.Component {
@@ -21,7 +21,7 @@ class App extends React.Component {
     window.localStorage.setItem("userToken", "");
     window.localStorage.setItem("user_id", "");
     window.localStorage.setItem("admin", "");
-    Alert.success("You've been successfully logged out");
+    //Alert.success("You've been successfully logged out");
   }
 
   render() {
@@ -69,7 +69,7 @@ class App extends React.Component {
           {window.localStorage.getItem("userToken") ? (
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
               <ul className="navbar-nav ml-auto">
-                {window.localStorage.getItem("admin") === "true" ? (
+                {window.localStorage.getItem("admin") === "1" ? (
                   <li className="nav-item px-2">
                     <button
                       type="button"
@@ -221,7 +221,7 @@ class App extends React.Component {
             </div>
           </div>
         </footer>
-        <Alert stack={{ limit: 3 }} position="bottom" />
+        {/*<Alert stack={{ limit: 3 }} position="bottom" />*/}
       </div>
     );
   }

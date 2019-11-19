@@ -9,10 +9,12 @@ var caminte = require("caminte");
 var Schema = caminte.Schema;
 
 var config = {
-  driver: "mongodb",
+  driver: "mysql",
   host: "localhost",
-  database: "myapp_test",
-  pool: false
+  username: "root",
+  password: "wapatah1",
+  database: "vpia",
+  pool: true
 };
 
 var schema = new Schema(config.driver, config);

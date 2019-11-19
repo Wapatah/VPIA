@@ -1,28 +1,20 @@
 import React from "react";
 import { hashHistory } from "react-router";
 import Loader from "./loader.jsx";
-import Alert from "react-s-alert";
-import CKEditor from "ckeditor4-react";
+//import Alert from "react-s-alert";
+
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import EditorPreview from "./helpers/editor_preview.jsx";
 
 // @Mordax - CKEditor file was made for easy configuration and DRY reasons
 import CKConfig from "../../../config/ckeditor";
-// @Mordax - This is a basic HTML module template for organizating the editor structure
-import Template from "../../../config/editor_template";
 
 class NewArticle extends React.Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = { body: "", topics: [], error: "", loading: true };
-  }
-
-  handleChange(data) {
-    this.refs.body.value = data.getData();
-    if (data) {
-      this.setState({ body: this.refs.body.value });
-    }
   }
 
   componentDidMount() {
@@ -37,7 +29,8 @@ class NewArticle extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({ topics: response.data });
         }
@@ -47,7 +40,7 @@ class NewArticle extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    var body = this.refs.body.value;
+    var body = this.state.body;
     var title = this.refs.title.value;
     var topicId = this.refs.topic.value;
     if (body && title && topicId) {
@@ -74,14 +67,15 @@ class NewArticle extends React.Component {
           return response.json();
         })
         .then(function(response) {
-          if (response.error.error) Alert.error(response.error.message);
+          if (response.error.error) {
+          } //Alert.error(response.error.message);
           else {
-            Alert.success("Article has been successfully saved");
+            //Alert.success("Article has been successfully saved");
             hashHistory.push("article/" + response.data.id + "?new=true");
           }
         });
     } else {
-      Alert.error("Article Body, Title and Topic Information is required.");
+      //Alert.error("Article Body, Title and Topic Information is required.");
     }
   }
 
@@ -103,12 +97,14 @@ class NewArticle extends React.Component {
           <div className="row">
             <div className="col-md-12 new-article-form">
               <CKEditor
-                onBeforeLoad={() => (CKEDITOR.disableAutoInline = true)}
-                id="cktextarea"
-                data={Template.html}
-                ref="body"
-                onChange={() => this.handleChange(CKEDITOR.currentInstance)}
-                type="classic"
+                editor={ClassicEditor}
+                onInit={() => {
+                  console.log("Editor is ready.");
+                }}
+                onChange={(event, editor) => {
+                  let body = this.state.body;
+                  this.setState({ body: editor.getData() });
+                }}
                 config={CKConfig}
               />
               <br />

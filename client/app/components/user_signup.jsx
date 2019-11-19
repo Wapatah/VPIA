@@ -1,6 +1,6 @@
 import React from "react";
 import { hashHistory, Link } from "react-router";
-import Alert from "react-s-alert";
+//import Alert from "react-s-alert";
 import Loader from "./loader.jsx";
 
 class UserSignup extends React.Component {
@@ -44,9 +44,10 @@ class UserSignup extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
-          Alert.success("User generated");
+          //Alert.success("User generated");
           hashHistory.push("login");
         }
       });

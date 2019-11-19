@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "./loader.jsx";
 import { Link, hashHistory } from "react-router";
-import Alert from "react-s-alert";
+//import Alert from "react-s-alert";
 
 class BrowseArticles extends React.Component {
   constructor(props) {
@@ -22,7 +22,8 @@ class BrowseArticles extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({ articles: response.data });
         }
@@ -47,7 +48,8 @@ class BrowseArticles extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({ articles: response.data });
         }
@@ -65,28 +67,96 @@ class BrowseArticles extends React.Component {
       );
     } else {
       return (
-        <div className="card-deck">
-          {this.state.articles.slice(0, 4).map(article => (
-            <div key={article.id} className="card card-block">
-              <img src="..." className="card-img-top" alt="..."></img>
-              <div className="card-body">
-                <p className="article-title">
-                  <Link to={"/article/" + article.id} className="text-dark">
-                    {article.title}
-                  </Link>
-                </p>
-                <p className="card-text"></p>
-                <p className="card-text">
-                  <small class="text-muted">
-                    <i className="fa fa-clock-o"></i>{" "}
-                    {new Date(
-                      article.updated_at.replace(" ", "T")
-                    ).toUTCString()}
-                  </small>
-                </p>
+        <div
+          className="carousel slide"
+          data-ride="carousel"
+          id="carouselExampleControls"
+        >
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-12 text-right mb-4">
+                <a
+                  className="btn prev"
+                  href="#carouselExampleControls"
+                  title="go back"
+                  data-slide="prev"
+                >
+                  <i className="fa fa-lg fa-chevron-left"></i>
+                </a>
+                <a
+                  className="btn next"
+                  href="#carouselExampleControls"
+                  title="more"
+                  data-slide="next"
+                >
+                  <i className="fa fa-lg fa-chevron-right"></i>
+                </a>
               </div>
             </div>
-          ))}
+          </div>
+
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <div className="row">
+                {this.state.articles.slice(0, 4).map(article => (
+                  <div key={article.id} className="col-md-3">
+                    <div className="card">
+                      <img src="..." className="card-img-top" alt="..."></img>
+                      <div className="card-body">
+                        <p className="article-title">
+                          <Link
+                            to={"/article/" + article.id}
+                            className="text-dark"
+                          >
+                            {article.title}
+                          </Link>
+                        </p>
+                        <p className="card-text"></p>
+                        <p className="card-text">
+                          <small className="text-muted">
+                            <i className="fa fa-clock-o"></i>{" "}
+                            {new Date(
+                              article.updated_at.replace(" ", "T")
+                            ).toUTCString()}
+                          </small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="carousel-item">
+              <div className="row">
+                {this.state.articles.slice(4, 8).map(article => (
+                  <div key={article.id} className="col-md-3">
+                    <div className="card">
+                      <img src="..." className="card-img-top" alt="..."></img>
+                      <div className="card-body">
+                        <p className="article-title">
+                          <Link
+                            to={"/article/" + article.id}
+                            className="text-dark"
+                          >
+                            {article.title}
+                          </Link>
+                        </p>
+                        <p className="card-text"></p>
+                        <p className="card-text">
+                          <small className="text-muted">
+                            <i className="fa fa-clock-o"></i>{" "}
+                            {new Date(
+                              article.updated_at.replace(" ", "T")
+                            ).toUTCString()}
+                          </small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       );
     }

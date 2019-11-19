@@ -1,6 +1,6 @@
 import React from "react";
 import { hashHistory } from "react-router";
-import Alert from "react-s-alert";
+//import Alert from "react-s-alert";
 import Loader from "./loader.jsx";
 
 class EditUser extends React.Component {
@@ -38,7 +38,8 @@ class EditUser extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({
             name: response.data.name,
@@ -83,9 +84,10 @@ class EditUser extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
-          Alert.success("User has been edited");
+          //Alert.success("User has been edited");
           hashHistory.push("admin");
         }
       });
