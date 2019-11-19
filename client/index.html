@@ -3,10 +3,18 @@
   <head>
     <title>VPIA</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="Description" content="VPIA: Virtual Platform for Indigenous Art">
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="Description"
+      content="VPIA: Virtual Platform for Indigenous Art"
+    />
+
+    <!-- @Mordax - Manifest used for PWA and downloading the application onto other devices -->
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="apple-touch-icon" href="./images.png" />
+    <meta name="theme-color" content="#208778" />
+
     <noscript>
       Javascript is required to be enabled to view this site properly.
     </noscript>
@@ -14,8 +22,31 @@
     <!-- @Matterwiki - The default bootstrap CSS with some modifications -->
     <link rel="stylesheet" href="./assets/bootstrap.css" async />
     <!-- @Matterwiki - Customizations and CSS for custom classes -->
-    <link rel="stylesheet" href="./assets/style.css" async/>
-    <link rel="stylesheet" href="./assets/font-awesome.min.css" async/>
+    <link rel="stylesheet" href="./assets/style.css" async />
+    <link rel="stylesheet" href="./assets/font-awesome.min.css" async />
+    <script
+      src="assets/jquery-3.3.1.slim.min.js"
+      type="text/javascript"
+      async
+    ></script>
+    <script
+      src="assets/bootstrap.bundle.min.js"
+      type="text/javascript"
+      async
+    ></script>
+    <script>
+      (function($) {
+        "use strict";
+        $(".next").click(function() {
+          $(".carousel").carousel("next");
+          return false;
+        });
+        $(".prev").click(function() {
+          $(".carousel").carousel("prev");
+          return false;
+        });
+      })(jQuery);
+    </script>
   </head>
   <body>
     <!--
@@ -25,5 +56,6 @@
     -->
     <div id="app" class="container" />
     <script src="public/bundle.js" type="text/javascript" async></script>
+
   </body>
 </html>
