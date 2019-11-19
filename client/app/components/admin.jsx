@@ -1,6 +1,5 @@
 import React from "react";
 import { hashHistory, Link } from "react-router";
-import Alert from "react-s-alert";
 import Loader from "./loader.jsx";
 
 class Admin extends React.Component {
@@ -31,7 +30,8 @@ class Admin extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({ topics: response.data, loading_topics: false });
         }
@@ -42,7 +42,8 @@ class Admin extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({ users: response.data, loading_users: false });
         }
@@ -79,13 +80,14 @@ class Admin extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           $("#addUser").modal("hide");
           var users = that.state.users;
           users.push(response.data);
           that.setState({ users: users });
-          Alert.success("User has been added");
+          //Alert.success("User has been added");
         }
       });
   }
@@ -112,13 +114,13 @@ class Admin extends React.Component {
       .then(function(response) {
         if (response.error.error) {
           $("#addTopic").modal("hide");
-          Alert.error(response.error.message);
+          //Alert.error(response.error.message);
         } else {
           $("#addTopic").modal("hide");
           var topics = that.state.topics;
           topics.push(response.data);
           that.setState({ topics: topics });
-          Alert.success("Topic has been added");
+          //Alert.success("Topic has been added");
         }
       });
   }
@@ -136,14 +138,15 @@ class Admin extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           topics = that.state.topics;
           var topics = $.grep(topics, function(e) {
             return e.id != id;
           });
           that.setState({ topics: topics });
-          Alert.success("Topic has been deleted");
+          //Alert.success("Topic has been deleted");
         }
       });
   }
@@ -165,14 +168,15 @@ class Admin extends React.Component {
           return response.json();
         })
         .then(function(response) {
-          if (response.error.error) Alert.error(response.error.message);
+          if (response.error.error) {
+          } //Alert.error(response.error.message);
           else {
             users = that.state.users;
             var users = $.grep(users, function(e) {
               return e.id != id;
             });
             that.setState({ users: users });
-            Alert.success("User has been deleted");
+            //Alert.success("User has been deleted");
           }
         });
     }

@@ -24,14 +24,6 @@ which is primarily used for uploading files.
 var Topics = require("../models/topic.js");
 var Articles = require("../models/article.js");
 
-/* 
-@Mordax
-Mongo represents it's unique IDs as BSON objects, so we need to convert
-the API request identifiers to BSON to properly find documents.
-*/
-
-var ObjectId = require("mongodb").ObjectId;
-
 module.exports = function(app) {
   /*
   @Matterwiki
@@ -100,10 +92,9 @@ module.exports = function(app) {
   TODO: Add updates only for columns that are in the request body. Handle exceptions.
   */
   app.put("/topics", function(req, res) {
-    var id = new ObjectId(req.body.id);
     Topics.update(
       {
-        _id: id
+        id: req.body.id
       },
       {
         name: req.body.name,

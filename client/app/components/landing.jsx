@@ -1,6 +1,5 @@
 import React from "react";
 import { hashHistory, Link } from "react-router";
-import Alert from "react-s-alert";
 import SearchForm from "./searchform.jsx";
 import Home from "./home.jsx";
 

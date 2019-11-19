@@ -14,14 +14,6 @@ var Topics = require("../models/topic.js");
 var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
 
-/* 
-@Mordax
-Mongo represents it's unique IDs as BSON objects, so we need to convert
-the API request identifiers to BSON to properly find documents.
-*/
-
-var ObjectId = require("mongodb").ObjectId;
-
 module.exports = function(app) {
   /*
   @Matterwiki
@@ -101,12 +93,11 @@ module.exports = function(app) {
   TODO: Add updates only for columns that are in the request body. Handle exceptions.
   */
   app.put("/articles", function(req, res) {
-    var id = new ObjectId(req.body.id);
-    Articles.find({ where: { _id: id } })
+    Articles.find({ where: { id: req.body.id } })
       .then(function(article) {
         Articles.update(
           {
-            _id: id
+            id: req.body.id
           },
           {
             title: req.body.title,
@@ -174,17 +165,14 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/", function(req, res) {
-    var id = new ObjectId(req.params.id);
-    Articles.find({ where: { _id: id } })
+    Articles.find({ where: { id: req.params.id } })
       .then(function(article) {
-        var topic_id = new ObjectId(article[0].topic_id);
-        Topics.find({ where: { _id: topic_id } })
+        Topics.find({ where: { id: article[0].topic_id } })
           .then(function(topic) {
             article[0].topics(topic);
           })
           .then(function() {
-            var user_id = new ObjectId(article[0].user_id);
-            Users.find({ where: { _id: user_id } })
+            Users.find({ where: { id: article[0].user_id } })
               .then(function(user) {
                 article[0].users(user);
               })
@@ -220,9 +208,8 @@ module.exports = function(app) {
   The error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.get("/articles/:id/history", function(req, res) {
-    var id = new ObjectId(req.params.id);
     Archives.find({
-      where: { article_id: id },
+      where: { article_id: req.params.id },
       order: "updated_at DESC"
     })
       .then(function(archive) {

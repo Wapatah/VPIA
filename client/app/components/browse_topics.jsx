@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "./loader.jsx";
 import { hashHistory } from "react-router";
-import Alert from "react-s-alert";
+//import Alert from "react-s-alert";
 
 class BrowseTopics extends React.Component {
   constructor(props) {
@@ -22,7 +22,8 @@ class BrowseTopics extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({ topics: response.data });
         }

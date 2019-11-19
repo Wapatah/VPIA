@@ -1,6 +1,6 @@
 import React from "react";
 import { hashHistory, Link } from "react-router";
-import Alert from "react-s-alert";
+//import Alert from "react-s-alert";
 
 class Login extends React.Component {
   constructor(props) {
@@ -36,14 +36,15 @@ class Login extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           window.localStorage.setItem("userToken", response.data.token);
           window.localStorage.setItem("admin", response.data.user.admin);
           window.localStorage.setItem("user_id", response.data.user.id);
           window.localStorage.setItem("userEmail", response.data.user.token);
           hashHistory.push("landing");
-          Alert.success("You are now logged in");
+          //Alert.success("You are now logged in");
         }
       });
   }

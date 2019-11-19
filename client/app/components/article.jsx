@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, hashHistory } from "react-router";
 import Loader from "./loader.jsx";
-import Alert from "react-s-alert";
+//import Alert from "react-s-alert";
 
 class ViewArticle extends React.Component {
   constructor(props) {
@@ -22,7 +22,8 @@ class ViewArticle extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
           that.setState({ article: response.data });
         }
@@ -47,9 +48,10 @@ class ViewArticle extends React.Component {
         return response.json();
       })
       .then(function(response) {
-        if (response.error.error) Alert.error(response.error.message);
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
         else {
-          Alert.success("Article has been deleted");
+          //Alert.success("Article has been deleted");
           hashHistory.push("home");
         }
       });
@@ -126,7 +128,7 @@ class ViewArticle extends React.Component {
               >
                 History
               </Link>
-              {window.localStorage.getItem("admin") === "true" ? (
+              {window.localStorage.getItem("admin") === "1" ? (
                 <button
                   className="btn btn-default btn-block btn-lg"
                   onClick={this.deleteArticle}

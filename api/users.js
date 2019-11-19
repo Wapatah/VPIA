@@ -11,14 +11,6 @@ var bcrypt = require("bcryptjs");
 var Articles = require("../models/article.js");
 const saltRounds = 10;
 
-/* 
-@Mordax
-Mongo represents it's unique IDs as BSON objects, so we need to convert
-the API request identifiers to BSON to properly find documents.
-*/
-
-var ObjectId = require("mongodb").ObjectId;
-
 module.exports = function(app) {
   /*
   @Matterwiki
@@ -96,11 +88,10 @@ module.exports = function(app) {
   the error key in the returning object is a boolen which is false if there is no error and true otherwise
   */
   app.put("/users", function(req, res) {
-    var id = new ObjectId(req.body.id);
     bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
       Users.update(
         {
-          _id: id
+          id: req.body.id
         },
         {
           name: req.body.name,
