@@ -60,7 +60,7 @@ let config = {
     toolbar: ["imageTextAlternative", "|", "imageStyle:full", "imageStyle:side"]
   },
   simpleUpload: {
-    uploadUrl: "https://storage.localtunnel.me/upload"
+    uploadUrl: "https://storage.wapatah.com/upload"
   }
 };
 

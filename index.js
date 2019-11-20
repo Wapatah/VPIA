@@ -25,7 +25,7 @@ relations.load(app);
 // @Mordax - using gzip compression to speed up app performance
 app.use(compression());
 
-process.env.PORT = process.env.PORT || 8080;
+process.env.PORT = process.env.PORT || 30000;
 
 console.log(process.env.NODE_ENV);
 
