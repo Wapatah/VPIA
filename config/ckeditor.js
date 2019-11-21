@@ -17,9 +17,9 @@ import ImageToolbar from "@ckeditor/ckeditor5-image/src/imagetoolbar";
 import ImageStyle from "@ckeditor/ckeditor5-image/src/imagestyle";
 import ImageResize from "@ckeditor/ckeditor5-image/src/imageresize";
 import ImageUpload from "@ckeditor/ckeditor5-image/src/imageupload";
+import ImageCaption from "@ckeditor/ckeditor5-image/src/imagecaption";
 
 import Undo from "@ckeditor/ckeditor5-undo/src/undo";
-import Redo from "@ckeditor/ckeditor5-undo/src/redocommand";
 
 import SimpleUploadAdapter from "@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter";
 
@@ -39,10 +39,10 @@ let config = {
     ImageStyle,
     ImageResize,
     ImageUpload,
+    ImageCaption,
     SimpleUploadAdapter,
     Link,
-    Undo,
-    Redo
+    Undo
   ],
   toolbar: [
     "bold",
@@ -53,8 +53,7 @@ let config = {
     "heading",
     "horizontalLine",
     "ImageUpload",
-    "undo",
-    "redoCommand"
+    "undo"
   ],
   image: {
     toolbar: ["imageTextAlternative", "|", "imageStyle:full", "imageStyle:side"]
