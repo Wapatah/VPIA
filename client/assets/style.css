@@ -767,8 +767,18 @@ ul.social-network li {
   color: #208778;
 }
 .image-bg {
-  background: #75777b80;
+  background-color: #75777b80;
+  background-blend-mode: multiply;
 }
+
+#VPIA-intro.jumbotron {
+  background-image: url("../assets/BG.jpg");
+  -webkit-filter: grayscale(100%);
+  filter: gray;
+  background-size: cover;
+  color: white;
+}
+
 .left-panel {
   background-color: #208778;
   height: 100%;
