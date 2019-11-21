@@ -51,42 +51,69 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="container login-box row">
-        <div className="col-md-12 col-sm-12">
-          <h1>Login</h1>
-          <form>
-            <div className="col-sm-12 form-group">
-              <input
-                type="email"
-                className="form-control"
-                id="inputEmail"
-                placeholder="Email"
-                aria-label="Email"
-              />
+      <div id="fullpage" className="container-fluid">
+        <div className="row">
+          <div className="col-4 left-panel">
+            <img
+              src="../assets/logos/logo-white.png"
+              width="auto"
+              height="250px"
+              alt="VPIA logo"
+              aria-label="VPIA logo"
+            />
+            <div className="container login-box row">
+              <div className="col-md-12 col-sm-12">
+                <form>
+                  <div className="col-sm-12 form-group">
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="inputEmail"
+                      placeholder="Email"
+                      aria-label="Email"
+                    />
+                  </div>
+                  <div className="col-sm-12 form-group">
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="inputPassword"
+                      placeholder="Password"
+                      aria-label="Password"
+                    />
+                  </div>
+                  <div className="col-sm-12 form-group">
+                    <button
+                      onClick={this.handleSubmit}
+                      className="btn btn-primary btn-block"
+                    >
+                      Sign in
+                    </button>
+                  </div>
+                  <div className="col-sm-12 form-group">
+                    <button
+                      type="button"
+                      className="btn btn-outline-light btn-block"
+                    >
+                      <Link to="/user_signup" className="none-deco">
+                        New to VPIA? Join Now!
+                      </Link>
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
-            <div className="col-sm-12 form-group">
-              <input
-                type="password"
-                className="form-control"
-                id="inputPassword"
-                placeholder="Password"
-                aria-label="Password"
-              />
-            </div>
-            <div className="col-sm-12 form-group">
-              <button
-                onClick={this.handleSubmit}
-                className="btn btn-default btn-block btn-lg"
-              >
-                Log in
-              </button>
-            </div>
-            <div className="col-sm-12 form-group">
-              Don't have an account?
-              <br />
-              <Link to="/user_signup">Sign up</Link>
-            </div>
-          </form>
+          </div>
+          <div className="col-8">
+            <img
+              src="../assets/logos/logo.png"
+              width="auto"
+              height="400px"
+              alt="VPIA logo"
+              aria-label="VPIA logo"
+              id="logo-bottom-right"
+            />
+          </div>
         </div>
       </div>
     );
