@@ -57,6 +57,7 @@ body {
   margin: 0px auto;
   background-color: transparent;
   text-align: center;
+  padding-top: 40%;
 }
 
 .login-header {
@@ -649,13 +650,13 @@ footer p {
 .email-form {
   background-color: none;
 }
-.btn-primary {
-  border-radius: 20px;
-  border: none;
-  background-color: #208778;
-}
 .btn-secondary {
   background-color: #fefefe;
+  border: none;
+}
+.btn-primary {
+  background-color: #343638;
+  color: #fefefe;
   border: none;
 }
 .btn-round {
@@ -767,4 +768,20 @@ ul.social-network li {
 }
 .image-bg {
   background: #75777b80;
+}
+.left-panel {
+  background-color: #208778;
+  height: 100%;
+  padding-top: 3%;
+  padding-left: 3%;
+  padding-bottom: 10%;
+}
+#fullpage.container-fluid {
+  padding: 0;
+}
+#logo-bottom-right {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  z-index: 1;
 }
