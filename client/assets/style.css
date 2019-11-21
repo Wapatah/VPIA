@@ -766,17 +766,42 @@ ul.social-network li {
 .social-network a:hover {
   color: #208778;
 }
-.image-bg {
-  background-color: #75777b80;
-  background-blend-mode: multiply;
+
+.image-tint-light {
+  background-color: #ffffff;
+  opacity: 0.2;
+}
+
+.image-tint {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #75777b80;
+  z-index: 2;
 }
 
 #VPIA-intro.jumbotron {
   background-image: url("../assets/BG.jpg");
+  background-blend-mode: multiply;
+  -webkit-filter: grayscale(100%);
+  filter: grey;
+  background-size: cover;
+  background-position: right 20px bottom 10px;
+}
+
+.intro-content {
+  position: relative;
+  color: white;
+  z-index: 3;
+}
+
+.BGimage {
+  background-image: url("../assets/BG.jpg");
   -webkit-filter: grayscale(100%);
   filter: gray;
   background-size: cover;
-  color: white;
 }
 
 .left-panel {
