@@ -5,6 +5,7 @@ import Loader from "./loader.jsx";
 
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
+import InlineEditor from "@ckeditor/ckeditor5-editor-inline/src/inlineeditor";
 import EditorPreview from "./helpers/editor_preview.jsx";
 
 //@Mordax - you can edit the ckeditor file to add and remove plugins
@@ -19,6 +20,9 @@ class EditArticle extends React.Component {
       body: "",
       title: "",
       topic_id: "",
+      culture_group: "",
+      material: "",
+      artwork_type: "",
       topics: [],
       loading: true
     };
@@ -36,7 +40,18 @@ class EditArticle extends React.Component {
     var title = this.refs.title.value;
     var topicId = this.refs.topic.value;
     var what_changed = this.refs.what_changed.value;
-    if (body && title && topicId && what_changed) {
+    var culture_group = this.state.culture_group;
+    var material = this.state.material;
+    var artwork_type = this.state.artwork_type;
+    if (
+      body &&
+      title &&
+      topicId &&
+      what_changed &&
+      culture_group &&
+      material &&
+      artwork_type
+    ) {
       var myHeaders = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
         "x-access-token": window.localStorage.getItem("userToken")
@@ -51,6 +66,12 @@ class EditArticle extends React.Component {
           encodeURIComponent(title) +
           "&body=" +
           encodeURIComponent(body) +
+          "&culture_group=" +
+          encodeURIComponent(culture_group) +
+          "&material=" +
+          encodeURIComponent(material) +
+          "&artwork_type=" +
+          encodeURIComponent(artwork_type) +
           "&topic_id=" +
           topicId +
           "&user_id=" +
@@ -94,6 +115,9 @@ class EditArticle extends React.Component {
           that.setState({
             body: response.data[0].body,
             title: response.data[0].title,
+            culture_group: response.data[0].culture_group,
+            material: response.data[0].material,
+            artwork_type: response.data[0].artwork_type,
             topic_id: response.data[0].topic_id
           });
         }
@@ -136,6 +160,43 @@ class EditArticle extends React.Component {
           <br />
           <div className="row">
             <div className="col-md-12 new-article-form">
+              Culture Group
+              <div className="border rounded">
+                <CKEditor
+                  editor={InlineEditor}
+                  data={this.state.culture_group}
+                  onChange={(event, editor) => {
+                    let culture_group = this.state.culture_group;
+                    this.setState({ culture_group: editor.getData() });
+                  }}
+                  config={CKConfig}
+                />
+              </div>
+              Material
+              <div className="border rounded">
+                <CKEditor
+                  style="outline: 1px solid black"
+                  editor={InlineEditor}
+                  data={this.state.material}
+                  onChange={(event, editor) => {
+                    let material = this.state.material;
+                    this.setState({ material: editor.getData() });
+                  }}
+                  config={CKConfig}
+                />
+              </div>
+              Artwork Type
+              <div className="border rounded">
+                <CKEditor
+                  editor={InlineEditor}
+                  data={this.state.artwork_type}
+                  onChange={(event, editor) => {
+                    let artwork_type = this.state.artwork_type;
+                    this.setState({ artwork_type: editor.getData() });
+                  }}
+                  config={CKConfig}
+                />
+              </div>
               <CKEditor
                 editor={ClassicEditor}
                 onInit={() => {

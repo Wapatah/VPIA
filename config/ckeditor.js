@@ -17,7 +17,6 @@ import ImageToolbar from "@ckeditor/ckeditor5-image/src/imagetoolbar";
 import ImageStyle from "@ckeditor/ckeditor5-image/src/imagestyle";
 import ImageResize from "@ckeditor/ckeditor5-image/src/imageresize";
 import ImageUpload from "@ckeditor/ckeditor5-image/src/imageupload";
-import ImageCaption from "@ckeditor/ckeditor5-image/src/imagecaption";
 
 import Undo from "@ckeditor/ckeditor5-undo/src/undo";
 
@@ -39,7 +38,6 @@ let config = {
     ImageStyle,
     ImageResize,
     ImageUpload,
-    ImageCaption,
     SimpleUploadAdapter,
     Link,
     Undo
