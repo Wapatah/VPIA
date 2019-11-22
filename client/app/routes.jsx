@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, IndexRoute } from "react-router";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 
 import App from "./components/app.jsx";
 import Home from "./components/home.jsx";
@@ -18,21 +19,23 @@ import Landing from "./components/landing.jsx";
 
 export default function() {
   return (
-    <Route path="/" component={App}>
-      <IndexRoute component={Landing} />
-      <Route path="home" component={Home} />
-      <Route path="landing" component={Landing} />
+    <Switch>
+      <Route path="/" component={App}>
+        <IndexRoute component={Landing} />
+        <Route path="home" component={Home} />
+        <Route path="landing" component={Landing} />
+        <Route path="article/new" component={NewArticle} />
+        <Route path="article/edit/:articleId" component={EditArticle} />
+        <Route path="article/history/:articleId" component={ArticleHistory} />
+        <Route path="article/:articleId" component={Article} />
+        <Route path="admin" component={Admin} />
+        <Route path="topic/edit/:topicId" component={EditTopic} />
+        <Route path="user/edit/:user_id" component={EditUser} />
+        <Route path="search" component={Search} />
+      </Route>
       <Route path="login" component={Login} />
-      <Route path="article/new" component={NewArticle} />
-      <Route path="article/edit/:articleId" component={EditArticle} />
-      <Route path="article/history/:articleId" component={ArticleHistory} />
-      <Route path="article/:articleId" component={Article} />
-      <Route path="admin" component={Admin} />
-      <Route path="topic/edit/:topicId" component={EditTopic} />
-      <Route path="user/edit/:user_id" component={EditUser} />
-      <Route path="search" component={Search} />
       <Route path="setup" component={Setup} />
       <Route path="user_signup" component={UserSignup} />
-    </Route>
+    </Switch>
   );
 }

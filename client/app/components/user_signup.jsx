@@ -137,6 +137,16 @@ class UserSignup extends React.Component {
               </div>
             </div>
           </div>
+          <div className="col-8 BGimage image-fade">
+            <img
+              src="../assets/logos/logo.png"
+              width="auto"
+              height="400px"
+              alt="VPIA logo"
+              aria-label="VPIA logo"
+              id="logo-bottom-right"
+            />
+          </div>
         </div>
       </div>
     );

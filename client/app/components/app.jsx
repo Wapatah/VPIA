@@ -1,5 +1,6 @@
 import React from "react";
 import Login from "./login.jsx";
+import Landing from "./landing.jsx";
 import SearchForm from "./searchform.jsx";
 import { Link, hashHistory } from "react-router";
 //import Alert from "react-s-alert";
@@ -13,7 +14,7 @@ class App extends React.Component {
 
   componentWillMount() {
     if (window.localStorage.getItem("userToken") == null) {
-      hashHistory.push("login");
+      hashHistory.push("landing");
     }
   }
 
