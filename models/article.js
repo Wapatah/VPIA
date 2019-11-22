@@ -8,6 +8,12 @@ var schema = require("../config/db");
 
 var Article = schema.define("article", {
   title: { type: schema.String, limit: 255 },
+  photo: { type: schema.String },
+  culture_group: { type: schema.String },
+  institution: { type: schema.String, limit: 255 },
+  material: { type: schema.String },
+  artwork_type: { type: schema.String, limit: 255 },
+  photo_license: { type: schema.String, limit: 500 },
   body: { type: schema.Text },
   created_at: { type: schema.Date, default: Date.now },
   updated_at: { type: schema.Date, default: Date.now },

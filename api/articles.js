@@ -25,6 +25,12 @@ module.exports = function(app) {
   app.post("/articles", function(req, res) {
     Articles.create({
       title: req.body.title,
+      culture_group: req.body.culture_group,
+      material: req.body.material,
+      artwork_type: req.body.artwork_type,
+      institution: req.body.institution,
+      photo: req.body.photo,
+      photo_license: req.body.photo_license,
       body: req.body.body,
       topic_id: req.body.topic_id,
       user_id: req.body.user_id,
@@ -101,6 +107,9 @@ module.exports = function(app) {
           },
           {
             title: req.body.title,
+            culture_group: req.body.culture_group,
+            material: req.body.material,
+            artwork_type: req.body.artwork_type,
             body: req.body.body,
             topic_id: req.body.topic_id,
             what_changed: req.body.what_changed,
@@ -119,6 +128,12 @@ module.exports = function(app) {
         });
         Archives.create({
           title: article[0].title,
+          culture_group: article[0].culture_group,
+          material: article[0].material,
+          artwork_type: article[0].artwork_type,
+          institution: article[0].institution,
+          photo: article[0].photo,
+          photo_license: article[0].photo_license,
           body: article[0].body,
           what_changed: article[0].what_changed,
           user_id: article[0].user_id,
