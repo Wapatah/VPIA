@@ -171,9 +171,6 @@ textarea {
   resize: none;
 }
 
-.new-article-form {
-}
-
 .color-text {
   color: #208778;
 }
@@ -498,14 +495,14 @@ textarea {
 } */
 
 .search-button {
-  color: #75777b;
+  color: white;
   background-color: transparent !important;
 }
 
 .search-button:hover,
 .search-button:active,
 .search-button:focus {
-  color: white;
+  color: #75777b;
   background-color: #595959;
 }
 
@@ -726,22 +723,26 @@ p.description {
   padding-top: 10px;
   height: 58px;
 }
-input[type="text"],
-select.form-control {
+input#line[type="text"],
+select {
   background: transparent;
   border: none;
-  border-bottom: 2px solid #75777b;
+  color: white;
+  border-bottom: 2px solid white;
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
 }
 
-input[type="text"]:focus,
-select.form-control:focus {
+input#line[type="text"]:focus,
+:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
+#line::placeholder {
+  color: white;
+}
 ul.social-network {
   list-style: none;
   margin-left: 0 !important;

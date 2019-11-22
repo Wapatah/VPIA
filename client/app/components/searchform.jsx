@@ -19,6 +19,7 @@ class SearchForm extends React.Component {
           <input
             type="text"
             className="form-control"
+            id="line"
             placeholder="Search Artwork"
             ref="search"
             aria-label="Search Artwork Tab"
