@@ -823,6 +823,7 @@ ul.social-network li {
 }
 #fullpage.container-fluid {
   padding: 0;
+  height: 100%;
 }
 #logo-bottom-right {
   position: absolute;
@@ -834,4 +835,7 @@ ul.social-network li {
   width: 100%;
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
+}
+#full-page.row {
+  height: 100%;
 }

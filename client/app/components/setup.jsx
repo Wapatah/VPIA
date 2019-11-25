@@ -50,7 +50,7 @@ class Setup extends React.Component {
   render() {
     return (
       <div id="fullpage" className="container-fluid">
-        <div className="row">
+        <div id="full-page" className="row">
           <div className="col-4 left-panel">
             <img
               src="../assets/logos/logo-white.png"
