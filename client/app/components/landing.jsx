@@ -14,21 +14,26 @@ class Landing extends React.Component {
         <div id="VPIA-intro" className="container-fluid">
           <div className="row">
             <div className="col-8">
-              <div id="VPIA-intro" className="jumbotron image-bg">
-                <h1 className="display-4">VPIA</h1>
-                <p className="lead">Search and edit 2000 indigenous Artworks</p>
-                <hr className="my-4"></hr>
-                <p>
-                  It uses utility classes for typography and spacing to space
-                  content out within the larger container.
-                </p>
-                <a
-                  className="btn btn-outline-light btn-lg btn-round"
-                  href="#"
-                  role="button"
-                >
-                  Learn more
-                </a>
+              <div id="VPIA-intro" className="jumbotron">
+                <div className="intro-content">
+                  <h1 className="display-4">VPIA</h1>
+                  <p className="lead">
+                    Search and edit 2000 indigenous Artworks
+                  </p>
+                  <hr className="my-4"></hr>
+                  <p>
+                    It uses utility classes for typography and spacing to space
+                    content out within the larger container.
+                  </p>
+                  <a
+                    className="btn btn-outline-light btn-lg btn-round"
+                    href="#"
+                    role="button"
+                  >
+                    Learn more
+                  </a>
+                </div>
+                <div className="image-tint"></div>
               </div>
             </div>
             <div id="VPIA-intro-right" className="col-4">

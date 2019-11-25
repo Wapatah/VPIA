@@ -46,6 +46,10 @@ body {
   letter-spacing: 1px;
   font-family: "FuturaStdHeavy";
 }
+html,
+body {
+  height: 100%;
+}
 
 .content {
   margin-bottom: 3em;
@@ -57,6 +61,7 @@ body {
   margin: 0px auto;
   background-color: transparent;
   text-align: center;
+  padding-top: 40%;
 }
 
 .login-header {
@@ -168,9 +173,6 @@ input:focus {
 
 textarea {
   resize: none;
-}
-
-.new-article-form {
 }
 
 .color-text {
@@ -497,14 +499,14 @@ textarea {
 } */
 
 .search-button {
-  color: #75777b;
+  color: white;
   background-color: transparent !important;
 }
 
 .search-button:hover,
 .search-button:active,
 .search-button:focus {
-  color: white;
+  color: #75777b;
   background-color: #595959;
 }
 
@@ -649,13 +651,13 @@ footer p {
 .email-form {
   background-color: none;
 }
-.btn-primary {
-  border-radius: 20px;
-  border: none;
-  background-color: #208778;
-}
 .btn-secondary {
   background-color: #fefefe;
+  border: none;
+}
+.btn-primary {
+  background-color: #343638;
+  color: #fefefe;
   border: none;
 }
 .btn-round {
@@ -725,22 +727,26 @@ p.description {
   padding-top: 10px;
   height: 58px;
 }
-input[type="text"],
-select.form-control {
+input#line[type="text"],
+select {
   background: transparent;
   border: none;
-  border-bottom: 2px solid #75777b;
+  color: white;
+  border-bottom: 2px solid white;
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
 }
 
-input[type="text"]:focus,
-select.form-control:focus {
+input#line[type="text"]:focus,
+:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
+#line::placeholder {
+  color: white;
+}
 ul.social-network {
   list-style: none;
   margin-left: 0 !important;
@@ -765,6 +771,71 @@ ul.social-network li {
 .social-network a:hover {
   color: #208778;
 }
-.image-bg {
+
+.image-fade::before {
+  opacity: 0.2;
+}
+
+.image-tint {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   background: #75777b80;
+  z-index: 2;
+}
+
+#VPIA-intro.jumbotron {
+  background-image: url("../assets/BG.jpg");
+  background-blend-mode: multiply;
+  -webkit-filter: grayscale(100%);
+  filter: grey;
+  background-size: cover;
+  background-position: right 10px bottom 700px;
+}
+
+.intro-content {
+  position: relative;
+  color: white;
+  z-index: 3;
+}
+
+.BGimage::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  content: "";
+  background-image: url("../assets/BG.jpg");
+  -webkit-filter: grayscale(100%);
+  filter: gray;
+  background-size: cover;
+}
+
+.left-panel {
+  background-color: #208778;
+  height: 100%;
+  padding-top: 3%;
+  padding-left: 3%;
+  padding-bottom: 10%;
+}
+#fullpage.container-fluid {
+  padding: 0;
+  height: 100%;
+}
+#logo-bottom-right {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  z-index: 1;
+}
+#my-card-img-top img {
+  width: 100%;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+#full-page.row {
+  height: 100%;
 }
