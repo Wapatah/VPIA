@@ -57,10 +57,6 @@ class ViewArticle extends React.Component {
       });
   }
 
-  getRawMarkupBody() {
-    return { __html: this.state.article[0].body };
-  }
-
   render() {
     if (this.state.loading) return <Loader />;
     else if (
@@ -91,22 +87,73 @@ class ViewArticle extends React.Component {
               </div>
               <div
                 className="single-article-body"
-                dangerouslySetInnerHTML={this.getRawMarkupBody()}
+                dangerouslySetInnerHTML={{ __html: this.state.article[0].body }}
               ></div>
             </div>
             <div className="col-md-3 article-sidebar">
               <div className="sidebar-block">
-                <div className="sidebar-title">Filed under</div>
-                <h2 className="color-text">
-                  <b>{this.state.article[0].topic_id[0].name}</b>
-                </h2>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: this.state.article[0].photo
+                  }}
+                ></div>
+              </div>
+              <div className="sidebar-block">
+                <div className="sidebar-title">License</div>
+                <h3>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: this.state.article[0].photo_license
+                    }}
+                  ></div>
+                </h3>
               </div>
               <div className="sidebar-block">
                 <div className="sidebar-title">Last Updated By</div>
-                <h3>
+                <h3 className="color-text">
                   <b>{this.state.article[0].user_id[0].name}</b>
                 </h3>
                 <p>{this.state.article[0].user_id[0].about}</p>
+              </div>
+              <div className="sidebar-block">
+                <div className="sidebar-title">Holding Institution</div>
+                <h3>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: this.state.article[0].institution
+                    }}
+                  ></div>
+                </h3>
+              </div>
+              <div className="sidebar-block">
+                <div className="sidebar-title">Type</div>
+                <h3>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: this.state.article[0].artwork_type
+                    }}
+                  ></div>
+                </h3>
+              </div>
+              <div className="sidebar-block">
+                <div className="sidebar-title">Culture Group</div>
+                <h3>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: this.state.article[0].culture_group
+                    }}
+                  ></div>
+                </h3>
+              </div>
+              <div className="sidebar-block">
+                <div className="sidebar-title">Material</div>
+                <h3>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: this.state.article[0].material
+                    }}
+                  ></div>
+                </h3>
               </div>
               <div className="sidebar-block">
                 <div className="sidebar-title">What Changed in last edit</div>

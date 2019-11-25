@@ -71,69 +71,81 @@ class UserSignup extends React.Component {
     const isEnabled = email.length > 0 && password.length > 0;
 
     return (
-      <div className=" setup-form container">
-        <div className="row">
-          <div className="col-md-6">
-            <h1>
-              <b>Welcome,</b>
-            </h1>
-            <h3>to the Virtual Platform for Indigenous Art</h3>
-            <br />
-            <h4>This platform was made for discussion.</h4>
-            <br />
+      <div id="fullpage" className="container-fluid">
+        <div id="full-page" className="row">
+          <div className="col-4 left-panel">
+            <img
+              src="../assets/logos/logo-white.png"
+              width="auto"
+              height="250px"
+              alt="VPIA logo"
+              aria-label="VPIA logo"
+            />
+            <div className="setup-form container">
+              <div className="col-md-12 col-sm-12">
+                <form onSubmit={this.handleSubmit}>
+                  <div className="col-sm-12 form-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      ref="user_name"
+                      id="inputUserName"
+                      placeholder="Name"
+                    />
+                  </div>
+                  <div className="col-sm-12 form-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      ref="user_about"
+                      id="inputUserAbout"
+                      placeholder="About"
+                    />
+                  </div>
+                  <div className="col-sm-12 form-group">
+                    <input
+                      type="email"
+                      className="form-control"
+                      ref="user_email"
+                      id="inputUserEmail"
+                      placeholder="Email"
+                      value={this.state.email}
+                      onChange={this.handleEmailChange}
+                    />
+                  </div>
+                  <div className="col-sm-12 form-group">
+                    <input
+                      type="password"
+                      className="form-control"
+                      ref="user_password"
+                      id="inputUserPassword"
+                      placeholder="Password"
+                      value={this.state.password}
+                      onChange={this.handlePasswordChange}
+                    />
+                  </div>
+                  <div className="col-sm-12 form-group">
+                    <button
+                      onClick={this.handleSignUp}
+                      disabled={!isEnabled}
+                      className="btn btn-outline-light btn-block"
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
-          <div className="col-md-6">
-            <form onSubmit={this.handleSubmit}>
-              <div className="col-sm-12 form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  ref="user_name"
-                  id="inputUserName"
-                  placeholder="Name"
-                />
-              </div>
-              <div className="col-sm-12 form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  ref="user_about"
-                  id="inputUserAbout"
-                  placeholder="About"
-                />
-              </div>
-              <div className="col-sm-12 form-group">
-                <input
-                  type="email"
-                  className="form-control"
-                  ref="user_email"
-                  id="inputUserEmail"
-                  placeholder="Email"
-                  value={this.state.email}
-                  onChange={this.handleEmailChange}
-                />
-              </div>
-              <div className="col-sm-12 form-group">
-                <input
-                  type="password"
-                  className="form-control"
-                  ref="user_password"
-                  id="inputUserPassword"
-                  placeholder="Password"
-                  value={this.state.password}
-                  onChange={this.handlePasswordChange}
-                />
-              </div>
-              <div className="col-sm-12 form-group">
-                <button
-                  onClick={this.handleSignUp}
-                  disabled={!isEnabled}
-                  className="btn btn-default btn-block btn-lg"
-                >
-                  Sign Up
-                </button>
-              </div>
-            </form>
+          <div className="col-8 BGimage image-fade">
+            <img
+              src="../assets/logos/logo.png"
+              width="auto"
+              height="400px"
+              alt="VPIA logo"
+              aria-label="VPIA logo"
+              id="logo-bottom-right"
+            />
           </div>
         </div>
       </div>

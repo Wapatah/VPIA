@@ -19,11 +19,7 @@
       Javascript is required to be enabled to view this site properly.
     </noscript>
 
-    <!-- @Matterwiki - The default bootstrap CSS with some modifications -->
-    <link rel="stylesheet" href="./assets/bootstrap.css" async />
-    <!-- @Matterwiki - Customizations and CSS for custom classes -->
-    <link rel="stylesheet" href="./assets/style.css" async />
-    <link rel="stylesheet" href="./assets/font-awesome.min.css" async />
+    <!-- jQuery and Bootstrap javascript -->
     <script
       src="assets/jquery-3.4.1.slim.min.js"
       type="text/javascript"
@@ -34,19 +30,29 @@
       type="text/javascript"
       async
     ></script>
-    <script>
-      (function($) {
-        "use strict";
-        $(".next").click(function() {
-          $(".carousel").carousel("next");
-          return false;
-        });
-        $(".prev").click(function() {
-          $(".carousel").carousel("prev");
-          return false;
-        });
-      })(jQuery);
-    </script>
+    <!-- @Matterwiki - The default bootstrap CSS with some modifications -->
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="./assets/bootstrap.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <!-- @Matterwiki - Customizations and CSS for custom classes -->
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="./assets/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="./assets/font-awesome.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
   </head>
   <body>
     <!--
@@ -56,6 +62,5 @@
     -->
     <div id="app" class="container" />
     <script src="public/bundle.js" type="text/javascript" async></script>
-
   </body>
 </html>

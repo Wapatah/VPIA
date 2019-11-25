@@ -49,67 +49,76 @@ class Setup extends React.Component {
 
   render() {
     return (
-      <div className=" setup-form container">
-        <div className="row">
-          <div className="col-md-6">
-            <h1>
-              <b>Welcome,</b>
-            </h1>
-            <h3>Matterwiki is a simple wiki for teams</h3>
-            <br />
-            <h4>
-              People use it to store documentation, notes, culture guidelines,
-              employee onboarding content and everything they want to.
-            </h4>
-            <br />
+      <div id="fullpage" className="container-fluid">
+        <div id="full-page" className="row">
+          <div className="col-4 left-panel">
+            <img
+              src="../assets/logos/logo-white.png"
+              width="auto"
+              height="250px"
+              alt="VPIA logo"
+              aria-label="VPIA logo"
+            />
+            <div className="setup-form container">
+              <div className="col-md-12 col-sm-12">
+                <form>
+                  <div className="col-sm-12 form-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      ref="user_name"
+                      id="inputUserName"
+                      placeholder="Name"
+                    />
+                  </div>
+                  <div className="col-sm-12 form-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      ref="user_about"
+                      id="inputUserAbout"
+                      placeholder="About"
+                    />
+                  </div>
+                  <div className="col-sm-12 form-group">
+                    <input
+                      type="email"
+                      className="form-control"
+                      ref="user_email"
+                      id="inputUserEmail"
+                      placeholder="Email"
+                    />
+                  </div>
+                  <div className="col-sm-12 form-group">
+                    <input
+                      type="password"
+                      className="form-control"
+                      ref="user_password"
+                      id="inputUserPassword"
+                      placeholder="Password"
+                    />
+                  </div>
+                  <div className="col-sm-12 form-group">
+                    <button
+                      onClick={this.handleSignUp}
+                      className="btn btn-outline-light btn-block"
+                    >
+                      Setup My Admin Account
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
-          <div className="col-md-6">
-            <form>
-              <div className="col-sm-12 form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  ref="user_name"
-                  id="inputUserName"
-                  placeholder="Name"
-                />
-              </div>
-              <div className="col-sm-12 form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  ref="user_about"
-                  id="inputUserAbout"
-                  placeholder="About"
-                />
-              </div>
-              <div className="col-sm-12 form-group">
-                <input
-                  type="email"
-                  className="form-control"
-                  ref="user_email"
-                  id="inputUserEmail"
-                  placeholder="Email"
-                />
-              </div>
-              <div className="col-sm-12 form-group">
-                <input
-                  type="password"
-                  className="form-control"
-                  ref="user_password"
-                  id="inputUserPassword"
-                  placeholder="Password"
-                />
-              </div>
-              <div className="col-sm-12 form-group">
-                <button
-                  onClick={this.handleSignUp}
-                  className="btn btn-default btn-block btn-lg"
-                >
-                  Setup My Account
-                </button>
-              </div>
-            </form>
+          <div className="col-8 BGimage image-fade">
+            <img
+              src="../assets/logos/logo.png"
+              width="auto"
+              height="400px"
+              alt="VPIA logo"
+              aria-label="VPIA logo"
+              id="logo-bottom-right"
+            />
           </div>
         </div>
       </div>
