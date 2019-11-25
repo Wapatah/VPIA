@@ -46,6 +46,10 @@ body {
   letter-spacing: 1px;
   font-family: "FuturaStdHeavy";
 }
+html,
+body {
+  height: 100%;
+}
 
 .content {
   margin-bottom: 3em;
