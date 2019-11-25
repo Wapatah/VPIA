@@ -101,11 +101,10 @@ class BrowseArticles extends React.Component {
                 {this.state.articles.slice(0, 4).map(article => (
                   <div key={article.id} className="col-md-3">
                     <div className="card">
-                      <div id="my-card-img-top">
-                        <React.Fragment
-                          dangerouslySetInnerHTML={{ __html: article.photo }}
-                        />
-                      </div>
+                      <div
+                        id="my-card-img-top"
+                        dangerouslySetInnerHTML={{ __html: article.photo }}
+                      ></div>
 
                       <div className="card-body">
                         <p className="article-title">
@@ -136,11 +135,10 @@ class BrowseArticles extends React.Component {
                 {this.state.articles.slice(4, 8).map(article => (
                   <div key={article.id} className="col-md-3">
                     <div className="card">
-                      <div id="my-card-img-top">
-                        <React.Fragment
-                          dangerouslySetInnerHTML={{ __html: article.photo }}
-                        />
-                      </div>
+                      <div
+                        id="my-card-img-top"
+                        dangerouslySetInnerHTML={{ __html: article.photo }}
+                      ></div>
                       <div className="card-body">
                         <p className="article-title">
                           <Link
