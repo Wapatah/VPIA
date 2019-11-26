@@ -833,6 +833,8 @@ ul.social-network li {
 }
 #my-card-img-top img {
   width: 100%;
+  height: 15vw;
+  object-fit: cover;
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
 }
