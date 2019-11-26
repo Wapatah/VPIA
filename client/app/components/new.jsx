@@ -205,6 +205,7 @@ class NewArticle extends React.Component {
                 onInit={() => {
                   console.log("Editor is ready.");
                 }}
+                data="Overview<hr><br><p></p>Body<hr><br><p></p>References<hr><br><p></p>"
                 onChange={(event, editor) => {
                   let body = this.state.body;
                   this.setState({ body: editor.getData() });
