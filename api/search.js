@@ -18,11 +18,17 @@ module.exports = function(app) {
   This is a GET enpoint which takes the search query as a URL param
   Runs the search query and returns matching articles in the data key in the
   response object.
-  The endpoint only searches article titles as of now.
+  Returns items "like" search query (pipe can return panel pipe)
   */
   app.get("/search", function(req, res) {
     var SearchInput = req.query.query;
-    Articles.find({ where: { title: SearchInput } })
+    Articles.find({ 
+      where: { 
+        artwork_type: {
+          regex: SearchInput
+        }
+      } 
+    })
       .then(function(collection) {
         res.json({
           error: {
