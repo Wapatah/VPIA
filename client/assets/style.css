@@ -34,6 +34,12 @@
   font-family: "Baskerville-BoldItalic";
   src: url("./fonts/MBaskerville-BoldItalic.otf");
 }
+#FuturaStdHeavy {
+  font-family: "FuturaStdHeavy";
+}
+#Baskerville {
+  font-family: "Baskerville";
+}
 
 .primary-logo {
   height: 4em;
@@ -137,13 +143,15 @@ body {
 
 .article-heading {
   margin-bottom: 2em;
+  margin-top: 2em;
 }
 
 .single-article-body {
-  font-family: "FuturaStdHeavy";
+  font-family: "Baskerville";
   font-size: 1.5em;
   margin-bottom: 2em;
-  padding: 0em 1em;
+  padding-top: 1em;
+  padding-left: 0;
 }
 
 .new-article .form-control {
@@ -171,6 +179,9 @@ input:focus {
   padding: 10px 20px;
   border-left: 1px solid #efefef;
   border-right: 1px solid #efefef;
+}
+.article-info-box {
+  right: 0;
 }
 
 textarea {
@@ -261,6 +272,9 @@ textarea {
   border-bottom: 1px solid #ccc;
   padding: 5px;
   color: #595959;
+}
+.section-title {
+  padding-top: 1em;
 }
 
 @-webkit-keyframes spin {

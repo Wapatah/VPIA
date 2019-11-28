@@ -67,9 +67,9 @@ class ViewArticle extends React.Component {
       return (
         <div>
           <div id="article-nav" className="container-fluid">
-            <div className="col-md-5 col-centered">
-              <div className="row">
-                <div className="col align-self-start align-items-end">
+            <div className="col-md-6 col-centered">
+              <div className="row align-items-end">
+                <div className="col">
                   <a className="active-red">
                     <svg
                       width="15%"
@@ -86,7 +86,7 @@ class ViewArticle extends React.Component {
                     Artwork Article
                   </a>
                 </div>
-                <div className="col align-items-end">
+                <div className="col text-right">
                   <Link
                     to={"/article/edit/" + this.state.article[0].id}
                     className="none-deco"
@@ -94,7 +94,7 @@ class ViewArticle extends React.Component {
                     <i className="fa fa-edit"></i>Edit
                   </Link>
                 </div>
-                <div className="col align-self-end align-items-end">
+                <div className="col text-right">
                   <Link
                     to={"/article/history/" + this.state.article[0].id}
                     className="none-deco"
@@ -105,113 +105,132 @@ class ViewArticle extends React.Component {
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="article-heading">
-                <h1 className="single-article-title">
-                  {this.state.article[0].title}
-                </h1>
-                <div className="single-article-meta">
-                  Created on{" "}
-                  {new Date(
-                    this.state.article[0].created_at.replace(" ", "T")
-                  ).toUTCString()}
+
+          <div className="col-md-8 offset-md-3">
+            <div className="article-heading">
+              <h1 className="single-article-title">
+                {this.state.article[0].title}
+              </h1>
+              <div className="single-article-meta">
+                Created on{" "}
+                {new Date(
+                  this.state.article[0].created_at.replace(" ", "T")
+                ).toUTCString()}
+              </div>
+              <div className="single-article-meta">
+                Last updated on{" "}
+                {new Date(
+                  this.state.article[0].updated_at.replace(" ", "T")
+                ).toUTCString()}
+              </div>
+
+              <h3 className="section-title">Overview</h3>
+              <hr />
+              <div className="row">
+                <div className="col-md-8">
+                  <h3>Body</h3>
+                  <hr />
+                  <div
+                    className="single-article-body"
+                    dangerouslySetInnerHTML={{
+                      __html: this.state.article[0].body
+                    }}
+                  ></div>
+                  <h3>References</h3>
+                  <hr />
                 </div>
-                <div className="single-article-meta">
-                  Last updated on{" "}
-                  {new Date(
-                    this.state.article[0].updated_at.replace(" ", "T")
-                  ).toUTCString()}
+
+                <div className="col-md-4 article-info-box">
+                  <div className="card">
+                    <div
+                      id="my-card-img-top"
+                      dangerouslySetInnerHTML={{
+                        __html: this.state.article[0].photo
+                      }}
+                    ></div>
+
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: this.state.article[0].photo_license
+                      }}
+                    ></div>
+
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item">License</li>
+                      <li className="list-group-item">
+                        Last Updated By
+                        <p id="Baskerville">
+                          {this.state.article[0].user_id[0].name}
+                        </p>
+                        <p id="Baskerville">
+                          {this.state.article[0].user_id[0].about}
+                        </p>
+                      </li>
+                      <li className="list-group-item">
+                        <p id="FuturaStdHeavy">Holding Institution</p>
+                        <p
+                          id="Baskerville"
+                          dangerouslySetInnerHTML={{
+                            __html: this.state.article[0].institution
+                          }}
+                        ></p>
+                      </li>
+
+                      <li className="list-group-item">
+                        <p id="FuturaStdHeavy">Type</p>
+                        <p
+                          id="Baskerville"
+                          dangerouslySetInnerHTML={{
+                            __html: this.state.article[0].artwork_type
+                          }}
+                        ></p>
+                      </li>
+
+                      <li className="list-group-item">
+                        <p id="FuturaStdHeavy">Culture Group</p>
+                        <p
+                          id="Baskerville"
+                          dangerouslySetInnerHTML={{
+                            __html: this.state.article[0].culture_group
+                          }}
+                        ></p>
+                      </li>
+
+                      <li className="list-group-item">
+                        <p id="FuturaStdHeavy">Material</p>
+                        <p
+                          id="Baskerville"
+                          dangerouslySetInnerHTML={{
+                            __html: this.state.article[0].material
+                          }}
+                        ></p>
+                      </li>
+
+                      <li className="list-group-item">
+                        <b>What Changed in last edit</b>
+                        {this.state.article[0].what_changed ? (
+                          <p id="Baskerville">
+                            {this.state.article[0].what_changed}
+                          </p>
+                        ) : (
+                          <p id="Baskerville">No information available</p>
+                        )}
+                      </li>
+                    </ul>
+
+                    {window.localStorage.getItem("admin") === "1" ? (
+                      <button
+                        className="btn btn-primary btn-block"
+                        onClick={this.deleteArticle}
+                      >
+                        Delete
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </div>
               </div>
-              <div
-                className="single-article-body"
-                dangerouslySetInnerHTML={{ __html: this.state.article[0].body }}
-              ></div>
-            </div>
-            <div className="col-md-3 article-sidebar">
-              <div className="sidebar-block">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.article[0].photo
-                  }}
-                ></div>
-              </div>
-              <div className="sidebar-block">
-                <div className="sidebar-title">License</div>
-                <h3>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.article[0].photo_license
-                    }}
-                  ></div>
-                </h3>
-              </div>
-              <div className="sidebar-block">
-                <div className="sidebar-title">Last Updated By</div>
-                <h3 className="color-text">
-                  <b>{this.state.article[0].user_id[0].name}</b>
-                </h3>
-                <p>{this.state.article[0].user_id[0].about}</p>
-              </div>
-              <div className="sidebar-block">
-                <div className="sidebar-title">Holding Institution</div>
-                <h3>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.article[0].institution
-                    }}
-                  ></div>
-                </h3>
-              </div>
-              <div className="sidebar-block">
-                <div className="sidebar-title">Type</div>
-                <h3>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.article[0].artwork_type
-                    }}
-                  ></div>
-                </h3>
-              </div>
-              <div className="sidebar-block">
-                <div className="sidebar-title">Culture Group</div>
-                <h3>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.article[0].culture_group
-                    }}
-                  ></div>
-                </h3>
-              </div>
-              <div className="sidebar-block">
-                <div className="sidebar-title">Material</div>
-                <h3>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.article[0].material
-                    }}
-                  ></div>
-                </h3>
-              </div>
-              <div className="sidebar-block">
-                <div className="sidebar-title">What Changed in last edit</div>
-                {this.state.article[0].what_changed ? (
-                  <h4>{this.state.article[0].what_changed}</h4>
-                ) : (
-                  <h4>No information available</h4>
-                )}
-              </div>
-              {window.localStorage.getItem("admin") === "1" ? (
-                <button
-                  className="btn btn-default btn-block btn-lg"
-                  onClick={this.deleteArticle}
-                >
-                  Delete
-                </button>
-              ) : (
-                ""
-              )}
             </div>
           </div>
         </div>
