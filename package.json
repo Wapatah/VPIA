@@ -43,9 +43,7 @@
     "react-router": "3.2.0",
     "react-router-dom": "^5.1.2",
     "style-loader": "^1.0.0",
-    "whatwg-fetch": "2.0.1"
-  },
-  "devDependencies": {
+    "whatwg-fetch": "2.0.1",
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
@@ -60,5 +58,7 @@
     "webpack-cli": "^3.3.9",
     "webpack-dev-middleware": "1.9.0",
     "webpack-hot-middleware": "2.15.0"
+  },
+  "devDependencies": {
   }
 }
