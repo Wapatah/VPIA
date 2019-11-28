@@ -40,7 +40,7 @@ class MainNav extends React.Component {
                         className="main-icon"
                       />
                     </svg>
-                    <span className="active">Home</span>
+                    <span className="active-yellow">Home</span>
                   </a>
                 </div>
                 <div className="main-nav-item">
@@ -99,7 +99,7 @@ class MainNav extends React.Component {
           </div>
         </div>
         <div id="searchform" className="container-fluid">
-          <div className="col-md-4 col-centered">
+          <div className="col-md-5 col-centered">
             <SearchForm />
           </div>
         </div>

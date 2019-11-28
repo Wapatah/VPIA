@@ -128,6 +128,8 @@ body {
   font-weight: 700;
   font-size: 3.5em;
   margin-bottom: 10px;
+  color: #208778;
+  font-family: "FuturaStdHeavy";
 }
 .single-article-meta {
   color: #595959;
@@ -608,11 +610,17 @@ a.none-deco {
 .main-nav-item span {
   color: #ffffff;
 }
-.main-nav-item span.active {
+.main-nav-item span.active-yellow {
   border-bottom: 3px solid #ffb600;
+}
+.active-red {
+  border-bottom: 3px solid #d60812;
 }
 .main-icon {
   fill: #ffffff;
+}
+.small-icon {
+  fill: #53555a;
 }
 .main-nav-item :hover .main-icon {
   fill: #ffb600;
@@ -724,6 +732,11 @@ p.description {
 }
 #searchform.container-fluid {
   background-color: #343638;
+  padding-top: 10px;
+  height: 58px;
+}
+#article-nav.container-fluid {
+  background-color: #d0cfcd;
   padding-top: 10px;
   height: 58px;
 }
