@@ -68,9 +68,9 @@ class ViewArticle extends React.Component {
         <div>
           <div id="article-nav" className="container-fluid">
             <div className="col-md-6 col-centered">
-              <div className="row align-items-end">
+              <div id="article-nav-inner" className="row align-items-end">
                 <div className="col">
-                  <a className="active-red">
+                  <a className="active-red bottom-align-text">
                     <svg
                       width="15%"
                       height="15%"
@@ -86,7 +86,7 @@ class ViewArticle extends React.Component {
                     Artwork Article
                   </a>
                 </div>
-                <div className="col text-right">
+                <div className="col text-right bottom-align-text">
                   <Link
                     to={"/article/edit/" + this.state.article[0].id}
                     className="none-deco"
@@ -94,7 +94,7 @@ class ViewArticle extends React.Component {
                     <i className="fa fa-edit"></i>Edit
                   </Link>
                 </div>
-                <div className="col text-right">
+                <div className="col text-right bottom-align-text">
                   <Link
                     to={"/article/history/" + this.state.article[0].id}
                     className="none-deco"
@@ -105,129 +105,141 @@ class ViewArticle extends React.Component {
               </div>
             </div>
           </div>
-
-          <div className="col-md-8 offset-md-3">
-            <div className="article-heading">
-              <h1 className="single-article-title">
-                {this.state.article[0].title}
-              </h1>
-              <div className="single-article-meta">
-                Created on{" "}
-                {new Date(
-                  this.state.article[0].created_at.replace(" ", "T")
-                ).toUTCString()}
+          <div className="row">
+            <div className="col-md-3 left-side-nav-card">
+              <div className="left-side-nav-content">
+                <p>
+                  # users have contributed to this article view history to see
+                  editor's information
+                </p>
               </div>
-              <div className="single-article-meta">
-                Last updated on{" "}
-                {new Date(
-                  this.state.article[0].updated_at.replace(" ", "T")
-                ).toUTCString()}
-              </div>
+            </div>
 
-              <h3 className="section-title">Overview</h3>
-              <hr />
-              <div className="row">
-                <div className="col-md-8">
-                  <h3>Body</h3>
-                  <hr />
-                  <div
-                    className="single-article-body"
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.article[0].body
-                    }}
-                  ></div>
-                  <h3>References</h3>
-                  <hr />
+            <div className="col-md-8">
+              <div className="article-heading">
+                <h1 className="single-article-title">
+                  {this.state.article[0].title}
+                </h1>
+                <div className="single-article-meta">
+                  Created on{" "}
+                  {new Date(
+                    this.state.article[0].created_at.replace(" ", "T")
+                  ).toUTCString()}
+                </div>
+                <div className="single-article-meta">
+                  Last updated on{" "}
+                  {new Date(
+                    this.state.article[0].updated_at.replace(" ", "T")
+                  ).toUTCString()}
                 </div>
 
-                <div className="col-md-4 article-info-box">
-                  <div className="card">
+                <h3 className="section-title">Overview</h3>
+                <hr />
+                <div className="row">
+                  <div className="col-md-8">
+                    <h3>Body</h3>
+                    <hr />
                     <div
-                      id="my-card-img-top"
+                      className="single-article-body"
                       dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].photo
+                        __html: this.state.article[0].body
                       }}
                     ></div>
+                    <h3>References</h3>
+                    <hr />
+                  </div>
 
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].photo_license
-                      }}
-                    ></div>
+                  <div className="col-md-4 article-info-box">
+                    <div className="card">
+                      <div
+                        id="my-card-img-top"
+                        dangerouslySetInnerHTML={{
+                          __html: this.state.article[0].photo
+                        }}
+                      ></div>
 
-                    <ul className="list-group list-group-flush">
-                      <li className="list-group-item">License</li>
-                      <li className="list-group-item">
-                        Last Updated By
-                        <p id="Baskerville">
-                          {this.state.article[0].user_id[0].name}
-                        </p>
-                        <p id="Baskerville">
-                          {this.state.article[0].user_id[0].about}
-                        </p>
-                      </li>
-                      <li className="list-group-item">
-                        <p id="FuturaStdHeavy">Holding Institution</p>
-                        <p
-                          id="Baskerville"
-                          dangerouslySetInnerHTML={{
-                            __html: this.state.article[0].institution
-                          }}
-                        ></p>
-                      </li>
+                      <p
+                        id="Baskerville"
+                        dangerouslySetInnerHTML={{
+                          __html: this.state.article[0].photo_license
+                        }}
+                      ></p>
 
-                      <li className="list-group-item">
-                        <p id="FuturaStdHeavy">Type</p>
-                        <p
-                          id="Baskerville"
-                          dangerouslySetInnerHTML={{
-                            __html: this.state.article[0].artwork_type
-                          }}
-                        ></p>
-                      </li>
+                      <ul className="list-group list-group-flush">
+                        <li className="list-group-item">License</li>
 
-                      <li className="list-group-item">
-                        <p id="FuturaStdHeavy">Culture Group</p>
-                        <p
-                          id="Baskerville"
-                          dangerouslySetInnerHTML={{
-                            __html: this.state.article[0].culture_group
-                          }}
-                        ></p>
-                      </li>
-
-                      <li className="list-group-item">
-                        <p id="FuturaStdHeavy">Material</p>
-                        <p
-                          id="Baskerville"
-                          dangerouslySetInnerHTML={{
-                            __html: this.state.article[0].material
-                          }}
-                        ></p>
-                      </li>
-
-                      <li className="list-group-item">
-                        <b>What Changed in last edit</b>
-                        {this.state.article[0].what_changed ? (
+                        <li className="list-group-item">
+                          Last Updated By
                           <p id="Baskerville">
-                            {this.state.article[0].what_changed}
+                            {this.state.article[0].user_id[0].name}
                           </p>
-                        ) : (
-                          <p id="Baskerville">No information available</p>
-                        )}
-                      </li>
-                    </ul>
+                          <p id="Baskerville">
+                            {this.state.article[0].user_id[0].about}
+                          </p>
+                        </li>
+                        <li className="list-group-item">
+                          <p id="FuturaStdHeavy">Holding Institution</p>
+                          <p
+                            id="Baskerville"
+                            dangerouslySetInnerHTML={{
+                              __html: this.state.article[0].institution
+                            }}
+                          ></p>
+                        </li>
 
-                    {window.localStorage.getItem("admin") === "1" ? (
-                      <button
-                        className="btn btn-primary btn-block"
-                        onClick={this.deleteArticle}
-                      >
-                        Delete
-                      </button>
-                    ) : (
-                      ""
-                    )}
+                        <li className="list-group-item">
+                          <p id="FuturaStdHeavy">Type</p>
+                          <p
+                            id="Baskerville"
+                            dangerouslySetInnerHTML={{
+                              __html: this.state.article[0].artwork_type
+                            }}
+                          ></p>
+                        </li>
+
+                        <li className="list-group-item">
+                          <p id="FuturaStdHeavy">Culture Group</p>
+                          <p
+                            id="Baskerville"
+                            dangerouslySetInnerHTML={{
+                              __html: this.state.article[0].culture_group
+                            }}
+                          ></p>
+                        </li>
+
+                        <li className="list-group-item">
+                          <p id="FuturaStdHeavy">Material</p>
+                          <p
+                            id="Baskerville"
+                            dangerouslySetInnerHTML={{
+                              __html: this.state.article[0].material
+                            }}
+                          ></p>
+                        </li>
+
+                        <li className="list-group-item">
+                          <b>What Changed in last edit</b>
+                          {this.state.article[0].what_changed ? (
+                            <p id="Baskerville">
+                              {this.state.article[0].what_changed}
+                            </p>
+                          ) : (
+                            <p id="Baskerville">No information available</p>
+                          )}
+                        </li>
+                      </ul>
+
+                      {window.localStorage.getItem("admin") === "1" ? (
+                        <button
+                          className="btn btn-primary btn-block"
+                          onClick={this.deleteArticle}
+                        >
+                          Delete
+                        </button>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

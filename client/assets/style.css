@@ -688,6 +688,9 @@ footer p {
 .mainheader {
   background-color: #208778;
 }
+.list-group-item {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
 
 #VPIA-intro.container-fluid {
   padding-left: 0;
@@ -747,13 +750,42 @@ p.description {
 #searchform.container-fluid {
   background-color: #343638;
   padding-top: 10px;
-  height: 58px;
+  height: 3.625em;
 }
 #article-nav.container-fluid {
   background-color: #d0cfcd;
   padding-top: 10px;
-  height: 58px;
+  padding-bottom: 0;
+  height: 3.625em;
 }
+#article-nav-inner.row {
+  height: 3.2em;
+}
+.left-side-nav-card {
+  position: relative;
+  background: #d0cfcd;
+  height: 50%;
+  margin-top: 10%;
+}
+.left-side-nav-card:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 0.625em solid transparent;
+  border-left-color: #d0cfcd;
+  border-right: 0;
+  margin-top: -0.625em;
+  margin-right: -0.625em;
+}
+.left-side-nav-content {
+  width: 50%;
+  float: right;
+  margin: 0.5em;
+}
+
 input#line[type="text"],
 select {
   background: transparent;
