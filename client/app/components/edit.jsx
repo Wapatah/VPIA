@@ -162,11 +162,13 @@ class EditArticle extends React.Component {
               </p>
             </div>
             <div className="col-md-5">
-              <div className={this.state.isHidden ? "hidden" : ""}>
-                <EditorPreview data={this.state.body} />
-              </div>
               <div className="new-article">
                 <div className="row">
+                  <div className="col-md-12">
+                    <div className={this.state.isHidden ? "hidden" : ""}>
+                      <EditorPreview data={this.state.body} />
+                    </div>
+                  </div>
                   <div className="col-md-12">
                     <p>Content that violates any copyrights will be deleted</p>
                   </div>
