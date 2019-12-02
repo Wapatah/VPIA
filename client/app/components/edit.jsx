@@ -24,8 +24,15 @@ class EditArticle extends React.Component {
       material: "",
       artwork_type: "",
       topics: [],
-      loading: true
+      loading: true,
+      isHidden: true
     };
+  }
+
+  toggleHidden() {
+    this.setState({
+      isHidden: !this.state.isHidden
+    });
   }
 
   handleChange(data) {
@@ -146,109 +153,120 @@ class EditArticle extends React.Component {
     if (this.state.loading) return <Loader />;
     else
       return (
-        <div className="row">
-          <div className="col-md-5 col-centered">
-            <div className="new-article">
-              <div className="row">
-                <div className="col-md-12">
-                  <input
-                    onChange={this.handleChange}
-                    ref="title"
-                    className="form-control input-title"
-                    value={this.state.title}
-                  />
-                </div>
+        <div className="content-container">
+          <div className="row">
+            <div id="left-side" className="col-md-1">
+              <p className="text-right edit-page-title">Editing Artwork:</p>
+              <p className="text-right edit-page-article-title">
+                {this.state.title}
+              </p>
+            </div>
+            <div className="col-md-5">
+              <div className={this.state.isHidden ? "hidden" : ""}>
+                <EditorPreview data={this.state.body} />
               </div>
-              <br />
-              <div className="row">
-                <div className="col-md-12 new-article-form">
-                  Culture Group
-                  <div className="border rounded">
-                    <CKEditor
-                      editor={InlineEditor}
-                      data={this.state.culture_group}
-                      onChange={(event, editor) => {
-                        let culture_group = this.state.culture_group;
-                        this.setState({ culture_group: editor.getData() });
-                      }}
-                      config={CKConfig}
-                    />
-                  </div>
-                  Material
-                  <div className="border rounded">
-                    <CKEditor
-                      style="outline: 1px solid black"
-                      editor={InlineEditor}
-                      data={this.state.material}
-                      onChange={(event, editor) => {
-                        let material = this.state.material;
-                        this.setState({ material: editor.getData() });
-                      }}
-                      config={CKConfig}
-                    />
-                  </div>
-                  Artwork Type
-                  <div className="border rounded">
-                    <CKEditor
-                      editor={InlineEditor}
-                      data={this.state.artwork_type}
-                      onChange={(event, editor) => {
-                        let artwork_type = this.state.artwork_type;
-                        this.setState({ artwork_type: editor.getData() });
-                      }}
-                      config={CKConfig}
-                    />
-                  </div>
-                  <CKEditor
-                    editor={ClassicEditor}
-                    onInit={() => {
-                      console.log("Editor is ready.");
-                    }}
-                    data={this.state.body}
-                    onChange={(event, editor) => {
-                      let body = this.state.body;
-                      this.setState({ body: editor.getData() });
-                    }}
-                    config={CKConfig}
-                  />
-                  <br />
-                  <EditorPreview data={this.state.body} />
-                  <br />
-                  <label>Choose topic</label>
-                  <select
-                    className="form-control topic-select"
-                    ref="topic"
-                    defaultValue={this.state.topic_id}
-                  >
-                    {this.state.topics.map(topic => (
-                      <option value={topic.id} key={topic.id}>
-                        {topic.name}
-                      </option>
-                    ))}
-                  </select>
-                  <br />
-                  <div className="whatwrapper">
-                    <label>What improvements did you make in this edit?</label>
-                    <textarea
-                      ref="what_changed"
-                      className="form-control what_changed what"
-                      id="what"
-                      placeholder="Example: Fixed a typo. It's grammer not grammar"
-                    />
-                    <p className="help-block">
-                      Keep it short and descriptive :)
-                    </p>
-                  </div>
-                  <br />
-                </div>
-
+              <div className="new-article">
                 <div className="row">
                   <div className="col-md-12">
+                    <p>Content that violates any copyrights will be deleted</p>
+                  </div>
+                </div>
+                <br />
+                <div className="row">
+                  <div className="col-md-12 new-article-form">
+                    Culture Group
+                    <div className="border rounded">
+                      <CKEditor
+                        editor={InlineEditor}
+                        data={this.state.culture_group}
+                        onChange={(event, editor) => {
+                          let culture_group = this.state.culture_group;
+                          this.setState({ culture_group: editor.getData() });
+                        }}
+                        config={CKConfig}
+                      />
+                    </div>
+                    Material
+                    <div className="border rounded">
+                      <CKEditor
+                        style="outline: 1px solid black"
+                        editor={InlineEditor}
+                        data={this.state.material}
+                        onChange={(event, editor) => {
+                          let material = this.state.material;
+                          this.setState({ material: editor.getData() });
+                        }}
+                        config={CKConfig}
+                      />
+                    </div>
+                    Artwork Type
+                    <div className="border rounded">
+                      <CKEditor
+                        editor={InlineEditor}
+                        data={this.state.artwork_type}
+                        onChange={(event, editor) => {
+                          let artwork_type = this.state.artwork_type;
+                          this.setState({ artwork_type: editor.getData() });
+                        }}
+                        config={CKConfig}
+                      />
+                    </div>
+                    <CKEditor
+                      editor={ClassicEditor}
+                      onInit={() => {
+                        console.log("Editor is ready.");
+                      }}
+                      data={this.state.body}
+                      onChange={(event, editor) => {
+                        let body = this.state.body;
+                        this.setState({ body: editor.getData() });
+                      }}
+                      config={CKConfig}
+                    />
+                    <label>Choose topic</label>
+                    <select
+                      className="form-control topic-select"
+                      ref="topic"
+                      defaultValue={this.state.topic_id}
+                    >
+                      {this.state.topics.map(topic => (
+                        <option value={topic.id} key={topic.id}>
+                          {topic.name}
+                        </option>
+                      ))}
+                    </select>
+                    <br />
+                    <div className="whatwrapper">
+                      <label>
+                        What improvements did you make in this edit?
+                      </label>
+                      <textarea
+                        ref="what_changed"
+                        className="form-control what_changed what"
+                        id="what"
+                        placeholder="Example: Fixed a typo. It's grammer not grammar"
+                      />
+                      <p className="help-block">
+                        Keep it short and descriptive :)
+                      </p>
+                    </div>
+                    <br />
+                  </div>
+
+                  <div className="col-sm-4">
+                    <button
+                      className="btn btn-default btn-block"
+                      onClick={() => this.toggleHidden()}
+                    >
+                      Preview Changes
+                    </button>
+                  </div>
+                  <div className="col-sm-4">
                     <button
                       className="btn btn-primary btn-block"
                       onClick={this.handleSubmit}
                     >
-                      Update Article
+                      Publish Changes
                     </button>
                   </div>
                 </div>
