@@ -108,7 +108,7 @@ class App extends React.Component {
         <div>{that.props.children}</div>
         <footer className="footer">
           <div className="container bottom_border">
-            <div className="row">
+            <div id="full-page" className="row">
               <div className="col col-lg-2">
                 <img
                   src="../assets/logos/logo-white.png"
