@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, hashHistory } from "react-router";
 import Loader from "./loader.jsx";
+import ArticleNav from "./article_nav.jsx";
 
 //import Alert from "react-s-alert";
 
