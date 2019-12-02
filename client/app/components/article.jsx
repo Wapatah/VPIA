@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, hashHistory } from "react-router";
 import Loader from "./loader.jsx";
+
 //import Alert from "react-s-alert";
 
 class ViewArticle extends React.Component {
@@ -67,7 +68,7 @@ class ViewArticle extends React.Component {
       return (
         <div>
           <div id="article-nav" className="container-fluid">
-            <div className="col-md-6 col-centered">
+            <div className="col-md-5 col-centered">
               <div id="article-nav-inner" className="row align-items-end">
                 <div className="col">
                   <a className="active-red bottom-align-text">
@@ -106,7 +107,7 @@ class ViewArticle extends React.Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-3 left-side-nav-card">
+            <div id="left-side" className="col-md-1 left-side-nav-card">
               <div className="left-side-nav-content">
                 <p>
                   # users have contributed to this article view history to see
@@ -136,7 +137,7 @@ class ViewArticle extends React.Component {
                 <h3 className="section-title">Overview</h3>
                 <hr />
                 <div className="row">
-                  <div className="col-md-8">
+                  <div id="article-body" className="col-md-1">
                     <h3>Body</h3>
                     <hr />
                     <div
@@ -166,7 +167,15 @@ class ViewArticle extends React.Component {
                       ></p>
 
                       <ul className="list-group list-group-flush">
-                        <li className="list-group-item">License</li>
+                        <li className="list-group-item">
+                          License
+                          <p
+                            id="Baskerville"
+                            dangerouslySetInnerHTML={{
+                              __html: this.state.article[0].photo_license
+                            }}
+                          ></p>
+                        </li>
 
                         <li className="list-group-item">
                           Last Updated By

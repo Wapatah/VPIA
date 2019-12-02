@@ -759,7 +759,7 @@ p.description {
   height: 3.625em;
 }
 #article-nav-inner.row {
-  height: 3.2em;
+  height: 2.8em;
 }
 .left-side-nav-card {
   position: relative;
@@ -784,6 +784,16 @@ p.description {
   width: 50%;
   float: right;
   margin: 0.5em;
+}
+#left-side.col-md-1 {
+  -ms-flex: 0 0 29.166666655%;
+  flex: 0 0 29.166666655%;
+  max-width: 29.166666655%;
+}
+#article-body.col-md-1 {
+  -ms-flex: 0 0 62.5%;
+  flex: 0 0 62.5%;
+  max-width: 62.5%;
 }
 
 input#line[type="text"],
