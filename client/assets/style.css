@@ -930,3 +930,6 @@ ul.social-network li {
 #full-page.row {
   height: 100%;
 }
+#result.card {
+  margin-bottom: 1rem;
+}
