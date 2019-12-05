@@ -5,7 +5,19 @@ import { Link, hashHistory } from "react-router";
 class ArtworkResults extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { articles: [], url: "/api/articles", loading: true };
+    this.state = {
+      articles: [],
+      url: "/api/articles",
+      loading: true,
+      currentArticle: 1,
+      articlesPerPage: 9
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(event) {
+    this.setState({
+      currentArticle: Number(event.target.id)
+    });
   }
 
   componentDidMount() {
@@ -54,6 +66,75 @@ class ArtworkResults extends React.Component {
       });
   }
   render() {
+    const { articles, currentArticle, articlesPerPage } = this.state;
+    // Logic for displaying todos
+    const indexOfLastArticle = currentArticle * articlesPerPage;
+    const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+    const currentArticles = articles.slice(
+      indexOfFirstArticle,
+      indexOfLastArticle
+    );
+
+    const renderArticles = currentArticles.map(article => {
+      return (
+        <div key={article.id} className="col-md-4">
+          <div id="result" className="card card-block">
+            <div
+              id="my-card-img-top"
+              dangerouslySetInnerHTML={{ __html: article.photo }}
+            ></div>
+            <div className="card-body">
+              <p className="article-title">
+                <Link to={"/article/" + article.id} className="text-dark">
+                  {article.title}
+                </Link>
+              </p>
+
+              <div className="card-text">
+                <small class="text-muted">
+                  <p
+                    id="Baskerville"
+                    dangerouslySetInnerHTML={{
+                      __html: article.culture_group
+                    }}
+                  ></p>
+                  <p id="Baskerville">
+                    <i className="fa fa-clock-o" />
+                    {new Date(
+                      article.updated_at.replace(" ", "T")
+                    ).toUTCString()}
+                  </p>
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+
+    // Logic for displaying page numbers
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(articles.length / articlesPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map(number => {
+      return (
+        <nav aria-label="Page navigation example">
+          <ul className="pagination justify-content-end">
+            <li
+              className="page-item"
+              key={number}
+              id={number}
+              onClick={this.handleClick}
+            >
+              {number}
+            </li>
+          </ul>
+        </nav>
+      );
+    });
+
     if (this.state.loading) return <Loader />;
     if (this.state.articles.length < 1) {
       return (
@@ -64,42 +145,8 @@ class ArtworkResults extends React.Component {
     } else {
       return (
         <div>
-          <div className="card-deck">
-            {this.state.articles.map(article => (
-              <div key={article.id} className="col-md-4">
-                <div id="result" className="card card-block">
-                  <div
-                    id="my-card-img-top"
-                    dangerouslySetInnerHTML={{ __html: article.photo }}
-                  ></div>
-                  <div className="card-body">
-                    <p className="article-title">
-                      <Link to={"/article/" + article.id} className="text-dark">
-                        {article.title}
-                      </Link>
-                    </p>
-
-                    <div className="card-text">
-                      <small class="text-muted">
-                        <p
-                          id="Baskerville"
-                          dangerouslySetInnerHTML={{
-                            __html: article.culture_group
-                          }}
-                        ></p>
-                        <p id="Baskerville">
-                          <i className="fa fa-clock-o" />
-                          {new Date(
-                            article.updated_at.replace(" ", "T")
-                          ).toUTCString()}
-                        </p>
-                      </small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <div id="page-numbers">{renderPageNumbers}</div>
+          <div className="card-deck">{renderArticles}</div>
         </div>
       );
     }
