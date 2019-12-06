@@ -10,10 +10,10 @@ var Schema = caminte.Schema;
 
 var config = {
   driver: "mysql",
-  host: "localhost",
-  username: "root",
-  password: "wapatah1",
-  database: "vpia",
+  host: "vpia.wapatah.com",
+  username: "wapataho_vpia",
+  password: "Wapatah1",
+  database: "wapataho_vpia",
   pool: true
 };
 

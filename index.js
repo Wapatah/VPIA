@@ -25,7 +25,7 @@ relations.load(app);
 // @Mordax - using gzip compression to speed up app performance
 app.use(compression());
 
-process.env.PORT = process.env.PORT || 5000;
+process.env.PORT = process.env.PORT || 30000;
 
 console.log(process.env.NODE_ENV);
 
@@ -165,5 +165,5 @@ app.use("/api", apiRoutesAdmin);
 app.use(express.static(__dirname + "/client"));
 
 app.listen(process.env.PORT, function() {
-  console.log("Running on http://localhost:%s", process.env.PORT);
+  console.log("Running on Port:" + process.env.PORT);
 });
