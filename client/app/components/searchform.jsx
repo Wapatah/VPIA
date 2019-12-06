@@ -20,7 +20,7 @@ class SearchForm extends React.Component {
             type="text"
             className="form-control"
             id="line"
-            placeholder="Search Artwork"
+            placeholder="Search artwork {Example: pipe, Haida Gwaii, Wood, McCord Museum,…}"
             ref="search"
             aria-label="Search Artwork Tab"
           />

@@ -825,17 +825,32 @@ select {
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
+  font-size: 0.875rem;
 }
 
 input#line[type="text"]:focus,
 :focus {
   -webkit-box-shadow: none;
   box-shadow: none;
+  color: white;
 }
 
 #line::placeholder {
   color: white;
 }
+
+input#line[type="text"]:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+input#line[type="text"]:focus:-moz-placeholder {
+  color: transparent;
+} /* Firefox 18- */
+input#line[type="text"]:focus::-moz-placeholder {
+  color: transparent;
+} /* Firefox 19+ */
+input#line[type="text"]:focus:-ms-input-placeholder {
+  color: transparent;
+} /* oldIE ;) */
 ul.social-network {
   list-style: none;
   margin-left: 0 !important;
