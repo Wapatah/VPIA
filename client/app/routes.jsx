@@ -17,6 +17,7 @@ import EditUser from "./components/edit_users.jsx";
 import UserSignup from "./components/user_signup.jsx";
 import Landing from "./components/landing.jsx";
 import About from "./components/About.jsx";
+import Results from "./components/results.jsx";
 
 export default function() {
   return (
@@ -25,6 +26,7 @@ export default function() {
         <IndexRoute component={Landing} />
         <Route path="home" component={Home} />
         <Route path="landing" component={Landing} />
+        <Route path="results" component={Results} />
         <Route path="article/new" component={NewArticle} />
         <Route path="article/edit/:articleId" component={EditArticle} />
         <Route path="article/history/:articleId" component={ArticleHistory} />

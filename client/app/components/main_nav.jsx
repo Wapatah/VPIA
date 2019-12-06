@@ -61,7 +61,7 @@ class MainNav extends React.Component {
                   </a>
                 </div>
                 <div className="main-nav-item">
-                  <a href="#" className="none-deco">
+                  <Link to="results" className="none-deco">
                     <svg
                       width="50%"
                       height="50%"
@@ -75,7 +75,7 @@ class MainNav extends React.Component {
                       />
                     </svg>
                     <span>Artwork</span>
-                  </a>
+                  </Link>
                 </div>
                 <div className="main-nav-item">
                   <a href="#" className="none-deco">

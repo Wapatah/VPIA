@@ -34,7 +34,7 @@ module.exports = function(app) {
       body: req.body.body,
       topic_id: req.body.topic_id,
       user_id: req.body.user_id,
-      what_changed: "Another drop in the ocean of knowledge"
+      what_changed: "Original Museum Record"
     })
       .then(function(article) {
         res.json({
