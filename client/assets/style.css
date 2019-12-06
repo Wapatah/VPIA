@@ -933,3 +933,17 @@ ul.social-network li {
 #result.card {
   margin-bottom: 1rem;
 }
+#page-numbers {
+  list-style: none;
+  display: flex;
+}
+
+#page-numbers li {
+  margin-right: 0.3em;
+  color: #75777b;
+  user-select: none;
+  cursor: pointer;
+}
+#page-numbers li:hover {
+  color: #208778;
+}

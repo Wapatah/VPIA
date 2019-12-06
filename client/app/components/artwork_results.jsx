@@ -120,18 +120,9 @@ class ArtworkResults extends React.Component {
 
     const renderPageNumbers = pageNumbers.map(number => {
       return (
-        <nav aria-label="Page navigation example">
-          <ul className="pagination justify-content-end">
-            <li
-              className="page-item"
-              key={number}
-              id={number}
-              onClick={this.handleClick}
-            >
-              {number}
-            </li>
-          </ul>
-        </nav>
+        <li key={number} id={number} onClick={this.handleClick}>
+          {number}
+        </li>
       );
     });
 
@@ -145,7 +136,9 @@ class ArtworkResults extends React.Component {
     } else {
       return (
         <div>
-          <div id="page-numbers">{renderPageNumbers}</div>
+          <ul id="page-numbers" className="justify-content-end">
+            {renderPageNumbers}
+          </ul>
           <div className="card-deck">{renderArticles}</div>
         </div>
       );
