@@ -56,6 +56,14 @@ html,
 body {
   height: 100%;
 }
+h3 {
+  font-size: 2.5rem;
+  color: #343638;
+}
+h4 {
+  font-size: 1.25rem;
+  color: #343638;
+}
 
 .content {
   margin-bottom: 3em;
@@ -633,6 +641,11 @@ a.none-deco {
 .main-icon {
   fill: #ffffff;
 }
+.intro-icon {
+  fill: #343638;
+  width: 20%;
+  height: auto;
+}
 .small-icon {
   fill: #53555a;
 }
@@ -706,13 +719,11 @@ footer p {
 
 #VPIA-intro.container-fluid {
   padding-left: 0;
-}
-
-#VPIA-intro-right {
-  margin-top: 3%;
+  padding-right: 0;
 }
 
 h5.title-primary {
+  margin-top: 1.5em;
   font-size: 30px;
   color: #208778;
 }
@@ -899,6 +910,7 @@ ul.social-network li {
   filter: grey;
   background-size: cover;
   background-position: right 10px bottom 700px;
+  margin-bottom: 0;
 }
 
 .intro-content {
@@ -963,4 +975,14 @@ ul.social-network li {
 }
 #page-numbers li:hover {
   color: #208778;
+}
+#function-intro {
+  padding: 6em;
+  background-color: #ffa500;
+  height: 26.25em;
+}
+#function-intro p {
+  font-family: "FuturaStdMedium";
+  font-size: 1rem;
+  color: #343638;
 }
