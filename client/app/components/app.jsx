@@ -30,6 +30,23 @@ class App extends React.Component {
     return (
       <div>
         <nav className="navbar navbar-expand-md mainheader">
+          <div
+            class="alert alert-secondary alert-dismissible fade show"
+            role="alert"
+          >
+            This platform is currently an Alpha - meaning that the design and
+            features are subject to change. There are also potentially major
+            bugs. If you encounter any,{" "}
+            <a href="mailto:vpia@ocadu.ca">send us an email.</a>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
           {window.localStorage.getItem("userToken") ? (
             <div className="navbar">
               <button

@@ -22,12 +22,12 @@ module.exports = function(app) {
   */
   app.get("/search", function(req, res) {
     var SearchInput = req.query.query;
-    Articles.find({ 
-      where: { 
+    Articles.find({
+      where: {
         artwork_type: {
           regex: SearchInput
         }
-      } 
+      }
     })
       .then(function(collection) {
         res.json({

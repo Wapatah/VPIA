@@ -1,3 +1,4 @@
+![Release status](https://img.shields.io/badge/release-alpha-blueviolet)
 [![Build Status](https://travis-ci.com/Mordax/VPIA.svg?token=9JzkqwDk7NTPWEGwRNt4&branch=master)](https://travis-ci.com/Mordax/VPIA)
 ## VPIA
 
