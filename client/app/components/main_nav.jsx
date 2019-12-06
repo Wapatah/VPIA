@@ -44,7 +44,7 @@ class MainNav extends React.Component {
                   </a>
                 </div>
                 <div className="main-nav-item">
-                  <a href="#" className="none-deco">
+                  <a href="./#/about" className="none-deco">
                     <svg
                       width="60%"
                       height="60%"

@@ -16,6 +16,7 @@ import EditTopic from "./components/edit_topics.jsx";
 import EditUser from "./components/edit_users.jsx";
 import UserSignup from "./components/user_signup.jsx";
 import Landing from "./components/landing.jsx";
+import About from "./components/About.jsx";
 
 export default function() {
   return (
@@ -32,6 +33,7 @@ export default function() {
         <Route path="topic/edit/:topicId" component={EditTopic} />
         <Route path="user/edit/:user_id" component={EditUser} />
         <Route path="search" component={Search} />
+        <Route path="about" component={About} />
       </Route>
       <Route path="login" component={Login} />
       <Route path="setup" component={Setup} />
