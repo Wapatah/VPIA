@@ -15,7 +15,7 @@ class SearchForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.searchWiki}>
-        <div className="input-group mb-3">
+        <div id="search-bar" className="input-group mb-3">
           <input
             type="text"
             className="form-control"
