@@ -67,7 +67,6 @@ class ArtworkResults extends React.Component {
   }
   render() {
     const { articles, currentArticle, articlesPerPage } = this.state;
-    // Logic for displaying todos
     const indexOfLastArticle = currentArticle * articlesPerPage;
     const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
     const currentArticles = articles.slice(
@@ -89,7 +88,6 @@ class ArtworkResults extends React.Component {
                   {article.title}
                 </Link>
               </p>
-
               <div className="card-text">
                 <small class="text-muted">
                   <p
