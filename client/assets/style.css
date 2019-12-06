@@ -930,6 +930,79 @@ ul.social-network li {
 #full-page.row {
   height: 100%;
 }
+
+#About-intro-section{
+  background: #343638 0% 0% no-repeat padding-box;
+  opacity: 1;
+  padding-left: 20em;
+  padding-right: 20em;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+#About-tint:before{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #D0CFCD 0% 0% no-repeat padding-box;
+  opacity: 0.8;
+  transition: background .3s linear;
+}
+
+#About-header{
+  color: #FFB600; 
+  text-align: left;
+  font: Bold 30px/36px Helvetica;
+  letter-spacing: 0;
+  opacity: 1;
+}
+
+#About-image-text-box{
+  padding-top: 2em;
+}
+
+#About-logo{
+  padding-left: 5em;
+}
+
+#About-initial-content{
+  text-align: left;
+  font: SemiBold 16px/24px;
+  font-family: "Baskerville";
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 1;
+  padding-top: 2em;
+}
+
+#About-middle-text{
+  font: Bold 30px/36px Helvetica;
+  letter-spacing: 0;
+  color: #FFB600;
+  opacity: 1;
+}
+
+#About-info-section{
+  background: #D60812 0% 0% no-repeat padding-box;
+  opacity: 1;
+  padding-left: 20em;
+  padding-right: 20em;
+  padding-top: 2em;
+  padding-bottom: 5em;
+}
+
+#About-bottom-content{
+  text-align: left;
+  font: SemiBold 16px/24px;
+  font-family: "Baskerville";
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 1;
+  
 #result.card {
   margin-bottom: 1rem;
 }
