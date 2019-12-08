@@ -108,56 +108,44 @@ class App extends React.Component {
         <div>{that.props.children}</div>
         <footer className="footer">
           <div className="container bottom_border">
-            <div id="full-page" className="row">
-              <div className="col col-lg-2">
-                <img
-                  src="../assets/logos/logo-white.png"
-                  width="auto"
-                  height="76"
-                  alt="VPIA logo"
-                  aria-label="VPIA logo"
-                ></img>
-              </div>
-              <div className="col col-2">
-                <ul className="footer_ul">
-                  <li>
-                    <a href="">Home</a>
-                  </li>
+            <div id="full-page" className="row justify-content-between">
+              <div className="col-md-3">
+                <div className="row">
+                  <div className="col-4">
+                    <img
+                      id="footer-logo"
+                      src="../assets/logos/VPIA-logo-white.png"
+                      alt="VPIA logo"
+                      aria-label="VPIA logo"
+                    ></img>
+                  </div>
 
-                  <li>
-                    <a href="">VPIA</a>
-                  </li>
+                  <div className="col-6 align-self-center footer-list">
+                    <ul className="footer_ul">
+                      <li>
+                        <a href="">About</a>
+                      </li>
 
-                  <li>
-                    <a href="">Artwork</a>
-                  </li>
+                      <li>
+                        <a href="">User Agreement</a>
+                      </li>
 
-                  <li>
-                    <a href="">Contact</a>
-                  </li>
-                </ul>
-              </div>
-              <div className="col col-2">
-                <ul className="footer_ul">
-                  <li>
-                    <a href="">Help</a>
-                  </li>
+                      <li>
+                        <a href="">Privacy Policy</a>
+                      </li>
 
-                  <li>
-                    <a href="">Terms</a>
-                  </li>
-
-                  <li>
-                    <a href="">Tutorials</a>
-                  </li>
-
-                  <li>
-                    <a href="">Careers</a>
-                  </li>
-                </ul>
+                      <li>
+                        <a href="">Tutorials</a>
+                      </li>
+                      <li>
+                        <a href="">Contact Us</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
 
-              <div className="col-sm-3 col-6 col">
+              <div className="col-3">
                 <div className="social-icons">
                   <ul className="social-network">
                     <li>
@@ -200,24 +188,6 @@ class App extends React.Component {
                     </button>
                   </div>
                 </div>
-              </div>
-              <div className="col col-md-3 ml-md-auto">
-                <img
-                  src="../assets/logos/logo-ocad.png"
-                  width="auto"
-                  height="54"
-                  className="float-right"
-                  alt="VPIA logo"
-                  aria-label="VPIA logo"
-                ></img>
-                <img
-                  src="../assets/logos/logo-wapatah.png"
-                  width="auto"
-                  height="54"
-                  className="float-right"
-                  alt="VPIA logo"
-                  aria-label="VPIA logo"
-                ></img>
               </div>
             </div>
           </div>

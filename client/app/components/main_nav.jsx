@@ -91,7 +91,7 @@ class MainNav extends React.Component {
                         className="main-icon"
                       />
                     </svg>
-                    <span>Conversation</span>
+                    <span>Events</span>
                   </a>
                 </div>
               </div>
