@@ -655,10 +655,15 @@ a.none-deco {
 .main-nav-item :hover {
   color: #ffb600;
 }
-footer {
+.footer-darkgrey {
   width: 100%;
   padding: 60px 10px 60px 10px;
   background-color: #343638;
+}
+.footer-lightgrey {
+  width: 100%;
+  padding: 60px 10px 60px 10px;
+  background-color: #75777b;
 }
 footer p {
   font-size: 13px;

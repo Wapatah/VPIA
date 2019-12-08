@@ -106,88 +106,109 @@ class App extends React.Component {
         </nav>
         <MainNav />
         <div>{that.props.children}</div>
-        <footer className="footer">
-          <div className="container bottom_border">
-            <div id="full-page" className="row justify-content-between">
-              <div className="col-md-3">
-                <div className="row">
-                  <div className="col-4">
-                    <img
-                      id="footer-logo"
-                      src="../assets/logos/VPIA-logo-white.png"
-                      alt="VPIA logo"
-                      aria-label="VPIA logo"
-                    ></img>
+        <footer>
+          <div className="footer-darkgrey">
+            <div className="container bottom_border">
+              <div id="full-page" className="row justify-content-between">
+                <div className="col-md-3">
+                  <div className="row">
+                    <div className="col-4">
+                      <img
+                        id="footer-logo"
+                        src="../assets/logos/VPIA-logo-white.png"
+                        alt="VPIA logo"
+                        aria-label="VPIA logo"
+                      ></img>
+                    </div>
+
+                    <div className="col-6 align-self-center footer-list">
+                      <ul className="footer_ul">
+                        <li>
+                          <a href="">About</a>
+                        </li>
+
+                        <li>
+                          <a href="">User Agreement</a>
+                        </li>
+
+                        <li>
+                          <a href="">Privacy Policy</a>
+                        </li>
+
+                        <li>
+                          <a href="">Tutorials</a>
+                        </li>
+                        <li>
+                          <a href="">Contact Us</a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
+                </div>
 
-                  <div className="col-6 align-self-center footer-list">
-                    <ul className="footer_ul">
+                <div className="col-3">
+                  <div className="social-icons">
+                    <ul className="social-network">
                       <li>
-                        <a href="">About</a>
-                      </li>
-
-                      <li>
-                        <a href="">User Agreement</a>
-                      </li>
-
-                      <li>
-                        <a href="">Privacy Policy</a>
-                      </li>
-
-                      <li>
-                        <a href="">Tutorials</a>
+                        <a href="#" aria-label="Instagram icon">
+                          <i className="fa fa-instagram"></i>
+                        </a>
                       </li>
                       <li>
-                        <a href="">Contact Us</a>
+                        <a href="#" aria-label="Twitter icon">
+                          <i className="fa fa-twitter"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" aria-label="Facebook icon">
+                          <i className="fa fa-facebook"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" aria-label="Website icon">
+                          <i className="fa fa-globe"></i>
+                        </a>
                       </li>
                     </ul>
                   </div>
-                </div>
-              </div>
-
-              <div className="col-3">
-                <div className="social-icons">
-                  <ul className="social-network">
-                    <li>
-                      <a href="#" aria-label="Instagram icon">
-                        <i className="fa fa-instagram"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" aria-label="Twitter icon">
-                        <i className="fa fa-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" aria-label="Facebook icon">
-                        <i className="fa fa-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" aria-label="Website icon">
-                        <i className="fa fa-globe"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="input-group mb-3">
-                  <input
-                    type="text"
-                    className="form-control email-form"
-                    placeholder="Stay in touch"
-                    ref="search"
-                    aria-label="Write an Email here"
-                  />
-                  <div className="input-group-append">
-                    <button
-                      type="submit"
-                      className="btn btn-outline-secondary email-button"
-                      aria-label="Email button"
-                    >
-                      <i className="fa fa-paper-plane"></i>
-                    </button>
+                  <div className="input-group mb-3">
+                    <input
+                      type="text"
+                      className="form-control email-form"
+                      placeholder="Stay in touch"
+                      ref="search"
+                      aria-label="Write an Email here"
+                    />
+                    <div className="input-group-append">
+                      <button
+                        type="submit"
+                        className="btn btn-outline-secondary email-button"
+                        aria-label="Email button"
+                      >
+                        <i className="fa fa-paper-plane"></i>
+                      </button>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div className="footer-lightgrey">
+            <div className="container bottom_border">
+              <div className="row">
+                <div className="col">
+                  <p>
+                    We acknowledge the support of the Canada Council for the
+                    Arts.
+                  </p>
+                  <img
+                    src="../assets/logos/CCA_RGB_white_e.png"
+                    alt="CCA logo"
+                    height="33"
+                    aria-label="CCA logo"
+                  />
+                </div>
+                <div className="col"></div>
               </div>
             </div>
           </div>
