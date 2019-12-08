@@ -911,6 +911,10 @@ ul.social-network li {
   background: #75777b80;
   z-index: 2;
 }
+.greyscale {
+  -webkit-filter: grayscale(100%);
+  filter: grey;
+}
 
 #VPIA-intro.jumbotron {
   background-image: url("../assets/BG.jpg");
@@ -926,6 +930,22 @@ ul.social-network li {
   position: relative;
   color: white;
   z-index: 3;
+}
+.card-content {
+  position: relative;
+  color: white;
+  z-index: 3;
+  top: 9em;
+}
+.card-description {
+  font-family: "Baskerville";
+  size: 1.25em;
+}
+.card-text {
+  top: 11em;
+}
+#events-card.card {
+  margin-bottom: 30px;
 }
 
 .BGimage::before {
