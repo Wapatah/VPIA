@@ -638,6 +638,10 @@ a.none-deco {
 .active-red {
   border-bottom: 3px solid #d60812;
 }
+.contribution-title {
+  margin-top: 2em;
+  border-bottom: 3px solid #208778;
+}
 .main-icon {
   fill: #ffffff;
 }
@@ -856,7 +860,6 @@ input#line[type="text"]:focus,
 :focus {
   -webkit-box-shadow: none;
   box-shadow: none;
-  color: white;
 }
 
 #line::placeholder {
@@ -864,16 +867,16 @@ input#line[type="text"]:focus,
 }
 
 input#line[type="text"]:focus::-webkit-input-placeholder {
-  color: transparent;
+  color: #d0cfcd87;
 }
 input#line[type="text"]:focus:-moz-placeholder {
-  color: transparent;
+  color: #d0cfcd87;
 } /* Firefox 18- */
 input#line[type="text"]:focus::-moz-placeholder {
-  color: transparent;
+  color: #d0cfcd87;
 } /* Firefox 19+ */
-input:focus:-ms-input-placeholder {
-  color: transparent;
+input#line:focus:-ms-input-placeholder {
+  color: #d0cfcd87;
 } /* oldIE ;) */
 ul.social-network {
   list-style: none;
