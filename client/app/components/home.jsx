@@ -71,7 +71,7 @@ class Home extends React.Component {
                   <div id="events-card" className="card">
                     <img
                       src="../assets/pics/Event_McCord.jpg"
-                      class="card-img-top"
+                      class="card-img-top greyscale"
                       alt="..."
                     />
                     <div class="card-body">
@@ -86,7 +86,7 @@ class Home extends React.Component {
                       <div className="card">
                         <img
                           src="../assets/pics/Event_McCord.jpg"
-                          class="card-img-top"
+                          class="card-img-top greyscale"
                           alt="..."
                         />
                         <div class="card-body">
@@ -103,7 +103,7 @@ class Home extends React.Component {
                       <div className="card">
                         <img
                           src="../assets/pics/Event_McCord.jpg"
-                          class="card-img-top"
+                          class="card-img-top greyscale"
                           alt="..."
                         />
                         <div class="card-body">

@@ -915,7 +915,7 @@ ul.social-network li {
 }
 .greyscale {
   -webkit-filter: grayscale(100%);
-  filter: grey;
+  filter: grayscale(100%);
 }
 
 #VPIA-intro.jumbotron {
