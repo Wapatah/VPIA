@@ -16,22 +16,26 @@ class Landing extends React.Component {
             <div className="col-8">
               <div id="VPIA-intro" className="jumbotron">
                 <div className="intro-content">
-                  <h1 className="display-4">VPIA</h1>
-                  <p className="lead">
-                    Search and edit 2000 indigenous Artworks
-                  </p>
-                  <hr className="my-4"></hr>
-                  <p>
-                    It uses utility classes for typography and spacing to space
-                    content out within the larger container.
-                  </p>
-                  <a
-                    className="btn btn-outline-light btn-lg btn-round"
-                    href="#"
-                    role="button"
-                  >
-                    Learn more
-                  </a>
+                  <div className="row">
+                    <div className="col-8">
+                      <p className="lead">
+                        Search and edit 2000 indigenous Artworks
+                      </p>
+                      <p id="Baskerville">
+                        Help animate Indigenous collections worldwide by sharing
+                        your experience and knowledge about them.
+                      </p>
+                    </div>
+                    <div className="col-4">
+                      <a
+                        className="btn btn-outline-light btn-lg btn-round float-right"
+                        href="#"
+                        role="button"
+                      >
+                        Learn more
+                      </a>
+                    </div>
+                  </div>
                 </div>
                 <div className="image-tint"></div>
               </div>

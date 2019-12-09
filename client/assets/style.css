@@ -730,13 +730,15 @@ footer p {
   padding-left: 0;
   padding-right: 0;
 }
+#VPIA-intro.jumbotron {
+  height: 23.65em;
+}
 
 h5.title-primary {
   margin-top: 1.5em;
   font-size: 30px;
   color: #208778;
 }
-
 h5.underline-brush {
   background: url("../assets/icons/line.svg");
   background-repeat: no-repeat;
@@ -928,6 +930,8 @@ ul.social-network li {
 
 .intro-content {
   position: relative;
+  padding-left: 5em;
+  top: 10em;
   color: white;
   z-index: 3;
 }
