@@ -951,7 +951,9 @@ ul.social-network li {
 #events-card.card {
   margin-bottom: 30px;
 }
-
+.acknowledge-text {
+  font: Italic 10px/12px Arial;
+}
 .BGimage::before {
   top: 0;
   left: 0;

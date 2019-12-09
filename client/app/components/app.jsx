@@ -197,7 +197,7 @@ class App extends React.Component {
             <div className="container bottom_border">
               <div className="row">
                 <div className="col">
-                  <p>
+                  <p className="acknowledge-text">
                     We acknowledge the support of the Canada Council for the
                     Arts.
                   </p>
@@ -208,7 +208,38 @@ class App extends React.Component {
                     aria-label="CCA logo"
                   />
                 </div>
-                <div className="col"></div>
+                <div className="col">
+                  <img
+                    src="../assets/logos/Wapatah-logo-white.png"
+                    alt="Wapatah logo"
+                    height="60"
+                    aria-label="Wapatah logo"
+                  />
+                </div>
+                <div className="col">
+                  <img
+                    src="../assets/logos/CFI-logo.png"
+                    alt="CFI logo"
+                    height="70"
+                    aria-label="CFI logo"
+                  />
+                </div>
+                <div className="col">
+                  <img
+                    src="../assets/logos/Onsite-logo.png"
+                    alt="Onsite logo"
+                    height="60"
+                    aria-label="Onsite logo"
+                  />
+                </div>
+                <div className="col">
+                  <img
+                    src="../assets/logos/OCAD-University-Logo.png"
+                    alt="OCAD logo"
+                    height="70"
+                    aria-label="OCAD logo"
+                  />
+                </div>
               </div>
             </div>
           </div>
