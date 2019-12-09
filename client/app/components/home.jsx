@@ -85,7 +85,7 @@ class Home extends React.Component {
                     <div className="col-md-6">
                       <div className="card">
                         <img
-                          src="../assets/pics/Event_McCord.jpg"
+                          src="../assets/pics/CRKN.png"
                           class="card-img-top greyscale"
                           alt="..."
                         />
@@ -102,7 +102,7 @@ class Home extends React.Component {
                     <div className="col-md-6">
                       <div className="card">
                         <img
-                          src="../assets/pics/Event_McCord.jpg"
+                          src="../assets/pics/Representing.jpg"
                           class="card-img-top greyscale"
                           alt="..."
                         />
