@@ -56,6 +56,14 @@ html,
 body {
   height: 100%;
 }
+h3 {
+  font-size: 2.5rem;
+  color: #343638;
+}
+h4 {
+  font-size: 1.25rem;
+  color: #343638;
+}
 
 .content {
   margin-bottom: 3em;
@@ -630,8 +638,17 @@ a.none-deco {
 .active-red {
   border-bottom: 3px solid #d60812;
 }
+.contribution-title {
+  margin-top: 2em;
+  border-bottom: 3px solid #208778;
+}
 .main-icon {
   fill: #ffffff;
+}
+.intro-icon {
+  fill: #343638;
+  width: 20%;
+  height: auto;
 }
 .small-icon {
   fill: #53555a;
@@ -642,10 +659,15 @@ a.none-deco {
 .main-nav-item :hover {
   color: #ffb600;
 }
-footer {
+.footer-darkgrey {
   width: 100%;
   padding: 60px 10px 60px 10px;
   background-color: #343638;
+}
+.footer-lightgrey {
+  width: 100%;
+  padding: 60px 10px 60px 10px;
+  background-color: #75777b;
 }
 footer p {
   font-size: 13px;
@@ -663,6 +685,10 @@ footer p {
   text-decoration: none;
   color: #ffffff;
 }
+.footer-list {
+  padding-top: 1em;
+}
+
 #app.container {
   width: 100%;
   height: 100%;
@@ -706,17 +732,17 @@ footer p {
 
 #VPIA-intro.container-fluid {
   padding-left: 0;
+  padding-right: 0;
 }
-
-#VPIA-intro-right {
-  margin-top: 3%;
+#VPIA-intro.jumbotron {
+  height: 23.65em;
 }
 
 h5.title-primary {
+  margin-top: 1.5em;
   font-size: 30px;
   color: #208778;
 }
-
 h5.underline-brush {
   background: url("../assets/icons/line.svg");
   background-repeat: no-repeat;
@@ -821,10 +847,13 @@ select {
   background: transparent;
   border: none;
   color: white;
-  border-bottom: 2px solid white;
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
+  font-size: 0.875rem;
+}
+#search-bar.input-group {
+  border-bottom: 2px solid white;
 }
 
 input#line[type="text"]:focus,
@@ -836,6 +865,19 @@ input#line[type="text"]:focus,
 #line::placeholder {
   color: white;
 }
+
+input#line[type="text"]:focus::-webkit-input-placeholder {
+  color: #d0cfcd87;
+}
+input#line[type="text"]:focus:-moz-placeholder {
+  color: #d0cfcd87;
+} /* Firefox 18- */
+input#line[type="text"]:focus::-moz-placeholder {
+  color: #d0cfcd87;
+} /* Firefox 19+ */
+input#line:focus:-ms-input-placeholder {
+  color: #d0cfcd87;
+} /* oldIE ;) */
 ul.social-network {
   list-style: none;
   margin-left: 0 !important;
@@ -874,6 +916,10 @@ ul.social-network li {
   background: #75777b80;
   z-index: 2;
 }
+.greyscale {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
 
 #VPIA-intro.jumbotron {
   background-image: url("../assets/BG.jpg");
@@ -882,14 +928,35 @@ ul.social-network li {
   filter: grey;
   background-size: cover;
   background-position: right 10px bottom 700px;
+  margin-bottom: 0;
 }
 
 .intro-content {
   position: relative;
+  padding-left: 5em;
+  top: 10em;
   color: white;
   z-index: 3;
 }
-
+.card-content {
+  position: relative;
+  color: white;
+  z-index: 3;
+  top: 9em;
+}
+.card-description {
+  font-family: "Baskerville";
+  size: 1.25em;
+}
+.card-text {
+  top: 11em;
+}
+#events-card.card {
+  margin-bottom: 30px;
+}
+.acknowledge-text {
+  font: Italic 10px/12px Arial;
+}
 .BGimage::before {
   top: 0;
   left: 0;
@@ -1019,4 +1086,18 @@ ul.social-network li {
 }
 #page-numbers li:hover {
   color: #208778;
+}
+#function-intro {
+  padding: 6em;
+  background-color: #ffa500;
+  height: 26.25em;
+}
+#function-intro p {
+  font-family: "FuturaStdMedium";
+  font-size: 1rem;
+  color: #343638;
+}
+#footer-logo {
+  width: auto;
+  height: 7.8em;
 }
