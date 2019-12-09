@@ -102,7 +102,7 @@ class BrowseArticles extends React.Component {
                   <div key={article.id} className="col-md-3">
                     <div className="card">
                       <div
-                        id="my-card-img-top"
+                        id="my-card-img-top greyscale"
                         dangerouslySetInnerHTML={{ __html: article.photo }}
                       ></div>
 
