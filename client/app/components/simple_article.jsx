@@ -34,10 +34,11 @@ class SimpleArticle extends React.Component {
     if (this.state.article[0] && this.state.article[0].user_id) {
       return (
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-8">
             <div className="article-heading">
               <div
-                className="single-article-meta"
+                id="article-photo"
+                className="col-12"
                 dangerouslySetInnerHTML={{
                   __html: this.state.article[0].photo
                 }}

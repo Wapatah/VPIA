@@ -1101,3 +1101,6 @@ ul.social-network li {
   width: auto;
   height: 7.8em;
 }
+#article-photo img {
+  width: 100%;
+}
