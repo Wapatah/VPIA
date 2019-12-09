@@ -48,14 +48,13 @@ class Landing extends React.Component {
               <h6>How to Use the VPIA?</h6>
               <p className="article-title">Tutorial</p>
               <p className="description">
-                Lorem ipsum dolor sit amet, ipsum labitur lucilius mel id, ad
-                has appareat…
+                Visit our interactive tutorial for more information on how to
+                locate and contribute to artworks through the VPIA.
               </p>
-              <h6>Contributors</h6>
-              <p className="article-title">Article title</p>
+              <p className="article-title">Contributors</p>
               <p p className="description">
-                Lorem ipsum dolor sit amet, ipsum labitur lucilius mel id, ad
-                has appareat…
+                Learn more about the people and organizations who are sharing
+                their knowledge with the VPIA.
               </p>
             </div>
             <div id="function-intro" className="col-12">
