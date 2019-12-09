@@ -44,7 +44,7 @@ class EditArticle extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     var body = this.state.body;
-    var title = this.refs.title.value;
+    var title = this.state.title;
     var topicId = this.refs.topic.value;
     var what_changed = this.refs.what_changed.value;
     var culture_group = this.state.culture_group;

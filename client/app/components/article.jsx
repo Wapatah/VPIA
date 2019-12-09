@@ -159,13 +159,6 @@ class ViewArticle extends React.Component {
                         }}
                       ></div>
 
-                      <p
-                        id="Baskerville"
-                        dangerouslySetInnerHTML={{
-                          __html: this.state.article[0].photo_license
-                        }}
-                      ></p>
-
                       <ul className="list-group list-group-flush">
                         <li className="list-group-item">
                           License
