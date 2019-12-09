@@ -158,7 +158,7 @@ class ViewArticle extends React.Component {
                           __html: this.state.article[0].photo
                         }}
                       ></div>
-                      
+
                       <ul className="list-group list-group-flush">
                         <li className="list-group-item">
                           License
