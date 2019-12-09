@@ -134,10 +134,9 @@ class ViewArticle extends React.Component {
                   ).toUTCString()}
                 </div>
 
-                <h3 className="section-title">Overview</h3>
-                <hr />
                 <div className="row">
                   <div id="article-body" className="col-md-1">
+		    <br/>
                     <h3>Body</h3>
                     <hr />
                     <div
@@ -146,8 +145,6 @@ class ViewArticle extends React.Component {
                         __html: this.state.article[0].body
                       }}
                     ></div>
-                    <h3>References</h3>
-                    <hr />
                   </div>
 
                   <div className="col-md-4 article-info-box">
