@@ -63,32 +63,62 @@ class Search extends React.Component {
     if (this.state.loading) return <Loader />;
     else
       return (
-        <div>
-          <div className="result-info">
-            <p className="help-block">
-              We found {this.state.articles.length} articles for your query
-            </p>
-          </div>
-          {this.state.articles.length > 0 ? (
-            <div className="article-list">
-              {this.state.articles.map(article => (
-                <div key={article.id} className="article-item">
-                  <div className="article-item-title">
-                    <Link to={"/article/" + article.id}>{article.title}</Link>
-                  </div>
-                  <div className="article-item-description">
-                    Last updated on {new Date(article.updated_at).toUTCString()}
-                  </div>
-                  <hr className="article-separator"></hr>
+        <div className="content-container">
+          <div className="row">
+            <div id="left-side" className="col-md-1">
+              <p className="text-right edit-page-title">Search Results</p>
+              <p className="help-block text-right">
+                We found {this.state.articles.length} articles for your query
+              </p>
+            </div>
+            <div className="col-md-8">
+              {this.state.articles.length > 0 ? (
+                <div>
+                  {this.state.articles.map(article => (
+                    <div key={article.id} className="col-md-4">
+                      <div id="result" className="card card-block">
+                        <div
+                          id="my-card-img-top"
+                          dangerouslySetInnerHTML={{ __html: article.photo }}
+                        ></div>
+                        <div className="card-body">
+                          <p className="article-title">
+                            <Link
+                              to={"/article/" + article.id}
+                              className="text-dark"
+                            >
+                              {article.title}
+                            </Link>
+                          </p>
+                          <div className="card-text">
+                            <small class="text-muted">
+                              <p
+                                id="Baskerville"
+                                dangerouslySetInnerHTML={{
+                                  __html: article.culture_group
+                                }}
+                              ></p>
+                              <p id="Baskerville">
+                                <i className="fa fa-clock-o" />
+                                {new Date(
+                                  article.updated_at.replace(" ", "T")
+                                ).toUTCString()}
+                              </p>
+                            </small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              ) : (
+                <div className="no-results">
+                  <i className="fa fa-frown-o"></i>
+                  <p>Please try again with another query</p>
+                </div>
+              )}
             </div>
-          ) : (
-            <div className="no-results">
-              <i className="fa fa-frown-o"></i>
-              <p>Please try again with another query</p>
-            </div>
-          )}
+          </div>
         </div>
       );
   }

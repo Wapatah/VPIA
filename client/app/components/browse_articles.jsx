@@ -178,3 +178,8 @@ class BrowseArticles extends React.Component {
 }
 
 export default BrowseArticles;
+
+// This function fixes the carousel not loading on start.
+function handleClick(e) {
+  e.preventDefault();
+}
