@@ -78,7 +78,7 @@ class MainNav extends React.Component {
                   </Link>
                 </div>
                 <div className="main-nav-item">
-                  <a href="#" className="none-deco">
+                  <a href="https://wapatah.com/events/" className="none-deco">
                     <svg
                       width="60%"
                       height="60%"
