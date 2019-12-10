@@ -57,6 +57,11 @@ class BrowseArticles extends React.Component {
       });
   }
 
+  // This function fixes the carousel not loading on start.
+  handleClick(e) {
+    e.preventDefault();
+  }
+
   render() {
     if (this.state.loading) return <Loader />;
     if (this.state.articles.length < 1) {
@@ -78,6 +83,7 @@ class BrowseArticles extends React.Component {
                 <a
                   className="btn prev"
                   href="#carouselExampleControls"
+                  onClick={this.handleClick}
                   title="go back"
                   data-slide="prev"
                 >
@@ -86,6 +92,7 @@ class BrowseArticles extends React.Component {
                 <a
                   className="btn next"
                   href="#carouselExampleControls"
+                  onClick={this.handleClick}
                   title="more"
                   data-slide="next"
                 >
@@ -102,8 +109,7 @@ class BrowseArticles extends React.Component {
                   <div key={article.id} className="col-md-3">
                     <div className="card">
                       <div
-                        id="my-card-img-top"
-                        className="greyscale"
+                        id="my-card-img-top greyscale"
                         dangerouslySetInnerHTML={{ __html: article.photo }}
                       ></div>
 
@@ -138,7 +144,6 @@ class BrowseArticles extends React.Component {
                     <div className="card">
                       <div
                         id="my-card-img-top"
-                        className="greyscale"
                         dangerouslySetInnerHTML={{ __html: article.photo }}
                       ></div>
                       <div className="card-body">
