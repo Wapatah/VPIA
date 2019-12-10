@@ -83,7 +83,7 @@ class BrowseArticles extends React.Component {
                 <a
                   className="btn prev"
                   href="#carouselExampleControls"
-                  onClick={this.handleClick}
+                  onChange={this.handleClick}
                   title="go back"
                   data-slide="prev"
                 >
@@ -92,7 +92,7 @@ class BrowseArticles extends React.Component {
                 <a
                   className="btn next"
                   href="#carouselExampleControls"
-                  onClick={this.handleClick}
+                  onChange={this.handleClick}
                   title="more"
                   data-slide="next"
                 >
