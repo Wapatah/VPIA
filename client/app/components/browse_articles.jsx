@@ -78,7 +78,7 @@ class BrowseArticles extends React.Component {
                 <a
                   className="btn prev"
                   href="#carouselExampleControls"
-                  onClick={(e) => e.preventDefault()}
+                  onClick={e => e.preventDefault()}
                   title="go back"
                   data-slide="prev"
                 >
@@ -87,7 +87,7 @@ class BrowseArticles extends React.Component {
                 <a
                   className="btn next"
                   href="#carouselExampleControls"
-                  onClick={(e) => e.preventDefault()}
+                  onClick={e => e.preventDefault()}
                   title="more"
                   data-slide="next"
                 >
@@ -104,12 +104,11 @@ class BrowseArticles extends React.Component {
                   <div key={article.id} className="col-md-3">
                     <div className="card">
                       <Link
-                        id="my-card-img-top" 
+                        id="my-card-img-top"
                         className="greyscale"
                         to={"/article/" + article.id}
                         dangerouslySetInnerHTML={{ __html: article.photo }}
-                      >
-                      </Link>
+                      ></Link>
 
                       <div className="card-body">
                         <p className="article-title">

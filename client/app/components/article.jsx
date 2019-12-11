@@ -136,7 +136,7 @@ class ViewArticle extends React.Component {
 
                 <div className="row">
                   <div id="article-body" className="col-md-1">
-		    <br/>
+                    <br />
                     <h3>Body</h3>
                     <hr />
                     <div
