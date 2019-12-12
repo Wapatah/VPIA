@@ -297,7 +297,7 @@ class EditArticle extends React.Component {
                           placeholder="Example: Fixed a typo. It's grammer not grammar"
                         />
                         <p className="help-block">
-                          Keep it short and descriptive :)
+                          Keep it short and descriptive.
                         </p>
                       </div>
                       <br />

@@ -78,10 +78,11 @@ class ArtworkResults extends React.Component {
       return (
         <div key={article.id} className="col-md-4">
           <div id="result" className="card card-block">
-            <div
+            <Link
+              to={"/article/" + article.id}
               id="my-card-img-top"
               dangerouslySetInnerHTML={{ __html: article.photo }}
-            ></div>
+            ></Link>
             <div className="card-body">
               <p className="article-title">
                 <Link to={"/article/" + article.id} className="text-dark">

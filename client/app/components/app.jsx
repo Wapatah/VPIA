@@ -35,8 +35,8 @@ class App extends React.Component {
             role="alert"
           >
             This platform is currently an Alpha - meaning that the design and
-            features are subject to change. There are also potentially major
-            bugs. If you encounter any,{" "}
+            features are subject to change. If you identify any major bugs or
+            would like to comment on the platform's functionality, please{" "}
             <a href="mailto:vpia@ocadu.ca">send us an email.</a>
             <button
               type="button"

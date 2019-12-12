@@ -3,30 +3,33 @@ import React from "react";
 class About extends React.Component {
   render() {
     return (
-      <div id="About-page" className="mw">
+      <div id="About-page" className="mw-100">
         <div className="row">
           <div className="container-fluid">
             <div id="About-intro-section">
               <div>
                 <div className="row">
-                  <div className="col">
+                  <div className="col align-items-start">
                     <img
-                      src="../../assets/logos/logo-white.png"
-                      alt="White logo"
+                      id="About-img-writing"
+                      className="img-fluid float-right"
+                      src="../../assets/logos/logo-writing.png"
+                      alt="White with writing logo"
                     />
                   </div>
+                  <div className="col-sm-1"></div>
                   <div className="col">
-                    <div id="About-header">
+                    <div id="About-header" className="float-left">
                       About the Virtual Platform for Indigenous Art
                     </div>
-                    <div id="About-initial-content">
-                      <p className="w-75">
+                    <div id="About-initial-content" className="float-left">
+                      <p>
                         The Virtual Platform for Indigenous Art (VPIA) was
                         created to help Indigenous and non-Indigenous
                         communities build relationships and share knowledge
                         surrounding Indigenous artworks.
                       </p>
-                      <p className="w-75">
+                      <p>
                         Led by Dr. Gerald McMaster as part of the larger The
                         Entangled Gaze project at OCAD University’s Wapatah
                         Centre for Indigenous Visual Knowledge, the VPIA is
@@ -42,34 +45,35 @@ class About extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="footer text-center">
-                <div id="About-image-text-box" className="row align-items-end">
-                  <div id="About-middle-text" className="col-4">
-                    <p className="float-right">A Project in Motion</p>
-                  </div>
-                  <div className="col">
-                    <div id="About-tint" className="card border-0 float-left">
-                      <img
-                        className="img-responsive"
-                        src="../../assets/img/eric.png"
-                        alt="Image of Eric"
-                      />
-                    </div>
-                  </div>
+              <div className="footer">
+                <div
+                  id="About-image-text-box"
+                  className="container text-center"
+                >
+                  <figure className="figure">
+                    <img
+                      src="../../assets/img/group.png"
+                      className="figure-img img-fluid rounded"
+                      alt="Image of Eric"
+                    />
+                    <figcaption
+                      id="About-middle-text"
+                      className="figure-caption"
+                    >
+                      A Project in Motion
+                    </figcaption>
+                  </figure>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="row">
-          <div
-            id="About-image-section"
-            className="container-fluid img-responsive"
-          >
-            <div id="About-tint" className="card border-0">
-              <img src="../../assets/img/team.png" alt="Image of VPIA team" />
-            </div>
-          </div>
+          <img
+            className="img-fluid container-fluid"
+            src="../../assets/img/team.png"
+            alt="Image of VPIA team"
+          />
         </div>
         <div className="row">
           <div className="container-fluid">

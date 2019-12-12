@@ -136,10 +136,11 @@ class ViewArticle extends React.Component {
 
                 <div className="row">
                   <div id="article-body" className="col-md-1">
-		    <br/>
+                    <br />
                     <h3>Body</h3>
                     <hr />
                     <div
+                      id="article-photo"
                       className="single-article-body"
                       dangerouslySetInnerHTML={{
                         __html: this.state.article[0].body

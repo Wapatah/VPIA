@@ -27,7 +27,7 @@ class MainNav extends React.Component {
             <div className="col-md-8 col-md-offset-2 align-self-end">
               <div className="navcontainer">
                 <div className="main-nav-item">
-                  <a href="#" className="none-deco">
+                  <Link to="landing" activeClassName="active-yellow">
                     <svg
                       width="60%"
                       height="60%"
@@ -40,11 +40,11 @@ class MainNav extends React.Component {
                         className="main-icon"
                       />
                     </svg>
-                    <span className="active-yellow">Home</span>
-                  </a>
+                    <span>Home</span>
+                  </Link>
                 </div>
                 <div className="main-nav-item">
-                  <a href="./#/about" className="none-deco">
+                  <Link to="about" activeClassName="active-yellow">
                     <svg
                       width="60%"
                       height="60%"
@@ -58,10 +58,10 @@ class MainNav extends React.Component {
                       />
                     </svg>
                     <span>About</span>
-                  </a>
+                  </Link>
                 </div>
                 <div className="main-nav-item">
-                  <Link to="results" className="none-deco">
+                  <Link to="results" activeClassName="active-yellow">
                     <svg
                       width="50%"
                       height="50%"
@@ -78,7 +78,7 @@ class MainNav extends React.Component {
                   </Link>
                 </div>
                 <div className="main-nav-item">
-                  <a href="#" className="none-deco">
+                  <a href="https://wapatah.com/events/" className="none-deco">
                     <svg
                       width="60%"
                       height="60%"
