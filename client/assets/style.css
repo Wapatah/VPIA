@@ -242,6 +242,12 @@ textarea {
   .modal-fullscreen .modal-dialog {
     width: 1170px;
   }
+  #VPIA-intro.jumbotron {
+    padding-left: 17%;
+  }
+  #VPIA-intro-right.col-4 {
+    padding-right: 10%;
+  }
 }
 @media (min-width: 2560px) {
   #VPIA-intro.col-8 {
