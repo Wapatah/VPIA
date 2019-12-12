@@ -77,10 +77,11 @@ class Search extends React.Component {
                 {this.state.articles.map(article => (
                   <div key={article.id} className="col-md-4">
                     <div id="result" className="card card-block">
-                      <div
+                      <Link
                         id="my-card-img-top"
+                        to={"/article/" + article.id}
                         dangerouslySetInnerHTML={{ __html: article.photo }}
-                      ></div>
+                      ></Link>
                       <div className="card-body">
                         <p className="article-title">
                           <Link
