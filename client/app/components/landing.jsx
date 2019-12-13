@@ -13,11 +13,11 @@ class Landing extends React.Component {
       <div>
         <div id="VPIA-intro" className="container-fluid">
           <div className="row">
-            <div className="col-8">
+            <div id="VPIA-intro" className="col-8">
               <div id="VPIA-intro" className="jumbotron">
                 <div className="intro-content">
                   <div className="row">
-                    <div className="col-8">
+                    <div id="VPIA-intro" className="col-8">
                       <p className="lead">
                         Search and edit 2000 indigenous Artworks
                       </p>
