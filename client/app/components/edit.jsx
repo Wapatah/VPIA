@@ -211,7 +211,10 @@ class EditArticle extends React.Component {
                 <div className="new-article">
                   <div className="row">
                     <div className="col-md-12">
-                      <div className={this.state.isHidden ? "hidden" : ""}>
+                      <div
+                        id="preview"
+                        className={this.state.isHidden ? "hidden" : ""}
+                      >
                         <EditorPreview data={this.state.body} />
                       </div>
                     </div>
