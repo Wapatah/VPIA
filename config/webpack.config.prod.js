@@ -45,15 +45,4 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    alias: {
-      FroalaEditor: "file_name"
-    },
-    modules: ["../node_modules/froala-editor/js","node_modules"]
-  },
-  plugins: [
-    new webpack.ProvidePlugin({
-      FroalaEditor: "file_name"
-    })
-  ]
 };

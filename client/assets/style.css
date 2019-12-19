@@ -1133,3 +1133,15 @@ ul.social-network li {
 #VPIA-intro-right {
   padding-right: 15px;
 }
+
+.tox-statusbar__branding{
+  display: none;
+}
+
+.tox-notifications-container{
+  display: none;
+}
+
+.tox-statusbar__wordcount{
+  display: none;
+}

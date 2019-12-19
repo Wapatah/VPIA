@@ -3,22 +3,7 @@ import { hashHistory } from "react-router";
 import Loader from "./loader.jsx";
 //import Alert from "react-s-alert";
 
-// Require Editor JS files.
-import 'froala-editor/js/froala_editor.pkgd.min.js';
-
-// Require Editor CSS files.
-import 'froala-editor/css/froala_style.min.css';
-import 'froala-editor/css/froala_editor.pkgd.min.css';
-import 'froala-editor/js/plugins/image.min';
-import 'froala-editor/js/plugins/file.min';
-
-import FroalaEditor from 'react-froala-wysiwyg';
-
-import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView';
-import FroalaEditorA from 'react-froala-wysiwyg/FroalaEditorA';
-import FroalaEditorButton from 'react-froala-wysiwyg/FroalaEditorButton';
-import FroalaEditorImg from 'react-froala-wysiwyg/FroalaEditorImg';
-import FroalaEditorInput from 'react-froala-wysiwyg/FroalaEditorInput';
+import { Editor } from '@tinymce/tinymce-react';
 
 import EditorPreview from "./helpers/editor_preview.jsx";
 
@@ -60,6 +45,7 @@ class NewArticle extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.state.photo);
     var body = this.state.body;
     var title = this.refs.title.value;
     var topicId = this.refs.topic.value;
@@ -145,29 +131,32 @@ class NewArticle extends React.Component {
               <br />
               Institution Photo
               <div className="border rounded">
-              <FroalaEditor
-                  tag='textarea'
-                  config={this.config}
-                  model={this.state.content}
-                  onModelChange={(e) => {
-                    let photo = this.state.photo;
-                    this.setState({ photo: e});
+                <Editor
+                  initialValue=""
+                  init={{
+                    inline: true,
+                    menubar: false,
+                    automatic_uploads: true,
+                    images_upload_url: "http://localhost:30500/upload",
+                    plugins: [
+                      'advlist autolink lists link image charmap print preview anchor',
+                      'searchreplace visualblocks code fullscreen',
+                      'insertdatetime media table paste code help wordcount'
+                    ],
+                    toolbar:
+                      'bold italic underline | \
+                      alignleft aligncenter alignright | \
+                      bullist numlist outdent indent | image | undo redo | help'
                   }}
-                  config={{
-                    placeholderText: " ",
-                    charCounterCount: false,
-                    attribution: false,
-                    imageUpload: true,
-                    toolbarInline: true,
-                    toolbarVisibleWithoutSelection: true,
-                    imageUploadURL: "http://localhost:30500/upload",
-                    imageUploadMethod: 'POST',
+                  onChange={(editor) => {
+                    let photo = this.state.photo;
+                    this.setState({ photo: editor.level.content});
                   }}
                 />
               </div>
               Photo License
               <div className="border rounded">
-                <FroalaEditor
+                {/* <FroalaEditor
                   tag='textarea'
                   config={this.config}
                   model={this.state.content}
@@ -183,91 +172,27 @@ class NewArticle extends React.Component {
                     toolbarInline: true,
                     toolbarVisibleWithoutSelection: true
                   }}
-                />
+                /> */}
               </div>
               Holding Institution
               <div className="border rounded">
-               <FroalaEditor
-                  tag='textarea'
-                  config={this.config}
-                  model={this.state.content}
-                  onModelChange={(e) => {
-                    let institution = this.state.institution;
-                    this.setState({ institution: e});
-                  }}
-                  config={{
-                    placeholderText: " ",
-                    charCounterCount: false,
-                    attribution: false,
-                    imageUpload: false,
-                    toolbarInline: true,
-                    toolbarVisibleWithoutSelection: true
-                  }}
-                />
+
               </div>
               Culture Group
               <div className="border rounded">
-                <FroalaEditor
-                  tag='textarea'
-                  config={this.config}
-                  model={this.state.content}
-                  onModelChange={(e) => {
-                    let culture_group = this.state.culture_group;
-                    this.setState({ culture_group: e});
-                  }}
-                  config={{
-                    placeholderText: " ",
-                    charCounterCount: false,
-                    attribution: false,
-                    imageUpload: false,
-                    toolbarInline: true,
-                    toolbarVisibleWithoutSelection: true
-                  }}
-                />
+
               </div>
               Material
               <div className="border rounded">
-               <FroalaEditor
-                  tag='textarea'
-                  config={this.config}
-                  model={this.state.content}
-                  onModelChange={(e) => {
-                    let material = this.state.material;
-                    this.setState({ material: e});
-                  }}
-                  config={{
-                    placeholderText: " ",
-                    charCounterCount: false,
-                    attribution: false,
-                    imageUpload: false,
-                    toolbarInline: true,
-                    toolbarVisibleWithoutSelection: true
-                  }}
-                />
+
               </div>
               Artwork Type
               <div className="border rounded">
-               <FroalaEditor
-                  tag='textarea'
-                  config={this.config}
-                  model={this.state.content}
-                  onModelChange={(e) => {
-                    let artwork_type = this.state.artwork_type;
-                    this.setState({ artwork_type: e});
-                  }}
-                  config={{
-                    placeholderText: " ",
-                    charCounterCount: false,
-                    attribution: false,
-                    imageUpload: false,
-                    toolbarInline: true,
-                    toolbarVisibleWithoutSelection: true
-                  }}
-                />
+
               </div>
               <div className="row">
                 <div className="col-md-12 new-article-form">
-                  <FroalaEditor
+{/*                   <FroalaEditor
                     tag='textarea'
                     config={this.config}
                     model={this.state.content}
@@ -280,7 +205,7 @@ class NewArticle extends React.Component {
                       attribution: false,
                       imageUpload: true,
                     }}
-                  />
+                  /> */}
                   <br />
                   <EditorPreview data={this.state.body} />
                   <br />
