@@ -3,13 +3,7 @@ import { Link, hashHistory } from "react-router";
 //import Alert from "react-s-alert";
 import Loader from "./loader.jsx";
 
-import CKEditor from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
-import InlineEditor from "@ckeditor/ckeditor5-editor-inline/src/inlineeditor";
 import EditorPreview from "./helpers/editor_preview.jsx";
-
-//@Mordax - you can edit the ckeditor file to add and remove plugins
-import CKConfig from "../../../config/ckeditor.js";
 
 class EditArticle extends React.Component {
   constructor(props) {

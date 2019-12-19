@@ -590,7 +590,6 @@ textarea {
 }
 /* hide no file select alert */
 input[type="file"] {
-  display: none;
 }
 
 .search-button {

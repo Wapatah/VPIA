@@ -3,13 +3,24 @@ import { hashHistory } from "react-router";
 import Loader from "./loader.jsx";
 //import Alert from "react-s-alert";
 
-import CKEditor from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
-import InlineEditor from "@ckeditor/ckeditor5-editor-inline/src/inlineeditor";
-import EditorPreview from "./helpers/editor_preview.jsx";
+// Require Editor JS files.
+import 'froala-editor/js/froala_editor.pkgd.min.js';
 
-// @Mordax - CKEditor file was made for easy configuration and DRY reasons
-import CKConfig from "../../../config/ckeditor";
+// Require Editor CSS files.
+import 'froala-editor/css/froala_style.min.css';
+import 'froala-editor/css/froala_editor.pkgd.min.css';
+import 'froala-editor/js/plugins/image.min';
+import 'froala-editor/js/plugins/file.min';
+
+import FroalaEditor from 'react-froala-wysiwyg';
+
+import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView';
+import FroalaEditorA from 'react-froala-wysiwyg/FroalaEditorA';
+import FroalaEditorButton from 'react-froala-wysiwyg/FroalaEditorButton';
+import FroalaEditorImg from 'react-froala-wysiwyg/FroalaEditorImg';
+import FroalaEditorInput from 'react-froala-wysiwyg/FroalaEditorInput';
+
+import EditorPreview from "./helpers/editor_preview.jsx";
 
 class NewArticle extends React.Component {
   constructor(props) {
@@ -134,83 +145,141 @@ class NewArticle extends React.Component {
               <br />
               Institution Photo
               <div className="border rounded">
-                <CKEditor
-                  editor={InlineEditor}
-                  onChange={(event, editor) => {
+              <FroalaEditor
+                  tag='textarea'
+                  config={this.config}
+                  model={this.state.content}
+                  onModelChange={(e) => {
                     let photo = this.state.photo;
-                    this.setState({ photo: editor.getData() });
+                    this.setState({ photo: e});
                   }}
-                  config={CKConfig}
+                  config={{
+                    placeholderText: " ",
+                    charCounterCount: false,
+                    attribution: false,
+                    imageUpload: true,
+                    toolbarInline: true,
+                    toolbarVisibleWithoutSelection: true,
+                    imageUploadURL: "http://localhost:30500/upload",
+                    imageUploadMethod: 'POST',
+                  }}
                 />
               </div>
               Photo License
               <div className="border rounded">
-                <CKEditor
-                  editor={InlineEditor}
-                  onChange={(event, editor) => {
+                <FroalaEditor
+                  tag='textarea'
+                  config={this.config}
+                  model={this.state.content}
+                  onModelChange={(e) => {
                     let photo_license = this.state.photo_license;
-                    this.setState({ photo_license: editor.getData() });
+                    this.setState({ photo_license: e});
                   }}
-                  config={CKConfig}
+                  config={{
+                    placeholderText: " ",
+                    charCounterCount: false,
+                    attribution: false,
+                    imageUpload: false,
+                    toolbarInline: true,
+                    toolbarVisibleWithoutSelection: true
+                  }}
                 />
               </div>
               Holding Institution
               <div className="border rounded">
-                <CKEditor
-                  editor={InlineEditor}
-                  onChange={(event, editor) => {
+               <FroalaEditor
+                  tag='textarea'
+                  config={this.config}
+                  model={this.state.content}
+                  onModelChange={(e) => {
                     let institution = this.state.institution;
-                    this.setState({ institution: editor.getData() });
+                    this.setState({ institution: e});
                   }}
-                  config={CKConfig}
+                  config={{
+                    placeholderText: " ",
+                    charCounterCount: false,
+                    attribution: false,
+                    imageUpload: false,
+                    toolbarInline: true,
+                    toolbarVisibleWithoutSelection: true
+                  }}
                 />
               </div>
               Culture Group
               <div className="border rounded">
-                <CKEditor
-                  editor={InlineEditor}
-                  onChange={(event, editor) => {
+                <FroalaEditor
+                  tag='textarea'
+                  config={this.config}
+                  model={this.state.content}
+                  onModelChange={(e) => {
                     let culture_group = this.state.culture_group;
-                    this.setState({ culture_group: editor.getData() });
+                    this.setState({ culture_group: e});
                   }}
-                  config={CKConfig}
+                  config={{
+                    placeholderText: " ",
+                    charCounterCount: false,
+                    attribution: false,
+                    imageUpload: false,
+                    toolbarInline: true,
+                    toolbarVisibleWithoutSelection: true
+                  }}
                 />
               </div>
               Material
               <div className="border rounded">
-                <CKEditor
-                  style="outline: 1px solid black"
-                  editor={InlineEditor}
-                  onChange={(event, editor) => {
+               <FroalaEditor
+                  tag='textarea'
+                  config={this.config}
+                  model={this.state.content}
+                  onModelChange={(e) => {
                     let material = this.state.material;
-                    this.setState({ material: editor.getData() });
+                    this.setState({ material: e});
                   }}
-                  config={CKConfig}
+                  config={{
+                    placeholderText: " ",
+                    charCounterCount: false,
+                    attribution: false,
+                    imageUpload: false,
+                    toolbarInline: true,
+                    toolbarVisibleWithoutSelection: true
+                  }}
                 />
               </div>
               Artwork Type
               <div className="border rounded">
-                <CKEditor
-                  editor={InlineEditor}
-                  onChange={(event, editor) => {
+               <FroalaEditor
+                  tag='textarea'
+                  config={this.config}
+                  model={this.state.content}
+                  onModelChange={(e) => {
                     let artwork_type = this.state.artwork_type;
-                    this.setState({ artwork_type: editor.getData() });
+                    this.setState({ artwork_type: e});
                   }}
-                  config={CKConfig}
+                  config={{
+                    placeholderText: " ",
+                    charCounterCount: false,
+                    attribution: false,
+                    imageUpload: false,
+                    toolbarInline: true,
+                    toolbarVisibleWithoutSelection: true
+                  }}
                 />
               </div>
               <div className="row">
                 <div className="col-md-12 new-article-form">
-                  <CKEditor
-                    editor={ClassicEditor}
-                    onInit={() => {
-                      console.log("Editor is ready.");
-                    }}
-                    onChange={(event, editor) => {
+                  <FroalaEditor
+                    tag='textarea'
+                    config={this.config}
+                    model={this.state.content}
+                    onModelChange={(e) => {
                       let body = this.state.body;
-                      this.setState({ body: editor.getData() });
+                      this.setState({ body: e});
                     }}
-                    config={CKConfig}
+                    config={{
+                      charCounterCount: false,
+                      attribution: false,
+                      imageUpload: true,
+                    }}
                   />
                   <br />
                   <EditorPreview data={this.state.body} />
