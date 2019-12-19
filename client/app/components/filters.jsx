@@ -52,10 +52,7 @@ class Filters extends React.Component {
             Culture Group
           </button>
 
-          <div
-            className="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
-            aria-labelledby="dropdownMenuButton"
-          >
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {this.state.articles.map(article => (
               <a
                 key={article.culture_group}
@@ -86,10 +83,7 @@ class Filters extends React.Component {
             Artwork Type
           </button>
 
-          <div
-            className="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
-            aria-labelledby="dropdownMenuButton"
-          >
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {this.state.articles.map(article => (
               <a
                 key={article.artwork_type}
@@ -120,10 +114,7 @@ class Filters extends React.Component {
             Material
           </button>
 
-          <div
-            className="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
-            aria-labelledby="dropdownMenuButton"
-          >
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {this.state.articles.map(article => (
               <a
                 key={article.material}
@@ -154,10 +145,7 @@ class Filters extends React.Component {
             Holding Institution
           </button>
 
-          <div
-            className="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
-            aria-labelledby="dropdownMenuButton"
-          >
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {this.state.articles.map(article => (
               <a
                 key={article.institution}
