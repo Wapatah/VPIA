@@ -139,14 +139,10 @@ class NewArticle extends React.Component {
                     automatic_uploads: true,
                     images_upload_url: "http://localhost:30500/upload",
                     plugins: [
-                      'advlist autolink lists link image charmap print preview anchor',
-                      'searchreplace visualblocks code fullscreen',
-                      'insertdatetime media table paste code help wordcount'
+                      'image'
                     ],
                     toolbar:
-                      'bold italic underline | \
-                      alignleft aligncenter alignright | \
-                      bullist numlist outdent indent | image | undo redo | help'
+                      'image | undo redo | help'
                   }}
                   onChange={(editor) => {
                     let photo = this.state.photo;
@@ -161,17 +157,15 @@ class NewArticle extends React.Component {
                     init={{
                       inline: true,
                       menubar: false,
-                      automatic_uploads: true,
-                      images_upload_url: "http://localhost:30500/upload",
                       plugins: [
-                        'advlist autolink lists link image charmap print preview anchor',
+                        'advlist autolink lists link charmap print preview anchor',
                         'searchreplace visualblocks code fullscreen',
                         'insertdatetime media table paste code help wordcount'
                       ],
                       toolbar:
                         'bold italic underline | \
                         alignleft aligncenter alignright | \
-                        bullist numlist outdent indent | image | undo redo | help'
+                        bullist numlist outdent indent | undo redo | help'
                     }}
                     onChange={(editor) => {
                       let photo_license = this.state.photo_license;
@@ -192,9 +186,9 @@ class NewArticle extends React.Component {
                         'insertdatetime media table paste code help wordcount'
                       ],
                       toolbar:
-                        'bold italic underline | \
-                        alignleft aligncenter alignright | \
-                        bullist numlist outdent indent | undo redo | help'
+                        `bold italic underline | 
+                        alignleft aligncenter alignright | 
+                        bullist numlist outdent indent | undo redo | help`
                     }}
                     onChange={(editor) => {
                       let institution = this.state.insitution;
@@ -283,16 +277,16 @@ class NewArticle extends React.Component {
                     plugins: [
                       'advlist autolink lists link image charmap print preview anchor',
                       'searchreplace visualblocks code fullscreen',
-                      'insertdatetime media table paste code help wordcount'
+                      'insertdatetime media table paste code help wordcount toc'
                     ],
                     toolbar:
                       'bold italic underline | \
                       alignleft aligncenter alignright | \
-                      bullist numlist outdent indent | image | undo redo | help'
+                      bullist numlist outdent indent | image media | undo redo | charmap toc| help'
                   }}
                   onChange={(editor) => {
-                    let photo = this.state.photo;
-                    this.setState({ photo: editor.level.content});
+                    let body = this.state.body;
+                    this.setState({ body: editor.level.content});
                   }}
                 />   
                   <br />

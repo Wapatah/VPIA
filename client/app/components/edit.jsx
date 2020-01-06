@@ -3,6 +3,8 @@ import { Link, hashHistory } from "react-router";
 //import Alert from "react-s-alert";
 import Loader from "./loader.jsx";
 
+import { Editor } from '@tinymce/tinymce-react';
+
 import EditorPreview from "./helpers/editor_preview.jsx";
 
 class EditArticle extends React.Component {
@@ -223,53 +225,94 @@ class EditArticle extends React.Component {
                     <div className="col-md-12 new-article-form">
                       Culture Group
                       <div className="border rounded">
-                        <CKEditor
-                          editor={InlineEditor}
-                          data={this.state.culture_group}
-                          onChange={(event, editor) => {
-                            let culture_group = this.state.culture_group;
-                            this.setState({ culture_group: editor.getData() });
-                          }}
-                          config={CKConfig}
-                        />
+                          <Editor
+                            initialValue={this.state.culture_group}
+                            init={{
+                              inline: true,
+                              menubar: false,
+                              plugins: [
+                                'advlist autolink lists link charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount'
+                              ],
+                              toolbar:
+                                `bold italic underline | 
+                                alignleft aligncenter alignright | 
+                                bullist numlist outdent indent | undo redo | help`
+                            }}
+                            onChange={(editor) => {
+                              let culture_group = this.state.culture_group;
+                              this.setState({ culture_group: editor.level.content});
+                            }}
+                          />
                       </div>
                       Material
                       <div className="border rounded">
-                        <CKEditor
-                          style="outline: 1px solid black"
-                          editor={InlineEditor}
-                          data={this.state.material}
-                          onChange={(event, editor) => {
-                            let material = this.state.material;
-                            this.setState({ material: editor.getData() });
-                          }}
-                          config={CKConfig}
-                        />
+                        <Editor
+                            initialValue={this.state.material}
+                            init={{
+                              inline: true,
+                              menubar: false,
+                              plugins: [
+                                'advlist autolink lists link charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount'
+                              ],
+                              toolbar:
+                                `bold italic underline | 
+                                alignleft aligncenter alignright | 
+                                bullist numlist outdent indent | undo redo | help`
+                            }}
+                            onChange={(editor) => {
+                              let material = this.state.material;
+                              this.setState({ material: editor.level.content});
+                            }}
+                          />
                       </div>
                       Artwork Type
                       <div className="border rounded">
-                        <CKEditor
-                          editor={InlineEditor}
-                          data={this.state.artwork_type}
-                          onChange={(event, editor) => {
-                            let artwork_type = this.state.artwork_type;
-                            this.setState({ artwork_type: editor.getData() });
-                          }}
-                          config={CKConfig}
-                        />
+                        <Editor
+                              initialValue={this.state.artwork_type}
+                              init={{
+                                inline: true,
+                                menubar: false,
+                                plugins: [
+                                  'advlist autolink lists link charmap print preview anchor',
+                                  'searchreplace visualblocks code fullscreen',
+                                  'insertdatetime media table paste code help wordcount'
+                                ],
+                                toolbar:
+                                  `bold italic underline | 
+                                  alignleft aligncenter alignright | 
+                                  bullist numlist outdent indent | undo redo | help`
+                              }}
+                              onChange={(editor) => {
+                                let artwork_type = this.state.artwork_type;
+                                this.setState({ artwork_type: editor.level.content});
+                              }}
+                            />
                       </div>
-                      <CKEditor
-                        editor={ClassicEditor}
-                        onInit={() => {
-                          console.log("Editor is ready.");
-                        }}
-                        data={this.state.body}
-                        onChange={(event, editor) => {
-                          let body = this.state.body;
-                          this.setState({ body: editor.getData() });
-                        }}
-                        config={CKConfig}
-                      />
+                      <Editor
+                            initialValue={this.state.body}
+                            init={{
+                              menubar: false,
+                              automatic_uploads: true,
+                              images_upload_url: "http://localhost:30500/upload",
+                              plugins: [
+                                'advlist autolink lists link charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media image table paste code help wordcount toc'
+                              ],
+                              toolbar:
+                                `bold italic underline | 
+                                alignleft aligncenter alignright | 
+                                bullist numlist outdent indent | image media | undo redo | charmap toc | help`
+                            }}
+                            onChange={(editor) => {
+                              let body = this.state.body;
+                              this.setState({ body: editor.level.content});
+                            }}
+                          />
                       <label>Choose topic</label>
                       <select
                         className="form-control topic-select"
