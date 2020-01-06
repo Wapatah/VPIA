@@ -45,7 +45,6 @@ class NewArticle extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.photo);
     var body = this.state.body;
     var title = this.refs.title.value;
     var topicId = this.refs.topic.value;
@@ -55,6 +54,7 @@ class NewArticle extends React.Component {
     var photo = this.state.photo;
     var institution = this.state.institution;
     var photo_license = this.state.photo_license;
+    console.log(photo_license);
     if (
       body &&
       title &&
@@ -156,56 +156,145 @@ class NewArticle extends React.Component {
               </div>
               Photo License
               <div className="border rounded">
-                {/* <FroalaEditor
-                  tag='textarea'
-                  config={this.config}
-                  model={this.state.content}
-                  onModelChange={(e) => {
-                    let photo_license = this.state.photo_license;
-                    this.setState({ photo_license: e});
-                  }}
-                  config={{
-                    placeholderText: " ",
-                    charCounterCount: false,
-                    attribution: false,
-                    imageUpload: false,
-                    toolbarInline: true,
-                    toolbarVisibleWithoutSelection: true
-                  }}
-                /> */}
+                <Editor
+                    initialValue=""
+                    init={{
+                      inline: true,
+                      menubar: false,
+                      automatic_uploads: true,
+                      images_upload_url: "http://localhost:30500/upload",
+                      plugins: [
+                        'advlist autolink lists link image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount'
+                      ],
+                      toolbar:
+                        'bold italic underline | \
+                        alignleft aligncenter alignright | \
+                        bullist numlist outdent indent | image | undo redo | help'
+                    }}
+                    onChange={(editor) => {
+                      let photo_license = this.state.photo_license;
+                      this.setState({ photo_license: editor.level.content});
+                    }}
+                  />
               </div>
               Holding Institution
               <div className="border rounded">
-
+                <Editor
+                    initialValue=""
+                    init={{
+                      inline: true,
+                      menubar: false,
+                      plugins: [
+                        'advlist autolink lists link charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount'
+                      ],
+                      toolbar:
+                        'bold italic underline | \
+                        alignleft aligncenter alignright | \
+                        bullist numlist outdent indent | undo redo | help'
+                    }}
+                    onChange={(editor) => {
+                      let institution = this.state.insitution;
+                      this.setState({ institution: editor.level.content});
+                    }}
+                  />
               </div>
               Culture Group
               <div className="border rounded">
-
+                <Editor
+                      initialValue=""
+                      init={{
+                        inline: true,
+                        menubar: false,
+                        plugins: [
+                          'advlist autolink lists link charmap print preview anchor',
+                          'searchreplace visualblocks code fullscreen',
+                          'insertdatetime media table paste code help wordcount'
+                        ],
+                        toolbar:
+                          'bold italic underline | \
+                          alignleft aligncenter alignright | \
+                          bullist numlist outdent indent | undo redo | help'
+                      }}
+                      onChange={(editor) => {
+                        let culture_group = this.state.culture_group;
+                        this.setState({ culture_group: editor.level.content});
+                      }}
+                    />
               </div>
               Material
               <div className="border rounded">
-
-              </div>
+                <Editor
+                      initialValue=""
+                      init={{
+                        inline: true,
+                        menubar: false,
+                        plugins: [
+                          'advlist autolink lists link charmap print preview anchor',
+                          'searchreplace visualblocks code fullscreen',
+                          'insertdatetime media table paste code help wordcount'
+                        ],
+                        toolbar:
+                          'bold italic underline | \
+                          alignleft aligncenter alignright | \
+                          bullist numlist outdent indent | undo redo | help'
+                      }}
+                      onChange={(editor) => {
+                        let material = this.state.material;
+                        this.setState({ material: editor.level.content});
+                      }}
+                    />
+                </div>
               Artwork Type
               <div className="border rounded">
-
+                <Editor
+                        initialValue=""
+                        init={{
+                          inline: true,
+                          menubar: false,
+                          plugins: [
+                            'advlist autolink lists link charmap print preview anchor',
+                            'searchreplace visualblocks code fullscreen',
+                            'insertdatetime media table paste code help wordcount'
+                          ],
+                          toolbar:
+                            'bold italic underline | \
+                            alignleft aligncenter alignright | \
+                            bullist numlist outdent indent | undo redo | help'
+                        }}
+                        onChange={(editor) => {
+                          let artwork_type = this.state.artwork_type;
+                          this.setState({ artwork_type: editor.level.content});
+                        }}
+                      />
               </div>
+              Body
               <div className="row">
                 <div className="col-md-12 new-article-form">
-{/*                   <FroalaEditor
-                    tag='textarea'
-                    config={this.config}
-                    model={this.state.content}
-                    onModelChange={(e) => {
-                      let body = this.state.body;
-                      this.setState({ body: e});
-                    }}
-                    config={{
-                      charCounterCount: false,
-                      attribution: false,
-                      imageUpload: true,
-                    }}
-                  /> */}
+                <Editor
+                  initialValue=""
+                  init={{
+                    menubar: false,
+                    automatic_uploads: true,
+                    images_upload_url: "http://localhost:30500/upload",
+                    plugins: [
+                      'advlist autolink lists link image charmap print preview anchor',
+                      'searchreplace visualblocks code fullscreen',
+                      'insertdatetime media table paste code help wordcount'
+                    ],
+                    toolbar:
+                      'bold italic underline | \
+                      alignleft aligncenter alignright | \
+                      bullist numlist outdent indent | image | undo redo | help'
+                  }}
+                  onChange={(editor) => {
+                    let photo = this.state.photo;
+                    this.setState({ photo: editor.level.content});
+                  }}
+                />   
                   <br />
                   <EditorPreview data={this.state.body} />
                   <br />
