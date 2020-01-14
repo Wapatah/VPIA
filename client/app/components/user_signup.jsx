@@ -71,11 +71,6 @@ class UserSignup extends React.Component {
     this.setState({ password: event.target.value });
   }
 
-  handleSubmit() {
-    const { email, password } = this.state;
-    alert(`Signed up with email: ${email} password: ${password}`);
-  }
-
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Renders the sign up form
   render() {
@@ -95,80 +90,78 @@ class UserSignup extends React.Component {
             />
             <div className="setup-form container">
               <div className="col-md-12 col-sm-12">
-                <form onSubmit={this.handleSubmit}>
-                  <div className="col-sm-12 form-group">
-                    <input
-                      type="text"
-                      className="form-control"
-                      ref="user_name"
-                      id="inputUserName"
-                      placeholder="Name"
-                    />
+                <div className="col-sm-12 form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    ref="user_name"
+                    id="inputUserName"
+                    placeholder="Name"
+                  />
+                </div>
+                <div className="col-sm-12 form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    ref="user_about"
+                    id="inputUserAbout"
+                    placeholder="About"
+                  />
+                </div>
+                <div className="col-sm-12 form-group">
+                  <input
+                    type="email"
+                    className="form-control"
+                    ref="user_email"
+                    id="inputUserEmail"
+                    placeholder="Email"
+                    value={this.state.email}
+                    onChange={this.handleEmailChange}
+                  />
+                </div>
+                <div className="col-sm-12 form-group">
+                  <input
+                    type="password"
+                    className="form-control"
+                    ref="user_password"
+                    id="inputUserPassword"
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.handlePasswordChange}
+                  />
+                </div>
+                <div className="col-sm-12">
+                  <a
+                    className="text-warning"
+                    href="https://foundation.wikimedia.org/wiki/Terms_of_Use/en"
+                  >
+                    Terms and Conditions
+                  </a>
+                  <br />
+                  <a
+                    className="text-warning"
+                    href="https://foundation.wikimedia.org/wiki/Privacy_policy"
+                  >
+                    Privacy Policy
+                  </a>
+                  <br />
+                  <br />
+                  <div className="text-white small">
+                    We will be modifying our Terms and Conditions/Privacy Policy
+                    to reflect our responsibilities in the very near future. For
+                    now, we are mirroring Wikipedia's goals.
                   </div>
-                  <div className="col-sm-12 form-group">
-                    <input
-                      type="text"
-                      className="form-control"
-                      ref="user_about"
-                      id="inputUserAbout"
-                      placeholder="About"
-                    />
-                  </div>
-                  <div className="col-sm-12 form-group">
-                    <input
-                      type="email"
-                      className="form-control"
-                      ref="user_email"
-                      id="inputUserEmail"
-                      placeholder="Email"
-                      value={this.state.email}
-                      onChange={this.handleEmailChange}
-                    />
-                  </div>
-                  <div className="col-sm-12 form-group">
-                    <input
-                      type="password"
-                      className="form-control"
-                      ref="user_password"
-                      id="inputUserPassword"
-                      placeholder="Password"
-                      value={this.state.password}
-                      onChange={this.handlePasswordChange}
-                    />
-                  </div>
-                  <div className="col-sm-12">
-                    <a
-                      className="text-warning"
-                      href="https://foundation.wikimedia.org/wiki/Terms_of_Use/en"
-                    >
-                      Terms and Conditions
-                    </a>
-                    <br />
-                    <a
-                      className="text-warning"
-                      href="https://foundation.wikimedia.org/wiki/Privacy_policy"
-                    >
-                      Privacy Policy
-                    </a>
-                    <br />
-                    <br />
-                    <div className="text-white small">
-                      We will be modifying our Terms and Conditions/Privacy
-                      Policy to reflect our responsibilities in the very near
-                      future. For now, we are mirroring Wikipedia's goals.
-                    </div>
-                    <br />
-                  </div>
-                  <div className="col-sm-12 form-group">
-                    <button
-                      onClick={this.handleSignUp}
-                      disabled={!isEnabled}
-                      className="btn btn-outline-light btn-block"
-                    >
-                      Sign Up
-                    </button>
-                  </div>
-                </form>
+                  <br />
+                </div>
+                <div className="col-sm-12 form-group">
+                  <button
+                    onClick={this.handleSignUp}
+                    disabled={!isEnabled}
+                    className="btn btn-outline-light btn-block"
+                  >
+                    Sign Up
+                  </button>
+                </div>
               </div>
             </div>
           </div>
