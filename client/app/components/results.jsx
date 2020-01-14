@@ -1,8 +1,10 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  Artwork results page logic, after selecting filters, this logic adjusts what one sees
+*/
 import React from "react";
 import ArtworkResults from "./artwork_results.jsx";
 import Filters from "./filters.jsx";
 import BrowseTopics from "./browse_topics.jsx";
-import { hashHistory } from "react-router";
 import Loader from "./loader.jsx";
 
 class Results extends React.Component {
@@ -12,14 +14,20 @@ class Results extends React.Component {
     this.state = { topicId: "1", loading: true };
   }
 
-  handleUpdate(id) {
-    this.setState({ topicId: id });
-  }
-
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Onload set loading to false
   componentDidMount() {
     this.setState({ loading: false });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // If clicked on topic, change the topic to that clicked one
+  handleUpdate(id) {
+    this.setState({ topicId: id });
+  }
+
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Render the Search results along with the filters
   render() {
     if (this.state.loading) return <Loader />;
     else

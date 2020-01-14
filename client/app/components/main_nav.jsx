@@ -1,12 +1,17 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  Main navigation logic for the site lives here - please note that the user settings would live in the app.jsx component, not here. 
+*/
 import React from "react";
 import SearchForm from "./searchform.jsx";
-import { Link, hashHistory } from "react-router";
+import { Link } from "react-router";
 
 class MainNav extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Renders about page, home nav and other necessary pages.
   render() {
     return (
       <div>

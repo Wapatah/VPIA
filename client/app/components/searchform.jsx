@@ -1,3 +1,6 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  The search bar input display
+*/
 import React from "react";
 import { hashHistory } from "react-router";
 
@@ -7,11 +10,15 @@ class SearchForm extends React.Component {
     this.searchWiki = this.searchWiki.bind(this);
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // If searching, redirect users to the results and passes the value as a prop
   searchWiki() {
     var results = "/search?query=" + this.refs.search.value;
     hashHistory.push(results);
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Render the search input with placeholder
   render() {
     return (
       <form onSubmit={this.searchWiki}>

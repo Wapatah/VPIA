@@ -1,7 +1,14 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  Place all components to be navigated to as a page
+  in this file.
+*/
+
 import React from "react";
 import { Route, IndexRoute } from "react-router";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 
+// --------------------------------------------------------------------------------------------------------------------------------------------
+// Import all components for navigation
 import App from "./components/app.jsx";
 import Home from "./components/home.jsx";
 import Login from "./components/login.jsx";
@@ -19,6 +26,8 @@ import Landing from "./components/landing.jsx";
 import About from "./components/about.jsx";
 import Results from "./components/results.jsx";
 
+// --------------------------------------------------------------------------------------------------------------------------------------------
+// Build a route path and limit access to certain pages
 export default function() {
   return (
     <Switch>

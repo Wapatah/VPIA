@@ -1,14 +1,21 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This is where the Admin can manually create new artwork pages. Regular users will not be allowed to create their own pages.
+*/
+
 import React from "react";
 import { hashHistory } from "react-router";
 import Loader from "./loader.jsx";
 //import Alert from "react-s-alert";
 
+// Importing ckeditor pieces
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import InlineEditor from "@ckeditor/ckeditor5-editor-inline/src/inlineeditor";
+
+// Importing editor preview helper
 import EditorPreview from "./helpers/editor_preview.jsx";
 
-// @Mordax - CKEditor file was made for easy configuration and DRY reasons
+// Importing ckeditor configuration file
 import CKConfig from "../../../config/ckeditor";
 
 class NewArticle extends React.Component {
@@ -26,6 +33,8 @@ class NewArticle extends React.Component {
     };
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Onload, fetch all topics (most likely will be depreciated)
   componentDidMount() {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
@@ -33,6 +42,7 @@ class NewArticle extends React.Component {
     });
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
+
     fetch("/api/topics", myInit)
       .then(function(response) {
         return response.json();
@@ -47,6 +57,8 @@ class NewArticle extends React.Component {
       });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Take variables from admin input and create a new Article object and send POST
   handleSubmit(e) {
     e.preventDefault();
     var body = this.state.body;
@@ -58,6 +70,7 @@ class NewArticle extends React.Component {
     var photo = this.state.photo;
     var institution = this.state.institution;
     var photo_license = this.state.photo_license;
+
     if (
       body &&
       title &&
@@ -73,6 +86,7 @@ class NewArticle extends React.Component {
         "Content-Type": "application/x-www-form-urlencoded",
         "x-access-token": window.localStorage.getItem("userToken")
       });
+
       var myInit = {
         method: "POST",
         headers: myHeaders,
@@ -98,7 +112,7 @@ class NewArticle extends React.Component {
           "&user_id=" +
           window.localStorage.getItem("user_id")
       };
-      var that = this;
+
       fetch("/api/articles/", myInit)
         .then(function(response) {
           return response.json();
@@ -116,6 +130,8 @@ class NewArticle extends React.Component {
     }
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Render the create article page
   render() {
     if (this.state.loading) return <Loader />;
     else

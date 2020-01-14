@@ -1,6 +1,8 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  Setup page for the initial admin logic. Will probably have to be cleaned up to reduce amount of code
+*/
 import React from "react";
 import { hashHistory } from "react-router";
-import Loader from "./loader.jsx";
 //import Alert from "react-s-alert";
 
 class Setup extends React.Component {
@@ -9,6 +11,8 @@ class Setup extends React.Component {
     this.handleSignUp = this.handleSignUp.bind(this);
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Creates admin object and sends a user POST request
   handleSignUp() {
     var user = {
       name: encodeURIComponent(this.refs.user_name.value),
@@ -16,9 +20,11 @@ class Setup extends React.Component {
       email: encodeURIComponent(this.refs.user_email.value),
       password: encodeURIComponent(this.refs.user_password.value)
     };
+
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
+
     var myInit = {
       method: "POST",
       headers: myHeaders,
@@ -32,7 +38,7 @@ class Setup extends React.Component {
         "&password=" +
         user.password
     };
-    var that = this;
+
     fetch("/setup", myInit)
       .then(function(response) {
         return response.json();
@@ -47,6 +53,8 @@ class Setup extends React.Component {
       });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Render the admin sign up page
   render() {
     return (
       <div id="fullpage" className="container-fluid">

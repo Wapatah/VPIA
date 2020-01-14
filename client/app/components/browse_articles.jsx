@@ -1,3 +1,7 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  Browse Articles is used as a convenient display of articles - this is currently used as Recent artworks on the main page
+  to engage platform users.
+*/
 import React from "react";
 import Loader from "./loader.jsx";
 import { Link, hashHistory } from "react-router";
@@ -9,14 +13,19 @@ class BrowseArticles extends React.Component {
     this.state = { articles: [], url: "/api/articles", loading: true };
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+    On load, GET ALL articles
+  */
   componentDidMount() {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
+
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
     var url = "/api/articles";
+
     fetch(url, myInit)
       .then(function(response) {
         return response.json();
@@ -31,8 +40,11 @@ class BrowseArticles extends React.Component {
       });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Depreciated - browse articles under specific topic.
   componentWillReceiveProps(nextProps) {
     this.setState({ loading: true });
+
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
@@ -40,9 +52,11 @@ class BrowseArticles extends React.Component {
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
     var url = "/api/articles";
+
     if (nextProps.topicId == null && this.props.topicId == null)
       var url = "/api/articles";
     else var url = "/api/topic/" + nextProps.topicId + "/articles";
+
     fetch(url, myInit)
       .then(function(response) {
         return response.json();
@@ -57,6 +71,8 @@ class BrowseArticles extends React.Component {
       });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Used to render the recent Articles based on recent updates as carousel
   render() {
     if (this.state.loading) return <Loader />;
     if (this.state.articles.length < 1) {

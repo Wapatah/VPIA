@@ -1,3 +1,6 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  Logic for the Article history button that displays the revision history of the platform.
+*/
 import React from "react";
 import { Link } from "react-router";
 import Loader from "./loader.jsx";
@@ -11,14 +14,20 @@ class ArticleHistory extends React.Component {
     this.state = { archive_id: "", loading: true };
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Onload, set loading to false
   componentDidMount() {
     this.setState({ loading: false });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // archiveUpdate() - Clicking on archive sets the archive id to update in browse_archives
   archiveUpdate(id) {
     this.setState({ archive_id: id });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Renders the history page as well as the browse_archive and simple_article components.
   render() {
     if (this.state.loading) return <Loader />;
     else
