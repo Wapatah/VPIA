@@ -1,3 +1,6 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  "Home" is just a name for this file that renders the carousels of recent artworks and placeholder events.
+*/
 import React from "react";
 import BrowseTopics from "./browse_topics.jsx";
 import BrowseArticles from "./browse_articles.jsx";
@@ -11,14 +14,20 @@ class Home extends React.Component {
     this.state = { topicId: "1", loading: true };
   }
 
-  handleUpdate(id) {
-    this.setState({ topicId: id });
-  }
-
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Onload set loading to false
   componentDidMount() {
     this.setState({ loading: false });
   }
 
+  //--------------------------------------------------------------------------------------------------------------------------------------------
+  // Possibly depreciated, this used to be code for selecting through different topics
+  handleUpdate(id) {
+    this.setState({ topicId: id });
+  }
+
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Renders the hard coded events - will change with update to ux design.
   render() {
     if (this.state.loading) return <Loader />;
     else

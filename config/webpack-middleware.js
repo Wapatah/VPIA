@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  // webpack stuff
+  // Webpack middleware for development purposes - webpack needs to be cleaned up.
   var webpack = require("webpack");
   var webpackDevMiddleware = require("webpack-dev-middleware");
   var webpackHotMiddleware = require("webpack-hot-middleware");

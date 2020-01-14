@@ -1,7 +1,7 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This is the main App container component along with the main headers and footer.
+*/
 import React from "react";
-import Login from "./login.jsx";
-import Landing from "./landing.jsx";
-import SearchForm from "./searchform.jsx";
 import { Link, hashHistory } from "react-router";
 //import Alert from "react-s-alert";
 import MainNav from "./main_nav.jsx";
@@ -12,12 +12,18 @@ class App extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  Onload, If the user is not signed in, forcibly redirect them to the landing page.
+*/
   componentWillMount() {
     if (window.localStorage.getItem("userToken") == null) {
       hashHistory.push("landing");
     }
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  handleLogout() - Clears all localstorage variables on logout.
+*/
   handleLogout() {
     window.localStorage.setItem("userToken", "");
     window.localStorage.setItem("user_id", "");
@@ -25,6 +31,9 @@ class App extends React.Component {
     //Alert.success("You've been successfully logged out");
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  Displays headers, footers, checks if user is admin and gives link to Admin component.
+*/
   render() {
     var that = this;
     return (
@@ -261,7 +270,6 @@ class App extends React.Component {
             </div>
           </div>
         </footer>
-        {/*<Alert stack={{ limit: 3 }} position="bottom" />*/}
       </div>
     );
   }

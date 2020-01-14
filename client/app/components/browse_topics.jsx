@@ -1,6 +1,8 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  Topic logic - most likely will be depreciated once Artwork filters  get implemented.
+*/
 import React from "react";
 import Loader from "./loader.jsx";
-import { hashHistory } from "react-router";
 
 class BrowseTopics extends React.Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class BrowseTopics extends React.Component {
     });
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
+
     fetch("/api/topics", myInit)
       .then(function(response) {
         return response.json();

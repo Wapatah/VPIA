@@ -1,18 +1,19 @@
-/*
-@Matterwiki
-This file contains all endpoints related to archives
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This file contains all endpoints related to archives.
+  POST and DELETE are handled when an Article is created/destroyed, since
+  the archive tracks updates to Articles. 
+  Archives cannot be updated with PUT.
 */
 
+// Importing the data models needed to manipulate
 var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
 
 module.exports = function(app) {
-  /*
-  @Matterwiki
-  This is a GET endpoint that responds with one article of the specific ID (identified through the ID param)
-  the article is present in the data object in the returning object.
-  the error key in the returning object is a boolen which is false if there is no error and true otherwise
-  */
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  GET /archive/:id - endpoint that responds with one archive of the 
+  specific ID (identified through the ID param)
+*/
   app.get("/archives/:id/", function(req, res) {
     Archives.find({ where: { id: req.params.id } })
       .then(function(archive) {

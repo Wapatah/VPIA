@@ -1,3 +1,6 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This is the login page logic and functions relating to signing in.
+*/
 import React from "react";
 import { hashHistory, Link } from "react-router";
 //import Alert from "react-s-alert";
@@ -8,19 +11,25 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // On load, if there is a user token, get redirected to home.
   componentDidMount() {
     if (window.localStorage.getItem("userToken")) {
       hashHistory.push("home");
     }
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Authenticate the login input
   handleSubmit(e) {
     e.preventDefault();
     var email = document.getElementById("inputEmail").value;
     var password = document.getElementById("inputPassword").value;
+
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
+
     var myInit = {
       method: "POST",
       headers: myHeaders,
@@ -30,7 +39,9 @@ class Login extends React.Component {
         "&password=" +
         encodeURIComponent(password)
     };
+
     var that = this;
+
     fetch("/api/authenticate", myInit)
       .then(function(response) {
         return response.json();
@@ -49,6 +60,8 @@ class Login extends React.Component {
       });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Render the log in page.
   render() {
     return (
       <div id="fullpage" className="container-fluid">

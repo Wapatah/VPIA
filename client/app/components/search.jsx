@@ -1,6 +1,10 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This is the logic for the search - this is where keywords would pull out specific database queries.
+  This differs from the Artwork results page as that is used to filter for discoverability while this is for specific queries.
+*/
 import React from "react";
 import Loader from "./loader.jsx";
-import { Link, hashHistory } from "react-router";
+import { Link } from "react-router";
 //import Alert from "react-s-alert";
 
 class Search extends React.Component {
@@ -9,6 +13,8 @@ class Search extends React.Component {
     this.state = { articles: [], loading: true };
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Onload, get Search result from the Search API.
   componentWillMount() {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
@@ -16,6 +22,7 @@ class Search extends React.Component {
     });
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
+
     fetch(
       "/api/search?query=" +
         encodeURIComponent(this.props.location.query.query),
@@ -34,6 +41,8 @@ class Search extends React.Component {
       });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Would get props from the user search input
   componentWillReceiveProps(nextProps) {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
@@ -41,6 +50,7 @@ class Search extends React.Component {
     });
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
+
     fetch("/api/search?query=" + nextProps.location.query.query, myInit)
       .then(function(response) {
         return response.json();
@@ -55,10 +65,14 @@ class Search extends React.Component {
       });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // When leaving the component, removes searched artwork results
   componentWillUnmount() {
     this.setState({ articles: [] });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Displays results from the search query
   render() {
     if (this.state.loading) return <Loader />;
     else

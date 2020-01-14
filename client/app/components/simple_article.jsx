@@ -1,3 +1,6 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This is a reduced Article display for the purposes of showing the differences between different article revisions (through Article History).
+*/
 import React from "react";
 import { Link } from "react-router";
 import Loader from "./loader.jsx";
@@ -9,6 +12,8 @@ class SimpleArticle extends React.Component {
     this.state = { article: {} };
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Receives clicked archive and its id to display the simple article associated with it.
   componentWillReceiveProps(nextProps) {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
@@ -16,6 +21,7 @@ class SimpleArticle extends React.Component {
     });
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
+
     fetch("/api/archives/" + nextProps.archiveId, myInit)
       .then(function(response) {
         return response.json();
@@ -29,6 +35,8 @@ class SimpleArticle extends React.Component {
       });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Displays the article information in smaller detail.
   render() {
     if (this.state.loading) return <Loader />;
     if (this.state.article[0] && this.state.article[0].user_id) {

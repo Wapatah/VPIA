@@ -1,6 +1,10 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This is the Artwork Results page. List of all the articles can be found on this page. 
+  This page is used to filter and allow for more discoverability of the artwork.
+*/
 import React from "react";
 import Loader from "./loader.jsx";
-import { Link, hashHistory } from "react-router";
+import { Link } from "react-router";
 
 class ArtworkResults extends React.Component {
   constructor(props) {
@@ -14,57 +18,73 @@ class ArtworkResults extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
   }
+
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  On component load, GET ALL Articles
+*/
+  componentDidMount() {
+    var myHeaders = new Headers({
+      "Content-Type": "application/x-www-form-urlencoded",
+      "x-access-token": window.localStorage.getItem("userToken")
+    });
+
+    var myInit = { method: "GET", headers: myHeaders };
+    var that = this;
+    var url = "/api/articles";
+
+    fetch(url, myInit)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(response) {
+        if (response.error.error) {
+        } else {
+          that.setState({ articles: response.data });
+        }
+        that.setState({ loading: false });
+      });
+  }
+
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Depreciated - This is used to fetch all Articles for topics. Will probably be removed.
+  componentWillReceiveProps(nextProps) {
+    this.setState({ loading: true });
+
+    var myHeaders = new Headers({
+      "Content-Type": "application/x-www-form-urlencoded",
+      "x-access-token": window.localStorage.getItem("userToken")
+    });
+    var myInit = { method: "GET", headers: myHeaders };
+    var that = this;
+    var url = "/api/articles";
+
+    if (nextProps.topicId == null && this.props.topicId == null)
+      var url = "/api/articles";
+    else var url = "/api/topic/" + nextProps.topicId + "/articles";
+
+    fetch(url, myInit)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(response) {
+        if (response.error.error) {
+        } else {
+          that.setState({ articles: response.data });
+        }
+        that.setState({ loading: false });
+      });
+  }
+
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // handleClick() - Used for clicking through pagination numbers without building new components.
   handleClick(event) {
     this.setState({
       currentArticle: Number(event.target.id)
     });
   }
 
-  componentDidMount() {
-    var myHeaders = new Headers({
-      "Content-Type": "application/x-www-form-urlencoded",
-      "x-access-token": window.localStorage.getItem("userToken")
-    });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
-    var url = "/api/articles";
-    fetch(url, myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-        } else {
-          that.setState({ articles: response.data });
-        }
-        that.setState({ loading: false });
-      });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ loading: true });
-    var myHeaders = new Headers({
-      "Content-Type": "application/x-www-form-urlencoded",
-      "x-access-token": window.localStorage.getItem("userToken")
-    });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
-    var url = "/api/articles";
-    if (nextProps.topicId == null && this.props.topicId == null)
-      var url = "/api/articles";
-    else var url = "/api/topic/" + nextProps.topicId + "/articles";
-    fetch(url, myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-        } else {
-          that.setState({ articles: response.data });
-        }
-        that.setState({ loading: false });
-      });
-  }
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // render() - Lists all Articles and paginates them to reduce visual clutter.
   render() {
     const { articles, currentArticle, articlesPerPage } = this.state;
     const indexOfLastArticle = currentArticle * articlesPerPage;

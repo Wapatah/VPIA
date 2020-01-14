@@ -1,14 +1,20 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  Article/Artwork Edit logic - article leads here if you click edit.
+*/
 import React from "react";
 import { Link, hashHistory } from "react-router";
 //import Alert from "react-s-alert";
 import Loader from "./loader.jsx";
 
+// Setup Wysiwyg editor imports
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import InlineEditor from "@ckeditor/ckeditor5-editor-inline/src/inlineeditor";
+
+// Import automatic editor preview
 import EditorPreview from "./helpers/editor_preview.jsx";
 
-//@Mordax - you can edit the ckeditor file to add and remove plugins
+// Importing the ckeditor config file - go there to modify plugins
 import CKConfig from "../../../config/ckeditor.js";
 
 class EditArticle extends React.Component {
@@ -29,18 +35,75 @@ class EditArticle extends React.Component {
     };
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Onload, fetch GET ONE article and get all topics. Topics will be depreciated.
+  componentDidMount() {
+    var myHeaders = new Headers({
+      "Content-Type": "application/x-www-form-urlencoded",
+      "x-access-token": window.localStorage.getItem("userToken")
+    });
+    var myInit = { method: "GET", headers: myHeaders };
+    var that = this;
+
+    fetch("/api/articles/" + this.props.params.articleId, myInit)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(response) {
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
+        else {
+          that.setState({
+            body: response.data[0].body,
+            title: response.data[0].title,
+            culture_group: response.data[0].culture_group,
+            material: response.data[0].material,
+            artwork_type: response.data[0].artwork_type,
+            topic_id: response.data[0].topic_id,
+            article: response.data
+          });
+        }
+        that.setState({ loading: false });
+      });
+
+    var myHeaders = new Headers({
+      "Content-Type": "application/x-www-form-urlencoded",
+      "x-access-token": window.localStorage.getItem("userToken")
+    });
+    var myInit = { method: "GET", headers: myHeaders };
+    var that = this;
+
+    fetch("/api/topics", myInit)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(response) {
+        if (response.error.error) {
+        } //Alert.error(response.error.message);
+        else {
+          that.setState({ topics: response.data });
+        }
+      });
+  }
+
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // toggleHidden() - Hide/unhide the editorpreview
   toggleHidden() {
     this.setState({
       isHidden: !this.state.isHidden
     });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // handleChange() = Gets information from Ckeditor and sets variables
   handleChange(data) {
     this.setState({ title: this.refs.title.value });
     this.refs.body.value = data.getData();
     this.setState({ body: this.refs.body.value });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // handleSubmit() - Build article object and send a PUT request to update the article.
   handleSubmit(e) {
     e.preventDefault();
     var body = this.state.body;
@@ -50,6 +113,7 @@ class EditArticle extends React.Component {
     var culture_group = this.state.culture_group;
     var material = this.state.material;
     var artwork_type = this.state.artwork_type;
+
     if (
       body &&
       title &&
@@ -86,7 +150,9 @@ class EditArticle extends React.Component {
           "&what_changed=" +
           what_changed
       };
+
       var that = this;
+
       fetch("/api/articles/", myInit)
         .then(function(response) {
           return response.json();
@@ -104,52 +170,8 @@ class EditArticle extends React.Component {
     }
   }
 
-  componentDidMount() {
-    var myHeaders = new Headers({
-      "Content-Type": "application/x-www-form-urlencoded",
-      "x-access-token": window.localStorage.getItem("userToken")
-    });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
-    fetch("/api/articles/" + this.props.params.articleId, myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
-          that.setState({
-            body: response.data[0].body,
-            title: response.data[0].title,
-            culture_group: response.data[0].culture_group,
-            material: response.data[0].material,
-            artwork_type: response.data[0].artwork_type,
-            topic_id: response.data[0].topic_id,
-            article: response.data
-          });
-        }
-        that.setState({ loading: false });
-      });
-    var myHeaders = new Headers({
-      "Content-Type": "application/x-www-form-urlencoded",
-      "x-access-token": window.localStorage.getItem("userToken")
-    });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
-    fetch("/api/topics", myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
-          that.setState({ topics: response.data });
-        }
-      });
-  }
-
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Renders the editing article page with some modifiable elements.
   render() {
     if (this.state.loading) return <Loader />;
     else

@@ -1,9 +1,9 @@
 /* 
-@Mordax
-The Archive schema - if data types need to be added or modified, it is done here.
-Calls config for the database object.
-Autoupdates instead of running migrations.
+  The Archive schema - if data types need to be added or modified, it is done here.
+  Autoupdates instead of running migrations.
 */
+
+// Imports config/db.js for the database object.
 var schema = require("../config/db");
 
 var Archive = schema.define("archive", {

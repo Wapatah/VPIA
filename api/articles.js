@@ -1,27 +1,21 @@
-/*
-@Matterwiki
-This file contains all endpoints related to articles.
-The endpoint to display articles related to a particular topic (/topics/:id/articles)
-is not in this file because that is a topics endpoint.
-To avoid any confusion, here is how you filter which file should an endpoint belong to.
-Check the first word in the url. If topics comes first (as it does in the above example)
-then move it to the topics endpoints file.
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This file contains all endpoints related to articles.
+  The endpoint to display articles related to a particular topic (/topics/:id/articles)
+  is not in this file because that is a topics endpoint.
+  Tip: To avoid any confusion, here is how you filter which file should an endpoint belong to.
+  Check the first word in the url. If topics comes first (as it does in the above example)
+  then move it to the topics endpoints file.
 */
 
-// @Matterwiki - Importing the models
+// Importing the data models needed to manipulate
 var Articles = require("../models/article.js");
 var Topics = require("../models/topic.js");
 var Archives = require("../models/archive.js");
 var Users = require("../models/user.js");
 
 module.exports = function(app) {
-  /*
-  @Matterwiki
-  This endpoint takes the article title, article body, and topic id from the request body.
-  It then saves those values in the database using the insert query.
-  After the operation is complete the endpoint returns the success object.
-  TODO: create formal guidelines for different object structures and follow that throughout the API.
-  */
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // POST /articles - create new Article
   app.post("/articles", function(req, res) {
     Articles.create({
       title: req.body.title,
@@ -44,7 +38,7 @@ module.exports = function(app) {
           },
           code: "B103",
           data: article
-        }); // @Matterwiki - responds back to request
+        });
       })
       .catch(function(error) {
         res.status(500).json({
@@ -58,12 +52,8 @@ module.exports = function(app) {
       });
   });
 
-  /*
-  @Matterwiki
-  This is a GET endpoint that responds with the list of all the articles in the articles table
-  the articles are present in the data object in the returning object.
-  the error key in the returning object is a boolen which is false if there is no error and true otherwise
-  */
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // GET /articles - GET ALL endpoint that responds with the list of all the articles
   app.get("/articles", function(req, res) {
     Articles.all({
       where: {},
@@ -91,13 +81,8 @@ module.exports = function(app) {
       });
   });
 
-  /*
-  This is a PUT endpoint for updating an article information.
-  It takes the id of the topic to be updated and then updates it with the new object.
-  the error key in the returning object is a boolen which is false if there is no error and true otherwise
-
-  TODO: Add updates only for columns that are in the request body. Handle exceptions.
-  */
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // PUT /articles - endpoint for updating an article information.
   app.put("/articles", function(req, res) {
     Articles.find({ where: { id: req.body.id } })
       .then(function(article) {
@@ -173,12 +158,10 @@ module.exports = function(app) {
       });
   });
 
-  /*
-  @Matterwiki
-  This is a GET endpoint that responds with one article of the specific ID (identified through the ID param)
-  the article is present in the data object in the returning object.
-  the error key in the returning object is a boolen which is false if there is no error and true otherwise
-  */
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  Get /article/:id - GET ONE endpoint that responds with one article of the specific ID 
+  (identified through the ID param)
+*/
   app.get("/articles/:id/", function(req, res) {
     Articles.find({ where: { id: req.params.id } })
       .then(function(article) {
@@ -215,13 +198,10 @@ module.exports = function(app) {
       });
   });
 
-  /*
-  @Matterwiki
-  This is a GET endpoint that responds with previous versions of the
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  GET /articles/:id/history - Special GET endpoint that responds with list of previous versions of the
   article of the specific ID (identified through the ID param).
-  The article is present in the data object in the returning object.
-  The error key in the returning object is a boolen which is false if there is no error and true otherwise
-  */
+*/
   app.get("/articles/:id/history", function(req, res) {
     Archives.find({
       where: { article_id: req.params.id },

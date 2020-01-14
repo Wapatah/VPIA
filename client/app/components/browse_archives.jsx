@@ -1,6 +1,9 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This is the logic for clicking through archives and seeing the differences between
+  Article versions.
+*/
 import React from "react";
 import Loader from "./loader.jsx";
-import { hashHistory } from "react-router";
 //import Alert from "react-s-alert";
 
 class BrowseArchives extends React.Component {
@@ -10,6 +13,9 @@ class BrowseArchives extends React.Component {
     this.state = { archives: [], loading: true };
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+    On initial load, get all archives by Article ID.
+  */
   componentDidMount() {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
@@ -18,6 +24,7 @@ class BrowseArchives extends React.Component {
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
     var url = "/api/articles/" + this.props.articleId + "/history";
+
     fetch(url, myInit)
       .then(function(response) {
         return response.json();
@@ -32,11 +39,15 @@ class BrowseArchives extends React.Component {
       });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Click through archives - this is called in the history component to allow easy archive changes
   archiveSelect(id, e) {
     e.preventDefault();
     this.props.archiveChange(id);
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Displays the left column of the Article history and lists all archives. Archive Pagination would happen here.
   render() {
     if (this.state.loading) return <Loader />;
     if (this.state.archives.length < 1) {

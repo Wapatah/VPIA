@@ -1,3 +1,7 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This component renders the main Wiki page Article and deals
+  with all of the API needed.
+*/
 import React from "react";
 import { Link, hashHistory } from "react-router";
 import Loader from "./loader.jsx";
@@ -11,13 +15,18 @@ class ViewArticle extends React.Component {
     this.state = { article: {}, loading: true };
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  On initial load, GET ONE Article from Article API
+*/
   componentDidMount() {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
+
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
+
     fetch("/api/articles/" + that.props.params.articleId, myInit)
       .then(function(response) {
         return response.json();
@@ -32,18 +41,23 @@ class ViewArticle extends React.Component {
       });
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  deleteArticle() - takes id, sends Delete request to Article and redirects
+  user back to home.
+*/
   deleteArticle(e) {
     e.preventDefault();
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
+
     var myInit = {
       method: "DELETE",
       headers: myHeaders,
       body: "id=" + this.state.article[0].id
     };
-    var that = this;
+
     fetch("/api/articles/", myInit)
       .then(function(response) {
         return response.json();
@@ -58,6 +72,10 @@ class ViewArticle extends React.Component {
       });
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  This renders all of the information relating to the Article as pulled from
+  the database. If user is admin, more functions become available.
+*/
   render() {
     if (this.state.loading) return <Loader />;
     else if (

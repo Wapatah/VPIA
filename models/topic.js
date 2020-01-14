@@ -1,9 +1,10 @@
 /* 
-@Mordax
-The Topic schema - if data types need to be added or modified, it is done here.
-Calls config for the database object.
-Autoupdates instead of running migrations.
+  The Topic schema - if data types need to be added or modified, it is done here.
+  Autoupdates instead of running migrations.
+  Potentially Depreciated.
 */
+
+// Imports config/db.js for the database object.
 var schema = require("../config/db");
 
 var Topic = schema.define("topic", {

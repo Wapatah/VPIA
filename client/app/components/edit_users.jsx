@@ -1,3 +1,6 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  Potentially depreciated? Admin is currently not working. But the logic could be used for User settings.
+*/
 import React from "react";
 import { hashHistory } from "react-router";
 //import Alert from "react-s-alert";
@@ -17,15 +20,7 @@ class EditUser extends React.Component {
     };
   }
 
-  handleChange() {
-    this.setState({
-      name: this.refs.user_name.value,
-      about: this.refs.user_about.value,
-      email: this.refs.user_email.value,
-      password: this.refs.user_password.value
-    });
-  }
-
+  // On load, GET ONE user by id.
   componentDidMount() {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
@@ -33,6 +28,7 @@ class EditUser extends React.Component {
     });
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
+
     fetch("/api/users/" + this.props.params.user_id, myInit)
       .then(function(response) {
         return response.json();
@@ -51,6 +47,7 @@ class EditUser extends React.Component {
       });
   }
 
+  // Edit User information
   editUser(e) {
     var user = {
       name: encodeURIComponent(this.refs.user_name.value),
@@ -59,10 +56,12 @@ class EditUser extends React.Component {
       password: encodeURIComponent(this.refs.user_password.value),
       id: encodeURIComponent(this.props.params.user_id)
     };
+
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
+
     var myInit = {
       method: "PUT",
       headers: myHeaders,
@@ -78,7 +77,7 @@ class EditUser extends React.Component {
         "&id=" +
         user.id
     };
-    var that = this;
+
     fetch("/api/users/", myInit)
       .then(function(response) {
         return response.json();
@@ -93,6 +92,17 @@ class EditUser extends React.Component {
       });
   }
 
+  // Set variable to new input
+  handleChange() {
+    this.setState({
+      name: this.refs.user_name.value,
+      about: this.refs.user_about.value,
+      email: this.refs.user_email.value,
+      password: this.refs.user_password.value
+    });
+  }
+
+  // Render user editing page
   render() {
     if (this.state.loading) return <Loader />;
     else

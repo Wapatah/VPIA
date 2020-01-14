@@ -1,3 +1,9 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  Initial JSX file - replaces index.html with the React app.
+  Routes are defined here and uses hashHistory (deprecated) to
+  navigate between components.
+*/
+
 import React from "react";
 import { AppContainer } from "react-hot-loader";
 import { render } from "react-dom";
@@ -16,7 +22,7 @@ const renderApp = appRoutes => {
 
 renderApp(routes);
 
-// react HMR
+// React HMR (Hot Module Replacement)
 if (module.hot) {
   module.hot.accept("./routes.jsx", () => {
     const routeChanges = require("./routes.jsx").default;

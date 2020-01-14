@@ -1,7 +1,9 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  The logic for the User sign up page lives here
+*/
 import React from "react";
-import { hashHistory, Link } from "react-router";
+import { hashHistory } from "react-router";
 //import Alert from "react-s-alert";
-import Loader from "./loader.jsx";
 
 class UserSignup extends React.Component {
   constructor(props) {
@@ -15,6 +17,8 @@ class UserSignup extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Takes user input and sends a post request to the user api to create new user
   handleSignUp() {
     var user = {
       name: encodeURIComponent(this.refs.user_name.value),
@@ -22,9 +26,11 @@ class UserSignup extends React.Component {
       email: encodeURIComponent(this.refs.user_email.value),
       password: encodeURIComponent(this.refs.user_password.value)
     };
+
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
+
     var myInit = {
       method: "POST",
       headers: myHeaders,
@@ -38,7 +44,7 @@ class UserSignup extends React.Component {
         "&password=" +
         user.password
     };
-    var that = this;
+
     fetch("/users", myInit)
       .then(function(response) {
         return response.json();
@@ -53,10 +59,14 @@ class UserSignup extends React.Component {
       });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Sets email variable
   handleEmailChange(event) {
     this.setState({ email: event.target.value });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Sets password variable
   handlePasswordChange(event) {
     this.setState({ password: event.target.value });
   }
@@ -66,6 +76,8 @@ class UserSignup extends React.Component {
     alert(`Signed up with email: ${email} password: ${password}`);
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Renders the sign up form
   render() {
     const { email, password } = this.state;
     const isEnabled = email.length > 0 && password.length > 0;

@@ -1,3 +1,6 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  Edit topics logic - likely depreciated.
+*/
 import React from "react";
 import { hashHistory } from "react-router";
 //import Alert from "react-s-alert";
@@ -25,6 +28,7 @@ class EditTopic extends React.Component {
     });
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
+
     fetch("/api/topics/" + this.props.params.topicId, myInit)
       .then(function(response) {
         return response.json();
@@ -48,10 +52,12 @@ class EditTopic extends React.Component {
       description: encodeURIComponent(this.refs.topic_description.value),
       id: this.props.params.topicId
     };
+
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
+
     var myInit = {
       method: "PUT",
       headers: myHeaders,
@@ -63,7 +69,7 @@ class EditTopic extends React.Component {
         "&id=" +
         topic.id
     };
-    var that = this;
+
     fetch("/api/topics/", myInit)
       .then(function(response) {
         return response.json();

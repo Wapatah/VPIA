@@ -1,3 +1,7 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This is the unique loader component that appears when processes take too long.
+  This is a helper function.
+*/
 import React from "react";
 
 class Loader extends React.Component {
@@ -6,6 +10,8 @@ class Loader extends React.Component {
     this.state = { message: "Loading..." };
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Onload, if the component times out, display error message.
   componentDidMount() {
     var that = this;
     this.timeout = setTimeout(function() {
@@ -16,10 +22,14 @@ class Loader extends React.Component {
     }, 10000);
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Onexit, clear timeout
   componentWillUnmount() {
     clearTimeout(this.timeout);
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Display message
   render() {
     return (
       <div className="loader">

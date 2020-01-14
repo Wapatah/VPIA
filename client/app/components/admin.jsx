@@ -1,10 +1,16 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  The Admin component - checking if user is admin and providing admin endpoints to use
+  Note: With the update of Bootstrap, this component doesn't really work at the moment.
+  There will most likely be an overhaul of the Admin .
+*/
 import React from "react";
-import { hashHistory, Link } from "react-router";
+import { Link } from "react-router";
 import Loader from "./loader.jsx";
 
 class Admin extends React.Component {
   constructor(props) {
     super(props);
+    // Add Admin only functions to component
     this.addUser = this.addUser.bind(this);
     this.addTopic = this.addTopic.bind(this);
     this.deleteTopic = this.deleteTopic.bind(this);
@@ -18,6 +24,9 @@ class Admin extends React.Component {
     };
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  On initial load, pull in all topics and users
+*/
   componentDidMount() {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
@@ -25,6 +34,7 @@ class Admin extends React.Component {
     });
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
+
     fetch("/api/topics", myInit)
       .then(function(response) {
         return response.json();
@@ -50,17 +60,22 @@ class Admin extends React.Component {
       });
   }
 
-  addUser(e) {
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  addUser() - Take admin input for user and create a new user.
+*/
+  addUser() {
     var user = {
       name: encodeURIComponent(this.refs.user_name.value),
       about: encodeURIComponent(this.refs.user_about.value),
       email: encodeURIComponent(this.refs.user_email.value),
       password: encodeURIComponent(this.refs.user_password.value)
     };
+
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
+
     var myInit = {
       method: "POST",
       headers: myHeaders,
@@ -74,7 +89,9 @@ class Admin extends React.Component {
         "&password=" +
         user.password
     };
+
     var that = this;
+
     fetch("/api/users/", myInit)
       .then(function(response) {
         return response.json();
@@ -92,21 +109,28 @@ class Admin extends React.Component {
       });
   }
 
-  addTopic(e) {
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  addTopic() - Take Admin input for topic and create a new topic.
+*/
+  addTopic() {
     var topic = {
       name: encodeURIComponent(this.refs.topic_name.value),
       description: encodeURIComponent(this.refs.topic_description.value)
     };
+
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
+
     var myInit = {
       method: "POST",
       headers: myHeaders,
       body: "name=" + topic.name + "&description=" + topic.description
     };
+
     var that = this;
+
     fetch("/api/topics/", myInit)
       .then(function(response) {
         return response.json();
@@ -125,14 +149,20 @@ class Admin extends React.Component {
       });
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  deleteTopic() - Delete topic from list
+*/
+
   deleteTopic(id, e) {
     e.preventDefault();
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
+
     var myInit = { method: "DELETE", headers: myHeaders, body: "id=" + id };
     var that = this;
+
     fetch("/api/topics/", myInit)
       .then(function(response) {
         return response.json();
@@ -151,18 +181,25 @@ class Admin extends React.Component {
       });
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  deleteUser() - Remove user from list of users.
+*/
   deleteUser(id, e) {
     e.preventDefault();
+
     var del = confirm(
       "Deleting the user will move all of his/her articles to the Admin. Are you sure?"
     );
+
     if (del == true) {
       var myHeaders = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
         "x-access-token": window.localStorage.getItem("userToken")
       });
+
       var myInit = { method: "DELETE", headers: myHeaders, body: "id=" + id };
       var that = this;
+
       fetch("/api/users/", myInit)
         .then(function(response) {
           return response.json();
@@ -182,6 +219,9 @@ class Admin extends React.Component {
     }
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  This renders an Admin only component to delete users and topics. 
+*/
   render() {
     if (this.state.loading_users && this.state.loading_users) return <Loader />;
     else

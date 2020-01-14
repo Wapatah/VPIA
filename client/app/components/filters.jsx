@@ -1,6 +1,8 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  Logic to handle automatic artwork filtering inside the search results page
+*/
 import React from "react";
 import Loader from "./loader.jsx";
-import { hashHistory } from "react-router";
 //import Alert from "react-s-alert";
 
 class Filters extends React.Component {
@@ -10,6 +12,8 @@ class Filters extends React.Component {
     this.state = { articles: [], material: "", loading: true };
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Onload, fetch all articles
   componentDidMount() {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
@@ -17,6 +21,7 @@ class Filters extends React.Component {
     });
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
+
     fetch("/api/articles/", myInit)
       .then(function(response) {
         return response.json();
@@ -31,11 +36,15 @@ class Filters extends React.Component {
       });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Filter article based on selecting material
   articleSelect(material, e) {
     e.preventDefault();
     this.props.articleChange(this.state.material);
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Displays the filter component with the search filters as dropdown
   render() {
     if (this.state.loading) return <Loader />;
     return (
