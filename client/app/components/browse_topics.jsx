@@ -1,7 +1,6 @@
 import React from "react";
 import Loader from "./loader.jsx";
 import { hashHistory } from "react-router";
-//import Alert from "react-s-alert";
 
 class BrowseTopics extends React.Component {
   constructor(props) {
@@ -46,30 +45,27 @@ class BrowseTopics extends React.Component {
       );
     } else {
       return (
-        <div className="custom-collapse">
-          <div className="visible-xs">
-            <button
-              className="collapse-toggle btn btn-default"
-              type="button"
-              data-toggle="collapse"
-              data-parent="custom-collapse"
-              data-target="#side-menu-collapse"
-            >
-              View Topics
-            </button>
-            <br />
-            <br />
-          </div>
-          <div className="list-group collapse" id="side-menu-collapse">
+        <div className="dropdown">
+          <button
+            className="btn btn-outline btn-block dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Topics
+          </button>
+
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {this.state.topics.map(topic => (
               <a
                 key={topic.id}
                 href="#"
-                className="list-group-item dropdown-toggle"
+                className="dropdown-item"
                 onClick={e => this.topicSelect(topic.id, e)}
               >
-                <h4 className="list-group-item-heading">{topic.name}</h4>
-                <p className="list-group-item-text">{topic.description}</p>
+                <p className="list-group-item-text">{topic.name}</p>
               </a>
             ))}
           </div>

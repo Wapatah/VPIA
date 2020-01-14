@@ -1,5 +1,7 @@
 import React from "react";
 import ArtworkResults from "./artwork_results.jsx";
+import Filters from "./filters.jsx";
+import BrowseTopics from "./browse_topics.jsx";
 import { hashHistory } from "react-router";
 import Loader from "./loader.jsx";
 
@@ -26,6 +28,11 @@ class Results extends React.Component {
           <div className="row">
             <div id="left-side" className="col-md-1">
               <p className="text-right edit-page-title">Search Results</p>
+              <p className="text-right">Filter by</p>
+              <div className="col-6 float-right">
+                <BrowseTopics topicChange={this.handleUpdate} />
+                <Filters topicChange={this.handleUpdate} />
+              </div>
             </div>
             <div className="col-md-8">
               <ArtworkResults topicId={this.state.topicId} />
