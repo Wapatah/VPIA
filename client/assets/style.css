@@ -1,41 +1,48 @@
 /*
   The custom stylesheet for the VPIA - add styles in here.
 */
-@import url("https://fonts.googleapis.com/css?family=Merriweather");
+@import url("https://fonts.googleapis.com/css?family=Merriweather&display=swap");
 
 @font-face {
   font-family: "FuturaStdHeavy";
   src: url("./fonts/Futura Std Heavy.otf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "FuturaStdMedium";
   src: url("./fonts/Futura Std Medium.otf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "FuturaStdLight";
   src: url("./fonts/Futura Std Light.otf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "FuturaStdLightCondensedOblique";
   src: url("./fonts/Futura Std Light Condensed Oblique.otf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "FuturaStdHeavyOblique";
   src: url("./fonts/Futura Std Heavy Oblique.otf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Baskerville";
   src: url("./fonts/Baskerville.ttc");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Baskerville-BoldItalic";
   src: url("./fonts/MBaskerville-BoldItalic.otf");
+  font-display: swap;
 }
 
 #FuturaStdHeavy {
