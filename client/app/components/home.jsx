@@ -2,9 +2,7 @@
   "Home" is just a name for this file that renders the carousels of recent artworks and placeholder events.
 */
 import React from "react";
-import BrowseTopics from "./browse_topics.jsx";
 import BrowseArticles from "./browse_articles.jsx";
-import { hashHistory } from "react-router";
 import Loader from "./loader.jsx";
 
 class Home extends React.Component {
@@ -44,7 +42,7 @@ class Home extends React.Component {
                 <div className="col-md-7">
                   <div id="events-card" className="card text-white">
                     <img
-                      src="../assets/pics/Event_VPIA.jpeg"
+                      src="../assets/images/events/Event_VPIA.jpeg"
                       className="card-img greyscale"
                       alt="..."
                     />
@@ -60,7 +58,7 @@ class Home extends React.Component {
                   </div>
                   <div id="events-card" className="card text-white">
                     <img
-                      src="../assets/pics/Event_inuitartonline.jpeg"
+                      src="../assets/images/events/Event_inuitartonline.jpeg"
                       className="card-img greyscale"
                       alt="..."
                     />
@@ -79,7 +77,7 @@ class Home extends React.Component {
                 <div className="col-md-5">
                   <div id="events-card" className="card">
                     <img
-                      src="../assets/pics/Event_McCord.jpg"
+                      src="../assets/images/events/Event_McCord.jpg"
                       class="card-img-top greyscale"
                       alt="..."
                     />
@@ -94,7 +92,7 @@ class Home extends React.Component {
                     <div className="col-md-6">
                       <div className="card">
                         <img
-                          src="../assets/pics/CRKN.png"
+                          src="../assets/images/events/CRKN.png"
                           class="card-img-top greyscale"
                           alt="..."
                         />
@@ -111,7 +109,7 @@ class Home extends React.Component {
                     <div className="col-md-6">
                       <div className="card">
                         <img
-                          src="../assets/pics/Representing.jpg"
+                          src="../assets/images/events/Representing.jpg"
                           class="card-img-top greyscale"
                           alt="..."
                         />

@@ -892,7 +892,7 @@ ul.social-network li {
 }
 
 #VPIA-intro.jumbotron {
-  background-image: url("../assets/BG_L.jpg");
+  background-image: url("../assets/images/BG_L.jpg");
   background-blend-mode: multiply;
   -webkit-filter: grayscale(100%);
   filter: grey;
@@ -939,7 +939,7 @@ ul.social-network li {
   height: 100%;
   position: absolute;
   content: "";
-  background-image: url("../assets/BG.jpg");
+  background-image: url("../assets/images/BG.jpg");
   -webkit-filter: grayscale(100%);
   filter: gray;
   background-size: cover;

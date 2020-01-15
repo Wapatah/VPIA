@@ -16,7 +16,7 @@ class About extends React.Component {
                     <img
                       id="About-img-writing"
                       className="img-fluid float-right"
-                      src="../../assets/logos/logo-writing.png"
+                      src="../../assets/images/logos/logo-writing.png"
                       alt="White with writing logo"
                     />
                   </div>
@@ -55,7 +55,7 @@ class About extends React.Component {
                 >
                   <figure className="figure">
                     <img
-                      src="../../assets/img/group.png"
+                      src="../../assets/images/about/group.png"
                       className="figure-img img-fluid rounded"
                       alt="Image of Eric"
                     />
@@ -74,7 +74,7 @@ class About extends React.Component {
         <div className="row">
           <img
             className="img-fluid container-fluid"
-            src="../../assets/img/team.png"
+            src="../../assets/images/about/team.png"
             alt="Image of VPIA team"
           />
         </div>
