@@ -4,7 +4,7 @@
 import React from "react";
 import { Link, hashHistory } from "react-router";
 //import Alert from "react-s-alert";
-import Loader from "./loader.jsx";
+import Loader from "../helpers/loader.jsx";
 
 // Setup Wysiwyg editor imports
 import CKEditor from "@ckeditor/ckeditor5-react";
@@ -12,10 +12,10 @@ import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor"
 import InlineEditor from "@ckeditor/ckeditor5-editor-inline/src/inlineeditor";
 
 // Import automatic editor preview
-import EditorPreview from "./helpers/editor_preview.jsx";
+import EditorPreview from "../helpers/editor_preview.jsx";
 
 // Importing the ckeditor config file - go there to modify plugins
-import CKConfig from "../../../config/ckeditor.js";
+import CKConfig from "../../../config/ckeditor";
 
 class EditArticle extends React.Component {
   constructor(props) {

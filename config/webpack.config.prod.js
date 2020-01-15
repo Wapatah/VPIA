@@ -6,7 +6,7 @@ const webpack = require("webpack"); // eslint-disable-line
 const path = require("path");
 
 const BUILD_DIR = path.resolve(__dirname, "../client/public");
-const APP_DIR = path.resolve(__dirname, "../client/app");
+const APP_DIR = path.resolve(__dirname, "../client/components");
 
 const { styles } = require("@ckeditor/ckeditor5-dev-utils");
 
