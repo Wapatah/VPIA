@@ -2,8 +2,8 @@
   "Home" is just a name for this file that renders the carousels of recent artworks and placeholder events.
 */
 import React from "react";
-import BrowseArticles from "./browse_articles.jsx";
-import Loader from "./loader.jsx";
+import BrowseArticles from "../wiki/browse_articles.jsx";
+import Loader from "../helpers/loader.jsx";
 
 class Home extends React.Component {
   constructor(props) {

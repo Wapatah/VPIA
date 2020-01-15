@@ -5,7 +5,7 @@
 */
 import React from "react";
 import { Link } from "react-router";
-import Loader from "./loader.jsx";
+import Loader from "../helpers/loader.jsx";
 
 class Admin extends React.Component {
   constructor(props) {

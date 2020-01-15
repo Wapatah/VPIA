@@ -4,8 +4,8 @@
 import React from "react";
 import ArtworkResults from "./artwork_results.jsx";
 import Filters from "./filters.jsx";
-import BrowseTopics from "./browse_topics.jsx";
-import Loader from "./loader.jsx";
+import BrowseTopics from "../wiki/browse_topics.jsx";
+import Loader from "../helpers/loader.jsx";
 
 class Results extends React.Component {
   constructor(props) {

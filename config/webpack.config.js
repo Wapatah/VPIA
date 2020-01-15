@@ -12,7 +12,7 @@ const path = require("path");
 
 // @Matterwiki - TODO separate files for constants?
 const BUILD_DIR = path.resolve(__dirname, "../client/public");
-const APP_DIR = path.resolve(__dirname, "../client/app");
+const APP_DIR = path.resolve(__dirname, "../client/components");
 
 module.exports = {
   mode: "production",

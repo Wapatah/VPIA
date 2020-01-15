@@ -2,7 +2,7 @@
   Topic logic - most likely will be depreciated once Artwork filters  get implemented.
 */
 import React from "react";
-import Loader from "./loader.jsx";
+import Loader from "../helpers/loader.jsx";
 
 class BrowseTopics extends React.Component {
   constructor(props) {

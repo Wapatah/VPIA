@@ -3,7 +3,7 @@
   This differs from the Artwork results page as that is used to filter for discoverability while this is for specific queries.
 */
 import React from "react";
-import Loader from "./loader.jsx";
+import Loader from "../helpers/loader.jsx";
 import { Link } from "react-router";
 //import Alert from "react-s-alert";
 

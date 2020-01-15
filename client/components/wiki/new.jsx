@@ -4,7 +4,7 @@
 
 import React from "react";
 import { hashHistory } from "react-router";
-import Loader from "./loader.jsx";
+import Loader from "../helpers/loader.jsx";
 //import Alert from "react-s-alert";
 
 // Importing ckeditor pieces
@@ -13,7 +13,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor"
 import InlineEditor from "@ckeditor/ckeditor5-editor-inline/src/inlineeditor";
 
 // Importing editor preview helper
-import EditorPreview from "./helpers/editor_preview.jsx";
+import EditorPreview from "../helpers/editor_preview.jsx";
 
 // Importing ckeditor configuration file
 import CKConfig from "../../../config/ckeditor";
