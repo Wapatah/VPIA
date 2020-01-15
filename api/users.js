@@ -10,7 +10,7 @@ const saltRounds = 10;
 
 module.exports = function(app) {
   //--------------------------------------------------------------------------------------------------------------------------------------------
-  // GET /users - GET ALL endpoint that responds with the list of all the topics in the topics table
+  // GET /users - GET ALL endpoint that responds with the list of all the users in the users table
   app.get("/users", function(req, res) {
     Users.all({ where: {} })
       .then(function(collection) {
