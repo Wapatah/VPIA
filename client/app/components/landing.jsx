@@ -1,9 +1,7 @@
-/*
+/* --------------------------------------------------------------------------------------------------------------------------------------------
   Landing page is the actual homepage - this page contains details on the platform and loads the Home component.
 */
 import React from "react";
-import { hashHistory, Link } from "react-router";
-import SearchForm from "./searchform.jsx";
 import Home from "./home.jsx";
 
 class Landing extends React.Component {
@@ -11,6 +9,10 @@ class Landing extends React.Component {
     super(props);
   }
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+    Renders information specific to the VPIA goal - add in links to tutorials 
+    and other help material here
+  */
   render() {
     return (
       <div>

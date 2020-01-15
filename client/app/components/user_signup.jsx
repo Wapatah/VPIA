@@ -82,7 +82,7 @@ class UserSignup extends React.Component {
         <div id="full-page" className="row">
           <div className="col-4 left-panel">
             <img
-              src="../assets/logos/logo-white.png"
+              src="../assets/images/logos/logo-white.png"
               width="auto"
               height="250px"
               alt="VPIA logo"
@@ -167,7 +167,7 @@ class UserSignup extends React.Component {
           </div>
           <div className="col-8 BGimage image-fade">
             <img
-              src="../assets/logos/logo.png"
+              src="../assets/images/logos/logo.png"
               width="auto"
               height="400px"
               alt="VPIA logo"
