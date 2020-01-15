@@ -20,7 +20,7 @@ class MainNav extends React.Component {
             <div id="mainlogo" className="col-md-2">
               <Link to="landing">
                 <img
-                  src="../assets/images/logos/logo-white.png"
+                  src="../assets/images/logo-white.png"
                   width="auto"
                   height="180px"
                   alt="VPIA logo"
