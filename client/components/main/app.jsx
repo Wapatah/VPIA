@@ -141,7 +141,7 @@ class App extends React.Component {
                     <div className="col-4">
                       <img
                         id="footer-logo"
-                        src="../assets/images/logos/VPIA-logo-white.png"
+                        src="../assets/images/VPIA-logo-white.png"
                         alt="VPIA logo"
                         aria-label="VPIA logo"
                       ></img>
@@ -228,7 +228,7 @@ class App extends React.Component {
                     Arts.
                   </p>
                   <img
-                    src="../assets/images/logos/CCA_RGB_white_e.png"
+                    src="../assets/images/CCA_RGB_white_e.png"
                     alt="CCA logo"
                     height="33"
                     aria-label="CCA logo"
@@ -236,7 +236,7 @@ class App extends React.Component {
                 </div>
                 <div className="col">
                   <img
-                    src="../assets/images/logos/Wapatah-logo-white.png"
+                    src="../assets/images/Wapatah-logo-white.png"
                     alt="Wapatah logo"
                     height="60"
                     aria-label="Wapatah logo"
@@ -244,7 +244,7 @@ class App extends React.Component {
                 </div>
                 <div className="col">
                   <img
-                    src="../assets/images/logos/CFI-logo.png"
+                    src="../assets/images/CFI-logo.png"
                     alt="CFI logo"
                     height="70"
                     aria-label="CFI logo"
@@ -252,7 +252,7 @@ class App extends React.Component {
                 </div>
                 <div className="col">
                   <img
-                    src="../assets/images/logos/Onsite-logo.png"
+                    src="../assets/images/Onsite-logo.png"
                     alt="Onsite logo"
                     height="60"
                     aria-label="Onsite logo"
@@ -260,7 +260,7 @@ class App extends React.Component {
                 </div>
                 <div className="col">
                   <img
-                    src="../assets/images/logos/OCAD-University-Logo.png"
+                    src="../assets/images/OCAD-University-Logo.png"
                     alt="OCAD logo"
                     height="70"
                     aria-label="OCAD logo"

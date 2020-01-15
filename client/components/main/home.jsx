@@ -42,7 +42,7 @@ class Home extends React.Component {
                 <div className="col-md-7">
                   <div id="events-card" className="card text-white">
                     <img
-                      src="../assets/images/events/Event_VPIA.jpeg"
+                      src="../assets/images/Event_VPIA.jpeg"
                       className="card-img greyscale"
                       alt="..."
                     />
@@ -58,7 +58,7 @@ class Home extends React.Component {
                   </div>
                   <div id="events-card" className="card text-white">
                     <img
-                      src="../assets/images/events/Event_inuitartonline.jpeg"
+                      src="../assets/images/Event_inuitartonline.jpeg"
                       className="card-img greyscale"
                       alt="..."
                     />
@@ -77,7 +77,7 @@ class Home extends React.Component {
                 <div className="col-md-5">
                   <div id="events-card" className="card">
                     <img
-                      src="../assets/images/events/Event_McCord.jpg"
+                      src="../assets/images/Event_McCord.jpg"
                       class="card-img-top greyscale"
                       alt="..."
                     />
@@ -92,7 +92,7 @@ class Home extends React.Component {
                     <div className="col-md-6">
                       <div className="card">
                         <img
-                          src="../assets/images/events/CRKN.png"
+                          src="../assets/images/CRKN.png"
                           class="card-img-top greyscale"
                           alt="..."
                         />
@@ -109,7 +109,7 @@ class Home extends React.Component {
                     <div className="col-md-6">
                       <div className="card">
                         <img
-                          src="../assets/images/events/Representing.jpg"
+                          src="../assets/images/Representing.jpg"
                           class="card-img-top greyscale"
                           alt="..."
                         />
