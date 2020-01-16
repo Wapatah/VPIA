@@ -1,8 +1,10 @@
 /*
-@Matterwiki
-TODO extract common chunks from dev and production configs
-and use something like webpack-merge to put them all together for the environment needed
-Ref : http://survivejs.com/webpack/developing-with-webpack/splitting-configuration/
+  TODO extract common chunks from dev and production configs
+  and use something like webpack-merge to put them all together for the environment needed
+  Ref : http://survivejs.com/webpack/developing-with-webpack/splitting-configuration/
+  
+  This file is used for dev version (not prod) - it is currently broken due to
+  CKEditor and its strange chunking.
 */
 
 const webpack = require("webpack");
@@ -10,20 +12,19 @@ const path = require("path");
 
 // @Matterwiki - TODO separate files for constants?
 const BUILD_DIR = path.resolve(__dirname, "../client/public");
-const APP_DIR = path.resolve(__dirname, "../client/app");
+const APP_DIR = path.resolve(__dirname, "../client/components");
 
 module.exports = {
   mode: "production",
   entry: [
-    // @Matterwiki - react HMR specific stuff
+    // React HMR specific stuff
     "react-hot-loader/patch",
     "webpack-hot-middleware/client?http://localhost:5000/",
     "webpack/hot/dev-server",
 
-    // @Matterwiki - polyfill for fetch API (Safari), TODO a better way to handle this, maybe?
     "whatwg-fetch",
 
-    // @Matterwiki - entry point
+    // Entry point
     APP_DIR + "/index.jsx"
   ],
   output: {
@@ -31,9 +32,9 @@ module.exports = {
     publicPath: "/public/",
     filename: "bundle.js"
   },
-  // @Matterwiki - enabling sourcemaps for easier debugging
+  // Enabling sourcemaps for easier debugging
   devtool: "inline-source-map",
-  // @Matterwiki - again for react HMR
+  // Again for react HMR
   devServer: {
     hot: true,
     inline: true,

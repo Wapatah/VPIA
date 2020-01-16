@@ -1,8 +1,12 @@
+/*
+  Production version of Webpack - this needs to be cleaned up and modernized. 
+  We have updated Webpack and adjusted compatibility
+*/
 const webpack = require("webpack"); // eslint-disable-line
 const path = require("path");
 
 const BUILD_DIR = path.resolve(__dirname, "../client/public");
-const APP_DIR = path.resolve(__dirname, "../client/app");
+const APP_DIR = path.resolve(__dirname, "../client/components");
 
 const { styles } = require("@ckeditor/ckeditor5-dev-utils");
 
@@ -12,14 +16,12 @@ const cssModuleRegex = /\.module\.css$/;
 module.exports = {
   mode: "production",
   entry: [
-    // @Matterwiki - polyfill for fetch API (Safari)
-    // TODO a better way to handle this, maybe?
     "whatwg-fetch",
-    // @Matterwiki - entry point
+    // Entry point
     APP_DIR + "/index.jsx"
   ],
   performance: {
-    hints: false // @Mordax - removes performance warning popups for now
+    hints: false // Removes performance warning popups for now
   },
   output: {
     path: BUILD_DIR,
@@ -68,19 +70,19 @@ module.exports = {
       {
         test: cssRegex,
         exclude: [cssModuleRegex, /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/]
-        // (...)
       },
       {
         test: cssModuleRegex,
         exclude: [/ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/]
-        // (...)
       },
       {
         loader: require.resolve("file-loader"),
-        // Exclude `js` files to keep the "css" loader working as it injects
-        // its runtime that would otherwise be processed through the "file" loader.
-        // Also exclude `html` and `json` extensions so they get processed
-        // by webpack's internal loaders.
+        /* 
+          Exclude `js` files to keep the "css" loader working as it injects
+          its runtime that would otherwise be processed through the "file" loader.
+          Also exclude `html` and `json` extensions so they get processed
+          by webpack's internal loaders.
+        */
         exclude: [
           /\.(js|mjs|jsx|ts|tsx)$/,
           /\.html$/,

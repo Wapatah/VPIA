@@ -1,3 +1,4 @@
+// This is the ESLint Configuration file
 module.exports = {
   env: {
     browser: true,

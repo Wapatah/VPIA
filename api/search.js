@@ -1,25 +1,21 @@
-/*
-@Matterwiki
-This file contains the search endpoint.
-As of now search is based on the basic LIKE query in SQLite and MySQL.
-Further improvements to the search feature should be moved to this file.
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This file contains the search endpoint.
+  As of now search is based on the basic LIKE query in SQLite and MySQL.
+  Further improvements to the search feature should be moved to this file.
 
-Why aren't we using Algolia or ElasticSearch?
-
-Matterwiki wants to keep things simple. Setting up a ES instance or signing up
-for Algolia goes against that.
+  TODO: Allow searches by different variables
 */
 
+// Importing the data models needed to manipulate
 var Articles = require("../models/article.js");
 
 module.exports = function(app) {
-  /*
-  @Matterwiki
-  This is a GET enpoint which takes the search query as a URL param
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  GET /search - This is a GET endpoint which takes the search query as a URL param
   Runs the search query and returns matching articles in the data key in the
   response object.
-  Returns items "like" search query (pipe can return panel pipe)
-  */
+  Returns items using "like" search query (e.g. 'pipe' can return 'panel pipe')
+*/
   app.get("/search", function(req, res) {
     var SearchInput = req.query.query;
     Articles.find({

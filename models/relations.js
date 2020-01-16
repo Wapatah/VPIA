@@ -1,16 +1,19 @@
 /* 
-@Mordax
-The relationship mapper - this gets loaded inside of the root index.js.
-Please closely examine the naming structure. 
+  This file maps the relationships between the data models - this gets loaded inside of the index.js.
+  Please closely examine the naming structure. 
 
-Model.relationship(OtherModel, {as: "name", foreignkey: "identifier"})
+  FirstModel.relationship(SecondModel, {as: "name", foreignkey: "identifier"})
 
-HasMany relationship uses a foreign key relating to the Model.
-BelongsTo relationship uses a foreign key relating to the OtherModel.
-"name" is used when calling the associated object (i.e. User.articles(), where it was defined us as: "articles")
+  HasMany relationship uses a foreign key that is used to refer to FirstModel.
+  BelongsTo relationship uses a foreign key that is used to refer to the SecondModel.
 
-Add relationships in this file.
+  "name" is used when calling the associated database object in the API files (i.e. User.articles(), where articles() is equivalent to "as: 'articles'").
+
+  If this is confusing, please look closely at the relationships below to see what we mean.
+
+  Add relationships in this file.
 */
+
 // eslint-disable-next-line no-unused-vars
 module.exports.load = app => {
   let Archive = require("../models/archive");

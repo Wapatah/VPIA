@@ -1,47 +1,42 @@
 /*
-@Matterwiki
-This is main file which will contain all of our endpoints.
-Once we have enough endpoints defined we start breaking them into modules for better code readability
+  This is main file which will contain all platform endpoints.
 */
 
-// @Matterwiki - Importing all the required libraries
+// Importing all the required libraries
 var express = require("express");
-// @Mordax - adding middleman compression scheme
-var compression = require("compression");
-// @Matterwiki - body parser to parse the request body
-var bodyParser = require("body-parser");
+var compression = require("compression"); // Adding middleman compression scheme for performance
+var bodyParser = require("body-parser"); // body parser to parse the request body
 var db = require("./config/db"); // eslint-disable-line
 var app = express();
 var fs = require("fs"); // eslint-disable-line
 var apiRoutes = express.Router();
 var apiRoutesAdmin = express.Router();
 var jwt = require("jsonwebtoken");
-// @Matterwiki - config file in the app directory which contains the JWT key
-var config = require("./config/config");
+var config = require("./config/config"); // JWT key - DO NOT PUBLICIZE THIS IF USING IN PRODUCTION.
 
+// Loading and mapping data model relationships - allows jumping between NoSQL and SQL.
 var relations = require("./models/relations");
 relations.load(app);
 
-// @Mordax - using gzip compression to speed up app performance
+// Using gzip compression to speed up app performance
 app.use(compression());
 
 process.env.PORT = process.env.PORT || 30000;
-
 console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV !== "production") {
-  // @Matterwiki - add some patchwork for the devserver to work!
+  // Add some patchwork for the devserver to work!
   require("./config/webpack-middleware")(app);
 }
 
-app.set("superSecret", config.auth_secret); // secret variable
+app.set("superSecret", config.auth_secret); // Secret variable
 
-// @Matterwiki - Using the body parser middleware to parse request body
+// Using the body parser middleware to parse request body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get("/api", function(req, res) {
-  // @Mordax - Should change this into a nice display
+  // Should change this into a nice display
   res.send("List of API endpoints");
 });
 
@@ -51,17 +46,18 @@ require("./api/authentication")(app);
 // Importing the setup endpoint
 require("./api/setup")(app);
 
-// @Mordax - importing the users endpoint for sign up capabilties.
+// Importing the users endpoint for sign up capabilties.
 require("./api/users")(app);
 
+// Limit the ability of non-users to access API routes.
 apiRoutes.use(function(req, res, next) {
-  // check header or url parameters or post parameters for token
+  // Check header or url parameters or post parameters for token
   var token =
     req.body.token || req.query.token || req.headers["x-access-token"];
 
-  // decode token
+  // Decode token
   if (token) {
-    // verifies secret and checks for expiration
+    // Verifies secret and checks for expiration
     jwt.verify(token, app.get("superSecret"), function(err, decoded) {
       if (err) {
         return res.json({
@@ -73,14 +69,13 @@ apiRoutes.use(function(req, res, next) {
           data: {}
         });
       } else {
-        // if everything is good, save to request for use in other routes
+        // If everything is good, save to request for use in other routes
         req.decoded = decoded;
         next();
       }
     });
   } else {
-    // if there is no token
-    // return an error
+    // If there is no token, return an error
     return res.status(403).json({
       error: {
         error: true,
@@ -92,14 +87,15 @@ apiRoutes.use(function(req, res, next) {
   }
 });
 
+// Limit the ability of non-admin users to access API routes.
 apiRoutesAdmin.use(function(req, res, next) {
-  // check header or url parameters or post parameters for token
+  // Check header or url parameters or post parameters for token
   var token =
     req.body.token || req.query.token || req.headers["x-access-token"];
 
-  // decode token
+  // Decode token
   if (token) {
-    // verifies secret and checks for expiration
+    // Verifies secret and checks for expiration
     jwt.verify(token, app.get("superSecret"), function(err, decoded) {
       if (err) {
         return res.json({
@@ -112,7 +108,7 @@ apiRoutesAdmin.use(function(req, res, next) {
         });
       } else {
         if (decoded[0].admin) {
-          // if everything is good, save to request for use in other routes
+          // If everything is good, save to request for use in other routes
           req.decoded = decoded;
           next();
         } else {
@@ -128,8 +124,7 @@ apiRoutesAdmin.use(function(req, res, next) {
       }
     });
   } else {
-    // if there is no token
-    // return an error
+    // If there is no token, return an error
     return res.status(403).json({
       error: {
         error: true,

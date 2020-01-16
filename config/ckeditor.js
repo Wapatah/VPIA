@@ -1,7 +1,8 @@
 /*
-@Mordax
-An easy to adjust configuration file for CKeditor. 
-Drop in whatever plugins you need, remove things, etc.
+  An easy to adjust configuration file for CKeditor. 
+  Drop in whatever plugins you need, remove things, etc.
+  The Wysiwyg editors are still in discussion - CKeditors dependencies 
+  are a lot.
 */
 
 import Essentials from "@ckeditor/ckeditor5-essentials/src/essentials";

@@ -1,21 +1,14 @@
-/*
-@Matterwiki
-This file contains all the endpoints related to topics.
-For the method we use to categorize endpoints in file please read the top
-comment in the articles.js (same directory).
+/* --------------------------------------------------------------------------------------------------------------------------------------------
+  This file contains all the endpoints related to topics. To be depreciated.
 */
 
-// @Matterwiki - Importing the topics model
+// Importing the data models needed to manipulate
 var Topics = require("../models/topic.js");
 var Articles = require("../models/article");
 
 module.exports = function(app) {
-  /*
-  @Matterwiki
-  This is a GET endpoint that responds with the list of all the topics in the topics table
-  the topics are present in the data object in the returning object.
-  the error key in the returning object is a boolen which is false if there is no error and true otherwise
-  */
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // GET /topics - This is a GET ALL endpoint that responds with the list of all the topics
   app.get("/topics", function(req, res) {
     Topics.all({ where: {} })
       .then(function(collection) {
@@ -40,12 +33,8 @@ module.exports = function(app) {
       });
   });
 
-  /*
-  @Matterwiki
-  This is a GET endpoint that responds with the topic which has the given ID
-  the topic is present in the data object in the returning object.
-  the error key in the returning object is a boolen which is false if there is no error and true otherwise
-  */
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // GET /topics/:id - This is a GET ONE endpoint that responds with the topic which has the given ID
   app.get("/topics/:id", function(req, res) {
     Topics.find({ where: { id: req.params.id } })
       .then(function(topic) {
@@ -70,12 +59,8 @@ module.exports = function(app) {
       });
   });
 
-  /*
-  @Matterwiki
-  This is a GET endpoint that responds with the list of all the articles that belong to a particular topic (topic of given id param)
-  the articles are present in the data object in the returning object.
-  the error key in the returning object is a boolen which is false if there is no error and true otherwise
-  */
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // GET /topic/:id/articles - Special GET endpoint that responds with the list of all the articles that belong to a particular topic (topic of given id param)
   app.get("/topic/:id/articles", function(req, res) {
     Articles.find({
       where: { topic_id: req.params.id },
