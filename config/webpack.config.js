@@ -14,8 +14,13 @@ const path = require("path");
 const BUILD_DIR = path.resolve(__dirname, "../client/public");
 const APP_DIR = path.resolve(__dirname, "../client/components");
 
+const { styles } = require("@ckeditor/ckeditor5-dev-utils");
+
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: [
     // React HMR specific stuff
     "react-hot-loader/patch",
@@ -55,7 +60,39 @@ module.exports = {
             presets: ["@babel/preset-env", "@babel/preset-react"]
           }
         }
-      }
+      },
+      {
+        test: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
+        use: ["raw-loader"]
+      },
+      {
+        test: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/,
+        use: [
+          {
+            loader: "style-loader",
+            options: {
+              injectType: "singletonStyleTag"
+            }
+          },
+          {
+            loader: "postcss-loader",
+            options: styles.getPostCssConfig({
+              themeImporter: {
+                themePath: require.resolve("@ckeditor/ckeditor5-theme-lark")
+              },
+              minify: true
+            })
+          }
+        ]
+      },
+      {
+        test: cssRegex,
+        exclude: [cssModuleRegex, /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/]
+      },
+      {
+        test: cssModuleRegex,
+        exclude: [/ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/]
+      },
     ]
   }
 };
