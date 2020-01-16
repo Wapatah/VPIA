@@ -274,7 +274,6 @@ textarea {
     padding-right: 10%;
   }
 }
-
 @media (min-width: 2560px) {
   #VPIA-intro.col-8 {
     -ms-flex: 0 0 58.333333%;
