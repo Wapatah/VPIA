@@ -10,7 +10,6 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 // --------------------------------------------------------------------------------------------------------------------------------------------
 // Import all components for navigation
 import App from "./main/app.jsx";
-import Home from "./main/home.jsx";
 import Login from "./users/login.jsx";
 import Article from "./wiki/article.jsx";
 import NewArticle from "./wiki/new.jsx";
@@ -33,7 +32,6 @@ export default function() {
     <Switch>
       <Route path="/" component={App}>
         <IndexRoute component={Landing} />
-        <Route path="home" component={Home} />
         <Route path="landing" component={Landing} />
         <Route path="results" component={Results} />
         <Route path="article/new" component={NewArticle} />
