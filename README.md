@@ -32,6 +32,8 @@ This platform uses a modified [Matterwiki](https://github.com/Matterwiki/Matterw
 * `models/` Has the database schemas/models. Any change to the structure of tables should be done here.
     * `relations.js` inside this folder defines the relationships between the models. Very simple hasMany, belongsTo relationships. We are using Caminte, a database agnostic ORM (object relational mapping for representing Javascript objects in databases). Caminte uses adapters for various DBs and has a generic approach for defining relationships. Please read more here: http://www.camintejs.com/.
 
+* `tests/` Where our tests live. Currently we're starting to put in End-To-End testing.
+
 ### Linting commands
 * `npm run lint` - fixes and adheres to javascript design
 * `npm run prettier` - Runs the Prettier formatting tool
@@ -64,3 +66,13 @@ where 'root' is the username you're using for db.js, 'localhost' is the MySQL ho
 Caminte is a database agnostic ORM. However, the tool has been dead the past year. Some of the adapters are not working (for example, ArangoDB). There's still a lot of modification that needs to be done to make sure it's working perfectly. Some of the commands are also depreciated. Switching between Mongo and MySQL works.
 
 We will probably have to fork it, re-publish on NPM in order to make sure we can continue to update it. We'll have to figure out the best way to achieve this. 
+
+---
+
+## Tests 
+
+We use [TestCafe](https://devexpress.github.io/testcafe/) for end to end testing. All tests go into the `/tests` folder. Anything that is tested (like an admin user, regular user, etc) or anything that could be changed (like URLs) should be placed into `/tests/global_test_vars.js` and used as a [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) to allow quick configuration changes without rewriting code. We use back ticks in the tests folder (``) everywhere except for import statements. 
+
+You need to install testcafe globally first.
+
+`npm install -g testcafe`  

@@ -75,6 +75,7 @@ class App extends React.Component {
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item px-2">
                   <button
+                    id="signup-nav-button"
                     type="button"
                     className="btn btn-outline-light btn-round"
                   >
@@ -84,7 +85,7 @@ class App extends React.Component {
                   </button>
                 </li>
                 <li className="nav-item">
-                  <button type="button" className="btn btn-secondary btn-round">
+                  <button id="login-nav-button" type="button" className="btn btn-secondary btn-round">
                     <Link to="login" className="btn-text">
                       Sign In
                     </Link>

@@ -26,7 +26,7 @@ class SearchForm extends React.Component {
           <input
             type="text"
             className="form-control"
-            id="line"
+            id="search-input"
             placeholder="Search artwork {Example: pipe, Haida Gwaii, Wood, McCord Museum,…}"
             ref="search"
             aria-label="Search Artwork Tab"
@@ -34,6 +34,7 @@ class SearchForm extends React.Component {
           <div className="input-group-append">
             <button
               type="submit"
+              id="search-submit"
               className="btn search-button"
               aria-label="Search Button"
             >
