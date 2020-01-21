@@ -1,4 +1,4 @@
-/* 
+/* --------------------------------------------------------------------------------------------------------------------------------------------
   Put all small code snippets inside the helpers folder.
   Simple editor preview, separated for easier modification
 */

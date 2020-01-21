@@ -92,7 +92,7 @@ module.exports = {
       {
         test: cssModuleRegex,
         exclude: [/ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/]
-      },
+      }
     ]
   }
 };
