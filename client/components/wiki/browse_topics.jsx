@@ -3,6 +3,7 @@
 */
 import React from "react";
 import Loader from "../helpers/loader.jsx";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class BrowseTopics extends React.Component {
   constructor(props) {
@@ -25,8 +26,8 @@ class BrowseTopics extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({ topics: response.data });
         }
         that.setState({ loading: false });

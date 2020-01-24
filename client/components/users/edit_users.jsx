@@ -3,7 +3,7 @@
 */
 import React from "react";
 import { hashHistory } from "react-router";
-//import Alert from "react-s-alert";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 import Loader from "../helpers/loader.jsx";
 
 class EditUser extends React.Component {
@@ -35,8 +35,8 @@ class EditUser extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({
             name: response.data.name,
             about: response.data.about,
@@ -84,9 +84,9 @@ class EditUser extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
-          //Alert.success("User has been edited");
+          StatusAlertService.showError(response.error.message);
+        } else {
+          StatusAlertService.showSuccess("User has been edited");
           hashHistory.push("admin");
         }
       });
@@ -108,6 +108,7 @@ class EditUser extends React.Component {
     else
       return (
         <div>
+          <StatusAlert />
           <div className="row">
             <div className="col-md-12 col-sd-12">
               <h1>

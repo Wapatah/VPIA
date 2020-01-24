@@ -5,7 +5,7 @@
 import React from "react";
 import { hashHistory } from "react-router";
 import Loader from "../helpers/loader.jsx";
-//import Alert from "react-s-alert";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 // Importing ckeditor pieces
 import CKEditor from "@ckeditor/ckeditor5-react";
@@ -49,8 +49,8 @@ class NewArticle extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({ topics: response.data });
         }
         that.setState({ loading: false });
@@ -119,14 +119,18 @@ class NewArticle extends React.Component {
         })
         .then(function(response) {
           if (response.error.error) {
-          } //Alert.error(response.error.message);
-          else {
-            //Alert.success("Article has been successfully saved");
+            StatusAlertService.showError(response.error.message);
+          } else {
+            StatusAlertService.showSuccess(
+              "Article has been successfully saved"
+            );
             hashHistory.push("article/" + response.data.id + "?new=true");
           }
         });
     } else {
-      //Alert.error("Article Body, Title and Topic Information is required.");
+      StatusAlertService.showError(
+        "Article Body, Title and Topic Information is required."
+      );
     }
   }
 
@@ -137,6 +141,7 @@ class NewArticle extends React.Component {
     else
       return (
         <div className="content-container">
+          <StatusAlert />
           <div className="row">
             <div id="left-side" className="col-md-1"></div>
             <div className="col-md-5">

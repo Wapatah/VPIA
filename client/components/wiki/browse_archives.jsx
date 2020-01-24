@@ -4,7 +4,7 @@
 */
 import React from "react";
 import Loader from "../helpers/loader.jsx";
-//import Alert from "react-s-alert";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class BrowseArchives extends React.Component {
   constructor(props) {
@@ -31,8 +31,8 @@ class BrowseArchives extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({ archives: response.data });
         }
         that.setState({ loading: false });
@@ -59,6 +59,7 @@ class BrowseArchives extends React.Component {
     } else {
       return (
         <div className="custom-collapse">
+          <StatusAlert />
           <div className="visible-xs">
             <button
               className="collapse-toggle btn btn-default"

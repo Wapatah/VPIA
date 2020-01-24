@@ -3,6 +3,7 @@
 */
 import React from "react";
 import Home from "./home.jsx";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class Landing extends React.Component {
   constructor(props) {
@@ -10,13 +11,14 @@ class Landing extends React.Component {
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
-    Renders information specific to the VPIA goal - add in links to tutorials 
+    Renders information specific to the VPIA goal - add in links to tutorials
     and other help material here
   */
   render() {
     return (
       <div>
         <div id="VPIA-intro" className="container-fluid">
+          <StatusAlert />
           <div className="row">
             <div id="VPIA-intro" className="col-8">
               <div id="VPIA-intro" className="jumbotron">

@@ -3,7 +3,7 @@
 */
 import React from "react";
 import Loader from "../helpers/loader.jsx";
-//import Alert from "react-s-alert";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class Filters extends React.Component {
   constructor(props) {
@@ -28,8 +28,8 @@ class Filters extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({ articles: response.data });
         }
         that.setState({ loading: false });
@@ -49,6 +49,7 @@ class Filters extends React.Component {
     if (this.state.loading) return <Loader />;
     return (
       <div>
+        <StatusAlert />
         <div className="dropdown">
           <button
             className="btn btn-outline btn-block dropdown-toggle"

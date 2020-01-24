@@ -3,7 +3,7 @@
 */
 import React from "react";
 import { Link, hashHistory } from "react-router";
-//import Alert from "react-s-alert";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 import MainNav from "./main_nav.jsx";
 
 class App extends React.Component {
@@ -28,7 +28,7 @@ class App extends React.Component {
     window.localStorage.setItem("userToken", "");
     window.localStorage.setItem("user_id", "");
     window.localStorage.setItem("admin", "");
-    //Alert.success("You've been successfully logged out");
+    StatusAlertService.showSuccess("You've been successfully logged out");
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -38,6 +38,7 @@ class App extends React.Component {
     var that = this;
     return (
       <div>
+        <StatusAlert />
         <nav className="navbar navbar-expand-md mainheader">
           <div
             class="alert alert-secondary alert-dismissible fade show"

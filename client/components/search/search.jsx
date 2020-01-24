@@ -5,7 +5,7 @@
 import React from "react";
 import Loader from "../helpers/loader.jsx";
 import { Link } from "react-router";
-//import Alert from "react-s-alert";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class Search extends React.Component {
   constructor(props) {
@@ -33,8 +33,8 @@ class Search extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({ articles: response.data });
         }
         that.setState({ loading: false });
@@ -57,7 +57,7 @@ class Search extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-          //Alert.error(response.error.message);
+          StatusAlertService.showError(response.error.message);
         } else {
           that.setState({ articles: response.data });
         }
@@ -78,6 +78,7 @@ class Search extends React.Component {
     else
       return (
         <div className="content-container">
+          <StatusAlert />
           <div className="row">
             <div id="left-side" className="col-md-1">
               <p className="text-right edit-page-title">Search Results</p>
