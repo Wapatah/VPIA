@@ -5,8 +5,7 @@
 import React from "react";
 import { Link, hashHistory } from "react-router";
 import Loader from "../helpers/loader.jsx";
-
-//import Alert from "react-s-alert";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class ViewArticle extends React.Component {
   constructor(props) {
@@ -33,8 +32,8 @@ class ViewArticle extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({ article: response.data });
         }
         that.setState({ loading: false });
@@ -64,9 +63,9 @@ class ViewArticle extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
-          //Alert.success("Article has been deleted");
+          StatusAlertService.showError(response.error.message);
+        } else {
+          StatusAlertService.showSuccess("Article has been deleted");
           hashHistory.push("home");
         }
       });
@@ -85,6 +84,7 @@ class ViewArticle extends React.Component {
     ) {
       return (
         <div>
+          <StatusAlert />
           <div id="article-nav" className="container-fluid">
             <div className="col-md-5 col-centered">
               <div id="article-nav-inner" className="row align-items-end">

@@ -84,9 +84,9 @@ class EditUser extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
-          //Alert.success("User has been edited");
+          StatusAlertService.showError(response.error.message);
+        } else {
+          StatusAlertService.showSuccess("User has been edited");
           hashHistory.push("admin");
         }
       });

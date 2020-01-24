@@ -4,7 +4,6 @@
 import React from "react";
 import { hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
-//import Alert from "react-s-alert";
 
 class UserSignup extends React.Component {
   constructor(props) {

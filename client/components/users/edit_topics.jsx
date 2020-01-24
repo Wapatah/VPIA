@@ -76,9 +76,9 @@ class EditTopic extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
-          //Alert.success("Topic has been edited");
+          StatusAlertService.showError(response.error.message);
+        } else {
+          StatusAlertService.showSuccess("Topic has been edited");
           hashHistory.push("admin");
         }
       });
@@ -89,6 +89,7 @@ class EditTopic extends React.Component {
     else
       return (
         <div>
+          <StatusAlert />
           <div className="row">
             <div className="col-md-12 col-sd-12">
               <h1>

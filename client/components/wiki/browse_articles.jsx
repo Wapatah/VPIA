@@ -5,7 +5,7 @@
 import React from "react";
 import Loader from "../helpers/loader.jsx";
 import { Link, hashHistory } from "react-router";
-//import Alert from "react-s-alert";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class BrowseArticles extends React.Component {
   constructor(props) {
@@ -32,8 +32,8 @@ class BrowseArticles extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({ articles: response.data });
         }
         that.setState({ loading: false });
@@ -63,8 +63,8 @@ class BrowseArticles extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({ articles: response.data });
         }
         that.setState({ loading: false });

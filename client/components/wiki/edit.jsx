@@ -3,7 +3,7 @@
 */
 import React from "react";
 import { Link, hashHistory } from "react-router";
-//import Alert from "react-s-alert";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 import Loader from "../helpers/loader.jsx";
 
 // Setup Wysiwyg editor imports
@@ -51,8 +51,8 @@ class EditArticle extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({
             body: response.data[0].body,
             title: response.data[0].title,
@@ -79,8 +79,8 @@ class EditArticle extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({ topics: response.data });
         }
       });
@@ -159,14 +159,18 @@ class EditArticle extends React.Component {
         })
         .then(function(response) {
           if (response.error.error) {
-          } //Alert.error(response.error.message);
-          else {
-            //Alert.success("Article has been successfully saved");
+            StatusAlertService.showError(response.error.message);
+          } else {
+            StatusAlertService.showSuccess(
+              "Article has been successfully saved"
+            );
             hashHistory.push("article/" + that.props.params.articleId);
           }
         });
     } else {
-      //Alert.error("Article Body, Title, Topic and Change Info is required.");
+      StatusAlertService.showError(
+        "Article Body, Title, Topic and Change Info is required."
+      );
     }
   }
 
@@ -177,6 +181,7 @@ class EditArticle extends React.Component {
     else
       return (
         <div>
+          <StatusAlert />
           <div id="article-nav" className="container-fluid">
             <div className="col-md-5 col-centered">
               <div id="article-nav-inner" className="row align-items-end">

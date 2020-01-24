@@ -6,6 +6,7 @@
 import React from "react";
 import { Link } from "react-router";
 import Loader from "../helpers/loader.jsx";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class Admin extends React.Component {
   constructor(props) {
@@ -41,8 +42,8 @@ class Admin extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({ topics: response.data, loading_topics: false });
         }
       });
@@ -53,8 +54,8 @@ class Admin extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({ users: response.data, loading_users: false });
         }
       });
@@ -98,13 +99,13 @@ class Admin extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           $("#addUser").modal("hide");
           var users = that.state.users;
           users.push(response.data);
           that.setState({ users: users });
-          //Alert.success("User has been added");
+          StatusAlertService.showSuccess("User has been added");
         }
       });
   }
@@ -138,13 +139,13 @@ class Admin extends React.Component {
       .then(function(response) {
         if (response.error.error) {
           $("#addTopic").modal("hide");
-          //Alert.error(response.error.message);
+          StatusAlertService.showError(response.error.message);
         } else {
           $("#addTopic").modal("hide");
           var topics = that.state.topics;
           topics.push(response.data);
           that.setState({ topics: topics });
-          //Alert.success("Topic has been added");
+          StatusAlertService.showSuccess("Topic has been added");
         }
       });
   }
@@ -169,14 +170,14 @@ class Admin extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           topics = that.state.topics;
           var topics = $.grep(topics, function(e) {
             return e.id != id;
           });
           that.setState({ topics: topics });
-          //Alert.success("Topic has been deleted");
+          StatusAlertService.showSuccess("Topic has been deleted");
         }
       });
   }
@@ -206,27 +207,28 @@ class Admin extends React.Component {
         })
         .then(function(response) {
           if (response.error.error) {
-          } //Alert.error(response.error.message);
-          else {
+            StatusAlertService.showError(response.error.message);
+          } else {
             users = that.state.users;
             var users = $.grep(users, function(e) {
               return e.id != id;
             });
             that.setState({ users: users });
-            //Alert.success("User has been deleted");
+            StatusAlertService.showSuccess("User has been deleted");
           }
         });
     }
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
-  This renders an Admin only component to delete users and topics. 
+  This renders an Admin only component to delete users and topics.
 */
   render() {
     if (this.state.loading_users && this.state.loading_users) return <Loader />;
     else
       return (
         <div>
+          <StatusAlert />
           <div className="row container">
             <div className="col-md-6">
               <button
