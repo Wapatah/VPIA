@@ -3,6 +3,7 @@
 */
 import React from "react";
 import { hashHistory } from "react-router";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 //import Alert from "react-s-alert";
 
 class UserSignup extends React.Component {
@@ -51,10 +52,10 @@ class UserSignup extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
-          //Alert.success("User generated");
+          StatusAlertService.showError(response.error.message);
+        } else {
           hashHistory.push("login");
+          StatusAlertService.showSuccess("User generated");
         }
       });
   }
@@ -79,6 +80,7 @@ class UserSignup extends React.Component {
 
     return (
       <div id="fullpage" className="container-fluid">
+        <StatusAlert />
         <div id="full-page" className="row">
           <div className="col-4 left-panel">
             <img
