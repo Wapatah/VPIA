@@ -76,5 +76,14 @@
     -->
     <div id="app" class="container" />
     <script src="public/bundle.js" type="text/javascript" async></script>
+
+    <!-- Load the PWA Service Worker -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service_worker.js");
+        });
+      }
+    </script>
   </body>
 </html>
