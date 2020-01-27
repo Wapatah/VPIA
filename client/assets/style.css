@@ -1103,3 +1103,20 @@ ul.social-network li {
 #VPIA-intro-right {
   padding-right: 15px;
 }
+
+.tox-statusbar__branding{
+  display: none;
+}
+
+.tox-notifications-container{
+  display: none;
+}
+
+.tox-statusbar__wordcount{
+  display: none;
+}
+
+.edit-indicator *[contentEditable="true"]:hover {
+  outline: 1px solid #2276d2;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+}
