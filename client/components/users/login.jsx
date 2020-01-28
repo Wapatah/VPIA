@@ -15,7 +15,7 @@ class Login extends React.Component {
   // On load, if there is a user token, get redirected to home.
   componentDidMount() {
     if (window.localStorage.getItem("userToken")) {
-      hashHistory.push("home");
+      hashHistory.push("landing");
     }
   }
 

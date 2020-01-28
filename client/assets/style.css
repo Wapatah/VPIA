@@ -823,6 +823,21 @@ select {
 
 #search-bar.input-group {
   border-bottom: 2px solid white;
+  z-index: 100;
+}
+#search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #333;
+  opacity: 0.5;
+  z-index: 10;
+  display: none;
+}
+#line:focus ~ #search-overlay {
+  display: block;
 }
 
 input#line[type="text"]:focus,
@@ -833,6 +848,10 @@ input#line[type="text"]:focus,
 
 #line::placeholder {
   color: white;
+}
+#line {
+  z-index: 1000000;
+  position: relative;
 }
 
 input#line[type="text"]:focus::-webkit-input-placeholder {
@@ -850,7 +869,6 @@ input#line[type="text"]:focus::-moz-placeholder {
 input#line:focus:-ms-input-placeholder {
   color: #d0cfcd87;
 } /* oldIE ;) */
-
 ul.social-network {
   list-style: none;
   margin-left: 0 !important;
