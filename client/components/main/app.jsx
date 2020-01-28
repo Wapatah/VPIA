@@ -132,6 +132,7 @@ class App extends React.Component {
           )}
         </nav>
         <MainNav />
+        <div id="search-overlay"></div>
         <div>{that.props.children}</div>
         <footer>
           <div className="footer-darkgrey">
