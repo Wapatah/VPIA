@@ -45,10 +45,10 @@ export default function() {
         <Route path="user/edit/:user_id" component={EditUser} />
         <Route path="search" component={Search} />
         <Route path="about" component={About} />
+        <Route path="login" component={Login} />
+        <Route path="setup" component={Setup} />
+        <Route path="user_signup" component={UserSignup} />
       </Route>
-      <Route path="login" component={Login} />
-      <Route path="setup" component={Setup} />
-      <Route path="user_signup" component={UserSignup} />
     </Switch>
   );
 }
