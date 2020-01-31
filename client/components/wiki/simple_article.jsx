@@ -4,7 +4,7 @@
 import React from "react";
 import { Link } from "react-router";
 import Loader from "../helpers/loader.jsx";
-//import Alert from "react-s-alert";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class SimpleArticle extends React.Component {
   constructor(props) {
@@ -28,8 +28,8 @@ class SimpleArticle extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           that.setState({ article: response.data });
         }
       });
@@ -42,6 +42,7 @@ class SimpleArticle extends React.Component {
     if (this.state.article[0] && this.state.article[0].user_id) {
       return (
         <div className="row">
+          <StatusAlert />
           <div className="col-md-8">
             <div className="article-heading">
               <div

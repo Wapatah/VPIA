@@ -3,7 +3,7 @@
 */
 import React from "react";
 import { hashHistory, Link } from "react-router";
-//import Alert from "react-s-alert";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class Login extends React.Component {
   constructor(props) {
@@ -48,14 +48,14 @@ class Login extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
-        } //Alert.error(response.error.message);
-        else {
+          StatusAlertService.showError(response.error.message);
+        } else {
           window.localStorage.setItem("userToken", response.data.token);
           window.localStorage.setItem("admin", response.data.user.admin);
           window.localStorage.setItem("user_id", response.data.user.id);
           window.localStorage.setItem("userEmail", response.data.user.token);
           hashHistory.push("landing");
-          //Alert.success("You are now logged in");
+          StatusAlertService.showSuccess("You are now logged in");
         }
       });
   }
@@ -65,6 +65,7 @@ class Login extends React.Component {
   render() {
     return (
       <div id="fullpage" className="container-fluid">
+        <StatusAlert />
         <div id="full-page" className="row">
           <div className="col-4 left-panel">
             <img

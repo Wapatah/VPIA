@@ -2,9 +2,6 @@
   TODO extract common chunks from dev and production configs
   and use something like webpack-merge to put them all together for the environment needed
   Ref : http://survivejs.com/webpack/developing-with-webpack/splitting-configuration/
-  
-  This file is used for dev version (not prod) - it is currently broken due to
-  CKEditor and its strange chunking.
 */
 
 const webpack = require("webpack");
@@ -15,7 +12,7 @@ const BUILD_DIR = path.resolve(__dirname, "../client/public");
 const APP_DIR = path.resolve(__dirname, "../client/components");
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: [
     // React HMR specific stuff
     "react-hot-loader/patch",

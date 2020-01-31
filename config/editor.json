@@ -1,0 +1,5 @@
+{
+  "imageUrl": "http://localhost:30500/upload",
+  "plugins": "advlist autolink autoresize lists image link charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount powerpaste quickbars",
+  "toolbar": "bold italic underline | image quicktable | alignleft aligncenter alignright | bullist numlist outdent indent | undo redo | charmap | help"
+}
