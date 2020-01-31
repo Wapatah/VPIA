@@ -1,5 +1,5 @@
 ![Release status](https://img.shields.io/badge/release-alpha-blueviolet)
-[![Build Status](https://travis-ci.com/Mordax/VPIA.svg?token=9JzkqwDk7NTPWEGwRNt4&branch=master)](https://travis-ci.com/Mordax/VPIA)
+[![Build Status](https://travis-ci.com/Wapatah/VPIA.svg?branch=master)](https://travis-ci.com/Wapatah/VPIA)
 ## VPIA
 
 This platform uses a modified [Matterwiki](https://github.com/Matterwiki/Matterwiki) as the underlying wiki engine. It uses the MySQL, Express, React and Node (MERN) stack. 
