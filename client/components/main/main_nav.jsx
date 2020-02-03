@@ -1,5 +1,5 @@
 /* --------------------------------------------------------------------------------------------------------------------------------------------
-  Main navigation logic for the site lives here - please note that the user settings would live in the app.jsx component, not here. 
+  Main navigation logic for the site lives here - please note that the user settings would live in the app.jsx component, not here.
 */
 import React from "react";
 import SearchForm from "../search/searchform.jsx";
@@ -105,7 +105,10 @@ class MainNav extends React.Component {
         </div>
         <div id="searchform" className="container-fluid">
           <div className="col-md-5 col-centered">
-            <SearchForm />
+            <SearchForm
+              onBlur={this.props.onBlur}
+              onFocus={this.props.onFocus}
+            />
           </div>
         </div>
       </div>

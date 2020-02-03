@@ -825,7 +825,18 @@ select {
   border-bottom: 2px solid white;
   z-index: 100;
 }
-#search-overlay {
+.SearchOverlay-focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #333;
+  opacity: 0.5;
+  z-index: 10;
+  display: block;
+}
+.SearchOverlay-blur {
   position: fixed;
   top: 0;
   left: 0;
@@ -835,9 +846,6 @@ select {
   opacity: 0.5;
   z-index: 10;
   display: none;
-}
-#line:focus ~ #search-overlay {
-  display: block;
 }
 
 input#line[type="text"]:focus,
