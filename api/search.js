@@ -20,9 +20,20 @@ module.exports = function(app) {
     var SearchInput = req.query.query;
     Articles.find({
       where: {
-        artwork_type: {
-          regex: SearchInput
-        }
+        or: [
+          {
+            artwork_type: { regex: SearchInput }
+          },
+          {
+            culture_group: { regex: SearchInput }
+          },
+          {
+            institution: { regex: SearchInput }
+          },
+          {
+            material: { regex: SearchInput }
+          }
+        ]
       }
     })
       .then(function(collection) {
