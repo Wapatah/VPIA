@@ -155,11 +155,12 @@ class BrowseArticles extends React.Component {
                 {this.state.articles.slice(4, 8).map(article => (
                   <div key={article.id} className="col-md-3">
                     <div className="card">
-                      <div
+                      <Link
                         id="my-card-img-top"
                         className="greyscale"
+                        to={"/article/" + article.id}
                         dangerouslySetInnerHTML={{ __html: article.photo }}
-                      ></div>
+                      ></Link>
                       <div className="card-body">
                         <p className="article-title">
                           <Link
