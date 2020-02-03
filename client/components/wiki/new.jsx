@@ -189,10 +189,7 @@ class NewArticle extends React.Component {
                     <br />
                     <h3>Body</h3>
                     <hr />
-                    <div
-                      id="article-photo"
-                      className="single-article-body"
-                    >
+                    <div id="article-photo" className="single-article-body">
                       <Editor
                         initialValue=""
                         init={{
