@@ -32,6 +32,9 @@ module.exports = function(app) {
           },
           {
             material: { regex: SearchInput }
+          },
+          {
+            tags: { regex: SearchInput }
           }
         ]
       }

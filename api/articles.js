@@ -25,6 +25,7 @@ module.exports = function(app) {
       institution: req.body.institution,
       photo: req.body.photo,
       photo_license: req.body.photo_license,
+      tags: req.body.tags,
       body: req.body.body,
       topic_id: req.body.topic_id,
       user_id: req.body.user_id,
@@ -97,6 +98,7 @@ module.exports = function(app) {
             artwork_type: req.body.artwork_type,
             body: req.body.body,
             topic_id: req.body.topic_id,
+            tags: req.body.tags,
             what_changed: req.body.what_changed,
             user_id: req.body.user_id
           }
@@ -118,8 +120,8 @@ module.exports = function(app) {
           artwork_type: article[0].artwork_type,
           institution: article[0].institution,
           photo: article[0].photo,
-          photo_license: article[0].photo_license,
           body: article[0].body,
+          tags: article[0].tags,
           what_changed: article[0].what_changed,
           user_id: article[0].user_id,
           article_id: article[0].id

@@ -14,6 +14,7 @@ var Article = schema.define("article", {
   material: { type: schema.String },
   artwork_type: { type: schema.String, limit: 255 },
   photo_license: { type: schema.Text },
+  tags: { type: schema.String },
   body: { type: schema.Text },
   created_at: { type: schema.Date, default: Date.now },
   updated_at: { type: schema.Date, default: Date.now },
