@@ -1,4 +1,5 @@
 ![Release status](https://img.shields.io/badge/release-alpha-blueviolet)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/86f5536468ed4963b287af334fafd0a4)](https://app.codacy.com/gh/Wapatah/VPIA?utm_source=github.com&utm_medium=referral&utm_content=Wapatah/VPIA&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.com/Wapatah/VPIA.svg?branch=master)](https://travis-ci.com/Wapatah/VPIA)
 ## VPIA
 
