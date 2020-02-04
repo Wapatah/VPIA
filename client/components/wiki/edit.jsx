@@ -27,6 +27,7 @@ class EditArticle extends React.Component {
       culture_group: "",
       material: "",
       artwork_type: "",
+      tags: "",
       topics: [],
       loading: true,
       isHidden: true
@@ -58,6 +59,7 @@ class EditArticle extends React.Component {
             material: response.data[0].material,
             artwork_type: response.data[0].artwork_type,
             topic_id: response.data[0].topic_id,
+            tags: response.data[0].tags,
             article: response.data
           });
         }
@@ -111,6 +113,7 @@ class EditArticle extends React.Component {
     var culture_group = this.state.culture_group;
     var material = this.state.material;
     var artwork_type = this.state.artwork_type;
+    let tags = this.state.tags;
 
     if (
       body &&
@@ -119,7 +122,8 @@ class EditArticle extends React.Component {
       what_changed &&
       culture_group &&
       material &&
-      artwork_type
+      artwork_type &&
+      tags
     ) {
       var myHeaders = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
@@ -141,6 +145,8 @@ class EditArticle extends React.Component {
           encodeURIComponent(material) +
           "&artwork_type=" +
           encodeURIComponent(artwork_type) +
+          "&tags=" +
+          encodeURIComponent(tags) +
           "&topic_id=" +
           topicId +
           "&user_id=" +
@@ -352,6 +358,29 @@ class EditArticle extends React.Component {
                                 let material = this.state.material;
                                 this.setState({
                                   material: editor.level.content
+                                });
+                              }}
+                            />
+                          </p>
+                        </li>
+
+                        <li className="list-group-item">
+                          <p id="FuturaStdHeavy">Tags</p>
+                          <p id="Baskerville">
+                            <Editor
+                              initialValue={this.state.tags}
+                              init={{
+                                inline: true,
+                                menubar: false,
+                                plugins: Config.plugins,
+                                toolbar: Config.toolbar,
+                                quickbars_insert_toolbar: false,
+                                quickbars_selection_toolbar: false
+                              }}
+                              onChange={editor => {
+                                let tags = this.state.tags;
+                                this.setState({
+                                  tags: editor.level.content
                                 });
                               }}
                             />

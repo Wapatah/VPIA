@@ -236,6 +236,16 @@ class ViewArticle extends React.Component {
                         </li>
 
                         <li className="list-group-item">
+                          <p id="FuturaStdHeavy">Tags</p>
+                          <p
+                            id="Baskerville"
+                            dangerouslySetInnerHTML={{
+                              __html: this.state.article[0].tags
+                            }}
+                          ></p>
+                        </li>
+
+                        <li className="list-group-item">
                           <b>What Changed in last edit</b>
                           {this.state.article[0].what_changed ? (
                             <p id="Baskerville">
