@@ -172,8 +172,8 @@ class Admin extends React.Component {
         if (response.error.error) {
           StatusAlertService.showError(response.error.message);
         } else {
-          topics = that.state.topics;
-          var topics = $.grep(topics, function(e) {
+          let topics = that.state.topics;
+          topics = $.grep(topics, function(e) {
             return e.id != id;
           });
           that.setState({ topics: topics });
@@ -192,7 +192,7 @@ class Admin extends React.Component {
       "Deleting the user will move all of his/her articles to the Admin. Are you sure?"
     );
 
-    if (del == true) {
+    if (del === true) {
       var myHeaders = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
         "x-access-token": window.localStorage.getItem("userToken")
@@ -209,9 +209,9 @@ class Admin extends React.Component {
           if (response.error.error) {
             StatusAlertService.showError(response.error.message);
           } else {
-            users = that.state.users;
-            var users = $.grep(users, function(e) {
-              return e.id != id;
+            let users = that.state.users;
+            users = $.grep(users, function(e) {
+              return e.id !== id;
             });
             that.setState({ users: users });
             StatusAlertService.showSuccess("User has been deleted");
@@ -224,8 +224,9 @@ class Admin extends React.Component {
   This renders an Admin only component to delete users and topics.
 */
   render() {
-    if (this.state.loading_users && this.state.loading_users) return <Loader />;
-    else
+    if (this.state.loading_users && this.state.loading_users) {
+      return <Loader />;
+    } else {
       return (
         <div>
           <StatusAlert />
@@ -449,6 +450,7 @@ class Admin extends React.Component {
           </div>
         </div>
       );
+    }
   }
 }
 

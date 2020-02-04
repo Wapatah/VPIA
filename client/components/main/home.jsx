@@ -27,8 +27,9 @@ class Home extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Renders the hard coded events - will change with update to ux design.
   render() {
-    if (this.state.loading) return <Loader />;
-    else
+    if (this.state.loading) {
+      return <Loader />;
+    } else {
       return (
         <div className="container-fluid">
           <div className="row justify-content-md-center">
@@ -129,6 +130,7 @@ class Home extends React.Component {
           </div>
         </div>
       );
+    }
   }
 }
 

@@ -64,12 +64,11 @@ class EditArticle extends React.Component {
         that.setState({ loading: false });
       });
 
-    var myHeaders = new Headers({
+    myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
+    myInit = { method: "GET", headers: myHeaders };
 
     fetch("/api/topics", myInit)
       .then(function(response) {
@@ -175,8 +174,9 @@ class EditArticle extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Renders the editing article page with some modifiable elements.
   render() {
-    if (this.state.loading) return <Loader />;
-    else
+    if (this.state.loading) {
+      return <Loader />;
+    } else {
       return (
         <div>
           <StatusAlert />
@@ -388,6 +388,7 @@ class EditArticle extends React.Component {
           </div>
         </div>
       );
+    }
   }
 }
 

@@ -38,7 +38,9 @@ class SimpleArticle extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Displays the article information in smaller detail.
   render() {
-    if (this.state.loading) return <Loader />;
+    if (this.state.loading) {
+      return <Loader />;
+    }
     if (this.state.article[0] && this.state.article[0].user_id) {
       return (
         <div className="row">

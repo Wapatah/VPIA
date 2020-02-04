@@ -7,9 +7,9 @@ This platform uses a modified [Matterwiki](https://github.com/Matterwiki/Matterw
 ### Instructions for running the VPIA code
 1. Install [node](https://nodejs.org/en/)
 2. Install [MySQL](https://www.mongodb.com/download-center/community) (make sure you can use MySQL through command line)
-2. Navigate to the project folder
-3. Install dependencies: `npm install`
-4. Run the application: `npm run start`
+3. Navigate to the project folder
+4. Install dependencies: `npm install`
+5. Run the application: `npm run start`
 
 ### Navigating the folders
 * `api/` directory contains code for node backend.
@@ -30,7 +30,7 @@ This platform uses a modified [Matterwiki](https://github.com/Matterwiki/Matterw
     * `client/public` - Built files from webpack are dumped into here
 
 * `models/` Has the database schemas/models. Any change to the structure of tables should be done here.
-    * `relations.js` inside this folder defines the relationships between the models. Very simple hasMany, belongsTo relationships. We are using Caminte, a database agnostic ORM (object relational mapping for representing Javascript objects in databases). Caminte uses adapters for various DBs and has a generic approach for defining relationships. Please read more here: http://www.camintejs.com/.
+    * `relations.js` inside this folder defines the relationships between the models. Very simple hasMany, belongsTo relationships. We are using Caminte, a database agnostic ORM (object relational mapping for representing Javascript objects in databases). Caminte uses adapters for various DBs and has a generic approach for defining relationships. Please read more here: <http://www.camintejs.com/>.
 
 ### Linting commands
 * `npm run lint` - fixes and adheres to javascript design
@@ -46,7 +46,7 @@ We have Travis setup for running builds in Linux, OSX and Windows. It is current
 You need to prepare a MySQL DB before running the VPIA. Make sure that the root user credentials you set up align with those in `config/db.js`. Create database based off db.js, feel free to modify this file for your needs. 
 
 > Error:
-```
+``` sql
 Unhandled rejection Error: ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requested by server; consider upgrading MySQL client
 ```
 > Solution:   

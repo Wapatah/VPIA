@@ -5,6 +5,7 @@
 import React from "react";
 import Loader from "../helpers/loader.jsx";
 import { Link } from "react-router";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class ArtworkResults extends React.Component {
   constructor(props) {
@@ -58,9 +59,9 @@ class ArtworkResults extends React.Component {
     var that = this;
     var url = "/api/articles";
 
-    if (nextProps.topicId == null && this.props.topicId == null)
-      var url = "/api/articles";
-    else var url = "/api/topic/" + nextProps.topicId + "/articles";
+    if (nextProps.topicId === null && this.props.topicId === null)
+      url = "/api/articles";
+    else url = "/api/topic/" + nextProps.topicId + "/articles";
 
     fetch(url, myInit)
       .then(function(response) {
@@ -68,6 +69,7 @@ class ArtworkResults extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
+          StatusAlertService.showError(response.error.message);
         } else {
           that.setState({ articles: response.data });
         }
@@ -96,34 +98,37 @@ class ArtworkResults extends React.Component {
 
     const renderArticles = currentArticles.map(article => {
       return (
-        <div key={article.id} className="col-md-4">
-          <div id="result" className="card card-block">
-            <Link
-              to={"/article/" + article.id}
-              id="my-card-img-top"
-              dangerouslySetInnerHTML={{ __html: article.photo }}
-            ></Link>
-            <div className="card-body">
-              <p className="article-title">
-                <Link to={"/article/" + article.id} className="text-dark">
-                  {article.title}
-                </Link>
-              </p>
-              <div className="card-text">
-                <small class="text-muted">
-                  <p
-                    id="Baskerville"
-                    dangerouslySetInnerHTML={{
-                      __html: article.culture_group
-                    }}
-                  ></p>
-                  <p id="Baskerville">
-                    <i className="fa fa-clock-o" />
-                    {new Date(
-                      article.updated_at.replace(" ", "T")
-                    ).toUTCString()}
-                  </p>
-                </small>
+        <div>
+          <StatusAlert />
+          <div key={article.id} className="col-md-4">
+            <div id="result" className="card card-block">
+              <Link
+                to={"/article/" + article.id}
+                id="my-card-img-top"
+                dangerouslySetInnerHTML={{ __html: article.photo }}
+              ></Link>
+              <div className="card-body">
+                <p className="article-title">
+                  <Link to={"/article/" + article.id} className="text-dark">
+                    {article.title}
+                  </Link>
+                </p>
+                <div className="card-text">
+                  <small class="text-muted">
+                    <p
+                      id="Baskerville"
+                      dangerouslySetInnerHTML={{
+                        __html: article.culture_group
+                      }}
+                    ></p>
+                    <p id="Baskerville">
+                      <i className="fa fa-clock-o" />
+                      {new Date(
+                        article.updated_at.replace(" ", "T")
+                      ).toUTCString()}
+                    </p>
+                  </small>
+                </div>
               </div>
             </div>
           </div>
@@ -145,7 +150,9 @@ class ArtworkResults extends React.Component {
       );
     });
 
-    if (this.state.loading) return <Loader />;
+    if (this.state.loading) {
+      return <Loader />;
+    }
     if (this.state.articles.length < 1) {
       return (
         <p className="help-block center-align">

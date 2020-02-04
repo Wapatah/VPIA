@@ -85,8 +85,9 @@ class EditTopic extends React.Component {
   }
 
   render() {
-    if (this.state.loading) return <Loader />;
-    else
+    if (this.state.loading) {
+      return <Loader />;
+    } else {
       return (
         <div>
           <StatusAlert />
@@ -132,6 +133,7 @@ class EditTopic extends React.Component {
           </div>
         </div>
       );
+    }
   }
 }
 

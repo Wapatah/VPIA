@@ -104,8 +104,9 @@ class EditUser extends React.Component {
 
   // Render user editing page
   render() {
-    if (this.state.loading) return <Loader />;
-    else
+    if (this.state.loading) {
+      return <Loader />;
+    } else {
       return (
         <div>
           <StatusAlert />
@@ -173,6 +174,7 @@ class EditUser extends React.Component {
           </div>
         </div>
       );
+    }
   }
 }
 

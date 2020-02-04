@@ -29,8 +29,9 @@ class ArticleHistory extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Renders the history page as well as the browse_archive and simple_article components.
   render() {
-    if (this.state.loading) return <Loader />;
-    else
+    if (this.state.loading) {
+      return <Loader />;
+    } else {
       return (
         <div>
           <div id="article-nav" className="container-fluid">
@@ -93,6 +94,7 @@ class ArticleHistory extends React.Component {
           </div>
         </div>
       );
+    }
   }
 }
 

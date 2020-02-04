@@ -49,7 +49,9 @@ class BrowseArchives extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Displays the left column of the Article history and lists all archives. Archive Pagination would happen here.
   render() {
-    if (this.state.loading) return <Loader />;
+    if (this.state.loading) {
+      return <Loader />;
+    }
     if (this.state.archives.length < 1) {
       return (
         <p className="help-block center-align">

@@ -135,8 +135,9 @@ class NewArticle extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Render the create article page
   render() {
-    if (this.state.loading) return <Loader />;
-    else
+    if (this.state.loading) {
+      return <Loader />;
+    } else {
       return (
         <div>
           <StatusAlert />
@@ -383,6 +384,7 @@ class NewArticle extends React.Component {
           </div>
         </div>
       );
+    }
   }
 }
 

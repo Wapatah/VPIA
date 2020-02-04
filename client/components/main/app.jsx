@@ -19,7 +19,7 @@ class App extends React.Component {
   Onload, If the user is not signed in, forcibly redirect them to the landing page.
 */
   componentWillMount() {
-    if (window.localStorage.getItem("userToken") == null) {
+    if (window.localStorage.getItem("userToken") === null) {
       hashHistory.push("landing");
     }
   }

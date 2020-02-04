@@ -74,8 +74,9 @@ class Search extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Displays results from the search query
   render() {
-    if (this.state.loading) return <Loader />;
-    else
+    if (this.state.loading) {
+      return <Loader />;
+    } else {
       return (
         <div className="content-container">
           <StatusAlert />
@@ -136,6 +137,7 @@ class Search extends React.Component {
           </div>
         </div>
       );
+    }
   }
 }
 

@@ -46,7 +46,9 @@ class Filters extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Displays the filter component with the search filters as dropdown
   render() {
-    if (this.state.loading) return <Loader />;
+    if (this.state.loading) {
+      return <Loader />;
+    }
     return (
       <div>
         <StatusAlert />

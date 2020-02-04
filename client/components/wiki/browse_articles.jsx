@@ -53,9 +53,11 @@ class BrowseArticles extends React.Component {
     var that = this;
     var url = "/api/articles";
 
-    if (nextProps.topicId == null && this.props.topicId == null)
-      var url = "/api/articles";
-    else var url = "/api/topic/" + nextProps.topicId + "/articles";
+    if (nextProps.topicId === null && this.props.topicId === null) {
+      url = "/api/articles";
+    } else {
+      url = "/api/topic/" + nextProps.topicId + "/articles";
+    }
 
     fetch(url, myInit)
       .then(function(response) {
@@ -74,7 +76,9 @@ class BrowseArticles extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Used to render the recent Articles based on recent updates as carousel
   render() {
-    if (this.state.loading) return <Loader />;
+    if (this.state.loading) {
+      return <Loader />;
+    }
     if (this.state.articles.length < 1) {
       return (
         <p className="help-block center-align">
