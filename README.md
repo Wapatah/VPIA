@@ -39,7 +39,7 @@ This platform uses a modified [Matterwiki](https://github.com/Matterwiki/Matterw
 Eslint is currently not fixing the JSX files in the app folder due to breaking changes and possible lack of backwards compatibility. We should fix this in the future but we must prioritize elsewhere.
 
 We have Travis setup for running builds in Linux, OSX and Windows. It is currently running on only the master branch.
-
+  
 ---
 
 ## Common Errors

@@ -244,7 +244,6 @@ class EditArticle extends React.Component {
                           quickbars_selection_toolbar: false
                         }}
                         onChange={editor => {
-                          let body = this.state.body;
                           this.setState({ body: editor.level.content });
                         }}
                       />
@@ -309,7 +308,6 @@ class EditArticle extends React.Component {
                                 quickbars_selection_toolbar: false
                               }}
                               onChange={editor => {
-                                let artwork_type = this.state.artwork_type;
                                 this.setState({
                                   artwork_type: editor.level.content
                                 });
@@ -332,7 +330,6 @@ class EditArticle extends React.Component {
                                 quickbars_selection_toolbar: false
                               }}
                               onChange={editor => {
-                                let culture_group = this.state.culture_group;
                                 this.setState({
                                   culture_group: editor.level.content
                                 });
@@ -355,7 +352,6 @@ class EditArticle extends React.Component {
                                 quickbars_selection_toolbar: false
                               }}
                               onChange={editor => {
-                                let material = this.state.material;
                                 this.setState({
                                   material: editor.level.content
                                 });
@@ -378,7 +374,6 @@ class EditArticle extends React.Component {
                                 quickbars_selection_toolbar: false
                               }}
                               onChange={editor => {
-                                let tags = this.state.tags;
                                 this.setState({
                                   tags: editor.level.content
                                 });
