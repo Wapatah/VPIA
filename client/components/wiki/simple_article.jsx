@@ -69,14 +69,6 @@ class SimpleArticle extends React.Component {
                 ></div>
               </div>
               <div className="single-article-meta">
-                License:
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.article[0].photo_license
-                  }}
-                ></div>
-              </div>
-              <div className="single-article-meta">
                 Type:{" "}
                 <div
                   dangerouslySetInnerHTML={{
@@ -97,6 +89,14 @@ class SimpleArticle extends React.Component {
                 <div
                   dangerouslySetInnerHTML={{
                     __html: this.state.article[0].culture_group
+                  }}
+                ></div>
+              </div>
+              <div className="single-article-meta">
+                Tags:{" "}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: this.state.article[0].tags
                   }}
                 ></div>
               </div>

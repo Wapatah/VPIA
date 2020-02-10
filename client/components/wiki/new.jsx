@@ -26,6 +26,7 @@ class NewArticle extends React.Component {
       culture_group: "",
       material: "",
       artwork_type: "",
+      tags: "",
       error: "",
       loading: true
     };
@@ -68,6 +69,7 @@ class NewArticle extends React.Component {
     var photo = this.state.photo;
     var institution = this.state.institution;
     var photo_license = this.state.photo_license;
+    let tags = this.state.tags;
 
     if (
       body &&
@@ -78,7 +80,8 @@ class NewArticle extends React.Component {
       artwork_type &&
       institution &&
       photo &&
-      photo_license
+      photo_license &&
+      tags
     ) {
       var myHeaders = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
@@ -101,6 +104,8 @@ class NewArticle extends React.Component {
           encodeURIComponent(artwork_type) +
           "&photo=" +
           encodeURIComponent(photo) +
+          "&tags=" +
+          encodeURIComponent(tags) +
           "&institution=" +
           encodeURIComponent(institution) +
           "&photo_license=" +
@@ -189,10 +194,7 @@ class NewArticle extends React.Component {
                     <br />
                     <h3>Body</h3>
                     <hr />
-                    <div
-                      id="article-photo"
-                      className="single-article-body"
-                    >
+                    <div id="article-photo" className="single-article-body">
                       <Editor
                         initialValue=""
                         init={{
@@ -206,7 +208,6 @@ class NewArticle extends React.Component {
                           quickbars_selection_toolbar: false
                         }}
                         onChange={editor => {
-                          let body = this.state.body;
                           this.setState({ body: editor.level.content });
                         }}
                       />
@@ -235,7 +236,6 @@ class NewArticle extends React.Component {
                             toolbar: "image | help"
                           }}
                           onChange={editor => {
-                            let photo = this.state.photo;
                             this.setState({ photo: editor.level.content });
                           }}
                         />
@@ -256,7 +256,6 @@ class NewArticle extends React.Component {
                                 quickbars_selection_toolbar: false
                               }}
                               onChange={editor => {
-                                let photo_license = this.state.photo_license;
                                 this.setState({
                                   photo_license: editor.level.content
                                 });
@@ -284,7 +283,6 @@ class NewArticle extends React.Component {
                                 quickbars_selection_toolbar: false
                               }}
                               onChange={editor => {
-                                let institution = this.state.insitution;
                                 this.setState({
                                   institution: editor.level.content
                                 });
@@ -307,7 +305,6 @@ class NewArticle extends React.Component {
                                 quickbars_selection_toolbar: false
                               }}
                               onChange={editor => {
-                                let artwork_type = this.state.artwork_type;
                                 this.setState({
                                   artwork_type: editor.level.content
                                 });
@@ -330,7 +327,6 @@ class NewArticle extends React.Component {
                                 quickbars_selection_toolbar: false
                               }}
                               onChange={editor => {
-                                let culture_group = this.state.culture_group;
                                 this.setState({
                                   culture_group: editor.level.content
                                 });
@@ -353,9 +349,30 @@ class NewArticle extends React.Component {
                                 quickbars_selection_toolbar: false
                               }}
                               onChange={editor => {
-                                let material = this.state.material;
                                 this.setState({
                                   material: editor.level.content
+                                });
+                              }}
+                            />
+                          </p>
+                        </li>
+
+                        <li className="list-group-item">
+                          <p id="FuturaStdHeavy">Tags</p>
+                          <p id="Baskerville">
+                            <Editor
+                              initialValue=""
+                              init={{
+                                inline: true,
+                                menubar: false,
+                                plugins: Config.plugins,
+                                toolbar: Config.toolbar,
+                                quickbars_insert_toolbar: false,
+                                quickbars_selection_toolbar: false
+                              }}
+                              onChange={editor => {
+                                this.setState({
+                                  tags: editor.level.content
                                 });
                               }}
                             />

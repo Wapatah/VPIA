@@ -48,7 +48,7 @@ module.exports = function(app) {
             err,
             result
           ) {
-            if (result == true) {
+            if (result === true) {
               var token = jwt.sign(user, app.get("superSecret"), {
                 expiresIn: 86400
               });

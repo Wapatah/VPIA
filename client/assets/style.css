@@ -189,7 +189,7 @@ textarea:active,
 input:active,
 textarea:focus,
 input:focus {
-  outline: 0px !important;
+  outline: 0px;
   -webkit-appearance: none;
 }
 
@@ -446,7 +446,7 @@ textarea {
 
 .search-button {
   color: white;
-  background-color: transparent !important;
+  background-color: transparent;
 }
 
 .search-button:hover,
@@ -517,7 +517,7 @@ input[type="file"] {
 }
 
 a.btn-text {
-  color: #343638 !important;
+  color: #343638;
   text-decoration: none;
 }
 
@@ -823,6 +823,29 @@ select {
 
 #search-bar.input-group {
   border-bottom: 2px solid white;
+  z-index: 100;
+}
+.SearchOverlay-focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #333;
+  opacity: 0.5;
+  z-index: 10;
+  display: block;
+}
+.SearchOverlay-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #333;
+  opacity: 0.5;
+  z-index: 10;
+  display: none;
 }
 
 input#line[type="text"]:focus,
@@ -833,6 +856,10 @@ input#line[type="text"]:focus,
 
 #line::placeholder {
   color: white;
+}
+#line {
+  z-index: 1000000;
+  position: relative;
 }
 
 input#line[type="text"]:focus::-webkit-input-placeholder {
@@ -850,10 +877,9 @@ input#line[type="text"]:focus::-moz-placeholder {
 input#line:focus:-ms-input-placeholder {
   color: #d0cfcd87;
 } /* oldIE ;) */
-
 ul.social-network {
   list-style: none;
-  margin-left: 0 !important;
+  margin-left: 0;
   padding: 0;
   display: flex;
   flex-direction: row;
@@ -1039,10 +1065,7 @@ ul.social-network li {
 #About-info-section {
   background: #d60812 0% 0% no-repeat padding-box;
   opacity: 1;
-  padding-left: 10em;
-  padding-right: 10em;
-  padding-top: 2em;
-  padding-bottom: 5em;
+  padding: 2em, 10em, 5em, 10em; 
 }
 
 #About-bottom-content {
