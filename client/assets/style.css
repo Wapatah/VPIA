@@ -446,12 +446,14 @@ textarea {
 
 .search-button {
   color: white;
+  background-color: transparent;
 }
 
 .search-button:hover,
 .search-button:active,
 .search-button:focus {
   color: #75777b;
+  background-color: #595959;
 }
 
 .search-input {
@@ -489,6 +491,10 @@ textarea {
 /* hide no file select alert */
 input[type="file"] {
   display: none;
+}
+
+.search-button {
+  background-color: white;
 }
 
 .row-centered {
@@ -1059,7 +1065,7 @@ ul.social-network li {
 #About-info-section {
   background: #d60812 0% 0% no-repeat padding-box;
   opacity: 1;
-  padding: 2em, 10em, 5em, 10em;
+  padding: 2em, 10em, 5em, 10em; 
 }
 
 #About-bottom-content {
@@ -1121,15 +1127,15 @@ ul.social-network li {
   padding-right: 15px;
 }
 
-.tox-statusbar__branding {
+.tox-statusbar__branding{
   display: none;
 }
 
-.tox-notifications-container {
+.tox-notifications-container{
   display: none;
 }
 
-.tox-statusbar__wordcount {
+.tox-statusbar__wordcount{
   display: none;
 }
 
