@@ -446,6 +446,12 @@ textarea {
 
 .search-button {
   color: white;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
 }
 
 .search-button:hover,
