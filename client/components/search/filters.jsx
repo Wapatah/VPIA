@@ -52,42 +52,34 @@ class Filters extends React.Component {
   render() {
     if (this.state.loading) return <Loader />;
     // --------------------------------------------------------------------------------------------------------------------------------------------
-    //group data of each catergrize and caculate how many is each one
+    //group data of each catergrize and caculate how many is each one by sepreate into two arrays
     let groupByCultureGroup = this.state.articles.reduce((acc, it) => {
       acc[it.culture_group] = acc[it.culture_group] + 1 || 1;
       return acc;
     }, {});
-
     let filteredCultureGroup = Object.keys(groupByCultureGroup);
     let cultureGroupCount = Object.values(groupByCultureGroup);
 
-    //const { filteredCultureGroup, cultureGroupCount } = this.state;
-    // var newCultureGroup = {
-    //   culturename: filteredCultureGroup,
-    //   culturenum: cultureGroupCount
-    // };
-
-    //console.log(newarray);
-    // console.log(filteredCultureGroup);
-    // console.log(cultureGroupCount);
-
-    const groupByArtworkType = this.state.articles.reduce((acc, it) => {
+    let groupByArtworkType = this.state.articles.reduce((acc, it) => {
       acc[it.artwork_type] = acc[it.artwork_type] + 1 || 1;
       return acc;
     }, {});
-    //console.log(groupByArtworkType);
+    let filteredArtworkType = Object.keys(groupByArtworkType);
+    let artworkTypeCount = Object.values(groupByArtworkType);
 
-    const groupByMaterial = this.state.articles.reduce((acc, it) => {
+    let groupByMaterial = this.state.articles.reduce((acc, it) => {
       acc[it.material] = acc[it.material] + 1 || 1;
       return acc;
     }, {});
-    //console.log(groupByMaterial);
+    let filteredMaterial = Object.keys(groupByMaterial);
+    let materialCount = Object.values(groupByMaterial);
 
-    const groupByInstitution = this.state.articles.reduce((acc, it) => {
+    let groupByInstitution = this.state.articles.reduce((acc, it) => {
       acc[it.institution] = acc[it.institution] + 1 || 1;
       return acc;
     }, {});
-    //console.log(groupByInstitution);
+    let filteredInstitution = Object.keys(groupByInstitution);
+    let institutionCount = Object.values(groupByInstitution);
 
     return (
       <div>
@@ -105,12 +97,12 @@ class Filters extends React.Component {
           </button>
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a key={newCultureGroup} href="#" className="dropdown-item">
-              {filteredCultureGroup.map(culturegroup => (
+            <a key={filteredCultureGroup} href="#" className="dropdown-item">
+              {filteredCultureGroup.map((culturegroup, i) => (
                 <h4 className="list-group-item-heading" key={culturegroup}>
                   {culturegroup}
-                  <span class="badge badge-primary badge-pill">
-                    {culturegroup.culturenum}
+                  <span className="badge badge-primary badge-pill">
+                    {cultureGroupCount[i]}
                   </span>
                 </h4>
               ))}
@@ -130,10 +122,18 @@ class Filters extends React.Component {
             Artwork Type
           </button>
 
-          <div
-            className="dropdown-menu"
-            aria-labelledby="dropdownMenuButton"
-          ></div>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a key={filteredArtworkType} href="#" className="dropdown-item">
+              {filteredArtworkType.map((artworktype, i) => (
+                <h4 className="list-group-item-heading" key={artworktype}>
+                  {artworktype}
+                  <span className="badge badge-primary badge-pill">
+                    {artworkTypeCount[i]}
+                  </span>
+                </h4>
+              ))}
+            </a>
+          </div>
         </div>
 
         <div className="dropdown">
@@ -148,10 +148,18 @@ class Filters extends React.Component {
             Material
           </button>
 
-          <div
-            className="dropdown-menu"
-            aria-labelledby="dropdownMenuButton"
-          ></div>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a key={filteredMaterial} href="#" className="dropdown-item">
+              {filteredMaterial.map((material, i) => (
+                <h4 className="list-group-item-heading" key={material}>
+                  {material}
+                  <span className="badge badge-primary badge-pill">
+                    {materialCount[i]}
+                  </span>
+                </h4>
+              ))}
+            </a>
+          </div>
         </div>
 
         <div className="dropdown">
@@ -166,10 +174,18 @@ class Filters extends React.Component {
             Holding Institution
           </button>
 
-          <div
-            className="dropdown-menu"
-            aria-labelledby="dropdownMenuButton"
-          ></div>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a key={filteredInstitution} href="#" className="dropdown-item">
+              {filteredInstitution.map((institution, i) => (
+                <h4 className="list-group-item-heading" key={institution}>
+                  {institution}
+                  <span className="badge badge-primary badge-pill">
+                    {institutionCount[i]}
+                  </span>
+                </h4>
+              ))}
+            </a>
+          </div>
         </div>
       </div>
     );
