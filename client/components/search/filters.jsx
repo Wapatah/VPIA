@@ -97,16 +97,16 @@ class Filters extends React.Component {
           </button>
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a key={filteredCultureGroup} href="#" className="dropdown-item">
-              {filteredCultureGroup.map((culturegroup, i) => (
+            {filteredCultureGroup.map((culturegroup, i) => (
+              <a key={culturegroup} href="#" className="dropdown-item">
                 <h4 className="list-group-item-heading" key={culturegroup}>
                   {culturegroup}
                   <span className="badge badge-primary badge-pill">
                     {cultureGroupCount[i]}
                   </span>
                 </h4>
-              ))}
-            </a>
+              </a>
+            ))}
           </div>
         </div>
 
@@ -123,16 +123,16 @@ class Filters extends React.Component {
           </button>
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a key={filteredArtworkType} href="#" className="dropdown-item">
-              {filteredArtworkType.map((artworktype, i) => (
+            {filteredArtworkType.map((artworktype, i) => (
+              <a key={artworktype} href="#" className="dropdown-item">
                 <h4 className="list-group-item-heading" key={artworktype}>
                   {artworktype}
                   <span className="badge badge-primary badge-pill">
                     {artworkTypeCount[i]}
                   </span>
                 </h4>
-              ))}
-            </a>
+              </a>
+            ))}
           </div>
         </div>
 
@@ -149,16 +149,16 @@ class Filters extends React.Component {
           </button>
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a key={filteredMaterial} href="#" className="dropdown-item">
-              {filteredMaterial.map((material, i) => (
+            {filteredMaterial.map((material, i) => (
+              <a key={material} href="#" className="dropdown-item">
                 <h4 className="list-group-item-heading" key={material}>
                   {material}
                   <span className="badge badge-primary badge-pill">
                     {materialCount[i]}
                   </span>
                 </h4>
-              ))}
-            </a>
+              </a>
+            ))}
           </div>
         </div>
 
@@ -175,16 +175,16 @@ class Filters extends React.Component {
           </button>
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a key={filteredInstitution} href="#" className="dropdown-item">
-              {filteredInstitution.map((institution, i) => (
+            {filteredInstitution.map((institution, i) => (
+              <a key={institution} href="#" className="dropdown-item">
                 <h4 className="list-group-item-heading" key={institution}>
                   {institution}
                   <span className="badge badge-primary badge-pill">
                     {institutionCount[i]}
                   </span>
                 </h4>
-              ))}
-            </a>
+              </a>
+            ))}
           </div>
         </div>
       </div>
