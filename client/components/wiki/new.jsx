@@ -246,8 +246,9 @@ class NewArticle extends React.Component {
                           License
                           <p id="Baskerville">
                             <Editor
-                              initialValue="<i>License for the main image</i>"
+                              initialValue="License for the main image"
                               init={{
+                                forced_root_block: "",
                                 inline: true,
                                 menubar: false,
                                 plugins: Config.plugins,
@@ -273,8 +274,9 @@ class NewArticle extends React.Component {
                           <p id="FuturaStdHeavy">Holding Institution</p>
                           <p id="Baskerville">
                             <Editor
-                              initialValue="<i>Where the artwork currently resides</i>"
+                              initialValue="Where the artwork currently resides"
                               init={{
+                                forced_root_block: "",
                                 inline: true,
                                 menubar: false,
                                 plugins: Config.plugins,
@@ -295,8 +297,9 @@ class NewArticle extends React.Component {
                           <p id="FuturaStdHeavy">Type</p>
                           <p id="Baskerville">
                             <Editor
-                              initialValue="<i>e.g. pipe, sculpture, etc.</i>"
+                              initialValue="e.g. pipe, sculpture, etc."
                               init={{
+                                forced_root_block: "",
                                 inline: true,
                                 menubar: false,
                                 plugins: Config.plugins,
@@ -317,8 +320,9 @@ class NewArticle extends React.Component {
                           <p id="FuturaStdHeavy">Culture Group</p>
                           <p id="Baskerville">
                             <Editor
-                              initialValue="<i>Cultural Group the Artwork belongs to</i>"
+                              initialValue="Cultural Group the Artwork belongs to"
                               init={{
+                                forced_root_block: "",
                                 inline: true,
                                 menubar: false,
                                 plugins: Config.plugins,
@@ -339,8 +343,9 @@ class NewArticle extends React.Component {
                           <p id="FuturaStdHeavy">Material</p>
                           <p id="Baskerville">
                             <Editor
-                              initialValue="<i>e.g. argilite, silver, etc.</i>"
+                              initialValue="e.g. argilite, silver, etc."
                               init={{
+                                forced_root_block: "",
                                 inline: true,
                                 menubar: false,
                                 plugins: Config.plugins,
@@ -363,6 +368,7 @@ class NewArticle extends React.Component {
                             <Editor
                               initialValue=""
                               init={{
+                                forced_root_block: "",
                                 inline: true,
                                 menubar: false,
                                 plugins: Config.plugins,

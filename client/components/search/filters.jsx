@@ -97,14 +97,18 @@ class Filters extends React.Component {
           </button>
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {filteredCultureGroup.map((culturegroup, i) => (
-              <a key={culturegroup} href="#" className="dropdown-item">
-                <h4 className="list-group-item-heading" key={culturegroup}>
-                  {culturegroup}
-                  <span className="badge badge-primary badge-pill">
-                    {cultureGroupCount[i]}
-                  </span>
-                </h4>
+            {filteredCultureGroup.map((cultureGroup, i) => (
+              <a key={cultureGroup} href="#" className="dropdown-item">
+                <h4
+                  key={cultureGroup}
+                  className="d-inline"
+                  dangerouslySetInnerHTML={{
+                    __html: cultureGroup
+                  }}
+                ></h4>
+                <span className="d-inline badge badge-primary badge-pill">
+                  {cultureGroupCount[i]}
+                </span>
               </a>
             ))}
           </div>
@@ -123,14 +127,18 @@ class Filters extends React.Component {
           </button>
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {filteredArtworkType.map((artworktype, i) => (
-              <a key={artworktype} href="#" className="dropdown-item">
-                <h4 className="list-group-item-heading" key={artworktype}>
-                  {artworktype}
-                  <span className="badge badge-primary badge-pill">
-                    {artworkTypeCount[i]}
-                  </span>
-                </h4>
+            {filteredArtworkType.map((artworkType, i) => (
+              <a key={artworkType} href="#" className="dropdown-item">
+                <h4
+                  key={artworkType}
+                  className="d-inline"
+                  dangerouslySetInnerHTML={{
+                    __html: artworkType
+                  }}
+                ></h4>
+                <span className="d-inline badge badge-primary badge-pill">
+                  {artworkTypeCount[i]}
+                </span>
               </a>
             ))}
           </div>
@@ -151,12 +159,16 @@ class Filters extends React.Component {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredMaterial.map((material, i) => (
               <a key={material} href="#" className="dropdown-item">
-                <h4 className="list-group-item-heading" key={material}>
-                  {material}
-                  <span className="badge badge-primary badge-pill">
-                    {materialCount[i]}
-                  </span>
-                </h4>
+                <h4
+                  key={material}
+                  className="d-inline"
+                  dangerouslySetInnerHTML={{
+                    __html: material
+                  }}
+                ></h4>
+                <span className="d-inline badge badge-primary badge-pill">
+                  {materialCount[i]}
+                </span>
               </a>
             ))}
           </div>
@@ -177,12 +189,16 @@ class Filters extends React.Component {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredInstitution.map((institution, i) => (
               <a key={institution} href="#" className="dropdown-item">
-                <h4 className="list-group-item-heading" key={institution}>
-                  {institution}
-                  <span className="badge badge-primary badge-pill">
-                    {institutionCount[i]}
-                  </span>
-                </h4>
+                <h4
+                  key={institution}
+                  className="d-inline"
+                  dangerouslySetInnerHTML={{
+                    __html: institution
+                  }}
+                ></h4>
+                <span className="d-inline badge badge-primary badge-pill">
+                  {institutionCount[i]}
+                </span>
               </a>
             ))}
           </div>
