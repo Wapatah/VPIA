@@ -9,7 +9,11 @@ class Filters extends React.Component {
   constructor(props) {
     super(props);
     this.articleSelect = this.articleSelect.bind(this);
-    this.state = { articles: [], material: "", loading: true };
+    this.state = {
+      articles: [],
+      material: "",
+      loading: true
+    };
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -47,6 +51,36 @@ class Filters extends React.Component {
   // Displays the filter component with the search filters as dropdown
   render() {
     if (this.state.loading) return <Loader />;
+    // --------------------------------------------------------------------------------------------------------------------------------------------
+    //group data of each catergrize and caculate how many is each one by sepreate into two arrays
+    let groupByCultureGroup = this.state.articles.reduce((acc, it) => {
+      acc[it.culture_group] = acc[it.culture_group] + 1 || 1;
+      return acc;
+    }, {});
+    let filteredCultureGroup = Object.keys(groupByCultureGroup);
+    let cultureGroupCount = Object.values(groupByCultureGroup);
+
+    let groupByArtworkType = this.state.articles.reduce((acc, it) => {
+      acc[it.artwork_type] = acc[it.artwork_type] + 1 || 1;
+      return acc;
+    }, {});
+    let filteredArtworkType = Object.keys(groupByArtworkType);
+    let artworkTypeCount = Object.values(groupByArtworkType);
+
+    let groupByMaterial = this.state.articles.reduce((acc, it) => {
+      acc[it.material] = acc[it.material] + 1 || 1;
+      return acc;
+    }, {});
+    let filteredMaterial = Object.keys(groupByMaterial);
+    let materialCount = Object.values(groupByMaterial);
+
+    let groupByInstitution = this.state.articles.reduce((acc, it) => {
+      acc[it.institution] = acc[it.institution] + 1 || 1;
+      return acc;
+    }, {});
+    let filteredInstitution = Object.keys(groupByInstitution);
+    let institutionCount = Object.values(groupByInstitution);
+
     return (
       <div>
         <StatusAlert />
@@ -63,19 +97,14 @@ class Filters extends React.Component {
           </button>
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {this.state.articles.map(article => (
-              <a
-                key={article.culture_group}
-                href="#"
-                className="dropdown-item"
-                onClick={e => this.articleSelect(article.culture_group, e)}
-              >
-                <h4
-                  className="list-group-item-heading"
-                  dangerouslySetInnerHTML={{
-                    __html: article.culture_group
-                  }}
-                />
+            {filteredCultureGroup.map((culturegroup, i) => (
+              <a key={culturegroup} href="#" className="dropdown-item">
+                <h4 className="list-group-item-heading" key={culturegroup}>
+                  {culturegroup}
+                  <span className="badge badge-primary badge-pill">
+                    {cultureGroupCount[i]}
+                  </span>
+                </h4>
               </a>
             ))}
           </div>
@@ -94,19 +123,14 @@ class Filters extends React.Component {
           </button>
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {this.state.articles.map(article => (
-              <a
-                key={article.artwork_type}
-                href="#"
-                className="dropdown-item"
-                onClick={e => this.articleSelect(article.artwork_type, e)}
-              >
-                <h4
-                  className="list-group-item-heading"
-                  dangerouslySetInnerHTML={{
-                    __html: article.artwork_type
-                  }}
-                />
+            {filteredArtworkType.map((artworktype, i) => (
+              <a key={artworktype} href="#" className="dropdown-item">
+                <h4 className="list-group-item-heading" key={artworktype}>
+                  {artworktype}
+                  <span className="badge badge-primary badge-pill">
+                    {artworkTypeCount[i]}
+                  </span>
+                </h4>
               </a>
             ))}
           </div>
@@ -125,19 +149,14 @@ class Filters extends React.Component {
           </button>
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {this.state.articles.map(article => (
-              <a
-                key={article.material}
-                href="#"
-                className="dropdown-item"
-                onClick={e => this.articleSelect(article.material, e)}
-              >
-                <h4
-                  className="list-group-item-heading"
-                  dangerouslySetInnerHTML={{
-                    __html: article.material
-                  }}
-                />
+            {filteredMaterial.map((material, i) => (
+              <a key={material} href="#" className="dropdown-item">
+                <h4 className="list-group-item-heading" key={material}>
+                  {material}
+                  <span className="badge badge-primary badge-pill">
+                    {materialCount[i]}
+                  </span>
+                </h4>
               </a>
             ))}
           </div>
@@ -156,19 +175,14 @@ class Filters extends React.Component {
           </button>
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {this.state.articles.map(article => (
-              <a
-                key={article.institution}
-                href="#"
-                className="dropdown-item"
-                onClick={e => this.articleSelect(article.institution, e)}
-              >
-                <h4
-                  className="list-group-item-heading"
-                  dangerouslySetInnerHTML={{
-                    __html: article.institution
-                  }}
-                />
+            {filteredInstitution.map((institution, i) => (
+              <a key={institution} href="#" className="dropdown-item">
+                <h4 className="list-group-item-heading" key={institution}>
+                  {institution}
+                  <span className="badge badge-primary badge-pill">
+                    {institutionCount[i]}
+                  </span>
+                </h4>
               </a>
             ))}
           </div>

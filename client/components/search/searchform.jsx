@@ -36,7 +36,7 @@ class SearchForm extends React.Component {
           <div className="input-group-append">
             <button
               type="submit"
-              className="btn search-button"
+              className="search-button"
               aria-label="Search Button"
             >
               <i className="fa fa-search"></i>
