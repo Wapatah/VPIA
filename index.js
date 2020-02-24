@@ -12,7 +12,6 @@ var fs = require("fs"); // eslint-disable-line
 var apiRoutes = express.Router();
 var apiRoutesAdmin = express.Router();
 var jwt = require("jsonwebtoken");
-var config = require("./config/config"); // JWT key - DO NOT PUBLICIZE THIS IF USING IN PRODUCTION.
 
 // Loading and mapping data model relationships - allows jumping between NoSQL and SQL.
 var relations = require("./models/relations");
@@ -29,7 +28,7 @@ if (process.env.NODE_ENV !== "production") {
   require("./config/webpack-middleware")(app);
 }
 
-app.set("superSecret", config.auth_secret); // Secret variable
+app.set("superSecret", process.env.AUTH_SECRET); // Secret variable, set in Jenkins env variables
 
 // Using the body parser middleware to parse request body
 app.use(bodyParser.urlencoded({ extended: true }));

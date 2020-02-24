@@ -6,7 +6,11 @@ pipeline {
         }
     }
     environment {
-        CI = 'true' 
+        CI = 'true'
+        DB_HOST = 'localhost'
+        DB_USERNAME = 'root'
+        DB_PASSWORD = 'Wapatah1'
+        DB_DATABASE = "wapataho_vpia" 
     }
     stages {
         stage('Build') { 
@@ -16,7 +20,10 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh './jenkins/scripts/deliver.sh'
+                docker.image('mysql/mysql-server:latest').withRun('-e "MYSQL_ROOT_PASSWORD=Wapatah1" -p 3306:3306') {
+                    sh 'while ! mysqladmin ping -h0.0.0.0 --silent; do sleep 1; done'
+                    sh './jenkins/scripts/deliver.sh'
+                }
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/kill.sh'
             }
