@@ -4,6 +4,7 @@
 import React from "react";
 import Loader from "../helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+import { hashHistory } from "react-router";
 
 class Filters extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class Filters extends React.Component {
       material: "",
       loading: true
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -45,6 +47,13 @@ class Filters extends React.Component {
   articleSelect(material, e) {
     e.preventDefault();
     this.props.articleChange(this.state.material);
+  }
+
+  handleChange(event) {
+    var str = JSON.stringify(event.currentTarget.id);
+    var newstr = str.replace(/(<p>|<\/p>)/g, "");
+    var results = "/search?query=" + newstr;
+    hashHistory.push(results);
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -98,9 +107,16 @@ class Filters extends React.Component {
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredCultureGroup.map((cultureGroup, i) => (
-              <a key={cultureGroup} href="#" className="dropdown-item">
+              <button
+                id={cultureGroup}
+                key={cultureGroup}
+                type="button"
+                className="dropdown-item"
+                onClick={this.handleChange}
+              >
                 <h4
                   key={cultureGroup}
+                  id={cultureGroup}
                   className="d-inline"
                   dangerouslySetInnerHTML={{
                     __html: cultureGroup
@@ -109,7 +125,7 @@ class Filters extends React.Component {
                 <span className="d-inline badge badge-primary badge-pill">
                   {cultureGroupCount[i]}
                 </span>
-              </a>
+              </button>
             ))}
           </div>
         </div>
@@ -128,7 +144,7 @@ class Filters extends React.Component {
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredArtworkType.map((artworkType, i) => (
-              <a key={artworkType} href="#" className="dropdown-item">
+              <button key={artworkType} type="button" className="dropdown-item">
                 <h4
                   key={artworkType}
                   className="d-inline"
@@ -139,7 +155,7 @@ class Filters extends React.Component {
                 <span className="d-inline badge badge-primary badge-pill">
                   {artworkTypeCount[i]}
                 </span>
-              </a>
+              </button>
             ))}
           </div>
         </div>
@@ -158,7 +174,7 @@ class Filters extends React.Component {
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredMaterial.map((material, i) => (
-              <a key={material} href="#" className="dropdown-item">
+              <button key={material} type="button" className="dropdown-item">
                 <h4
                   key={material}
                   className="d-inline"
@@ -169,7 +185,7 @@ class Filters extends React.Component {
                 <span className="d-inline badge badge-primary badge-pill">
                   {materialCount[i]}
                 </span>
-              </a>
+              </button>
             ))}
           </div>
         </div>
@@ -188,7 +204,7 @@ class Filters extends React.Component {
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredInstitution.map((institution, i) => (
-              <a key={institution} href="#" className="dropdown-item">
+              <button key={institution} type="button" className="dropdown-item">
                 <h4
                   key={institution}
                   className="d-inline"
@@ -199,7 +215,7 @@ class Filters extends React.Component {
                 <span className="d-inline badge badge-primary badge-pill">
                   {institutionCount[i]}
                 </span>
-              </a>
+              </button>
             ))}
           </div>
         </div>
