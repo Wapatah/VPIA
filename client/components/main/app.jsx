@@ -55,7 +55,7 @@ class App extends React.Component {
     return (
       <div>
         <StatusAlert />
-        <nav className="navbar navbar-expand-md mainheader">
+        <nav className="navbar navbar-expand-lg navbar-light mainheader">
           <div
             class="alert alert-secondary alert-dismissible fade show"
             role="alert"
@@ -74,44 +74,64 @@ class App extends React.Component {
             </button>
           </div>
           {window.localStorage.getItem("userToken") ? (
-            <div className="navbar">
-              <button
-                type="button"
-                className="navbar-toggler"
-                data-toggle="collapse"
-                data-target="#collapsibleNavbar"
-              >
-                <span className="sr-only">Toggle navigation</span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-              </button>
-            </div>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
           ) : (
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item px-2">
-                  <button
-                    type="button"
-                    className="btn btn-outline-light btn-round"
-                  >
-                    <Link to="user_signup" className="none-deco">
-                      Join Now!
-                    </Link>
-                  </button>
-                </li>
-                <li className="nav-item">
-                  <button type="button" className="btn btn-secondary btn-round">
-                    <Link to="login" className="btn-text">
-                      Sign In
-                    </Link>
-                  </button>
-                </li>
-              </ul>
+            <div>
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div
+                className="collapse navbar-collapse"
+                id="navbarSupportedContent"
+              >
+                <ul className="navbar-nav ml-auto">
+                  <li className="nav-item px-2">
+                    <button
+                      type="button"
+                      className="btn btn-outline-light btn-round"
+                    >
+                      <Link to="user_signup" className="none-deco">
+                        Join Now!
+                      </Link>
+                    </button>
+                  </li>
+                  <li className="nav-item px-2">
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-round"
+                    >
+                      <Link to="login" className="btn-text">
+                        Sign In
+                      </Link>
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
           )}
           {window.localStorage.getItem("userToken") ? (
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
               <ul className="navbar-nav ml-auto">
                 {window.localStorage.getItem("admin") === "1" ? (
                   <li className="nav-item px-2">
@@ -134,7 +154,7 @@ class App extends React.Component {
                     </Link>
                   </button>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item px-2">
                   <button type="button" className="btn btn-secondary btn-round">
                     <a href="" className="btn-text" onClick={this.handleLogout}>
                       Logout
