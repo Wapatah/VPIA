@@ -160,7 +160,7 @@ class App extends React.Component {
               <div id="full-page" className="row justify-content-between">
                 <div className="col-md-3">
                   <div className="row">
-                    <div className="col-4">
+                    <div className="col-lg-4">
                       <img
                         id="footer-logo"
                         src="../assets/images/VPIA-logo-white.png"
@@ -169,7 +169,7 @@ class App extends React.Component {
                       ></img>
                     </div>
 
-                    <div className="col-6 align-self-center footer-list">
+                    <div className="col-lg-6 align-self-center footer-list">
                       <ul className="footer_ul">
                         <li>
                           <a href="">About</a>
@@ -194,7 +194,7 @@ class App extends React.Component {
                   </div>
                 </div>
 
-                <div className="col-3">
+                <div className="col-lg-3">
                   <div className="social-icons">
                     <ul className="social-network">
                       <li>
@@ -244,7 +244,7 @@ class App extends React.Component {
           <div className="footer-lightgrey">
             <div className="container bottom_border">
               <div className="row">
-                <div className="col">
+                <div className="col col-lg">
                   <p className="acknowledge-text">
                     We acknowledge the support of the Canada Council for the
                     Arts.
@@ -256,7 +256,7 @@ class App extends React.Component {
                     aria-label="CCA logo"
                   />
                 </div>
-                <div className="col">
+                <div className="col col-lg">
                   <img
                     src="../assets/images/Wapatah-logo-white.png"
                     alt="Wapatah logo"
@@ -264,7 +264,7 @@ class App extends React.Component {
                     aria-label="Wapatah logo"
                   />
                 </div>
-                <div className="col">
+                <div className="col col-lg">
                   <img
                     src="../assets/images/CFI-logo.png"
                     alt="CFI logo"
@@ -272,7 +272,7 @@ class App extends React.Component {
                     aria-label="CFI logo"
                   />
                 </div>
-                <div className="col">
+                <div className="col col-lg">
                   <img
                     src="../assets/images/Onsite-logo.png"
                     alt="Onsite logo"
@@ -280,7 +280,7 @@ class App extends React.Component {
                     aria-label="Onsite logo"
                   />
                 </div>
-                <div className="col">
+                <div className="col col-lg">
                   <img
                     src="../assets/images/OCAD-University-Logo.png"
                     alt="OCAD logo"

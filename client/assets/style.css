@@ -251,48 +251,6 @@ textarea {
   width: 100%;
 }
 
-@media (min-width: 768px) {
-  .modal-fullscreen .modal-dialog {
-    width: 750px;
-  }
-}
-
-@media (min-width: 992px) {
-  .modal-fullscreen .modal-dialog {
-    width: 970px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .modal-fullscreen .modal-dialog {
-    width: 1170px;
-  }
-  #VPIA-intro.jumbotron {
-    padding-left: 17%;
-  }
-  #VPIA-intro-right.col-4 {
-    padding-right: 10%;
-  }
-}
-@media (min-width: 2560px) {
-  #VPIA-intro.col-8 {
-    -ms-flex: 0 0 58.333333%;
-    flex: 0 0 58.333333%;
-    max-width: 58.333333%;
-  }
-  #VPIA-intro-right.col-4 {
-    -ms-flex: 0 0 41.666667%;
-    flex: 0 0 41.666667%;
-    max-width: 41.666667%;
-  }
-  #VPIA-intro.jumbotron {
-    padding-left: 48%;
-  }
-  #VPIA-intro-right.col-4 {
-    padding-right: 28%;
-  }
-}
-
 .modal-fullscreen .col-md-6 {
   float: none;
 }
@@ -1142,4 +1100,70 @@ ul.social-network li {
 .edit-indicator *[contentEditable="true"]:hover {
   outline: 1px solid #2276d2;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 425px) {
+  #mainlogo {
+    top: 0;
+    margin-bottom: 20%;
+  }
+
+  #VPIA-intro-right {
+    padding: 10%;
+  }
+  #VPIA-intro p {
+    margin: 3%;
+  }
+
+  .intro-content {
+    top: 5em;
+  }
+  #function-intro {
+    height: auto;
+  }
+  .footer-lightgrey {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (min-width: 768px) {
+  .modal-fullscreen .modal-dialog {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-fullscreen .modal-dialog {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal-fullscreen .modal-dialog {
+    width: 1170px;
+  }
+  #VPIA-intro.jumbotron {
+    padding-left: 17%;
+  }
+  #VPIA-intro-right.col-4 {
+    padding-right: 10%;
+  }
+}
+@media (min-width: 2560px) {
+  #VPIA-intro.col-8 {
+    -ms-flex: 0 0 58.333333%;
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+  }
+  #VPIA-intro-right.col-4 {
+    -ms-flex: 0 0 41.666667%;
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+  }
+  #VPIA-intro.jumbotron {
+    padding-left: 48%;
+  }
+  #VPIA-intro-right.col-4 {
+    padding-right: 28%;
+  }
 }
