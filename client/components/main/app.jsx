@@ -55,7 +55,7 @@ class App extends React.Component {
     return (
       <div>
         <StatusAlert />
-        <nav className="navbar navbar-expand-md mainheader">
+        <nav className="navbar navbar-expand-lg navbar-light mainheader">
           <div
             class="alert alert-secondary alert-dismissible fade show"
             role="alert"
@@ -74,44 +74,64 @@ class App extends React.Component {
             </button>
           </div>
           {window.localStorage.getItem("userToken") ? (
-            <div className="navbar">
-              <button
-                type="button"
-                className="navbar-toggler"
-                data-toggle="collapse"
-                data-target="#collapsibleNavbar"
-              >
-                <span className="sr-only">Toggle navigation</span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-              </button>
-            </div>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
           ) : (
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item px-2">
-                  <button
-                    type="button"
-                    className="btn btn-outline-light btn-round"
-                  >
-                    <Link to="user_signup" className="none-deco">
-                      Join Now!
-                    </Link>
-                  </button>
-                </li>
-                <li className="nav-item">
-                  <button type="button" className="btn btn-secondary btn-round">
-                    <Link to="login" className="btn-text">
-                      Sign In
-                    </Link>
-                  </button>
-                </li>
-              </ul>
+            <div>
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div
+                className="collapse navbar-collapse"
+                id="navbarSupportedContent"
+              >
+                <ul className="navbar-nav ml-auto">
+                  <li className="nav-item px-2">
+                    <button
+                      type="button"
+                      className="btn btn-outline-light btn-round"
+                    >
+                      <Link to="user_signup" className="none-deco">
+                        Join Now!
+                      </Link>
+                    </button>
+                  </li>
+                  <li className="nav-item px-2">
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-round"
+                    >
+                      <Link to="login" className="btn-text">
+                        Sign In
+                      </Link>
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
           )}
           {window.localStorage.getItem("userToken") ? (
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
               <ul className="navbar-nav ml-auto">
                 {window.localStorage.getItem("admin") === "1" ? (
                   <li className="nav-item px-2">
@@ -134,7 +154,7 @@ class App extends React.Component {
                     </Link>
                   </button>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item px-2">
                   <button type="button" className="btn btn-secondary btn-round">
                     <a href="" className="btn-text" onClick={this.handleLogout}>
                       Logout
@@ -160,7 +180,7 @@ class App extends React.Component {
               <div id="full-page" className="row justify-content-between">
                 <div className="col-md-3">
                   <div className="row">
-                    <div className="col-4">
+                    <div className="col-lg-4">
                       <img
                         id="footer-logo"
                         src="../assets/images/VPIA-logo-white.png"
@@ -169,7 +189,7 @@ class App extends React.Component {
                       ></img>
                     </div>
 
-                    <div className="col-6 align-self-center footer-list">
+                    <div className="col-lg-6 align-self-center footer-list">
                       <ul className="footer_ul">
                         <li>
                           <a href="">About</a>
@@ -194,7 +214,7 @@ class App extends React.Component {
                   </div>
                 </div>
 
-                <div className="col-3">
+                <div className="col-lg-3">
                   <div className="social-icons">
                     <ul className="social-network">
                       <li>
@@ -244,7 +264,7 @@ class App extends React.Component {
           <div className="footer-lightgrey">
             <div className="container bottom_border">
               <div className="row">
-                <div className="col">
+                <div className="col col-lg">
                   <p className="acknowledge-text">
                     We acknowledge the support of the Canada Council for the
                     Arts.
@@ -256,7 +276,7 @@ class App extends React.Component {
                     aria-label="CCA logo"
                   />
                 </div>
-                <div className="col">
+                <div className="col col-lg">
                   <img
                     src="../assets/images/Wapatah-logo-white.png"
                     alt="Wapatah logo"
@@ -264,7 +284,7 @@ class App extends React.Component {
                     aria-label="Wapatah logo"
                   />
                 </div>
-                <div className="col">
+                <div className="col col-lg">
                   <img
                     src="../assets/images/CFI-logo.png"
                     alt="CFI logo"
@@ -272,7 +292,7 @@ class App extends React.Component {
                     aria-label="CFI logo"
                   />
                 </div>
-                <div className="col">
+                <div className="col col-lg">
                   <img
                     src="../assets/images/Onsite-logo.png"
                     alt="Onsite logo"
@@ -280,7 +300,7 @@ class App extends React.Component {
                     aria-label="Onsite logo"
                   />
                 </div>
-                <div className="col">
+                <div className="col col-lg">
                   <img
                     src="../assets/images/OCAD-University-Logo.png"
                     alt="OCAD logo"
