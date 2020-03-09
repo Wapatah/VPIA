@@ -1164,6 +1164,16 @@ ul.social-network li {
     flex: auto;
     max-width: 100%;
   }
+  .left-side-nav-content {
+    width: 100%;
+    padding-left: 10%;
+  }
+  .left-side-nav-card {
+    background: transparent;
+  }
+  .article-heading {
+    padding-left: 5%;
+  }
 }
 @media (min-width: 768px) {
   .modal-fullscreen .modal-dialog {
