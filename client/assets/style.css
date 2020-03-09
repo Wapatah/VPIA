@@ -1107,7 +1107,7 @@ ul.social-network li {
   outline: 1px solid #2276d2;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
 }
-.navbar-light .navbar-toggler {
+.navbar-dark .navbar-toggler {
   color: white;
   border-color: white;
 }
