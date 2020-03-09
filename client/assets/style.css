@@ -1034,6 +1034,9 @@ ul.social-network li {
   color: #ffffff;
   opacity: 1;
 }
+.about-content {
+  padding: 5%;
+}
 
 #result.card {
   margin-bottom: 1rem;
@@ -1173,6 +1176,16 @@ ul.social-network li {
   }
   .article-heading {
     padding-left: 5%;
+  }
+  #About-initial-content {
+    padding-right: 2em;
+  }
+  #About-intro-section img {
+    float: none !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5%;
   }
 }
 @media (min-width: 768px) {
