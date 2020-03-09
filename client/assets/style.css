@@ -1101,11 +1101,21 @@ ul.social-network li {
   outline: 1px solid #2276d2;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
 }
+.navbar-light .navbar-toggler {
+  color: white;
+  border-color: white;
+}
+.navbar-toggler-icon {
+  fill: white;
+  color: white;
+}
 
 @media (max-width: 425px) {
   #mainlogo {
-    top: 0;
+    top: 1em;
     margin-bottom: 20%;
+    height: auto;
+    float: left;
   }
 
   #VPIA-intro-right {
@@ -1124,6 +1134,21 @@ ul.social-network li {
   .footer-lightgrey {
     width: 100%;
     text-align: center;
+  }
+  .navbar {
+    padding-top: 1em;
+    padding-right: 1em;
+    width: 100%;
+    float: right;
+  }
+  .navcontainer {
+    padding-top: 5em;
+  }
+  .main-nav-item {
+    width: 80px;
+  }
+  .card-content {
+    top: 0;
   }
 }
 @media (min-width: 768px) {

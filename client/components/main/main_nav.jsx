@@ -17,7 +17,7 @@ class MainNav extends React.Component {
       <div>
         <div id="mainheader" className="container-fluid">
           <div className="row row-centered">
-            <div id="mainlogo" className="col-md-2">
+            <div id="mainlogo" className="col-lg-2">
               <Link to="landing">
                 <img
                   src="../assets/images/logo-white.png"
@@ -29,7 +29,7 @@ class MainNav extends React.Component {
               </Link>
             </div>
 
-            <div className="col-md-8 col-md-offset-2 align-self-end">
+            <div className="col-lg-8 col-lg-offset-2 align-self-end">
               <div className="navcontainer">
                 <div className="main-nav-item">
                   <Link to="landing" activeClassName="active-yellow">
