@@ -1160,10 +1160,20 @@ ul.social-network li {
   #fullpage.container-fluid {
     height: auto;
   }
+  #left-side.col-md-1 {
+    flex: auto;
+    max-width: 100%;
+  }
 }
 @media (min-width: 768px) {
   .modal-fullscreen .modal-dialog {
     width: 750px;
+  }
+  #mainlogo {
+    top: 0.75em;
+    margin-bottom: 15%;
+    height: auto;
+    float: left;
   }
 }
 

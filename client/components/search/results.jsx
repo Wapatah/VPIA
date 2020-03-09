@@ -37,7 +37,7 @@ class Results extends React.Component {
             <div id="left-side" className="col-md-1">
               <p className="text-right edit-page-title">Search Results</p>
               <p className="text-right">Filter by</p>
-              <div className="col-6 float-right">
+              <div className="col-lg-6 float-right">
                 <BrowseTopics topicChange={this.handleUpdate} />
                 <Filters topicChange={this.handleUpdate} />
               </div>
