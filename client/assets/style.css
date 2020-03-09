@@ -1116,7 +1116,7 @@ ul.social-network li {
   color: white;
 }
 
-@media (min-width: 300px) {
+@media (max-width: 768px) {
   #mainlogo {
     top: 1em;
     padding-bottom: 10%;
