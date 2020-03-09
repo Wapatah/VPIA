@@ -15,7 +15,7 @@ class About extends React.Component {
                   <div className="col align-items-start">
                     <img
                       id="About-img-writing"
-                      className="img-fluid float-right"
+                      className="img-fluid right-align"
                       src="../../assets/images/logo-writing.png"
                       alt="White with writing logo"
                     />
