@@ -67,7 +67,7 @@ class Login extends React.Component {
       <div id="fullpage" className="container-fluid">
         <StatusAlert />
         <div id="full-page" className="row">
-          <div className="col-4 left-panel">
+          <div className="col-lg-4 left-panel">
             <img
               src="../assets/images/logo-white.png"
               width="auto"
@@ -118,7 +118,7 @@ class Login extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-8 BGimage image-fade">
+          <div className="col-lg-8 BGimage image-fade hidden-lg-down">
             <img
               src="../assets/images/logo.png"
               width="auto"

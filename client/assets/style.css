@@ -1150,6 +1150,16 @@ ul.social-network li {
   .card-content {
     top: 0;
   }
+  .BGimage::before {
+    width: 0;
+    height: 0;
+  }
+  #logo-bottom-right {
+    width: 0;
+  }
+  #fullpage.container-fluid {
+    height: auto;
+  }
 }
 @media (min-width: 768px) {
   .modal-fullscreen .modal-dialog {
