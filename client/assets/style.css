@@ -1190,6 +1190,9 @@ ul.social-network li {
     margin-right: auto;
     padding-bottom: 5%;
   }
+  #my-card-img-top img {
+    height: 80vw;
+  }
 }
 @media (max-width: 768px) {
   .modal-fullscreen .modal-dialog {
