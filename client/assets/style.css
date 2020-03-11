@@ -1119,7 +1119,7 @@ ul.social-network li {
 @media (max-width: 768px) {
   #mainlogo {
     top: 1em;
-    padding-bottom: 10%;
+    padding-bottom: 25%;
     height: auto;
     float: left;
   }
@@ -1194,24 +1194,26 @@ ul.social-network li {
     height: 80vw;
   }
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .modal-fullscreen .modal-dialog {
     width: 750px;
   }
   #mainlogo {
     top: 0.75em;
-    margin-bottom: 15%;
     height: auto;
     float: left;
   }
+  #left-side.col-md-1 {
+    max-width: none;
+  }
+  #my-card-img-top img {
+    height: 20vw;
+  }
 }
 
-@media (max-width: 992px) {
+@media (min-width: 992px) {
   .modal-fullscreen .modal-dialog {
     width: 970px;
-  }
-  #mainlogo {
-    padding-bottom: 10%;
   }
 }
 

@@ -42,7 +42,7 @@ class Results extends React.Component {
                 <Filters topicChange={this.handleUpdate} />
               </div>
             </div>
-            <div className="col-md-8">
+            <div className="col-lg-8">
               <ArtworkResults topicId={this.state.topicId} />
             </div>
           </div>
