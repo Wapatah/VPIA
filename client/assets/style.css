@@ -1034,6 +1034,12 @@ ul.social-network li {
   color: #ffffff;
   opacity: 1;
 }
+.about-content {
+  padding: 5%;
+}
+.right-align {
+  float: right;
+}
 
 #result.card {
   margin-bottom: 1rem;
@@ -1101,11 +1107,21 @@ ul.social-network li {
   outline: 1px solid #2276d2;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
 }
+.navbar-dark .navbar-toggler {
+  color: white;
+  border-color: white;
+}
+.navbar-toggler-icon {
+  fill: white;
+  color: white;
+}
 
-@media (max-width: 425px) {
+@media (max-width: 768px) {
   #mainlogo {
-    top: 0;
-    margin-bottom: 20%;
+    top: 1em;
+    padding-bottom: 25%;
+    height: auto;
+    float: left;
   }
 
   #VPIA-intro-right {
@@ -1125,10 +1141,73 @@ ul.social-network li {
     width: 100%;
     text-align: center;
   }
+  .navbar {
+    padding-top: 1em;
+    padding-right: 1em;
+    width: 100%;
+    float: right;
+  }
+  .navcontainer {
+    padding-top: 5em;
+  }
+  .main-nav-item {
+    width: 80px;
+  }
+  .card-content {
+    top: 0;
+  }
+  .BGimage::before {
+    width: 0;
+    height: 0;
+  }
+  #logo-bottom-right {
+    width: 0;
+  }
+  #fullpage.container-fluid {
+    height: auto;
+  }
+  #left-side.col-md-1 {
+    flex: auto;
+    max-width: 100%;
+  }
+  .left-side-nav-content {
+    width: 100%;
+    padding-left: 10%;
+  }
+  .left-side-nav-card {
+    background: transparent;
+  }
+  .article-heading {
+    padding-left: 5%;
+  }
+  #About-initial-content {
+    padding-right: 2em;
+  }
+  #About-intro-section img {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5%;
+  }
+  #my-card-img-top img {
+    height: 80vw;
+  }
 }
 @media (min-width: 768px) {
   .modal-fullscreen .modal-dialog {
     width: 750px;
+  }
+  #mainlogo {
+    top: 0.75em;
+    height: auto;
+    float: left;
+  }
+  #left-side.col-md-1 {
+    max-width: none;
+  }
+  #my-card-img-top img {
+    height: 20vw;
   }
 }
 

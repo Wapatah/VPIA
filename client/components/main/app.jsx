@@ -55,7 +55,7 @@ class App extends React.Component {
     return (
       <div>
         <StatusAlert />
-        <nav className="navbar navbar-expand-lg navbar-light mainheader">
+        <nav className="navbar navbar-expand-lg navbar-dark mainheader">
           <div
             class="alert alert-secondary alert-dismissible fade show"
             role="alert"

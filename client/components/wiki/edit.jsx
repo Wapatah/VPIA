@@ -190,7 +190,7 @@ class EditArticle extends React.Component {
             <div className="col-md-5 col-centered">
               <div id="article-nav-inner" className="row align-items-end">
                 <div className="col">
-                  <a className="active-red bottom-align-text">
+                  <a className="bottom-align-text">
                     <svg
                       width="15%"
                       height="15%"
@@ -206,7 +206,7 @@ class EditArticle extends React.Component {
                     Artwork Article
                   </a>
                 </div>
-                <div className="col text-right bottom-align-text">
+                <div className="col text-right bottom-align-text  active-red">
                   <i className="fa fa-edit"></i>Edit
                 </div>
                 <div className="col text-right bottom-align-text">
