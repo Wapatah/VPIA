@@ -15,7 +15,7 @@ class About extends React.Component {
                   <div className="col align-items-start">
                     <img
                       id="About-img-writing"
-                      className="img-fluid float-right"
+                      className="img-fluid right-align"
                       src="../../assets/images/logo-writing.png"
                       alt="White with writing logo"
                     />
@@ -82,42 +82,49 @@ class About extends React.Component {
           <div className="container-fluid">
             <div id="About-info-section">
               <div id="About-bottom-content" class="row">
-                <div class="col">
-                  The pilot of the VPIA specifically documents collections of
-                  historical and contemporary Indigenous artworks that depict
-                  non-Indigenous people, technologies and traditions. These
-                  artworks offer valuable perspectives and insight into
-                  processes of colonization, cultural contact, and Indigenous
-                  philosophy, aesthetic, and research methodology.
+                <div class="col-md-4">
+                  <p className="about-content">
+                    The pilot of the VPIA specifically documents collections of
+                    historical and contemporary Indigenous artworks that depict
+                    non-Indigenous people, technologies and traditions. These
+                    artworks offer valuable perspectives and insight into
+                    processes of colonization, cultural contact, and Indigenous
+                    philosophy, aesthetic, and research methodology.
+                  </p>
                 </div>
-                <div class="col">
-                  The VPIA sees Indigenous artwork as a research tool that
-                  allows a better understanding of how Indigenous and
-                  non-Indigenous knowledge, material traditions, and social
-                  relationships continue to grow and change. The platform’s
-                  wiki-style framework allows users to transform institutional
-                  records about artworks into living documents that more clearly
-                  explain that artwork’s significance to Indigenous people.
-                  Users can make corrections to institutional records, describe
-                  cultural protocols surrounding their viewing and use, and add
-                  text, photos and videos to better situate the artwork within
-                  their cultural context. This approach brings us one step
-                  closer to the Indigenization of museum and gallery
-                  collections.
+                <div class="col-md-4">
+                  <p className="about-content">
+                    The VPIA sees Indigenous artwork as a research tool that
+                    allows a better understanding of how Indigenous and
+                    non-Indigenous knowledge, material traditions, and social
+                    relationships continue to grow and change. The platform’s
+                    wiki-style framework allows users to transform institutional
+                    records about artworks into living documents that more
+                    clearly explain that artwork’s significance to Indigenous
+                    people. Users can make corrections to institutional records,
+                    describe cultural protocols surrounding their viewing and
+                    use, and add text, photos and videos to better situate the
+                    artwork within their cultural context. This approach brings
+                    us one step closer to the Indigenization of museum and
+                    gallery collections.
+                  </p>
                 </div>
-                <div class="col">
-                  The VPIA recognizes that Indigenous cultures continue to
-                  change and grow. To ensure its continued relevance and
-                  applicability, the VPIA has been designed through a flexible,
-                  open-framework model. All program code for the VPIA software
-                  is open source, which means that is non-proprietary and allows
-                  all users to change the platform to best meet their needs. The
-                  wiki format of the VPIA’s database allows the ongoing
-                  development of artwork records through the addition of
-                  knowledge and media that best express current day ideas about
-                  its presence, politics and importance. The VPIA will continue
-                  to evolve and move in new directions, alongside the networks
-                  of human relationships that it facilitates.
+                <div class="col-md-4">
+                  <p className="about-content">
+                    The VPIA recognizes that Indigenous cultures continue to
+                    change and grow. To ensure its continued relevance and
+                    applicability, the VPIA has been designed through a
+                    flexible, open-framework model. All program code for the
+                    VPIA software is open source, which means that is
+                    non-proprietary and allows all users to change the platform
+                    to best meet their needs. The wiki format of the VPIA’s
+                    database allows the ongoing development of artwork records
+                    through the addition of knowledge and media that best
+                    express current day ideas about its presence, politics and
+                    importance. The VPIA will continue to evolve and move in new
+                    directions, alongside the networks of human relationships
+                    that it facilitates.
+                  </p>
                 </div>
               </div>
             </div>
