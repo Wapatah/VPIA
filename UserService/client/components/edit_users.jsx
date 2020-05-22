@@ -4,7 +4,7 @@
 import React from "react";
 import { hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
-import Loader from "../../../client/components/helpers/loader.jsx";
+import Loader from "./helpers/loader.jsx";
 
 class EditUser extends React.Component {
   constructor(props) {

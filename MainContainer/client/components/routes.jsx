@@ -11,19 +11,19 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 // Import all components for navigation
 import App from "./main/app.jsx";
 import Home from "./main/home.jsx";
-import Login from "../../UserService/client/components/login.jsx";
-import Article from "../../WikiService/client/components/article.jsx";
-import NewArticle from "../../WikiService/client/components/new.jsx";
-import EditArticle from "../../WikiService/client/components/edit.jsx";
-import ArticleHistory from "../../HistoryService/client/components/history.jsx";
-import Search from "../../SearchService/client/components/search.jsx";
-import Admin from "../../UserService/client/components/admin.jsx";
-import Setup from "../../UserService/client/components/setup.jsx";
-import EditUser from "../../UserService/client/components/edit_users.jsx";
-import UserSignup from "../../UserService/client/components/user_signup.jsx";
+import Login from "../../../UserService/client/components/login.jsx";
+import Article from "../../../WikiService/client/components/article.jsx";
+import NewArticle from "../../../WikiService/client/components/new.jsx";
+import EditArticle from "../../../WikiService/client/components/edit.jsx";
+import ArticleHistory from "../../../HistoryService/client/components/history.jsx";
+import Search from "../../../SearchService/client/components/search.jsx";
+import Admin from "../../../UserService/client/components/admin.jsx";
+import Setup from "../../../UserService/client/components/setup.jsx";
+import EditUser from "../../../UserService/client/components/edit_users.jsx";
+import UserSignup from "../../../UserService/client/components/user_signup.jsx";
 import Landing from "./main/landing.jsx";
 import About from "./main/about.jsx";
-import Results from "../../SearchService/client/components/results.jsx";
+import Results from "../../../SearchService/client/components/results.jsx";
 
 // --------------------------------------------------------------------------------------------------------------------------------------------
 // Build a route path and limit access to certain pages

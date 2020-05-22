@@ -3,7 +3,7 @@
   This page is used to filter and allow for more discoverability of the artwork.
 */
 import React from "react";
-import Loader from "../../../client/components/helpers/loader.jsx";
+import Loader from "./helpers/loader.jsx";
 import { Link } from "react-router";
 
 class ArtworkResults extends React.Component {

@@ -9,19 +9,19 @@ const BUILD_DIR = path.resolve(__dirname, "../client/public");
 const APP_DIR = path.resolve(__dirname, "../client/components");
 const USER_SERVICE = path.resolve(
   __dirname,
-  "../UserService/client/components"
+  "../../UserService/client/components"
 );
 const HISTORY_SERVICE = path.resolve(
   __dirname,
-  "../HistoryService/client/components"
+  "../../HistoryService/client/components"
 );
 const SEARCH_SERVICE = path.resolve(
   __dirname,
-  "../SearchService/client/components"
+  "../../SearchService/client/components"
 );
 const WIKI_SERVICE = path.resolve(
   __dirname,
-  "../WikiService/client/components"
+  "../../WikiService/client/components"
 );
 
 module.exports = {

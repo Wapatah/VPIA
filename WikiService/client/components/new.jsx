@@ -4,17 +4,17 @@
 
 import React from "react";
 import { hashHistory } from "react-router";
-import Loader from "../../../client/components/helpers/loader.jsx";
+import Loader from "./helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 // TinyMCE Editor import
 import { Editor } from "@tinymce/tinymce-react";
 
 // Import Editor configurations - change general behaviour in the json, specific changes should be done in new.jsx and edit.jsx
-import Config from "../../../config/editor.json";
+import Config from "../../config/editor.json";
 
 // Importing editor preview helper
-import EditorPreview from "../../../client/components/helpers/editor_preview.jsx";
+import EditorPreview from "./helpers/editor_preview.jsx";
 
 class NewArticle extends React.Component {
   constructor(props) {

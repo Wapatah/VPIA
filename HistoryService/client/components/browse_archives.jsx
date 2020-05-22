@@ -3,7 +3,7 @@
   Article versions.
 */
 import React from "react";
-import Loader from "../../../client/components/helpers/loader.jsx";
+import Loader from "./helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class BrowseArchives extends React.Component {

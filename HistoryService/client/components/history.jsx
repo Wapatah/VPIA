@@ -3,7 +3,7 @@
 */
 import React from "react";
 import { Link } from "react-router";
-import Loader from "../../../client/components/helpers/loader.jsx";
+import Loader from "./helpers/loader.jsx";
 import BrowseArchives from "./browse_archives.jsx";
 import SimpleArticle from "./simple_article.jsx";
 

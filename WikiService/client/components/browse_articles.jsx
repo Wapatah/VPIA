@@ -3,7 +3,7 @@
   to engage platform users.
 */
 import React from "react";
-import Loader from "../../../client/components/helpers/loader.jsx";
+import Loader from "./helpers/loader.jsx";
 import { Link, hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 

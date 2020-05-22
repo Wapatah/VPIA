@@ -4,7 +4,7 @@
 import React from "react";
 import ArtworkResults from "./artwork_results.jsx";
 import Filters from "./filters.jsx";
-import Loader from "../../../client/components/helpers/loader.jsx";
+import Loader from "./helpers/loader.jsx";
 
 class Results extends React.Component {
   constructor(props) {

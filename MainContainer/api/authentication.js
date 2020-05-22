@@ -3,7 +3,7 @@
 */
 
 // Importing the data models needed to manipulate
-var Users = require("../UserService/models/user.js");
+var Users = require("../../UserService/models/user.js");
 var jwt = require("jsonwebtoken"); // Used to create, sign, and verify tokens
 var bcrypt = require("bcryptjs"); // Password hashing function
 

@@ -5,7 +5,7 @@
 */
 import React from "react";
 import { Link } from "react-router";
-import Loader from "../../../client/components/helpers/loader.jsx";
+import Loader from "./helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class Admin extends React.Component {
