@@ -12,14 +12,13 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import App from "./main/app.jsx";
 import Home from "./main/home.jsx";
 import Login from "../../UserService/client/components/login.jsx";
-import Article from "./wiki/article.jsx";
-import NewArticle from "./wiki/new.jsx";
-import EditArticle from "./wiki/edit.jsx";
+import Article from "../../WikiService/client/components/article.jsx";
+import NewArticle from "../../WikiService/client/components/new.jsx";
+import EditArticle from "../../WikiService/client/components/edit.jsx";
 import ArticleHistory from "../../HistoryService/client/components/history.jsx";
 import Search from "../../SearchService/client/components/search.jsx";
 import Admin from "../../UserService/client/components/admin.jsx";
 import Setup from "../../UserService/client/components/setup.jsx";
-import EditTopic from "../../UserService/client/components/edit_topics.jsx";
 import EditUser from "../../UserService/client/components/edit_users.jsx";
 import UserSignup from "../../UserService/client/components/user_signup.jsx";
 import Landing from "./main/landing.jsx";
@@ -41,7 +40,6 @@ export default function() {
         <Route path="article/history/:articleId" component={ArticleHistory} />
         <Route path="article/:articleId" component={Article} />
         <Route path="admin" component={Admin} />
-        <Route path="topic/edit/:topicId" component={EditTopic} />
         <Route path="user/edit/:user_id" component={EditUser} />
         <Route path="search" component={Search} />
         <Route path="about" component={About} />

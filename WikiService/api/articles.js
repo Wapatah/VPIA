@@ -1,17 +1,12 @@
 /* --------------------------------------------------------------------------------------------------------------------------------------------
   This file contains all endpoints related to articles.
-  The endpoint to display articles related to a particular topic (/topics/:id/articles)
-  is not in this file because that is a topics endpoint.
-  Tip: To avoid any confusion, here is how you filter which file should an endpoint belong to.
-  Check the first word in the url. If topics comes first (as it does in the above example)
-  then move it to the topics endpoints file.
 */
 
 // Importing the data models needed to manipulate
 var Articles = require("../models/article.js");
-var Topics = require("../models/topic.js");
-var Archives = require("../HistoryService/models/archive.js");
-var Users = require("../UserService/models/user.js");
+
+var Archives = require("../../HistoryService/models/archive.js");
+var Users = require("../../UserService/models/user.js");
 
 module.exports = function(app) {
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -27,7 +22,6 @@ module.exports = function(app) {
       photo_license: req.body.photo_license,
       tags: req.body.tags,
       body: req.body.body,
-      topic_id: req.body.topic_id,
       user_id: req.body.user_id,
       what_changed: "Original Museum Record"
     })
@@ -97,7 +91,6 @@ module.exports = function(app) {
             material: req.body.material,
             artwork_type: req.body.artwork_type,
             body: req.body.body,
-            topic_id: req.body.topic_id,
             tags: req.body.tags,
             what_changed: req.body.what_changed,
             user_id: req.body.user_id
@@ -167,25 +160,19 @@ module.exports = function(app) {
   app.get("/articles/:id/", function(req, res) {
     Articles.find({ where: { id: req.params.id } })
       .then(function(article) {
-        Topics.find({ where: { id: article[0].topic_id } })
-          .then(function(topic) {
-            article[0].topics(topic);
+        Users.find({ where: { id: article[0].user_id } })
+          .then(function(user) {
+            article[0].users(user);
           })
           .then(function() {
-            Users.find({ where: { id: article[0].user_id } })
-              .then(function(user) {
-                article[0].users(user);
-              })
-              .then(function() {
-                res.json({
-                  error: {
-                    error: false,
-                    message: ""
-                  },
-                  code: "B113",
-                  data: article
-                });
-              });
+            res.json({
+              error: {
+                error: false,
+                message: ""
+              },
+              code: "B113",
+              data: article
+            });
           });
       })
       .catch(function(error) {

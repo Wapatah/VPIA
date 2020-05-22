@@ -4,14 +4,13 @@
 import React from "react";
 import ArtworkResults from "./artwork_results.jsx";
 import Filters from "./filters.jsx";
-import BrowseTopics from "../../../client/components/wiki/browse_topics.jsx";
 import Loader from "../../../client/components/helpers/loader.jsx";
 
 class Results extends React.Component {
   constructor(props) {
     super(props);
     this.handleUpdate = this.handleUpdate.bind(this);
-    this.state = { topicId: "1", loading: true };
+    this.state = { articleId: "1", loading: true };
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -21,9 +20,9 @@ class Results extends React.Component {
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
-  // If clicked on topic, change the topic to that clicked one
+  // If clicked on an article, change to that corresponding articles display
   handleUpdate(id) {
-    this.setState({ topicId: id });
+    this.setState({ articleId: id });
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -38,12 +37,11 @@ class Results extends React.Component {
               <p className="text-right edit-page-title">Search Results</p>
               <p className="text-right">Filter by</p>
               <div className="col-lg-6 float-right">
-                <BrowseTopics topicChange={this.handleUpdate} />
-                <Filters topicChange={this.handleUpdate} />
+                <Filters articleChange={this.handleUpdate} />
               </div>
             </div>
             <div className="col-lg-8">
-              <ArtworkResults topicId={this.state.topicId} />
+              <ArtworkResults articleId={this.state.articleId} />
             </div>
           </div>
         </div>

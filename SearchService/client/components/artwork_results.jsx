@@ -46,36 +46,6 @@ class ArtworkResults extends React.Component {
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
-  // Depreciated - This is used to fetch all Articles for topics. Will probably be removed.
-  componentWillReceiveProps(nextProps) {
-    this.setState({ loading: true });
-
-    var myHeaders = new Headers({
-      "Content-Type": "application/x-www-form-urlencoded",
-      "x-access-token": window.localStorage.getItem("userToken")
-    });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
-    var url = "/api/articles";
-
-    if (nextProps.topicId == null && this.props.topicId == null)
-      var url = "/api/articles";
-    else var url = "/api/topic/" + nextProps.topicId + "/articles";
-
-    fetch(url, myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-        } else {
-          that.setState({ articles: response.data });
-        }
-        that.setState({ loading: false });
-      });
-  }
-
-  // --------------------------------------------------------------------------------------------------------------------------------------------
   // handleClick() - Used for clicking through pagination numbers without building new components.
   handleClick(event) {
     this.setState({
@@ -147,11 +117,7 @@ class ArtworkResults extends React.Component {
 
     if (this.state.loading) return <Loader />;
     if (this.state.articles.length < 1) {
-      return (
-        <p className="help-block center-align">
-          There are no articles under this topic
-        </p>
-      );
+      return <p className="help-block center-align">No Articles were found.</p>;
     } else {
       return (
         <div>

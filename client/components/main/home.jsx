@@ -2,14 +2,14 @@
   "Home" is just a name for this file that renders the carousels of recent artworks and placeholder events.
 */
 import React from "react";
-import BrowseArticles from "../wiki/browse_articles.jsx";
+import BrowseArticles from "../../../WikiService/client/components/browse_articles.jsx";
 import Loader from "../helpers/loader.jsx";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.handleUpdate = this.handleUpdate.bind(this);
-    this.state = { topicId: "1", loading: true };
+    this.state = { articleId: "1", loading: true };
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -19,9 +19,9 @@ class Home extends React.Component {
   }
 
   //--------------------------------------------------------------------------------------------------------------------------------------------
-  // Possibly depreciated, this used to be code for selecting through different topics
+  // This is used to click through articles in places like recent artworks and load the proper page.
   handleUpdate(id) {
-    this.setState({ topicId: id });
+    this.setState({ articleId: id });
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ class Home extends React.Component {
           <div className="row justify-content-md-center">
             <div className="container p-t-3">
               <h5 className="title-primary underline-brush">In Conversation</h5>
-              <BrowseArticles topicId={this.state.topicId} />
+              <BrowseArticles articleId={this.state.articleId} />
               <h5 className="title-primary underline-brush">
                 Current Projects & Events
               </h5>

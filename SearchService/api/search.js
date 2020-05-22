@@ -7,7 +7,7 @@
 */
 
 // Importing the data models needed to manipulate
-var Articles = require("../../models/article.js");
+var Articles = require("../../WikiService/models/article.js");
 
 module.exports = function(app) {
   /* --------------------------------------------------------------------------------------------------------------------------------------------

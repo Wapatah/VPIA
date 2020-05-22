@@ -137,10 +137,7 @@ apiRoutesAdmin.use(function(req, res, next) {
 });
 
 // Importing all endpoints for articles
-require("./api/articles")(apiRoutes);
-
-// Importing all endpoints for topics
-require("./api/topics")(apiRoutes);
+require("./WikiService/api/articles")(apiRoutes);
 
 // Importing all endpoints for users
 require("./UserService/api/users")(apiRoutesAdmin);

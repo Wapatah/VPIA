@@ -3,7 +3,7 @@
   to engage platform users.
 */
 import React from "react";
-import Loader from "../helpers/loader.jsx";
+import Loader from "../../../client/components/helpers/loader.jsx";
 import { Link, hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
@@ -41,7 +41,7 @@ class BrowseArticles extends React.Component {
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
-  // Depreciated - browse articles under specific topic.
+  // Browse articles under a specific clicked on article such as recent artworks carousel
   componentWillReceiveProps(nextProps) {
     this.setState({ loading: true });
 
@@ -53,9 +53,9 @@ class BrowseArticles extends React.Component {
     var that = this;
     var url = "/api/articles";
 
-    if (nextProps.topicId == null && this.props.topicId == null)
+    if (nextProps.articleId == null && this.props.articleId == null)
       var url = "/api/articles";
-    else var url = "/api/topic/" + nextProps.topicId + "/articles";
+    else var url = "/api/articles/" + nextProps.articleId;
 
     fetch(url, myInit)
       .then(function(response) {
@@ -76,11 +76,7 @@ class BrowseArticles extends React.Component {
   render() {
     if (this.state.loading) return <Loader />;
     if (this.state.articles.length < 1) {
-      return (
-        <p className="help-block center-align">
-          There are no articles under this topic
-        </p>
-      );
+      return <p className="help-block center-align">No Articles were found.</p>;
     } else {
       return (
         <div

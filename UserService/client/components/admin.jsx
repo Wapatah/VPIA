@@ -13,20 +13,16 @@ class Admin extends React.Component {
     super(props);
     // Add Admin only functions to component
     this.addUser = this.addUser.bind(this);
-    this.addTopic = this.addTopic.bind(this);
-    this.deleteTopic = this.deleteTopic.bind(this);
     this.deleteUser = this.deleteUser.bind(this);
     this.state = {
-      loading_topics: true,
       loading_users: true,
       users: [],
-      topics: [],
       error: ""
     };
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
-  On initial load, pull in all topics and users
+  On initial load, pull in all users
 */
   componentDidMount() {
     var myHeaders = new Headers({
@@ -35,18 +31,6 @@ class Admin extends React.Component {
     });
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
-
-    fetch("/api/topics", myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-          StatusAlertService.showError(response.error.message);
-        } else {
-          that.setState({ topics: response.data, loading_topics: false });
-        }
-      });
 
     fetch("/api/users", myInit)
       .then(function(response) {
@@ -111,78 +95,6 @@ class Admin extends React.Component {
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
-  addTopic() - Take Admin input for topic and create a new topic.
-*/
-  addTopic() {
-    var topic = {
-      name: encodeURIComponent(this.refs.topic_name.value),
-      description: encodeURIComponent(this.refs.topic_description.value)
-    };
-
-    var myHeaders = new Headers({
-      "Content-Type": "application/x-www-form-urlencoded",
-      "x-access-token": window.localStorage.getItem("userToken")
-    });
-
-    var myInit = {
-      method: "POST",
-      headers: myHeaders,
-      body: "name=" + topic.name + "&description=" + topic.description
-    };
-
-    var that = this;
-
-    fetch("/api/topics/", myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-          $("#addTopic").modal("hide");
-          StatusAlertService.showError(response.error.message);
-        } else {
-          $("#addTopic").modal("hide");
-          var topics = that.state.topics;
-          topics.push(response.data);
-          that.setState({ topics: topics });
-          StatusAlertService.showSuccess("Topic has been added");
-        }
-      });
-  }
-
-  /* --------------------------------------------------------------------------------------------------------------------------------------------
-  deleteTopic() - Delete topic from list
-*/
-
-  deleteTopic(id, e) {
-    e.preventDefault();
-    var myHeaders = new Headers({
-      "Content-Type": "application/x-www-form-urlencoded",
-      "x-access-token": window.localStorage.getItem("userToken")
-    });
-
-    var myInit = { method: "DELETE", headers: myHeaders, body: "id=" + id };
-    var that = this;
-
-    fetch("/api/topics/", myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-          StatusAlertService.showError(response.error.message);
-        } else {
-          topics = that.state.topics;
-          var topics = $.grep(topics, function(e) {
-            return e.id != id;
-          });
-          that.setState({ topics: topics });
-          StatusAlertService.showSuccess("Topic has been deleted");
-        }
-      });
-  }
-
-  /* --------------------------------------------------------------------------------------------------------------------------------------------
   deleteUser() - Remove user from list of users.
 */
   deleteUser(id, e) {
@@ -221,7 +133,7 @@ class Admin extends React.Component {
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
-  This renders an Admin only component to delete users and topics.
+  This renders an Admin only component to delete users
 */
   render() {
     if (this.state.loading_users && this.state.loading_users) return <Loader />;
@@ -230,40 +142,6 @@ class Admin extends React.Component {
         <div>
           <StatusAlert />
           <div className="row container">
-            <div className="col-md-6">
-              <button
-                className="btn btn-default"
-                data-toggle="modal"
-                data-target="#addTopic"
-              >
-                Add Topic
-              </button>
-              <br />
-              <br />
-              <div className="list-group bordered-scroll-box">
-                {this.state.topics.map(topic => (
-                  <div key={topic.id} href="#" className="list-group-item">
-                    <span className="pull-right">
-                      <Link
-                        to={"topic/edit/" + topic.id}
-                        className="btn btn-default"
-                      >
-                        Edit
-                      </Link>
-                      <button
-                        className="btn btn-default"
-                        type="button"
-                        onClick={e => this.deleteTopic(topic.id, e)}
-                      >
-                        Delete
-                      </button>
-                    </span>
-                    <h4 className="list-group-item-heading">{topic.name}</h4>
-                    <p className="list-group-item-text">{topic.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
             <div className="col-md-6">
               <button
                 className="btn btn-default"
@@ -374,69 +252,6 @@ class Admin extends React.Component {
                               className="btn btn-default btn-block btn-lg"
                             >
                               Add User
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </center>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="modal modal-fullscreen fade"
-            id="addTopic"
-            tabIndex="-1"
-            role="dialog"
-            aria-labelledby="myModalLabel"
-          >
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <center>
-                    <div className="row">
-                      <div className="col-md-6 col-sd-12">
-                        <h1>
-                          <b>Add Topic</b>
-                        </h1>
-                        <br />
-                        <form>
-                          <div className="col-sm-12 form-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              ref="topic_name"
-                              id="inputTopicName"
-                              placeholder="Name"
-                            />
-                          </div>
-                          <div className="col-sm-12 form-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              ref="topic_description"
-                              id="inputTopicAbout"
-                              placeholder="Description"
-                            />
-                          </div>
-                          <div className="col-sm-12 form-group">
-                            <button
-                              onClick={this.addTopic}
-                              className="btn btn-default btn-block btn-lg"
-                            >
-                              Add Topic
                             </button>
                           </div>
                         </form>

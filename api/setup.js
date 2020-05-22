@@ -1,11 +1,9 @@
 /* --------------------------------------------------------------------------------------------------------------------------------------------
-  This file contains the endpoint to setting up the initial Admin user,
-  and subsequently, preparing topics.
+  This file contains the endpoint to setting up the initial Admin user
 */
 
 // @Matterwiki - Importing the models
 var Users = require("../UserService/models/user.js");
-var Topics = require("../models/topic.js");
 var bcrypt = require("bcryptjs");
 const saltRounds = 10;
 
@@ -22,32 +20,16 @@ module.exports = function(app) {
         email: req.body.email,
         password: hash,
         about: req.body.about
-      }).then(function(collection) {
-        Topics.create({
-          name: "general",
-          description: "knowledge for everyone"
-        })
-          .then(function() {
-            res.json({
-              error: {
-                error: false,
-                message: ""
-              },
-              code: "B131",
-              data: collection.toJSON()
-            });
-          })
-          .catch(function() {
-            res.status(500).json({
-              error: {
-                error: true,
-                message:
-                  "There was an error creating the admin user. Chances are you've already set up"
-              },
-              code: "B132",
-              data: {}
-            });
-          });
+      }).catch(function() {
+        res.status(500).json({
+          error: {
+            error: true,
+            message:
+              "There was an error creating the admin user. Chances are you've already set up"
+          },
+          code: "B132",
+          data: {}
+        });
       });
     });
   });

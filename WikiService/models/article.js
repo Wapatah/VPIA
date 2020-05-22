@@ -4,7 +4,7 @@
 */
 
 // Imports config/db.js for the database object.
-var schema = require("../config/db");
+var schema = require("../../config/db");
 
 var Article = schema.define("article", {
   title: { type: schema.String, limit: 255 },

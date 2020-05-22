@@ -4,7 +4,7 @@
 
 import React from "react";
 import { hashHistory } from "react-router";
-import Loader from "../helpers/loader.jsx";
+import Loader from "../../../client/components/helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 // TinyMCE Editor import
@@ -14,7 +14,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import Config from "../../../config/editor.json";
 
 // Importing editor preview helper
-import EditorPreview from "../helpers/editor_preview.jsx";
+import EditorPreview from "../../../client/components/helpers/editor_preview.jsx";
 
 class NewArticle extends React.Component {
   constructor(props) {
@@ -22,7 +22,6 @@ class NewArticle extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       body: "",
-      topics: [],
       culture_group: "",
       material: "",
       artwork_type: "",
@@ -33,36 +32,11 @@ class NewArticle extends React.Component {
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
-  // Onload, fetch all topics (most likely will be depreciated)
-  componentDidMount() {
-    var myHeaders = new Headers({
-      "Content-Type": "application/x-www-form-urlencoded",
-      "x-access-token": window.localStorage.getItem("userToken")
-    });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
-
-    fetch("/api/topics", myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-          StatusAlertService.showError(response.error.message);
-        } else {
-          that.setState({ topics: response.data });
-        }
-        that.setState({ loading: false });
-      });
-  }
-
-  // --------------------------------------------------------------------------------------------------------------------------------------------
   // Take variables from admin input and create a new Article object and send POST
   handleSubmit(e) {
     e.preventDefault();
     var body = this.state.body;
     var title = this.refs.title.value;
-    var topicId = this.refs.topic.value;
     var culture_group = this.state.culture_group;
     var material = this.state.material;
     var artwork_type = this.state.artwork_type;
@@ -74,7 +48,6 @@ class NewArticle extends React.Component {
     if (
       body &&
       title &&
-      topicId &&
       culture_group &&
       material &&
       artwork_type &&
@@ -109,9 +82,6 @@ class NewArticle extends React.Component {
           "&institution=" +
           encodeURIComponent(institution) +
           "&photo_license=" +
-          encodeURIComponent(photo_license) +
-          "&topic_id=" +
-          topicId +
           "&user_id=" +
           window.localStorage.getItem("user_id")
       };
@@ -132,7 +102,7 @@ class NewArticle extends React.Component {
         });
     } else {
       StatusAlertService.showError(
-        "Article Body, Title and Topic Information is required."
+        "Article Body, Title and Information is required."
       );
     }
   }
@@ -212,14 +182,6 @@ class NewArticle extends React.Component {
                         }}
                       />
                     </div>
-                    <label>Choose topic</label>
-                    <select className="form-control topic-select" ref="topic">
-                      {this.state.topics.map(topic => (
-                        <option value={topic.id} key={topic.id}>
-                          {topic.name}
-                        </option>
-                      ))}
-                    </select>
                   </div>
 
                   <div className="col-md-4 article-info-box">

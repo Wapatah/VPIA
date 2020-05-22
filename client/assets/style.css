@@ -98,21 +98,6 @@ h4 {
   margin-bottom: 1em;
 }
 
-.topic-list {
-  padding: 6px 20px;
-}
-
-.topic-item {
-  margin-bottom: 1em;
-}
-.topic-item-title {
-  font-size: 1.2em;
-}
-
-.topic-item-description {
-  color: #595959;
-}
-
 .article-list {
   padding: 10px 20px;
 }
@@ -271,10 +256,6 @@ textarea {
 .list-group hr {
   margin-top: 0em;
   margin-bottom: 0em;
-}
-
-.topic-select {
-  background-color: #efefef;
 }
 
 .article-sidebar {

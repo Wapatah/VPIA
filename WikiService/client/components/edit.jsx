@@ -4,7 +4,7 @@
 import React from "react";
 import { Link, hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
-import Loader from "../helpers/loader.jsx";
+import Loader from "../../../client/components/helpers/loader.jsx";
 
 // Import TinyMCE
 import { Editor } from "@tinymce/tinymce-react";
@@ -13,7 +13,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import Config from "../../../config/editor.json";
 
 // Import automatic editor preview
-import EditorPreview from "../helpers/editor_preview.jsx";
+import EditorPreview from "../../../client/components/helpers/editor_preview.jsx";
 
 class EditArticle extends React.Component {
   constructor(props) {
@@ -23,19 +23,17 @@ class EditArticle extends React.Component {
     this.state = {
       body: "",
       title: "",
-      topic_id: "",
       culture_group: "",
       material: "",
       artwork_type: "",
       tags: "",
-      topics: [],
       loading: true,
       isHidden: true
     };
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
-  // Onload, fetch GET ONE article and get all topics. Topics will be depreciated.
+  // Onload, fetch GET ONE article
   componentDidMount() {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
@@ -58,31 +56,11 @@ class EditArticle extends React.Component {
             culture_group: response.data[0].culture_group,
             material: response.data[0].material,
             artwork_type: response.data[0].artwork_type,
-            topic_id: response.data[0].topic_id,
             tags: response.data[0].tags,
             article: response.data
           });
         }
         that.setState({ loading: false });
-      });
-
-    var myHeaders = new Headers({
-      "Content-Type": "application/x-www-form-urlencoded",
-      "x-access-token": window.localStorage.getItem("userToken")
-    });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
-
-    fetch("/api/topics", myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-          StatusAlertService.showError(response.error.message);
-        } else {
-          that.setState({ topics: response.data });
-        }
       });
   }
 
@@ -108,7 +86,6 @@ class EditArticle extends React.Component {
     e.preventDefault();
     var body = this.state.body;
     var title = this.state.title;
-    var topicId = this.refs.topic.value;
     var what_changed = this.refs.what_changed.value;
     var culture_group = this.state.culture_group;
     var material = this.state.material;
@@ -118,7 +95,6 @@ class EditArticle extends React.Component {
     if (
       body &&
       title &&
-      topicId &&
       what_changed &&
       culture_group &&
       material &&
@@ -147,8 +123,6 @@ class EditArticle extends React.Component {
           encodeURIComponent(artwork_type) +
           "&tags=" +
           encodeURIComponent(tags) +
-          "&topic_id=" +
-          topicId +
           "&user_id=" +
           window.localStorage.getItem("user_id") +
           "&what_changed=" +
@@ -173,7 +147,7 @@ class EditArticle extends React.Component {
         });
     } else {
       StatusAlertService.showError(
-        "Article Body, Title, Topic and Change Info is required."
+        "Article Body, Title, and Change Info is required."
       );
     }
   }
@@ -248,14 +222,6 @@ class EditArticle extends React.Component {
                         }}
                       />
                     </div>
-                    <label>Choose topic</label>
-                    <select className="form-control topic-select" ref="topic">
-                      {this.state.topics.map(topic => (
-                        <option value={topic.id} key={topic.id}>
-                          {topic.name}
-                        </option>
-                      ))}
-                    </select>
                   </div>
 
                   <div className="col-md-4 article-info-box">

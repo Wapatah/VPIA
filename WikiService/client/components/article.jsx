@@ -4,7 +4,7 @@
 */
 import React from "react";
 import { Link, hashHistory } from "react-router";
-import Loader from "../helpers/loader.jsx";
+import Loader from "../../../client/components/helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class ViewArticle extends React.Component {
@@ -77,11 +77,7 @@ class ViewArticle extends React.Component {
 */
   render() {
     if (this.state.loading) return <Loader />;
-    else if (
-      this.state.article[0] &&
-      this.state.article[0].topic_id &&
-      this.state.article[0].user_id
-    ) {
+    else if (this.state.article[0] && this.state.article[0].user_id) {
       return (
         <div>
           <StatusAlert />
