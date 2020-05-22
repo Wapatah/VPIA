@@ -2,7 +2,7 @@
   Logic to handle automatic artwork filtering inside the search results page
 */
 import React from "react";
-import Loader from "../helpers/loader.jsx";
+import Loader from "../../../client/components/helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 import { hashHistory } from "react-router";
 

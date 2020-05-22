@@ -7,7 +7,7 @@
 
 // Importing the data models needed to manipulate
 var Archives = require("../models/archive.js");
-var Users = require("../models/user.js");
+var Users = require("../../UserService/models/user.js");
 
 module.exports = function(app) {
   /* --------------------------------------------------------------------------------------------------------------------------------------------

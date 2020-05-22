@@ -7,6 +7,9 @@ const path = require("path");
 
 const BUILD_DIR = path.resolve(__dirname, "../client/public");
 const APP_DIR = path.resolve(__dirname, "../client/components");
+const USER_SERVICE = path.resolve(__dirname, "../UserService/client/components");
+const HISTORY_SERVICE = path.resolve(__dirname, "../HistoryService/client/components");
+const SEARCH_SERVICE = path.resolve(__dirname, "../SearchService/client/components");
 
 module.exports = {
   mode: "production",
@@ -29,6 +32,42 @@ module.exports = {
       {
         test: /\.jsx?/,
         include: APP_DIR,
+        exclude: /node_modules/,
+        type: "javascript/auto",
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"]
+          }
+        }
+      },
+      {
+        test: /\.jsx?/,
+        include: USER_SERVICE,
+        exclude: /node_modules/,
+        type: "javascript/auto",
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"]
+          }
+        }
+      },
+      {
+        test: /\.jsx?/,
+        include: HISTORY_SERVICE,
+        exclude: /node_modules/,
+        type: "javascript/auto",
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"]
+          }
+        }
+      },
+      {
+        test: /\.jsx?/,
+        include: SEARCH_SERVICE,
         exclude: /node_modules/,
         type: "javascript/auto",
         use: {

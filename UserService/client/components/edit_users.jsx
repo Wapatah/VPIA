@@ -1,26 +1,26 @@
 /* --------------------------------------------------------------------------------------------------------------------------------------------
-  Edit topics logic - likely depreciated.
+  Potentially depreciated? Admin is currently not working. But the logic could be used for User settings.
 */
 import React from "react";
 import { hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
-import Loader from "../helpers/loader.jsx";
+import Loader from "../../../client/components/helpers/loader.jsx";
 
-class EditTopic extends React.Component {
+class EditUser extends React.Component {
   constructor(props) {
     super(props);
-    this.editTopic = this.editTopic.bind(this);
+    this.editUser = this.editUser.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.state = { topic: "", loading: true, name: "", description: "" };
+    this.state = {
+      loading: true,
+      name: "",
+      about: "",
+      email: "",
+      password: ""
+    };
   }
 
-  handleChange() {
-    this.setState({
-      name: this.refs.topic_name.value,
-      description: this.refs.topic_description.value
-    });
-  }
-
+  // On load, GET ONE user by id.
   componentDidMount() {
     var myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
@@ -29,7 +29,7 @@ class EditTopic extends React.Component {
     var myInit = { method: "GET", headers: myHeaders };
     var that = this;
 
-    fetch("/api/topics/" + this.props.params.topicId, myInit)
+    fetch("/api/users/" + this.props.params.user_id, myInit)
       .then(function(response) {
         return response.json();
       })
@@ -39,18 +39,22 @@ class EditTopic extends React.Component {
         } else {
           that.setState({
             name: response.data.name,
-            description: response.data.description,
+            about: response.data.about,
+            email: response.data.email,
             loading: false
           });
         }
       });
   }
 
-  editTopic(e) {
-    var topic = {
-      name: encodeURIComponent(this.refs.topic_name.value),
-      description: encodeURIComponent(this.refs.topic_description.value),
-      id: this.props.params.topicId
+  // Edit User information
+  editUser(e) {
+    var user = {
+      name: encodeURIComponent(this.refs.user_name.value),
+      about: encodeURIComponent(this.refs.user_about.value),
+      email: encodeURIComponent(this.refs.user_email.value),
+      password: encodeURIComponent(this.refs.user_password.value),
+      id: encodeURIComponent(this.props.params.user_id)
     };
 
     var myHeaders = new Headers({
@@ -63,14 +67,18 @@ class EditTopic extends React.Component {
       headers: myHeaders,
       body:
         "name=" +
-        topic.name +
-        "&description=" +
-        topic.description +
+        user.name +
+        "&about=" +
+        user.about +
+        "&email=" +
+        user.email +
+        "&password=" +
+        user.password +
         "&id=" +
-        topic.id
+        user.id
     };
 
-    fetch("/api/topics/", myInit)
+    fetch("/api/users/", myInit)
       .then(function(response) {
         return response.json();
       })
@@ -78,12 +86,23 @@ class EditTopic extends React.Component {
         if (response.error.error) {
           StatusAlertService.showError(response.error.message);
         } else {
-          StatusAlertService.showSuccess("Topic has been edited");
+          StatusAlertService.showSuccess("User has been edited");
           hashHistory.push("admin");
         }
       });
   }
 
+  // Set variable to new input
+  handleChange() {
+    this.setState({
+      name: this.refs.user_name.value,
+      about: this.refs.user_about.value,
+      email: this.refs.user_email.value,
+      password: this.refs.user_password.value
+    });
+  }
+
+  // Render user editing page
   render() {
     if (this.state.loading) return <Loader />;
     else
@@ -93,7 +112,7 @@ class EditTopic extends React.Component {
           <div className="row">
             <div className="col-md-12 col-sd-12">
               <h1>
-                <b>Update Topic</b>
+                <b>Update User</b>
               </h1>
               <br />
               <form>
@@ -101,8 +120,8 @@ class EditTopic extends React.Component {
                   <input
                     type="text"
                     className="form-control"
-                    ref="topic_name"
-                    id="inputTopicName"
+                    ref="user_name"
+                    id="inputUserName"
                     placeholder="Name"
                     value={this.state.name}
                     onChange={this.handleChange}
@@ -112,19 +131,41 @@ class EditTopic extends React.Component {
                   <input
                     type="text"
                     className="form-control"
-                    ref="topic_description"
-                    id="inputTopicAbout"
-                    placeholder="Description"
-                    value={this.state.description}
+                    ref="user_about"
+                    id="inputUserAbout"
+                    placeholder="About"
+                    value={this.state.about}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="col-sm-12 form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    ref="user_email"
+                    id="inputUserName"
+                    placeholder="Email"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="col-sm-12 form-group">
+                  <input
+                    type="password"
+                    className="form-control"
+                    ref="user_password"
+                    id="inputUserName"
+                    placeholder="Password"
+                    value={this.state.password}
                     onChange={this.handleChange}
                   />
                 </div>
                 <div className="col-sm-12 form-group">
                   <button
-                    onClick={this.editTopic}
+                    onClick={this.editUser}
                     className="btn btn-default btn-block btn-lg"
                   >
-                    Update Topic
+                    Update User
                   </button>
                 </div>
               </form>
@@ -135,4 +176,4 @@ class EditTopic extends React.Component {
   }
 }
 
-export default EditTopic;
+export default EditUser;

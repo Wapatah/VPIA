@@ -16,10 +16,10 @@
 
 // eslint-disable-next-line no-unused-vars
 module.exports.load = app => {
-  let Archive = require("../models/archive");
+  let Archive = require("../HistoryService/models/archive");
   let Article = require("../models/article");
   let Topic = require("../models/topic");
-  let User = require("../models/user");
+  let User = require("../UserService/models/user");
 
   Archive.belongsTo(Article, { as: "articles", foreignKey: "article_id" });
   Archive.belongsTo(User, { as: "users", foreignKey: "user_id" });

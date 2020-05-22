@@ -47,7 +47,7 @@ require("./api/authentication")(app);
 require("./api/setup")(app);
 
 // Importing the users endpoint for sign up capabilties.
-require("./api/users")(app);
+require("./UserService/api/users")(app);
 
 // Limit the ability of non-users to access API routes.
 apiRoutes.use(function(req, res, next) {
@@ -143,13 +143,13 @@ require("./api/articles")(apiRoutes);
 require("./api/topics")(apiRoutes);
 
 // Importing all endpoints for users
-require("./api/users")(apiRoutesAdmin);
+require("./UserService/api/users")(apiRoutesAdmin);
 
 // Importing all endpoints for archives
-require("./api/archives")(apiRoutes);
+require("./HistoryService/api/archives")(apiRoutes);
 
 // Importing the search endpoint
-require("./api/search")(apiRoutes);
+require("./SearchService/api/search")(apiRoutes);
 
 // Importing all endpoints which are only admin accessible
 require("./api/admin")(apiRoutesAdmin);

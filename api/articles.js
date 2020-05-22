@@ -10,8 +10,8 @@
 // Importing the data models needed to manipulate
 var Articles = require("../models/article.js");
 var Topics = require("../models/topic.js");
-var Archives = require("../models/archive.js");
-var Users = require("../models/user.js");
+var Archives = require("../HistoryService/models/archive.js");
+var Users = require("../UserService/models/user.js");
 
 module.exports = function(app) {
   // --------------------------------------------------------------------------------------------------------------------------------------------

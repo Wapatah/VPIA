@@ -4,7 +4,7 @@
 */
 
 // @Matterwiki - Importing the models
-var Users = require("../models/user.js");
+var Users = require("../UserService/models/user.js");
 var Topics = require("../models/topic.js");
 var bcrypt = require("bcryptjs");
 const saltRounds = 10;

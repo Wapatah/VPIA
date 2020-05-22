@@ -2,7 +2,7 @@
   Main navigation logic for the site lives here - please note that the user settings would live in the app.jsx component, not here.
 */
 import React from "react";
-import SearchForm from "../search/searchform.jsx";
+import SearchForm from "../../../SearchService/client/components/searchform.jsx";
 import { Link } from "react-router";
 
 class MainNav extends React.Component {

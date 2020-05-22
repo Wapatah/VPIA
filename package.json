@@ -6,7 +6,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.prod.js --progress --profile --colors",
     "dev": "node index.js",
-    "start": "npm run build && cross-env NODE_ENV=production node index.js && SET AUTOUPDATE=1",
+    "postinstall": "cd MediaService && npm run start",
+    "start": "npm run postinstall & npm run build && cross-env NODE_ENV=production node index.js && SET AUTOUPDATE=1",
     "prettier": "prettier --write \"**/*.{js,jsx}\" --ignore-path .gitignore",
     "lint": "eslint --config ./config/.eslintrc.js \"**/*.js\" --fix --ignore-path .gitignore"
   },

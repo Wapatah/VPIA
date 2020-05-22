@@ -5,7 +5,7 @@
 // Importing the data models needed to manipulate
 var Users = require("../models/user.js");
 var bcrypt = require("bcryptjs");
-var Articles = require("../models/article.js");
+var Articles = require("../../models/article.js");
 const saltRounds = 10;
 
 module.exports = function(app) {
