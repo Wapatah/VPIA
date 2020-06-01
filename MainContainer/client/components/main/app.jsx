@@ -269,11 +269,7 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-          <div
-            className="footer-lightgrey"
-            aria-label="Partnership logos"
-            role="Partnership logos"
-          >
+          <div className="footer-lightgrey" aria-label="Partnership logos">
             <div className="container bottom_border">
               <div className="row">
                 <div className="col col-lg">

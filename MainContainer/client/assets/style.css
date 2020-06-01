@@ -575,12 +575,12 @@ footer p {
   display: none;
 }
 
-#VPIA-intro.container-fluid {
+.VPIA-intro.container-fluid {
   padding-left: 0;
   padding-right: 0;
 }
 
-#VPIA-intro.jumbotron {
+.VPIA-intro.jumbotron {
   height: 23.65em;
 }
 
@@ -754,7 +754,7 @@ ul.social-network li {
   z-index: 2;
 }
 
-#VPIA-intro.jumbotron {
+.VPIA-intro.jumbotron {
   background-image: url("../assets/images/BG_L.jpg");
   background-blend-mode: multiply;
   -webkit-filter: grayscale(100%);
@@ -952,7 +952,7 @@ ul.social-network li {
   width: 100%;
 }
 
-#VPIA-intro-right {
+.VPIA-intro-right {
   padding-right: 15px;
 }
 
@@ -990,10 +990,10 @@ ul.social-network li {
     float: left;
   }
 
-  #VPIA-intro-right {
+  .VPIA-intro-right {
     padding: 10%;
   }
-  #VPIA-intro p {
+  .VPIA-intro p {
     margin: 3%;
   }
 
@@ -1081,28 +1081,28 @@ ul.social-network li {
   .modal-fullscreen .modal-dialog {
     width: 1170px;
   }
-  #VPIA-intro.jumbotron {
+  .VPIA-intro.jumbotron {
     padding-left: 17%;
   }
-  #VPIA-intro-right.col-4 {
+  .VPIA-intro-right.col-4 {
     padding-right: 10%;
   }
 }
 @media (min-width: 2560px) {
-  #VPIA-intro.col-8 {
+  .VPIA-intro.col-8 {
     -ms-flex: 0 0 58.333333%;
     flex: 0 0 58.333333%;
     max-width: 58.333333%;
   }
-  #VPIA-intro-right.col-4 {
+  .VPIA-intro-right.col-4 {
     -ms-flex: 0 0 41.666667%;
     flex: 0 0 41.666667%;
     max-width: 41.666667%;
   }
-  #VPIA-intro.jumbotron {
+  .VPIA-intro.jumbotron {
     padding-left: 48%;
   }
-  #VPIA-intro-right.col-4 {
+  .VPIA-intro-right.col-4 {
     padding-right: 28%;
   }
 }

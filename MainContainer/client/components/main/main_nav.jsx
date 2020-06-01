@@ -30,16 +30,8 @@ class MainNav extends React.Component {
             </div>
 
             <div className="col-lg-8 col-lg-offset-2 align-self-end">
-              <nav
-                className="navcontainer"
-                role="navigation"
-                aria-label="main menu"
-              >
-                <div
-                  className="main-nav-item"
-                  role="menuitem"
-                  aria-label="home"
-                >
+              <nav className="navcontainer" role="navigation">
+                <div className="main-nav-item">
                   <Link to="landing" activeClassName="active-yellow">
                     <svg
                       width="60%"
@@ -56,11 +48,7 @@ class MainNav extends React.Component {
                     <span>Home</span>
                   </Link>
                 </div>
-                <div
-                  className="main-nav-item"
-                  role="menuitem"
-                  aria-label="about"
-                >
+                <div className="main-nav-item">
                   <Link to="about" activeClassName="active-yellow">
                     <svg
                       width="60%"
@@ -77,11 +65,7 @@ class MainNav extends React.Component {
                     <span>About</span>
                   </Link>
                 </div>
-                <div
-                  className="main-nav-item"
-                  role="menuitem"
-                  aria-label="artwork"
-                >
+                <div className="main-nav-item">
                   <Link to="results" activeClassName="active-yellow">
                     <svg
                       width="50%"

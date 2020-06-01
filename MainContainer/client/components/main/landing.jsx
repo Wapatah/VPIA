@@ -17,19 +17,17 @@ class Landing extends React.Component {
   render() {
     return (
       <div>
-        <div id="VPIA-intro" className="container-fluid">
+        <div className="VPIA-intro container-fluid" role="main">
           <StatusAlert />
           <div className="row">
             <div
-              id="VPIA-intro"
-              className="col-lg-8"
-              role="VPIA intro"
+              className="VPIA-intro col-lg-8"
               aria-label="Search and edit 2000 indigenous artworks"
             >
-              <div id="VPIA-intro" className="jumbotron">
+              <div className="VPIA-intro jumbotron">
                 <div className="intro-content">
                   <div className="row">
-                    <div id="VPIA-intro" className="col-lg-8">
+                    <div className="VPIA-intro col-lg-8">
                       <p className="lead">
                         Search and edit 2000 indigenous Artworks
                       </p>
@@ -53,9 +51,7 @@ class Landing extends React.Component {
               </div>
             </div>
             <div
-              id="VPIA-intro-right"
-              className="col-lg-4"
-              role="VPIA intro"
+              className="VPIA-intro-right col-lg-4"
               aria-label="Project at a glance"
             >
               <h5 className="title-primary underline-brush">
@@ -77,7 +73,6 @@ class Landing extends React.Component {
             <div
               id="function-intro"
               className="col-lg-12 function-intro"
-              role="VPIA elements"
               aria-label="VPIA elements"
             >
               <div className="container">
