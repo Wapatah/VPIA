@@ -83,6 +83,7 @@ class Login extends React.Component {
                       type="email"
                       className="form-control"
                       id="inputEmail"
+                      type="email"
                       placeholder="Email"
                       aria-label="Email"
                     />
@@ -92,6 +93,7 @@ class Login extends React.Component {
                       type="password"
                       className="form-control"
                       id="inputPassword"
+                      type="password"
                       placeholder="Password"
                       aria-label="Password"
                     />

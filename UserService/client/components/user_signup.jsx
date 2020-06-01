@@ -97,7 +97,8 @@ class UserSignup extends React.Component {
                     className="form-control"
                     ref="user_name"
                     id="inputUserName"
-                    placeholder="Name"
+                    aria-label="user name"
+                    placeholder="name"
                   />
                 </div>
                 <div className="col-sm-12 form-group">
@@ -106,6 +107,7 @@ class UserSignup extends React.Component {
                     className="form-control"
                     ref="user_about"
                     id="inputUserAbout"
+                    aria-label="user about"
                     placeholder="About"
                   />
                 </div>
@@ -147,11 +149,11 @@ class UserSignup extends React.Component {
                   </a>
                   <br />
                   <br />
-                  <div className="text-white small">
+                  <p className="text-white small">
                     We will be modifying our Terms and Conditions/Privacy Policy
                     to reflect our responsibilities in the very near future. For
                     now, we are mirroring Wikipedia's goals.
-                  </div>
+                  </p>
                   <br />
                 </div>
                 <div className="col-sm-12 form-group">

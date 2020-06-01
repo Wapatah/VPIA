@@ -56,7 +56,7 @@ class Landing extends React.Component {
               id="VPIA-intro-right"
               className="col-lg-4"
               role="VPIA intro"
-              aria-label="Project at a galnce"
+              aria-label="Project at a glance"
             >
               <h5 className="title-primary underline-brush">
                 Project at a Glance!
