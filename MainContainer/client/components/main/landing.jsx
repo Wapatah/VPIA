@@ -20,7 +20,12 @@ class Landing extends React.Component {
         <div id="VPIA-intro" className="container-fluid">
           <StatusAlert />
           <div className="row">
-            <div id="VPIA-intro" className="col-lg-8">
+            <div
+              id="VPIA-intro"
+              className="col-lg-8"
+              role="VPIA intro"
+              aria-label="Search and edit 2000 indigenous artworks"
+            >
               <div id="VPIA-intro" className="jumbotron">
                 <div className="intro-content">
                   <div className="row">
@@ -47,7 +52,12 @@ class Landing extends React.Component {
                 <div className="image-tint"></div>
               </div>
             </div>
-            <div id="VPIA-intro-right" className="col-lg-4">
+            <div
+              id="VPIA-intro-right"
+              className="col-lg-4"
+              role="VPIA intro"
+              aria-label="Project at a galnce"
+            >
               <h5 className="title-primary underline-brush">
                 Project at a Glance!
               </h5>
@@ -64,7 +74,12 @@ class Landing extends React.Component {
                 their knowledge with the VPIA.
               </p>
             </div>
-            <div id="function-intro" className="col-lg-12">
+            <div
+              id="function-intro"
+              className="col-lg-12 function-intro"
+              role="VPIA elements"
+              aria-label="VPIA elements"
+            >
               <div className="container">
                 <div className="col-md-10 col-centered">
                   <div className="col col-centered">

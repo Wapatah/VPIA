@@ -32,7 +32,7 @@ class Home extends React.Component {
       return (
         <div className="container-fluid">
           <div className="row justify-content-md-center">
-            <div className="container p-t-3">
+            <div className="container p-t-3" aria-label="In conversation">
               <h5 className="title-primary underline-brush">In Conversation</h5>
               <BrowseArticles articleId={this.state.articleId} />
               <h5 className="title-primary underline-brush">
@@ -44,7 +44,8 @@ class Home extends React.Component {
                     <img
                       src="../assets/images/Event_VPIA.jpeg"
                       className="card-img greyscale"
-                      alt="..."
+                      alt="Image of the launch of VPIA event"
+                      aria-label="Image of the launch of VPIA event"
                     />
                     <div className="card-img-overlay">
                       <div className="image-tint"></div>
@@ -60,7 +61,8 @@ class Home extends React.Component {
                     <img
                       src="../assets/images/Event_inuitartonline.jpeg"
                       className="card-img greyscale"
-                      alt="..."
+                      alt="Image of the Inuit Art On-line event"
+                      aria-label="Image of the Inuit Art On-line event"
                     />
                     <div className="card-img-overlay">
                       <div className="image-tint"></div>
@@ -79,7 +81,8 @@ class Home extends React.Component {
                     <img
                       src="../assets/images/Event_McCord.jpg"
                       class="card-img-top greyscale"
-                      alt="..."
+                      alt="Image of the McCord Museum workshop's event with Eric Tootoosis"
+                      aria-label="Image of the McCord Museum workshop's event with Eric Tootoosis"
                     />
                     <div class="card-body">
                       <p className="article-title">
@@ -94,7 +97,8 @@ class Home extends React.Component {
                         <img
                           src="../assets/images/CRKN.png"
                           class="card-img-top greyscale"
-                          alt="..."
+                          alt="Image of the Canadian Research Knowledge Network Conference's event"
+                          aria-label="Image of the Canadian Research Knowledge Network Conference's event"
                         />
                         <div class="card-body">
                           <p className="article-title">

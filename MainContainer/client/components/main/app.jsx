@@ -107,6 +107,7 @@ class App extends React.Component {
                     <button
                       type="button"
                       className="btn btn-outline-light btn-round"
+                      aria-label="Join now"
                     >
                       <Link to="user_signup" className="none-deco">
                         Join Now!
@@ -117,6 +118,7 @@ class App extends React.Component {
                     <button
                       type="button"
                       className="btn btn-secondary btn-round"
+                      aria-label="Sign in"
                     >
                       <Link to="login" className="btn-text">
                         Sign In
@@ -174,7 +176,7 @@ class App extends React.Component {
           }
         ></div>
         <div>{that.props.children}</div>
-        <footer>
+        <footer aria-label="Footer" role="contentinfo">
           <div className="footer-darkgrey">
             <div className="container bottom_border">
               <div id="full-page" className="row justify-content-between">
@@ -189,7 +191,10 @@ class App extends React.Component {
                       ></img>
                     </div>
 
-                    <div className="col-lg-6 align-self-center footer-list">
+                    <div
+                      className="col-lg-6 align-self-center footer-list"
+                      aria-label="Additional links"
+                    >
                       <ul className="footer_ul">
                         <li>
                           <a href="">About</a>
@@ -215,25 +220,28 @@ class App extends React.Component {
                 </div>
 
                 <div className="col-lg-3">
-                  <div className="social-icons">
+                  <div
+                    className="social-icons"
+                    aria-label="VPIA social media links"
+                  >
                     <ul className="social-network">
                       <li>
-                        <a href="#" aria-label="Instagram icon">
+                        <a href="#" aria-label="Instagram">
                           <i className="fa fa-instagram"></i>
                         </a>
                       </li>
                       <li>
-                        <a href="#" aria-label="Twitter icon">
+                        <a href="#" aria-label="Twitter">
                           <i className="fa fa-twitter"></i>
                         </a>
                       </li>
                       <li>
-                        <a href="#" aria-label="Facebook icon">
+                        <a href="#" aria-label="Facebook">
                           <i className="fa fa-facebook"></i>
                         </a>
                       </li>
                       <li>
-                        <a href="#" aria-label="Website icon">
+                        <a href="#" aria-label="Website">
                           <i className="fa fa-globe"></i>
                         </a>
                       </li>
@@ -261,7 +269,11 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-          <div className="footer-lightgrey">
+          <div
+            className="footer-lightgrey"
+            aria-label="Partnership logos"
+            role="Partnership logos"
+          >
             <div className="container bottom_border">
               <div className="row">
                 <div className="col col-lg">
