@@ -115,7 +115,8 @@ class Home extends React.Component {
                         <img
                           src="../assets/images/Representing.jpg"
                           class="card-img-top greyscale"
-                          alt="..."
+                          alt="Image of the Re/presenting the European at the University of Auckland's event"
+                          aria-label="Image of the Re/presenting the European at the University of Auckland's event"
                         />
                         <div class="card-body">
                           <p className="article-title">
