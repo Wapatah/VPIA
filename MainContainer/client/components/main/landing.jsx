@@ -16,7 +16,7 @@ class Landing extends React.Component {
   */
   render() {
     return (
-      <div>
+      <div role="main">
         <div className="VPIA-intro container-fluid" role="main">
           <StatusAlert />
           <div className="row">

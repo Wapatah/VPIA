@@ -30,7 +30,7 @@ class MainNav extends React.Component {
             </div>
 
             <div className="col-lg-8 col-lg-offset-2 align-self-end">
-              <nav className="navcontainer" role="navigation">
+              <nav className="navcontainer">
                 <div className="main-nav-item">
                   <Link to="landing" activeClassName="active-yellow">
                     <svg
