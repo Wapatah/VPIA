@@ -1050,7 +1050,7 @@ ul.social-network li {
     margin-right: auto;
     padding-bottom: 5%;
   }
-  #my-card-img-top img {
+  .my-card-img-top img {
     height: 80vw;
   }
 }
@@ -1066,7 +1066,7 @@ ul.social-network li {
   #left-side.col-md-1 {
     max-width: none;
   }
-  #my-card-img-top img {
+  .my-card-img-top img {
     height: 20vw;
   }
 }

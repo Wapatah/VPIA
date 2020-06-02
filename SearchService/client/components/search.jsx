@@ -93,7 +93,7 @@ class Search extends React.Component {
                   <div key={article.id} className="col-md-4">
                     <div id="result" className="card card-block">
                       <Link
-                        id="my-card-img-top"
+                        className="my-card-img-top"
                         to={"/article/" + article.id}
                         dangerouslySetInnerHTML={{ __html: article.photo }}
                       ></Link>

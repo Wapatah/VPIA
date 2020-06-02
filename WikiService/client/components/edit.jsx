@@ -227,7 +227,7 @@ class EditArticle extends React.Component {
                   <div className="col-md-4 article-info-box">
                     <div className="card">
                       <div
-                        id="my-card-img-top"
+                        className="my-card-img-top"
                         dangerouslySetInnerHTML={{
                           __html: this.state.article[0].photo
                         }}

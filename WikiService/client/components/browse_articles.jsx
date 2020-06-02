@@ -116,8 +116,7 @@ class BrowseArticles extends React.Component {
                   <div key={article.id} className="col-md-3">
                     <div className="card">
                       <Link
-                        id="my-card-img-top"
-                        className="greyscale"
+                        className="my-card-img-top greyscale"
                         to={"/article/" + article.id}
                         dangerouslySetInnerHTML={{ __html: article.photo }}
                       ></Link>
@@ -152,8 +151,7 @@ class BrowseArticles extends React.Component {
                   <div key={article.id} className="col-md-3">
                     <div className="card">
                       <Link
-                        id="my-card-img-top"
-                        className="greyscale"
+                        className="my-card-img-top greyscale"
                         to={"/article/" + article.id}
                         dangerouslySetInnerHTML={{ __html: article.photo }}
                       ></Link>
