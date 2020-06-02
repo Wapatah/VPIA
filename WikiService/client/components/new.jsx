@@ -82,6 +82,7 @@ class NewArticle extends React.Component {
           "&institution=" +
           encodeURIComponent(institution) +
           "&photo_license=" +
+          encodeURIComponent(photo_license) +
           "&user_id=" +
           window.localStorage.getItem("user_id")
       };
@@ -110,8 +111,6 @@ class NewArticle extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Render the create article page
   render() {
-    if (this.state.loading) return <Loader />;
-    else
       return (
         <div>
           <StatusAlert />
