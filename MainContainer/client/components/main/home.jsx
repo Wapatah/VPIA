@@ -40,7 +40,7 @@ class Home extends React.Component {
               </h5>
               <div className="row">
                 <div className="col-md-7">
-                  <div id="events-card" className="card text-white">
+                  <div className="events-card card text-white">
                     <img
                       src="../assets/images/Event_VPIA.jpeg"
                       className="card-img greyscale"
@@ -57,7 +57,7 @@ class Home extends React.Component {
                       </p>
                     </div>
                   </div>
-                  <div id="events-card" className="card text-white">
+                  <div className="events-card card text-white">
                     <img
                       src="../assets/images/Event_inuitartonline.jpeg"
                       className="card-img greyscale"
@@ -77,7 +77,7 @@ class Home extends React.Component {
                 </div>
 
                 <div className="col-md-5">
-                  <div id="events-card" className="card">
+                  <div className="events-card card">
                     <img
                       src="../assets/images/Event_McCord.jpg"
                       class="card-img-top greyscale"
