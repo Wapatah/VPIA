@@ -80,18 +80,18 @@ class Login extends React.Component {
                 <form>
                   <div className="col-sm-12 form-group">
                     <input
-                      type="email"
                       className="form-control"
                       id="inputEmail"
+                      type="email"
                       placeholder="Email"
                       aria-label="Email"
                     />
                   </div>
                   <div className="col-sm-12 form-group">
                     <input
-                      type="password"
                       className="form-control"
                       id="inputPassword"
+                      type="password"
                       placeholder="Password"
                       aria-label="Password"
                     />

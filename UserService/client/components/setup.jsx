@@ -100,7 +100,7 @@ class Setup extends React.Component {
                   </div>
                   <div className="col-sm-12 form-group">
                     <input
-                      type="password"
+                      type="text"
                       className="form-control"
                       ref="user_password"
                       id="inputUserPassword"

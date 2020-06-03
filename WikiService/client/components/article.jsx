@@ -85,7 +85,10 @@ class ViewArticle extends React.Component {
             <div className="col-md-5 col-centered">
               <div id="article-nav-inner" className="row align-items-end">
                 <div className="col">
-                  <a className="active-red bottom-align-text">
+                  <a
+                    className="active-red bottom-align-text"
+                    aria-label="Artwork article tab, see the current published state of the article"
+                  >
                     <svg
                       width="15%"
                       height="15%"
@@ -105,6 +108,7 @@ class ViewArticle extends React.Component {
                   <Link
                     to={"/article/edit/" + this.state.article[0].id}
                     className="none-deco"
+                    aria-label="Edit tab, go to edit the article"
                   >
                     <i className="fa fa-edit"></i>Edit
                   </Link>
@@ -113,6 +117,7 @@ class ViewArticle extends React.Component {
                   <Link
                     to={"/article/history/" + this.state.article[0].id}
                     className="none-deco"
+                    aria-label="Histyory tab, go to see the history of this article"
                   >
                     <i className="fa fa-history"></i>View History
                   </Link>
@@ -165,7 +170,7 @@ class ViewArticle extends React.Component {
                   <div className="col-md-4 article-info-box">
                     <div className="card">
                       <div
-                        id="my-card-img-top"
+                        className="my-card-img-top"
                         dangerouslySetInnerHTML={{
                           __html: this.state.article[0].photo
                         }}

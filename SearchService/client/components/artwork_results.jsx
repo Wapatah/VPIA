@@ -1,5 +1,5 @@
 /* --------------------------------------------------------------------------------------------------------------------------------------------
-  This is the Artwork Results page. List of all the articles can be found on this page. 
+  This is the Artwork Results page. List of all the articles can be found on this page.
   This page is used to filter and allow for more discoverability of the artwork.
 */
 import React from "react";
@@ -70,7 +70,7 @@ class ArtworkResults extends React.Component {
           <div id="result" className="card card-block">
             <Link
               to={"/article/" + article.id}
-              id="my-card-img-top"
+              className="my-card-img-top"
               dangerouslySetInnerHTML={{ __html: article.photo }}
             ></Link>
             <div className="card-body">

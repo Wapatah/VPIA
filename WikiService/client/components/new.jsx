@@ -185,7 +185,7 @@ class NewArticle extends React.Component {
 
                   <div className="col-md-4 article-info-box">
                     <div className="card">
-                      <div id="my-card-img-top">
+                      <div className="my-card-img-top">
                         <Editor
                           initialValue='<img src="../../assets/images/logo.png">'
                           init={{
