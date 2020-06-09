@@ -86,18 +86,6 @@ h4 {
   margin-top: 3em;
 }
 
-.login-box {
-  max-width: 500px;
-  margin: 0px auto;
-  background-color: transparent;
-  text-align: center;
-  padding-top: 40%;
-}
-
-.login-header {
-  margin-bottom: 1em;
-}
-
 .article-list {
   padding: 10px 20px;
 }
@@ -177,46 +165,6 @@ textarea {
 
 .color-text {
   color: #208778;
-}
-
-/* .modal-fullscreen */
-
-.modal-fullscreen {
-  background: #fff;
-  text-align: center;
-}
-
-.modal-fullscreen .modal-content {
-  background: transparent;
-  border: 0;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-.modal-backdrop.modal-backdrop-fullscreen {
-  background: #ffffff;
-}
-
-.modal-backdrop.modal-backdrop-fullscreen.in {
-  opacity: 0.97;
-  filter: alpha(opacity=97);
-}
-
-/* .modal-fullscreen size: we use Bootstrap media query breakpoints */
-
-.modal-fullscreen .modal-dialog {
-  margin: 0;
-  margin-right: auto;
-  margin-left: auto;
-  width: 100%;
-}
-
-.modal-fullscreen .col-md-6 {
-  float: none;
-}
-
-.modal-fullscreen .form-control {
-  border: 1px solid #ccc;
 }
 
 .navbar {
@@ -321,11 +269,6 @@ textarea {
   font-size: 1.2em;
   font-weight: 700;
   text-align: center;
-}
-
-.setup-form {
-  margin-top: 2em;
-  margin-bottom: 2em;
 }
 
 .fixed {
@@ -807,28 +750,11 @@ ul.social-network li {
   background-size: cover;
 }
 
-.left-panel {
-  background-color: #208778;
-  height: 100%;
-  padding-top: 3%;
-  padding-left: 3%;
-  padding-bottom: 10%;
-}
-
-#fullpage.container-fluid {
-  padding: 0;
-  height: 100%;
-}
-
 #logo-bottom-right {
   position: absolute;
   right: 0px;
   bottom: 0px;
   z-index: 1;
-}
-
-#full-page.row {
-  height: 100%;
 }
 
 #About-intro-section {
@@ -1063,9 +989,6 @@ ul.social-network li {
   }
 }
 @media (min-width: 768px) {
-  .modal-fullscreen .modal-dialog {
-    width: 750px;
-  }
   #mainlogo {
     top: 0.75em;
     height: auto;
@@ -1080,16 +1003,7 @@ ul.social-network li {
   }
 }
 
-@media (min-width: 992px) {
-  .modal-fullscreen .modal-dialog {
-    width: 970px;
-  }
-}
-
 @media (min-width: 1200px) {
-  .modal-fullscreen .modal-dialog {
-    width: 1170px;
-  }
   .VPIA-intro.jumbotron {
     padding-left: 17%;
   }
