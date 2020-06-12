@@ -118,6 +118,10 @@ p.article-title {
   flex: 0 0 62.5%;
   max-width: 62.5%;
 }
+
+#article-photo img {
+  width: 100%;
+}
 /*
 Reponsive layout setting
 */
