@@ -126,7 +126,7 @@ class ViewArticle extends React.Component {
             </div>
           </div>
           <div className="row">
-            <div id="left-side" className="col-md-1 left-side-nav-card">
+            <div className="left-side col-md-1 left-side-nav-card">
               <div className="left-side-nav-content">
                 <p>
                   # users have contributed to this article view history to see

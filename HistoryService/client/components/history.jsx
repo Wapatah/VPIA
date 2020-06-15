@@ -78,7 +78,7 @@ class ArticleHistory extends React.Component {
             </div>
           </div>
           <div className="row">
-            <div id="left-side" className="col-md-1 left-side-nav-card">
+            <div className="left-side col-md-1 left-side-nav-card">
               <div className="col-8 float-right">
                 <h6 className="contribution-title">Contribution History</h6>
                 <BrowseArchives

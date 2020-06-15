@@ -1,0 +1,133 @@
+/*
+  The custom stylesheet for Search service
+*/
+#search-bar.input-group {
+  border-bottom: 2px solid white;
+  z-index: 100;
+}
+
+.left-side.col-md-1 {
+  flex: auto;
+  max-width: 100%;
+}
+
+.left-side.col-md-1 {
+  -ms-flex: 0 0 29.166666655%;
+  flex: 0 0 29.166666655%;
+  max-width: 29.166666655%;
+}
+
+.no-results {
+  color: #595959;
+  text-align: center;
+}
+
+.no-results .fa {
+  font-size: 200px;
+}
+
+.search-button {
+  color: white;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.search-button:hover,
+.search-button:active,
+.search-button:focus {
+  color: #75777b;
+}
+
+.search-input {
+  min-height: 0px;
+  height: 30px;
+  padding: 6px 12px;
+  font-size: inherit;
+}
+
+.searchcustom {
+  border: solid 1px grey;
+  position: relative;
+}
+
+.searchcustom input[type="text"] {
+  border: none;
+  width: 100%;
+}
+
+.SearchOverlay-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #333;
+  opacity: 0.5;
+  z-index: 10;
+  display: none;
+}
+
+input#line[type="text"]:focus,
+:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#line::placeholder {
+  color: white;
+}
+#line {
+  z-index: 1000000;
+  position: relative;
+}
+
+input#line[type="text"]:focus::-webkit-input-placeholder {
+  color: #d0cfcd87;
+}
+
+input#line[type="text"]:focus:-moz-placeholder {
+  color: #d0cfcd87;
+} /* Firefox 18- */
+
+input#line[type="text"]:focus::-moz-placeholder {
+  color: #d0cfcd87;
+} /* Firefox 19+ */
+
+input#line:focus:-ms-input-placeholder {
+  color: #d0cfcd87;
+} /* oldIE ;) */
+input#line[type="text"],
+select {
+  background: transparent;
+  border: none;
+  color: white;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: 0.875rem;
+}
+
+.SearchOverlay-focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #333;
+  opacity: 0.5;
+  z-index: 10;
+  display: block;
+}
+#result.card {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .left-side.col-md-1 {
+    max-width: none;
+  }
+}
