@@ -1,8 +1,15 @@
 /*
   The custom stylesheet for Search service
 */
+
+@font-face {
+  font-family: "FuturaStdLight";
+  src: url("./fonts/Futura Std Light.otf");
+  font-display: swap;
+}
+
 #search-bar.input-group {
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #208778;
   z-index: 100;
 }
 
@@ -27,7 +34,7 @@
 }
 
 .search-button {
-  color: white;
+  color: #208778;
   background-color: Transparent;
   background-repeat: no-repeat;
   border: none;
@@ -71,6 +78,11 @@
   display: none;
 }
 
+#searchform {
+  background-color: white;
+  height: 3.625em;
+}
+
 input#line[type="text"]:focus,
 :focus {
   -webkit-box-shadow: none;
@@ -78,7 +90,9 @@ input#line[type="text"]:focus,
 }
 
 #line::placeholder {
-  color: white;
+  color: #208778;
+  font-family: "FuturaStdLight", sans-serif;
+  font-size: 0.8em;
 }
 #line {
   z-index: 1000000;

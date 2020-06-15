@@ -106,7 +106,7 @@ class App extends React.Component {
                   <li className="nav-item px-2">
                     <button
                       type="button"
-                      className="btn btn-outline-light btn-round"
+                      className="btn btn-outline-secondary btn-round"
                       aria-label="Join now"
                     >
                       <Link to="user_signup" className="none-deco">
