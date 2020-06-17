@@ -49,7 +49,7 @@ require("./UserService/api/setup")(app);
 // Importing the users endpoint for sign up capabilties.
 require("./UserService/api/users")(app);
 
-// Limit the ability of non-users to access API routes.
+/* // Limit the ability of non-users to access API routes.
 apiRoutes.use(function(req, res, next) {
   // Check header or url parameters or post parameters for token
   var token =
@@ -134,7 +134,7 @@ apiRoutesAdmin.use(function(req, res, next) {
       data: {}
     });
   }
-});
+}); */
 
 // Importing all endpoints for articles
 require("./WikiService/api/articles")(apiRoutes);
@@ -147,9 +147,6 @@ require("./HistoryService/api/archives")(apiRoutes);
 
 // Importing the search endpoint
 require("./SearchService/api/search")(apiRoutes);
-
-// Importing all endpoints which are only admin accessible
-require("./UserService/api/admin")(apiRoutesAdmin);
 
 app.use("/api", apiRoutes);
 app.use("/api", apiRoutesAdmin);
