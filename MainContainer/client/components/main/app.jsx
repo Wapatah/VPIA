@@ -86,7 +86,7 @@ class App extends React.Component {
               <span className="navbar-toggler-icon"></span>
             </button>
           ) : (
-            <div>
+            <div className="container-fluid">
               <button
                 className="navbar-toggler"
                 type="button"
