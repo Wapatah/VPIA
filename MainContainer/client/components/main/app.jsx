@@ -106,18 +106,18 @@ class App extends React.Component {
                   <li className="nav-item px-2">
                     <button
                       type="button"
-                      className="btn btn-outline-secondary btn-round"
+                      className="btn btn-outline-secondary btn-round join-btn"
                       aria-label="Join now"
                     >
                       <Link to="user_signup" className="none-deco">
-                        Join Now!
+                        Join
                       </Link>
                     </button>
                   </li>
                   <li className="nav-item px-2">
                     <button
                       type="button"
-                      className="btn btn-secondary btn-round"
+                      className="btn btn-secondary btn-round sign-in-btn"
                       aria-label="Sign in"
                     >
                       <Link to="login" className="btn-text">
