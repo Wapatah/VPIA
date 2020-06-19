@@ -247,10 +247,10 @@ class App extends React.Component {
                       </li>
                     </ul>
                   </div>
-                  <div className="input-group mb-3">
+                  <div className="input-group mb-3 email-form">
                     <input
                       type="text"
-                      className="form-control email-form"
+                      className="form-control"
                       placeholder="Stay in touch"
                       ref="search"
                       aria-label="Write an Email here"

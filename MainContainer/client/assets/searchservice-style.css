@@ -118,7 +118,6 @@ input#line[type="text"],
 select {
   background: transparent;
   border: none;
-  color: white;
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;

@@ -343,6 +343,11 @@ a.active-yellow span {
   width: 20%;
   height: auto;
 }
+.intro-box {
+  width: 82%;
+  margin: 0 auto;
+  box-shadow: 0px 3px 6px #00000029;
+}
 
 .small-icon {
   fill: #53555a;
@@ -402,8 +407,27 @@ footer p {
   padding: 0;
 }
 
-.email-form {
-  background-color: none;
+.email-form.input-group {
+  background-color: #343638;
+  border: 2px solid white;
+  border-radius: 4px;
+}
+
+.email-button {
+  color: white;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.email-form input[type="text"],
+select {
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 .btn-secondary {
@@ -454,13 +478,13 @@ footer p {
   height: 23.65em;
 }
 
-h5.title-primary {
+h1.title-primary {
   margin-top: 1.5em;
   font-size: 30px;
   color: #208778;
 }
 
-h5.underline-brush {
+h1.underline-brush {
   background: url("../assets/icons/line.svg");
   background-repeat: no-repeat;
   background-position: left bottom;
@@ -469,8 +493,8 @@ h5.underline-brush {
   height: 40px;
 }
 
-h5.underline-brush :before,
-h5.underline-brush :after {
+h1.underline-brush :before,
+h1.underline-brush :after {
   content: "";
   display: inline-block;
   position: absolute;
@@ -482,13 +506,17 @@ h5.underline-brush :after {
   background-position: 100% 100%;
 }
 
-h5.underline-brush :before {
+h1.underline-brush :before {
   left: -20px;
   background-position: 0 100%;
 }
 
-p.description {
-  font-family: "Baskerville";
+.VPIA-intro-right p {
+  font-family: "FuturaStdLight";
+}
+
+.VPIA-intro-right h2 {
+  font-size: 20px;
 }
 
 #mainheader.container-fluid {
@@ -561,9 +589,14 @@ ul.social-network li {
   margin-bottom: 0;
 }
 
+.VPIA-intro.col-lg-8 {
+  padding-left: 0;
+}
+
 .intro-content {
   position: relative;
-  top: 10em;
+  top: 9em;
+  padding-left: 5%;
   color: white;
   z-index: 3;
 }
@@ -707,6 +740,7 @@ ul.social-network li {
   padding: 6em;
   background-color: #ffa500;
   height: 26.25em;
+  margin-top: 5%;
 }
 
 .function-intro p {
@@ -777,9 +811,6 @@ ul.social-network li {
     margin: 3%;
   }
 
-  .intro-content {
-    top: 5em;
-  }
   #function-intro {
     height: auto;
   }
@@ -831,11 +862,8 @@ ul.social-network li {
     height: 20vw;
   }
 }
-
+/*
 @media (min-width: 1200px) {
-  .VPIA-intro.jumbotron {
-    padding-left: 17%;
-  }
   .VPIA-intro-right.col-4 {
     padding-right: 10%;
   }
@@ -857,4 +885,4 @@ ul.social-network li {
   .VPIA-intro-right.col-4 {
     padding-right: 28%;
   }
-}
+} */
