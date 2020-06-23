@@ -8,6 +8,7 @@
 // Importing the data models needed to manipulate
 var Archives = require("../models/archive.js");
 var Users = require("../../UserService/models/user.js");
+const isUserAuthenticated = require("../../index.js");
 
 module.exports = function(app) {
   /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -15,7 +16,7 @@ module.exports = function(app) {
   specific ID (identified through the ID param)
 */
 
-  app.post("/archives", (req, res) => {
+  app.post("/archives", isUserAuthenticated, (req, res) => {
     Archives.create({
       title: req.body.title,
       culture_group: req.body.culture_group,

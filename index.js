@@ -49,8 +49,8 @@ require("./UserService/api/setup")(app);
 // Importing the users endpoint for sign up capabilties.
 require("./UserService/api/users")(app);
 
-/* // Limit the ability of non-users to access API routes.
-apiRoutes.use(function(req, res, next) {
+// Limit the ability of non-users to access API routes.
+module.exports = function isUserAuthenticated(req, res, next) {
   // Check header or url parameters or post parameters for token
   var token =
     req.body.token || req.query.token || req.headers["x-access-token"];
@@ -60,7 +60,7 @@ apiRoutes.use(function(req, res, next) {
     // Verifies secret and checks for expiration
     jwt.verify(token, app.get("superSecret"), function(err, decoded) {
       if (err) {
-        return res.json({
+        res.json({
           error: {
             error: true,
             message: "Failed to authenticate token"
@@ -68,6 +68,7 @@ apiRoutes.use(function(req, res, next) {
           code: "B101",
           data: {}
         });
+        res.redirect("/");
       } else {
         // If everything is good, save to request for use in other routes
         req.decoded = decoded;
@@ -76,7 +77,7 @@ apiRoutes.use(function(req, res, next) {
     });
   } else {
     // If there is no token, return an error
-    return res.status(403).json({
+    res.status(403).json({
       error: {
         error: true,
         message: "No token provided"
@@ -84,11 +85,12 @@ apiRoutes.use(function(req, res, next) {
       code: "B102",
       data: {}
     });
+    res.redirect("/");
   }
-});
+};
 
 // Limit the ability of non-admin users to access API routes.
-apiRoutesAdmin.use(function(req, res, next) {
+module.exports = function isAdminAuthenticated(req, res, next) {
   // Check header or url parameters or post parameters for token
   var token =
     req.body.token || req.query.token || req.headers["x-access-token"];
@@ -112,7 +114,7 @@ apiRoutesAdmin.use(function(req, res, next) {
           req.decoded = decoded;
           next();
         } else {
-          return res.status(403).json({
+          res.status(403).json({
             error: {
               error: true,
               message: "You are not authorized to perform this action"
@@ -120,12 +122,13 @@ apiRoutesAdmin.use(function(req, res, next) {
             code: "BNOTADMIN",
             data: {}
           });
+          res.redirect("/");
         }
       }
     });
   } else {
     // If there is no token, return an error
-    return res.status(403).json({
+    res.status(403).json({
       error: {
         error: true,
         message: "No token provided"
@@ -133,8 +136,9 @@ apiRoutesAdmin.use(function(req, res, next) {
       code: "B102",
       data: {}
     });
+    res.redirect("/");
   }
-}); */
+};
 
 // Importing all endpoints for articles
 require("./WikiService/api/articles")(apiRoutes);
