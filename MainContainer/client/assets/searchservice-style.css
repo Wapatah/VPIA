@@ -94,6 +94,7 @@ input#line[type="text"]:focus,
   font-family: "FuturaStdLight", sans-serif;
   font-size: 0.8em;
 }
+
 #line {
   z-index: 1000000;
   position: relative;

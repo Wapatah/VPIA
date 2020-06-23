@@ -339,6 +339,7 @@ a.active-yellow span {
   width: 20%;
   height: auto;
 }
+
 .intro-box {
   width: 82%;
   margin: 0 auto;
@@ -350,6 +351,7 @@ a.active-yellow span {
   color: #343638;
   padding: 5px 30px;
 }
+
 .sign-in-btn {
   padding: 5px 30px;
 }
@@ -496,24 +498,6 @@ h1.underline-brush {
   position: relative;
   display: inline-block;
   height: 40px;
-}
-
-h1.underline-brush :before,
-h1.underline-brush :after {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  right: -20px;
-  width: 20px;
-  height: 100%;
-  background: inherit;
-  background-position: 100% 100%;
-}
-
-h1.underline-brush :before {
-  left: -20px;
-  background-position: 0 100%;
 }
 
 .VPIA-intro-right p {
@@ -867,27 +851,3 @@ ul.social-network li {
     height: 20vw;
   }
 }
-/*
-@media (min-width: 1200px) {
-  .VPIA-intro-right.col-4 {
-    padding-right: 10%;
-  }
-}
-@media (min-width: 2560px) {
-  .VPIA-intro.col-8 {
-    -ms-flex: 0 0 58.333333%;
-    flex: 0 0 58.333333%;
-    max-width: 58.333333%;
-  }
-  .VPIA-intro-right.col-4 {
-    -ms-flex: 0 0 41.666667%;
-    flex: 0 0 41.666667%;
-    max-width: 41.666667%;
-  }
-  .VPIA-intro.jumbotron {
-    padding-left: 48%;
-  }
-  .VPIA-intro-right.col-4 {
-    padding-right: 28%;
-  }
-} */
