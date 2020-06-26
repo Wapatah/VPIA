@@ -634,8 +634,8 @@ ul.social-network li {
   z-index: 1;
 }
 
-#About-intro-section {
-  background: #343638 0% 0% no-repeat padding-box;
+.About-intro-section {
+  background: white;
   opacity: 1;
   padding-top: 5em;
   padding-bottom: 5em;
@@ -654,58 +654,87 @@ ul.social-network li {
   transition: background 0.3s linear;
 }
 
-#About-header {
-  color: #ffb600;
-  text-align: left;
-  font: Bold 30px/36px Helvetica;
+h1.About-header {
+  color: #1f8475;
+  text-align: center;
+  font: Bold 25px Helvetica;
   letter-spacing: 0;
   opacity: 1;
-  padding-right: 1em;
-  padding-left: 1em;
 }
 
 #About-image-text-box {
   padding-top: 2em;
 }
 
-#About-initial-content {
-  text-align: left;
-  font: SemiBold 16px/24px;
-  font-family: "Baskerville";
+.About-initial-content {
+  font-family: "FuturaStdMedium";
   letter-spacing: 0;
-  color: #ffffff;
+  text-align: center;
+  color: #343638;
   opacity: 1;
   padding-top: 2em;
-  padding-right: 10em;
-  padding-left: 2em;
 }
 
-#About-middle-text {
-  font: Bold 30px/36px Helvetica;
-  letter-spacing: 0;
-  color: #ffb600;
-  opacity: 1;
-}
-
-#About-info-section {
-  background: #d60812 0% 0% no-repeat padding-box;
+.About-info-section {
+  background: #53555a;
   opacity: 1;
   padding: 2em, 10em, 5em, 10em;
 }
 
-#About-bottom-content {
+.About-bottom-content {
   text-align: left;
-  font: SemiBold 16px/24px;
-  font-family: "Baskerville";
+  font-family: "FuturaStdMedium";
   letter-spacing: 0;
   color: #ffffff;
   opacity: 1;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
+
 .about-content {
   padding: 5%;
 }
+
 .right-align {
   float: right;
+}
+
+img.about-img {
+  max-width: 305px;
+  height: auto;
+  padding: 5%;
+}
+
+.gradient-left {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 20%;
+  height: 100%;
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  ); /* Standard syntax (must be last) */
+}
+
+.gradient-right {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 20%;
+  height: 100%;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  ); /* Standard syntax (must be last) */
 }
 
 #page-numbers {
@@ -828,16 +857,6 @@ ul.social-network li {
   }
   #fullpage.container-fluid {
     height: auto;
-  }
-  #About-initial-content {
-    padding-right: 2em;
-  }
-  #About-intro-section img {
-    float: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 5%;
   }
 }
 @media (min-width: 768px) {
