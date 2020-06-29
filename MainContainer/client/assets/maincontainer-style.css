@@ -719,7 +719,7 @@ img.about-img {
     to left,
     rgba(255, 255, 255, 0),
     rgba(255, 255, 255, 1)
-  ); /* Standard syntax (must be last) */
+  );
 }
 
 .gradient-right {
@@ -734,7 +734,7 @@ img.about-img {
     to right,
     rgba(255, 255, 255, 0),
     rgba(255, 255, 255, 1)
-  ); /* Standard syntax (must be last) */
+  );
 }
 
 .rounded-img {
