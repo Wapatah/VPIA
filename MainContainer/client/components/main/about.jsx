@@ -22,42 +22,42 @@ class About extends React.Component {
                     <div class="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
-                        className="about-img rounded greyscale"
+                        className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
-                        className="about-img rounded greyscale"
+                        className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
-                        className="about-img rounded greyscale"
+                        className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
-                        className="about-img rounded greyscale"
+                        className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
-                        className="about-img rounded greyscale"
+                        className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
-                        className="about-img rounded greyscale"
+                        className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
@@ -68,42 +68,42 @@ class About extends React.Component {
                     <div class="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
-                        className="about-img rounded greyscale"
+                        className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
-                        className="about-img rounded greyscale"
+                        className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
-                        className="about-img rounded greyscale"
+                        className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
-                        className="about-img rounded greyscale"
+                        className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
-                        className="about-img rounded greyscale"
+                        className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
-                        className="about-img rounded greyscale"
+                        className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
@@ -114,7 +114,7 @@ class About extends React.Component {
           </div>
           <div className="About-intro-section">
             <div className="row">
-              <div className="col-md-4 offset-md-4">
+              <div className="col-lg-4 offset-lg-4">
                 <h1 className="About-header">
                   About the Virtual Platform for Indigenous Art
                 </h1>
@@ -144,8 +144,8 @@ class About extends React.Component {
 
         <div className="row">
           <img
-            className="img-fluid container-fluid"
-            src="../../assets/images/team.png"
+            className="img-fluid container-fluid greyscale"
+            src="../../assets/images/team.jpg"
             alt="Image of VPIA team"
           />
         </div>

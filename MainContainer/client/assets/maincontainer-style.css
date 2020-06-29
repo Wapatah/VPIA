@@ -702,7 +702,7 @@ h1.About-header {
 }
 
 img.about-img {
-  max-width: 305px;
+  max-width: 16vw;
   height: auto;
   padding: 5%;
 }
@@ -735,6 +735,10 @@ img.about-img {
     rgba(255, 255, 255, 0),
     rgba(255, 255, 255, 1)
   ); /* Standard syntax (must be last) */
+}
+
+.rounded-img {
+  border-radius: 10%;
 }
 
 #page-numbers {
