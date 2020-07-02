@@ -46,29 +46,33 @@ class ViewArticle extends React.Component {
 */
   deleteArticle(e) {
     e.preventDefault();
-    var myHeaders = new Headers({
-      "Content-Type": "application/x-www-form-urlencoded",
-      "x-access-token": window.localStorage.getItem("userToken")
-    });
+    let del = confirm("Are you sure you want to delete this article?");
 
-    var myInit = {
-      method: "DELETE",
-      headers: myHeaders,
-      body: "id=" + this.state.article[0].id
-    };
-
-    fetch("/api/articles/", myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-          StatusAlertService.showError(response.error.message);
-        } else {
-          StatusAlertService.showSuccess("Article has been deleted");
-          hashHistory.push("home");
-        }
+    if (del) {
+      var myHeaders = new Headers({
+        "Content-Type": "application/x-www-form-urlencoded",
+        "x-access-token": window.localStorage.getItem("userToken")
       });
+
+      var myInit = {
+        method: "DELETE",
+        headers: myHeaders,
+        body: "id=" + this.state.article[0].id
+      };
+
+      fetch("/api/articles/", myInit)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(response) {
+          if (response.error.error) {
+            StatusAlertService.showError(response.error.message);
+          } else {
+            StatusAlertService.showSuccess("Article has been deleted");
+            hashHistory.push("home");
+          }
+        });
+    }
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------

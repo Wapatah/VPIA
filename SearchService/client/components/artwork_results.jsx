@@ -4,6 +4,7 @@
 */
 import React from "react";
 import Loader from "./helpers/loader.jsx";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 import { Link } from "react-router";
 
 class ArtworkResults extends React.Component {
@@ -38,6 +39,7 @@ class ArtworkResults extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
+          StatusAlertService.showError(response.error.message);
         } else {
           that.setState({ articles: response.data });
         }
