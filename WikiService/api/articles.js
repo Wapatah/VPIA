@@ -4,9 +4,7 @@
 */
 
 // Importing the data models needed to manipulate
-var Articles = require("../models/article.js");
-var Users = require("../../UserService/models/user.js");
-var Archives = require("../../HistoryService/models/archive.js");
+const Articles = require("../models/article.js");
 const isAdminAuthenticated = require("../../index.js");
 const isUserAuthenticated = require("../../index.js");
 
@@ -107,33 +105,24 @@ module.exports = app => {
   (identified through the ID param)
 */
   app.get("/articles/:id/", async (req, res) => {
-    Articles.find({ where: { id: req.params.id } })
-      .then(function(article) {
-        Users.find({ where: { id: article[0].user_id } })
-          .then(function(user) {
-            article[0].users(user);
-          })
-          .then(function() {
-            res.json({
-              error: {
-                error: false,
-                message: ""
-              },
-              code: "B113",
-              data: article
-            });
-          });
-      })
-      .catch(function(error) {
-        res.status(500).json({
-          error: {
-            error: true,
-            message: "GET /articles/:id/: " + error.message
-          },
-          code: "B114",
-          data: {}
-        });
+    try {
+      const article = await Articles.find({ 
+        where: { id: req.params.id } 
       });
+      res.json({
+        error: {
+          error: false
+        },
+        data: article
+      });
+    } catch (err) {
+      res.status(500).json({
+        error: {
+          message: "GET /articles/:id/: " + err.message
+        },
+        data: {}
+      });
+    }
   });
 
   // --------------------------------------------------------------------------------------------------------------------------------------------

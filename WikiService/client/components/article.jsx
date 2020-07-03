@@ -11,7 +11,7 @@ class ViewArticle extends React.Component {
   constructor(props) {
     super(props);
     this.deleteArticle = this.deleteArticle.bind(this);
-    this.state = { article: {}, loading: true };
+    this.state = { article: {}, user: {}, loading: true };
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -37,7 +37,29 @@ class ViewArticle extends React.Component {
           that.setState({ article: response.data });
         }
         that.setState({ loading: false });
-      });
+      })
+      .then(() => {
+        var myHeaders = new Headers({
+          "Content-Type": "application/x-www-form-urlencoded",
+          "x-access-token": window.localStorage.getItem("userToken")
+        });
+    
+        var myInit = { method: "GET", headers: myHeaders };
+        var that = this;
+    
+        fetch("/api/users/" + that.state.article[0].user_id, myInit)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(response) {
+            if (response.error.error) {
+              StatusAlertService.showError(response.error.message);
+            } else {
+              that.setState({ user: response.data });
+            }
+            that.setState({ loading: false });
+          });
+      }); 
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -80,8 +102,14 @@ class ViewArticle extends React.Component {
   the database. If user is admin, more functions become available.
 */
   render() {
+    let user_name = "";
+    let user_about = "";
     if (this.state.loading) return <Loader />;
     else if (this.state.article[0] && this.state.article[0].user_id) {
+      if(this.state.user[0]){
+        user_name = this.state.user[0].name;
+        user_about = this.state.user[0].about;
+      }
       return (
         <div>
           <StatusAlert />
@@ -194,10 +222,10 @@ class ViewArticle extends React.Component {
                         <li className="list-group-item">
                           Last Updated By
                           <p id="Baskerville">
-                            {this.state.article[0].user_id[0].name}
+                            {user_name}
                           </p>
                           <p id="Baskerville">
-                            {this.state.article[0].user_id[0].about}
+                            {user_about}
                           </p>
                         </li>
                         <li className="list-group-item">
