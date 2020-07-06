@@ -9,6 +9,12 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      hidden: true,
+      password: ""
+    };
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.toggleShow = this.toggleShow.bind(this);
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -60,6 +66,20 @@ class Login extends React.Component {
       });
   }
 
+  handlePasswordChange(e) {
+    this.setState({ password: e.target.value });
+  }
+
+  toggleShow() {
+    this.setState({ hidden: !this.state.hidden });
+  }
+
+  componentDidMount() {
+    if (this.props.password) {
+      this.setState({ password: this.props.password });
+    }
+  }
+
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Render the log in page.
   render() {
@@ -67,18 +87,26 @@ class Login extends React.Component {
       <div className="fullpage container-fluid">
         <StatusAlert />
         <div className="full-page row">
-          <div className="col-lg-4 left-panel">
+          <div className="col-lg-8 BGimage image-fade hidden-lg-down">
+            <div className="image-tint-dark"></div>
+          </div>
+          <div className="col-lg-4 right-panel">
             <img
-              src="../assets/images/logo-white.png"
-              width="auto"
-              height="250px"
+              src="../assets/images/logo.png"
+              width="124px"
+              height="auto"
               alt="VPIA logo"
               aria-label="VPIA logo"
             />
             <div className="container login-box row">
               <div className="col-md-12 col-sm-12">
-                <form>
-                  <div className="col-sm-12 form-group">
+                <div className="col-sm-12">
+                  <h1 className="welcome-message">
+                    Aaniin/Tanisi/Hello Welcome back!
+                  </h1>
+                </div>
+                <form className="col-sm-12">
+                  <div className="form-group login-form">
                     <input
                       className="form-control"
                       id="inputEmail"
@@ -87,46 +115,57 @@ class Login extends React.Component {
                       aria-label="Email"
                     />
                   </div>
-                  <div className="col-sm-12 form-group">
+                  <div className="form-group input-group login-form">
                     <input
                       className="form-control"
                       id="inputPassword"
                       type="password"
                       placeholder="Password"
                       aria-label="Password"
+                      type={this.state.hidden ? "password" : "text"}
+                      value={this.state.password}
+                      onChange={this.handlePasswordChange}
                     />
+                    <div className="input-group-append">
+                      <button
+                        className="btn btn-outline-secondary append-light "
+                        aria-label="show password"
+                        onClick={this.toggleShow}
+                      >
+                        Show
+                      </button>
+                    </div>
                   </div>
-                  <div className="col-sm-12 form-group">
+                  <div className="form-group">
                     <button
                       onClick={this.handleSubmit}
-                      className="btn btn-primary btn-block"
+                      className="btn btn-primary btn-block mt-5"
                     >
                       Sign in
                     </button>
                   </div>
-                  <div className="col-sm-12 form-group">
+                  <div className="form-group">
                     <button
                       type="button"
-                      className="btn btn-outline-light btn-block"
+                      className="btn btn-outline-secondary btn-block join-btn"
                     >
                       <Link to="/user_signup" className="none-deco">
                         New to VPIA? Join Now!
                       </Link>
                     </button>
                   </div>
+                  <Link
+                    to="landing"
+                    aria-label="Go to home page"
+                    className="none-deco"
+                  >
+                    <p class="font-italic text-sm-left return-text">
+                      Return to homepage
+                    </p>
+                  </Link>
                 </form>
               </div>
             </div>
-          </div>
-          <div className="col-lg-8 BGimage image-fade hidden-lg-down">
-            <img
-              src="../assets/images/logo.png"
-              width="auto"
-              height="400px"
-              alt="VPIA logo"
-              aria-label="VPIA logo"
-              id="logo-bottom-right"
-            />
           </div>
         </div>
       </div>

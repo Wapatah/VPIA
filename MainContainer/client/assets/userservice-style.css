@@ -23,8 +23,8 @@
   margin-bottom: 1em;
 }
 
-.left-panel {
-  background-color: #208778;
+.right-panel {
+  background-color: white;
   height: 100%;
   padding-top: 3%;
   padding-left: 3%;
@@ -34,6 +34,30 @@
 .setup-form {
   margin-top: 2em;
   margin-bottom: 2em;
+}
+
+.BGimage::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  content: "";
+  background-image: url("../assets/images/BG.jpg");
+  background-blend-mode: multiply;
+  -webkit-filter: grayscale(100%);
+  filter: grey;
+  background-size: cover;
+}
+
+.image-tint-dark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #75777b90;
+  z-index: 2;
 }
 
 /* .modal-fullscreen */
@@ -76,6 +100,42 @@
   border: 1px solid #ccc;
 }
 
+h1.welcome-message {
+  padding-bottom: 5%;
+  text-align: left;
+  font-size: 40px;
+}
+
+.login-form {
+  background-color: white;
+  border: 2px solid #75777b;
+  border-radius: 4px;
+  font-style: italic;
+  padding: 0;
+}
+
+.login-form input[type="password"],
+select {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.append-light {
+  border: none;
+}
+
+.return-text {
+  font-size: 0.8rem;
+  color: #75777b;
+}
+
+@media (min-width: 767px) {
+  /* .BGimage::before {
+    width: 0;
+    height: 0;
+  } */
+}
 @media (min-width: 768px) {
   .modal-fullscreen .modal-dialog {
     width: 750px;

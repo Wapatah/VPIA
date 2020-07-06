@@ -81,9 +81,19 @@ class UserSignup extends React.Component {
       <div className="fullpage container-fluid">
         <StatusAlert />
         <div className="full-page row">
-          <div className="col-lg-4 left-panel">
+          <div className="col-lg-8 BGimage image-fade hidden-lg-down">
             <img
-              src="../assets/images/logo-white.png"
+              src="../assets/images/logo.png"
+              width="auto"
+              height="400px"
+              alt="VPIA logo"
+              aria-label="VPIA logo"
+              id="logo-bottom-right"
+            />
+          </div>
+          <div className="col-lg-4 right-panel">
+            <img
+              src="../assets/images/logo.png"
               width="auto"
               height="250px"
               alt="VPIA logo"
@@ -167,16 +177,6 @@ class UserSignup extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-lg-8 BGimage image-fade hidden-lg-down">
-            <img
-              src="../assets/images/logo.png"
-              width="auto"
-              height="400px"
-              alt="VPIA logo"
-              aria-label="VPIA logo"
-              id="logo-bottom-right"
-            />
           </div>
         </div>
       </div>

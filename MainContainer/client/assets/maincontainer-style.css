@@ -437,14 +437,8 @@ select {
   outline: none;
 }
 
-.btn-secondary {
-  background-color: #ffb600;
-  border: none;
-}
-
 .btn-primary {
-  background-color: #343638;
-  color: #fefefe;
+  background-color: #ffb600;
   border: none;
 }
 
@@ -554,10 +548,6 @@ ul.social-network li {
   color: #208778;
 }
 
-.image-fade::before {
-  opacity: 0.2;
-}
-
 .image-tint {
   position: absolute;
   left: 0;
@@ -612,19 +602,6 @@ ul.social-network li {
 
 .acknowledge-text {
   font: Italic 10px/12px Arial;
-}
-
-.BGimage::before {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  content: "";
-  background-image: url("../assets/images/BG.jpg");
-  -webkit-filter: grayscale(100%);
-  filter: gray;
-  background-size: cover;
 }
 
 #logo-bottom-right {
@@ -802,12 +779,12 @@ img.about-img {
 }
 
 .navbar-dark .navbar-toggler {
-  color: white;
-  border-color: white;
+  color: #208778;
+  border-color: #208778;
 }
 .navbar-toggler-icon {
-  fill: white;
-  color: white;
+  fill: #208778;
+  color: #208778;
 }
 
 .footer_ul a:hover {
@@ -851,10 +828,6 @@ img.about-img {
   }
   .card-content {
     top: 0;
-  }
-  .BGimage::before {
-    width: 0;
-    height: 0;
   }
   #logo-bottom-right {
     width: 0;
