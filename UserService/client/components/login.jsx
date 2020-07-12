@@ -88,7 +88,58 @@ class Login extends React.Component {
         <StatusAlert />
         <div className="full-page row">
           <div className="col-lg-8 BGimage image-fade hidden-lg-down">
-            <div className="image-tint-dark"></div>
+            <div
+              id="carouselExampleIndicators"
+              className="carousel slide"
+              data-ride="carousel"
+            >
+              <ol className="carousel-indicators">
+                <button
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="0"
+                  className="active btn btn-outline-light"
+                >
+                  About
+                </button>
+
+                <button
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="1"
+                  className="btn btn-outline-light"
+                >
+                  Community
+                </button>
+
+                <button
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="2"
+                  className="btn btn-outline-light"
+                >
+                  Benefits
+                </button>
+              </ol>
+              <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <h1 className="signin-carousel">About</h1>
+                  <p className="signin-carousel">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean varius augue ut neque lacinia, a mattis lorem
+                    commodo. Suspendisse potenti. Proin ultricies diam et urna
+                    tincidunt tincidunt. Sed facilisis consectetur faucibus. In
+                    vitae dolor quis mi fringilla condimentum non ut nulla. Sed
+                    ornare erat diam, sed ultrices magna faucibus condimentum.
+                    Vivamus in ullamcorper quam. Integer vel dapibus nisl. Nam
+                    lacinia, neque vitae bibendum egestas.
+                  </p>
+                </div>
+                <div className="carousel-item">
+                  <h1 className="signin-carousel">Community</h1>
+                </div>
+                <div className="carousel-item">
+                  <h1 className="signin-carousel">Benefits</h1>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="col-lg-4 right-panel">
             <img

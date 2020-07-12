@@ -129,7 +129,17 @@ select {
   font-size: 0.8rem;
   color: #75777b;
 }
-
+h1.signin-carousel {
+  color: white;
+}
+p.signin-carousel {
+  color: white;
+}
+.carousel-indicators {
+}
+.btn-outline-light:hover {
+  background-color: #ffb600;
+}
 @media (min-width: 767px) {
   /* .BGimage::before {
     width: 0;
