@@ -121,9 +121,25 @@ class Login extends React.Component {
               </div>
               <div className="carousel-inner">
                 <div className="carousel-item active">
-                  <h1 className="signin-carousel text-uppercase">
-                    About the VPIA
-                  </h1>
+                  <div className="header-container">
+                    <div className="header-item">
+                      <h1 className="signin-carousel text-uppercase">
+                        About
+                        <br />
+                        the VPIA
+                      </h1>
+                    </div>
+                    <div className="header-item">
+                      <img
+                        src="../assets/images/logo-white-notext.png"
+                        width="110px"
+                        height="auto"
+                        alt="VPIA logo"
+                        aria-label="VPIA logo"
+                        className="float-right"
+                      />
+                    </div>
+                  </div>
                   <p className="signin-carousel">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Aenean varius augue ut neque lacinia, a mattis lorem
@@ -137,7 +153,25 @@ class Login extends React.Component {
                   <button className="btn btn-outline-light">Learn More</button>
                 </div>
                 <div className="carousel-item">
-                  <h1 className="signin-carousel text-uppercase">Community</h1>
+                  <div className="header-container">
+                    <div className="header-item">
+                      <h1 className="signin-carousel text-uppercase">
+                        Community
+                        <br />
+                        of the VPIA
+                      </h1>
+                    </div>
+                    <div className="header-item">
+                      <img
+                        src="../assets/images/logo-white-notext.png"
+                        width="110px"
+                        height="auto"
+                        alt="VPIA logo"
+                        aria-label="VPIA logo"
+                        className="float-right"
+                      />
+                    </div>
+                  </div>
                   <p className="signin-carousel">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Aenean varius augue ut neque lacinia, a mattis lorem
@@ -151,9 +185,25 @@ class Login extends React.Component {
                   <button className="btn btn-outline-light">Learn More</button>
                 </div>
                 <div className="carousel-item">
-                  <h1 className="signin-carousel text-uppercase">
-                    Benefits of the VPIA
-                  </h1>
+                  <div className="header-container">
+                    <div className="header-item">
+                      <h1 className="signin-carousel text-uppercase">
+                        Benefits
+                        <br />
+                        of the VPIA
+                      </h1>
+                    </div>
+                    <div className="header-item">
+                      <img
+                        src="../assets/images/logo-white-notext.png"
+                        width="110px"
+                        height="auto"
+                        alt="VPIA logo"
+                        aria-label="VPIA logo"
+                        className="float-right"
+                      />
+                    </div>
+                  </div>
                   <p className="signin-carousel">
                     <ul>
                       <li>Lorem ipsum dolor sit amet</li>

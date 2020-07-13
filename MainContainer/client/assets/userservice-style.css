@@ -131,6 +131,13 @@ select {
 }
 h1.signin-carousel {
   color: white;
+  font-size: 4em;
+  text-align: left;
+  white-space: nowrap;
+}
+.header-item {
+  display: inline-block;
+  margin-right: 3%;
 }
 p.signin-carousel {
   color: white;
@@ -159,9 +166,15 @@ p.signin-carousel {
 }
 .carousel-inner {
   top: 40%;
-  width: 80%;
+  width: 90%;
   position: relative;
   z-index: 3;
+}
+.header-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 @media (min-width: 767px) {
   /* .BGimage::before {
