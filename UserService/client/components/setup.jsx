@@ -119,7 +119,7 @@ class Setup extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-lg-8 BGimage image-fade hidden-lg-down">
+          <div className="col-lg-8 BGimage image-fade">
             <img
               src="../assets/images/logo.png"
               width="auto"

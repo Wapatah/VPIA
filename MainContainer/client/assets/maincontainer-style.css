@@ -131,16 +131,6 @@ h4 {
   border: none;
 }
 
-.new-article textarea:hover,
-input:hover,
-textarea:active,
-input:active,
-textarea:focus,
-input:focus {
-  outline: 0px;
-  -webkit-appearance: none;
-}
-
 .new-article .input-title {
   font-weight: 700;
   font-size: 3em;

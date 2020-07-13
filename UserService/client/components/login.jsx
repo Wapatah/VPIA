@@ -87,7 +87,7 @@ class Login extends React.Component {
       <div className="fullpage container-fluid">
         <StatusAlert />
         <div className="full-page row">
-          <div className="col-lg-8 BGimage image-fade hidden-lg-down">
+          <div className="col-lg-8 BGimage image-fade">
             <div className="image-tint-dark"></div>
             <div
               id="carouselExampleIndicators"
@@ -271,8 +271,6 @@ class Login extends React.Component {
                     >
                       Sign in
                     </button>
-                  </div>
-                  <div className="form-group">
                     <button
                       type="button"
                       className="btn btn-outline-secondary btn-block join-btn"

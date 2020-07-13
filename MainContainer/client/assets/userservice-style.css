@@ -56,6 +56,8 @@
   background-blend-mode: multiply;
   -webkit-filter: grayscale(100%);
   filter: grey;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -163,6 +165,9 @@ p.signin-carousel {
   background-color: #ffb600;
   border-color: #ffb600;
 }
+.btn-primary:disabled {
+  background-color: grey;
+}
 .carousel-indicators {
   justify-content: flex-start;
   margin-left: 0;
@@ -184,6 +189,18 @@ p.signin-carousel {
   align-items: center;
   flex-wrap: wrap;
   justify-content: flex-start;
+}
+.signup-check small {
+  color: #75777b;
+}
+a.none-deco {
+  color: inherit;
+  text-decoration: none;
+}
+.join-btn {
+  border: 2px solid #343638;
+  color: #343638;
+  padding: 5px 30px;
 }
 @media (min-width: 767px) {
   /* .BGimage::before {

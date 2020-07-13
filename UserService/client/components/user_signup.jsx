@@ -80,8 +80,8 @@ class UserSignup extends React.Component {
     return (
       <div className="fullpage container-fluid">
         <StatusAlert />
-        <div className="full-page row">
-          <div className="col-lg-8 BGimage image-fade hidden-lg-down">
+        <div className="row">
+          <div className="col-lg-8 BGimage image-fade">
             <div className="image-tint-dark"></div>
             <div
               id="carouselExampleIndicators"
@@ -222,7 +222,7 @@ class UserSignup extends React.Component {
               aria-label="VPIA logo"
             />
             <div className="container signup-box row">
-              <div className="col-md-12 col-sm-12">
+              <form className="col-sm-12">
                 <label for="inputName">Name</label>
                 <div className="form-group login-form">
                   <input
@@ -309,8 +309,56 @@ class UserSignup extends React.Component {
                     aria-describedby="ExperienceHelp"
                   />
                 </div>
-
-                <div className="col-sm-12 form-group">
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    name="isChecked"
+                    id="contactOption"
+                    value=""
+                  />
+                  <label
+                    className="form-check-label signup-check"
+                    for="contactOption"
+                  >
+                    <small>
+                      I want my email address and affiliation appear when I make
+                      edits so that others can contact me.
+                    </small>
+                  </label>
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    name="isChecked"
+                    id="contactOption"
+                    value=""
+                  />
+                  <label
+                    className="form-check-label signup-check"
+                    for="contactOption"
+                  >
+                    <small>
+                      By checking this box you agree to the VPIA{" "}
+                      <a
+                        className="none-deco"
+                        href="https://foundation.wikimedia.org/wiki/Terms_of_Use/en"
+                      >
+                        <u>User Agreement</u>
+                      </a>
+                      , and{" "}
+                      <a
+                        className="none-deco"
+                        href="https://foundation.wikimedia.org/wiki/Terms_of_Use/en"
+                      >
+                        <u>Terms of Policy</u>
+                      </a>
+                      .
+                    </small>
+                  </label>
+                </div>
+                <div className="form-group">
                   <button
                     onClick={this.handleSignUp}
                     disabled={!isEnabled}
@@ -318,26 +366,22 @@ class UserSignup extends React.Component {
                   >
                     Agree & Join
                   </button>
-                  <button className="btn btn-outline-secondary btn-block">
+                  <button className="btn btn-outline-secondary btn-block join-btn">
                     <Link to="login" className="none-deco">
                       Already on VPIA? Sign In
                     </Link>
                   </button>
                 </div>
-              </div>
-            </div>
-
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios2"
-                value="option2"
-              />
-              <label className="form-check-label" for="exampleRadios2">
-                Second default radio
-              </label>
+                <Link
+                  to="landing"
+                  aria-label="Go to home page"
+                  className="none-deco"
+                >
+                  <p class="font-italic text-sm-left return-text">
+                    Return to homepage
+                  </p>
+                </Link>
+              </form>
             </div>
           </div>
         </div>
