@@ -134,11 +134,34 @@ h1.signin-carousel {
 }
 p.signin-carousel {
   color: white;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-size: 1.5rem;
+}
+.btn-outline-light {
+  border-radius: 20px;
+  width: 169px;
+  border: 3px solid #ffffff;
+}
+.btn-outline-light:not(:disabled):not(.disabled).active {
+  background-color: #ffb600;
+  border-color: #ffb600;
 }
 .carousel-indicators {
+  justify-content: flex-start;
+  margin-left: 0;
+  padding-left: 5%;
+  bottom: 80%;
 }
-.btn-outline-light:hover {
-  background-color: #ffb600;
+.carousel {
+  padding: 5%;
+  height: 60%;
+}
+.carousel-inner {
+  top: 40%;
+  width: 80%;
+  position: relative;
+  z-index: 3;
 }
 @media (min-width: 767px) {
   /* .BGimage::before {

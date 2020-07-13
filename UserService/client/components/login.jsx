@@ -88,16 +88,17 @@ class Login extends React.Component {
         <StatusAlert />
         <div className="full-page row">
           <div className="col-lg-8 BGimage image-fade hidden-lg-down">
+            <div className="image-tint-dark"></div>
             <div
               id="carouselExampleIndicators"
               className="carousel slide"
               data-ride="carousel"
             >
-              <ol className="carousel-indicators">
+              <div className="carousel-indicators">
                 <button
                   data-target="#carouselExampleIndicators"
                   data-slide-to="0"
-                  className="active btn btn-outline-light"
+                  className="active btn btn-outline-light mx-2"
                 >
                   About
                 </button>
@@ -105,7 +106,7 @@ class Login extends React.Component {
                 <button
                   data-target="#carouselExampleIndicators"
                   data-slide-to="1"
-                  className="btn btn-outline-light"
+                  className="btn btn-outline-light mx-2"
                 >
                   Community
                 </button>
@@ -113,14 +114,16 @@ class Login extends React.Component {
                 <button
                   data-target="#carouselExampleIndicators"
                   data-slide-to="2"
-                  className="btn btn-outline-light"
+                  className="btn btn-outline-light mx-2"
                 >
                   Benefits
                 </button>
-              </ol>
+              </div>
               <div className="carousel-inner">
                 <div className="carousel-item active">
-                  <h1 className="signin-carousel">About</h1>
+                  <h1 className="signin-carousel text-uppercase">
+                    About the VPIA
+                  </h1>
                   <p className="signin-carousel">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Aenean varius augue ut neque lacinia, a mattis lorem
@@ -131,12 +134,36 @@ class Login extends React.Component {
                     Vivamus in ullamcorper quam. Integer vel dapibus nisl. Nam
                     lacinia, neque vitae bibendum egestas.
                   </p>
+                  <button className="btn btn-outline-light">Learn More</button>
                 </div>
                 <div className="carousel-item">
-                  <h1 className="signin-carousel">Community</h1>
+                  <h1 className="signin-carousel text-uppercase">Community</h1>
+                  <p className="signin-carousel">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean varius augue ut neque lacinia, a mattis lorem
+                    commodo. Suspendisse potenti. Proin ultricies diam et urna
+                    tincidunt tincidunt. Sed facilisis consectetur faucibus. In
+                    vitae dolor quis mi fringilla condimentum non ut nulla. Sed
+                    ornare erat diam, sed ultrices magna faucibus condimentum.
+                    Vivamus in ullamcorper quam. Integer vel dapibus nisl. Nam
+                    lacinia, neque vitae bibendum egestas.
+                  </p>
+                  <button className="btn btn-outline-light">Learn More</button>
                 </div>
                 <div className="carousel-item">
-                  <h1 className="signin-carousel">Benefits</h1>
+                  <h1 className="signin-carousel text-uppercase">
+                    Benefits of the VPIA
+                  </h1>
+                  <p className="signin-carousel">
+                    <ul>
+                      <li>Lorem ipsum dolor sit amet</li>
+                      <li>Consectetur adipiscing elit</li>
+                      <li>Integer molestie lorem at massa</li>
+                      <li>Facilisis in pretium nisl aliquet</li>
+                      <li>Nulla volutpat aliquam velit</li>
+                    </ul>
+                  </p>
+                  <button className="btn btn-outline-light">Learn More</button>
                 </div>
               </div>
             </div>
