@@ -43,10 +43,10 @@ class ViewArticle extends React.Component {
           "Content-Type": "application/x-www-form-urlencoded",
           "x-access-token": window.localStorage.getItem("userToken")
         });
-    
+
         var myInit = { method: "GET", headers: myHeaders };
         var that = this;
-    
+
         fetch("/api/users/" + that.state.article[0].user_id, myInit)
           .then(function(response) {
             return response.json();
@@ -59,7 +59,7 @@ class ViewArticle extends React.Component {
             }
             that.setState({ loading: false });
           });
-      }); 
+      });
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -106,7 +106,7 @@ class ViewArticle extends React.Component {
     let user_about = "";
     if (this.state.loading) return <Loader />;
     else if (this.state.article[0] && this.state.article[0].user_id) {
-      if(this.state.user[0]){
+      if (this.state.user[0]) {
         user_name = this.state.user[0].name;
         user_about = this.state.user[0].about;
       }
@@ -221,12 +221,8 @@ class ViewArticle extends React.Component {
 
                         <li className="list-group-item">
                           Last Updated By
-                          <p id="Baskerville">
-                            {user_name}
-                          </p>
-                          <p id="Baskerville">
-                            {user_about}
-                          </p>
+                          <p id="Baskerville">{user_name}</p>
+                          <p id="Baskerville">{user_about}</p>
                         </li>
                         <li className="list-group-item">
                           <p id="FuturaStdHeavy">Holding Institution</p>

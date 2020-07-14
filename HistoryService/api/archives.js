@@ -7,7 +7,6 @@
 */
 // Importing the data models needed to manipulate
 const Archives = require("../models/archive.js");
-const Users = require("../../UserService/models/user.js");
 const isUserAuthenticated = require("../../index.js");
 
 module.exports = app => {
@@ -69,34 +68,25 @@ module.exports = app => {
     }
   });
 
-  app.get("/archives/:id/", function(req, res) {
-    Archives.find({ where: { id: req.params.id } })
-      .then(function(archive) {
-        Users.find({ where: { id: archive[0].user_id } })
-          .then(function(user) {
-            archive[0].users(user);
-          })
-          .then(function() {
-            res.json({
-              error: {
-                error: false,
-                message: ""
-              },
-              code: "B113",
-              data: archive
-            });
-          });
-      })
-      .catch(function(error) {
-        res.status(500).json({
-          error: {
-            error: true,
-            message: "GET: /archives/:id " + error.message
-          },
-          code: "B114",
-          data: {}
-        });
+  app.get("/archives/:id/", async (req, res) => {
+    try {
+      const archive = await Archives.find({
+        where: { id: req.params.id }
       });
+      res.json({
+        error: {
+          error: false
+        },
+        data: archive
+      });
+    } catch (err) {
+      res.status(500).json({
+        error: {
+          message: "GET: /archives/:id/: " + err.message
+        },
+        data: {}
+      });
+    }
   });
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------

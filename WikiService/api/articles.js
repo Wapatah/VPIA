@@ -106,8 +106,8 @@ module.exports = app => {
 */
   app.get("/articles/:id/", async (req, res) => {
     try {
-      const article = await Articles.find({ 
-        where: { id: req.params.id } 
+      const article = await Articles.find({
+        where: { id: req.params.id }
       });
       res.json({
         error: {
