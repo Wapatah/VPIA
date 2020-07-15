@@ -23,14 +23,14 @@ class Login extends React.Component {
   // Authenticate the login input
   handleSubmit(e) {
     e.preventDefault();
-    var email = document.getElementById("inputEmail").value;
-    var password = document.getElementById("inputPassword").value;
+    let email = document.getElementById("inputEmail").value;
+    let password = document.getElementById("inputPassword").value;
 
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
 
-    var myInit = {
+    let myInit = {
       method: "POST",
       headers: myHeaders,
       body:
@@ -40,7 +40,7 @@ class Login extends React.Component {
         encodeURIComponent(password)
     };
 
-    var that = this;
+    let that = this;
 
     fetch("/api/authenticate", myInit)
       .then(function(response) {

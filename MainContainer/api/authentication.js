@@ -3,9 +3,9 @@
 */
 
 // Importing the data models needed to manipulate
-var Users = require("../../UserService/models/user.js");
-var jwt = require("jsonwebtoken"); // Used to create, sign, and verify tokens
-var bcrypt = require("bcryptjs"); // Password hashing function
+const Users = require("../../UserService/models/user.js");
+const jwt = require("jsonwebtoken"); // Used to create, sign, and verify tokens
+const bcrypt = require("bcryptjs"); // Password hashing function
 
 module.exports = function(app) {
   /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -44,40 +44,7 @@ module.exports = function(app) {
             Compare the hashes of the password found in the database versus
             the given password by the user.
           */
-          bcrypt.compare(req.body.password, user[0].password, function(
-            err,
-            result
-          ) {
-            if (result === true) {
-              var token = jwt.sign(user, app.get("superSecret"), {
-                expiresIn: 86400
-              });
-              res.json({
-                error: {
-                  error: false,
-                  message: ""
-                },
-                code: "B118",
-                data: {
-                  user: {
-                    email: user[0].email,
-                    id: user[0].id,
-                    admin: user[0].admin
-                  },
-                  token: token
-                }
-              });
-            } else {
-              res.json({
-                error: {
-                  error: true,
-                  message: "Email or Password is wrong"
-                },
-                code: "B119",
-                data: {}
-              });
-            }
-          });
+          comparePassword(req.body.password, user[0].password, user, res);
         }
       })
       .catch(function(error) {
@@ -91,4 +58,38 @@ module.exports = function(app) {
         });
       });
   });
+
+  function comparePassword(userPassword, dbPassword, user, res) {
+    bcrypt.compare(userPassword, dbPassword, function(err, result) {
+      if (result === true) {
+        const token = jwt.sign(user, app.get("superSecret"), {
+          expiresIn: 86400
+        });
+        res.json({
+          error: {
+            error: false,
+            message: ""
+          },
+          code: "B118",
+          data: {
+            user: {
+              email: user[0].email,
+              id: user[0].id,
+              admin: user[0].admin
+            },
+            token: token
+          }
+        });
+      } else {
+        res.json({
+          error: {
+            error: true,
+            message: "Email or Password is wrong"
+          },
+          code: "B119",
+          data: {}
+        });
+      }
+    });
+  }
 };

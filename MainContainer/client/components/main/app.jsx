@@ -51,7 +51,7 @@ class App extends React.Component {
   Displays headers, footers, checks if user is admin and gives link to Admin component.
 */
   render() {
-    var that = this;
+    let that = this;
     return (
       <div>
         <StatusAlert />

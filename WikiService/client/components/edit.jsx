@@ -35,12 +35,12 @@ class EditArticle extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Onload, fetch GET ONE article
   componentDidMount() {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
 
     fetch("/api/articles/" + this.props.params.articleId, myInit)
       .then(function(response) {
@@ -84,12 +84,12 @@ class EditArticle extends React.Component {
   // handleSubmit() - Build article object and send a PUT request to update the article.
   handleSubmit(e) {
     e.preventDefault();
-    var body = this.state.body;
-    var title = this.state.title;
-    var what_changed = this.refs.what_changed.value;
-    var culture_group = this.state.culture_group;
-    var material = this.state.material;
-    var artwork_type = this.state.artwork_type;
+    let body = this.state.body;
+    let title = this.state.title;
+    let what_changed = this.refs.what_changed.value;
+    let culture_group = this.state.culture_group;
+    let material = this.state.material;
+    let artwork_type = this.state.artwork_type;
     let tags = this.state.tags;
 
     if (
@@ -101,11 +101,11 @@ class EditArticle extends React.Component {
       artwork_type &&
       tags
     ) {
-      var myHeaders = new Headers({
+      let myHeaders = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
         "x-access-token": window.localStorage.getItem("userToken")
       });
-      var myInit = {
+      let myInit = {
         method: "POST",
         headers: myHeaders,
         body:
@@ -133,7 +133,7 @@ class EditArticle extends React.Component {
           what_changed
       };
 
-      var that = this;
+      let that = this;
 
       fetch("/api/archives/", myInit)
         .then(function(response) {
@@ -149,11 +149,11 @@ class EditArticle extends React.Component {
           }
         })
         .then(() => {
-          var myHeaders = new Headers({
+          let myHeaders = new Headers({
             "Content-Type": "application/x-www-form-urlencoded",
             "x-access-token": window.localStorage.getItem("userToken")
           });
-          var myInit = {
+          let myInit = {
             method: "PUT",
             headers: myHeaders,
             body:
@@ -177,7 +177,7 @@ class EditArticle extends React.Component {
               what_changed
           };
 
-          var that = this;
+          let that = this;
 
           fetch("/api/articles/", myInit)
             .then(function(response) {

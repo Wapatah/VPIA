@@ -15,12 +15,12 @@ class SimpleArticle extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Receives clicked archive and its id to display the simple article associated with it.
   componentWillReceiveProps(nextProps) {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
 
     fetch("/api/archives/" + nextProps.archiveId, myInit)
       .then(function(response) {
@@ -34,13 +34,13 @@ class SimpleArticle extends React.Component {
         }
       })
       .then(() => {
-        var myHeaders = new Headers({
+        let myHeaders = new Headers({
           "Content-Type": "application/x-www-form-urlencoded",
           "x-access-token": window.localStorage.getItem("userToken")
         });
 
-        var myInit = { method: "GET", headers: myHeaders };
-        var that = this;
+        let myInit = { method: "GET", headers: myHeaders };
+        let that = this;
 
         fetch("/api/users/" + that.state.archive[0].user_id, myInit)
           .then(function(response) {

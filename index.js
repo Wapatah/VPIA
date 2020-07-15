@@ -3,19 +3,19 @@
 */
 
 // Importing all the required libraries
-var express = require("express");
-var compression = require("compression"); // Adding middleman compression scheme for performance
-var bodyParser = require("body-parser"); // body parser to parse the request body
-var db = require("./MainContainer/config/db"); // eslint-disable-line
-var app = express();
-var fs = require("fs"); // eslint-disable-line
-var apiRoutes = express.Router();
-var apiRoutesAdmin = express.Router();
-var jwt = require("jsonwebtoken");
-var config = require("./MainContainer/config/config"); // JWT key - DO NOT PUBLICIZE THIS IF USING IN PRODUCTION.
+let express = require("express");
+let compression = require("compression"); // Adding middleman compression scheme for performance
+let bodyParser = require("body-parser"); // body parser to parse the request body
+let db = require("./MainContainer/config/db"); // eslint-disable-line
+let app = express();
+let fs = require("fs"); // eslint-disable-line
+let apiRoutes = express.Router();
+let apiRoutesAdmin = express.Router();
+let jwt = require("jsonwebtoken");
+let config = require("./MainContainer/config/config"); // JWT key - DO NOT PUBLICIZE THIS IF USING IN PRODUCTION.
 
 // Loading and mapping data model relationships - allows jumping between NoSQL and SQL.
-var relations = require("./MainContainer/models/relations");
+let relations = require("./MainContainer/models/relations");
 relations.load(app);
 
 // Using gzip compression to speed up app performance
@@ -52,7 +52,7 @@ require("./UserService/api/users")(app);
 // Limit the ability of non-users to access API routes.
 module.exports = function isUserAuthenticated(req, res, next) {
   // Check header or url parameters or post parameters for token
-  var token =
+  let token =
     req.body.token || req.query.token || req.headers["x-access-token"];
 
   // Decode token
@@ -92,7 +92,7 @@ module.exports = function isUserAuthenticated(req, res, next) {
 // Limit the ability of non-admin users to access API routes.
 module.exports = function isAdminAuthenticated(req, res, next) {
   // Check header or url parameters or post parameters for token
-  var token =
+  let token =
     req.body.token || req.query.token || req.headers["x-access-token"];
 
   // Decode token

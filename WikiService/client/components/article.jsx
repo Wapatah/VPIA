@@ -18,13 +18,13 @@ class ViewArticle extends React.Component {
   On initial load, GET ONE Article from Article API
 */
   componentDidMount() {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
 
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
 
     fetch("/api/articles/" + that.props.params.articleId, myInit)
       .then(function(response) {
@@ -39,13 +39,13 @@ class ViewArticle extends React.Component {
         that.setState({ loading: false });
       })
       .then(() => {
-        var myHeaders = new Headers({
+        let myHeaders = new Headers({
           "Content-Type": "application/x-www-form-urlencoded",
           "x-access-token": window.localStorage.getItem("userToken")
         });
 
-        var myInit = { method: "GET", headers: myHeaders };
-        var that = this;
+        let myInit = { method: "GET", headers: myHeaders };
+        let that = this;
 
         fetch("/api/users/" + that.state.article[0].user_id, myInit)
           .then(function(response) {
@@ -71,12 +71,12 @@ class ViewArticle extends React.Component {
     let del = confirm("Are you sure you want to delete this article?");
 
     if (del) {
-      var myHeaders = new Headers({
+      let myHeaders = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
         "x-access-token": window.localStorage.getItem("userToken")
       });
 
-      var myInit = {
+      let myInit = {
         method: "DELETE",
         headers: myHeaders,
         body: "id=" + this.state.article[0].id

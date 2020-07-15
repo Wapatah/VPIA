@@ -20,18 +20,18 @@ class UserSignup extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Takes user input and sends a post request to the user api to create new user
   handleSignUp() {
-    var user = {
+    let user = {
       name: encodeURIComponent(this.refs.user_name.value),
       about: encodeURIComponent(this.refs.user_about.value),
       email: encodeURIComponent(this.refs.user_email.value),
       password: encodeURIComponent(this.refs.user_password.value)
     };
 
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
 
-    var myInit = {
+    let myInit = {
       method: "POST",
       headers: myHeaders,
       body:

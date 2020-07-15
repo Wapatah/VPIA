@@ -24,14 +24,14 @@ class ArtworkResults extends React.Component {
   On component load, GET ALL Articles
 */
   componentDidMount() {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
 
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
-    var url = "/api/articles";
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
+    let url = "/api/articles";
 
     fetch(url, myInit)
       .then(function(response) {
