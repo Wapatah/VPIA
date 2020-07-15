@@ -41,7 +41,7 @@ app.get("/api", function(req, res) {
 });
 
 // Importing all endpoints for authentication
-require("./MainContainer/api/authentication")(app);
+require("./UserService/api/authentication")(app);
 
 // Importing the setup endpoint
 require("./UserService/api/setup")(app);

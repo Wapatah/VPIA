@@ -3,62 +3,58 @@
 */
 
 // Importing the data models needed to manipulate
-const Users = require("../../UserService/models/user.js");
+const Users = require("../models/user.js");
 const jwt = require("jsonwebtoken"); // Used to create, sign, and verify tokens
 const bcrypt = require("bcryptjs"); // Password hashing function
 
-module.exports = function(app) {
+module.exports = app => {
   /* --------------------------------------------------------------------------------------------------------------------------------------------
   POST /authentication - endpoint that takes the email and password and returns the JWT
   the token is present in the token key in the data object.
 */
-  app.post("/api/authenticate", function(req, res) {
+  app.post("/api/authenticate", async (req, res) => {
     /* 
   > Migration note:
   The original ORM the Matterwiki code was based (Bookshelf) on was changed to Caminte.
   The User that was returned in bookshelf was an object. Caminte returns an array.
 */
-    Users.find({ where: { email: req.body.email } })
-      .then(function(user) {
-        if (!user) {
-          res.json({
-            error: {
-              error: true,
-              message: "User not found"
-            },
-            code: "B117",
-            data: {}
-          });
-        } else {
-          /*
-            > Migration note:
-            Due to Caminte returning an array, we have to change the user to 
-            an object so the rest of the original Matterwiki code can continue to work.
-            This is not a very elegant solution, we should change it if
-            there's a better approach.
-          */
-          user = JSON.stringify(Object.assign({}, user));
-          user = JSON.parse(user);
-
-          /* 
-            Compare the hashes of the password found in the database versus
-            the given password by the user.
-          */
-          comparePassword(req.body.password, user[0].password, user, res);
-        }
-      })
-      .catch(function(error) {
-        res.status(500).json({
+    try {
+      let user = await Users.find({ where: { email: req.body.email } });
+      if (!user) {
+        res.json({
           error: {
             error: true,
-            message: "POST /api/authenticate: " + error.message
+            message: "User not found"
           },
-          code: "B120",
           data: {}
         });
+      } else {
+        /*
+              > Migration note:
+              Due to Caminte returning an array, we have to change the user to 
+              an object so the rest of the original Matterwiki code can continue to work.
+              This is not a very elegant solution, we should change it if
+              there's a better approach.
+            */
+        user = JSON.stringify(Object.assign({}, user));
+        user = JSON.parse(user);
+
+        comparePassword(req.body.password, user[0].password, user, res);
+      }
+    } catch (err) {
+      res.status(500).json({
+        error: {
+          message: "POST /api/authenticate: " + err.message
+        },
+        data: {}
       });
+    }
   });
 
+  /* 
+  Compare the hashes of the password found in the database versus
+  the given password by the user.
+*/
   function comparePassword(userPassword, dbPassword, user, res) {
     bcrypt.compare(userPassword, dbPassword, function(err, result) {
       if (result === true) {
