@@ -64,9 +64,9 @@ class Login extends React.Component {
   // Render the log in page.
   render() {
     return (
-      <div id="fullpage" className="container-fluid">
+      <div className="fullpage container-fluid">
         <StatusAlert />
-        <div id="full-page" className="row">
+        <div className="full-page row">
           <div className="col-lg-4 left-panel">
             <img
               src="../assets/images/logo-white.png"

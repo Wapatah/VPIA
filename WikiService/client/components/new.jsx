@@ -144,7 +144,7 @@ class NewArticle extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div id="left-side" className="col-md-1 left-side-nav-card"></div>
+          <div className="left-side col-md-1 left-side-nav-card"></div>
 
           <div className="col-md-8 edit-indicator">
             <div className="article-heading">

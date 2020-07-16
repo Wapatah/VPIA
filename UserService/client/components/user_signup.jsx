@@ -78,9 +78,9 @@ class UserSignup extends React.Component {
     const isEnabled = email.length > 0 && password.length > 0;
 
     return (
-      <div id="fullpage" className="container-fluid">
+      <div className="fullpage container-fluid">
         <StatusAlert />
-        <div id="full-page" className="row">
+        <div className="full-page row">
           <div className="col-lg-4 left-panel">
             <img
               src="../assets/images/logo-white.png"
