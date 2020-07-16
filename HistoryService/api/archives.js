@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /* --------------------------------------------------------------------------------------------------------------------------------------------
   This file contains all endpoints related to archives.
   POST and DELETE are handled when an Article is created/destroyed, since
