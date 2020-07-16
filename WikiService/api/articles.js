@@ -4,8 +4,8 @@
 
 // Importing the data models needed to manipulate
 const Articles = require("../models/article.js");
-const isAdminAuthenticated = require("../../index.js");
-const isUserAuthenticated = require("../../index.js");
+const isAdminAuthenticated = require("../../MainContainer/index.js");
+const isUserAuthenticated = require("../../MainContainer/index.js");
 
 module.exports = app => {
   // --------------------------------------------------------------------------------------------------------------------------------------------

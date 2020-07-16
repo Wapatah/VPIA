@@ -6,16 +6,16 @@
 let express = require("express");
 let compression = require("compression"); // Adding middleman compression scheme for performance
 let bodyParser = require("body-parser"); // body parser to parse the request body
-let db = require("./MainContainer/config/db"); // eslint-disable-line
+let db = require("./config/db"); // eslint-disable-line
 let app = express();
 let fs = require("fs"); // eslint-disable-line
 let apiRoutes = express.Router();
 let apiRoutesAdmin = express.Router();
 let jwt = require("jsonwebtoken");
-let config = require("./MainContainer/config/config"); // JWT key - DO NOT PUBLICIZE THIS IF USING IN PRODUCTION.
+let config = require("./config/config"); // JWT key - DO NOT PUBLICIZE THIS IF USING IN PRODUCTION.
 
 // Loading and mapping data model relationships - allows jumping between NoSQL and SQL.
-let relations = require("./MainContainer/models/relations");
+let relations = require("./models/relations");
 relations.load(app);
 
 // Using gzip compression to speed up app performance
@@ -26,7 +26,7 @@ console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV !== "production") {
   // Add some patchwork for the devserver to work!
-  require("./MainContainer/config/webpack-middleware")(app);
+  require("./config/webpack-middleware")(app);
 }
 
 app.set("superSecret", config.auth_secret); // Secret variable
@@ -41,13 +41,13 @@ app.get("/api", function(req, res) {
 });
 
 // Importing all endpoints for authentication
-require("./UserService/api/authentication")(app);
+require("../UserService/api/authentication")(app);
 
 // Importing the setup endpoint
-require("./UserService/api/setup")(app);
+require("../UserService/api/setup")(app);
 
 // Importing the users endpoint for sign up capabilties.
-require("./UserService/api/users")(app);
+require("../UserService/api/users")(app);
 
 // Limit the ability of non-users to access API routes.
 module.exports = function isUserAuthenticated(req, res, next) {
@@ -141,21 +141,21 @@ module.exports = function isAdminAuthenticated(req, res, next) {
 };
 
 // Importing all endpoints for articles
-require("./WikiService/api/articles")(apiRoutes);
+require("../WikiService/api/articles")(apiRoutes);
 
 // Importing all endpoints for users
-require("./UserService/api/users")(apiRoutesAdmin);
+require("../UserService/api/users")(apiRoutesAdmin);
 
 // Importing all endpoints for archives
-require("./HistoryService/api/archives")(apiRoutes);
+require("../HistoryService/api/archives")(apiRoutes);
 
 // Importing the search endpoint
-require("./SearchService/api/search")(apiRoutes);
+require("../SearchService/api/search")(apiRoutes);
 
 app.use("/api", apiRoutes);
 app.use("/api", apiRoutesAdmin);
 
-app.use(express.static(__dirname + "/MainContainer/client"));
+app.use(express.static(__dirname + "/client"));
 
 app.listen(process.env.PORT, function() {
   console.log("Running on http://localhost:" + process.env.PORT);

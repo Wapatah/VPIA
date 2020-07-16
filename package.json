@@ -2,13 +2,13 @@
   "name": "vpia",
   "version": "0.1.0",
   "description": "Virtual Platform for Indigenous Art",
-  "main": "./index.js",
+  "main": "./MainContainer/index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./MainContainer/config/webpack.config.prod.js --progress --profile --colors",
-    "dev": "node index.js",
+    "dev": "node ./MainContainer/index.js",
     "prep": "cd MediaService && npm i",
     "microservices": "cd MediaService && npm run start",
-    "start": "npm run build && cross-env NODE_ENV=production node index.js && SET AUTOUPDATE=1 & npm run microservices",
+    "start": "npm run build && cross-env NODE_ENV=production node ./MainContainer/index.js && SET AUTOUPDATE=1 & npm run microservices",
     "prettier": "prettier --write \"**/*.{js,jsx}\" --ignore-path .gitignore",
     "lint": "eslint --config ./MainContainer/config/.eslintrc.js \"**/*.js\" --fix --ignore-path .gitignore"
   },
