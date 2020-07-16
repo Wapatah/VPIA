@@ -13,7 +13,7 @@ class SearchForm extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // If searching, redirect users to the results and passes the value as a prop
   searchWiki() {
-    var results = "/search?query=" + this.refs.search.value;
+    let results = "/search?query=" + this.refs.search.value;
     hashHistory.push(results);
   }
 

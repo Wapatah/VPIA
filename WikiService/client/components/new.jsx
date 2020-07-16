@@ -35,14 +35,14 @@ class NewArticle extends React.Component {
   // Take variables from admin input and create a new Article object and send POST
   handleSubmit(e) {
     e.preventDefault();
-    var body = this.state.body;
-    var title = this.refs.title.value;
-    var culture_group = this.state.culture_group;
-    var material = this.state.material;
-    var artwork_type = this.state.artwork_type;
-    var photo = this.state.photo;
-    var institution = this.state.institution;
-    var photo_license = this.state.photo_license;
+    let body = this.state.body;
+    let title = this.refs.title.value;
+    let culture_group = this.state.culture_group;
+    let material = this.state.material;
+    let artwork_type = this.state.artwork_type;
+    let photo = this.state.photo;
+    let institution = this.state.institution;
+    let photo_license = this.state.photo_license;
     let tags = this.state.tags;
 
     if (
@@ -56,12 +56,12 @@ class NewArticle extends React.Component {
       photo_license &&
       tags
     ) {
-      var myHeaders = new Headers({
+      let myHeaders = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
         "x-access-token": window.localStorage.getItem("userToken")
       });
 
-      var myInit = {
+      let myInit = {
         method: "POST",
         headers: myHeaders,
         body:
