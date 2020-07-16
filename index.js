@@ -3,19 +3,19 @@
 */
 
 // Importing all the required libraries
-var express = require("express");
-var compression = require("compression"); // Adding middleman compression scheme for performance
-var bodyParser = require("body-parser"); // body parser to parse the request body
-var db = require("./MainContainer/config/db"); // eslint-disable-line
-var app = express();
-var fs = require("fs"); // eslint-disable-line
-var apiRoutes = express.Router();
-var apiRoutesAdmin = express.Router();
-var jwt = require("jsonwebtoken");
-var config = require("./MainContainer/config/config"); // JWT key - DO NOT PUBLICIZE THIS IF USING IN PRODUCTION.
+let express = require("express");
+let compression = require("compression"); // Adding middleman compression scheme for performance
+let bodyParser = require("body-parser"); // body parser to parse the request body
+let db = require("./MainContainer/config/db"); // eslint-disable-line
+let app = express();
+let fs = require("fs"); // eslint-disable-line
+let apiRoutes = express.Router();
+let apiRoutesAdmin = express.Router();
+let jwt = require("jsonwebtoken");
+let config = require("./MainContainer/config/config"); // JWT key - DO NOT PUBLICIZE THIS IF USING IN PRODUCTION.
 
 // Loading and mapping data model relationships - allows jumping between NoSQL and SQL.
-var relations = require("./MainContainer/models/relations");
+let relations = require("./MainContainer/models/relations");
 relations.load(app);
 
 // Using gzip compression to speed up app performance
@@ -41,7 +41,7 @@ app.get("/api", function(req, res) {
 });
 
 // Importing all endpoints for authentication
-require("./MainContainer/api/authentication")(app);
+require("./UserService/api/authentication")(app);
 
 // Importing the setup endpoint
 require("./UserService/api/setup")(app);
@@ -50,9 +50,9 @@ require("./UserService/api/setup")(app);
 require("./UserService/api/users")(app);
 
 // Limit the ability of non-users to access API routes.
-apiRoutes.use(function(req, res, next) {
+module.exports = function isUserAuthenticated(req, res, next) {
   // Check header or url parameters or post parameters for token
-  var token =
+  let token =
     req.body.token || req.query.token || req.headers["x-access-token"];
 
   // Decode token
@@ -60,7 +60,7 @@ apiRoutes.use(function(req, res, next) {
     // Verifies secret and checks for expiration
     jwt.verify(token, app.get("superSecret"), function(err, decoded) {
       if (err) {
-        return res.json({
+        res.json({
           error: {
             error: true,
             message: "Failed to authenticate token"
@@ -68,6 +68,7 @@ apiRoutes.use(function(req, res, next) {
           code: "B101",
           data: {}
         });
+        res.redirect("/");
       } else {
         // If everything is good, save to request for use in other routes
         req.decoded = decoded;
@@ -76,7 +77,7 @@ apiRoutes.use(function(req, res, next) {
     });
   } else {
     // If there is no token, return an error
-    return res.status(403).json({
+    res.status(403).json({
       error: {
         error: true,
         message: "No token provided"
@@ -84,13 +85,14 @@ apiRoutes.use(function(req, res, next) {
       code: "B102",
       data: {}
     });
+    res.redirect("/");
   }
-});
+};
 
 // Limit the ability of non-admin users to access API routes.
-apiRoutesAdmin.use(function(req, res, next) {
+module.exports = function isAdminAuthenticated(req, res, next) {
   // Check header or url parameters or post parameters for token
-  var token =
+  let token =
     req.body.token || req.query.token || req.headers["x-access-token"];
 
   // Decode token
@@ -112,7 +114,7 @@ apiRoutesAdmin.use(function(req, res, next) {
           req.decoded = decoded;
           next();
         } else {
-          return res.status(403).json({
+          res.status(403).json({
             error: {
               error: true,
               message: "You are not authorized to perform this action"
@@ -120,12 +122,13 @@ apiRoutesAdmin.use(function(req, res, next) {
             code: "BNOTADMIN",
             data: {}
           });
+          res.redirect("/");
         }
       }
     });
   } else {
     // If there is no token, return an error
-    return res.status(403).json({
+    res.status(403).json({
       error: {
         error: true,
         message: "No token provided"
@@ -133,8 +136,9 @@ apiRoutesAdmin.use(function(req, res, next) {
       code: "B102",
       data: {}
     });
+    res.redirect("/");
   }
-});
+};
 
 // Importing all endpoints for articles
 require("./WikiService/api/articles")(apiRoutes);
@@ -147,9 +151,6 @@ require("./HistoryService/api/archives")(apiRoutes);
 
 // Importing the search endpoint
 require("./SearchService/api/search")(apiRoutes);
-
-// Importing all endpoints which are only admin accessible
-require("./UserService/api/admin")(apiRoutesAdmin);
 
 app.use("/api", apiRoutes);
 app.use("/api", apiRoutesAdmin);
