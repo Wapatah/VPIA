@@ -14,10 +14,6 @@ let apiRoutesAdmin = express.Router();
 let jwt = require("jsonwebtoken");
 let config = require("./config/config"); // JWT key - DO NOT PUBLICIZE THIS IF USING IN PRODUCTION.
 
-// Loading and mapping data model relationships - allows jumping between NoSQL and SQL.
-let relations = require("./models/relations");
-relations.load(app);
-
 // Using gzip compression to speed up app performance
 app.use(compression());
 
