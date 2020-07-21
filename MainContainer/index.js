@@ -142,9 +142,6 @@ require("../WikiService/api/articles")(apiRoutes);
 // Importing all endpoints for users
 require("../UserService/api/users")(apiRoutesAdmin);
 
-// Importing all endpoints for archives
-require("../HistoryService/api/archives")(apiRoutes);
-
 // Importing the search endpoint
 require("../SearchService/api/search")(apiRoutes);
 

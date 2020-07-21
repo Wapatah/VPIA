@@ -6,7 +6,7 @@
 */
 // Importing the data models needed to manipulate
 const Archives = require("../models/archive.js");
-const isUserAuthenticated = require("../../MainContainer/index.js");
+const isUserAuthenticated = require("../index.js");
 
 module.exports = app => {
   /* --------------------------------------------------------------------------------------------------------------------------------------------

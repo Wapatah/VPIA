@@ -23,7 +23,10 @@ class BrowseArchives extends React.Component {
     });
     let myInit = { method: "GET", headers: myHeaders };
     let that = this;
-    let url = "/api/articles/" + this.props.articleId + "/history";
+    let url =
+      "http://localhost:31000/api/articles/" +
+      this.props.articleId +
+      "/history";
 
     fetch(url, myInit)
       .then(function(response) {

@@ -4,7 +4,7 @@
 */
 
 // Imports config/db.js for the database object.
-let schema = require("../../MainContainer/config/db");
+let schema = require("../config/db");
 
 let Archive = schema.define("archive", {
   title: { type: schema.String, limit: 255 },
