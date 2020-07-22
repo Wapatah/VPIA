@@ -35,12 +35,12 @@ class EditArticle extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Onload, fetch GET ONE article
   componentDidMount() {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
 
     fetch("/api/articles/" + this.props.params.articleId, myInit)
       .then(function(response) {
@@ -84,12 +84,12 @@ class EditArticle extends React.Component {
   // handleSubmit() - Build article object and send a PUT request to update the article.
   handleSubmit(e) {
     e.preventDefault();
-    var body = this.state.body;
-    var title = this.state.title;
-    var what_changed = this.refs.what_changed.value;
-    var culture_group = this.state.culture_group;
-    var material = this.state.material;
-    var artwork_type = this.state.artwork_type;
+    let body = this.state.body;
+    let title = this.state.title;
+    let what_changed = this.refs.what_changed.value;
+    let culture_group = this.state.culture_group;
+    let material = this.state.material;
+    let artwork_type = this.state.artwork_type;
     let tags = this.state.tags;
 
     if (
@@ -101,15 +101,15 @@ class EditArticle extends React.Component {
       artwork_type &&
       tags
     ) {
-      var myHeaders = new Headers({
+      let myHeaders = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
         "x-access-token": window.localStorage.getItem("userToken")
       });
-      var myInit = {
-        method: "PUT",
+      let myInit = {
+        method: "POST",
         headers: myHeaders,
         body:
-          "id=" +
+          "article_id=" +
           this.props.params.articleId +
           "&title=" +
           encodeURIComponent(title) +
@@ -117,6 +117,10 @@ class EditArticle extends React.Component {
           encodeURIComponent(body) +
           "&culture_group=" +
           encodeURIComponent(culture_group) +
+          "&institution=" +
+          this.props.params.institution +
+          "&photo=" +
+          this.props.params.photo +
           "&material=" +
           encodeURIComponent(material) +
           "&artwork_type=" +
@@ -129,9 +133,9 @@ class EditArticle extends React.Component {
           what_changed
       };
 
-      var that = this;
+      let that = this;
 
-      fetch("/api/articles/", myInit)
+      fetch("/api/archives/", myInit)
         .then(function(response) {
           return response.json();
         })
@@ -140,11 +144,56 @@ class EditArticle extends React.Component {
             StatusAlertService.showError(response.error.message);
           } else {
             StatusAlertService.showSuccess(
-              "Article has been successfully saved"
+              "Archive has been successfully created"
             );
-            hashHistory.push("article/" + that.props.params.articleId);
           }
+        })
+        .then(() => {
+          let myHeaders = new Headers({
+            "Content-Type": "application/x-www-form-urlencoded",
+            "x-access-token": window.localStorage.getItem("userToken")
+          });
+          let myInit = {
+            method: "PUT",
+            headers: myHeaders,
+            body:
+              "id=" +
+              this.props.params.articleId +
+              "&title=" +
+              encodeURIComponent(title) +
+              "&body=" +
+              encodeURIComponent(body) +
+              "&culture_group=" +
+              encodeURIComponent(culture_group) +
+              "&material=" +
+              encodeURIComponent(material) +
+              "&artwork_type=" +
+              encodeURIComponent(artwork_type) +
+              "&tags=" +
+              encodeURIComponent(tags) +
+              "&user_id=" +
+              window.localStorage.getItem("user_id") +
+              "&what_changed=" +
+              what_changed
+          };
+
+          let that = this;
+
+          fetch("/api/articles/", myInit)
+            .then(function(response) {
+              return response.json();
+            })
+            .then(function(response) {
+              if (response.error.error) {
+                StatusAlertService.showError(response.error.message);
+              } else {
+                StatusAlertService.showSuccess(
+                  "Article has been successfully saved"
+                );
+              }
+            });
         });
+      hashHistory.push("article/" + that.props.params.articleId);
     } else {
       StatusAlertService.showError(
         "Article Body, Title, and Change Info is required."
@@ -262,7 +311,7 @@ class EditArticle extends React.Component {
 
                         <li className="list-group-item">
                           <p id="FuturaStdHeavy">Type</p>
-                          <p id="Baskerville">
+                          <div id="Baskerville">
                             <Editor
                               initialValue={this.state.artwork_type}
                               init={{
@@ -279,12 +328,12 @@ class EditArticle extends React.Component {
                                 });
                               }}
                             />
-                          </p>
+                          </div>
                         </li>
 
                         <li className="list-group-item">
                           <p id="FuturaStdHeavy">Culture Group</p>
-                          <p id="Baskerville">
+                          <div id="Baskerville">
                             <Editor
                               initialValue={this.state.culture_group}
                               init={{
@@ -301,12 +350,12 @@ class EditArticle extends React.Component {
                                 });
                               }}
                             />
-                          </p>
+                          </div>
                         </li>
 
                         <li className="list-group-item">
                           <p id="FuturaStdHeavy">Material</p>
-                          <p id="Baskerville">
+                          <div id="Baskerville">
                             <Editor
                               initialValue={this.state.material}
                               init={{
@@ -323,12 +372,12 @@ class EditArticle extends React.Component {
                                 });
                               }}
                             />
-                          </p>
+                          </div>
                         </li>
 
                         <li className="list-group-item">
                           <p id="FuturaStdHeavy">Tags</p>
-                          <p id="Baskerville">
+                          <div id="Baskerville">
                             <Editor
                               initialValue={this.state.tags}
                               init={{
@@ -345,7 +394,7 @@ class EditArticle extends React.Component {
                                 });
                               }}
                             />
-                          </p>
+                          </div>
                         </li>
 
                         <li className="list-group-item">

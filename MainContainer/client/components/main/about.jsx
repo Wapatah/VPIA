@@ -9,7 +9,7 @@ class About extends React.Component {
       <div className="mw-100">
         <div className="container-fluid">
           <div
-            className="carousel slide"
+            className="carousel about slide"
             data-ride="carousel"
             id="carouselExampleControls"
           >

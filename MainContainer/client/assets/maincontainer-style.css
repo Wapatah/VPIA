@@ -593,6 +593,9 @@ ul.social-network li {
 .acknowledge-text {
   font: Italic 10px/12px Arial;
 }
+.carousel.about {
+  padding: 0;
+}
 
 #logo-bottom-right {
   position: absolute;

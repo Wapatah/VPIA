@@ -29,14 +29,14 @@ class Login extends React.Component {
   // Authenticate the login input
   handleSubmit(e) {
     e.preventDefault();
-    var email = document.getElementById("inputEmail").value;
-    var password = document.getElementById("inputPassword").value;
+    let email = document.getElementById("inputEmail").value;
+    let password = document.getElementById("inputPassword").value;
 
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
 
-    var myInit = {
+    let myInit = {
       method: "POST",
       headers: myHeaders,
       body:
@@ -46,7 +46,7 @@ class Login extends React.Component {
         encodeURIComponent(password)
     };
 
-    var that = this;
+    let that = this;
 
     fetch("/api/authenticate", myInit)
       .then(function(response) {
@@ -119,7 +119,7 @@ class Login extends React.Component {
                   Benefits
                 </button>
               </div>
-              <div className="carousel-inner">
+              <div className="carousel-inner user-service">
                 <div className="carousel-item active">
                   <div className="header-container">
                     <div className="header-item">
@@ -147,8 +147,7 @@ class Login extends React.Component {
                     tincidunt tincidunt. Sed facilisis consectetur faucibus. In
                     vitae dolor quis mi fringilla condimentum non ut nulla. Sed
                     ornare erat diam, sed ultrices magna faucibus condimentum.
-                    Vivamus in ullamcorper quam. Integer vel dapibus nisl. Nam
-                    lacinia, neque vitae bibendum egestas.
+                    Vivamus in ullamcorper quam. Integer vel dapibus nisl.
                   </p>
                   <button className="btn btn-outline-light">Learn More</button>
                 </div>
@@ -179,8 +178,7 @@ class Login extends React.Component {
                     tincidunt tincidunt. Sed facilisis consectetur faucibus. In
                     vitae dolor quis mi fringilla condimentum non ut nulla. Sed
                     ornare erat diam, sed ultrices magna faucibus condimentum.
-                    Vivamus in ullamcorper quam. Integer vel dapibus nisl. Nam
-                    lacinia, neque vitae bibendum egestas.
+                    Vivamus in ullamcorper quam. Integer vel dapibus nisl.
                   </p>
                   <button className="btn btn-outline-light">Learn More</button>
                 </div>

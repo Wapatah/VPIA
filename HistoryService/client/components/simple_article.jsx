@@ -9,18 +9,18 @@ import StatusAlert, { StatusAlertService } from "react-status-alert";
 class SimpleArticle extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { article: {} };
+    this.state = { article: {}, user: {} };
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Receives clicked archive and its id to display the simple article associated with it.
   componentWillReceiveProps(nextProps) {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
 
     fetch("/api/archives/" + nextProps.archiveId, myInit)
       .then(function(response) {
@@ -32,14 +32,39 @@ class SimpleArticle extends React.Component {
         } else {
           that.setState({ article: response.data });
         }
+      })
+      .then(() => {
+        let myHeaders = new Headers({
+          "Content-Type": "application/x-www-form-urlencoded",
+          "x-access-token": window.localStorage.getItem("userToken")
+        });
+
+        let myInit = { method: "GET", headers: myHeaders };
+        let that = this;
+
+        fetch("/api/users/" + that.state.archive[0].user_id, myInit)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(response) {
+            if (response.error.error) {
+              StatusAlertService.showError(response.error.message);
+            } else {
+              that.setState({ user: response.data });
+            }
+          });
       });
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Displays the article information in smaller detail.
   render() {
+    let user_name = "";
     if (this.state.loading) return <Loader />;
     if (this.state.article[0] && this.state.article[0].user_id) {
+      if (this.state.user[0]) {
+        user_name = this.state.user[0].name;
+      }
       return (
         <div className="row">
           <StatusAlert />
@@ -57,7 +82,7 @@ class SimpleArticle extends React.Component {
                 {this.state.article[0].title}
               </h1>
               <div className="single-article-meta">
-                Edited by <b>{this.state.article[0].user_id[0].name}</b>
+                Edited by <b>{user_name}</b>
               </div>
               <br />
               <div className="single-article-meta">

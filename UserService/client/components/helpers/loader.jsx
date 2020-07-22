@@ -13,7 +13,7 @@ class Loader extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Onload, if the component times out, display error message.
   componentDidMount() {
-    var that = this;
+    let that = this;
     this.timeout = setTimeout(function() {
       that.setState({
         message:

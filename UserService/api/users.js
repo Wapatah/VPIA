@@ -3,97 +3,83 @@
 */
 
 // Importing the data models needed to manipulate
-var Users = require("../models/user.js");
-var bcrypt = require("bcryptjs");
-var Articles = require("../../WikiService/models/article.js");
+const Users = require("../models/user.js");
+const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 
-module.exports = function(app) {
+module.exports = app => {
   //--------------------------------------------------------------------------------------------------------------------------------------------
   // GET /users - GET ALL endpoint that responds with the list of all the users in the users table
-  app.get("/users", function(req, res) {
-    Users.all({ where: {} })
-      .then(function(collection) {
-        res.json({
-          error: {
-            error: false,
-            message: ""
-          },
-          code: "B133",
-          data: collection
-        });
-      })
-      .catch(function(error) {
-        res.status(500).json({
-          error: {
-            error: true,
-            message: "GET /users: " + error.message
-          },
-          code: "B134",
-          data: {}
-        });
+  app.get("/users", async (req, res) => {
+    try {
+      const user = await Users.all({ where: {} });
+      res.json({
+        error: {
+          error: false
+        },
+        data: user
       });
+    } catch (err) {
+      res.status(500).json({
+        error: {
+          message: "GET /users: " + err.message
+        },
+        data: {}
+      });
+    }
   });
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // GET /users/:id - GET ONE endpoint that responds with the user (with the given id)
-  app.get("/users/:id", function(req, res) {
-    Users.find({ where: { id: req.params.id } })
-      .then(function(user) {
-        res.json({
-          error: {
-            error: false,
-            message: ""
-          },
-          code: "B133",
-          data: user
-        });
-      })
-      .catch(function(error) {
-        res.status(500).json({
-          error: {
-            error: true,
-            message: "GET /use/:id/: " + error.message
-          },
-          code: "B134",
-          data: {}
-        });
+  app.get("/users/:id", async (req, res) => {
+    try {
+      const user = await Users.find({
+        where: { id: req.params.id }
       });
+      res.json({
+        error: {
+          error: false
+        },
+        data: user
+      });
+    } catch (err) {
+      res.status(500).json({
+        error: {
+          message: "GET /users/:id/: " + err.message
+        },
+        data: {}
+      });
+    }
   });
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
     POST /users - POST endpoint which takes the user name, email, password, and about to create
     a new user profile.
   */
-  app.post("/users", function(req, res) {
-    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-      Users.create({
-        admin: false,
-        name: req.body.name,
-        email: req.body.email,
-        password: hash,
-        about: req.body.about
-      })
-        .then(function(collection) {
-          res.json({
-            error: {
-              error: false,
-              message: ""
-            },
-            code: "B131",
-            data: collection.toJSON()
-          });
-        })
-        .catch(function(error) {
-          res.status(500).json({
-            error: {
-              error: true,
-              message: "POST /users: " + error.message
-            },
-            code: "B132",
-            data: {}
-          });
+  app.post("/users", async (req, res) => {
+    bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
+      try {
+        const user = Users.create({
+          admin: false,
+          name: req.body.name,
+          email: req.body.email,
+          password: hash,
+          about: req.body.about
         });
+        res.json({
+          error: {
+            error: false
+          },
+          data: user
+        });
+      } catch (err) {
+        res.status(500).json({
+          error: {
+            message: "POST /users: " + err.message
+          },
+          data: {}
+        });
+      }
     });
   });
 
@@ -101,106 +87,59 @@ module.exports = function(app) {
     PUT /users - PUT endpoint which takes the user's ID, name, email, password, and about to create
     a update the user profile of the given ID.
   */
-  app.put("/users", function(req, res) {
-    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-      Users.update(
-        {
-          id: req.body.id
-        },
-        {
-          name: req.body.name,
-          email: req.body.email,
-          password: hash,
-          about: req.body.about
-        }
-      )
-        .then(function() {
-          res.json({
-            error: {
-              error: false,
-              message: ""
-            },
-            code: "B135",
-            data: {
-              name: req.body.name,
-              email: req.body.email,
-              about: req.body.about
-            }
-          });
-        })
-        .catch(function(error) {
-          res.status(500).json({
-            error: {
-              error: true,
-              message: "PUT /users: " + error.message
-            },
-            code: "B136",
-            data: {}
-          });
+  app.put("/users", async (req, res) => {
+    bcrypt.hash(req.body.password, saltRounds, async (err, hash) => {
+      try {
+        const user = await Users.update(
+          {
+            id: req.body.id
+          },
+          {
+            name: req.body.name,
+            email: req.body.email,
+            password: hash,
+            about: req.body.about
+          }
+        );
+        res.json({
+          error: {
+            error: false
+          },
+          data: {
+            name: req.body.name,
+            email: req.body.email,
+            about: req.body.about
+          }
         });
+      } catch (err) {
+        res.status(500).json({
+          error: {
+            message: "PUT /users: " + err.message
+          },
+          data: {}
+        });
+      }
     });
   });
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // DELETE /users - endpoint for deleting a user from the database.
-  app.delete("/users", function(req, res) {
-    Users.destroyById(req.body.id)
-      .then(function() {
-        Articles.find({ where: { user_id: req.body.id } }).then(collection => {
-          if (collection) {
-            Articles.update(
-              {
-                where: {
-                  user_id: req.body.id
-                }
-              },
-              {
-                user_id: 1
-              }
-            )
-              .then(() => {
-                res.json({
-                  error: {
-                    error: false,
-                    message: ""
-                  },
-                  code: "B127",
-                  data: {}
-                });
-              })
-              .catch(error => {
-                res.status(500).json({
-                  error: {
-                    error: true,
-                    message:
-                      "DELETE /users (failed to move Articles): " +
-                      error.message
-                  },
-                  code: "",
-                  data: {}
-                });
-              });
-          } else {
-            res.json({
-              error: {
-                error: false,
-                message: ""
-              },
-              code: "B127",
-              data: {}
-            });
-          }
-        });
-      })
-      .catch(function(error) {
-        res.status(500).json({
-          error: {
-            error: true,
-            message: "DELETE /users: " + error.message
-          },
-          code: "B128",
-          data: {}
-        });
+  app.delete("/users", async (req, res) => {
+    try {
+      const user = await Users.destroyById(req.body.id);
+      res.json({
+        error: {
+          error: false
+        },
+        data: {}
       });
+    } catch (err) {
+      res.status(500).json({
+        error: {
+          message: "DELETE /users: " + err.message
+        },
+        data: {}
+      });
+    }
   });
 };

@@ -6,11 +6,9 @@
   padding: 0;
   height: 100%;
 }
-
 .full-page.row {
   height: 100%;
 }
-
 .login-box {
   max-width: 500px;
   margin: 0px auto;
@@ -32,11 +30,9 @@
 .font-weight-light {
   font-family: "FuturaStdLight";
 }
-
 .login-header {
   margin-bottom: 1em;
 }
-
 .right-panel {
   background-color: white;
   height: 100%;
@@ -44,7 +40,6 @@
   padding-left: 3%;
   padding-bottom: 10%;
 }
-
 .BGimage::before {
   top: 0;
   left: 0;
@@ -60,7 +55,6 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .image-tint-dark {
   position: absolute;
   left: 0;
@@ -77,46 +71,38 @@
   background: #fff;
   text-align: center;
 }
-
 .modal-fullscreen .modal-content {
   background: transparent;
   border: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-
 .modal-backdrop.modal-backdrop-fullscreen {
   background: #ffffff;
 }
-
 .modal-backdrop.modal-backdrop-fullscreen.in {
   opacity: 0.97;
   filter: alpha(opacity=97);
 }
 
 /* .modal-fullscreen size: we use Bootstrap media query breakpoints */
-
 .modal-fullscreen .modal-dialog {
   margin: 0;
   margin-right: auto;
   margin-left: auto;
   width: 100%;
 }
-
 .modal-fullscreen .col-md-6 {
   float: none;
 }
-
 .modal-fullscreen .form-control {
   border: 1px solid #ccc;
 }
-
 h1.welcome-message {
   padding-bottom: 5%;
   text-align: left;
   font-size: 40px;
 }
-
 .login-form {
   background-color: white;
   border: 2px solid #75777b;
@@ -124,18 +110,15 @@ h1.welcome-message {
   font-style: italic;
   padding: 0;
 }
-
 .login-form input[type="password"],
 select {
   background: transparent;
   border: none;
   outline: none;
 }
-
 .append-light {
   border: none;
 }
-
 .return-text {
   font-size: 0.8rem;
   color: #75777b;
@@ -178,7 +161,7 @@ p.signin-carousel {
   padding: 5%;
   height: 60%;
 }
-.carousel-inner {
+.carousel-inner.user-service {
   top: 40%;
   width: 90%;
   position: relative;
@@ -189,6 +172,7 @@ p.signin-carousel {
   align-items: center;
   flex-wrap: wrap;
   justify-content: flex-start;
+  padding-top: 25%;
 }
 .signup-check small {
   color: #75777b;
@@ -213,13 +197,11 @@ a.none-deco {
     width: 750px;
   }
 }
-
 @media (min-width: 992px) {
   .modal-fullscreen .modal-dialog {
     width: 970px;
   }
 }
-
 @media (min-width: 1200px) {
   .modal-fullscreen .modal-dialog {
     width: 1170px;
