@@ -157,7 +157,7 @@ p.signin-carousel {
   padding-left: 5%;
   bottom: 80%;
 }
-.carousel {
+.carousel.about {
   padding: 5%;
   height: 60%;
 }

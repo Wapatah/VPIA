@@ -85,7 +85,7 @@ class UserSignup extends React.Component {
             <div className="image-tint-dark"></div>
             <div
               id="carouselExampleIndicators"
-              className="carousel slide"
+              className="carousel about slide"
               data-ride="carousel"
             >
               <div className="carousel-indicators">
