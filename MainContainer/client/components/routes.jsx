@@ -24,6 +24,7 @@ import UserSignup from "../../../UserService/client/components/user_signup.jsx";
 import Landing from "./main/landing.jsx";
 import About from "./main/about.jsx";
 import Results from "../../../SearchService/client/components/results.jsx";
+import Artwork from "../../../SearchService/client/components/artwork.jsx";
 
 // --------------------------------------------------------------------------------------------------------------------------------------------
 // Build a route path and limit access to certain pages
@@ -35,6 +36,7 @@ export default function() {
         <Route path="home" component={Home} />
         <Route path="landing" component={Landing} />
         <Route path="results" component={Results} />
+        <Route path="artwork" component={Artwork} />
         <Route path="article/new" component={NewArticle} />
         <Route path="article/edit/:articleId" component={EditArticle} />
         <Route path="article/history/:articleId" component={ArticleHistory} />

@@ -77,7 +77,18 @@
   z-index: 10;
   display: none;
 }
-
+.container.artwork {
+  width: 60%;
+}
+h1.artwork-intro {
+  color: #707070;
+  font-size: 1.875rem;
+}
+p.artwork-intro {
+  color: #707070;
+  font-size: 1.125rem;
+  font-family: "FuturaStdLight";
+}
 #searchform {
   background-color: white;
   height: 3.625em;
