@@ -3,6 +3,7 @@
 */
 import React from "react";
 import ArtworkResults from "./artwork_results.jsx";
+import ArtworkCardDeck from "./artwork_carddeck.jsx";
 import Filters from "./filters.jsx";
 import Loader from "./helpers/loader.jsx";
 
@@ -32,8 +33,10 @@ class Results extends React.Component {
     else
       return (
         <div className="container artwork">
-          <h1 className="artwork-intro">Artworks (What, Why & How)</h1>
-          <div className="row">
+          <h1 className="artwork-intro text-center">
+            Artworks (What, Why & How)
+          </h1>
+          <div className="row justify-content-center">
             <div className="col-sm-8">
               <p className="artwork-intro mt-1">
                 The pilot of the VPIA specifically documents collections of
@@ -47,8 +50,8 @@ class Results extends React.Component {
               </p>
             </div>
           </div>
-
           <h1 className="mt-3">Drawings</h1>
+          <ArtworkCardDeck />
           <h1 className="mt-3">Figures</h1>
           <h1 className="mt-3">Masks</h1>
           <h1 className="mt-3">Pipes</h1>
