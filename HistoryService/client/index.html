@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>VPIA</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="Description"
+      content="VPIA: Virtual Platform for Indigenous Art"
+    />
+
+    <!--
+      Manifest used for PWA and downloading the application onto other devices
+    -->
+<!--     <link rel="manifest" href="./manifest.json" /> -->
+    <link rel="apple-touch-icon" href="./images.png" />
+    <meta name="theme-color" content="#208778" />
+
+    <noscript>
+      Javascript is required to be enabled to view this site properly.
+    </noscript>
+
+    <!--
+      jQuery, Bootstrap and StatusAlert
+    -->
+    <script
+      src="assets/jquery-3.4.1.slim.min.js"
+      type="text/javascript"
+      defer
+    ></script>
+    <script
+      src="assets/bootstrap.bundle.min.js"
+      type="text/javascript"
+      defer
+    ></script>
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="./assets/bootstrap.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="./assets/status-alert.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <!--
+      Customizations and CSS for custom classes
+    -->
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="./assets/maincontainer-style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="./assets/wikiservice-style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="./assets/userservice-style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="./assets/searchservice-style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="./assets/historyservice-style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <!--
+      FontAwesome for using icons
+    -->
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="./assets/font-awesome.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+  </head>
+  <body>
+    <!--
+      This is the main index file which imports the
+      compiled react files and holds the app container div.
+    -->
+    <div id="app" class="container" />
+    <script src="public/bundle.js" type="text/javascript" async></script>
+
+    <!-- Load the PWA Service Worker -->
+    <!-- <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service_worker.js");
+        });
+      }
+    </script> -->
+  </body>
+</html>

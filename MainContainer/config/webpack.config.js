@@ -14,10 +14,6 @@ const USER_SERVICE = path.resolve(
   __dirname,
   "../../UserService/client/components"
 );
-const HISTORY_SERVICE = path.resolve(
-  __dirname,
-  "../../HistoryService/client/components"
-);
 const SEARCH_SERVICE = path.resolve(
   __dirname,
   "../../SearchService/client/components"
@@ -72,18 +68,6 @@ module.exports = {
       {
         test: /\.jsx?/,
         include: USER_SERVICE,
-        exclude: /node_modules/,
-        type: "javascript/auto",
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"]
-          }
-        }
-      },
-      {
-        test: /\.jsx?/,
-        include: HISTORY_SERVICE,
         exclude: /node_modules/,
         type: "javascript/auto",
         use: {
