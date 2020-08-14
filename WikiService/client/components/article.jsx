@@ -114,7 +114,7 @@ class ViewArticle extends React.Component {
         <div className="container-fluid">
           <StatusAlert />
           <div className="row">
-            <div className="col-md-4 article-info-box">
+            <div className="col-md-3 article-info-box">
               <div className="card">
                 <div
                   className="my-card-img-top"
@@ -214,17 +214,17 @@ class ViewArticle extends React.Component {
               </div>
             </div>
 
-            <div className="col-md-5 tab-bar-content">
-              <div className="tab-bar">
-                <div className="tab-bar-tab">
+            <div className="col-md-6 tab-container">
+              <ul className="tabs clearfix">
+                <li className="active">
                   <a
                     className="active-red bottom-align-text"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
                     VPIA
                   </a>
-                </div>
-                <div className="tab-bar-tab">
+                </li>
+                <li className="edit-tab">
                   <Link
                     to={"/article/edit/" + this.state.article[0].id}
                     className="none-deco"
@@ -232,8 +232,8 @@ class ViewArticle extends React.Component {
                   >
                     Edit
                   </Link>
-                </div>
-                <div className="tab-bar-tab">
+                </li>
+                <li>
                   <Link
                     to={"/article/history/" + this.state.article[0].id}
                     className="none-deco"
@@ -241,8 +241,8 @@ class ViewArticle extends React.Component {
                   >
                     Edit History
                   </Link>
-                </div>
-              </div>
+                </li>
+              </ul>
               <div class="tab-bar-card">
                 <div className="article-heading">
                   <h1 className="single-article-title">
