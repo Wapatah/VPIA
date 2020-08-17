@@ -215,14 +215,15 @@ class ViewArticle extends React.Component {
             </div>
 
             <div className="col-md-6 tab-container">
-              <ul className="tabs clearfix">
-                <li className="active">
-                  <a
-                    className="active-red bottom-align-text"
-                    aria-label="Artwork article tab, see the current published state of the article"
+              <ul className="tabs">
+                <li>
+                  <Link
+                    to={"/article/history/" + this.state.article[0].id}
+                    className="none-deco"
+                    aria-label="Histyory tab, go to see the history of this article"
                   >
-                    VPIA
-                  </a>
+                    Edit History
+                  </Link>
                 </li>
                 <li className="edit-tab">
                   <Link
@@ -233,14 +234,21 @@ class ViewArticle extends React.Component {
                     Edit
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    to={"/article/history/" + this.state.article[0].id}
-                    className="none-deco"
-                    aria-label="Histyory tab, go to see the history of this article"
+                <li className="institution-tab">
+                  <a
+                    className="bottom-align-text"
+                    aria-label="Artwork article tab, see the current published state of the article"
                   >
-                    Edit History
-                  </Link>
+                    Institution
+                  </a>
+                </li>
+                <li className="active">
+                  <a
+                    className="bottom-align-text"
+                    aria-label="Artwork article tab, see the current published state of the article"
+                  >
+                    VPIA
+                  </a>
                 </li>
               </ul>
               <div class="tab-bar-card">
