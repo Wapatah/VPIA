@@ -214,43 +214,38 @@ class ViewArticle extends React.Component {
               </div>
             </div>
 
-            <div className="col-md-6 tab-container">
-              <ul className="tabs">
-                <li>
-                  <Link
-                    to={"/article/history/" + this.state.article[0].id}
-                    className="none-deco"
-                    aria-label="Histyory tab, go to see the history of this article"
-                  >
-                    Edit History
-                  </Link>
-                </li>
-                <li className="edit-tab">
-                  <Link
-                    to={"/article/edit/" + this.state.article[0].id}
-                    className="none-deco"
-                    aria-label="Edit tab, go to edit the article"
-                  >
-                    Edit
-                  </Link>
-                </li>
-                <li className="institution-tab">
-                  <a
-                    className="bottom-align-text"
-                    aria-label="Artwork article tab, see the current published state of the article"
-                  >
-                    Institution
-                  </a>
-                </li>
-                <li className="active">
-                  <a
-                    className="bottom-align-text"
-                    aria-label="Artwork article tab, see the current published state of the article"
-                  >
-                    VPIA
-                  </a>
-                </li>
-              </ul>
+            <div className="col-md-6 tabBar-content">
+              <div className="tabBar">
+                <Link
+                  to={"/article/history/" + this.state.article[0].id}
+                  className="none-deco tabBar-tab is-active"
+                  aria-label="Histyory tab, go to see the history of this article"
+                >
+                  Edit History
+                </Link>
+
+                <Link
+                  to={"/article/edit/" + this.state.article[0].id}
+                  className="none-deco tabBar-tab edit-tab"
+                  aria-label="Edit tab, go to edit the article"
+                >
+                  Edit
+                </Link>
+
+                <a
+                  className="bottom-align-text tabBar-tab"
+                  aria-label="Artwork article tab, see the current published state of the article"
+                >
+                  Institution
+                </a>
+
+                <a
+                  className="bottom-align-text tabBar-tab"
+                  aria-label="Artwork article tab, see the current published state of the article"
+                >
+                  VPIA
+                </a>
+              </div>
               <div class="tab-bar-card">
                 <div className="article-heading">
                   <h1 className="single-article-title">
