@@ -231,16 +231,11 @@ class ViewArticle extends React.Component {
                 </nav>
                 <div className="col tabBar-align">
                   <Link
-                    className="bottom-align-text tabBar-tab vpia-tab is-active"
-                    aria-label="Artwork article tab, see the current published state of the article"
+                    to={"/article/history/" + this.state.article[0].id}
+                    className="none-deco tabBar-tab history-tab"
+                    aria-label="Histyory tab, go to see the history of this article"
                   >
-                    VPIA
-                  </Link>
-                  <Link
-                    className="bottom-align-text tabBar-tab institution-tab"
-                    aria-label="Artwork article tab, see the current published state of the article"
-                  >
-                    Institution
+                    Edit History
                   </Link>
                   <Link
                     to={"/article/edit/" + this.state.article[0].id}
@@ -250,11 +245,16 @@ class ViewArticle extends React.Component {
                     Edit
                   </Link>
                   <Link
-                    to={"/article/history/" + this.state.article[0].id}
-                    className="none-deco tabBar-tab history-tab"
-                    aria-label="Histyory tab, go to see the history of this article"
+                    className="bottom-align-text tabBar-tab institution-tab"
+                    aria-label="Artwork article tab, see the current published state of the article"
                   >
-                    Edit History
+                    Institution
+                  </Link>
+                  <Link
+                    className="bottom-align-text tabBar-tab vpia-tab is-active"
+                    aria-label="Artwork article tab, see the current published state of the article"
+                  >
+                    VPIA
                   </Link>
                 </div>
               </div>
