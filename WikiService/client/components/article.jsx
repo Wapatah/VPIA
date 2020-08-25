@@ -122,18 +122,17 @@ class ViewArticle extends React.Component {
                     __html: this.state.article[0].photo
                   }}
                 ></div>
+                <div className="list-group-item">
+                  Image License
+                  <p
+                    id="Baskerville"
+                    dangerouslySetInnerHTML={{
+                      __html: this.state.article[0].photo_license
+                    }}
+                  ></p>
+                </div>
 
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item">
-                    License
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].photo_license
-                      }}
-                    ></p>
-                  </li>
-
                   <li className="list-group-item">
                     Last Updated By
                     <p id="Baskerville">{user_name}</p>
@@ -222,10 +221,15 @@ class ViewArticle extends React.Component {
                       <a href="#">Search</a>
                     </li>
                     <li className="breadcrumb-item">
-                      <a href="#">Library</a>
+                      <a
+                        href="#"
+                        dangerouslySetInnerHTML={{
+                          __html: this.state.article[0].artwork_type
+                        }}
+                      ></a>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
-                      Data
+                      {this.state.article[0].title}
                     </li>
                   </ol>
                 </nav>
@@ -235,7 +239,7 @@ class ViewArticle extends React.Component {
                     className="none-deco tabBar-tab history-tab"
                     aria-label="Histyory tab, go to see the history of this article"
                   >
-                    Edit History
+                    View History
                   </Link>
                   <Link
                     to={"/article/edit/" + this.state.article[0].id}

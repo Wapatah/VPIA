@@ -279,6 +279,10 @@ a.vpia-tab {
 .breadcrumb-item + .breadcrumb-item::before {
   content: "▸";
 }
+.article-info-box {
+  padding-left: 4%;
+  padding-right: 4%;
+}
 
 /* Clear Fix took for HTML 5 Boilerlate*/
 
