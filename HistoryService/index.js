@@ -6,6 +6,7 @@ let apiRoutes = express.Router();
 let config = require("./config/config"); // JWT key - DO NOT PUBLICIZE THIS IF USING IN PRODUCTION.
 let db = require("./config/db");
 let cors = require("cors");
+let jwt = require("jsonwebtoken");
 
 app.use(compression());
 app.use(cors());

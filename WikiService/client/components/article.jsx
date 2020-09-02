@@ -6,6 +6,7 @@ import React from "react";
 import { Link, hashHistory } from "react-router";
 import Loader from "./helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+import Iframe from 'react-iframe'
 
 class ViewArticle extends React.Component {
   constructor(props) {
@@ -113,6 +114,7 @@ class ViewArticle extends React.Component {
       return (
         <div>
           <StatusAlert />
+          <Iframe position="relative" name="iframe_a" height="300px" width="100%" title="Iframe Example"></Iframe>
           <div id="article-nav" className="container-fluid">
             <div className="col-md-5 col-centered">
               <div id="article-nav-inner" className="row align-items-end">
@@ -146,13 +148,14 @@ class ViewArticle extends React.Component {
                   </Link>
                 </div>
                 <div className="col text-right bottom-align-text">
-                  <Link
-                    to={"/article/history/" + this.state.article[0].id}
+                  <a
+                    href={"http://localhost:31000/#/article/history/" + this.state.article[0].id}
                     className="none-deco"
                     aria-label="Histyory tab, go to see the history of this article"
+                    target="iframe_a"
                   >
                     <i className="fa fa-history"></i>View History
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

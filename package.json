@@ -6,9 +6,10 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./MainContainer/config/webpack.config.prod.js --progress --profile --colors",
     "dev": "node ./MainContainer/index.js",
-    "prep": "cd MediaService && npm i",
-    "microservices": "cd MediaService && npm run start",
-    "start": "npm run build && cross-env NODE_ENV=production node ./MainContainer/index.js && SET AUTOUPDATE=1 & npm run microservices",
+    "prep": "cd MediaService && npm i && cd ../HistoryService && npm i",
+    "mediaservice": "cd MediaService && npm run start",
+    "historyservice": "cd HistoryService && npm run start",
+    "start": "npm run build && cross-env NODE_ENV=production node ./MainContainer/index.js && SET AUTOUPDATE=1 & npm run mediaservice & npm run historyservice",
     "prettier": "prettier --write \"**/*.{js,jsx}\" --ignore-path .gitignore",
     "lint": "eslint --config ./MainContainer/config/.eslintrc.js \"**/*.js\" --fix --ignore-path .gitignore"
   },
@@ -30,6 +31,7 @@
     "mysql": "^2.17.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-iframe": "^1.8.0",
     "react-router": "3.2.0",
     "react-router-dom": "^5.1.2",
     "react-status-alert": "^1.0.0",
