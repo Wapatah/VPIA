@@ -265,23 +265,12 @@ class ViewArticle extends React.Component {
               <div class="tab-bar-card">
                 <div className="article-heading">
                   <h1 className="single-article-title">
+                    #{this.state.article[0].id}&nbsp;
                     {this.state.article[0].title}
                   </h1>
-                  <div className="single-article-meta">
-                    Created on{" "}
-                    {new Date(
-                      this.state.article[0].created_at.replace(" ", "T")
-                    ).toUTCString()}
-                  </div>
-                  <div className="single-article-meta">
-                    Last updated on{" "}
-                    {new Date(
-                      this.state.article[0].updated_at.replace(" ", "T")
-                    ).toUTCString()}
-                  </div>
-                  <div id="article-body" className="col-md-1">
+                  <div className="article-body">
                     <br />
-                    <h3>Body</h3>
+                    <h3 className="single-article-title">Overview</h3>
                     <hr />
                     <div
                       id="article-photo"
