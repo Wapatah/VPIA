@@ -5,9 +5,9 @@
   "main": "./index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js --progress --profile --colors",
-    "start": "npm run build && cross-env NODE_ENV=production node ./index.js && SET AUTOUPDATE=1"
+    "start": "cross-env NODE_ENV=production node ./index.js && SET AUTOUPDATE=1"
   },
-  "author": "",
+  "author": "M. L. Filipp <contact@mordax.io> (https://mordax.io)",
   "license": "GPL-3.0",
   "dependencies": {
     "@babel/core": "^7.10.5",

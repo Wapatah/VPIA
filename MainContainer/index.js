@@ -151,5 +151,5 @@ app.use("/api", apiRoutesAdmin);
 app.use(express.static(__dirname + "/client"));
 
 app.listen(process.env.PORT, function() {
-  console.log("Running on http://localhost:" + process.env.PORT);
+  console.log("VPIA running on http://localhost:" + process.env.PORT);
 });

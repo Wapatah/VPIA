@@ -64,5 +64,5 @@ app.use("/api", apiRoutes);
 app.use(express.static(__dirname + "/client"));
 
 app.listen(PORT, () => {
-  console.log("Listening at http://localhost:" + PORT);
+  console.log("History microservice listening at http://localhost:" + PORT);
 });

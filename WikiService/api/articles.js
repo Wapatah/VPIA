@@ -34,7 +34,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
-          message: "POST: /articles/ " + error.message
+          message: "POST: /articles/ " + err.message
         }
       });
     }

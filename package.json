@@ -6,9 +6,10 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./MainContainer/config/webpack.config.prod.js --progress --profile --colors",
     "dev": "node ./MainContainer/index.js",
-    "prep": "cd MediaService && npm i",
-    "microservices": "cd MediaService && npm run start",
-    "start": "npm run build && cross-env NODE_ENV=production node ./MainContainer/index.js && SET AUTOUPDATE=1 & npm run microservices",
+    "prep": "cd MediaService && npm i & ../HistoryService && npm i",
+    "mediaservice": "cd MediaService && npm run start",
+    "historyservice": "cd HistoryService && npm run start",
+    "start": "cross-env NODE_ENV=production node ./MainContainer/index.js && SET AUTOUPDATE=1 & npm run mediaservice & npm run historyservice",
     "prettier": "prettier --write \"**/*.{js,jsx}\" --ignore-path .gitignore",
     "lint": "eslint --config ./MainContainer/config/.eslintrc.js \"**/*.js\" --fix --ignore-path .gitignore"
   },

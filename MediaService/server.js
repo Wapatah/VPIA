@@ -22,5 +22,5 @@ app.post("/upload", upload.any(), (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("Listening at http://localhost:" + PORT);
+  console.log("Media microservice listening at http://localhost:" + PORT);
 });
