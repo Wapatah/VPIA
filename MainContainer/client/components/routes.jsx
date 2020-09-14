@@ -16,6 +16,7 @@ import Article from "../../../WikiService/client/components/article.jsx";
 import NewArticle from "../../../WikiService/client/components/new.jsx";
 import EditArticle from "../../../WikiService/client/components/edit.jsx";
 import ArticleHistory from "../../../HistoryService/client/components/history.jsx";
+import Institution from "../../../HistoryService/client/components/institution.jsx";
 import Search from "../../../SearchService/client/components/search.jsx";
 import Admin from "../../../UserService/client/components/admin.jsx";
 import Setup from "../../../UserService/client/components/setup.jsx";
@@ -40,6 +41,7 @@ export default function() {
         <Route path="article/new" component={NewArticle} />
         <Route path="article/edit/:articleId" component={EditArticle} />
         <Route path="article/history/:articleId" component={ArticleHistory} />
+        <Route path="article/institution/:articleId" component={Institution} />
         <Route path="article/:articleId" component={Article} />
         <Route path="admin" component={Admin} />
         <Route path="user/edit/:user_id" component={EditUser} />
