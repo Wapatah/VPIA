@@ -40,3 +40,6 @@ MainContainer/client/public
 HistoryService/client/public
 
 .DS_Store
+
+# .env (Ignore environment variables)
+.env

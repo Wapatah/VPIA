@@ -12,7 +12,7 @@ let fs = require("fs"); // eslint-disable-line
 let apiRoutes = express.Router();
 let apiRoutesAdmin = express.Router();
 let jwt = require("jsonwebtoken");
-let config = require("./config/config"); // JWT key - DO NOT PUBLICIZE THIS IF USING IN PRODUCTION.
+require("dotenv").config();
 
 // Using gzip compression to speed up app performance
 app.use(compression());
@@ -25,7 +25,7 @@ if (process.env.NODE_ENV !== "production") {
   require("./config/webpack-middleware")(app);
 }
 
-app.set("superSecret", config.auth_secret); // Secret variable
+app.set("superSecret", process.env.AUTH_SECRET); // Secret variable
 
 // Using the body parser middleware to parse request body
 app.use(bodyParser.urlencoded({ extended: true }));

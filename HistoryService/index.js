@@ -3,9 +3,10 @@ const compression = require("compression"); // Adding middleman compression sche
 const bodyParser = require("body-parser"); // body parser to parse the request body
 const app = express();
 let apiRoutes = express.Router();
-let config = require("./config/config"); // JWT key - DO NOT PUBLICIZE THIS IF USING IN PRODUCTION.
 let db = require("./config/db");
 let cors = require("cors");
+let jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 app.use(compression());
 app.use(cors());
@@ -13,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.set("superSecret", config.auth_secret); // Secret variable
+app.set("superSecret", process.env.AUTH_SECRET); // Secret variable
 
 // Limit the ability of non-users to access API routes.
 module.exports = function isUserAuthenticated(req, res, next) {
