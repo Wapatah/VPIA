@@ -103,12 +103,10 @@ class ViewArticle extends React.Component {
 */
   render() {
     let user_name = "";
-    let user_about = "";
     if (this.state.loading) return <Loader />;
     else if (this.state.article[0] && this.state.article[0].user_id) {
       if (this.state.user[0]) {
         user_name = this.state.user[0].name;
-        user_about = this.state.user[0].about;
       }
       return (
         <div className="container-fluid">
@@ -238,7 +236,7 @@ class ViewArticle extends React.Component {
                     className="none-deco tabBar-tab history-tab"
                     aria-label="Histyory tab, go to see the history of this article"
                   >
-                    View History
+                    Edit History
                   </Link>
                   <Link
                     to={"/article/edit/" + this.state.article[0].id}

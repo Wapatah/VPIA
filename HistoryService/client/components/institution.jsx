@@ -237,7 +237,7 @@ class Institution extends React.Component {
                     className="none-deco tabBar-tab history-tab"
                     aria-label="Histyory tab, go to see the history of this article"
                   >
-                    View History
+                    Edit History
                   </Link>
                   <Link
                     to={"/article/edit/" + this.state.article[0].id}
@@ -268,15 +268,7 @@ class Institution extends React.Component {
                     {this.state.article[0].title}-{" "}
                     {this.state.article[0].institution} Record
                   </h1>
-                  <div className="article-body">
-                    <div
-                      id="article-photo"
-                      className="single-article-body"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.archive_id
-                      }}
-                    ></div>
-                  </div>
+                  <div className="article-body"></div>
                 </div>
               </div>
             </div>
