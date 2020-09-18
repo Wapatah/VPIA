@@ -147,8 +147,15 @@ select {
   z-index: 999;
   display: block;
 }
+.btn-outline.dropdown {
+  border: 2px solid #d0cfcd;
+  margin-bottom: 5%;
+}
 #result.card {
   margin-bottom: 1rem;
+}
+.my-card-img-top.results img {
+  height: 10vw;
 }
 
 @media (min-width: 768px) {

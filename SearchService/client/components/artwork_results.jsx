@@ -72,7 +72,7 @@ class ArtworkResults extends React.Component {
           <div id="result" className="card card-block">
             <Link
               to={"/article/" + article.id}
-              className="my-card-img-top"
+              className="my-card-img-top results"
               dangerouslySetInnerHTML={{ __html: article.photo }}
             ></Link>
             <div className="card-body">
@@ -90,7 +90,6 @@ class ArtworkResults extends React.Component {
                     }}
                   ></p>
                   <p id="Baskerville">
-                    <i className="fa fa-clock-o" />
                     {new Date(
                       article.updated_at.replace(" ", "T")
                     ).toUTCString()}

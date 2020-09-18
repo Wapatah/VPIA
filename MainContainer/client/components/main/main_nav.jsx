@@ -59,7 +59,7 @@ class MainNav extends React.Component {
                   </div>
                   <div className="col main-nav-item">
                     <Link
-                      to="artwork"
+                      to="results"
                       activeClassName="active-yellow"
                       aria-label="Go to artwork page"
                     >
