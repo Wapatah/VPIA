@@ -145,10 +145,6 @@ h4 {
   border-right: 1px solid #efefef;
 }
 
-.article-info-box {
-  right: 0;
-}
-
 textarea {
   resize: none;
 }
@@ -165,12 +161,10 @@ textarea {
 .list-group-item {
   border: none;
 }
-
 .list-group hr {
   margin-top: 0em;
   margin-bottom: 0em;
 }
-
 .article-sidebar {
   padding: 2em 1em;
   border-left: 1px solid #efefef;
@@ -220,12 +214,6 @@ textarea {
   font-weight: 700;
 }
 
-@media screen and (min-width: 768px) {
-  .custom-collapse .collapse {
-    display: block;
-  }
-}
-
 .bordered-scroll-box {
   overflow-y: scroll;
   border: 1px solid #ccc;
@@ -265,12 +253,6 @@ textarea {
   position: fixed;
   z-index: 99;
   top: 0;
-}
-
-.archive-list {
-  max-height: 600px;
-  overflow-y: scroll;
-  border: 1px solid #efefef;
 }
 
 /* hide no file select alert */
