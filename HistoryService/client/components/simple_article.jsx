@@ -22,7 +22,7 @@ class SimpleArticle extends React.Component {
     let myInit = { method: "GET", headers: myHeaders };
     let that = this;
 
-    fetch("/api/archives/" + nextProps.archiveId, myInit)
+    fetch("http://localhost:31000/api/archives/" + nextProps.archiveId, myInit)
       .then(function(response) {
         return response.json();
       })
@@ -42,7 +42,7 @@ class SimpleArticle extends React.Component {
         let myInit = { method: "GET", headers: myHeaders };
         let that = this;
 
-        fetch("/api/users/" + that.state.archive[0].user_id, myInit)
+        fetch("/api/users/" + that.state.article[0].user_id, myInit)
           .then(function(response) {
             return response.json();
           })

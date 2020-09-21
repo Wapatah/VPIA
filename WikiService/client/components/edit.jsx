@@ -135,7 +135,7 @@ class EditArticle extends React.Component {
 
       let that = this;
 
-      fetch("/api/archives/", myInit)
+      fetch("http://localhost:31000/api/archives/", myInit)
         .then(function(response) {
           return response.json();
         })
