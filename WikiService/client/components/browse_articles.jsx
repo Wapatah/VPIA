@@ -17,14 +17,14 @@ class BrowseArticles extends React.Component {
     On load, GET ALL articles
   */
   componentDidMount() {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
 
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
-    var url = "/api/articles";
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
+    let url = "/api/articles";
 
     fetch(url, myInit)
       .then(function(response) {
@@ -45,17 +45,16 @@ class BrowseArticles extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({ loading: true });
 
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
-    var url = "/api/articles";
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
+    let url = "/api/articles";
 
-    if (nextProps.articleId == null && this.props.articleId == null)
-      var url = "/api/articles";
-    else var url = "/api/articles/" + nextProps.articleId;
+    if (!nextProps.articleId == null && !this.props.articleId == null)
+      url = "/api/articles/" + nextProps.articleId;
 
     fetch(url, myInit)
       .then(function(response) {

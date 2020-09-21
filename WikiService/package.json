@@ -1,0 +1,16 @@
+{
+  "name": "wikiservice",
+  "version": "1.0.0",
+  "description": "Wiki microservice for the VPIA",
+  "main": " ",
+  "scripts": {
+    "test": " "
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-router": "^3.2.0",
+    "react-status-alert": "^1.0.1"
+  }
+}

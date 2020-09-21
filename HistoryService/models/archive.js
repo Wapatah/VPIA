@@ -4,9 +4,9 @@
 */
 
 // Imports config/db.js for the database object.
-var schema = require("../../MainContainer/config/db");
+let schema = require("../config/db");
 
-var Archive = schema.define("archive", {
+let Archive = schema.define("archive", {
   title: { type: schema.String, limit: 255 },
   photo: { type: schema.String },
   culture_group: { type: schema.String },
@@ -16,7 +16,9 @@ var Archive = schema.define("archive", {
   tags: { type: schema.String },
   body: { type: schema.Text },
   updated_at: { type: schema.Date, default: Date.now },
-  what_changed: { type: schema.String, limit: 255 }
+  what_changed: { type: schema.String, limit: 255 },
+  article_id: { type: schema.String, limit: 255 },
+  user_id: { type: schema.String, limit: 255 }
 });
 
 schema.autoupdate();
