@@ -9,7 +9,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.handleUpdate = this.handleUpdate.bind(this);
-    this.state = { articleId: "1", loading: true };
+    this.state = { articleId: "", loading: true };
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------

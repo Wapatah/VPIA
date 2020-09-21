@@ -4,9 +4,9 @@ Autoupdates instead of running migrations.
 */
 
 // Imports config/db.js for the database object.
-var schema = require("../../MainContainer/config/db");
+let schema = require("../../MainContainer/config/db");
 
-var User = schema.define("user", {
+let User = schema.define("user", {
   admin: { type: schema.Boolean },
   name: { type: schema.String, limit: 255 },
   email: { type: schema.String, limit: 255 },

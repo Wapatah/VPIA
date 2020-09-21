@@ -25,12 +25,12 @@ class Admin extends React.Component {
   On initial load, pull in all users
 */
   componentDidMount() {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
 
     fetch("/api/users", myInit)
       .then(function(response) {
@@ -49,19 +49,19 @@ class Admin extends React.Component {
   addUser() - Take admin input for user and create a new user.
 */
   addUser() {
-    var user = {
+    let user = {
       name: encodeURIComponent(this.refs.user_name.value),
       about: encodeURIComponent(this.refs.user_about.value),
       email: encodeURIComponent(this.refs.user_email.value),
       password: encodeURIComponent(this.refs.user_password.value)
     };
 
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
 
-    var myInit = {
+    let myInit = {
       method: "POST",
       headers: myHeaders,
       body:
@@ -75,7 +75,7 @@ class Admin extends React.Component {
         user.password
     };
 
-    var that = this;
+    let that = this;
 
     fetch("/api/users/", myInit)
       .then(function(response) {
@@ -86,7 +86,7 @@ class Admin extends React.Component {
           StatusAlertService.showError(response.error.message);
         } else {
           $("#addUser").modal("hide");
-          var users = that.state.users;
+          let users = that.state.users;
           users.push(response.data);
           that.setState({ users: users });
           StatusAlertService.showSuccess("User has been added");
@@ -100,18 +100,18 @@ class Admin extends React.Component {
   deleteUser(id, e) {
     e.preventDefault();
 
-    var del = confirm(
+    let del = confirm(
       "Deleting the user will move all of his/her articles to the Admin. Are you sure?"
     );
 
     if (del == true) {
-      var myHeaders = new Headers({
+      let myHeaders = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
         "x-access-token": window.localStorage.getItem("userToken")
       });
 
-      var myInit = { method: "DELETE", headers: myHeaders, body: "id=" + id };
-      var that = this;
+      let myInit = { method: "DELETE", headers: myHeaders, body: "id=" + id };
+      let that = this;
 
       fetch("/api/users/", myInit)
         .then(function(response) {
@@ -122,7 +122,7 @@ class Admin extends React.Component {
             StatusAlertService.showError(response.error.message);
           } else {
             users = that.state.users;
-            var users = $.grep(users, function(e) {
+            let users = $.grep(users, function(e) {
               return e.id != id;
             });
             that.setState({ users: users });
