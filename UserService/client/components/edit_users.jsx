@@ -22,12 +22,12 @@ class EditUser extends React.Component {
 
   // On load, GET ONE user by id.
   componentDidMount() {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
 
     fetch("/api/users/" + this.props.params.user_id, myInit)
       .then(function(response) {
@@ -49,7 +49,7 @@ class EditUser extends React.Component {
 
   // Edit User information
   editUser(e) {
-    var user = {
+    let user = {
       name: encodeURIComponent(this.refs.user_name.value),
       about: encodeURIComponent(this.refs.user_about.value),
       email: encodeURIComponent(this.refs.user_email.value),
@@ -57,12 +57,12 @@ class EditUser extends React.Component {
       id: encodeURIComponent(this.props.params.user_id)
     };
 
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
 
-    var myInit = {
+    let myInit = {
       method: "PUT",
       headers: myHeaders,
       body:

@@ -20,18 +20,18 @@ class UserSignup extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Takes user input and sends a post request to the user api to create new user
   handleSignUp() {
-    var user = {
+    let user = {
       name: encodeURIComponent(this.refs.user_name.value),
       about: encodeURIComponent(this.refs.user_about.value),
       email: encodeURIComponent(this.refs.user_email.value),
       password: encodeURIComponent(this.refs.user_password.value)
     };
 
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
 
-    var myInit = {
+    let myInit = {
       method: "POST",
       headers: myHeaders,
       body:
@@ -78,9 +78,9 @@ class UserSignup extends React.Component {
     const isEnabled = email.length > 0 && password.length > 0;
 
     return (
-      <div id="fullpage" className="container-fluid">
+      <div className="fullpage container-fluid">
         <StatusAlert />
-        <div id="full-page" className="row">
+        <div className="full-page row">
           <div className="col-lg-4 left-panel">
             <img
               src="../assets/images/logo-white.png"
