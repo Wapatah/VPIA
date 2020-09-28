@@ -16,12 +16,12 @@ class Search extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Onload, get Search result from the Search API.
   componentWillMount() {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
 
     fetch(
       "/api/search?query=" +
@@ -44,12 +44,12 @@ class Search extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Would get props from the user search input
   componentWillReceiveProps(nextProps) {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
 
     fetch("/api/search?query=" + nextProps.location.query.query, myInit)
       .then(function(response) {
@@ -80,7 +80,7 @@ class Search extends React.Component {
         <div className="content-container">
           <StatusAlert />
           <div className="row">
-            <div id="left-side" className="col-md-1">
+            <div className="left-side col-md-1">
               <p className="text-right edit-page-title">Search Results</p>
               <p className="help-block text-right">
                 We found {this.state.articles.length} articles for your query

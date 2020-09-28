@@ -51,7 +51,7 @@ class App extends React.Component {
   Displays headers, footers, checks if user is admin and gives link to Admin component.
 */
   render() {
-    var that = this;
+    let that = this;
     return (
       <div>
         <StatusAlert />
@@ -86,7 +86,7 @@ class App extends React.Component {
               <span className="navbar-toggler-icon"></span>
             </button>
           ) : (
-            <div>
+            <div className="container-fluid">
               <button
                 className="navbar-toggler"
                 type="button"
@@ -106,18 +106,18 @@ class App extends React.Component {
                   <li className="nav-item px-2">
                     <button
                       type="button"
-                      className="btn btn-outline-light btn-round"
+                      className="btn btn-outline-secondary btn-round join-btn"
                       aria-label="Join now"
                     >
                       <Link to="user_signup" className="none-deco">
-                        Join Now!
+                        Join
                       </Link>
                     </button>
                   </li>
                   <li className="nav-item px-2">
                     <button
                       type="button"
-                      className="btn btn-secondary btn-round"
+                      className="btn btn-primary btn-round sign-in-btn"
                       aria-label="Sign in"
                     >
                       <Link to="login" className="btn-text">
@@ -149,13 +149,20 @@ class App extends React.Component {
                 ) : (
                   ""
                 )}
-                <li className="nav-item px-2">
-                  <button type="button" className="btn btn-secondary btn-round">
-                    <Link to="article/new" className="btn-text">
-                      New Article
-                    </Link>
-                  </button>
-                </li>
+                {window.localStorage.getItem("admin") === "1" ? (
+                  <li className="nav-item px-2">
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-round"
+                    >
+                      <Link to="article/new" className="btn-text">
+                        New Article
+                      </Link>
+                    </button>
+                  </li>
+                ) : (
+                  ""
+                )}
                 <li className="nav-item px-2">
                   <button type="button" className="btn btn-secondary btn-round">
                     <a href="" className="btn-text" onClick={this.handleLogout}>
@@ -247,10 +254,10 @@ class App extends React.Component {
                       </li>
                     </ul>
                   </div>
-                  <div className="input-group mb-3">
+                  <div className="input-group mb-3 email-form">
                     <input
                       type="text"
-                      className="form-control email-form"
+                      className="form-control"
                       placeholder="Stay in touch"
                       ref="search"
                       aria-label="Write an Email here"

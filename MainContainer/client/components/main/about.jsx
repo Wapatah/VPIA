@@ -6,82 +6,153 @@ import React from "react";
 class About extends React.Component {
   render() {
     return (
-      <div id="About-page" className="mw-100">
-        <div className="row">
-          <div className="container-fluid">
-            <div id="About-intro-section">
-              <div>
-                <div className="row">
-                  <div className="col align-items-start">
-                    <img
-                      id="About-img-writing"
-                      className="img-fluid right-align"
-                      src="../../assets/images/logo-writing.png"
-                      alt="White with writing logo"
-                    />
-                  </div>
-                  <div className="col-sm-1"></div>
-                  <div className="col">
-                    <div id="About-header" className="float-left">
-                      About the Virtual Platform for Indigenous Art
+      <div className="mw-100">
+        <div className="container-fluid">
+          <div
+            className="carousel about slide"
+            data-ride="carousel"
+            id="carouselExampleControls"
+          >
+            <div className="container-fluid">
+              <div className="gradient-right"></div>
+              <div className="gradient-left"></div>
+              <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <div className="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img
+                        src="../../assets/images/group.png"
+                        className="about-img rounded-img greyscale"
+                        alt="Image of Eric"
+                      />
                     </div>
-                    <div id="About-initial-content" className="float-left">
-                      <p>
-                        The Virtual Platform for Indigenous Art (VPIA) was
-                        created to help Indigenous and non-Indigenous
-                        communities build relationships and share knowledge
-                        surrounding Indigenous artworks.
-                      </p>
-                      <p>
-                        Led by Dr. Gerald McMaster as part of the larger The
-                        Entangled Gaze project at OCAD University’s Wapatah
-                        Centre for Indigenous Visual Knowledge, the VPIA is
-                        designed to facilitate Indigenous access,
-                        interpretation, and learning from artwork collections
-                        held by museums and galleries around the world. Through
-                        this work, museums and art institutions gain valuable
-                        insight and opportunity for meaningful dialogues about
-                        the meaning, importance, and protocols of these artworks
-                        to Indigenous communities.
-                      </p>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img
+                        src="../../assets/images/group.png"
+                        className="about-img rounded-img greyscale"
+                        alt="Image of Eric"
+                      />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img
+                        src="../../assets/images/group.png"
+                        className="about-img rounded-img greyscale"
+                        alt="Image of Eric"
+                      />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img
+                        src="../../assets/images/group.png"
+                        className="about-img rounded-img greyscale"
+                        alt="Image of Eric"
+                      />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img
+                        src="../../assets/images/group.png"
+                        className="about-img rounded-img greyscale"
+                        alt="Image of Eric"
+                      />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img
+                        src="../../assets/images/group.png"
+                        className="about-img rounded-img greyscale"
+                        alt="Image of Eric"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="carousel-item">
+                  <div className="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img
+                        src="../../assets/images/group.png"
+                        className="about-img rounded-img greyscale"
+                        alt="Image of Eric"
+                      />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img
+                        src="../../assets/images/group.png"
+                        className="about-img rounded-img greyscale"
+                        alt="Image of Eric"
+                      />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img
+                        src="../../assets/images/group.png"
+                        className="about-img rounded-img greyscale"
+                        alt="Image of Eric"
+                      />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img
+                        src="../../assets/images/group.png"
+                        className="about-img rounded-img greyscale"
+                        alt="Image of Eric"
+                      />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img
+                        src="../../assets/images/group.png"
+                        className="about-img rounded-img greyscale"
+                        alt="Image of Eric"
+                      />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img
+                        src="../../assets/images/group.png"
+                        className="about-img rounded-img greyscale"
+                        alt="Image of Eric"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="footer">
-                <div
-                  id="About-image-text-box"
-                  className="container text-center"
-                >
-                  <figure className="figure">
-                    <img
-                      src="../../assets/images/group.png"
-                      className="figure-img img-fluid rounded"
-                      alt="Image of Eric"
-                    />
-                    <figcaption
-                      id="About-middle-text"
-                      className="figure-caption"
-                    >
-                      A Project in Motion
-                    </figcaption>
-                  </figure>
+            </div>
+          </div>
+          <div className="About-intro-section">
+            <div className="row">
+              <div className="col-lg-4 offset-lg-4">
+                <h1 className="About-header">
+                  About the Virtual Platform for Indigenous Art
+                </h1>
+                <div className="About-initial-content">
+                  <p>
+                    The Virtual Platform for Indigenous Art (VPIA) was created
+                    to help Indigenous and non-Indigenous communities build
+                    relationships and share knowledge surrounding Indigenous
+                    artworks.
+                  </p>
+                  <p>
+                    Led by Dr. Gerald McMaster as part of the larger The
+                    Entangled Gaze project at OCAD University’s Wapatah Centre
+                    for Indigenous Visual Knowledge, the VPIA is designed to
+                    facilitate Indigenous access, interpretation, and learning
+                    from artwork collections held by museums and galleries
+                    around the world. Through this work, museums and art
+                    institutions gain valuable insight and opportunity for
+                    meaningful dialogues about the meaning, importance, and
+                    protocols of these artworks to Indigenous communities.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <div className="row">
           <img
-            className="img-fluid container-fluid"
-            src="../../assets/images/team.png"
+            className="img-fluid container-fluid greyscale"
+            src="../../assets/images/team.jpg"
             alt="Image of VPIA team"
           />
         </div>
         <div className="row">
           <div className="container-fluid">
-            <div id="About-info-section">
-              <div id="About-bottom-content" class="row">
+            <div className="About-info-section">
+              <div className="row About-bottom-content">
                 <div class="col-md-4">
                   <p className="about-content">
                     The pilot of the VPIA specifically documents collections of

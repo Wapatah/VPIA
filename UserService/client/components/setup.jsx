@@ -14,18 +14,18 @@ class Setup extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Creates admin object and sends a user POST request
   handleSignUp() {
-    var user = {
+    let user = {
       name: encodeURIComponent(this.refs.user_name.value),
       about: encodeURIComponent(this.refs.user_about.value),
       email: encodeURIComponent(this.refs.user_email.value),
       password: encodeURIComponent(this.refs.user_password.value)
     };
 
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
 
-    var myInit = {
+    let myInit = {
       method: "POST",
       headers: myHeaders,
       body:
@@ -57,9 +57,9 @@ class Setup extends React.Component {
   // Render the admin sign up page
   render() {
     return (
-      <div id="fullpage" className="container-fluid">
+      <div className="fullpage container-fluid">
         <StatusAlert />
-        <div id="full-page" className="row">
+        <div className="full-page row">
           <div className="col-lg-4 left-panel">
             <img
               src="../assets/images/logo-white.png"
@@ -119,7 +119,7 @@ class Setup extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-lg-8 BGimage image-fade hidden-lg-down">
+          <div className="col-lg-8 BGimage image-fade">
             <img
               src="../assets/images/logo.png"
               width="auto"

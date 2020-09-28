@@ -33,14 +33,13 @@ class Results extends React.Component {
       return (
         <div className="content-container">
           <div className="row">
-            <div id="left-side" className="col-md-1">
-              <p className="text-right edit-page-title">Search Results</p>
+            <div className="left-side col-lg-3">
               <p className="text-right">Filter by</p>
               <div className="col-lg-6 float-right">
                 <Filters articleChange={this.handleUpdate} />
               </div>
             </div>
-            <div className="col-lg-8">
+            <div className="col-md-6">
               <ArtworkResults articleId={this.state.articleId} />
             </div>
           </div>

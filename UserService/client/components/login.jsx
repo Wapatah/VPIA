@@ -9,6 +9,12 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      hidden: true,
+      password: ""
+    };
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.toggleShow = this.toggleShow.bind(this);
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -23,14 +29,14 @@ class Login extends React.Component {
   // Authenticate the login input
   handleSubmit(e) {
     e.preventDefault();
-    var email = document.getElementById("inputEmail").value;
-    var password = document.getElementById("inputPassword").value;
+    let email = document.getElementById("inputEmail").value;
+    let password = document.getElementById("inputPassword").value;
 
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
 
-    var myInit = {
+    let myInit = {
       method: "POST",
       headers: myHeaders,
       body:
@@ -40,7 +46,7 @@ class Login extends React.Component {
         encodeURIComponent(password)
     };
 
-    var that = this;
+    let that = this;
 
     fetch("/api/authenticate", myInit)
       .then(function(response) {
@@ -60,25 +66,173 @@ class Login extends React.Component {
       });
   }
 
+  handlePasswordChange(e) {
+    this.setState({ password: e.target.value });
+  }
+
+  toggleShow() {
+    this.setState({ hidden: !this.state.hidden });
+  }
+
+  componentDidMount() {
+    if (this.props.password) {
+      this.setState({ password: this.props.password });
+    }
+  }
+
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Render the log in page.
   render() {
     return (
-      <div id="fullpage" className="container-fluid">
+      <div className="fullpage container-fluid">
         <StatusAlert />
-        <div id="full-page" className="row">
-          <div className="col-lg-4 left-panel">
+        <div className="full-page row">
+          <div className="col-lg-8 BGimage image-fade">
+            <div className="image-tint-dark"></div>
+            <div
+              id="carouselExampleIndicators"
+              className="carousel about slide"
+              data-ride="carousel"
+            >
+              <div className="carousel-indicators">
+                <button
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="0"
+                  className="active btn btn-outline-light mx-2"
+                >
+                  About
+                </button>
+
+                <button
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="1"
+                  className="btn btn-outline-light mx-2"
+                >
+                  Community
+                </button>
+
+                <button
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="2"
+                  className="btn btn-outline-light mx-2"
+                >
+                  Benefits
+                </button>
+              </div>
+              <div className="carousel-inner user-service">
+                <div className="carousel-item active">
+                  <div className="header-container">
+                    <div className="header-item">
+                      <h1 className="signin-carousel text-uppercase">
+                        About
+                        <br />
+                        the VPIA
+                      </h1>
+                    </div>
+                    <div className="header-item">
+                      <img
+                        src="../assets/images/logo-white-notext.png"
+                        width="110px"
+                        height="auto"
+                        alt="VPIA logo"
+                        aria-label="VPIA logo"
+                        className="float-right"
+                      />
+                    </div>
+                  </div>
+                  <p className="signin-carousel">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean varius augue ut neque lacinia, a mattis lorem
+                    commodo. Suspendisse potenti. Proin ultricies diam et urna
+                    tincidunt tincidunt. Sed facilisis consectetur faucibus. In
+                    vitae dolor quis mi fringilla condimentum non ut nulla. Sed
+                    ornare erat diam, sed ultrices magna faucibus condimentum.
+                    Vivamus in ullamcorper quam. Integer vel dapibus nisl.
+                  </p>
+                  <button className="btn btn-outline-light">Learn More</button>
+                </div>
+                <div className="carousel-item">
+                  <div className="header-container">
+                    <div className="header-item">
+                      <h1 className="signin-carousel text-uppercase">
+                        Community
+                        <br />
+                        of the VPIA
+                      </h1>
+                    </div>
+                    <div className="header-item">
+                      <img
+                        src="../assets/images/logo-white-notext.png"
+                        width="110px"
+                        height="auto"
+                        alt="VPIA logo"
+                        aria-label="VPIA logo"
+                        className="float-right"
+                      />
+                    </div>
+                  </div>
+                  <p className="signin-carousel">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean varius augue ut neque lacinia, a mattis lorem
+                    commodo. Suspendisse potenti. Proin ultricies diam et urna
+                    tincidunt tincidunt. Sed facilisis consectetur faucibus. In
+                    vitae dolor quis mi fringilla condimentum non ut nulla. Sed
+                    ornare erat diam, sed ultrices magna faucibus condimentum.
+                    Vivamus in ullamcorper quam. Integer vel dapibus nisl.
+                  </p>
+                  <button className="btn btn-outline-light">Learn More</button>
+                </div>
+                <div className="carousel-item">
+                  <div className="header-container">
+                    <div className="header-item">
+                      <h1 className="signin-carousel text-uppercase">
+                        Benefits
+                        <br />
+                        of the VPIA
+                      </h1>
+                    </div>
+                    <div className="header-item">
+                      <img
+                        src="../assets/images/logo-white-notext.png"
+                        width="110px"
+                        height="auto"
+                        alt="VPIA logo"
+                        aria-label="VPIA logo"
+                        className="float-right"
+                      />
+                    </div>
+                  </div>
+                  <p className="signin-carousel">
+                    <ul>
+                      <li>Lorem ipsum dolor sit amet</li>
+                      <li>Consectetur adipiscing elit</li>
+                      <li>Integer molestie lorem at massa</li>
+                      <li>Facilisis in pretium nisl aliquet</li>
+                      <li>Nulla volutpat aliquam velit</li>
+                    </ul>
+                  </p>
+                  <button className="btn btn-outline-light">Learn More</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 right-panel">
             <img
-              src="../assets/images/logo-white.png"
-              width="auto"
-              height="250px"
+              src="../assets/images/logo.png"
+              width="124px"
+              height="auto"
               alt="VPIA logo"
               aria-label="VPIA logo"
             />
             <div className="container login-box row">
               <div className="col-md-12 col-sm-12">
-                <form>
-                  <div className="col-sm-12 form-group">
+                <div className="col-sm-12">
+                  <h1 className="welcome-message">
+                    Aaniin/Tanisi/Hello Welcome back!
+                  </h1>
+                </div>
+                <form className="col-sm-12">
+                  <div className="form-group login-form">
                     <input
                       className="form-control"
                       id="inputEmail"
@@ -87,46 +241,55 @@ class Login extends React.Component {
                       aria-label="Email"
                     />
                   </div>
-                  <div className="col-sm-12 form-group">
+                  <div className="form-group input-group login-form">
                     <input
                       className="form-control"
                       id="inputPassword"
                       type="password"
                       placeholder="Password"
                       aria-label="Password"
+                      type={this.state.hidden ? "password" : "text"}
+                      value={this.state.password}
+                      onChange={this.handlePasswordChange}
                     />
+                    <div className="input-group-append">
+                      <button
+                        className="btn btn-outline-secondary append-light "
+                        aria-label="show password"
+                        onClick={this.toggleShow}
+                      >
+                        Show
+                      </button>
+                    </div>
                   </div>
-                  <div className="col-sm-12 form-group">
+                  <div className="form-group">
                     <button
                       onClick={this.handleSubmit}
-                      className="btn btn-primary btn-block"
+                      className="btn btn-primary btn-block mt-5"
                     >
                       Sign in
                     </button>
-                  </div>
-                  <div className="col-sm-12 form-group">
                     <button
                       type="button"
-                      className="btn btn-outline-light btn-block"
+                      className="btn btn-outline-secondary btn-block join-btn"
                     >
                       <Link to="/user_signup" className="none-deco">
                         New to VPIA? Join Now!
                       </Link>
                     </button>
                   </div>
+                  <Link
+                    to="landing"
+                    aria-label="Go to home page"
+                    className="none-deco"
+                  >
+                    <p class="font-italic text-sm-left return-text">
+                      Return to homepage
+                    </p>
+                  </Link>
                 </form>
               </div>
             </div>
-          </div>
-          <div className="col-lg-8 BGimage image-fade hidden-lg-down">
-            <img
-              src="../assets/images/logo.png"
-              width="auto"
-              height="400px"
-              alt="VPIA logo"
-              aria-label="VPIA logo"
-              id="logo-bottom-right"
-            />
           </div>
         </div>
       </div>

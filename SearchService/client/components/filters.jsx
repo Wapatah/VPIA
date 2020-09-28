@@ -21,12 +21,12 @@ class Filters extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Onload, fetch all articles
   componentDidMount() {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
 
     fetch("/api/articles/", myInit)
       .then(function(response) {
@@ -50,9 +50,9 @@ class Filters extends React.Component {
   }
 
   handleChange(event) {
-    var str = JSON.stringify(event.currentTarget.id);
-    var newstr = str.replace(/(<p>|<\/p>)/g, "");
-    var results = "/search?query=" + newstr;
+    let str = JSON.stringify(event.currentTarget.id);
+    let newstr = str.replace(/(<p>|<\/p>)/g, "");
+    let results = "/search?query=" + newstr;
     hashHistory.push(results);
   }
 
@@ -95,7 +95,7 @@ class Filters extends React.Component {
         <StatusAlert />
         <div className="dropdown">
           <button
-            className="btn btn-outline btn-block dropdown-toggle"
+            className="btn btn-outline dropdown btn-block dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
             data-toggle="dropdown"
@@ -132,7 +132,7 @@ class Filters extends React.Component {
 
         <div className="dropdown">
           <button
-            className="btn btn-outline btn-block dropdown-toggle"
+            className="btn btn-outline dropdown btn-block dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
             data-toggle="dropdown"
@@ -162,7 +162,7 @@ class Filters extends React.Component {
 
         <div className="dropdown">
           <button
-            className="btn btn-outline btn-block dropdown-toggle"
+            className="btn btn-outline dropdown btn-block dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
             data-toggle="dropdown"
@@ -192,7 +192,7 @@ class Filters extends React.Component {
 
         <div className="dropdown">
           <button
-            className="btn btn-outline btn-block dropdown-toggle"
+            className="btn btn-outline dropdown btn-block dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
             data-toggle="dropdown"

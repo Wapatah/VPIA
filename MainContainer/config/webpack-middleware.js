@@ -1,11 +1,11 @@
 module.exports = function(app) {
   // Webpack middleware for development purposes - webpack needs to be cleaned up.
-  var webpack = require("webpack");
-  var webpackDevMiddleware = require("webpack-dev-middleware");
-  var webpackHotMiddleware = require("webpack-hot-middleware");
-  var webpackConfig = require("./webpack.config");
+  const webpack = require("webpack");
+  const webpackDevMiddleware = require("webpack-dev-middleware");
+  const webpackHotMiddleware = require("webpack-hot-middleware");
+  const webpackConfig = require("./webpack.config");
 
-  var compiler = webpack(webpackConfig);
+  const compiler = webpack(webpackConfig);
 
   app.use(
     webpackDevMiddleware(compiler, {

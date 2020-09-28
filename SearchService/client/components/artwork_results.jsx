@@ -4,6 +4,7 @@
 */
 import React from "react";
 import Loader from "./helpers/loader.jsx";
+import StatusAlert, { StatusAlertService } from "react-status-alert";
 import { Link } from "react-router";
 
 class ArtworkResults extends React.Component {
@@ -23,14 +24,14 @@ class ArtworkResults extends React.Component {
   On component load, GET ALL Articles
 */
   componentDidMount() {
-    var myHeaders = new Headers({
+    let myHeaders = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
 
-    var myInit = { method: "GET", headers: myHeaders };
-    var that = this;
-    var url = "/api/articles";
+    let myInit = { method: "GET", headers: myHeaders };
+    let that = this;
+    let url = "/api/articles";
 
     fetch(url, myInit)
       .then(function(response) {
@@ -38,6 +39,7 @@ class ArtworkResults extends React.Component {
       })
       .then(function(response) {
         if (response.error.error) {
+          StatusAlertService.showError(response.error.message);
         } else {
           that.setState({ articles: response.data });
         }
@@ -70,7 +72,7 @@ class ArtworkResults extends React.Component {
           <div id="result" className="card card-block">
             <Link
               to={"/article/" + article.id}
-              className="my-card-img-top"
+              className="my-card-img-top results"
               dangerouslySetInnerHTML={{ __html: article.photo }}
             ></Link>
             <div className="card-body">
@@ -88,7 +90,6 @@ class ArtworkResults extends React.Component {
                     }}
                   ></p>
                   <p id="Baskerville">
-                    <i className="fa fa-clock-o" />
                     {new Date(
                       article.updated_at.replace(" ", "T")
                     ).toUTCString()}

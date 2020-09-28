@@ -9,7 +9,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.handleUpdate = this.handleUpdate.bind(this);
-    this.state = { articleId: "1", loading: true };
+    this.state = { articleId: "", loading: true };
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -33,11 +33,11 @@ class Home extends React.Component {
         <div className="container-fluid">
           <div className="row justify-content-md-center">
             <div className="container p-t-3" aria-label="In conversation">
-              <h5 className="title-primary underline-brush">In Conversation</h5>
+              <h1 className="title-primary underline-brush">In Conversation</h1>
               <BrowseArticles articleId={this.state.articleId} />
-              <h5 className="title-primary underline-brush">
+              <h1 className="title-primary underline-brush">
                 Current Projects & Events
-              </h5>
+              </h1>
               <div className="row">
                 <div className="col-md-7">
                   <div className="events-card card text-white">

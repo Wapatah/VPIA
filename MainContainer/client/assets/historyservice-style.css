@@ -1,0 +1,96 @@
+/*
+  The custom stylesheet for history service
+*/
+
+.left-side.col-md-1 {
+  flex: auto;
+  max-width: 100%;
+}
+
+.left-side.col-md-1 {
+  -ms-flex: 0 0 29.166666655%;
+  flex: 0 0 29.166666655%;
+  max-width: 29.166666655%;
+}
+
+.left-side-nav-card {
+  position: relative;
+  background: #d0cfcd;
+  height: 50%;
+  margin-top: 10%;
+}
+
+.left-side-nav-card:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 0.625em solid transparent;
+  border-left-color: #d0cfcd;
+  border-right: 0;
+  margin-top: -0.625em;
+  margin-right: -0.625em;
+}
+#article-photo img {
+  width: 100%;
+}
+h1.edit-history-h1 {
+  font-size: 16px;
+}
+p.date {
+  font-size: 12px;
+  color: #343638;
+  font-family: "FuturaStdLight";
+  text-align: right;
+}
+.edit-history-heading h1,
+.edit-history-heading p {
+  display: inline;
+  vertical-align: bottom;
+}
+p.edit-history-text {
+  font-size: 14px;
+  font-family: "FuturaStdLight";
+}
+h1.green-title {
+  color: #1f8475;
+  font-size: 1rem;
+  padding-left: 5%;
+  padding-top: 5%;
+}
+.history-box {
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-bottom: 5%;
+}
+.custom-collapse {
+  background-color: #f1f0f0;
+  box-shadow: 0px 3px 6px #00000029;
+}
+.archive-list {
+  max-height: 600px;
+  overflow-y: scroll;
+  background-color: #f1f0f0;
+}
+.list-group-item.archive {
+  background-color: #d0cfcd;
+  border-radius: 10px;
+  margin-bottom: 10%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border: none;
+}
+p.list-group-item-date {
+  font-size: 0.75rem;
+  font-family: "FuturaStdLight";
+}
+p.list-group-item-text {
+  font-size: 0.75rem;
+}
+@media screen and (min-width: 768px) {
+  .custom-collapse .collapse {
+    display: block;
+  }
+}

@@ -1,0 +1,211 @@
+/*
+  The custom stylesheet for UserService
+*/
+
+.fullpage.container-fluid {
+  padding: 0;
+  height: 100%;
+}
+.full-page.row {
+  height: 100%;
+}
+.login-box {
+  max-width: 500px;
+  margin: 0px auto;
+  background-color: transparent;
+  text-align: center;
+  padding-top: 40%;
+}
+.signup-box {
+  max-width: 500px;
+  margin: 0px auto;
+  background-color: transparent;
+  text-align: left;
+  padding-top: 20%;
+}
+.signup-box label {
+  font-size: 1em;
+  margin-bottom: 0;
+}
+.font-weight-light {
+  font-family: "FuturaStdLight";
+}
+.login-header {
+  margin-bottom: 1em;
+}
+.right-panel {
+  background-color: white;
+  height: 100%;
+  padding-top: 3%;
+  padding-left: 3%;
+  padding-bottom: 10%;
+}
+.BGimage::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  content: "";
+  background-image: url("../assets/images/BG.jpg");
+  background-blend-mode: multiply;
+  -webkit-filter: grayscale(100%);
+  filter: grey;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.image-tint-dark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #75777b90;
+  z-index: 2;
+}
+/* .modal-fullscreen */
+.modal-fullscreen {
+  background: #fff;
+  text-align: center;
+}
+.modal-fullscreen .modal-content {
+  background: transparent;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.modal-backdrop.modal-backdrop-fullscreen {
+  background: #ffffff;
+}
+.modal-backdrop.modal-backdrop-fullscreen.in {
+  opacity: 0.97;
+  filter: alpha(opacity=97);
+}
+
+/* .modal-fullscreen size: we use Bootstrap media query breakpoints */
+.modal-fullscreen .modal-dialog {
+  margin: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+.modal-fullscreen .col-md-6 {
+  float: none;
+}
+.modal-fullscreen .form-control {
+  border: 1px solid #ccc;
+}
+h1.welcome-message {
+  padding-bottom: 5%;
+  text-align: left;
+  font-size: 40px;
+}
+.login-form {
+  background-color: white;
+  border: 2px solid #75777b;
+  border-radius: 4px;
+  font-style: italic;
+  padding: 0;
+}
+.login-form input[type="password"],
+select {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.append-light {
+  border: none;
+}
+.return-text {
+  font-size: 0.8rem;
+  color: #75777b;
+}
+h1.signin-carousel {
+  color: white;
+  font-size: 4em;
+  text-align: left;
+  white-space: nowrap;
+}
+.header-item {
+  display: inline-block;
+  margin-right: 3%;
+}
+p.signin-carousel {
+  color: white;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-size: 1.5rem;
+}
+.btn-outline-light {
+  border-radius: 20px;
+  width: 169px;
+  border: 3px solid #ffffff;
+}
+.btn-outline-light:not(:disabled):not(.disabled).active {
+  background-color: #ffb600;
+  border-color: #ffb600;
+}
+.btn-primary:disabled {
+  background-color: grey;
+}
+.carousel-indicators {
+  justify-content: flex-start;
+  margin-left: 0;
+  padding-left: 5%;
+  bottom: 80%;
+}
+.carousel.about {
+  padding: 5%;
+  height: 60%;
+}
+.carousel-inner.user-service {
+  width: 90%;
+  position: relative;
+  z-index: 3;
+}
+.header-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-top: 25%;
+}
+.signup-check small {
+  color: #75777b;
+}
+a.none-deco {
+  color: inherit;
+  text-decoration: none;
+}
+.join-btn {
+  border: 2px solid #343638;
+  color: #343638;
+  padding: 5px 30px;
+}
+@media (min-width: 767px) {
+  /* .BGimage::before {
+    width: 0;
+    height: 0;
+  } */
+}
+@media (min-width: 768px) {
+  .modal-fullscreen .modal-dialog {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .modal-fullscreen .modal-dialog {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .modal-fullscreen .modal-dialog {
+    width: 1170px;
+  }
+}
+@media (min-width: 1200px) {
+  .modal-fullscreen .modal-dialog {
+    width: 1170px;
+  }
+}
