@@ -1,17 +1,17 @@
 /* --------------------------------------------------------------------------------------------------------------------------------------------
-  This component renders the main Wiki page Article and deals
-  with all of the API needed.
+  Logic for the Article history button that displays the revision history of the platform.
 */
 import React from "react";
-import { Link, hashHistory } from "react-router";
+import { Link } from "react-router";
 import Loader from "./helpers/loader.jsx";
+import BrowseArchives from "./browse_archives.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
-class ViewArticle extends React.Component {
+class Institution extends React.Component {
   constructor(props) {
     super(props);
     this.deleteArticle = this.deleteArticle.bind(this);
-    this.state = { article: {}, user: {}, loading: true };
+    this.state = { article: {}, user: {}, archive_id: "", loading: true };
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -97,17 +97,18 @@ class ViewArticle extends React.Component {
     }
   }
 
-  /* --------------------------------------------------------------------------------------------------------------------------------------------
-  This renders all of the information relating to the Article as pulled from
-  the database. If user is admin, more functions become available.
-*/
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // archiveUpdate() - Clicking on archive sets the archive id to update in browse_archives
+  archiveUpdate(id) {
+    this.setState({ archive_id: id });
+  }
+
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // Renders the history page as well as the browse_archive and simple_article components.
   render() {
     let user_name = "";
     if (this.state.loading) return <Loader />;
-    else if (this.state.article[0] && this.state.article[0].user_id) {
-      if (this.state.user[0]) {
-        user_name = this.state.user[0].name;
-      }
+    else
       return (
         <div className="container-fluid">
           <StatusAlert />
@@ -247,13 +248,14 @@ class ViewArticle extends React.Component {
                   </Link>
                   <Link
                     to={"/article/institution/" + this.state.article[0].id}
-                    className="bottom-align-text tabBar-tab institution-tab"
+                    className="bottom-align-text tabBar-tab institution-tab is-active"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
                     Institution
                   </Link>
                   <Link
-                    className="bottom-align-text tabBar-tab vpia-tab is-active"
+                    to={"/article/" + this.props.params.articleId}
+                    className="bottom-align-text tabBar-tab vpia-tab"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
                     VPIA
@@ -263,29 +265,17 @@ class ViewArticle extends React.Component {
               <div class="tab-bar-card">
                 <div className="article-heading">
                   <h1 className="single-article-title">
-                    #{this.state.article[0].id}&nbsp;
-                    {this.state.article[0].title}
+                    {this.state.article[0].title}-{" "}
+                    {this.state.article[0].institution} Record
                   </h1>
-                  <div className="article-body">
-                    <br />
-                    <h3 className="single-article-title">Overview</h3>
-                    <hr />
-                    <div
-                      id="article-photo"
-                      className="single-article-body"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].body
-                      }}
-                    ></div>
-                  </div>
+                  <div className="article-body"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       );
-    }
   }
 }
 
-export default ViewArticle;
+export default Institution;

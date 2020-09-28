@@ -16,6 +16,7 @@ import Article from "../../../WikiService/client/components/article.jsx";
 import NewArticle from "../../../WikiService/client/components/new.jsx";
 import EditArticle from "../../../WikiService/client/components/edit.jsx";
 import ArticleHistory from "../../../HistoryService/client/components/history.jsx";
+import Institution from "../../../HistoryService/client/components/institution.jsx";
 import Search from "../../../SearchService/client/components/search.jsx";
 import Admin from "../../../UserService/client/components/admin.jsx";
 import Setup from "../../../UserService/client/components/setup.jsx";
@@ -24,6 +25,7 @@ import UserSignup from "../../../UserService/client/components/user_signup.jsx";
 import Landing from "./main/landing.jsx";
 import About from "./main/about.jsx";
 import Results from "../../../SearchService/client/components/results.jsx";
+import Artwork from "../../../SearchService/client/components/artwork.jsx";
 
 // --------------------------------------------------------------------------------------------------------------------------------------------
 // Build a route path and limit access to certain pages
@@ -35,9 +37,11 @@ export default function() {
         <Route path="home" component={Home} />
         <Route path="landing" component={Landing} />
         <Route path="results" component={Results} />
+        <Route path="artwork" component={Artwork} />
         <Route path="article/new" component={NewArticle} />
         <Route path="article/edit/:articleId" component={EditArticle} />
         <Route path="article/history/:articleId" component={ArticleHistory} />
+        <Route path="article/institution/:articleId" component={Institution} />
         <Route path="article/:articleId" component={Article} />
         <Route path="admin" component={Admin} />
         <Route path="user/edit/:user_id" component={EditUser} />

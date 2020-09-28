@@ -66,71 +66,61 @@ class SimpleArticle extends React.Component {
         user_name = this.state.user[0].name;
       }
       return (
-        <div className="row">
+        <div>
           <StatusAlert />
-          <div className="col-md-8">
-            <div className="article-heading">
-              <div
-                id="article-photo"
-                className="col-12"
-                dangerouslySetInnerHTML={{
-                  __html: this.state.article[0].photo
-                }}
-              ></div>
-              <br />
-              <h1 className="single-article-title">
-                {this.state.article[0].title}
-              </h1>
-              <div className="single-article-meta">
-                Edited by <b>{user_name}</b>
-              </div>
-              <br />
-              <div className="single-article-meta">
-                Holding Institution:{" "}
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.article[0].institution
-                  }}
-                ></div>
-              </div>
-              <div className="single-article-meta">
-                Type:{" "}
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.article[0].artwork_type
-                  }}
-                ></div>
-              </div>
-              <div className="single-article-meta">
-                Material:{" "}
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.article[0].material
-                  }}
-                ></div>
-              </div>
-              <div className="single-article-meta">
-                Culture Group:{" "}
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.article[0].culture_group
-                  }}
-                ></div>
-              </div>
-              <div className="single-article-meta">
-                Tags:{" "}
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.article[0].tags
-                  }}
-                ></div>
-              </div>
-            </div>
-            <div
-              className="single-article-body"
-              dangerouslySetInnerHTML={{ __html: this.state.article[0].body }}
-            ></div>
+          <div className="edit-history-heading">
+            <h1 className="edit-history-h1">Edited by {user_name} </h1>
+            <p className="float-right font-italic date">
+              on{" "}
+              {new Date(
+                this.state.article[0].updated_at.replace(" ", "T")
+              ).toUTCString()}
+            </p>
           </div>
+          <hr />
+          <div className="article-heading">
+            <div
+              id="article-photo"
+              className="col-12"
+              dangerouslySetInnerHTML={{
+                __html: this.state.article[0].photo
+              }}
+            ></div>
+            <br />
+            <div className="single-article-meta">
+              <h1 className="edit-history-h1">Object Type: </h1>
+              <p
+                className="edit-history-text"
+                dangerouslySetInnerHTML={{
+                  __html: this.state.article[0].artwork_type
+                }}
+              ></p>
+            </div>
+            <div className="single-article-meta">
+              Institution Attributed Culture Group{" "}
+              <p
+                className="edit-history-text"
+                dangerouslySetInnerHTML={{
+                  __html: this.state.article[0].culture_group
+                }}
+              ></p>
+            </div>
+            <div className="single-article-meta">
+              <h1 className="edit-history-h1">Material: </h1>
+              <p
+                className="edit-history-text"
+                dangerouslySetInnerHTML={{
+                  __html: this.state.article[0].material
+                }}
+              ></p>
+            </div>
+          </div>
+          <h1 className="edit-history-h1">Edits</h1>
+          <hr />
+          <p
+            className="edit-history-text"
+            dangerouslySetInnerHTML={{ __html: this.state.article[0].body }}
+          ></p>
         </div>
       );
     } else {

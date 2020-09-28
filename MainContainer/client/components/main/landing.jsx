@@ -20,55 +20,55 @@ class Landing extends React.Component {
         <div className="VPIA-intro container-fluid">
           <StatusAlert />
           <div className="row">
-            <div
-              className="VPIA-intro col-lg-8"
-              aria-label="Search and edit 2000 indigenous artworks"
-            >
-              <div className="VPIA-intro jumbotron">
-                <div className="intro-content">
-                  <div className="row">
-                    <div className="VPIA-intro col-lg-8">
-                      <p className="lead">
-                        Search and edit 2000 indigenous Artworks
-                      </p>
-                      <p id="Baskerville">
-                        Help animate Indigenous collections worldwide by sharing
-                        your experience and knowledge about them.
-                      </p>
-                    </div>
-                    <div className="col-lg-4">
-                      <a
-                        className="btn btn-outline-light btn-lg btn-round float-right"
-                        href="#"
-                        role="button"
-                      >
-                        Learn more
-                      </a>
+            <div className="intro-box row">
+              <div
+                className="VPIA-intro col-lg-8"
+                aria-label="Search and edit 2000 indigenous artworks"
+              >
+                <div className="VPIA-intro jumbotron">
+                  <div className="intro-content">
+                    <div className="row">
+                      <div className="VPIA-intro col-lg-8 align-self-end">
+                        <p className="lead">
+                          Search and edit 2000 indigenous Artworks
+                        </p>
+                        <p id="Baskerville">
+                          Help animate Indigenous collections worldwide by
+                          sharing your experience and knowledge about them.
+                        </p>
+                      </div>
+                      <div className="col-lg-4 align-self-end">
+                        <a
+                          className="btn btn-outline-light btn-lg btn-round float-right"
+                          href="#"
+                          role="button"
+                        >
+                          Learn more
+                        </a>
+                      </div>
                     </div>
                   </div>
+                  <div className="image-tint"></div>
                 </div>
-                <div className="image-tint"></div>
               </div>
-            </div>
-            <div
-              className="VPIA-intro-right col-lg-4"
-              aria-label="Project at a glance"
-            >
-              <h5 className="title-primary underline-brush">
-                Project at a Glance!
-              </h5>
-
-              <h6>How to Use the VPIA?</h6>
-              <p className="article-title">Tutorial</p>
-              <p className="description">
-                Visit our interactive tutorial for more information on how to
-                locate and contribute to artworks through the VPIA.
-              </p>
-              <p className="article-title">Contributors</p>
-              <p p className="description">
-                Learn more about the people and organizations who are sharing
-                their knowledge with the VPIA.
-              </p>
+              <div
+                className="VPIA-intro-right col-lg-4"
+                aria-label="Project at a glance"
+              >
+                <h1 className="title-primary underline-brush">
+                  Project at a Glance!
+                </h1>
+                <h2>Tutorial</h2>
+                <p>
+                  Visit our interactive tutorial for more information on how to
+                  locate and contribute to artworks through the VPIA.
+                </p>
+                <h2>Contributors</h2>
+                <p>
+                  Learn more about the people and organizations who are sharing
+                  their knowledge with the VPIA.
+                </p>
+              </div>
             </div>
             <div
               id="function-intro"

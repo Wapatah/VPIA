@@ -1,8 +1,15 @@
 /*
   The custom stylesheet for Search service
 */
+
+@font-face {
+  font-family: "FuturaStdLight";
+  src: url("./fonts/Futura Std Light.otf");
+  font-display: swap;
+}
+
 #search-bar.input-group {
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #208778;
   z-index: 100;
 }
 
@@ -27,7 +34,7 @@
 }
 
 .search-button {
-  color: white;
+  color: #208778;
   background-color: Transparent;
   background-repeat: no-repeat;
   border: none;
@@ -70,6 +77,22 @@
   z-index: 10;
   display: none;
 }
+.container.artwork {
+  width: 60%;
+}
+h1.artwork-intro {
+  color: #707070;
+  font-size: 1.875rem;
+}
+p.artwork-intro {
+  color: #707070;
+  font-size: 1.125rem;
+  font-family: "FuturaStdLight";
+}
+#searchform {
+  background-color: white;
+  height: 3.625em;
+}
 
 input#line[type="text"]:focus,
 :focus {
@@ -78,8 +101,11 @@ input#line[type="text"]:focus,
 }
 
 #line::placeholder {
-  color: white;
+  color: #208778;
+  font-family: "FuturaStdLight", sans-serif;
+  font-size: 0.8em;
 }
+
 #line {
   z-index: 1000000;
   position: relative;
@@ -104,7 +130,6 @@ input#line[type="text"],
 select {
   background: transparent;
   border: none;
-  color: white;
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
@@ -119,11 +144,18 @@ select {
   bottom: 0;
   background: #333;
   opacity: 0.5;
-  z-index: 10;
+  z-index: 999;
   display: block;
+}
+.btn-outline.dropdown {
+  border: 2px solid #d0cfcd;
+  margin-bottom: 5%;
 }
 #result.card {
   margin-bottom: 1rem;
+}
+.my-card-img-top.results img {
+  height: 10vw;
 }
 
 @media (min-width: 768px) {

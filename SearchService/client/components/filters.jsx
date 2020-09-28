@@ -95,7 +95,7 @@ class Filters extends React.Component {
         <StatusAlert />
         <div className="dropdown">
           <button
-            className="btn btn-outline btn-block dropdown-toggle"
+            className="btn btn-outline dropdown btn-block dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
             data-toggle="dropdown"
@@ -132,7 +132,7 @@ class Filters extends React.Component {
 
         <div className="dropdown">
           <button
-            className="btn btn-outline btn-block dropdown-toggle"
+            className="btn btn-outline dropdown btn-block dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
             data-toggle="dropdown"
@@ -162,7 +162,7 @@ class Filters extends React.Component {
 
         <div className="dropdown">
           <button
-            className="btn btn-outline btn-block dropdown-toggle"
+            className="btn btn-outline dropdown btn-block dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
             data-toggle="dropdown"
@@ -192,7 +192,7 @@ class Filters extends React.Component {
 
         <div className="dropdown">
           <button
-            className="btn btn-outline btn-block dropdown-toggle"
+            className="btn btn-outline dropdown btn-block dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
             data-toggle="dropdown"

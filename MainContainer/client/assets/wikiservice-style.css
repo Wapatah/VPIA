@@ -20,17 +20,283 @@
   animation: spin 1s infinite linear;
 }
 
-#article-nav.container-fluid {
-  background-color: #d0cfcd;
-  padding-top: 10px;
-  padding-bottom: 0;
-  height: 3.625em;
+.tab-bar-card {
+  border: 1px solid #ccc;
+  padding: 24px;
+  background: white;
+  box-shadow: 0px 3px 6px #00000029;
+}
+.tabBar-content {
+  padding-top: 32px;
+  box-shadow: 0 16px 12px -12px rgba(0, 0, 0, 0.2);
+  line-height: 1;
 }
 
-#article-nav-inner.row {
-  height: 2.8em;
+.tabBar {
+  padding-left: 25px;
+  position: relative;
+  z-index: 10;
+}
+.tabBar-content.col-md-6 {
+  padding: 0;
+}
+.tabBar-align.col {
+  padding-right: 30px;
+}
+.tabBar-tab {
+  padding: 6px 16px;
+  display: inline-block;
+  background: #ddd;
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  cursor: pointer;
+  border-radius: 4px 4px 0 0;
+  margin-right: 4px;
+  float: right;
+}
+.tabBar-tab:hover {
+  background: #eee;
+}
+.tabBar-tab.is-active {
+  background: white;
+  border-bottom: 1px solid white;
+  margin-bottom: -1px;
+  color: #000000 !important;
+}
+.tabBar-content .tabBar-tab {
+  border: 0;
+  border-radius: 0;
+  position: relative;
+  padding: 6px 24px;
+  margin-right: -16px;
+  margin-bottom: -1px;
+  background-color: transparent;
+  background-size: 100% 1px, 6px 3px, 6px 3px, 6px 6px, 6px 6px, 14px 100%,
+    14px 100%, 60% 100%, 60% 100%, 6px 3px, 6px 3px, 6px 6px, 6px 6px, 14px 100%,
+    14px 100%, 60% 100%, 60% 100%;
+  background-position: left bottom, right 0px bottom 0px, left 0px bottom 0px,
+    right 13px top 1px, left 13px top 1px, right 5px top 5px, left 5px top 5px,
+    left 1px top 1px, right 1px top 1px, right -1px bottom 1px,
+    left -1px bottom 1px, right 12px top, left 12px top, right 4px top 4px,
+    left 4px top 4px, left top, right top;
+  background-repeat: no-repeat;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 1) {
+  z-index: 19;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 2) {
+  z-index: 18;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 3) {
+  z-index: 17;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 4) {
+  z-index: 16;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 5) {
+  z-index: 15;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 6) {
+  z-index: 14;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 7) {
+  z-index: 13;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 8) {
+  z-index: 12;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 9) {
+  z-index: 11;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 10) {
+  z-index: 10;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 11) {
+  z-index: 9;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 12) {
+  z-index: 8;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 13) {
+  z-index: 7;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 14) {
+  z-index: 6;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 15) {
+  z-index: 5;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 16) {
+  z-index: 4;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 17) {
+  z-index: 3;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 18) {
+  z-index: 2;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 19) {
+  z-index: 1;
+}
+.tabBar-content .tabBar-tab:nth-of-type(20n + 20) {
+  z-index: 0;
+}
+.tabBar-content .tabBar-tab_last {
+  margin-right: 16px;
+}
+.edit-tab {
+  background-image: linear-gradient(0deg, #ffa500, #ffa500),
+    radial-gradient(circle 7px at 6px -3px, transparent 6px, #ffa500 6px),
+    radial-gradient(circle 7px at 0px -3px, transparent 6px, #ffa500 6px),
+    radial-gradient(circle 7px at 0px 6px, #ffa500 6px, transparent 6px),
+    radial-gradient(circle 7px at 6px 6px, #ffa500 6px, transparent 6px),
+    linear-gradient(-110deg, transparent 34%, #ffa500 36%),
+    linear-gradient(110deg, transparent 34%, #ffa500 36%),
+    linear-gradient(90deg, transparent 17px, #ffa500 17px, #ffa500),
+    linear-gradient(-90deg, transparent 17px, #ffa500 17px, #ffa500),
+    radial-gradient(circle 7px at 6px -3px, transparent 6px, #ffa500 6px),
+    radial-gradient(circle 7px at 0px -3px, transparent 6px, #ffa500 6px),
+    radial-gradient(circle 7px at 0px 6px, #ffa500 6px, transparent 6px),
+    radial-gradient(circle 7px at 6px 6px, #ffa500 6px, transparent 6px),
+    linear-gradient(-110deg, transparent 34%, #ffa500 36%),
+    linear-gradient(110deg, transparent 34%, #ffa500 36%),
+    linear-gradient(90deg, transparent 17px, #ffa500 17px, #ffa500),
+    linear-gradient(-90deg, transparent 17px, #ffa500 17px, #ffa500);
+}
+.institution-tab {
+  background-image: linear-gradient(0deg, #53555a, #53555a),
+    radial-gradient(circle 7px at 6px -3px, transparent 6px, #53555a 6px),
+    radial-gradient(circle 7px at 0px -3px, transparent 6px, #53555a 6px),
+    radial-gradient(circle 7px at 0px 6px, #53555a 6px, transparent 6px),
+    radial-gradient(circle 7px at 6px 6px, #53555a 6px, transparent 6px),
+    linear-gradient(-110deg, transparent 34%, #53555a 36%),
+    linear-gradient(110deg, transparent 34%, #53555a 36%),
+    linear-gradient(90deg, transparent 17px, #53555a 17px, #53555a),
+    linear-gradient(-90deg, transparent 17px, #53555a 17px, #53555a),
+    radial-gradient(circle 7px at 6px -3px, transparent 6px, #53555a 6px),
+    radial-gradient(circle 7px at 0px -3px, transparent 6px, #53555a 6px),
+    radial-gradient(circle 7px at 0px 6px, #53555a 6px, transparent 6px),
+    radial-gradient(circle 7px at 6px 6px, #53555a 6px, transparent 6px),
+    linear-gradient(-110deg, transparent 34%, #53555a 36%),
+    linear-gradient(110deg, transparent 34%, #53555a 36%),
+    linear-gradient(90deg, transparent 17px, #53555a 17px, #53555a),
+    linear-gradient(-90deg, transparent 17px, #53555a 17px, #53555a);
+}
+.tabBar a {
+  color: #000000 !important;
+}
+a.institution-tab {
+  color: white !important;
+}
+a.vpia-tab {
+  color: white !important;
+}
+.vpia-tab {
+  background-image: linear-gradient(0deg, #208778, #208778),
+    radial-gradient(circle 7px at 6px -3px, transparent 6px, #208778 6px),
+    radial-gradient(circle 7px at 0px -3px, transparent 6px, #208778 6px),
+    radial-gradient(circle 7px at 0px 6px, #208778 6px, transparent 6px),
+    radial-gradient(circle 7px at 6px 6px, #208778 6px, transparent 6px),
+    linear-gradient(-110deg, transparent 34%, #208778 36%),
+    linear-gradient(110deg, transparent 34%, #208778 36%),
+    linear-gradient(90deg, transparent 17px, #208778 17px, #208778),
+    linear-gradient(-90deg, transparent 17px, #208778 17px, #208778),
+    radial-gradient(circle 7px at 6px -3px, transparent 6px, #208778 6px),
+    radial-gradient(circle 7px at 0px -3px, transparent 6px, #208778 6px),
+    radial-gradient(circle 7px at 0px 6px, #208778 6px, transparent 6px),
+    radial-gradient(circle 7px at 6px 6px, #208778 6px, transparent 6px),
+    linear-gradient(-110deg, transparent 34%, #208778 36%),
+    linear-gradient(110deg, transparent 34%, #208778 36%),
+    linear-gradient(90deg, transparent 17px, #208778 17px, #208778),
+    linear-gradient(-90deg, transparent 17px, #208778 17px, #208778);
+}
+.history-tab {
+  background-image: linear-gradient(0deg, #d0cfcd, #d0cfcd),
+    radial-gradient(circle 7px at 6px -3px, transparent 6px, #d0cfcd 6px),
+    radial-gradient(circle 7px at 0px -3px, transparent 6px, #d0cfcd 6px),
+    radial-gradient(circle 7px at 0px 6px, #d0cfcd 6px, transparent 6px),
+    radial-gradient(circle 7px at 6px 6px, #d0cfcd 6px, transparent 6px),
+    linear-gradient(-110deg, transparent 34%, #d0cfcd 36%),
+    linear-gradient(110deg, transparent 34%, #d0cfcd 36%),
+    linear-gradient(90deg, transparent 17px, #d0cfcd 17px, #d0cfcd),
+    linear-gradient(-90deg, transparent 17px, #d0cfcd 17px, #d0cfcd),
+    radial-gradient(circle 7px at 6px -3px, transparent 6px, #d0cfcd 6px),
+    radial-gradient(circle 7px at 0px -3px, transparent 6px, #d0cfcd 6px),
+    radial-gradient(circle 7px at 0px 6px, #d0cfcd 6px, transparent 6px),
+    radial-gradient(circle 7px at 6px 6px, #d0cfcd 6px, transparent 6px),
+    linear-gradient(-110deg, transparent 34%, #d0cfcd 36%),
+    linear-gradient(110deg, transparent 34%, #d0cfcd 36%),
+    linear-gradient(90deg, transparent 17px, #d0cfcd 17px, #d0cfcd),
+    linear-gradient(-90deg, transparent 17px, #d0cfcd 17px, #d0cfcd);
+}
+.tabBar-content .tabBar-tab:hover {
+  background-image: linear-gradient(0deg, #ccc, #ccc),
+    radial-gradient(circle 7px at 6px -3px, transparent 6px, #eee 6px),
+    radial-gradient(circle 7px at 0px -3px, transparent 6px, #eee 6px),
+    radial-gradient(circle 7px at 0px 6px, #eee 6px, transparent 6px),
+    radial-gradient(circle 7px at 6px 6px, #eee 6px, transparent 6px),
+    linear-gradient(-110deg, transparent 34%, #eee 36%),
+    linear-gradient(110deg, transparent 34%, #eee 36%),
+    linear-gradient(90deg, transparent 17px, #eee 17px, #eee),
+    linear-gradient(-90deg, transparent 17px, #eee 17px, #eee),
+    radial-gradient(circle 7px at 6px -3px, transparent 6px, #ccc 6px),
+    radial-gradient(circle 7px at 0px -3px, transparent 6px, #ccc 6px),
+    radial-gradient(circle 7px at 0px 6px, #ccc 6px, transparent 6px),
+    radial-gradient(circle 7px at 6px 6px, #ccc 6px, transparent 6px),
+    linear-gradient(-110deg, transparent 34%, #ccc 36%),
+    linear-gradient(110deg, transparent 34%, #ccc 36%),
+    linear-gradient(90deg, transparent 17px, #ccc 17px, #ccc),
+    linear-gradient(-90deg, transparent 17px, #ccc 17px, #ccc);
+}
+.tabBar-content .tabBar-tab.is-active {
+  z-index: 21;
+  background-image: linear-gradient(0deg, transparent, transparent),
+    radial-gradient(circle 7px at 6px -3px, transparent 6px, #fff 6px),
+    radial-gradient(circle 7px at 0px -3px, transparent 6px, #fff 6px),
+    radial-gradient(circle 7px at 0px 6px, #fff 6px, transparent 6px),
+    radial-gradient(circle 7px at 6px 6px, #fff 6px, transparent 6px),
+    linear-gradient(-110deg, transparent 34%, #fff 36%),
+    linear-gradient(110deg, transparent 34%, #fff 36%),
+    linear-gradient(90deg, transparent 17px, #fff 17px, #fff),
+    linear-gradient(-90deg, transparent 17px, #fff 17px, #fff),
+    radial-gradient(circle 7px at 6px -3px, transparent 6px, #ccc 6px),
+    radial-gradient(circle 7px at 0px -3px, transparent 6px, #ccc 6px),
+    radial-gradient(circle 7px at 0px 6px, #ccc 6px, transparent 6px),
+    radial-gradient(circle 7px at 6px 6px, #ccc 6px, transparent 6px),
+    linear-gradient(-110deg, transparent 34%, #ccc 36%),
+    linear-gradient(110deg, transparent 34%, #ccc 36%),
+    linear-gradient(90deg, transparent 17px, #ccc 17px, #ccc),
+    linear-gradient(-90deg, transparent 17px, #ccc 17px, #ccc);
+}
+.breadcrumb {
+  background-color: white;
+  padding: 0;
+  margin-bottom: 3%;
+}
+.breadcrumb-item.active {
+  color: #208778;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "▸";
+}
+.article-info-box {
+  padding-left: 4%;
+  padding-right: 4%;
 }
 
+/* Clear Fix took for HTML 5 Boilerlate*/
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  zoom: 1;
+}
 .active-red {
   border-bottom: 3px solid #d60812;
 }
@@ -80,43 +346,36 @@ p.article-title {
   margin-top: -0.625em;
   margin-right: -0.625em;
 }
-
 .left-side-nav-content {
   width: 50%;
   float: right;
   margin: 0.5em;
 }
-
 .article-heading {
-  padding-left: 5%;
   margin-bottom: 2em;
   margin-top: 2em;
 }
-
-.single-article-title {
-  font-weight: 700;
-  font-size: 3.5em;
+h1.single-article-title {
+  font-size: 1.1875rem;
   margin-bottom: 10px;
   color: #208778;
+  font-family: "FuturaStdMedium";
+}
+h3.single-article-title {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #000000;
   font-family: "FuturaStdHeavy";
 }
-
 .single-article-meta {
   color: #595959;
 }
-
 .single-article-body {
-  font-family: "Baskerville";
-  font-size: 1.5em;
+  font-family: "FuturaStdMedium";
+  font-size: 0.875rem;
   margin-bottom: 2em;
   padding-top: 1em;
   padding-left: 0;
-}
-
-#article-body.col-md-1 {
-  -ms-flex: 0 0 62.5%;
-  flex: 0 0 62.5%;
-  max-width: 62.5%;
 }
 
 #article-photo img {

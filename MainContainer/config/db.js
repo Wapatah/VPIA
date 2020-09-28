@@ -1,11 +1,11 @@
-/* 
+/*
   The Database config file. This is were Caminte (an database agnostic Javascript ORM)
-  is configured. If you require a different database, Caminte's github has 
+  is configured. If you require a different database, Caminte's github has
   examples of how to specify configs for various drivers.
   Caminte supports SQL (like MySQL), and NoSQL (like Mongo and Neo4j).
 
   Warning: Caminte has not been updated - some adapters are not properly working.
-  We can confirm that MySQL and Mongo switches work. 
+  We can confirm that MySQL and Mongo switches work.
 */
 const caminte = require("caminte");
 const Schema = caminte.Schema;
