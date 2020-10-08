@@ -27,7 +27,7 @@ module.exports = function isUserAuthenticated(req, res, next) {
     // Verifies secret and checks for expiration
     jwt.verify(token, app.get("superSecret"), function(err, decoded) {
       if (err) {
-        res.json({
+        res.status(500).json({
           error: {
             error: true,
             message: "Failed to authenticate token"
@@ -35,7 +35,6 @@ module.exports = function isUserAuthenticated(req, res, next) {
           code: "B101",
           data: {}
         });
-        res.redirect("/");
       } else {
         // If everything is good, save to request for use in other routes
         req.decoded = decoded;
@@ -52,7 +51,6 @@ module.exports = function isUserAuthenticated(req, res, next) {
       code: "B102",
       data: {}
     });
-    res.redirect("/");
   }
 };
 
