@@ -5,6 +5,8 @@ import React from "react";
 import { hashHistory, Link } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
+const emailPattern = /\S+@\S+/;
+
 class UserSignup extends React.Component {
   constructor(props) {
     super(props);
@@ -75,7 +77,10 @@ class UserSignup extends React.Component {
   // Renders the sign up form
   render() {
     const { email, password } = this.state;
-    const isEnabled = email.length > 0 && password.length > 0;
+    const isEnabled =
+      email.length > 0 &&
+      emailPattern.test(this.state.email) &&
+      password.length > 0;
 
     return (
       <div className="fullpage container-fluid">
@@ -222,48 +227,67 @@ class UserSignup extends React.Component {
               aria-label="VPIA logo"
             />
             <div className="container signup-box row">
-              <form className="col-sm-12">
+              <form
+                className="col-sm-12 was-validated"
+                action="/action_page.php"
+              >
                 <label for="inputName">Name</label>
-                <div className="form-group login-form">
+                <div className="form-group">
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control login-form"
                     ref="user_name"
                     id="inputName"
                     aria-label="name"
+                    required
                   />
+                  <div className="valid-feedback">Looks good!</div>
+                  <div className="invalid-feedback">
+                    Please fill out this field.
+                  </div>
                 </div>
                 <label for="inputUserName">Username</label>
-                <div className="form-group login-form">
+                <div className="form-group">
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control login-form"
                     ref="user_name"
                     id="inputUserName"
                     aria-label="user name"
+                    required
                   />
                 </div>
                 <label for="inputUserEmail">Email</label>
-                <div className="form-group input-group login-form">
+                <div className="form-group input-group">
                   <input
                     type="email"
-                    className="form-control"
+                    className="form-control login-form"
                     ref="user_email"
                     id="inputUserEmail"
                     value={this.state.email}
                     onChange={this.handleEmailChange}
+                    required
                   />
+                  <div className="valid-feedback">Looks good!</div>
+                  <div className="invalid-feedback">
+                    A valid email address is required.
+                  </div>
                 </div>
                 <label for="inputUserPassword">New Password</label>
-                <div className="form-group input-group login-form">
+                <div className="form-group input-group">
                   <input
                     type="password"
-                    className="form-control"
+                    className="form-control login-form"
                     ref="user_password"
                     id="inputUserPassword"
                     value={this.state.password}
                     onChange={this.handlePasswordChange}
+                    required
                   />
+                  <div className="valid-feedback">Looks good!</div>
+                  <div className="invalid-feedback">
+                    Please fill out this field.
+                  </div>
                 </div>
                 <label for="inputUserAffiliation">Affiliation</label>
                 <small
@@ -272,20 +296,20 @@ class UserSignup extends React.Component {
                 >
                   Affiliation Example: community, organization, institution…
                 </small>
-                <div className="form-group input-group login-form">
+                <div className="form-group input-group">
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control login-form"
                     ref="user_affliation"
                     id="inputUserAffiliation"
                     aria-describedby="AffliationHelp"
                   />
                 </div>
                 <label for="inputUserAbout">Bio Statement</label>
-                <div className="form-group input-group login-form">
+                <div className="form-group input-group">
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control login-form"
                     ref="user_about"
                     id="inputUserAbout"
                     aria-label="user about"
