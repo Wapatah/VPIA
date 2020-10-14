@@ -5,7 +5,7 @@
   "main": "./MainContainer/index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./MainContainer/config/webpack.config.prod.js --progress --profile --colors & cd ./HistoryService && npm run build",
-    "dev": "node ./MainContainer/index.js",
+    "dev": "node ./MainContainer/index.js & node ./HistoryService/index.js",
     "prep": "cd MediaService && npm i & cd HistoryService && npm i",
     "mediaservice": "cd MediaService && npm run start",
     "historyservice": "cd HistoryService && npm run start",
