@@ -47,7 +47,10 @@ class Institution extends React.Component {
         let myInit = { method: "GET", headers: myHeaders };
         let that = this;
 
-        fetch("/api/users/" + that.state.article[0].user_id, myInit)
+        fetch(
+          "http://localhost:32000/api/users/" + that.state.article[0].user_id,
+          myInit
+        )
           .then(function(response) {
             return response.json();
           })

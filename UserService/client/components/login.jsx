@@ -49,7 +49,7 @@ class Login extends React.Component {
 
     let that = this;
 
-    fetch("/api/authenticate", myInit)
+    fetch("http://localhost:32000/api/authenticate", myInit)
       .then(function(response) {
         return response.json();
       })

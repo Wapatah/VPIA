@@ -32,7 +32,7 @@ class Admin extends React.Component {
     let myInit = { method: "GET", headers: myHeaders };
     let that = this;
 
-    fetch("/api/users", myInit)
+    fetch("http://localhost:32000/api/users", myInit)
       .then(function(response) {
         return response.json();
       })
@@ -77,7 +77,7 @@ class Admin extends React.Component {
 
     let that = this;
 
-    fetch("/api/users/", myInit)
+    fetch("http://localhost:32000/api/users/", myInit)
       .then(function(response) {
         return response.json();
       })
@@ -113,7 +113,7 @@ class Admin extends React.Component {
       let myInit = { method: "DELETE", headers: myHeaders, body: "id=" + id };
       let that = this;
 
-      fetch("/api/users/", myInit)
+      fetch("http://localhost:32000/api/users/", myInit)
         .then(function(response) {
           return response.json();
         })

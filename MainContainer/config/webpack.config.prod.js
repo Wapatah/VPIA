@@ -39,6 +39,11 @@ module.exports = {
     filename: "bundle.js",
     publicPath: BUILD_DIR
   },
+  resolve: {
+    alias: {
+      react: path.resolve("node_modules/react")
+    }
+  },
   devtool: "source-map",
   module: {
     rules: [

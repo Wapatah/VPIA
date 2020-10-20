@@ -21,7 +21,7 @@ module.exports = app => {
     try {
       let user = await Users.find({ where: { email: req.body.email } });
       if (!user) {
-        res.json({
+        res.status(401).json({
           error: {
             error: true,
             message: "User not found"
@@ -56,7 +56,7 @@ module.exports = app => {
   the given password by the user.
 */
   function comparePassword(userPassword, dbPassword, user, res) {
-    bcrypt.compare(userPassword, dbPassword, function(err, result) {
+    bcrypt.compare(userPassword, dbPassword, (err, result) => {
       if (result === true) {
         const token = jwt.sign(user, app.get("superSecret"), {
           expiresIn: 86400
@@ -66,7 +66,6 @@ module.exports = app => {
             error: false,
             message: ""
           },
-          code: "B118",
           data: {
             user: {
               email: user[0].email,
@@ -77,12 +76,11 @@ module.exports = app => {
           }
         });
       } else {
-        res.json({
+        res.status(401).json({
           error: {
             error: true,
             message: "Email or Password is wrong"
           },
-          code: "B119",
           data: {}
         });
       }
