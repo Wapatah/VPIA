@@ -36,15 +36,6 @@ app.get("/api", function(req, res) {
   res.send("List of API endpoints");
 });
 
-// Importing all endpoints for authentication
-require("../UserService/api/authentication")(app);
-
-// Importing the setup endpoint
-require("../UserService/api/setup")(app);
-
-// Importing the users endpoint for sign up capabilties.
-require("../UserService/api/users")(app);
-
 // Limit the ability of non-users to access API routes.
 module.exports = function isUserAuthenticated(req, res, next) {
   // Check header or url parameters or post parameters for token
@@ -138,9 +129,6 @@ module.exports = function isAdminAuthenticated(req, res, next) {
 
 // Importing all endpoints for articles
 require("../WikiService/api/articles")(apiRoutes);
-
-// Importing all endpoints for users
-require("../UserService/api/users")(apiRoutesAdmin);
 
 // Importing the search endpoint
 require("../SearchService/api/search")(apiRoutes);
