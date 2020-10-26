@@ -4,6 +4,7 @@
 import React from "react";
 import { hashHistory, Link } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+import Tabs from "./tabs.jsx";
 
 const emailPattern = /\S+@\S+/;
 
@@ -231,11 +232,14 @@ class UserSignup extends React.Component {
                 className="col-sm-12 was-validated"
                 action="/action_page.php"
               >
-                <label for="inputName">Name</label>
+                <label for="inputName">
+                  <span className="text-danger">*</span> Preferred Name
+                </label>
                 <div className="form-group">
                   <input
                     type="text"
                     className="form-control login-form"
+                    placeholder="First name & last name or preferred name"
                     ref="user_name"
                     id="inputName"
                     aria-label="name"
@@ -246,18 +250,9 @@ class UserSignup extends React.Component {
                     Please fill out this field.
                   </div>
                 </div>
-                <label for="inputUserName">Username</label>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control login-form"
-                    ref="user_name"
-                    id="inputUserName"
-                    aria-label="user name"
-                    required
-                  />
-                </div>
-                <label for="inputUserEmail">Email</label>
+                <label for="inputUserEmail">
+                  <span className="text-danger">*</span> Email
+                </label>
                 <div className="form-group input-group">
                   <input
                     type="email"
@@ -273,7 +268,9 @@ class UserSignup extends React.Component {
                     A valid email address is required.
                   </div>
                 </div>
-                <label for="inputUserPassword">New Password</label>
+                <label for="inputUserPassword">
+                  <span className="text-danger">*</span> New Password
+                </label>
                 <div className="form-group input-group">
                   <input
                     type="password"
@@ -289,49 +286,44 @@ class UserSignup extends React.Component {
                     Please fill out this field.
                   </div>
                 </div>
-                <label for="inputUserAffiliation">Affiliation</label>
-                <small
-                  id="AffliationHelp"
-                  class="form-text text-muted font-weight-light"
-                >
-                  Affiliation Example: community, organization, institution…
-                </small>
-                <div className="form-group input-group">
-                  <input
-                    type="text"
-                    className="form-control login-form"
-                    ref="user_affliation"
-                    id="inputUserAffiliation"
-                    aria-describedby="AffliationHelp"
-                  />
-                </div>
-                <label for="inputUserAbout">Bio Statement</label>
-                <div className="form-group input-group">
-                  <input
-                    type="text"
-                    className="form-control login-form"
-                    ref="user_about"
-                    id="inputUserAbout"
-                    aria-label="user about"
-                  />
-                </div>
-                <label for="inputUserExperience">Training and Experience</label>
-                <small
-                  id="ExperienceHelp"
-                  class="form-text text-muted font-weight-light"
-                >
-                  Help other users to understand where your comments are coming
-                  from
-                </small>
-                <div className="form-group input-group login-form">
-                  <input
-                    type="text"
-                    className="form-control"
-                    ref="user_experience"
-                    id="inputUserExperience"
-                    aria-label="training and experience"
-                    aria-describedby="ExperienceHelp"
-                  />
+                <div>
+                  <span className="text-danger">*</span> Do you have Affiliation
+                  with Indigenous cultural heritage? Example: Indigenous
+                  community, Indigenous culture group,…
+                  <Tabs>
+                    Yes
+                    <div className="form-group">
+                      <label for="culture_group">
+                        <span className="text-danger">*</span> Please specify
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form"
+                        ref="culture_group"
+                        id="culture_group"
+                        aria-label="culture_group"
+                        required
+                      />
+                      <label for="position">Position</label>
+                      <input
+                        type="text"
+                        className="form-control login-form"
+                        ref="position"
+                        id="position"
+                        aria-label="position"
+                      />
+                      <label for="education">Education</label>
+                      <input
+                        type="text"
+                        className="form-control login-form"
+                        ref="education"
+                        id="education"
+                        aria-label="education"
+                      />
+                    </div>
+                    No
+                    <span>Three thing</span>
+                  </Tabs>
                 </div>
                 <div className="form-check">
                   <input
