@@ -413,7 +413,9 @@ select {
   background-color: #ffb600;
   border: none;
 }
-
+.btn-primary:hover {
+  background-color: #6c757d;
+}
 .btn-default {
   background-color: #208778;
   color: #fefefe;

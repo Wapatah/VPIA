@@ -277,13 +277,22 @@ class Login extends React.Component {
                         New to VPIA? Join Now!
                       </Link>
                     </button>
+                    <Link
+                      to="password_reset"
+                      aria-label="Go to home page"
+                      className="none-deco"
+                    >
+                      <p className="green-text mt-4 btn btn-light">
+                        Forgot Password?
+                      </p>
+                    </Link>
                   </div>
                   <Link
                     to="landing"
                     aria-label="Go to home page"
                     className="none-deco"
                   >
-                    <p class="font-italic text-sm-left return-text">
+                    <p className="font-italic text-sm-left return-text">
                       Return to homepage
                     </p>
                   </Link>
