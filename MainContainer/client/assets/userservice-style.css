@@ -121,6 +121,13 @@ select {
   font-size: 0.8rem;
   color: #75777b;
 }
+.green-text {
+  color: #1f8475;
+}
+.green-text.btn-light {
+  background-color: white;
+  border-color: white;
+}
 h1.signin-carousel {
   color: white;
   font-size: 4em;
@@ -143,6 +150,10 @@ p.signin-carousel {
   border: 3px solid #ffffff;
 }
 .btn-outline-light:not(:disabled):not(.disabled).active {
+  background-color: #ffb600;
+  border-color: #ffb600;
+}
+.active.btn-outline-secondary {
   background-color: #ffb600;
   border-color: #ffb600;
 }
