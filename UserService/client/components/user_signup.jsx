@@ -287,9 +287,6 @@ class UserSignup extends React.Component {
                   </div>
                 </div>
                 <div>
-                  <span className="text-danger">*</span> Do you have Affiliation
-                  with Indigenous cultural heritage? Example: Indigenous
-                  community, Indigenous culture group,…
                   <Tabs>
                     Yes
                     <div className="form-group">
@@ -304,7 +301,9 @@ class UserSignup extends React.Component {
                         aria-label="culture_group"
                         required
                       />
-                      <label for="position">Position</label>
+                      <label for="position">
+                        Position <i className="text-muted">(Optional)</i>
+                      </label>
                       <input
                         type="text"
                         className="form-control login-form"
@@ -312,7 +311,20 @@ class UserSignup extends React.Component {
                         id="position"
                         aria-label="position"
                       />
-                      <label for="education">Education</label>
+                      <label for="education">
+                        Institution <i className="text-muted">(Optional)</i>
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form"
+                        ref="institution"
+                        id="institution"
+                        aria-label="institution"
+                        placeholder="Organization or company you are affiliated with"
+                      />
+                      <label for="education">
+                        Education <i className="text-muted">(Optional)</i>
+                      </label>
                       <input
                         type="text"
                         className="form-control login-form"
@@ -322,41 +334,49 @@ class UserSignup extends React.Component {
                       />
                     </div>
                     No
-                    <span>Three thing</span>
+                    <div className="form-group">
+                      <label for="position">
+                        <span className="text-danger">*</span>Position
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form"
+                        ref="position"
+                        id="position"
+                        aria-label="position"
+                        required
+                      />
+                      <label for="education">
+                        Institution <i className="text-muted">(Optional)</i>
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form"
+                        ref="institution"
+                        id="institution"
+                        aria-label="institution"
+                        placeholder="Organization or company you are affiliated with"
+                      />
+                      <label for="education">
+                        Education <i className="text-muted">(Optional)</i>
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form"
+                        ref="education"
+                        id="education"
+                        aria-label="education"
+                      />
+                    </div>
                   </Tabs>
                 </div>
                 <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    name="isChecked"
-                    id="contactOption"
-                    value=""
-                  />
                   <label
                     className="form-check-label signup-check"
                     for="contactOption"
                   >
                     <small>
-                      I want my email address and affiliation appear when I make
-                      edits so that others can contact me.
-                    </small>
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    name="isChecked"
-                    id="contactOption"
-                    value=""
-                  />
-                  <label
-                    className="form-check-label signup-check"
-                    for="contactOption"
-                  >
-                    <small>
-                      By checking this box you agree to the VPIA{" "}
+                      By clicking agree and join, you agree to the VPIA{" "}
                       <a
                         className="none-deco"
                         href="https://foundation.wikimedia.org/wiki/Terms_of_Use/en"
