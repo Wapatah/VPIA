@@ -144,6 +144,9 @@ p.signin-carousel {
   padding-bottom: 5%;
   font-size: 1.5rem;
 }
+.help-text {
+  font-family: "FuturaStdLight";
+}
 .btn-outline-light {
   border-radius: 20px;
   width: 169px;
@@ -153,9 +156,15 @@ p.signin-carousel {
   background-color: #ffb600;
   border-color: #ffb600;
 }
-.active.btn-outline-secondary {
+.btn-outline-secondary:not(:disabled):not(.disabled).active {
   background-color: #ffb600;
   border-color: #ffb600;
+}
+.affliation-btn.btn-outline-secondary {
+  border: 3px solid #707070;
+  margin-left: 3%;
+  border-radius: 20px;
+  width: 65px;
 }
 .btn-primary:disabled {
   background-color: grey;
