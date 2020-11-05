@@ -160,11 +160,12 @@ p.signin-carousel {
   background-color: #ffb600;
   border-color: #ffb600;
 }
-.affliation-btn.btn-outline-secondary {
+.affiliation-btn.btn-outline-secondary {
   border: 3px solid #707070;
   margin-left: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
   border-radius: 20px;
-  width: 65px;
 }
 .btn-primary:disabled {
   background-color: grey;
@@ -202,6 +203,27 @@ a.none-deco {
   border: 2px solid #343638;
   color: #343638;
   padding: 5px 30px;
+}
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  background-image: none;
+}
+.form-control.is-valid,
+.was-validated .form-control:valid {
+  border-color: #408275;
+}
+.form-control.is-valid:focus,
+.was-validated .form-control:valid:focus {
+  border-color: #408275;
+}
+.tooltip-btn {
+  cursor: help;
+}
+.tooltip-btn.fa:hover {
+  color: #1f8475;
+}
+.no-padding.col-sm-11 {
+  padding-right: 0;
 }
 @media (min-width: 767px) {
   /* .BGimage::before {
