@@ -202,15 +202,6 @@ class Login extends React.Component {
                       />
                     </div>
                   </div>
-                  <p className="signin-carousel">
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet</li>
-                      <li>Consectetur adipiscing elit</li>
-                      <li>Integer molestie lorem at massa</li>
-                      <li>Facilisis in pretium nisl aliquet</li>
-                      <li>Nulla volutpat aliquam velit</li>
-                    </ul>
-                  </p>
                   <button className="btn btn-outline-light">Learn More</button>
                 </div>
               </div>

@@ -13,11 +13,13 @@ class UserSignup extends React.Component {
     super(props);
     this.handleSignUp = this.handleSignUp.bind(this);
     this.state = {
+      hidden: true,
       email: "",
       password: ""
     };
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.toggleShow = this.toggleShow.bind(this);
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -62,6 +64,19 @@ class UserSignup extends React.Component {
       });
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  //initiate tooltip in Bootstap
+  componentDidMount() {
+    $('[data-toggle="tooltip"]').tooltip();
+  }
+
+  componentDidUpdate() {
+    $('[data-toggle="tooltip"]').tooltip();
+  }
+
+  toggleShow() {
+    this.setState({ hidden: !this.state.hidden });
+  }
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Sets email variable
   handleEmailChange(event) {
@@ -204,15 +219,6 @@ class UserSignup extends React.Component {
                       />
                     </div>
                   </div>
-                  <p className="signin-carousel">
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet</li>
-                      <li>Consectetur adipiscing elit</li>
-                      <li>Integer molestie lorem at massa</li>
-                      <li>Facilisis in pretium nisl aliquet</li>
-                      <li>Nulla volutpat aliquam velit</li>
-                    </ul>
-                  </p>
                   <button className="btn btn-outline-light">Learn More</button>
                 </div>
               </div>
@@ -228,12 +234,16 @@ class UserSignup extends React.Component {
               aria-label="VPIA logo"
             />
             <div className="container signup-box row">
-              <form
-                className="col-sm-12 was-validated"
-                action="/action_page.php"
-              >
-                <label for="inputName">
-                  <span className="text-danger">*</span> Preferred Name
+              <form className="col-sm-12 was-validated">
+                <label htmlFor="inputName">
+                  Preferred Name<span className="text-danger">*</span>
+                  <i
+                    className="fa fa-question-circle tooltip-btn"
+                    aria-hidden="true"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="First name & last name or preferred name"
+                  ></i>
                 </label>
                 <div className="form-group">
                   <input
@@ -245,13 +255,12 @@ class UserSignup extends React.Component {
                     aria-label="name"
                     required
                   />
-                  <div className="valid-feedback">Looks good!</div>
                   <div className="invalid-feedback">
                     Please fill out this field.
                   </div>
                 </div>
-                <label for="inputUserEmail">
-                  <span className="text-danger">*</span> Email
+                <label htmlFor="inputUserEmail">
+                  Email <span className="text-danger">*</span>
                 </label>
                 <div className="form-group input-group">
                   <input
@@ -263,13 +272,12 @@ class UserSignup extends React.Component {
                     onChange={this.handleEmailChange}
                     required
                   />
-                  <div className="valid-feedback">Looks good!</div>
                   <div className="invalid-feedback">
                     A valid email address is required.
                   </div>
                 </div>
-                <label for="inputUserPassword">
-                  <span className="text-danger">*</span> New Password
+                <label htmlFor="inputUserPassword">
+                  New Password <span className="text-danger">*</span>
                 </label>
                 <div className="form-group input-group">
                   <input
@@ -277,57 +285,98 @@ class UserSignup extends React.Component {
                     className="form-control login-form"
                     ref="user_password"
                     id="inputUserPassword"
+                    type={this.state.hidden ? "password" : "text"}
                     value={this.state.password}
                     onChange={this.handlePasswordChange}
                     required
                   />
-                  <div className="valid-feedback">Looks good!</div>
+                  <div className="input-group-append">
+                    <button
+                      className="btn btn-outline-secondary append-light "
+                      aria-label="show password"
+                      onClick={this.toggleShow}
+                    >
+                      Show
+                    </button>
+                  </div>
                   <div className="invalid-feedback">
                     Please fill out this field.
                   </div>
                 </div>
+              </form>
+              <form className="col-sm-12">
                 <div>
                   <Tabs>
                     Yes
                     <div className="form-group">
-                      <label for="culture_group">
-                        <span className="text-danger">*</span> Please specify
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control login-form"
-                        ref="culture_group"
-                        id="culture_group"
-                        aria-label="culture_group"
-                        required
-                      />
-                      <label for="position">
+                      <div className="col-sm-11 float-right no-padding mb-3">
+                        <label htmlFor="culture_group">
+                          Please specify <span className="text-danger">*</span>{" "}
+                          <i
+                            className="fa fa-question-circle tooltip-btn"
+                            aria-hidden="true"
+                            data-toggle="tooltip"
+                            data-placement="right"
+                            title="Please share with us the name of your community, ffamily, and/or land."
+                          ></i>
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control login-form"
+                          ref="culture_group"
+                          id="culture_group"
+                          aria-label="culture_group"
+                          required
+                        />
+                      </div>
+                      <label htmlFor="position">
                         Position <i className="text-muted">(Optional)</i>
+                        <i
+                          className="fa fa-question-circle tooltip-btn"
+                          aria-hidden="true"
+                          data-toggle="tooltip"
+                          data-placement="right"
+                          title="What is your most recent position and/or practice."
+                        ></i>
                       </label>
                       <input
                         type="text"
-                        className="form-control login-form"
+                        className="form-control login-form mb-3"
                         ref="position"
                         id="position"
                         aria-label="position"
                       />
-                      <label for="education">
-                        Institution <i className="text-muted">(Optional)</i>
+                      <label htmlFor="education">
+                        Affiliation <i className="text-muted">(Optional)</i>
+                        <i
+                          className="fa fa-question-circle tooltip-btn"
+                          aria-hidden="true"
+                          data-toggle="tooltip"
+                          data-placement="right"
+                          title="Please share with us the place of your most recent position"
+                        ></i>
                       </label>
                       <input
                         type="text"
-                        className="form-control login-form"
+                        className="form-control login-form mb-3"
                         ref="institution"
                         id="institution"
                         aria-label="institution"
                         placeholder="Organization or company you are affiliated with"
                       />
-                      <label for="education">
-                        Education <i className="text-muted">(Optional)</i>
+                      <label htmlFor="education">
+                        Training <i className="text-muted">(Optional)</i>
+                        <i
+                          className="fa fa-question-circle tooltip-btn"
+                          aria-hidden="true"
+                          data-toggle="tooltip"
+                          data-placement="right"
+                          title="What is your relevant training and/or experience? Have you spent time on the land? Have you taken part in a mentorship and/or completed a form of education?"
+                        ></i>
                       </label>
                       <input
                         type="text"
-                        className="form-control login-form"
+                        className="form-control login-form mb-3"
                         ref="education"
                         id="education"
                         aria-label="education"
@@ -335,34 +384,69 @@ class UserSignup extends React.Component {
                     </div>
                     No
                     <div className="form-group">
-                      <label for="position">
+                      <label htmlFor="position">
                         <span className="text-danger">*</span>Position
                       </label>
                       <input
                         type="text"
-                        className="form-control login-form"
+                        className="form-control login-form mb-3"
                         ref="position"
                         id="position"
                         aria-label="position"
                         required
                       />
-                      <label for="education">
-                        Institution <i className="text-muted">(Optional)</i>
+                      <label htmlFor="education">
+                        Affiliation <i className="text-muted">(Optional)</i>
                       </label>
                       <input
                         type="text"
-                        className="form-control login-form"
+                        className="form-control login-form mb-3"
                         ref="institution"
                         id="institution"
                         aria-label="institution"
                         placeholder="Organization or company you are affiliated with"
                       />
-                      <label for="education">
-                        Education <i className="text-muted">(Optional)</i>
+                      <label htmlFor="education">
+                        Training <i className="text-muted">(Optional)</i>
                       </label>
                       <input
                         type="text"
-                        className="form-control login-form"
+                        className="form-control login-form mb-3"
+                        ref="education"
+                        id="education"
+                        aria-label="education"
+                      />
+                    </div>
+                    Prefer not to say
+                    <div className="form-group">
+                      <label htmlFor="position">
+                        <span className="text-danger">*</span>Position
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form mb-3"
+                        ref="position"
+                        id="position"
+                        aria-label="position"
+                        required
+                      />
+                      <label htmlFor="education">
+                        Affiliation <i className="text-muted">(Optional)</i>
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form mb-3"
+                        ref="institution"
+                        id="institution"
+                        aria-label="institution"
+                        placeholder="Organization or company you are affiliated with"
+                      />
+                      <label htmlFor="education">
+                        Training <i className="text-muted">(Optional)</i>
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form mb-3"
                         ref="education"
                         id="education"
                         aria-label="education"
@@ -373,7 +457,7 @@ class UserSignup extends React.Component {
                 <div className="form-check">
                   <label
                     className="form-check-label signup-check"
-                    for="contactOption"
+                    htmlFor="contactOption"
                   >
                     <small>
                       By clicking agree and join, you agree to the VPIA{" "}
@@ -413,7 +497,7 @@ class UserSignup extends React.Component {
                   aria-label="Go to home page"
                   className="none-deco"
                 >
-                  <p class="font-italic text-sm-left return-text">
+                  <p className="font-italic text-sm-left return-text">
                     Return to homepage
                   </p>
                 </Link>
