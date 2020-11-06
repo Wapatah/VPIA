@@ -101,6 +101,11 @@ h1.welcome-message {
   text-align: left;
   font-size: 40px;
 }
+h1.find-account-message {
+  padding-bottom: 5%;
+  text-align: left;
+  font-size: 35px;
+}
 .login-form {
   background-color: white;
   border: 2px solid #75777b;
