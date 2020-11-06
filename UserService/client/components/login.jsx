@@ -154,7 +154,7 @@ class Login extends React.Component {
                       </Link>
                     </button>
                     <Link
-                      to="password_reset"
+                      to="/forgot_password"
                       aria-label="Go to home page"
                       className="none-deco"
                     >
