@@ -23,6 +23,7 @@ import Setup from "../../../UserService/client/components/setup.jsx";
 import EditUser from "../../../UserService/client/components/edit_users.jsx";
 import UserSignup from "../../../UserService/client/components/user_signup.jsx";
 import ForgotPassword from "../../../UserService/client/components/forgot_password.jsx";
+import Welcome from "../../../UserService/client/components/welcome.jsx";
 import Landing from "./main/landing.jsx";
 import About from "./main/about.jsx";
 import Results from "../../../SearchService/client/components/results.jsx";
@@ -53,6 +54,7 @@ export default function() {
       <Route path="setup" component={Setup} />
       <Route path="user_signup" component={UserSignup} />
       <Route path="forgot_password" component={ForgotPassword} />
+      <Route path="welcome" component={Welcome} />
     </Switch>
   );
 }
