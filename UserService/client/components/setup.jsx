@@ -4,6 +4,7 @@
 import React from "react";
 import { hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+import IntroCarousel from "./intro_carousel.jsx";
 
 class Setup extends React.Component {
   constructor(props) {
@@ -60,15 +61,19 @@ class Setup extends React.Component {
       <div className="fullpage container-fluid">
         <StatusAlert />
         <div className="full-page row">
-          <div className="col-lg-4 left-panel">
+          <div className="col-lg-8 BGimage image-fade">
+            <div className="image-tint-dark"></div>
+            <IntroCarousel />
+          </div>
+          <div className="col-lg-4 right-panel">
             <img
-              src="../assets/images/logo-white.png"
-              width="auto"
-              height="250px"
+              src="../assets/images/logo.png"
+              width="124px"
+              height="auto"
               alt="VPIA logo"
               aria-label="VPIA logo"
             />
-            <div className="setup-form container">
+            <div className="setup-form container login-box row">
               <div className="col-md-12 col-sm-12">
                 <form>
                   <div className="col-sm-12 form-group">
@@ -110,7 +115,7 @@ class Setup extends React.Component {
                   <div className="col-sm-12 form-group">
                     <button
                       onClick={this.handleSignUp}
-                      className="btn btn-outline-light btn-block"
+                      className="btn btn-primary btn-block mt-5"
                     >
                       Setup My Admin Account
                     </button>
@@ -118,16 +123,6 @@ class Setup extends React.Component {
                 </form>
               </div>
             </div>
-          </div>
-          <div className="col-lg-8 BGimage image-fade">
-            <img
-              src="../assets/images/logo.png"
-              width="auto"
-              height="400px"
-              alt="VPIA logo"
-              aria-label="VPIA logo"
-              id="logo-bottom-right"
-            />
           </div>
         </div>
       </div>
