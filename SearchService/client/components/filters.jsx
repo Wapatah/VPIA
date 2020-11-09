@@ -114,14 +114,14 @@ class Filters extends React.Component {
                 className="dropdown-item"
                 onClick={this.handleChange}
               >
-                <h4
+                <p
                   key={cultureGroup}
                   id={cultureGroup}
-                  className="d-inline"
+                  className="d-inline filters pr-2"
                   dangerouslySetInnerHTML={{
                     __html: cultureGroup
                   }}
-                ></h4>
+                ></p>
                 <span className="d-inline badge badge-primary badge-pill">
                   {cultureGroupCount[i]}
                 </span>
@@ -145,13 +145,13 @@ class Filters extends React.Component {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredArtworkType.map((artworkType, i) => (
               <button key={artworkType} type="button" className="dropdown-item">
-                <h4
+                <p
                   key={artworkType}
-                  className="d-inline"
+                  className="d-inline filters pr-2"
                   dangerouslySetInnerHTML={{
                     __html: artworkType
                   }}
-                ></h4>
+                ></p>
                 <span className="d-inline badge badge-primary badge-pill">
                   {artworkTypeCount[i]}
                 </span>
@@ -175,13 +175,13 @@ class Filters extends React.Component {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredMaterial.map((material, i) => (
               <button key={material} type="button" className="dropdown-item">
-                <h4
+                <p
                   key={material}
-                  className="d-inline"
+                  className="d-inline filters pr-2"
                   dangerouslySetInnerHTML={{
                     __html: material
                   }}
-                ></h4>
+                ></p>
                 <span className="d-inline badge badge-primary badge-pill">
                   {materialCount[i]}
                 </span>
@@ -205,13 +205,13 @@ class Filters extends React.Component {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredInstitution.map((institution, i) => (
               <button key={institution} type="button" className="dropdown-item">
-                <h4
+                <p
                   key={institution}
-                  className="d-inline"
+                  className="d-inline filters pr-2"
                   dangerouslySetInnerHTML={{
                     __html: institution
                   }}
-                ></h4>
+                ></p>
                 <span className="d-inline badge badge-primary badge-pill">
                   {institutionCount[i]}
                 </span>

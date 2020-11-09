@@ -34,8 +34,8 @@ class Results extends React.Component {
         <div className="content-container">
           <div className="row">
             <div className="left-side col-lg-3">
-              <p className="text-right">Filter by</p>
               <div className="col-lg-6 float-right">
+                <p>Filter by</p>
                 <Filters articleChange={this.handleUpdate} />
               </div>
             </div>

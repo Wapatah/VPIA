@@ -157,7 +157,18 @@ select {
 .my-card-img-top.results img {
   height: 10vw;
 }
-
+.badge-primary {
+  color: #343638;
+}
+.badge-primary {
+  background-color: white;
+}
+.badge-pill {
+  border: 1px solid #343638;
+}
+p.filters {
+  font-family: "FuturaStdLight";
+}
 @media (min-width: 768px) {
   .left-side.col-md-1 {
     max-width: none;
