@@ -27,6 +27,7 @@ const WIKI_SERVICE = path.resolve(
 module.exports = {
   mode: "production",
   entry: [
+    "babel-polyfill", //Polyfill enables use of ES6 (such as async) in all browsers
     "whatwg-fetch",
     // Entry point
     APP_DIR + "/index.jsx"

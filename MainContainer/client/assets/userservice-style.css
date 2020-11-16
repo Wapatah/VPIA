@@ -259,3 +259,43 @@ a.none-deco {
     width: 1170px;
   }
 }
+
+/* user_profile.jsx CSS */
+.profile {
+  padding-top: 5%; 
+  padding-bottom: 5%
+}
+
+.profile__header{
+  text-align: center;
+  color: #53555A
+}
+
+.profile__header--title{
+  color: #1F8475
+}
+
+.profile__body{
+  font-family: "FuturaStdMedium"; 
+  text-align: left;
+  color: #0D1319;
+  padding-top: 1rem
+}
+
+.profile__body--list{
+  list-style-type: none;
+  padding: 0px
+}
+
+.profile__about{
+  padding-top: 1rem
+}
+
+.profile__about--title{
+  color: #1F8475
+}
+
+.profile__about--body{
+  color: #202124; 
+  font-family: "FuturaStdMedium"
+}
