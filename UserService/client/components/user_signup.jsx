@@ -28,7 +28,6 @@ class UserSignup extends React.Component {
   handleSignUp() {
     let user = {
       name: encodeURIComponent(this.refs.user_name.value),
-      about: encodeURIComponent(this.refs.user_about.value),
       email: encodeURIComponent(this.refs.user_email.value),
       password: encodeURIComponent(this.refs.user_password.value)
     };
@@ -43,8 +42,6 @@ class UserSignup extends React.Component {
       body:
         "name=" +
         user.name +
-        "&about=" +
-        user.about +
         "&email=" +
         user.email +
         "&password=" +
@@ -107,7 +104,6 @@ class UserSignup extends React.Component {
             <div className="image-tint-dark"></div>
             <IntroCarousel />
           </div>
-
           <div className="col-lg-4 right-panel">
             <img
               src="../assets/images/logo.png"
@@ -369,11 +365,11 @@ class UserSignup extends React.Component {
                   >
                     Agree & Join
                   </button>
-                  <button className="btn btn-outline-secondary btn-block join-btn">
-                    <Link to="login" className="none-deco">
+                  <Link to="login" className="none-deco">
+                    <button className="btn btn-outline-secondary btn-block join-btn">
                       Already on VPIA? Sign In
-                    </Link>
-                  </button>
+                    </button>
+                  </Link>
                 </div>
                 <Link
                   to="landing"

@@ -145,14 +145,14 @@ class Login extends React.Component {
                     >
                       Sign in
                     </button>
-                    <button
-                      type="button"
-                      className="btn btn-outline-secondary btn-block join-btn"
-                    >
-                      <Link to="/user_signup" className="none-deco">
+                    <Link to="/user_signup" className="none-deco">
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary btn-block join-btn"
+                      >
                         New to VPIA? Join Now!
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
                     <Link
                       to="/forgot_password"
                       aria-label="Go to home page"
