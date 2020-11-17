@@ -104,26 +104,26 @@ class App extends React.Component {
               >
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item px-2">
-                    <button
-                      type="button"
-                      className="btn btn-outline-secondary btn-round join-btn"
-                      aria-label="Join now"
-                    >
-                      <Link to="user_signup" className="none-deco">
+                    <Link to="user_signup" className="none-deco">
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary btn-round join-btn"
+                        aria-label="Join now"
+                      >
                         Join
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
                   </li>
                   <li className="nav-item px-2">
-                    <button
-                      type="button"
-                      className="btn btn-primary btn-round sign-in-btn"
-                      aria-label="Sign in"
-                    >
-                      <Link to="login" className="btn-text">
+                    <Link to="login" className="btn-text">
+                      <button
+                        type="button"
+                        className="btn btn-primary btn-round sign-in-btn"
+                        aria-label="Sign in"
+                      >
                         Sign In
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -137,28 +137,28 @@ class App extends React.Component {
               <ul className="navbar-nav ml-auto">
                 {window.localStorage.getItem("admin") === "1" ? (
                   <li className="nav-item px-2">
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-round"
-                    >
-                      <Link to="admin" className="btn-text">
+                    <Link to="admin" className="btn-text">
+                      <button
+                        type="button"
+                        className="btn btn-secondary btn-round"
+                      >
                         Admin
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
                   </li>
                 ) : (
                   ""
                 )}
                 {window.localStorage.getItem("admin") === "1" ? (
                   <li className="nav-item px-2">
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-round"
-                    >
-                      <Link to="article/new" className="btn-text">
+                    <Link to="article/new" className="btn-text">
+                      <button
+                        type="button"
+                        className="btn btn-secondary btn-round"
+                      >
                         New Article
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
                   </li>
                 ) : (
                   ""
