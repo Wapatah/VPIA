@@ -55,7 +55,6 @@ module.exports = function isUserAuthenticated(req, res, next) {
           code: "B101",
           data: {}
         });
-        res.redirect("/");
       } else {
         // If everything is good, save to request for use in other routes
         req.decoded = decoded;
@@ -72,7 +71,6 @@ module.exports = function isUserAuthenticated(req, res, next) {
       code: "B102",
       data: {}
     });
-    res.redirect("/");
   }
 };
 
@@ -109,7 +107,6 @@ module.exports = function isAdminAuthenticated(req, res, next) {
             code: "BNOTADMIN",
             data: {}
           });
-          res.redirect("/");
         }
       }
     });
@@ -123,7 +120,6 @@ module.exports = function isAdminAuthenticated(req, res, next) {
       code: "B102",
       data: {}
     });
-    res.redirect("/");
   }
 };
 
