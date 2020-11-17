@@ -57,7 +57,7 @@ class App extends React.Component {
         <StatusAlert />
         <nav className="navbar navbar-expand-lg navbar-dark mainheader">
           <div
-            class="alert alert-secondary alert-dismissible fade show"
+            className="alert alert-secondary alert-dismissible fade show"
             role="alert"
           >
             This platform is currently an Alpha - meaning that the design and
@@ -66,7 +66,7 @@ class App extends React.Component {
             <a href="mailto:vpia@ocadu.ca">send us an email.</a>
             <button
               type="button"
-              class="close"
+              className="close"
               data-dismiss="alert"
               aria-label="Close"
             >
