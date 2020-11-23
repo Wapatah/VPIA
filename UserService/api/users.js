@@ -12,7 +12,11 @@ module.exports = app => {
   // GET /users - GET ALL endpoint that responds with the list of all the users in the users table
   app.get("/users", async (req, res) => {
     try {
-      const user = await Users.all({ where: {} });
+      const user = await Users.all({ 
+        // Fields only select the variables we want to look at.
+        fields: ["id", "name", "about", "group", "position", "education", "region", "location"],
+        where: {} 
+      });
       res.json({
         error: {
           error: false
@@ -34,6 +38,7 @@ module.exports = app => {
   app.get("/users/:id", async (req, res) => {
     try {
       const user = await Users.find({
+        fields: ["id", "name", "about", "group", "position", "education", "region", "location"],
         where: { id: req.params.id }
       });
       res.json({
