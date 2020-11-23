@@ -40,7 +40,7 @@ class Setup extends React.Component {
         user.password
     };
 
-    fetch("/setup", myInit)
+    fetch("http://localhost:32000/api/setup", myInit)
       .then(function(response) {
         return response.json();
       })
