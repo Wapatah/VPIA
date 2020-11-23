@@ -52,26 +52,26 @@ class UserProfile extends React.Component {
                     <h5 className="profile__header--title card-title">
                       {user.name}
                     </h5>
-                    <h6 className="card-subtitle mb-2">*user.headline*</h6>
+                    <h6 className="card-subtitle mb-2">{user.headline}</h6>
                   </div>
                   <div className="profile__body">
                     <p className="card-text">
                       <ul className="profile__body--list">
-                        <li>*user.group*</li>
+                        <li>{user.group}</li>
                         {user.position ? (
-                          <li> Position</li>
+                          <li> {user.position} </li>
                         ) : (
-                          <li> Position(Optional)</li>
+                          ""
                         )}
                         {user.education ? (
-                          <li> Education</li>
+                          <li> {user.education} </li>
                         ) : (
-                          <li> Education(optional)</li>
+                          ""
                         )}
                         {user.region && user.location ? (
-                          <li> Location</li>
+                          <li> {user.region}, {user.location}</li>
                         ) : (
-                          <li> Location(optional)</li>
+                          ""
                         )}
                       </ul>
                     </p>
