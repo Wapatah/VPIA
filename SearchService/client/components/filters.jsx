@@ -114,6 +114,10 @@ class Filters extends React.Component {
                 className="dropdown-item"
                 onClick={this.handleChange}
               >
+                <input
+                  type="checkbox"
+                  aria-label="Checkbox for culture group"
+                />
                 <p
                   key={cultureGroup}
                   id={cultureGroup}
@@ -145,6 +149,7 @@ class Filters extends React.Component {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredArtworkType.map((artworkType, i) => (
               <button key={artworkType} type="button" className="dropdown-item">
+                <input type="checkbox" aria-label="Checkbox for artwork type" />
                 <p
                   key={artworkType}
                   className="d-inline filters pr-2"
@@ -175,6 +180,7 @@ class Filters extends React.Component {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredMaterial.map((material, i) => (
               <button key={material} type="button" className="dropdown-item">
+                <input type="checkbox" aria-label="Checkbox for material" />
                 <p
                   key={material}
                   className="d-inline filters pr-2"
@@ -205,6 +211,7 @@ class Filters extends React.Component {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredInstitution.map((institution, i) => (
               <button key={institution} type="button" className="dropdown-item">
+                <input type="checkbox" aria-label="Checkbox for institution" />
                 <p
                   key={institution}
                   className="d-inline filters pr-2"
