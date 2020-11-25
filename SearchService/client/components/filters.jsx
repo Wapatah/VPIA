@@ -9,13 +9,10 @@ import { hashHistory } from "react-router";
 class Filters extends React.Component {
   constructor(props) {
     super(props);
-    this.articleSelect = this.articleSelect.bind(this);
     this.state = {
       articles: [],
-      material: "",
       loading: true
     };
-    this.handleChange = this.handleChange.bind(this);
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -40,20 +37,6 @@ class Filters extends React.Component {
         }
         that.setState({ loading: false });
       });
-  }
-
-  // --------------------------------------------------------------------------------------------------------------------------------------------
-  // Filter article based on selecting material
-  articleSelect(material, e) {
-    e.preventDefault();
-    this.props.articleChange(this.state.material);
-  }
-
-  handleChange(event) {
-    let str = JSON.stringify(event.currentTarget.id);
-    let newstr = str.replace(/(<p>|<\/p>)/g, "");
-    let results = "/search?query=" + newstr;
-    hashHistory.push(results);
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -112,12 +95,9 @@ class Filters extends React.Component {
                 key={cultureGroup}
                 type="button"
                 className="dropdown-item"
-                onClick={this.handleChange}
+                value={cultureGroup}
+                onClick={e => this.props.handleClick(e, cultureGroup)}
               >
-                <input
-                  type="checkbox"
-                  aria-label="Checkbox for culture group"
-                />
                 <p
                   key={cultureGroup}
                   id={cultureGroup}
