@@ -14,11 +14,10 @@ let User = schema.define("user", {
   about: { type: schema.String, limit: 255 },
   headline: { type: schema.String, limit: 255 },
   group: { type: schema.String, limit: 255 },
-  affiliated: { type: schema.Boolean },
   education: { type: schema.String, limit: 255 },
-  region: { type: schema.String, limit: 255 },
-  location: { type: schema.String, limit: 255 },
+  land: { type: schema.String, limit: 255 },
   position: { type: schema.String, limit: 255 },
+  organization: { type: schema.String, limit: 255 },
   created_at: { type: schema.Date, default: Date.now },
   updated_at: { type: schema.Date, default: Date.now }
 });

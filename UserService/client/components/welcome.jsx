@@ -47,7 +47,7 @@ class Welcome extends React.Component {
                 cupidatat non proident, sunt in culpa qui officia deserunt
                 mollit anim…
               </p>
-              <Link to="" className="none-deco">
+              <Link to="/user" className="none-deco">
                 <button
                   type="button"
                   className="btn btn-primary btn-block mt-5"
