@@ -68,8 +68,8 @@ class UserProfile extends React.Component {
                         ) : (
                           ""
                         )}
-                        {user.region && user.location ? (
-                          <li> {user.region}, {user.location}</li>
+                        {user.land ? (
+                          <li> {user.land} </li>
                         ) : (
                           ""
                         )}

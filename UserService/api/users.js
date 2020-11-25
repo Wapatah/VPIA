@@ -14,7 +14,7 @@ module.exports = app => {
     try {
       const user = await Users.all({ 
         // Fields only select the variables we want to look at.
-        fields: ["id", "name", "about", "group", "position", "education", "region", "location"],
+        fields: ["id", "name", "about", "group", "position", "education", "land"],
         where: {} 
       });
       res.json({
@@ -38,7 +38,7 @@ module.exports = app => {
   app.get("/users/:id", async (req, res) => {
     try {
       const user = await Users.find({
-        fields: ["id", "name", "about", "group", "position", "education", "region", "location"],
+        fields: ["id", "name", "about", "group", "position", "education", "land"],
         where: { id: req.params.id }
       });
       res.json({
@@ -69,7 +69,10 @@ module.exports = app => {
           name: req.body.name,
           email: req.body.email,
           password: hash,
-          about: req.body.about
+          group: req.body.group,
+          position: req.body.position,
+          organization: req.body.organization,
+          education: req.body.education,
         });
         res.json({
           error: {
