@@ -58,21 +58,9 @@ class UserProfile extends React.Component {
                     <p className="card-text">
                       <ul className="profile__body--list">
                         <li>{user.group}</li>
-                        {user.position ? (
-                          <li> {user.position} </li>
-                        ) : (
-                          ""
-                        )}
-                        {user.education ? (
-                          <li> {user.education} </li>
-                        ) : (
-                          ""
-                        )}
-                        {user.land ? (
-                          <li> {user.land} </li>
-                        ) : (
-                          ""
-                        )}
+                        {user.position ? <li> {user.position} </li> : ""}
+                        {user.education ? <li> {user.education} </li> : ""}
+                        {user.land ? <li> {user.land} </li> : ""}
                       </ul>
                     </p>
                   </div>

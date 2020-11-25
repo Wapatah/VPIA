@@ -163,16 +163,13 @@ class App extends React.Component {
                 ) : (
                   ""
                 )}
-                 <li className="nav-item px-2">
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-round"
-                    >
-                      <Link to="user" className="btn-text">
-                        User Profile
-                      </Link>
-                    </button>
-                  </li>
+                <li className="nav-item px-2">
+                  <button type="button" className="btn btn-secondary btn-round">
+                    <Link to="user" className="btn-text">
+                      User Profile
+                    </Link>
+                  </button>
+                </li>
                 <li className="nav-item px-2">
                   <button type="button" className="btn btn-secondary btn-round">
                     <a href="" className="btn-text" onClick={this.handleLogout}>
