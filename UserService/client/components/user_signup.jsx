@@ -21,7 +21,7 @@ class UserSignup extends React.Component {
       group: "",
       position: "",
       organization: "",
-      education: "",
+      education: ""
     };
 
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -36,48 +36,55 @@ class UserSignup extends React.Component {
       name: encodeURIComponent(this.refs.user_name.value),
       email: encodeURIComponent(this.refs.user_email.value),
       password: encodeURIComponent(this.refs.user_password.value),
-      position: (this.refs.position.value.trim().length !== 0 ? encodeURIComponent(this.refs.position.value) : "N/A"),
-      group: (typeof(this.refs.culture_group) !== "undefined" ? encodeURIComponent(this.refs.culture_group.value): "N/A"),
-      organization: (this.refs.institution.value.trim().length !== 0 ? encodeURIComponent(this.refs.institution.value) : "N/A"),
-      education: (this.refs.education.value.trim().length !== 0 ? encodeURIComponent(this.refs.education.value) : "N/A"),
+      position:
+        this.refs.position.value.trim().length !== 0
+          ? encodeURIComponent(this.refs.position.value)
+          : "N/A",
+      group:
+        typeof this.refs.culture_group !== "undefined"
+          ? encodeURIComponent(this.refs.culture_group.value)
+          : "N/A",
+      organization:
+        this.refs.institution.value.trim().length !== 0
+          ? encodeURIComponent(this.refs.institution.value)
+          : "N/A",
+      education:
+        this.refs.education.value.trim().length !== 0
+          ? encodeURIComponent(this.refs.education.value)
+          : "N/A"
     };
 
-    let myHeaders = new Headers({
+    let headers = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
 
-    let myInit = {
+    let request = {
       method: "POST",
-      headers: myHeaders,
+      headers: headers,
       body:
         "name=" +
         user.name +
         "&email=" +
         user.email +
         "&password=" +
-        user.password + 
+        user.password +
         "&position=" +
-        user.position + 
+        user.position +
         "&group=" +
-        user.group + 
+        user.group +
         "&organization=" +
-        user.organization + 
+        user.organization +
         "&education=" +
-        user.education 
+        user.education
     };
 
-    fetch("http://localhost:32000/api/users", myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-          StatusAlertService.showError(response.error.message);
-        } else {
-          hashHistory.push("login");
-          StatusAlertService.showSuccess("User generated");
-        }
-      });
+    try {
+      const res = await fetch("http://localhost:32000/api/users", request);
+      StatusAlertService.showSuccess("User Created Successfully!");
+      hashHistory.push("login");
+    } catch (err) {
+      StatusAlertService.showError(err);
+    }
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
