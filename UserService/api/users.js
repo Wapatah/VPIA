@@ -15,8 +15,10 @@ module.exports = app => {
       const user = await Users.all({
         // Fields only select the variables we want to look at.
         fields: [
+          "admin",
           "id",
           "name",
+          "email",
           "about",
           "group",
           "position",
@@ -47,8 +49,10 @@ module.exports = app => {
     try {
       const user = await Users.find({
         fields: [
+          "admin",
           "id",
           "name",
+          "email",
           "about",
           "group",
           "position",
