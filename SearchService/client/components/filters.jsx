@@ -95,8 +95,11 @@ class Filters extends React.Component {
                 key={cultureGroup}
                 type="button"
                 className="dropdown-item"
-                value={cultureGroup}
-                onClick={e => this.props.handleClick(e, cultureGroup)}
+                onClick={this.props.handleClick.bind(
+                  this,
+                  cultureGroup,
+                  "culture_group"
+                )}
               >
                 <p
                   key={cultureGroup}
@@ -128,7 +131,16 @@ class Filters extends React.Component {
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredArtworkType.map((artworkType, i) => (
-              <button key={artworkType} type="button" className="dropdown-item">
+              <button
+                key={artworkType}
+                type="button"
+                className="dropdown-item"
+                onClick={this.props.handleClick.bind(
+                  this,
+                  artworkType,
+                  "artwork_type"
+                )}
+              >
                 <input type="checkbox" aria-label="Checkbox for artwork type" />
                 <p
                   key={artworkType}
@@ -159,7 +171,16 @@ class Filters extends React.Component {
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredMaterial.map((material, i) => (
-              <button key={material} type="button" className="dropdown-item">
+              <button
+                key={material}
+                type="button"
+                className="dropdown-item"
+                onClick={this.props.handleClick.bind(
+                  this,
+                  material,
+                  "material"
+                )}
+              >
                 <input type="checkbox" aria-label="Checkbox for material" />
                 <p
                   key={material}
@@ -190,7 +211,16 @@ class Filters extends React.Component {
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {filteredInstitution.map((institution, i) => (
-              <button key={institution} type="button" className="dropdown-item">
+              <button
+                key={institution}
+                type="button"
+                className="dropdown-item"
+                onClick={this.props.handleClick.bind(
+                  this,
+                  institution,
+                  "institution"
+                )}
+              >
                 <input type="checkbox" aria-label="Checkbox for institution" />
                 <p
                   key={institution}
