@@ -6,6 +6,7 @@
 
 const webpack = require("webpack");
 const path = require("path");
+let MainContainer = require("./config.json");
 
 // @Matterwiki - TODO separate files for constants?
 const BUILD_DIR = path.resolve(__dirname, "../client/public");
@@ -32,7 +33,7 @@ module.exports = {
   entry: [
     // React HMR specific stuff
     "react-hot-loader/patch",
-    "webpack-hot-middleware/client?http://localhost:5000/",
+    `webpack-hot-middleware/client?${MainContainer.URL}`,
     "webpack/hot/dev-server",
 
     "whatwg-fetch",

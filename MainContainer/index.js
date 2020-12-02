@@ -13,11 +13,11 @@ let apiRoutes = express.Router();
 let apiRoutesAdmin = express.Router();
 let jwt = require("jsonwebtoken");
 require("dotenv").config();
+let MainContainer = require("./config/config.json");
 
 // Using gzip compression to speed up app performance
 app.use(compression());
 
-process.env.PORT = process.env.PORT || 30000;
 console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV !== "production") {
@@ -134,6 +134,6 @@ app.use("/api", apiRoutesAdmin);
 
 app.use(express.static(__dirname + "/client"));
 
-app.listen(process.env.PORT, function() {
-  console.log("VPIA running on http://localhost:" + process.env.PORT);
+app.listen(MainContainer.PORT, function() {
+  console.log(`VPIA running on ${MainContainer.URL}`);
 });
