@@ -5,6 +5,7 @@ import React from "react";
 import { Link, hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 import Loader from "./helpers/loader.jsx";
+import WikiService from "../../config/config.json";
 
 // Import TinyMCE
 import { Editor } from "@tinymce/tinymce-react";
@@ -135,7 +136,7 @@ class EditArticle extends React.Component {
 
       let that = this;
 
-      fetch("http://localhost:31000/api/archives/", myInit)
+      fetch(`${WikiService.HISTORYSERVICE}/api/archives/`, myInit)
         .then(function(response) {
           return response.json();
         })
