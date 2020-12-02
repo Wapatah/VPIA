@@ -161,12 +161,26 @@ select {
   color: #343638;
 }
 .badge-primary {
-  background-color: white;
+  background-color: transparent;
 }
 .badge-pill {
   border: 1px solid #343638;
 }
 p.filters {
+  font-family: "FuturaStdLight";
+}
+.dropdown.dropdown-filter {
+  border: 2px solid #d0cfcd;
+  border-radius: 6px;
+  background-color: white;
+}
+.dropdown.dropdown-filter.expanded {
+  background: #ebededb1;
+  border-radius: 0.25em;
+  padding: 0;
+  max-height: 15em;
+}
+label .filters {
   font-family: "FuturaStdLight";
 }
 @media (min-width: 768px) {

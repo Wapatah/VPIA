@@ -59,7 +59,7 @@ class Results extends React.Component {
   handleClick(val, type, event) {
     let filterOption = [];
     console.log(type);
-    console.log(val);
+
     switch (type) {
       case "culture_group":
         this.setState({ culture_group: val });
@@ -71,6 +71,18 @@ class Results extends React.Component {
         this.setState({ material: val });
         break;
       case "institution":
+        this.setState({ institution: val });
+        break;
+      case "allCultureGroup":
+        this.setState({ culture_group: val });
+        break;
+      case "allArtworkType":
+        this.setState({ artwork_type: val });
+        break;
+      case "allMaterial":
+        this.setState({ material: val });
+        break;
+      case "allInstitution":
         this.setState({ institution: val });
         break;
       default:
@@ -87,7 +99,9 @@ class Results extends React.Component {
       "culture_group",
       "artwork_type",
       "material",
-      "institution"
+      "institution",
+      "allCultureGroup",
+      "allArtworkType"
     ];
     filterProperties.forEach(function(filterBy) {
       var filterValue = state[filterBy];
@@ -99,7 +113,7 @@ class Results extends React.Component {
     });
 
     const renderAll = filteredItems.map(item => (
-      <div key={item.id} className="col-md-10">
+      <div key={item.id} className="col-md-10 col-sm-12">
         <div id="result" className="card card-block">
           <Link
             to={"/article/" + item.id}
@@ -114,12 +128,35 @@ class Results extends React.Component {
             </p>
             <div className="card-text">
               <small className="text-muted">
-                <p
+                <span
                   id="Baskerville"
+                  className="badge badge-pill badge-light"
                   dangerouslySetInnerHTML={{
                     __html: item.culture_group
                   }}
-                ></p>
+                ></span>
+                <span
+                  id="Baskerville"
+                  className="badge badge-pill badge-light"
+                  dangerouslySetInnerHTML={{
+                    __html: item.artwork_type
+                  }}
+                ></span>
+                <span
+                  id="Baskerville"
+                  className="badge badge-pill badge-light"
+                  dangerouslySetInnerHTML={{
+                    __html: item.material
+                  }}
+                ></span>
+                <span
+                  id="Baskerville"
+                  className="badge badge-pill badge-light"
+                  dangerouslySetInnerHTML={{
+                    __html: item.institution
+                  }}
+                ></span>
+
                 <p id="Baskerville">
                   {new Date(item.updated_at.replace(" ", "T")).toUTCString()}
                 </p>
@@ -141,7 +178,7 @@ class Results extends React.Component {
               <Filters handleClick={this.handleClick} />
             </div>
           </div>
-          <div className="col-md-8">{renderAll}</div>
+          <div className="col-lg-8 col-md-12 col-sm-12">{renderAll}</div>
         </div>
       </div>
     );
