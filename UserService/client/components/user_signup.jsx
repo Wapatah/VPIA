@@ -6,6 +6,7 @@ import { hashHistory, Link } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 import Tabs from "./tabs.jsx";
 import IntroCarousel from "./intro_carousel.jsx";
+import UserService from "../../config/config.json";
 
 const emailPattern = /\S+@\S+/;
 
@@ -79,7 +80,7 @@ class UserSignup extends React.Component {
     };
 
     try {
-      const res = await fetch("http://localhost:32000/api/users", request);
+      const res = await fetch(`${UserService.URL}/api/users`, request);
       StatusAlertService.showSuccess("User Created Successfully!");
       hashHistory.push("login");
     } catch (err) {

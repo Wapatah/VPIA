@@ -4,6 +4,7 @@
 import React from "react";
 import { StatusAlertService } from "react-status-alert";
 import Loader from "./helpers/loader.jsx";
+import UserService from "../../config/config.json";
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class UserProfile extends React.Component {
 
     try {
       const res = await fetch(
-        "http://localhost:32000/api/users/" +
+        `${UserService.URL}/api/users/` +
           window.localStorage.getItem("user_id"),
         request
       );

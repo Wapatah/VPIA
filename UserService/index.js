@@ -7,6 +7,7 @@ let db = require("./config/db");
 let cors = require("cors");
 let jwt = require("jsonwebtoken");
 require("dotenv").config();
+let UserService = require("./config/config.json"); // Import the URL location for the microservice from config file
 
 app.use(compression());
 app.use(cors());
@@ -52,8 +53,6 @@ module.exports = function isUserAuthenticated(req, res, next) {
   }
 };
 
-const PORT = 32000;
-
 // Importing all endpoints for user
 
 require("./api/authentication")(app);
@@ -64,6 +63,6 @@ app.use("/api", apiRoutes);
 
 app.use(express.static(__dirname + "/client"));
 
-app.listen(PORT, () => {
-  console.log("User microservice listening at http://localhost:" + PORT);
+app.listen(UserService.PORT, () => {
+  console.log(`User microservice listening at ${UserService.URL}`);
 });
