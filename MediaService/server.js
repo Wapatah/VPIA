@@ -3,15 +3,15 @@ const multer = require("multer");
 const upload = multer({ dest: __dirname + "/upload" });
 const path = require("path");
 let cors = require("cors");
+let MediaService = require("./config/config.json");
 
 const app = express();
-const PORT = 30500;
 
 app.use(cors());
 app.use(express.static("upload"));
 app.use(express.static(path.join(__dirname, "upload/img")));
 
-const url = `http://localhost:${PORT}/`;
+const url = `${MediaService.URL}/`;
 
 app.post("/upload", upload.any(), (req, res) => {
   if (req.files) {
@@ -21,6 +21,6 @@ app.post("/upload", upload.any(), (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log("Media microservice listening at http://localhost:" + PORT);
+app.listen(MediaService.PORT, () => {
+  console.log(`Media microservice listening at ${MediaService.URL}`);
 });
