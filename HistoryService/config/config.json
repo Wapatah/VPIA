@@ -1,0 +1,5 @@
+{
+  "URL": "http://localhost:31000",
+  "PORT": 31000,
+  "USERSERVICE": "http://localhost:32000"
+}

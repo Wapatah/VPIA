@@ -7,6 +7,7 @@ let db = require("./config/db");
 let cors = require("cors");
 let jwt = require("jsonwebtoken");
 require("dotenv").config();
+let HistoryService = require("./config/config.json");
 
 app.use(compression());
 app.use(cors());
@@ -54,14 +55,12 @@ module.exports = function isUserAuthenticated(req, res, next) {
   }
 };
 
-const PORT = 31000;
-
 // Importing all endpoints for archives
 require("./api/archives")(apiRoutes);
 app.use("/api", apiRoutes);
 
 app.use(express.static(__dirname + "/client"));
 
-app.listen(PORT, () => {
-  console.log("History microservice listening at http://localhost:" + PORT);
+app.listen(HistoryService.PORT, () => {
+  console.log(`History microservice listening at ${HistoryService.URL}`);
 });
