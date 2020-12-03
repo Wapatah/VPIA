@@ -7,6 +7,7 @@ import React from "react";
 import { Link } from "react-router";
 import Loader from "./helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+import UserService from "../../config/config.json";
 
 class Admin extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Admin extends React.Component {
     let myInit = { method: "GET", headers: myHeaders };
     let that = this;
 
-    fetch("/api/users", myInit)
+    fetch(`${UserService.URL}/api/users`, myInit)
       .then(function(response) {
         return response.json();
       })
@@ -77,7 +78,7 @@ class Admin extends React.Component {
 
     let that = this;
 
-    fetch("/api/users/", myInit)
+    fetch(`${UserService.URL}/api/users/`, myInit)
       .then(function(response) {
         return response.json();
       })
@@ -113,7 +114,7 @@ class Admin extends React.Component {
       let myInit = { method: "DELETE", headers: myHeaders, body: "id=" + id };
       let that = this;
 
-      fetch("/api/users/", myInit)
+      fetch(`${UserService.URL}/api/users/`, myInit)
         .then(function(response) {
           return response.json();
         })

@@ -6,6 +6,7 @@ import React from "react";
 import { Link, hashHistory } from "react-router";
 import Loader from "./helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+import WikiService from "../../config/config.json";
 
 class ViewArticle extends React.Component {
   constructor(props) {
@@ -47,7 +48,11 @@ class ViewArticle extends React.Component {
         let myInit = { method: "GET", headers: myHeaders };
         let that = this;
 
-        fetch("/api/users/" + that.state.article[0].user_id, myInit)
+        fetch(
+          `${WikiService.USERSERVICE}/api/users/` +
+            that.state.article[0].user_id,
+          myInit
+        )
           .then(function(response) {
             return response.json();
           })

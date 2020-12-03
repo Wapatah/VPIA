@@ -4,61 +4,103 @@
 import React from "react";
 import { hashHistory, Link } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+import Tabs from "./tabs.jsx";
+import IntroCarousel from "./intro_carousel.jsx";
+import UserService from "../../config/config.json";
+
+const emailPattern = /\S+@\S+/;
 
 class UserSignup extends React.Component {
   constructor(props) {
     super(props);
     this.handleSignUp = this.handleSignUp.bind(this);
     this.state = {
+      hidden: true,
       email: "",
-      password: ""
+      password: "",
+      name: "",
+      group: "",
+      position: "",
+      organization: "",
+      education: ""
     };
+
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.toggleShow = this.toggleShow.bind(this);
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Takes user input and sends a post request to the user api to create new user
-  handleSignUp() {
+  async handleSignUp() {
     let user = {
       name: encodeURIComponent(this.refs.user_name.value),
-      about: encodeURIComponent(this.refs.user_about.value),
       email: encodeURIComponent(this.refs.user_email.value),
-      password: encodeURIComponent(this.refs.user_password.value)
+      password: encodeURIComponent(this.refs.user_password.value),
+      position:
+        this.refs.position.value.trim().length !== 0
+          ? encodeURIComponent(this.refs.position.value)
+          : "N/A",
+      group:
+        typeof this.refs.culture_group !== "undefined"
+          ? encodeURIComponent(this.refs.culture_group.value)
+          : "N/A",
+      organization:
+        this.refs.institution.value.trim().length !== 0
+          ? encodeURIComponent(this.refs.institution.value)
+          : "N/A",
+      education:
+        this.refs.education.value.trim().length !== 0
+          ? encodeURIComponent(this.refs.education.value)
+          : "N/A"
     };
 
-    let myHeaders = new Headers({
+    let headers = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
 
-    let myInit = {
+    let request = {
       method: "POST",
-      headers: myHeaders,
+      headers: headers,
       body:
         "name=" +
         user.name +
-        "&about=" +
-        user.about +
         "&email=" +
         user.email +
         "&password=" +
-        user.password
+        user.password +
+        "&position=" +
+        user.position +
+        "&group=" +
+        user.group +
+        "&organization=" +
+        user.organization +
+        "&education=" +
+        user.education
     };
 
-    fetch("/users", myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-          StatusAlertService.showError(response.error.message);
-        } else {
-          hashHistory.push("login");
-          StatusAlertService.showSuccess("User generated");
-        }
-      });
+    try {
+      const res = await fetch(`${UserService.URL}/api/users`, request);
+      StatusAlertService.showSuccess("User Created Successfully!");
+      hashHistory.push("login");
+    } catch (err) {
+      StatusAlertService.showError(err);
+    }
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  //initiate tooltip in Bootstap
+  componentDidMount() {
+    $('[data-toggle="tooltip"]').tooltip();
+  }
+
+  componentDidUpdate() {
+    $('[data-toggle="tooltip"]').tooltip();
+  }
+
+  toggleShow() {
+    this.setState({ hidden: !this.state.hidden });
+  }
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Sets email variable
   handleEmailChange(event) {
@@ -75,7 +117,10 @@ class UserSignup extends React.Component {
   // Renders the sign up form
   render() {
     const { email, password } = this.state;
-    const isEnabled = email.length > 0 && password.length > 0;
+    const isEnabled =
+      email.length > 0 &&
+      emailPattern.test(this.state.email) &&
+      password.length > 0;
 
     return (
       <div className="fullpage container-fluid">
@@ -83,136 +128,8 @@ class UserSignup extends React.Component {
         <div className="row">
           <div className="col-lg-8 BGimage image-fade">
             <div className="image-tint-dark"></div>
-            <div
-              id="carouselExampleIndicators"
-              className="carousel about slide"
-              data-ride="carousel"
-            >
-              <div className="carousel-indicators">
-                <button
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="0"
-                  className="active btn btn-outline-light mx-2"
-                >
-                  About
-                </button>
-
-                <button
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="1"
-                  className="btn btn-outline-light mx-2"
-                >
-                  Community
-                </button>
-
-                <button
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="2"
-                  className="btn btn-outline-light mx-2"
-                >
-                  Benefits
-                </button>
-              </div>
-              <div className="carousel-inner user-service">
-                <div className="carousel-item active">
-                  <div className="header-container">
-                    <div className="header-item">
-                      <h1 className="signin-carousel text-uppercase">
-                        About
-                        <br />
-                        the VPIA
-                      </h1>
-                    </div>
-                    <div className="header-item">
-                      <img
-                        src="../assets/images/logo-white-notext.png"
-                        width="110px"
-                        height="auto"
-                        alt="VPIA logo"
-                        aria-label="VPIA logo"
-                        className="float-right"
-                      />
-                    </div>
-                  </div>
-                  <p className="signin-carousel">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aenean varius augue ut neque lacinia, a mattis lorem
-                    commodo. Suspendisse potenti. Proin ultricies diam et urna
-                    tincidunt tincidunt. Sed facilisis consectetur faucibus. In
-                    vitae dolor quis mi fringilla condimentum non ut nulla. Sed
-                    ornare erat diam, sed ultrices magna faucibus condimentum.
-                    Vivamus in ullamcorper quam. Integer vel dapibus nisl. Nam
-                    lacinia, neque vitae bibendum egestas.
-                  </p>
-                  <button className="btn btn-outline-light">Learn More</button>
-                </div>
-                <div className="carousel-item">
-                  <div className="header-container">
-                    <div className="header-item">
-                      <h1 className="signin-carousel text-uppercase">
-                        Community
-                        <br />
-                        of the VPIA
-                      </h1>
-                    </div>
-                    <div className="header-item">
-                      <img
-                        src="../assets/images/logo-white-notext.png"
-                        width="110px"
-                        height="auto"
-                        alt="VPIA logo"
-                        aria-label="VPIA logo"
-                        className="float-right"
-                      />
-                    </div>
-                  </div>
-                  <p className="signin-carousel">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aenean varius augue ut neque lacinia, a mattis lorem
-                    commodo. Suspendisse potenti. Proin ultricies diam et urna
-                    tincidunt tincidunt. Sed facilisis consectetur faucibus. In
-                    vitae dolor quis mi fringilla condimentum non ut nulla. Sed
-                    ornare erat diam, sed ultrices magna faucibus condimentum.
-                    Vivamus in ullamcorper quam. Integer vel dapibus nisl. Nam
-                    lacinia, neque vitae bibendum egestas.
-                  </p>
-                  <button className="btn btn-outline-light">Learn More</button>
-                </div>
-                <div className="carousel-item">
-                  <div className="header-container">
-                    <div className="header-item">
-                      <h1 className="signin-carousel text-uppercase">
-                        Benefits
-                        <br />
-                        of the VPIA
-                      </h1>
-                    </div>
-                    <div className="header-item">
-                      <img
-                        src="../assets/images/logo-white-notext.png"
-                        width="110px"
-                        height="auto"
-                        alt="VPIA logo"
-                        aria-label="VPIA logo"
-                        className="float-right"
-                      />
-                    </div>
-                  </div>
-                  <p className="signin-carousel">
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet</li>
-                      <li>Consectetur adipiscing elit</li>
-                      <li>Integer molestie lorem at massa</li>
-                      <li>Facilisis in pretium nisl aliquet</li>
-                      <li>Nulla volutpat aliquam velit</li>
-                    </ul>
-                  </p>
-                  <button className="btn btn-outline-light">Learn More</button>
-                </div>
-              </div>
-            </div>
+            <IntroCarousel />
           </div>
-
           <div className="col-lg-4 right-panel">
             <img
               src="../assets/images/logo.png"
@@ -222,125 +139,233 @@ class UserSignup extends React.Component {
               aria-label="VPIA logo"
             />
             <div className="container signup-box row">
-              <form className="col-sm-12">
-                <label for="inputName">Name</label>
-                <div className="form-group login-form">
+              <form className="col-sm-12 was-validated">
+                <label htmlFor="inputName">
+                  Preferred Name<span className="text-danger">*</span>
+                  <i
+                    className="fa fa-question-circle tooltip-btn"
+                    aria-hidden="true"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="First name & last name or preferred name"
+                  ></i>
+                </label>
+                <div className="form-group">
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control login-form"
+                    placeholder="First name & last name or preferred name"
                     ref="user_name"
                     id="inputName"
                     aria-label="name"
+                    required
                   />
+                  <div className="invalid-feedback">
+                    Please fill out this field.
+                  </div>
                 </div>
-                <label for="inputUserName">Username</label>
-                <div className="form-group login-form">
-                  <input
-                    type="text"
-                    className="form-control"
-                    ref="user_name"
-                    id="inputUserName"
-                    aria-label="user name"
-                  />
-                </div>
-                <label for="inputUserEmail">Email</label>
-                <div className="form-group input-group login-form">
+                <label htmlFor="inputUserEmail">
+                  Email <span className="text-danger">*</span>
+                </label>
+                <div className="form-group input-group">
                   <input
                     type="email"
-                    className="form-control"
+                    className="form-control login-form"
                     ref="user_email"
                     id="inputUserEmail"
                     value={this.state.email}
                     onChange={this.handleEmailChange}
+                    required
                   />
+                  <div className="invalid-feedback">
+                    A valid email address is required.
+                  </div>
                 </div>
-                <label for="inputUserPassword">New Password</label>
-                <div className="form-group input-group login-form">
+                <label htmlFor="inputUserPassword">
+                  New Password <span className="text-danger">*</span>
+                </label>
+                <div className="form-group input-group">
                   <input
                     type="password"
-                    className="form-control"
+                    className="form-control login-form"
                     ref="user_password"
                     id="inputUserPassword"
+                    type={this.state.hidden ? "password" : "text"}
                     value={this.state.password}
                     onChange={this.handlePasswordChange}
+                    required
                   />
+                  <div className="input-group-append">
+                    <button
+                      className="btn btn-outline-secondary append-light "
+                      aria-label="show password"
+                      onClick={this.toggleShow}
+                    >
+                      Show
+                    </button>
+                  </div>
+                  <div className="invalid-feedback">
+                    Please fill out this field.
+                  </div>
                 </div>
-                <label for="inputUserAffiliation">Affiliation</label>
-                <small
-                  id="AffliationHelp"
-                  class="form-text text-muted font-weight-light"
-                >
-                  Affiliation Example: community, organization, institution…
-                </small>
-                <div className="form-group input-group login-form">
-                  <input
-                    type="text"
-                    className="form-control"
-                    ref="user_affliation"
-                    id="inputUserAffiliation"
-                    aria-describedby="AffliationHelp"
-                  />
-                </div>
-                <label for="inputUserAbout">Bio Statement</label>
-                <div className="form-group input-group login-form">
-                  <input
-                    type="text"
-                    className="form-control"
-                    ref="user_about"
-                    id="inputUserAbout"
-                    aria-label="user about"
-                  />
-                </div>
-                <label for="inputUserExperience">Training and Experience</label>
-                <small
-                  id="ExperienceHelp"
-                  class="form-text text-muted font-weight-light"
-                >
-                  Help other users to understand where your comments are coming
-                  from
-                </small>
-                <div className="form-group input-group login-form">
-                  <input
-                    type="text"
-                    className="form-control"
-                    ref="user_experience"
-                    id="inputUserExperience"
-                    aria-label="training and experience"
-                    aria-describedby="ExperienceHelp"
-                  />
+              </form>
+              <form className="col-sm-12">
+                <div>
+                  <Tabs>
+                    Yes
+                    <div className="form-group">
+                      <div className="col-sm-11 float-right no-padding mb-3">
+                        <label htmlFor="culture_group">
+                          Please specify <span className="text-danger">*</span>{" "}
+                          <i
+                            className="fa fa-question-circle tooltip-btn"
+                            aria-hidden="true"
+                            data-toggle="tooltip"
+                            data-placement="right"
+                            title="Please share with us the name of your community, ffamily, and/or land."
+                          ></i>
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control login-form"
+                          ref="culture_group"
+                          id="culture_group"
+                          aria-label="culture_group"
+                          required
+                        />
+                      </div>
+                      <label htmlFor="position">
+                        Position <i className="text-muted">(Optional)</i>
+                        <i
+                          className="fa fa-question-circle tooltip-btn"
+                          aria-hidden="true"
+                          data-toggle="tooltip"
+                          data-placement="right"
+                          title="What is your most recent position and/or practice."
+                        ></i>
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form mb-3"
+                        ref="position"
+                        id="position"
+                        aria-label="position"
+                      />
+                      <label htmlFor="education">
+                        Affiliation <i className="text-muted">(Optional)</i>
+                        <i
+                          className="fa fa-question-circle tooltip-btn"
+                          aria-hidden="true"
+                          data-toggle="tooltip"
+                          data-placement="right"
+                          title="Please share with us the place of your most recent position"
+                        ></i>
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form mb-3"
+                        ref="institution"
+                        id="institution"
+                        aria-label="institution"
+                        placeholder="Organization or company you are affiliated with"
+                      />
+                      <label htmlFor="education">
+                        Training <i className="text-muted">(Optional)</i>
+                        <i
+                          className="fa fa-question-circle tooltip-btn"
+                          aria-hidden="true"
+                          data-toggle="tooltip"
+                          data-placement="right"
+                          title="What is your relevant training and/or experience? Have you spent time on the land? Have you taken part in a mentorship and/or completed a form of education?"
+                        ></i>
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form mb-3"
+                        ref="education"
+                        id="education"
+                        aria-label="education"
+                      />
+                    </div>
+                    No
+                    <div className="form-group">
+                      <label htmlFor="position">
+                        <span className="text-danger">*</span>Position
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form mb-3"
+                        ref="position"
+                        id="position"
+                        aria-label="position"
+                        required
+                      />
+                      <label htmlFor="education">
+                        Affiliation <i className="text-muted">(Optional)</i>
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form mb-3"
+                        ref="institution"
+                        id="institution"
+                        aria-label="institution"
+                        placeholder="Organization or company you are affiliated with"
+                      />
+                      <label htmlFor="education">
+                        Training <i className="text-muted">(Optional)</i>
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form mb-3"
+                        ref="education"
+                        id="education"
+                        aria-label="education"
+                      />
+                    </div>
+                    Prefer not to say
+                    <div className="form-group">
+                      <label htmlFor="position">
+                        <span className="text-danger">*</span>Position
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form mb-3"
+                        ref="position"
+                        id="position"
+                        aria-label="position"
+                        required
+                      />
+                      <label htmlFor="education">
+                        Affiliation <i className="text-muted">(Optional)</i>
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form mb-3"
+                        ref="institution"
+                        id="institution"
+                        aria-label="institution"
+                        placeholder="Organization or company you are affiliated with"
+                      />
+                      <label htmlFor="education">
+                        Training <i className="text-muted">(Optional)</i>
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control login-form mb-3"
+                        ref="education"
+                        id="education"
+                        aria-label="education"
+                      />
+                    </div>
+                  </Tabs>
                 </div>
                 <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    name="isChecked"
-                    id="contactOption"
-                    value=""
-                  />
                   <label
                     className="form-check-label signup-check"
-                    for="contactOption"
+                    htmlFor="contactOption"
                   >
                     <small>
-                      I want my email address and affiliation appear when I make
-                      edits so that others can contact me.
-                    </small>
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    name="isChecked"
-                    id="contactOption"
-                    value=""
-                  />
-                  <label
-                    className="form-check-label signup-check"
-                    for="contactOption"
-                  >
-                    <small>
-                      By checking this box you agree to the VPIA{" "}
+                      By clicking agree and join, you agree to the VPIA{" "}
                       <a
                         className="none-deco"
                         href="https://foundation.wikimedia.org/wiki/Terms_of_Use/en"
@@ -366,18 +391,18 @@ class UserSignup extends React.Component {
                   >
                     Agree & Join
                   </button>
-                  <button className="btn btn-outline-secondary btn-block join-btn">
-                    <Link to="login" className="none-deco">
+                  <Link to="login" className="none-deco">
+                    <button className="btn btn-outline-secondary btn-block join-btn">
                       Already on VPIA? Sign In
-                    </Link>
-                  </button>
+                    </button>
+                  </Link>
                 </div>
                 <Link
                   to="landing"
                   aria-label="Go to home page"
                   className="none-deco"
                 >
-                  <p class="font-italic text-sm-left return-text">
+                  <p className="font-italic text-sm-left return-text">
                     Return to homepage
                   </p>
                 </Link>

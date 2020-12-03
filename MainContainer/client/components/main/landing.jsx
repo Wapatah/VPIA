@@ -81,7 +81,7 @@ class Landing extends React.Component {
                     <h3 className="text-center">I'd like to...</h3>
                     <br />
                   </div>
-                  <div class="row row-centered">
+                  <div className="row row-centered">
                     <div className="col-sm">
                       <svg
                         width="50%"

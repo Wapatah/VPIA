@@ -4,6 +4,8 @@
 import React from "react";
 import { hashHistory, Link } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+import IntroCarousel from "./intro_carousel.jsx";
+import UserService from "../../config/config.json";
 
 class Login extends React.Component {
   constructor(props) {
@@ -48,7 +50,7 @@ class Login extends React.Component {
 
     let that = this;
 
-    fetch("/api/authenticate", myInit)
+    fetch(`${UserService.URL}/api/authenticate`, myInit)
       .then(function(response) {
         return response.json();
       })
@@ -59,8 +61,8 @@ class Login extends React.Component {
           window.localStorage.setItem("userToken", response.data.token);
           window.localStorage.setItem("admin", response.data.user.admin);
           window.localStorage.setItem("user_id", response.data.user.id);
-          window.localStorage.setItem("userEmail", response.data.user.token);
-          hashHistory.push("landing");
+          window.localStorage.setItem("userEmail", response.data.user.email);
+          hashHistory.push("welcome");
           StatusAlertService.showSuccess("You are now logged in");
         }
       });
@@ -89,132 +91,7 @@ class Login extends React.Component {
         <div className="full-page row">
           <div className="col-lg-8 BGimage image-fade">
             <div className="image-tint-dark"></div>
-            <div
-              id="carouselExampleIndicators"
-              className="carousel about slide"
-              data-ride="carousel"
-            >
-              <div className="carousel-indicators">
-                <button
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="0"
-                  className="active btn btn-outline-light mx-2"
-                >
-                  About
-                </button>
-
-                <button
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="1"
-                  className="btn btn-outline-light mx-2"
-                >
-                  Community
-                </button>
-
-                <button
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="2"
-                  className="btn btn-outline-light mx-2"
-                >
-                  Benefits
-                </button>
-              </div>
-              <div className="carousel-inner user-service">
-                <div className="carousel-item active">
-                  <div className="header-container">
-                    <div className="header-item">
-                      <h1 className="signin-carousel text-uppercase">
-                        About
-                        <br />
-                        the VPIA
-                      </h1>
-                    </div>
-                    <div className="header-item">
-                      <img
-                        src="../assets/images/logo-white-notext.png"
-                        width="110px"
-                        height="auto"
-                        alt="VPIA logo"
-                        aria-label="VPIA logo"
-                        className="float-right"
-                      />
-                    </div>
-                  </div>
-                  <p className="signin-carousel">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aenean varius augue ut neque lacinia, a mattis lorem
-                    commodo. Suspendisse potenti. Proin ultricies diam et urna
-                    tincidunt tincidunt. Sed facilisis consectetur faucibus. In
-                    vitae dolor quis mi fringilla condimentum non ut nulla. Sed
-                    ornare erat diam, sed ultrices magna faucibus condimentum.
-                    Vivamus in ullamcorper quam. Integer vel dapibus nisl.
-                  </p>
-                  <button className="btn btn-outline-light">Learn More</button>
-                </div>
-                <div className="carousel-item">
-                  <div className="header-container">
-                    <div className="header-item">
-                      <h1 className="signin-carousel text-uppercase">
-                        Community
-                        <br />
-                        of the VPIA
-                      </h1>
-                    </div>
-                    <div className="header-item">
-                      <img
-                        src="../assets/images/logo-white-notext.png"
-                        width="110px"
-                        height="auto"
-                        alt="VPIA logo"
-                        aria-label="VPIA logo"
-                        className="float-right"
-                      />
-                    </div>
-                  </div>
-                  <p className="signin-carousel">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aenean varius augue ut neque lacinia, a mattis lorem
-                    commodo. Suspendisse potenti. Proin ultricies diam et urna
-                    tincidunt tincidunt. Sed facilisis consectetur faucibus. In
-                    vitae dolor quis mi fringilla condimentum non ut nulla. Sed
-                    ornare erat diam, sed ultrices magna faucibus condimentum.
-                    Vivamus in ullamcorper quam. Integer vel dapibus nisl.
-                  </p>
-                  <button className="btn btn-outline-light">Learn More</button>
-                </div>
-                <div className="carousel-item">
-                  <div className="header-container">
-                    <div className="header-item">
-                      <h1 className="signin-carousel text-uppercase">
-                        Benefits
-                        <br />
-                        of the VPIA
-                      </h1>
-                    </div>
-                    <div className="header-item">
-                      <img
-                        src="../assets/images/logo-white-notext.png"
-                        width="110px"
-                        height="auto"
-                        alt="VPIA logo"
-                        aria-label="VPIA logo"
-                        className="float-right"
-                      />
-                    </div>
-                  </div>
-                  <p className="signin-carousel">
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet</li>
-                      <li>Consectetur adipiscing elit</li>
-                      <li>Integer molestie lorem at massa</li>
-                      <li>Facilisis in pretium nisl aliquet</li>
-                      <li>Nulla volutpat aliquam velit</li>
-                    </ul>
-                  </p>
-                  <button className="btn btn-outline-light">Learn More</button>
-                </div>
-              </div>
-            </div>
+            <IntroCarousel />
           </div>
           <div className="col-lg-4 right-panel">
             <img
@@ -269,21 +146,30 @@ class Login extends React.Component {
                     >
                       Sign in
                     </button>
-                    <button
-                      type="button"
-                      className="btn btn-outline-secondary btn-block join-btn"
-                    >
-                      <Link to="/user_signup" className="none-deco">
+                    <Link to="/user_signup" className="none-deco">
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary btn-block join-btn"
+                      >
                         New to VPIA? Join Now!
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
+                    <Link
+                      to="/forgot_password"
+                      aria-label="Go to home page"
+                      className="none-deco"
+                    >
+                      <p className="green-text mt-4 btn btn-light">
+                        Forgot Password?
+                      </p>
+                    </Link>
                   </div>
                   <Link
                     to="landing"
                     aria-label="Go to home page"
                     className="none-deco"
                   >
-                    <p class="font-italic text-sm-left return-text">
+                    <p className="font-italic text-sm-left return-text">
                       Return to homepage
                     </p>
                   </Link>

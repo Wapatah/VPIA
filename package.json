@@ -4,12 +4,13 @@
   "description": "Virtual Platform for Indigenous Art",
   "main": "./MainContainer/index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config ./MainContainer/config/webpack.config.prod.js --progress --profile --colors & cd ./HistoryService && npm run build",
-    "dev": "node ./MainContainer/index.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./MainContainer/config/webpack.config.prod.js --progress --profile --colors",
+    "dev": "node ./MainContainer/index.js & node ./HistoryService/index.js",
     "prep": "cd MediaService && npm i & cd HistoryService && npm i",
     "mediaservice": "cd MediaService && npm run start",
     "historyservice": "cd HistoryService && npm run start",
-    "start": "cross-env NODE_ENV=production node ./MainContainer/index.js && SET AUTOUPDATE=1 & npm run mediaservice & npm run historyservice",
+    "userservice": "cd UserService && npm run start",
+    "start": "cross-env NODE_ENV=production node ./MainContainer/index.js && SET AUTOUPDATE=1 & npm run mediaservice & npm run historyservice & npm run userservice",
     "prettier": "prettier --write \"**/*.{js,jsx}\" --ignore-path .gitignore",
     "lint": "eslint --config ./MainContainer/config/.eslintrc.js \"**/*.js\" --fix --ignore-path .gitignore"
   },
@@ -23,6 +24,7 @@
   "license": "(GPL-3.0 OR MIT)",
   "dependencies": {
     "@tinymce/tinymce-react": "^3.3.2",
+    "babel-polyfill": "^6.26.0",
     "bcryptjs": "2.4.0",
     "body-parser": "^1.19.0",
     "caminte": "^0.4.1",

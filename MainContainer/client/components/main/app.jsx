@@ -57,7 +57,7 @@ class App extends React.Component {
         <StatusAlert />
         <nav className="navbar navbar-expand-lg navbar-dark mainheader">
           <div
-            class="alert alert-secondary alert-dismissible fade show"
+            className="alert alert-secondary alert-dismissible fade show"
             role="alert"
           >
             This platform is currently an Alpha - meaning that the design and
@@ -66,7 +66,7 @@ class App extends React.Component {
             <a href="mailto:vpia@ocadu.ca">send us an email.</a>
             <button
               type="button"
-              class="close"
+              className="close"
               data-dismiss="alert"
               aria-label="Close"
             >
@@ -104,26 +104,26 @@ class App extends React.Component {
               >
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item px-2">
-                    <button
-                      type="button"
-                      className="btn btn-outline-secondary btn-round join-btn"
-                      aria-label="Join now"
-                    >
-                      <Link to="user_signup" className="none-deco">
+                    <Link to="user_signup" className="none-deco">
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary btn-round join-btn"
+                        aria-label="Join now"
+                      >
                         Join
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
                   </li>
                   <li className="nav-item px-2">
-                    <button
-                      type="button"
-                      className="btn btn-primary btn-round sign-in-btn"
-                      aria-label="Sign in"
-                    >
-                      <Link to="login" className="btn-text">
+                    <Link to="login" className="btn-text">
+                      <button
+                        type="button"
+                        className="btn btn-primary btn-round sign-in-btn"
+                        aria-label="Sign in"
+                      >
                         Sign In
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -137,32 +137,39 @@ class App extends React.Component {
               <ul className="navbar-nav ml-auto">
                 {window.localStorage.getItem("admin") === "1" ? (
                   <li className="nav-item px-2">
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-round"
-                    >
-                      <Link to="admin" className="btn-text">
+                    <Link to="admin" className="btn-text">
+                      <button
+                        type="button"
+                        className="btn btn-secondary btn-round"
+                      >
                         Admin
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
                   </li>
                 ) : (
                   ""
                 )}
                 {window.localStorage.getItem("admin") === "1" ? (
                   <li className="nav-item px-2">
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-round"
-                    >
-                      <Link to="article/new" className="btn-text">
+                    <Link to="article/new" className="btn-text">
+                      <button
+                        type="button"
+                        className="btn btn-secondary btn-round"
+                      >
                         New Article
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
                   </li>
                 ) : (
                   ""
                 )}
+                <li className="nav-item px-2">
+                  <button type="button" className="btn btn-secondary btn-round">
+                    <Link to="user" className="btn-text">
+                      User Profile
+                    </Link>
+                  </button>
+                </li>
                 <li className="nav-item px-2">
                   <button type="button" className="btn btn-secondary btn-round">
                     <a href="" className="btn-text" onClick={this.handleLogout}>

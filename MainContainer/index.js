@@ -13,11 +13,11 @@ let apiRoutes = express.Router();
 let apiRoutesAdmin = express.Router();
 let jwt = require("jsonwebtoken");
 require("dotenv").config();
+let MainContainer = require("./config/config.json");
 
 // Using gzip compression to speed up app performance
 app.use(compression());
 
-process.env.PORT = process.env.PORT || 30000;
 console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV !== "production") {
@@ -35,15 +35,6 @@ app.get("/api", function(req, res) {
   // Should change this into a nice display
   res.send("List of API endpoints");
 });
-
-// Importing all endpoints for authentication
-require("../UserService/api/authentication")(app);
-
-// Importing the setup endpoint
-require("../UserService/api/setup")(app);
-
-// Importing the users endpoint for sign up capabilties.
-require("../UserService/api/users")(app);
 
 // Limit the ability of non-users to access API routes.
 module.exports = function isUserAuthenticated(req, res, next) {
@@ -64,7 +55,6 @@ module.exports = function isUserAuthenticated(req, res, next) {
           code: "B101",
           data: {}
         });
-        res.redirect("/");
       } else {
         // If everything is good, save to request for use in other routes
         req.decoded = decoded;
@@ -81,7 +71,6 @@ module.exports = function isUserAuthenticated(req, res, next) {
       code: "B102",
       data: {}
     });
-    res.redirect("/");
   }
 };
 
@@ -118,7 +107,6 @@ module.exports = function isAdminAuthenticated(req, res, next) {
             code: "BNOTADMIN",
             data: {}
           });
-          res.redirect("/");
         }
       }
     });
@@ -132,15 +120,11 @@ module.exports = function isAdminAuthenticated(req, res, next) {
       code: "B102",
       data: {}
     });
-    res.redirect("/");
   }
 };
 
 // Importing all endpoints for articles
 require("../WikiService/api/articles")(apiRoutes);
-
-// Importing all endpoints for users
-require("../UserService/api/users")(apiRoutesAdmin);
 
 // Importing the search endpoint
 require("../SearchService/api/search")(apiRoutes);
@@ -150,6 +134,6 @@ app.use("/api", apiRoutesAdmin);
 
 app.use(express.static(__dirname + "/client"));
 
-app.listen(process.env.PORT, function() {
-  console.log("VPIA running on http://localhost:" + process.env.PORT);
+app.listen(MainContainer.PORT, function() {
+  console.log(`VPIA running on ${MainContainer.URL}`);
 });

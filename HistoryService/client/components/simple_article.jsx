@@ -5,6 +5,7 @@ import React from "react";
 import { Link } from "react-router";
 import Loader from "./helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+import HistoryService from "../../config/config.json";
 
 class SimpleArticle extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class SimpleArticle extends React.Component {
     let myInit = { method: "GET", headers: myHeaders };
     let that = this;
 
-    fetch("http://localhost:31000/api/archives/" + nextProps.archiveId, myInit)
+    fetch(`${HistoryService.URL}/api/archives/` + nextProps.archiveId, myInit)
       .then(function(response) {
         return response.json();
       })
@@ -42,7 +43,11 @@ class SimpleArticle extends React.Component {
         let myInit = { method: "GET", headers: myHeaders };
         let that = this;
 
-        fetch("/api/users/" + that.state.article[0].user_id, myInit)
+        fetch(
+          `${HistoryService.USERSERVICE}/api/users/` +
+            that.state.article[0].user_id,
+          myInit
+        )
           .then(function(response) {
             return response.json();
           })

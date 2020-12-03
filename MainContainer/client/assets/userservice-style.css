@@ -101,6 +101,14 @@ h1.welcome-message {
   text-align: left;
   font-size: 40px;
 }
+h1.find-account-message {
+  padding-bottom: 5%;
+  text-align: left;
+  font-size: 35px;
+}
+p.welcome {
+  font-family: "FuturaStdLight";
+}
 .login-form {
   background-color: white;
   border: 2px solid #75777b;
@@ -121,6 +129,13 @@ select {
   font-size: 0.8rem;
   color: #75777b;
 }
+.green-text {
+  color: #1f8475;
+}
+.green-text.btn-light {
+  background-color: white;
+  border-color: white;
+}
 h1.signin-carousel {
   color: white;
   font-size: 4em;
@@ -137,6 +152,9 @@ p.signin-carousel {
   padding-bottom: 5%;
   font-size: 1.5rem;
 }
+.help-text {
+  font-family: "FuturaStdLight";
+}
 .btn-outline-light {
   border-radius: 20px;
   width: 169px;
@@ -145,6 +163,17 @@ p.signin-carousel {
 .btn-outline-light:not(:disabled):not(.disabled).active {
   background-color: #ffb600;
   border-color: #ffb600;
+}
+.btn-outline-secondary:not(:disabled):not(.disabled).active {
+  background-color: #ffb600;
+  border-color: #ffb600;
+}
+.affiliation-btn.btn-outline-secondary {
+  border: 3px solid #707070;
+  margin-left: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-radius: 20px;
 }
 .btn-primary:disabled {
   background-color: grey;
@@ -183,6 +212,27 @@ a.none-deco {
   color: #343638;
   padding: 5px 30px;
 }
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  background-image: none;
+}
+.form-control.is-valid,
+.was-validated .form-control:valid {
+  border-color: #408275;
+}
+.form-control.is-valid:focus,
+.was-validated .form-control:valid:focus {
+  border-color: #408275;
+}
+.tooltip-btn {
+  cursor: help;
+}
+.tooltip-btn.fa:hover {
+  color: #1f8475;
+}
+.no-padding.col-sm-11 {
+  padding-right: 0;
+}
 @media (min-width: 767px) {
   /* .BGimage::before {
     width: 0;
@@ -208,4 +258,44 @@ a.none-deco {
   .modal-fullscreen .modal-dialog {
     width: 1170px;
   }
+}
+
+/* user_profile.jsx CSS */
+.profile {
+  padding-top: 5%; 
+  padding-bottom: 5%
+}
+
+.profile__header{
+  text-align: center;
+  color: #53555A
+}
+
+.profile__header--title{
+  color: #1F8475
+}
+
+.profile__body{
+  font-family: "FuturaStdMedium"; 
+  text-align: left;
+  color: #0D1319;
+  padding-top: 1rem
+}
+
+.profile__body--list{
+  list-style-type: none;
+  padding: 0px
+}
+
+.profile__about{
+  padding-top: 1rem
+}
+
+.profile__about--title{
+  color: #1F8475
+}
+
+.profile__about--body{
+  color: #202124; 
+  font-family: "FuturaStdMedium"
 }

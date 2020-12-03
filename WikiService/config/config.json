@@ -1,0 +1,4 @@
+{
+  "USERSERVICE": "http://localhost:32000",
+  "HISTORYSERVICE": "http://localhost:31000"
+}
