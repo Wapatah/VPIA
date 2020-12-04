@@ -18,7 +18,6 @@ class Results extends React.Component {
       artwork_type: "",
       institution: "",
       material: "",
-
       url: "/api/articles",
       loading: true
     };
@@ -114,53 +113,60 @@ class Results extends React.Component {
 
     const renderAll = filteredItems.map(item => (
       <div key={item.id} className="col-md-10 col-sm-12">
-        <div id="result" className="card card-block">
-          <Link
-            to={"/article/" + item.id}
-            className="my-card-img-top results"
-            dangerouslySetInnerHTML={{ __html: item.photo }}
-          ></Link>
-          <div className="card-body">
-            <p className="article-title">
-              <Link to={"/article/" + item.id} className="text-dark">
-                {item.title}
+        <div id="result" className="card">
+          <div className="row no-gutters">
+            <div className="col-md-4">
+              <Link
+                to={"/article/" + item.id}
+                className="card-img my-card-img-top"
+                dangerouslySetInnerHTML={{ __html: item.photo }}
+              ></Link>
+            </div>
+            <div className="col-md-8">
+              <Link to={"/article/" + item.id}>
+                <button className="btn btn-round btn-default btn-outline-default m-3 float-right">
+                  Learn more
+                </button>
               </Link>
-            </p>
-            <div className="card-text">
-              <small className="text-muted">
-                <span
-                  id="Baskerville"
-                  className="badge badge-pill badge-light"
-                  dangerouslySetInnerHTML={{
-                    __html: item.culture_group
-                  }}
-                ></span>
-                <span
-                  id="Baskerville"
-                  className="badge badge-pill badge-light"
-                  dangerouslySetInnerHTML={{
-                    __html: item.artwork_type
-                  }}
-                ></span>
-                <span
-                  id="Baskerville"
-                  className="badge badge-pill badge-light"
-                  dangerouslySetInnerHTML={{
-                    __html: item.material
-                  }}
-                ></span>
-                <span
-                  id="Baskerville"
-                  className="badge badge-pill badge-light"
-                  dangerouslySetInnerHTML={{
-                    __html: item.institution
-                  }}
-                ></span>
-
-                <p id="Baskerville">
-                  {new Date(item.updated_at.replace(" ", "T")).toUTCString()}
+              <div className="card-body">
+                <p className="card-title article-title results">
+                  <Link to={"/article/" + item.id} className="results">
+                    {item.title}
+                  </Link>
                 </p>
-              </small>
+                <p
+                  className="card-text results"
+                  dangerouslySetInnerHTML={{
+                    __html: item.body
+                  }}
+                ></p>
+                <div className="card-text">
+                  <span
+                    className="badge badge-pill badge-custom  mr-1"
+                    dangerouslySetInnerHTML={{
+                      __html: item.culture_group
+                    }}
+                  ></span>
+                  <span
+                    className="badge badge-pill badge-custom  mr-1"
+                    dangerouslySetInnerHTML={{
+                      __html: item.artwork_type
+                    }}
+                  ></span>
+                  <span
+                    className="badge badge-pill badge-custom  mr-1"
+                    dangerouslySetInnerHTML={{
+                      __html: item.material
+                    }}
+                  ></span>
+                  <span
+                    className="badge badge-pill badge-custom mr-1"
+                    dangerouslySetInnerHTML={{
+                      __html: item.institution
+                    }}
+                  ></span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

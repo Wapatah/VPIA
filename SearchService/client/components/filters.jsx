@@ -17,6 +17,8 @@ class Filters extends React.Component {
     };
   }
 
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // This function add active class to the filter
   addActiveClass(index) {
     const activeClasses = [
       ...this.state.activeClasses.slice(0, index),
