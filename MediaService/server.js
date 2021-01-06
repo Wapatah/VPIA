@@ -4,6 +4,13 @@ const upload = multer({ dest: __dirname + "/upload" });
 const path = require("path");
 let cors = require("cors");
 let MediaService = require("./config/config.json");
+const https = require("https");
+const fs = require("fs");
+
+const httpsOptions = {
+  cert: fs.readFileSync("/etc/letsencrypt/live/vpia.wapatah.com/fullchain.pem"),
+  key: fs.readFileSync("/etc/letsencrypt/live/vpia.wapatah.com/privkey.pem")
+}
 
 const app = express();
 
@@ -21,6 +28,6 @@ app.post("/upload", upload.any(), (req, res) => {
   }
 });
 
-app.listen(MediaService.PORT, () => {
+https.createServer(httpsOptions, app).listen(MediaService.PORT, () => {
   console.log(`Media microservice listening at ${MediaService.URL}`);
 });

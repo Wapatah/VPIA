@@ -11,10 +11,10 @@ const caminte = require("caminte");
 const Schema = caminte.Schema;
 
 const config = {
-  driver: "mysql",
+  driver: "mariadb",
   host: "localhost",
-  username: "wapataho_vpia",
-  password: "Wapatah1",
+  username: "root",
+  password: "wapatahartworkland",
   database: "wapataho_vpia",
   pool: true
 };

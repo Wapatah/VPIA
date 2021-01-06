@@ -8,6 +8,13 @@ let cors = require("cors");
 let jwt = require("jsonwebtoken");
 require("dotenv").config();
 let UserService = require("./config/config.json"); // Import the URL location for the microservice from config file
+const https = require("https");
+const fs = require("fs");
+
+const httpsOptions = {
+  cert: fs.readFileSync("/etc/letsencrypt/live/vpia.wapatah.com/fullchain.pem"),
+  key: fs.readFileSync("/etc/letsencrypt/live/vpia.wapatah.com/privkey.pem")
+}
 
 app.use(compression());
 app.use(cors());
@@ -63,6 +70,6 @@ app.use("/api", apiRoutes);
 
 app.use(express.static(__dirname + "/client"));
 
-app.listen(UserService.PORT, () => {
+https.createServer(httpsOptions, app).listen(UserService.PORT, () => {
   console.log(`User microservice listening at ${UserService.URL}`);
 });
