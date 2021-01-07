@@ -8,9 +8,9 @@ let cors = require("cors");
 let jwt = require("jsonwebtoken");
 require("dotenv").config();
 let HistoryService = require("./config/config.json");
+
 const https = require("https");
 const fs = require("fs");
-
 const httpsOptions = {
   cert: fs.readFileSync("/etc/letsencrypt/live/vpia.wapatah.com/fullchain.pem"),
   key: fs.readFileSync("/etc/letsencrypt/live/vpia.wapatah.com/privkey.pem")
@@ -67,6 +67,7 @@ require("./api/archives")(apiRoutes);
 app.use("/api", apiRoutes);
 
 app.use(express.static(__dirname + "/client"));
+
 
 https.createServer(httpsOptions, app).listen(HistoryService.PORT, () => {
   console.log(`History microservice listening at ${HistoryService.URL}`);
