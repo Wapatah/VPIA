@@ -1,5 +1,5 @@
 {
-  "URL": "http://localhost:31000",
+  "URL": "https://vpia.wapatah.com:31000",
   "PORT": 31000,
-  "USERSERVICE": "http://localhost:32000"
+  "USERSERVICE": "https://vpia.wapatah.com:32000"
 }

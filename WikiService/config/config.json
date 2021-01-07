@@ -1,4 +1,4 @@
 {
-  "USERSERVICE": "http://localhost:32000",
-  "HISTORYSERVICE": "http://localhost:31000"
+  "USERSERVICE": "https://vpia.wapatah.com:32000",
+  "HISTORYSERVICE": "https://vpia.wapatah.com:31000"
 }
