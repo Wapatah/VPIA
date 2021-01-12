@@ -60,7 +60,7 @@ class App extends React.Component {
             className="alert alert-secondary alert-dismissible fade show"
             role="alert"
           >
-            This platform is currently an Alpha - meaning that the design and
+            Testing if Modified react is updated - meaning that the design and
             features are subject to change. If you identify any major bugs or
             would like to comment on the platform's functionality, please{" "}
             <a href="mailto:vpia@ocadu.ca">send us an email.</a>
