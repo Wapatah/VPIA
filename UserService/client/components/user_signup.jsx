@@ -197,7 +197,8 @@ class UserSignup extends React.Component {
                   />
                   <div className="input-group-append">
                     <button
-                      className="btn btn-outline-secondary append-light "
+                      className="btn btn-outline-secondary append-light"
+                      type="button"
                       aria-label="show password"
                       onClick={this.toggleShow}
                     >
