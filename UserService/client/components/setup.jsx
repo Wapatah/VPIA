@@ -5,7 +5,6 @@ import React from "react";
 import { hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 import IntroCarousel from "./intro_carousel.jsx";
-import UserService from "../../config/config.json";
 
 class Setup extends React.Component {
   constructor(props) {
@@ -41,7 +40,7 @@ class Setup extends React.Component {
         user.password
     };
 
-    fetch(`${UserService.URL}/api/setup`, myInit)
+    fetch(`${process.env.USERSERVICE}/api/setup`, myInit)
       .then(function(response) {
         return response.json();
       })

@@ -5,7 +5,6 @@
 import React from "react";
 import Loader from "./helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
-import HistoryService from "../../config/config.json";
 
 class BrowseArchives extends React.Component {
   constructor(props) {
@@ -25,7 +24,9 @@ class BrowseArchives extends React.Component {
     let myInit = { method: "GET", headers: myHeaders };
     let that = this;
     let url =
-      `${HistoryService.URL}/api/articles/` + this.props.articleId + "/history";
+      `${process.env.HISTORYSERVICE}/api/articles/` +
+      this.props.articleId +
+      "/history";
 
     fetch(url, myInit)
       .then(function(response) {

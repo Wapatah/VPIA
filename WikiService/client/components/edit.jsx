@@ -5,7 +5,6 @@ import React from "react";
 import { Link, hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 import Loader from "./helpers/loader.jsx";
-import WikiService from "../../config/config.json";
 
 // Import TinyMCE
 import { Editor } from "@tinymce/tinymce-react";
@@ -136,7 +135,7 @@ class EditArticle extends React.Component {
 
       let that = this;
 
-      fetch(`${WikiService.HISTORYSERVICE}/api/archives/`, myInit)
+      fetch(`${process.env.HISTORYSERVICE}/api/archives/`, myInit)
         .then(function(response) {
           return response.json();
         })
@@ -419,7 +418,7 @@ class EditArticle extends React.Component {
                         inline: true,
                         menubar: false,
                         automatic_uploads: true,
-                        images_upload_url: Config.imageUrl,
+                        images_upload_url: process.env.IMAGEUPLOAD,
                         plugins: Config.plugins,
                         toolbar: Config.toolbar,
                         quickbars_insert_toolbar: false,
