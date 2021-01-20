@@ -6,7 +6,6 @@ import { Link } from "react-router";
 import Loader from "./helpers/loader.jsx";
 import BrowseArchives from "./browse_archives.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
-import HistoryService from "../../config/config.json";
 
 class Institution extends React.Component {
   constructor(props) {
@@ -49,7 +48,7 @@ class Institution extends React.Component {
         let that = this;
 
         fetch(
-          `${HistoryService.USERSERVICE}/api/users/` +
+          `${process.env.USERSERVICE}/api/users/` +
             that.state.article[0].user_id,
           myInit
         )

@@ -4,6 +4,7 @@
 */
 const webpack = require("webpack"); // eslint-disable-line
 const path = require("path");
+const Dotenv = require("dotenv-webpack");
 
 const BUILD_DIR = path.resolve(__dirname, "../client/public");
 const APP_DIR = path.resolve(__dirname, "../client/components");
@@ -110,5 +111,11 @@ module.exports = {
       }
     ]
   },
-  plugins: []
+  plugins: [
+    new Dotenv({
+      safe: true, // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
+      allowEmptyValues: false,
+      systemvars: true
+    })
+  ]
 };

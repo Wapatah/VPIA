@@ -5,7 +5,6 @@ import React from "react";
 import { hashHistory, Link } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 import IntroCarousel from "./intro_carousel.jsx";
-import UserService from "../../config/config.json";
 
 class Login extends React.Component {
   constructor(props) {
@@ -50,7 +49,7 @@ class Login extends React.Component {
 
     let that = this;
 
-    fetch(`${UserService.URL}/api/authenticate`, myInit)
+    fetch(`${process.env.USERSERVICE}/api/authenticate`, myInit)
       .then(function(response) {
         return response.json();
       })

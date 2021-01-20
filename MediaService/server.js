@@ -3,7 +3,7 @@ const multer = require("multer");
 const upload = multer({ dest: __dirname + "/upload" });
 const path = require("path");
 let cors = require("cors");
-let MediaService = require("./config/config.json");
+require("dotenv").config({ path: "../.env" });
 
 const https = require("https");
 const fs = require("fs");
@@ -11,7 +11,7 @@ const fs = require("fs");
 const httpsOptions = {
   cert: fs.readFileSync("/etc/letsencrypt/live/vpia.wapatah.com/fullchain.pem"),
   key: fs.readFileSync("/etc/letsencrypt/live/vpia.wapatah.com/privkey.pem")
-}
+};
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use(cors());
 app.use(express.static("upload"));
 app.use(express.static(path.join(__dirname, "upload/img")));
 
-const url = `${MediaService.URL}/`;
+const url = `${process.env.MEDIASERVICE}/`;
 
 app.post("/upload", upload.any(), (req, res) => {
   if (req.files) {
@@ -29,6 +29,6 @@ app.post("/upload", upload.any(), (req, res) => {
   }
 });
 
-https.createServer(httpsOptions, app).listen(MediaService.PORT, () => {
-  console.log(`Media microservice listening at ${MediaService.URL}`);
+https.createServer(httpsOptions, app).listen(process.env.MEDIAPORT, () => {
+  console.log(`Media microservice listening at ${process.env.MEDIASERVICE}`);
 });

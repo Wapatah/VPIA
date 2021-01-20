@@ -124,7 +124,7 @@ class NewArticle extends React.Component {
                     inline: true,
                     menubar: false,
                     automatic_uploads: true,
-                    images_upload_url: Config.imageUrl,
+                    images_upload_url: process.env.IMAGEUPLOAD,
                     plugins: ["image"],
                     toolbar: "image | help"
                   }}
@@ -331,7 +331,7 @@ class NewArticle extends React.Component {
                             inline: true,
                             menubar: false,
                             automatic_uploads: true,
-                            images_upload_url: Config.imageUrl,
+                            images_upload_url: process.env.IMAGEUPLOAD,
                             plugins: Config.plugins,
                             toolbar: Config.toolbar,
                             quickbars_insert_toolbar: false,
