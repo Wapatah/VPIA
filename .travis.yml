@@ -3,7 +3,9 @@ node_js:
   - "node"
 os:
   - linux
-install: npm i --force
+install: 
+  - npm i --force
+  - cp .env.example .env
 script: npm run build
 branches:
   only:
