@@ -12,8 +12,7 @@ let fs = require("fs"); // eslint-disable-line
 let apiRoutes = express.Router();
 let apiRoutesAdmin = express.Router();
 let jwt = require("jsonwebtoken");
-require("dotenv").config();
-let MainContainer = require("./config/config.json");
+require("dotenv").config({ path: "../.env" });
 
 // Using gzip compression to speed up app performance
 app.use(compression());
@@ -134,6 +133,6 @@ app.use("/api", apiRoutesAdmin);
 
 app.use(express.static(__dirname + "/client"));
 
-app.listen(MainContainer.PORT, function() {
-  console.log(`VPIA running on ${MainContainer.URL}`);
+app.listen(process.env.MAINPORT, function() {
+  console.log(`VPIA running on ${process.env.MAINCONTAINER}`);
 });

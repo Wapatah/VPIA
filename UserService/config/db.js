@@ -1,6 +1,6 @@
 const caminte = require("caminte");
 const Schema = caminte.Schema;
-require("dotenv").config();
+require("dotenv").config({ path: "../.env" });
 
 const config = {
   driver: "mariadb",

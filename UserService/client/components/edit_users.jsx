@@ -5,7 +5,6 @@ import React from "react";
 import { hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 import Loader from "./helpers/loader.jsx";
-import UserService from "../../config/config.json";
 
 class EditUser extends React.Component {
   constructor(props) {
@@ -30,7 +29,10 @@ class EditUser extends React.Component {
     let myInit = { method: "GET", headers: myHeaders };
     let that = this;
 
-    fetch(`${UserService.URL}/api/users/` + this.props.params.user_id, myInit)
+    fetch(
+      `${process.env.USERSERVICE}/api/users/` + this.props.params.user_id,
+      myInit
+    )
       .then(function(response) {
         return response.json();
       })
@@ -79,7 +81,7 @@ class EditUser extends React.Component {
         user.id
     };
 
-    fetch(`${UserService.URL}/api/users/`, myInit)
+    fetch(`${process.env.USERSERVICE}/api/users/`, myInit)
       .then(function(response) {
         return response.json();
       })
