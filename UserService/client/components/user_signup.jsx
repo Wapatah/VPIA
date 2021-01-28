@@ -388,6 +388,7 @@ class UserSignup extends React.Component {
                     onClick={this.handleSignUp}
                     disabled={!isEnabled}
                     className="btn btn-primary btn-block mt-5 mb-3"
+                    type="button"
                   >
                     Agree & Join
                   </button>

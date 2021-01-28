@@ -38,6 +38,7 @@ module.exports = {
     "webpack/hot/dev-server",
 
     "whatwg-fetch",
+    "@babel/preset-env",
 
     // Entry point
     APP_DIR + "/index.jsx"
