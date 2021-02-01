@@ -20,23 +20,33 @@ class NewArticle extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
     this.state = {
+      title: "",
       body: "",
       culture_group: "",
       material: "",
+      photo: "",
+      photo_license: "",
       artwork_type: "",
+      institution: "",
       tags: "",
       error: "",
       loading: true
     };
   }
 
+  onInputChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Take variables from admin input and create a new Article object and send POST
   handleSubmit(e) {
     e.preventDefault();
     let body = this.state.body;
-    let title = this.refs.title.value;
+    let title = this.state.title;
     let culture_group = this.state.culture_group;
     let material = this.state.material;
     let artwork_type = this.state.artwork_type;
@@ -123,7 +133,6 @@ class NewArticle extends React.Component {
                   init={{
                     inline: true,
                     menubar: false,
-                    automatic_uploads: true,
                     images_upload_url: process.env.IMAGEUPLOAD,
                     plugins: ["image"],
                     toolbar: "image | help"
@@ -136,23 +145,13 @@ class NewArticle extends React.Component {
               <div className="list-group-item">
                 License
                 <p id="Baskerville">
-                  <Editor
-                    initialValue="License for the main image"
-                    init={{
-                      forced_root_block: "",
-                      inline: true,
-                      menubar: false,
-                      plugins: Config.plugins,
-                      toolbar: Config.toolbar,
-                      quickbars_insert_toolbar: false,
-                      quickbars_selection_toolbar: false
-                    }}
-                    onChange={editor => {
-                      this.setState({
-                        photo_license: editor.level.content
-                      });
-                    }}
-                  />
+                  <input
+                      name="photo_license"
+                      value={this.state.photo_license}
+                      onChange={this.onInputChange}
+                      className="form-control input-title"
+                      placeholder="License for the main image"
+                    />
                 </p>
               </div>
 
@@ -161,91 +160,51 @@ class NewArticle extends React.Component {
                 <li className="list-group-item">
                   <p id="FuturaStdHeavy">Holding Institution</p>
                   <p id="Baskerville">
-                    <Editor
-                      initialValue="Where the artwork currently resides"
-                      init={{
-                        forced_root_block: "",
-                        inline: true,
-                        menubar: false,
-                        plugins: Config.plugins,
-                        toolbar: Config.toolbar,
-                        quickbars_insert_toolbar: false,
-                        quickbars_selection_toolbar: false
-                      }}
-                      onChange={editor => {
-                        this.setState({
-                          institution: editor.level.content
-                        });
-                      }}
-                    />
+                    <input
+                        name="institution"
+                        value={this.state.institution}
+                        onChange={this.onInputChange}
+                        className="form-control input-title"
+                        placeholder="Where the artwork currently resides"
+                      />
                   </p>
                 </li>
 
                 <li className="list-group-item">
                   <p id="FuturaStdHeavy">Type</p>
                   <p id="Baskerville">
-                    <Editor
-                      initialValue="e.g. pipe, sculpture, etc."
-                      init={{
-                        forced_root_block: "",
-                        inline: true,
-                        menubar: false,
-                        plugins: Config.plugins,
-                        toolbar: Config.toolbar,
-                        quickbars_insert_toolbar: false,
-                        quickbars_selection_toolbar: false
-                      }}
-                      onChange={editor => {
-                        this.setState({
-                          artwork_type: editor.level.content
-                        });
-                      }}
-                    />
+                    <input
+                        name="artwork_type"
+                        value={this.state.artwork_type}
+                        onChange={this.onInputChange}
+                        className="form-control input-title"
+                        placeholder="e.g. pipe, sculpture, etc."
+                      />
                   </p>
                 </li>
 
                 <li className="list-group-item">
                   <p id="FuturaStdHeavy">Culture Group</p>
                   <p id="Baskerville">
-                    <Editor
-                      initialValue="Cultural Group the Artwork belongs to"
-                      init={{
-                        forced_root_block: "",
-                        inline: true,
-                        menubar: false,
-                        plugins: Config.plugins,
-                        toolbar: Config.toolbar,
-                        quickbars_insert_toolbar: false,
-                        quickbars_selection_toolbar: false
-                      }}
-                      onChange={editor => {
-                        this.setState({
-                          culture_group: editor.level.content
-                        });
-                      }}
-                    />
+                    <input
+                        name="culture_group"
+                        value={this.state.culture_group}
+                        onChange={this.onInputChange}
+                        className="form-control input-title"
+                        placeholder="Cultural group the artwork belongs to"
+                      />
                   </p>
                 </li>
 
                 <li className="list-group-item">
                   <p id="FuturaStdHeavy">Material</p>
                   <p id="Baskerville">
-                    <Editor
-                      initialValue="e.g. argilite, silver, etc."
-                      init={{
-                        forced_root_block: "",
-                        inline: true,
-                        menubar: false,
-                        plugins: Config.plugins,
-                        toolbar: Config.toolbar,
-                        quickbars_insert_toolbar: false,
-                        quickbars_selection_toolbar: false
-                      }}
-                      onChange={editor => {
-                        this.setState({
-                          material: editor.level.content
-                        });
-                      }}
+                     <input
+                      name="material"
+                      value={this.state.material}
+                      onChange={this.onInputChange}
+                      className="form-control input-title"
+                      placeholder="e.g. argilite, silver, etc."
                     />
                   </p>
                 </li>
@@ -253,22 +212,12 @@ class NewArticle extends React.Component {
                 <li className="list-group-item">
                   <p id="FuturaStdHeavy">Tags</p>
                   <p id="Baskerville">
-                    <Editor
-                      initialValue=""
-                      init={{
-                        forced_root_block: "",
-                        inline: true,
-                        menubar: false,
-                        plugins: Config.plugins,
-                        toolbar: Config.toolbar,
-                        quickbars_insert_toolbar: false,
-                        quickbars_selection_toolbar: false
-                      }}
-                      onChange={editor => {
-                        this.setState({
-                          tags: editor.level.content
-                        });
-                      }}
+                     <input
+                      name="tags"
+                      value={this.state.tags}
+                      onChange={this.onInputChange}
+                      className="form-control input-title"
+                      placeholder="e.g. boat, fish, etc."
                     />
                   </p>
                 </li>
@@ -311,24 +260,26 @@ class NewArticle extends React.Component {
                 </div>
               </div>
             </div>{" "}
-            <div class="tab-bar-card">
+            <div className="tab-bar-card">
               <div className="edit-indicator">
                 <div className="article-heading">
                   <h1 className="single-article-title">
                     <input
-                      ref="title"
+                      name="title"
+                      value={this.state.title}
+                      onChange={this.onInputChange}
                       className="form-control input-title"
                       placeholder="Enter article title..."
                     />
                   </h1>
                   <div className="row">
-                    <div id="article-body" className="col-md-1">
+                    <div id="article-body" className="col">
                       <hr />
                       <div id="article-photo" className="single-article-body">
                         <Editor
                           initialValue=""
                           init={{
-                            inline: true,
+                            inline: false,
                             menubar: false,
                             automatic_uploads: true,
                             images_upload_url: process.env.IMAGEUPLOAD,
