@@ -60,13 +60,12 @@ class IntroCarousel extends React.Component {
               </div>
             </div>
             <p className="signin-carousel">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-              varius augue ut neque lacinia, a mattis lorem commodo. Suspendisse
-              potenti. Proin ultricies diam et urna tincidunt tincidunt. Sed
-              facilisis consectetur faucibus. In vitae dolor quis mi fringilla
-              condimentum non ut nulla. Sed ornare erat diam, sed ultrices magna
-              faucibus condimentum. Vivamus in ullamcorper quam. Integer vel
-              dapibus nisl. Nam lacinia, neque vitae bibendum egestas.
+              The Virtual Platform for Indigenous Art (VPIA) brings artworks
+              from global museums and institutions together in an interactive
+              space for you to explore. You can be a part of the platform by
+              editing the records and transforming them into living documents.
+              Layer your knowledge, stories, and experiences into the community
+              VPIA record and become a part of history-making.
             </p>
             <button className="btn btn-outline-light">Learn More</button>
           </div>
@@ -91,13 +90,13 @@ class IntroCarousel extends React.Component {
               </div>
             </div>
             <p className="signin-carousel">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-              varius augue ut neque lacinia, a mattis lorem commodo. Suspendisse
-              potenti. Proin ultricies diam et urna tincidunt tincidunt. Sed
-              facilisis consectetur faucibus. In vitae dolor quis mi fringilla
-              condimentum non ut nulla. Sed ornare erat diam, sed ultrices magna
-              faucibus condimentum. Vivamus in ullamcorper quam. Integer vel
-              dapibus nisl. Nam lacinia, neque vitae bibendum egestas.
+              As an Indigenous-led project, we are dedicated to building
+              relationships that support our VPIA community and the knowledge
+              and stories shared within. We work to facilitate meaningful
+              engagement with Indigenous knowledge through our practices and
+              values. With support and guidance from our 4 Protocols, we are
+              building the VPIA as an interactive space that sparks open
+              dialogue and connects generations of knowledge.
             </p>
             <button className="btn btn-outline-light">Learn More</button>
           </div>
@@ -120,6 +119,23 @@ class IntroCarousel extends React.Component {
                   className="float-right"
                 />
               </div>
+              <p className="signin-carousel">
+                Explore. Edit. Connect. Transform.
+                <ul>
+                  <li>Explore the VPIA’s collection of Indigenous Art</li>
+                  <li>
+                    Transform institutional artwork records into living
+                    documents
+                  </li>
+                  <li>
+                    Edit and revive institutional records by layering your
+                    knowledge and stories
+                  </li>
+                  <li>
+                    Connect and share alongside other VPIA Community Members
+                  </li>
+                </ul>
+              </p>
             </div>
             <button className="btn btn-outline-light">Learn More</button>
           </div>
