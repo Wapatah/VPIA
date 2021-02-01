@@ -122,6 +122,12 @@ select {
 .append-light {
   border: none;
 }
+.btn-text {
+  color: #75777b;
+}
+.btn-text:hover {
+  color: #212529;
+}
 .return-text {
   font-size: 0.8rem;
   color: #75777b;
@@ -229,6 +235,13 @@ a.none-deco {
 }
 .no-padding.col-sm-11 {
   padding-right: 0;
+}
+.mycustom .input-group-prepend {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  bottom: 4px;
+  z-index: 9;
 }
 @media (min-width: 767px) {
   /* .BGimage::before {

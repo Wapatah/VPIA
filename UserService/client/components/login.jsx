@@ -130,7 +130,7 @@ class Login extends React.Component {
                     />
                     <div className="input-group-append">
                       <button
-                        className="btn btn-outline-secondary append-light "
+                        className="btn btn-text append-light "
                         aria-label="show password"
                         type="button"
                         onClick={this.toggleShow}
