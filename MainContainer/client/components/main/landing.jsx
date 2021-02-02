@@ -33,8 +33,9 @@ class Landing extends React.Component {
                           Search and edit 2000 indigenous Artworks
                         </p>
                         <p id="Baskerville">
-                          Help animate Indigenous collections worldwide by
-                          sharing your experience and knowledge about them.
+                          Help animate Indigenous collections from global
+                          institutions by sharing your knowledge and experience
+                          through the VPIA.
                         </p>
                       </div>
                       <div className="col-lg-4 align-self-end">
@@ -58,15 +59,16 @@ class Landing extends React.Component {
                 <h1 className="title-primary underline-brush">
                   Project at a Glance!
                 </h1>
-                <h2>Tutorial</h2>
+                <h2>How to Use the VPIA</h2>
                 <p>
-                  Visit our interactive tutorial for more information on how to
-                  locate and contribute to artworks through the VPIA.
+                  Visit our About page and Introductory video for more
+                  information on how to use the VPIA to locate, engage with, and
+                  contribute to artwork records.
                 </p>
-                <h2>Contributors</h2>
+                <h2>Language on the VPIA</h2>
                 <p>
-                  Learn more about the people and organizations who are sharing
-                  their knowledge with the VPIA.
+                  Learn more about the language found on the VPIA and our aim to
+                  mobilize institutional records through Indigenous voices.
                 </p>
               </div>
             </div>
@@ -97,7 +99,7 @@ class Landing extends React.Component {
                       </svg>
                       <h4>Explore artworks</h4>
                       <p>
-                        Single point of access to art works in different
+                        Single point of access to artworks in different
                         institutions
                       </p>
                     </div>

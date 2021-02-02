@@ -526,7 +526,21 @@ ul.social-network li {
   background: #75777b80;
   z-index: 2;
 }
-
+.image-tint-dark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #75777b85;
+  z-index: 2;
+}
+.top-icon {
+  position: absolute;
+  z-index: 999;
+  right: 0;
+  padding-right: 1em;
+}
 .VPIA-intro.jumbotron {
   background-image: url("../assets/images/BG_L.jpg");
   background-blend-mode: multiply;
@@ -553,7 +567,7 @@ ul.social-network li {
   position: relative;
   color: white;
   z-index: 3;
-  top: 9em;
+  top: 10em;
 }
 
 .card-description {
@@ -562,7 +576,7 @@ ul.social-network li {
 }
 
 .card-text {
-  top: 11em;
+  top: 13em;
 }
 
 .events-card.card {
