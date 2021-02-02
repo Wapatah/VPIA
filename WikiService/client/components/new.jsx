@@ -146,12 +146,12 @@ class NewArticle extends React.Component {
                 License
                 <p id="Baskerville">
                   <input
-                      name="photo_license"
-                      value={this.state.photo_license}
-                      onChange={this.onInputChange}
-                      className="form-control input-title"
-                      placeholder="License for the main image"
-                    />
+                    name="photo_license"
+                    value={this.state.photo_license}
+                    onChange={this.onInputChange}
+                    className="form-control input-title"
+                    placeholder="License for the main image"
+                  />
                 </p>
               </div>
 
@@ -161,12 +161,12 @@ class NewArticle extends React.Component {
                   <p id="FuturaStdHeavy">Holding Institution</p>
                   <p id="Baskerville">
                     <input
-                        name="institution"
-                        value={this.state.institution}
-                        onChange={this.onInputChange}
-                        className="form-control input-title"
-                        placeholder="Where the artwork currently resides"
-                      />
+                      name="institution"
+                      value={this.state.institution}
+                      onChange={this.onInputChange}
+                      className="form-control input-title"
+                      placeholder="Where the artwork currently resides"
+                    />
                   </p>
                 </li>
 
@@ -174,12 +174,12 @@ class NewArticle extends React.Component {
                   <p id="FuturaStdHeavy">Type</p>
                   <p id="Baskerville">
                     <input
-                        name="artwork_type"
-                        value={this.state.artwork_type}
-                        onChange={this.onInputChange}
-                        className="form-control input-title"
-                        placeholder="e.g. pipe, sculpture, etc."
-                      />
+                      name="artwork_type"
+                      value={this.state.artwork_type}
+                      onChange={this.onInputChange}
+                      className="form-control input-title"
+                      placeholder="e.g. pipe, sculpture, etc."
+                    />
                   </p>
                 </li>
 
@@ -187,19 +187,19 @@ class NewArticle extends React.Component {
                   <p id="FuturaStdHeavy">Culture Group</p>
                   <p id="Baskerville">
                     <input
-                        name="culture_group"
-                        value={this.state.culture_group}
-                        onChange={this.onInputChange}
-                        className="form-control input-title"
-                        placeholder="Cultural group the artwork belongs to"
-                      />
+                      name="culture_group"
+                      value={this.state.culture_group}
+                      onChange={this.onInputChange}
+                      className="form-control input-title"
+                      placeholder="Cultural group the artwork belongs to"
+                    />
                   </p>
                 </li>
 
                 <li className="list-group-item">
                   <p id="FuturaStdHeavy">Material</p>
                   <p id="Baskerville">
-                     <input
+                    <input
                       name="material"
                       value={this.state.material}
                       onChange={this.onInputChange}
@@ -212,7 +212,7 @@ class NewArticle extends React.Component {
                 <li className="list-group-item">
                   <p id="FuturaStdHeavy">Tags</p>
                   <p id="Baskerville">
-                     <input
+                    <input
                       name="tags"
                       value={this.state.tags}
                       onChange={this.onInputChange}
