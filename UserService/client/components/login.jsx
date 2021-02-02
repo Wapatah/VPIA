@@ -151,8 +151,8 @@ class Login extends React.Component {
                         className="btn btn-outline-secondary btn-block join-btn"
                       >
                         New to VPIA? Join Now!
-                      </button>
-                    </Link>
+                      </Link>
+                    </button>
                     <Link
                       to="/forgot_password"
                       aria-label="Go to home page"
