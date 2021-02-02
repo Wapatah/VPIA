@@ -6,6 +6,8 @@
 
 const webpack = require("webpack");
 const path = require("path");
+const Dotenv = require("dotenv-webpack");
+require("dotenv").config({ path: "../.env" });
 
 // @Matterwiki - TODO separate files for constants?
 const BUILD_DIR = path.resolve(__dirname, "../client/public");
@@ -32,7 +34,7 @@ module.exports = {
   entry: [
     // React HMR specific stuff
     "react-hot-loader/patch",
-    "webpack-hot-middleware/client?http://localhost:5000/",
+    `webpack-hot-middleware/client?${process.env.MAINCONTAINER}`,
     "webpack/hot/dev-server",
 
     "whatwg-fetch",
@@ -54,7 +56,14 @@ module.exports = {
     contentBase: BUILD_DIR,
     publicPath: "/public/"
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new Dotenv({
+      safe: true, // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
+      allowEmptyValues: false,
+      systemvars: true
+    })
+  ],
   module: {
     rules: [
       {

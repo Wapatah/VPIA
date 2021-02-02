@@ -10,6 +10,7 @@ require("dotenv").config({ path: "../.env" });
 
 const https = require("https");
 const fs = require("fs");
+
 const httpsOptions = {
   cert: fs.readFileSync("/etc/letsencrypt/live/vpia.wapatah.com/fullchain.pem"),
   key: fs.readFileSync("/etc/letsencrypt/live/vpia.wapatah.com/privkey.pem")
@@ -32,14 +33,13 @@ module.exports = function isUserAuthenticated(req, res, next) {
   // Decode token
   if (token) {
     // Verifies secret and checks for expiration
-    jwt.verify(token, app.get("superSecret"), function(err, decoded) {
+    jwt.verify(token, app.get("superSecret"), (err, decoded) => {
       if (err) {
         res.status(500).json({
           error: {
             error: true,
             message: "Failed to authenticate token"
           },
-          code: "B101",
           data: {}
         });
       } else {
@@ -55,20 +55,21 @@ module.exports = function isUserAuthenticated(req, res, next) {
         error: true,
         message: "No token provided"
       },
-      code: "B102",
       data: {}
     });
   }
 };
 
-// Importing all endpoints for archives
-require("./api/archives")(apiRoutes);
+// Importing all endpoints for user
+
+require("./api/authentication")(app);
+require("./api/setup")(apiRoutes);
+require("./api/users")(apiRoutes);
+
 app.use("/api", apiRoutes);
 
 app.use(express.static(__dirname + "/client"));
 
-https.createServer(httpsOptions, app).listen(process.env.HISTORYPORT, () => {
-  console.log(
-    `History microservice listening at ${process.env.HISTORYSERVICE}`
-  );
+https.createServer(httpsOptions, app).listen(process.env.USERPORT, () => {
+  console.log(`User microservice listening at ${process.env.USERSERVICE}`);
 });

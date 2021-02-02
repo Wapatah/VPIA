@@ -19,42 +19,42 @@ class About extends React.Component {
               <div className="carousel-inner">
                 <div className="carousel-item active">
                   <div className="row">
-                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div className="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
                         className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div className="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
                         className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div className="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
                         className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div className="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
                         className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div className="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
                         className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div className="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
                         className="about-img rounded-img greyscale"
@@ -65,42 +65,42 @@ class About extends React.Component {
                 </div>
                 <div className="carousel-item">
                   <div className="row">
-                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div className="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
                         className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div className="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
                         className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div className="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
                         className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div className="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
                         className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div className="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
                         className="about-img rounded-img greyscale"
                         alt="Image of Eric"
                       />
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <div className="col-xs-2 col-sm-2 col-md-2">
                       <img
                         src="../../assets/images/group.png"
                         className="about-img rounded-img greyscale"
@@ -153,7 +153,7 @@ class About extends React.Component {
           <div className="container-fluid">
             <div className="About-info-section">
               <div className="row About-bottom-content">
-                <div class="col-md-4">
+                <div className="col-md-4">
                   <p className="about-content">
                     The pilot of the VPIA specifically documents collections of
                     historical and contemporary Indigenous artworks that depict
@@ -163,7 +163,7 @@ class About extends React.Component {
                     philosophy, aesthetic, and research methodology.
                   </p>
                 </div>
-                <div class="col-md-4">
+                <div className="col-md-4">
                   <p className="about-content">
                     The VPIA sees Indigenous artwork as a research tool that
                     allows a better understanding of how Indigenous and
@@ -180,7 +180,7 @@ class About extends React.Component {
                     gallery collections.
                   </p>
                 </div>
-                <div class="col-md-4">
+                <div className="col-md-4">
                   <p className="about-content">
                     The VPIA recognizes that Indigenous cultures continue to
                     change and grow. To ensure its continued relevance and

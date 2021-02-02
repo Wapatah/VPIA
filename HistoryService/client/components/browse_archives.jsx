@@ -24,7 +24,7 @@ class BrowseArchives extends React.Component {
     let myInit = { method: "GET", headers: myHeaders };
     let that = this;
     let url =
-      "http://localhost:31000/api/articles/" +
+      `${process.env.HISTORYSERVICE}/api/articles/` +
       this.props.articleId +
       "/history";
 

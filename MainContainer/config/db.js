@@ -9,12 +9,13 @@
 */
 const caminte = require("caminte");
 const Schema = caminte.Schema;
+require("dotenv").config();
 
 const config = {
-  driver: "mysql",
+  driver: "mariadb",
   host: "localhost",
-  username: "wapataho_vpia",
-  password: "Wapatah1",
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   database: "wapataho_vpia",
   pool: true
 };

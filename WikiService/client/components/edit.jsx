@@ -135,7 +135,7 @@ class EditArticle extends React.Component {
 
       let that = this;
 
-      fetch("http://localhost:31000/api/archives/", myInit)
+      fetch(`${process.env.HISTORYSERVICE}/api/archives/`, myInit)
         .then(function(response) {
           return response.json();
         })
@@ -402,7 +402,7 @@ class EditArticle extends React.Component {
                   </Link>
                 </div>
               </div>
-              <div class="tab-bar-card">
+              <div className="tab-bar-card">
                 <div className="article-heading">
                   <h1 className="single-article-title">
                     #{this.state.article[0].id}&nbsp;
@@ -418,7 +418,7 @@ class EditArticle extends React.Component {
                         inline: true,
                         menubar: false,
                         automatic_uploads: true,
-                        images_upload_url: Config.imageUrl,
+                        images_upload_url: process.env.IMAGEUPLOAD,
                         plugins: Config.plugins,
                         toolbar: Config.toolbar,
                         quickbars_insert_toolbar: false,

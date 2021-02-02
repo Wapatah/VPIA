@@ -47,11 +47,14 @@ class Welcome extends React.Component {
                 cupidatat non proident, sunt in culpa qui officia deserunt
                 mollit anim…
               </p>
-              <button type="button" className="btn btn-primary btn-block mt-5">
-                <Link to="" className="none-deco">
+              <Link to="/user" className="none-deco">
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block mt-5"
+                >
                   Proceed to My Profile
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

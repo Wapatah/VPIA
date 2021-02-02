@@ -4,6 +4,7 @@
 */
 const webpack = require("webpack"); // eslint-disable-line
 const path = require("path");
+const Dotenv = require("dotenv-webpack");
 
 const BUILD_DIR = path.resolve(__dirname, "../client/public");
 const APP_DIR = path.resolve(__dirname, "../client/components");
@@ -27,6 +28,7 @@ const WIKI_SERVICE = path.resolve(
 module.exports = {
   mode: "production",
   entry: [
+    "babel-polyfill", //Polyfill enables use of ES6 (such as async) in all browsers
     "whatwg-fetch",
     // Entry point
     APP_DIR + "/index.jsx"
@@ -38,6 +40,11 @@ module.exports = {
     path: BUILD_DIR,
     filename: "bundle.js",
     publicPath: BUILD_DIR
+  },
+  resolve: {
+    alias: {
+      react: path.resolve("node_modules/react")
+    }
   },
   devtool: "source-map",
   module: {
@@ -104,5 +111,11 @@ module.exports = {
       }
     ]
   },
-  plugins: []
+  plugins: [
+    new Dotenv({
+      safe: true, // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
+      allowEmptyValues: false,
+      systemvars: true
+    })
+  ]
 };

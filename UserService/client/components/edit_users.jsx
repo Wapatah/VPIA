@@ -29,7 +29,10 @@ class EditUser extends React.Component {
     let myInit = { method: "GET", headers: myHeaders };
     let that = this;
 
-    fetch("/api/users/" + this.props.params.user_id, myInit)
+    fetch(
+      `${process.env.USERSERVICE}/api/users/` + this.props.params.user_id,
+      myInit
+    )
       .then(function(response) {
         return response.json();
       })
@@ -78,7 +81,7 @@ class EditUser extends React.Component {
         user.id
     };
 
-    fetch("/api/users/", myInit)
+    fetch(`${process.env.USERSERVICE}/api/users/`, myInit)
       .then(function(response) {
         return response.json();
       })

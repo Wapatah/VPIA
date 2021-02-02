@@ -47,7 +47,11 @@ class ViewArticle extends React.Component {
         let myInit = { method: "GET", headers: myHeaders };
         let that = this;
 
-        fetch("/api/users/" + that.state.article[0].user_id, myInit)
+        fetch(
+          `${process.env.USERSERVICE}/api/users/` +
+            that.state.article[0].user_id,
+          myInit
+        )
           .then(function(response) {
             return response.json();
           })
@@ -260,7 +264,7 @@ class ViewArticle extends React.Component {
                   </Link>
                 </div>
               </div>
-              <div class="tab-bar-card">
+              <div className="tab-bar-card">
                 <div className="article-heading">
                   <h1 className="single-article-title">
                     #{this.state.article[0].id}&nbsp;

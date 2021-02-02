@@ -28,6 +28,7 @@ import Landing from "./main/landing.jsx";
 import About from "./main/about.jsx";
 import Results from "../../../SearchService/client/components/results.jsx";
 import Artwork from "../../../SearchService/client/components/artwork.jsx";
+import UserProfile from "../../../UserService/client/components/user_profile.jsx";
 
 // --------------------------------------------------------------------------------------------------------------------------------------------
 // Build a route path and limit access to certain pages
@@ -49,6 +50,7 @@ export default function() {
         <Route path="user/edit/:user_id" component={EditUser} />
         <Route path="search" component={Search} />
         <Route path="about" component={About} />
+        <Route path="user" component={UserProfile} />
       </Route>
       <Route path="login" component={Login} />
       <Route path="setup" component={Setup} />

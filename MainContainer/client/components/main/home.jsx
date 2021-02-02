@@ -80,11 +80,11 @@ class Home extends React.Component {
                   <div className="events-card card">
                     <img
                       src="../assets/images/Event_McCord.jpg"
-                      class="card-img-top greyscale"
+                      className="card-img-top greyscale"
                       alt="Image of the McCord Museum workshop's event with Eric Tootoosis"
                       aria-label="Image of the McCord Museum workshop's event with Eric Tootoosis"
                     />
-                    <div class="card-body">
+                    <div className="card-body">
                       <p className="article-title">
                         McCord Museum Workshop with Eric Tootoosis
                       </p>
@@ -96,11 +96,11 @@ class Home extends React.Component {
                       <div className="card">
                         <img
                           src="../assets/images/CRKN.png"
-                          class="card-img-top greyscale"
+                          className="card-img-top greyscale"
                           alt="Image of the Canadian Research Knowledge Network Conference's event"
                           aria-label="Image of the Canadian Research Knowledge Network Conference's event"
                         />
-                        <div class="card-body">
+                        <div className="card-body">
                           <p className="article-title">
                             Canadian Research Knowledge Network Conference
                           </p>
@@ -114,11 +114,11 @@ class Home extends React.Component {
                       <div className="card">
                         <img
                           src="../assets/images/Representing.jpg"
-                          class="card-img-top greyscale"
+                          className="card-img-top greyscale"
                           alt="Image of the Re/presenting the European at the University of Auckland's event"
                           aria-label="Image of the Re/presenting the European at the University of Auckland's event"
                         />
-                        <div class="card-body">
+                        <div className="card-body">
                           <p className="article-title">
                             Re/presenting the European at the University of
                             Auckland

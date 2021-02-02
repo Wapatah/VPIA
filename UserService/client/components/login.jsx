@@ -49,7 +49,7 @@ class Login extends React.Component {
 
     let that = this;
 
-    fetch("/api/authenticate", myInit)
+    fetch(`${process.env.USERSERVICE}/api/authenticate`, myInit)
       .then(function(response) {
         return response.json();
       })
@@ -60,7 +60,7 @@ class Login extends React.Component {
           window.localStorage.setItem("userToken", response.data.token);
           window.localStorage.setItem("admin", response.data.user.admin);
           window.localStorage.setItem("user_id", response.data.user.id);
-          window.localStorage.setItem("userEmail", response.data.user.token);
+          window.localStorage.setItem("userEmail", response.data.user.email);
           hashHistory.push("welcome");
           StatusAlertService.showSuccess("You are now logged in");
         }
@@ -145,11 +145,11 @@ class Login extends React.Component {
                     >
                       Sign in
                     </button>
-                    <button
-                      type="button"
-                      className="btn btn-outline-secondary btn-block join-btn"
-                    >
-                      <Link to="/user_signup" className="none-deco">
+                    <Link to="/user_signup" className="none-deco">
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary btn-block join-btn"
+                      >
                         New to VPIA? Join Now!
                       </Link>
                     </button>

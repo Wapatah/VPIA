@@ -4,17 +4,19 @@
   "description": "Virtual Platform for Indigenous Art",
   "main": "./MainContainer/index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config ./MainContainer/config/webpack.config.prod.js --progress --profile --colors & cd ./HistoryService && npm run build",
+    "build": "cross-env NODE_ENV=production webpack --config ./MainContainer/config/webpack.config.prod.js --progress --profile --colors",
     "dev": "node ./MainContainer/index.js & node ./HistoryService/index.js",
     "prep": "cd MediaService && npm i & cd HistoryService && npm i",
     "mediaservice": "cd MediaService && npm run start",
     "historyservice": "cd HistoryService && npm run start",
-    "start": "cross-env NODE_ENV=production node ./MainContainer/index.js && SET AUTOUPDATE=1 & npm run mediaservice & npm run historyservice",
+    "userservice": "cd UserService && npm run start",
+    "maincontainer": "cross-env NODE_ENV=production node ./MainContainer/index.js && SET AUTOUPDATE=1",
+    "start": "npm-run-all --parallel maincontainer mediaservice historyservice userservice",
     "prettier": "prettier --write \"**/*.{js,jsx}\" --ignore-path .gitignore",
     "lint": "eslint --config ./MainContainer/config/.eslintrc.js \"**/*.js\" --fix --ignore-path .gitignore"
   },
   "engines": {
-    "node": "~0.12.0 || ^4.2.0 || ^6.5.0"
+    "node": "~0.12.0 || ^4.2.0 || ^6.5.0 || ^v15.0.0"
   },
   "author": "M. L. Filipp <contact@mordax.io> (https://mordax.io)",
   "contributors": [
@@ -22,11 +24,12 @@
   ],
   "license": "(GPL-3.0 OR MIT)",
   "dependencies": {
-    "@tinymce/tinymce-react": "^3.3.2",
+    "@tinymce/tinymce-react": "^3.9.0",
+    "babel-polyfill": "^6.26.0",
     "bcryptjs": "2.4.0",
     "body-parser": "^1.19.0",
     "caminte": "^0.4.1",
-    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^6.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.0.0",
     "mysql": "^2.17.1",
@@ -38,23 +41,24 @@
     "whatwg-fetch": "2.0.1"
   },
   "devDependencies": {
-    "file-loader": "^4.3.0",
-    "prettier": "1.18.2",
-    "react-hot-loader": "3.0.0-beta.6",
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.1.0",
+    "compression": "^1.7.4",
     "cross-env": "3.1.4",
     "eslint": "^6.7.2",
     "eslint-plugin-react": "^7.17.0",
-    "compression": "^1.7.4",
+    "file-loader": "^4.3.0",
+    "npm-run-all": "^4.1.5",
     "postcss-loader": "^3.0.0",
+    "prettier": "1.18.2",
+    "raw-loader": "^3.1.0",
+    "react-hot-loader": "3.0.0-beta.6",
+    "style-loader": "^1.0.1",
     "webpack": "4.42.1",
     "webpack-cli": "^3.3.9",
     "webpack-dev-middleware": "1.9.0",
-    "webpack-hot-middleware": "2.15.0",
-    "raw-loader": "^3.1.0",
-    "style-loader": "^1.0.1"
+    "webpack-hot-middleware": "2.15.0"
   }
 }
