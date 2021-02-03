@@ -82,7 +82,7 @@ class ArtworkResults extends React.Component {
                 </Link>
               </p>
               <div className="card-text">
-                <small class="text-muted">
+                <small className="text-muted">
                   <p
                     id="Baskerville"
                     dangerouslySetInnerHTML={{
