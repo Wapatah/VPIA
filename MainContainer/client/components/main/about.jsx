@@ -13,7 +13,7 @@ class About extends React.Component {
             data-ride="carousel"
             id="carouselExampleControls"
           >
-            <div className="container-fluid">
+            <div className="container-fluid about-carousel">
               <div className="gradient-right"></div>
               <div className="gradient-left"></div>
               <div className="carousel-inner">

@@ -589,6 +589,9 @@ ul.social-network li {
 .carousel.about {
   padding: 0;
 }
+.container-fluid.about-carousel {
+  padding: 0;
+}
 
 #logo-bottom-right {
   position: absolute;
@@ -672,7 +675,7 @@ img.about-img {
 
 .gradient-left {
   position: absolute;
-  z-index: 999;
+  z-index: 9;
   top: 0;
   left: 0;
   bottom: 0;
@@ -687,7 +690,7 @@ img.about-img {
 
 .gradient-right {
   position: absolute;
-  z-index: 999;
+  z-index: 9;
   top: 0;
   right: 0;
   bottom: 0;
