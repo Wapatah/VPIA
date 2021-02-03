@@ -6,9 +6,6 @@
   padding: 0;
   height: 100%;
 }
-.full-page.row {
-  height: 100%;
-}
 .login-box {
   max-width: 500px;
   margin: 0px auto;
@@ -125,6 +122,12 @@ select {
 .append-light {
   border: none;
 }
+.btn-text {
+  color: #75777b;
+}
+.btn-text:hover {
+  color: #212529;
+}
 .return-text {
   font-size: 0.8rem;
   color: #75777b;
@@ -148,7 +151,7 @@ h1.signin-carousel {
 }
 p.signin-carousel {
   color: white;
-  padding-top: 5%;
+  padding-top: 3%;
   padding-bottom: 5%;
   font-size: 1.5rem;
 }
@@ -233,6 +236,13 @@ a.none-deco {
 .no-padding.col-sm-11 {
   padding-right: 0;
 }
+.mycustom .input-group-prepend {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  bottom: 4px;
+  z-index: 9;
+}
 @media (min-width: 767px) {
   /* .BGimage::before {
     width: 0;
@@ -262,40 +272,40 @@ a.none-deco {
 
 /* user_profile.jsx CSS */
 .profile {
-  padding-top: 5%; 
-  padding-bottom: 5%
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
-.profile__header{
+.profile__header {
   text-align: center;
-  color: #53555A
+  color: #53555a;
 }
 
-.profile__header--title{
-  color: #1F8475
+.profile__header--title {
+  color: #1f8475;
 }
 
-.profile__body{
-  font-family: "FuturaStdMedium"; 
+.profile__body {
+  font-family: "FuturaStdMedium";
   text-align: left;
-  color: #0D1319;
-  padding-top: 1rem
+  color: #0d1319;
+  padding-top: 1rem;
 }
 
-.profile__body--list{
+.profile__body--list {
   list-style-type: none;
-  padding: 0px
+  padding: 0px;
 }
 
-.profile__about{
-  padding-top: 1rem
+.profile__about {
+  padding-top: 1rem;
 }
 
-.profile__about--title{
-  color: #1F8475
+.profile__about--title {
+  color: #1f8475;
 }
 
-.profile__about--body{
-  color: #202124; 
-  font-family: "FuturaStdMedium"
+.profile__about--body {
+  color: #202124;
+  font-family: "FuturaStdMedium";
 }

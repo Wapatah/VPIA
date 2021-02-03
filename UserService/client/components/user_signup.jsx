@@ -183,7 +183,7 @@ class UserSignup extends React.Component {
                 <label htmlFor="inputUserPassword">
                   New Password <span className="text-danger">*</span>
                 </label>
-                <div className="form-group input-group">
+                <div className="form-group input-group mycustom">
                   <input
                     type="password"
                     className="form-control login-form"
@@ -194,9 +194,10 @@ class UserSignup extends React.Component {
                     onChange={this.handlePasswordChange}
                     required
                   />
-                  <div className="input-group-append">
+                  <div className="input-group-prepend">
                     <button
-                      className="btn btn-outline-secondary append-light "
+                      className="btn btn-text append-light"
+                      type="button"
                       aria-label="show password"
                       onClick={this.toggleShow}
                     >
@@ -386,7 +387,8 @@ class UserSignup extends React.Component {
                   <button
                     onClick={this.handleSignUp}
                     disabled={!isEnabled}
-                    className="btn btn-primary btn-block mt-5"
+                    className="btn btn-primary btn-block mt-5 mb-3"
+                    type="button"
                   >
                     Agree & Join
                   </button>
