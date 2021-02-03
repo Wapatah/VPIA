@@ -402,7 +402,7 @@ class EditArticle extends React.Component {
                   </Link>
                 </div>
               </div>
-              <div class="tab-bar-card">
+              <div className="tab-bar-card">
                 <div className="article-heading">
                   <h1 className="single-article-title">
                     #{this.state.article[0].id}&nbsp;
