@@ -84,7 +84,7 @@ class Home extends React.Component {
                 <div className="col-md-5">
                   <div className="events-card card">
                     <img
-                      src="../assets/images/Event_McCord.jpg"
+                      src="../assets/images/Event_inuitartonline.jpeg"
                       className="card-img-top greyscale"
                       alt="Image of the McCord Museum workshop's event with Eric Tootoosis"
                       aria-label="Image of the McCord Museum workshop's event with Eric Tootoosis"
@@ -116,16 +116,16 @@ class Home extends React.Component {
                     <div className="col-md-6">
                       <div className="card">
                         <img
-                          src="../assets/images/Representing.jpg"
+                          src="../assets/images/FrontConf.jpeg"
                           className="card-img-top greyscale"
-                          alt="Image of the Re/presenting the European at the University of Auckland's event"
-                          aria-label="Image of the Re/presenting the European at the University of Auckland's event"
+                          alt="Image of the FrontConf conference"
+                          aria-label="Image of the FrontConf conference"
                         />
                         <div className="card-body">
                           <p className="article-title">
                             FrontConf Munich FrontEnd Conference
                           </p>
-                          <p className="card-description">March 21 2019 </p>
+                          <p className="card-description">March 21 2020 </p>
                         </div>
                       </div>
                     </div>
