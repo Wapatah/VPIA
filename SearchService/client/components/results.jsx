@@ -134,12 +134,6 @@ class Results extends React.Component {
                     {item.title}
                   </Link>
                 </p>
-                <p
-                  className="card-text results"
-                  dangerouslySetInnerHTML={{
-                    __html: item.body
-                  }}
-                ></p>
                 <div className="card-text">
                   <span
                     className="badge badge-pill badge-custom  mr-1"

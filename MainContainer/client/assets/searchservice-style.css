@@ -185,7 +185,7 @@ a.results {
   font-family: "FuturaStdHeavy";
   font-size: 1.25rem;
 }
-.card-text.results {
+.card-text.results{
   width: 25em;
   white-space: nowrap;
   overflow: hidden;
