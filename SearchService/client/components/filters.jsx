@@ -154,13 +154,13 @@ class Filters extends React.Component {
                 />
                 <label
                   key={cultureGroup}
-                  className="d-inline filters pr-2 form-check-label"
+                  className="d-inline-block filters pr-2 form-check-label text-truncate"
                   htmlFor={cultureGroup}
                   dangerouslySetInnerHTML={{
                     __html: cultureGroup
                   }}
                 ></label>
-                <span className="d-inline badge badge-primary badge-pill">
+                <span className="d-inline-block badge badge-primary badge-pill">
                   {cultureGroupCount[i]}
                 </span>
               </label>
@@ -230,12 +230,12 @@ class Filters extends React.Component {
                 />
                 <label
                   key={artworkType}
-                  className="d-inline filters pr-2"
+                  className="d-inline-block filters pr-2 text-truncate"
                   dangerouslySetInnerHTML={{
                     __html: artworkType
                   }}
                 ></label>
-                <span className="d-inline badge badge-primary badge-pill">
+                <span className="d-inline-block badge badge-primary badge-pill">
                   {artworkTypeCount[i]}
                 </span>
               </label>
@@ -298,12 +298,12 @@ class Filters extends React.Component {
                 />
                 <label
                   key={material}
-                  className="d-inline filters pr-2 form-check-label"
+                  className="d-inline-block filters pr-2 form-check-label text-truncate"
                   dangerouslySetInnerHTML={{
                     __html: material
                   }}
                 ></label>
-                <span className="d-inline badge badge-primary badge-pill">
+                <span className="d-inline-block badge badge-primary badge-pill">
                   {materialCount[i]}
                 </span>
               </label>
@@ -370,12 +370,12 @@ class Filters extends React.Component {
                 />
                 <label
                   key={institution}
-                  className="d-inline filters pr-2 form-check-label"
+                  className="d-inline-block filters pr-2 form-check-label text-truncate"
                   dangerouslySetInnerHTML={{
                     __html: institution
                   }}
                 ></label>
-                <span className="d-inline badge badge-primary badge-pill">
+                <span className="d-inline-block badge badge-primary badge-pill">
                   {institutionCount[i]}
                 </span>
               </label>
