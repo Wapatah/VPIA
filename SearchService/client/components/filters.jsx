@@ -134,7 +134,6 @@ class Filters extends React.Component {
             </label>
             {filteredCultureGroup.map((cultureGroup, i) => (
               <label
-                id={cultureGroup}
                 key={cultureGroup}
                 type="button"
                 className="dropdown-item"
@@ -154,13 +153,13 @@ class Filters extends React.Component {
                 />
                 <label
                   key={cultureGroup}
-                  className="d-inline filters pr-2 form-check-label"
+                  className="d-inline-block filters pr-2 form-check-label text-truncate"
                   htmlFor={cultureGroup}
                   dangerouslySetInnerHTML={{
                     __html: cultureGroup
                   }}
                 ></label>
-                <span className="d-inline badge badge-primary badge-pill">
+                <span className="d-inline-block badge badge-primary badge-pill">
                   {cultureGroupCount[i]}
                 </span>
               </label>
@@ -203,7 +202,7 @@ class Filters extends React.Component {
               />
               <label
                 key="allArtworkType"
-                id="allArtworkType"
+                htmlFor="allArtworkType"
                 className="d-inline filters pr-2 form-check-label"
               >
                 All
@@ -230,12 +229,13 @@ class Filters extends React.Component {
                 />
                 <label
                   key={artworkType}
-                  className="d-inline filters pr-2"
+                  htmlFor={artworkType}
+                  className="d-inline-block filters pr-2 text-truncate"
                   dangerouslySetInnerHTML={{
                     __html: artworkType
                   }}
                 ></label>
-                <span className="d-inline badge badge-primary badge-pill">
+                <span className="d-inline-block badge badge-primary badge-pill">
                   {artworkTypeCount[i]}
                 </span>
               </label>
@@ -267,13 +267,13 @@ class Filters extends React.Component {
                 type="radio"
                 aria-label="Checkbox for artwork type"
                 name="material"
-                id="material"
+                id="allMaterial"
                 value="material"
                 onClick={this.props.handleClick.bind(this, "", "allMaterial")}
               />
               <label
                 key="allMaterial"
-                id="allMaterial"
+                htmlFor="allMaterial"
                 className="d-inline filters pr-2 form-check-label"
               >
                 All
@@ -293,17 +293,19 @@ class Filters extends React.Component {
                 <input
                   className="form-check-input"
                   type="radio"
+                  id={material}
                   aria-label="Checkbox for material"
                   name="material"
                 />
                 <label
                   key={material}
-                  className="d-inline filters pr-2 form-check-label"
+                  htmlFor={material}
+                  className="d-inline-block filters pr-2 form-check-label text-truncate"
                   dangerouslySetInnerHTML={{
                     __html: material
                   }}
                 ></label>
-                <span className="d-inline badge badge-primary badge-pill">
+                <span className="d-inline-block badge badge-primary badge-pill">
                   {materialCount[i]}
                 </span>
               </label>
@@ -335,7 +337,7 @@ class Filters extends React.Component {
                 type="radio"
                 aria-label="Checkbox for artwork type"
                 name="institution"
-                id="institution"
+                id="allInstitution"
                 value="institution"
                 onClick={this.props.handleClick.bind(
                   this,
@@ -345,7 +347,7 @@ class Filters extends React.Component {
               />
               <label
                 key="allInstitution"
-                id="allInstitution"
+                htmlFor="allInstitution"
                 className="d-inline filters pr-2 form-check-label"
               >
                 All
@@ -365,17 +367,19 @@ class Filters extends React.Component {
                 <input
                   className="form-check-input"
                   type="radio"
+                  id={institution}
                   aria-label="Checkbox for institution"
                   name="institution"
                 />
                 <label
                   key={institution}
-                  className="d-inline filters pr-2 form-check-label"
+                  htmlFor={institution}
+                  className="d-inline-block filters pr-2 form-check-label text-truncate"
                   dangerouslySetInnerHTML={{
                     __html: institution
                   }}
                 ></label>
-                <span className="d-inline badge badge-primary badge-pill">
+                <span className="d-inline-block badge badge-primary badge-pill">
                   {institutionCount[i]}
                 </span>
               </label>

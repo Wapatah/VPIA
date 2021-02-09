@@ -134,12 +134,6 @@ class Results extends React.Component {
                     {item.title}
                   </Link>
                 </p>
-                <p
-                  className="card-text results"
-                  dangerouslySetInnerHTML={{
-                    __html: item.body
-                  }}
-                ></p>
                 <div className="card-text">
                   <span
                     className="badge badge-pill badge-custom  mr-1"
@@ -179,7 +173,7 @@ class Results extends React.Component {
       <div className="content-container">
         <div className="row">
           <div className="left-side col-lg-3">
-            <div className="col-lg-6 float-right">
+            <div className="col-lg-auto col-md-12 col-sm-12 float-right">
               <p>Filter by</p>
               <Filters handleClick={this.handleClick} />
             </div>

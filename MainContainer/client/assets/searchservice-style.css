@@ -178,14 +178,15 @@ p.filters {
   background: #ebededb1;
   border-radius: 0.25em;
   padding: 0;
-  max-height: 15em;
+  max-height: 20em;
+  overflow:auto;
 }
 a.results {
   color: #208778;
   font-family: "FuturaStdHeavy";
   font-size: 1.25rem;
 }
-.card-text.results {
+.card-text.results{
   width: 25em;
   white-space: nowrap;
   overflow: hidden;
@@ -205,6 +206,9 @@ a.results {
 }
 label .filters {
   font-family: "FuturaStdLight";
+}
+.text-truncate{
+  max-width: 6em;
 }
 @media (min-width: 768px) {
   .left-side.col-md-1 {
