@@ -157,7 +157,59 @@ select {
 .my-card-img-top.results img {
   height: 10vw;
 }
-
+.badge-primary {
+  color: #343638;
+}
+.badge-primary {
+  background-color: transparent;
+}
+.badge-pill {
+  border: 1px solid #343638;
+}
+p.filters {
+  font-family: "FuturaStdLight";
+}
+.dropdown.dropdown-filter {
+  border: 2px solid #d0cfcd;
+  border-radius: 6px;
+  background-color: white;
+}
+.dropdown.dropdown-filter.expanded {
+  background: #ebededb1;
+  border-radius: 0.25em;
+  padding: 0;
+  max-height: 20em;
+  overflow:auto;
+}
+a.results {
+  color: #208778;
+  font-family: "FuturaStdHeavy";
+  font-size: 1.25rem;
+}
+.card-text.results{
+  width: 25em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: "FuturaStdLight";
+  font-size: 0.875rem;
+}
+.badge.badge-pill.badge-custom {
+  border: none;
+  color: #707070;
+  background-color: #f2f0f0;
+}
+.btn-default.btn-outline-default {
+  background-color: transparent;
+  border: 2px solid #208778;
+  color: #208778;
+}
+label .filters {
+  font-family: "FuturaStdLight";
+}
+.text-truncate{
+  max-width: 6em;
+}
 @media (min-width: 768px) {
   .left-side.col-md-1 {
     max-width: none;

@@ -9,13 +9,23 @@ import { hashHistory } from "react-router";
 class Filters extends React.Component {
   constructor(props) {
     super(props);
-    this.articleSelect = this.articleSelect.bind(this);
+    this.addActiveClass = this.addActiveClass.bind(this);
     this.state = {
       articles: [],
-      material: "",
-      loading: true
+      loading: true,
+      activeClasses: [false, false, false, false]
     };
-    this.handleChange = this.handleChange.bind(this);
+  }
+
+  // --------------------------------------------------------------------------------------------------------------------------------------------
+  // This function add active class to the filter
+  addActiveClass(index) {
+    const activeClasses = [
+      ...this.state.activeClasses.slice(0, index),
+      !this.state.activeClasses[index],
+      this.state.activeClasses.slice(index + 1)
+    ].flat();
+    this.setState({ activeClasses });
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -40,20 +50,6 @@ class Filters extends React.Component {
         }
         that.setState({ loading: false });
       });
-  }
-
-  // --------------------------------------------------------------------------------------------------------------------------------------------
-  // Filter article based on selecting material
-  articleSelect(material, e) {
-    e.preventDefault();
-    this.props.articleChange(this.state.material);
-  }
-
-  handleChange(event) {
-    let str = JSON.stringify(event.currentTarget.id);
-    let newstr = str.replace(/(<p>|<\/p>)/g, "");
-    let results = "/search?query=" + newstr;
-    hashHistory.push(results);
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -90,132 +86,303 @@ class Filters extends React.Component {
     let filteredInstitution = Object.keys(groupByInstitution);
     let institutionCount = Object.values(groupByInstitution);
 
+    const activeClasses = this.state.activeClasses.slice();
+
     return (
       <div>
         <StatusAlert />
-        <div className="dropdown">
+        <div
+          className={`${
+            activeClasses[0] ? "expanded" : ""
+          } dropdown dropdown-filter mb-2`}
+          onClick={() => this.addActiveClass(0)}
+        >
           <button
-            className="btn btn-outline dropdown btn-block dropdown-toggle"
+            className="btn dropdown btn-block dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
+            data-toggle="collapse"
+            data-target="#culturegroup"
             aria-expanded="false"
+            aria-controls="culturegroup"
           >
             Culture Group
           </button>
 
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div className="collapse multi-collapse" id="culturegroup">
+            <label id="all" key="all" type="button" className="dropdown-item">
+              <input
+                className="form-check-input"
+                type="radio"
+                aria-label="Checkbox to select all culture group"
+                name="culture group"
+                id="allCultureGroup"
+                value="allCultureGroup"
+                onClick={this.props.handleClick.bind(
+                  this,
+                  "",
+                  "allCultureGroup"
+                )}
+              />
+              <label
+                key="allCultureGroup"
+                className="d-inline filters pr-2 form-check-label"
+                htmlFor="allCultureGroup"
+              >
+                All
+              </label>
+            </label>
             {filteredCultureGroup.map((cultureGroup, i) => (
-              <button
-                id={cultureGroup}
+              <label
                 key={cultureGroup}
                 type="button"
                 className="dropdown-item"
-                onClick={this.handleChange}
+                onClick={this.props.handleClick.bind(
+                  this,
+                  cultureGroup,
+                  "culture_group"
+                )}
               >
-                <h4
-                  key={cultureGroup}
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  aria-label="Checkbox for artwork type"
+                  name="culture group"
                   id={cultureGroup}
-                  className="d-inline"
+                  value={cultureGroup}
+                />
+                <label
+                  key={cultureGroup}
+                  className="d-inline-block filters pr-2 form-check-label text-truncate"
+                  htmlFor={cultureGroup}
                   dangerouslySetInnerHTML={{
                     __html: cultureGroup
                   }}
-                ></h4>
-                <span className="d-inline badge badge-primary badge-pill">
+                ></label>
+                <span className="d-inline-block badge badge-primary badge-pill">
                   {cultureGroupCount[i]}
                 </span>
-              </button>
+              </label>
             ))}
           </div>
         </div>
 
-        <div className="dropdown">
+        <div
+          className={`${
+            activeClasses[1] ? "expanded" : ""
+          } dropdown dropdown-filter mb-2`}
+          onClick={() => this.addActiveClass(1)}
+        >
           <button
-            className="btn btn-outline dropdown btn-block dropdown-toggle"
+            className="btn dropdown btn-block dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
+            data-toggle="collapse"
+            data-target="#artworktype"
             aria-expanded="false"
+            aria-controls="artworktype"
           >
             Artwork Type
           </button>
 
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div className="collapse multi-collapse" id="artworktype">
+            <label id="all" key="all" type="button" className="dropdown-item">
+              <input
+                className="form-check-input"
+                type="radio"
+                aria-label="Checkbox for artwork type"
+                name="artwork type"
+                id="allArtworkType"
+                value="allArtworkType"
+                onClick={this.props.handleClick.bind(
+                  this,
+                  "",
+                  "allArtworkType"
+                )}
+              />
+              <label
+                key="allArtworkType"
+                htmlFor="allArtworkType"
+                className="d-inline filters pr-2 form-check-label"
+              >
+                All
+              </label>
+            </label>
             {filteredArtworkType.map((artworkType, i) => (
-              <button key={artworkType} type="button" className="dropdown-item">
-                <h4
+              <label
+                key={artworkType}
+                type="button"
+                className="dropdown-item"
+                onClick={this.props.handleClick.bind(
+                  this,
+                  artworkType,
+                  "artwork_type"
+                )}
+              >
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  aria-label="Checkbox for artwork type"
+                  name="artwork type"
+                  id={artworkType}
+                  value={artworkType}
+                />
+                <label
                   key={artworkType}
-                  className="d-inline"
+                  htmlFor={artworkType}
+                  className="d-inline-block filters pr-2 text-truncate"
                   dangerouslySetInnerHTML={{
                     __html: artworkType
                   }}
-                ></h4>
-                <span className="d-inline badge badge-primary badge-pill">
+                ></label>
+                <span className="d-inline-block badge badge-primary badge-pill">
                   {artworkTypeCount[i]}
                 </span>
-              </button>
+              </label>
             ))}
           </div>
         </div>
 
-        <div className="dropdown">
+        <div
+          className={`${
+            activeClasses[2] ? "expanded" : ""
+          } dropdown dropdown-filter mb-2`}
+          onClick={() => this.addActiveClass(2)}
+        >
           <button
-            className="btn btn-outline dropdown btn-block dropdown-toggle"
+            className="btn dropdown btn-block dropdown-toggle"
             type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
+            data-toggle="collapse"
+            data-target="#material"
             aria-expanded="false"
+            aria-controls="material"
           >
             Material
           </button>
 
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div className="collapse multi-collapse" id="material">
+            <label id="all" key="all" type="button" className="dropdown-item">
+              <input
+                className="form-check-input"
+                type="radio"
+                aria-label="Checkbox for artwork type"
+                name="material"
+                id="allMaterial"
+                value="material"
+                onClick={this.props.handleClick.bind(this, "", "allMaterial")}
+              />
+              <label
+                key="allMaterial"
+                htmlFor="allMaterial"
+                className="d-inline filters pr-2 form-check-label"
+              >
+                All
+              </label>
+            </label>
             {filteredMaterial.map((material, i) => (
-              <button key={material} type="button" className="dropdown-item">
-                <h4
+              <label
+                key={material}
+                type="button"
+                className="dropdown-item"
+                onClick={this.props.handleClick.bind(
+                  this,
+                  material,
+                  "material"
+                )}
+              >
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  id={material}
+                  aria-label="Checkbox for material"
+                  name="material"
+                />
+                <label
                   key={material}
-                  className="d-inline"
+                  htmlFor={material}
+                  className="d-inline-block filters pr-2 form-check-label text-truncate"
                   dangerouslySetInnerHTML={{
                     __html: material
                   }}
-                ></h4>
-                <span className="d-inline badge badge-primary badge-pill">
+                ></label>
+                <span className="d-inline-block badge badge-primary badge-pill">
                   {materialCount[i]}
                 </span>
-              </button>
+              </label>
             ))}
           </div>
         </div>
 
-        <div className="dropdown">
+        <div
+          className={`${
+            activeClasses[3] ? "expanded" : ""
+          } dropdown dropdown-filter mb-2`}
+          onClick={() => this.addActiveClass(3)}
+        >
           <button
-            className="btn btn-outline dropdown btn-block dropdown-toggle"
+            className="btn dropdown btn-block dropdown-toggle"
             type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
+            data-toggle="collapse"
+            data-target="#institution"
             aria-expanded="false"
+            aria-controls="institution"
           >
             Holding Institution
           </button>
 
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div className="collapse multi-collapse" id="institution">
+            <label id="all" key="all" type="button" className="dropdown-item">
+              <input
+                className="form-check-input"
+                type="radio"
+                aria-label="Checkbox for artwork type"
+                name="institution"
+                id="allInstitution"
+                value="institution"
+                onClick={this.props.handleClick.bind(
+                  this,
+                  "",
+                  "allInstitution"
+                )}
+              />
+              <label
+                key="allInstitution"
+                htmlFor="allInstitution"
+                className="d-inline filters pr-2 form-check-label"
+              >
+                All
+              </label>
+            </label>
             {filteredInstitution.map((institution, i) => (
-              <button key={institution} type="button" className="dropdown-item">
-                <h4
+              <label
+                key={institution}
+                type="button"
+                className="dropdown-item"
+                onClick={this.props.handleClick.bind(
+                  this,
+                  institution,
+                  "institution"
+                )}
+              >
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  id={institution}
+                  aria-label="Checkbox for institution"
+                  name="institution"
+                />
+                <label
                   key={institution}
-                  className="d-inline"
+                  htmlFor={institution}
+                  className="d-inline-block filters pr-2 form-check-label text-truncate"
                   dangerouslySetInnerHTML={{
                     __html: institution
                   }}
-                ></h4>
-                <span className="d-inline badge badge-primary badge-pill">
+                ></label>
+                <span className="d-inline-block badge badge-primary badge-pill">
                   {institutionCount[i]}
                 </span>
-              </button>
+              </label>
             ))}
           </div>
         </div>

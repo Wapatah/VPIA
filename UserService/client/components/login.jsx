@@ -130,8 +130,9 @@ class Login extends React.Component {
                     />
                     <div className="input-group-append">
                       <button
-                        className="btn btn-outline-secondary append-light "
+                        className="btn btn-text append-light "
                         aria-label="show password"
+                        type="button"
                         onClick={this.toggleShow}
                       >
                         Show
@@ -141,7 +142,7 @@ class Login extends React.Component {
                   <div className="form-group">
                     <button
                       onClick={this.handleSubmit}
-                      className="btn btn-primary btn-block mt-5"
+                      className="btn btn-primary btn-block mt-5 mb-3"
                     >
                       Sign in
                     </button>

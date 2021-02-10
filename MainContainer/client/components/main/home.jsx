@@ -35,43 +35,48 @@ class Home extends React.Component {
             <div className="container p-t-3" aria-label="In conversation">
               <h1 className="title-primary underline-brush">In Conversation</h1>
               <BrowseArticles articleId={this.state.articleId} />
-              <h1 className="title-primary underline-brush">
-                Current Projects & Events
-              </h1>
+              <h1 className="title-primary underline-brush">Spotlight</h1>
               <div className="row">
                 <div className="col-md-7">
                   <div className="events-card card text-white">
                     <img
-                      src="../assets/images/Event_VPIA.jpeg"
+                      src="../assets/images/HaidaGwaii.jpg"
                       className="card-img greyscale"
-                      alt="Image of the launch of VPIA event"
-                      aria-label="Image of the launch of VPIA event"
+                      alt="Haida Gwaii Knowledge Exchange Workshop"
+                      aria-label="Haida Gwaii Knowledge Exchange Workshop"
                     />
                     <div className="card-img-overlay">
-                      <div className="image-tint"></div>
+                      <img
+                        src="../assets/images/event_icon.png"
+                        className="top-icon"
+                        alt="event icon"
+                      />
+                      <div className="image-tint-dark"></div>
                       <h5 className="card-title card-content ">
-                        Launch of the Virtual Platform for Indigenous Art
+                        Haida Gwaii Knowledge Exchange Workshop
                       </h5>
                       <p className="card-text card-content card-description">
-                        Onsite Gallery, December 13th 2019, 2:30pm-5:30pm
+                        February 2019
                       </p>
                     </div>
                   </div>
                   <div className="events-card card text-white">
                     <img
-                      src="../assets/images/Event_inuitartonline.jpeg"
+                      src="../assets/images/RoundTable.jpg"
                       className="card-img greyscale"
                       alt="Image of the Inuit Art On-line event"
                       aria-label="Image of the Inuit Art On-line event"
                     />
                     <div className="card-img-overlay">
-                      <div className="image-tint"></div>
+                      <img
+                        src="../assets/images/event_icon.png"
+                        className="top-icon"
+                        alt="event icon"
+                      />
+                      <div className="image-tint-dark"></div>
                       <h5 className="card-title card-content ">
-                        Inuit Art On-Line
+                        Indigenizing the Museum Virtual Roundtable Series
                       </h5>
-                      <p className="card-text card-content card-description">
-                        Onsite Gallery, November 28th 2019, 5:30pm-8:30pm
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -79,51 +84,48 @@ class Home extends React.Component {
                 <div className="col-md-5">
                   <div className="events-card card">
                     <img
-                      src="../assets/images/Event_McCord.jpg"
+                      src="../assets/images/Event_inuitartonline.jpeg"
                       className="card-img-top greyscale"
                       alt="Image of the McCord Museum workshop's event with Eric Tootoosis"
                       aria-label="Image of the McCord Museum workshop's event with Eric Tootoosis"
                     />
                     <div className="card-body">
                       <p className="article-title">
-                        McCord Museum Workshop with Eric Tootoosis
+                        Inuit Art Online Symposium
                       </p>
-                      <p className="card-description">November 4th-7th 2019</p>
+                      <p className="card-description">November 29 2019</p>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6">
                       <div className="card">
                         <img
-                          src="../assets/images/CRKN.png"
+                          src="../assets/images/Eric.jpg"
                           className="card-img-top greyscale"
                           alt="Image of the Canadian Research Knowledge Network Conference's event"
                           aria-label="Image of the Canadian Research Knowledge Network Conference's event"
                         />
                         <div className="card-body">
                           <p className="article-title">
-                            Canadian Research Knowledge Network Conference
+                            McCord Museum Workshop with Eric Tootoosis
                           </p>
-                          <p className="card-description">
-                            October 16th-18th 2019
-                          </p>
+                          <p className="card-description">November 2019</p>
                         </div>
                       </div>
                     </div>
                     <div className="col-md-6">
                       <div className="card">
                         <img
-                          src="../assets/images/Representing.jpg"
+                          src="../assets/images/FrontConf.jpeg"
                           className="card-img-top greyscale"
-                          alt="Image of the Re/presenting the European at the University of Auckland's event"
-                          aria-label="Image of the Re/presenting the European at the University of Auckland's event"
+                          alt="Image of the FrontConf conference"
+                          aria-label="Image of the FrontConf conference"
                         />
                         <div className="card-body">
                           <p className="article-title">
-                            Re/presenting the European at the University of
-                            Auckland
+                            FrontConf Munich FrontEnd Conference
                           </p>
-                          <p className="card-description">October 9th 2019</p>
+                          <p className="card-description">March 21 2020 </p>
                         </div>
                       </div>
                     </div>
