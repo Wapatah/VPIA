@@ -15,6 +15,7 @@ import Login from "../../../UserService/client/components/login.jsx";
 import Article from "../../../WikiService/client/components/article.jsx";
 import NewArticle from "../../../WikiService/client/components/new.jsx";
 import EditArticle from "../../../WikiService/client/components/edit.jsx";
+import InfoBox from "../../../WikiService/client/components/infobox.jsx";
 import ArticleHistory from "../../../HistoryService/client/components/history.jsx";
 import Institution from "../../../HistoryService/client/components/institution.jsx";
 import Search from "../../../SearchService/client/components/search.jsx";

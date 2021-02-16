@@ -5,6 +5,7 @@
 import React from "react";
 import { Link, hashHistory } from "react-router";
 import Loader from "./helpers/loader.jsx";
+import InfoBox from "./infobox.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class ViewArticle extends React.Component {
@@ -116,103 +117,18 @@ class ViewArticle extends React.Component {
         <div className="container-fluid">
           <StatusAlert />
           <div className="row">
-            <div className="col-md-3 article-info-box">
-              <div className="card">
-                <div
-                  className="my-card-img-top"
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.article[0].photo
-                  }}
-                ></div>
-                <div className="list-group-item">
-                  Image License
-                  <p
-                    id="Baskerville"
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.article[0].photo_license
-                    }}
-                  ></p>
-                </div>
-
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">
-                    Last Updated By
-                    <p id="Baskerville">{user_name}</p>
-                  </li>
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Holding Institution</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].institution
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Type</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].artwork_type
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Culture Group</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].culture_group
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Material</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].material
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Tags</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].tags
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <b>What Changed in last edit</b>
-                    {this.state.article[0].what_changed ? (
-                      <p id="Baskerville">
-                        {this.state.article[0].what_changed}
-                      </p>
-                    ) : (
-                      <p id="Baskerville">No information available</p>
-                    )}
-                  </li>
-                </ul>
-
-                {window.localStorage.getItem("admin") === "1" ? (
-                  <button
-                    className="btn btn-primary btn-block"
-                    onClick={this.deleteArticle}
-                  >
-                    Delete
-                  </button>
-                ) : (
-                  ""
-                )}
-              </div>
-            </div>
+            <InfoBox
+              photo={this.state.article[0].photo}
+              photo_license={this.state.article[0].photo_license}
+              user_name={user_name}
+              institution={this.state.article[0].institution}
+              artwork_type={this.state.article[0].artwork_type}
+              culture_group={this.state.article[0].culture_group}
+              material={this.state.article[0].material}
+              tags={this.state.article[0].tags}
+              what_changed={this.state.article[0].what_changed}
+              delete={this.deleteArticle}
+            />
 
             <div className="col-md-6 tabBar-content">
               <div className="tabBar row justify-content-between align-items-end">
