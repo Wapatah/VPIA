@@ -129,11 +129,14 @@ class NewArticle extends React.Component {
             <div className="card">
               <div className="my-card-img-top">
                 <Editor
+                  id="mainPhoto"
                   initialValue='<img src="../../assets/images/logo.png">'
                   init={{
                     inline: true,
                     menubar: false,
                     images_upload_url: process.env.IMAGEUPLOAD,
+                    a11y_advanced_options: true,
+                    images_reuse_filename: true,
                     plugins: ["image"],
                     toolbar: "image | help"
                   }}
@@ -277,6 +280,7 @@ class NewArticle extends React.Component {
                       <hr />
                       <div id="article-photo" className="single-article-body">
                         <Editor
+                          id="mainEditor"
                           initialValue=""
                           init={{
                             inline: false,
@@ -286,7 +290,11 @@ class NewArticle extends React.Component {
                             plugins: Config.plugins,
                             toolbar: Config.toolbar,
                             quickbars_insert_toolbar: false,
-                            quickbars_selection_toolbar: false
+                            quickbars_selection_toolbar: false,
+                            a11y_advanced_options: true,
+                            image_caption: true,
+                            images_reuse_filename: true,
+                            paste_data_images: true
                           }}
                           onChange={editor => {
                             this.setState({ body: editor.level.content });
