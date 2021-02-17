@@ -382,7 +382,7 @@ class EditArticle extends React.Component {
                   </Link>
                   <Link
                     to={"/article/edit/" + this.state.article[0].id}
-                    className="none-deco tabBar-tab edit-tab"
+                    className="none-deco tabBar-tab edit-tab is-active"
                     aria-label="Edit tab, go to edit the article"
                   >
                     Edit
@@ -395,7 +395,8 @@ class EditArticle extends React.Component {
                     Institution
                   </Link>
                   <Link
-                    className="bottom-align-text tabBar-tab vpia-tab is-active"
+                  to={"/article/" + this.state.article[0].id}
+                    className="bottom-align-text tabBar-tab vpia-tab"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
                     VPIA
