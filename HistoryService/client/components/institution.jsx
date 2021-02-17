@@ -16,7 +16,7 @@ class Institution extends React.Component {
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
-  On initial load, GET ONE Article from Article API
+  On initial load, GET ONE Article from Article API and GET archives history
 */
   componentDidMount() {
     let myHeaders = new Headers({
@@ -36,7 +36,6 @@ class Institution extends React.Component {
       fetch(url, myInit)
     ])
       .then(function(responses) {
-        // Get a JSON object from each of the responses
         return Promise.all(
           responses.map(function(response) {
             return response.json();
