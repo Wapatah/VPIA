@@ -113,6 +113,7 @@ class Institution extends React.Component {
             tags={article.tags}
             what_changed={article.what_changed}
             delete={this.deleteArticle}
+            display={false}
           />
           <div className="col-md-6 tabBar-content">
             <div className="tabBar row justify-content-between align-items-end">

@@ -132,6 +132,7 @@ class ViewArticle extends React.Component {
               tags={article.tags}
               what_changed={article.what_changed}
               delete={this.deleteArticle}
+              display={true}
             />
 
             <div className="col-md-6 tabBar-content">

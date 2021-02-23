@@ -9,6 +9,7 @@ import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class InfoBox extends React.Component {
   render() {
+    const display = this.props.display;
     return (
       <div className="col-md-3 article-info-box">
         <div className="card">
@@ -29,10 +30,14 @@ class InfoBox extends React.Component {
           </div>
 
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              Last Updated By {this.props.user_name}
-              <p id="Baskerville"></p>
-            </li>
+            {display ? (
+              <li className="list-group-item">
+                Last Updated By {this.props.user_name}
+                <p id="Baskerville"></p>
+              </li>
+            ) : (
+              ""
+            )}
             <li className="list-group-item">
               <p id="FuturaStdHeavy">Holding Institution</p>
               <p
