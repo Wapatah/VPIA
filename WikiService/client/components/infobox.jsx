@@ -90,7 +90,12 @@ class InfoBox extends React.Component {
           </ul>
 
           {window.localStorage.getItem("admin") === "1" ? (
-            <button className="btn btn-primary btn-block" onClick={this.props.delete}>Delete</button>
+            <button
+              className="btn btn-primary btn-block"
+              onClick={this.props.delete}
+            >
+              Delete
+            </button>
           ) : (
             ""
           )}

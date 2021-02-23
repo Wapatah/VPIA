@@ -108,25 +108,29 @@ class ViewArticle extends React.Component {
 */
   render() {
     let user_name = "";
+    let article = [];
     if (this.state.loading) return <Loader />;
     else if (this.state.article[0] && this.state.article[0].user_id) {
       if (this.state.user[0]) {
         user_name = this.state.user[0].name;
+      }
+      if (this.state.article[0]) {
+        article = this.state.article[0];
       }
       return (
         <div className="container-fluid">
           <StatusAlert />
           <div className="row">
             <InfoBox
-              photo={this.state.article[0].photo}
-              photo_license={this.state.article[0].photo_license}
+              photo={article.photo}
+              photo_license={article.photo_license}
               user_name={user_name}
-              institution={this.state.article[0].institution}
-              artwork_type={this.state.article[0].artwork_type}
-              culture_group={this.state.article[0].culture_group}
-              material={this.state.article[0].material}
-              tags={this.state.article[0].tags}
-              what_changed={this.state.article[0].what_changed}
+              institution={article.institution}
+              artwork_type={article.artwork_type}
+              culture_group={article.culture_group}
+              material={article.material}
+              tags={article.tags}
+              what_changed={article.what_changed}
               delete={this.deleteArticle}
             />
 
@@ -141,32 +145,32 @@ class ViewArticle extends React.Component {
                       <a
                         href="#"
                         dangerouslySetInnerHTML={{
-                          __html: this.state.article[0].artwork_type
+                          __html: article.artwork_type
                         }}
                       ></a>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
-                      {this.state.article[0].title}
+                      {article.title}
                     </li>
                   </ol>
                 </nav>
                 <div className="col tabBar-align">
                   <Link
-                    to={"/article/history/" + this.state.article[0].id}
+                    to={"/article/history/" + article.id}
                     className="none-deco tabBar-tab history-tab"
                     aria-label="Histyory tab, go to see the history of this article"
                   >
                     Edit History
                   </Link>
                   <Link
-                    to={"/article/edit/" + this.state.article[0].id}
+                    to={"/article/edit/" + article.id}
                     className="none-deco tabBar-tab edit-tab"
                     aria-label="Edit tab, go to edit the article"
                   >
                     Edit
                   </Link>
                   <Link
-                    to={"/article/institution/" + this.state.article[0].id}
+                    to={"/article/institution/" + article.id}
                     className="bottom-align-text tabBar-tab institution-tab"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
@@ -183,8 +187,8 @@ class ViewArticle extends React.Component {
               <div className="tab-bar-card">
                 <div className="article-heading">
                   <h1 className="single-article-title">
-                    #{this.state.article[0].id}&nbsp;
-                    {this.state.article[0].title}
+                    #{article.id}&nbsp;
+                    {article.title}
                   </h1>
                   <div className="article-body">
                     <br />
@@ -194,7 +198,7 @@ class ViewArticle extends React.Component {
                       id="article-photo"
                       className="single-article-body"
                       dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].body
+                        __html: article.body
                       }}
                     ></div>
                   </div>
