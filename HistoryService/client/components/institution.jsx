@@ -5,17 +5,18 @@ import React from "react";
 import { Link } from "react-router";
 import Loader from "./helpers/loader.jsx";
 import BrowseArchives from "./browse_archives.jsx";
+import InfoBox from "../../../WikiService/client/components/infobox.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class Institution extends React.Component {
   constructor(props) {
     super(props);
     this.deleteArticle = this.deleteArticle.bind(this);
-    this.state = { article: {}, user: {}, archive_id: "", loading: true };
+    this.state = { article: {}, user: {}, archives: {}, loading: true };
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
-  On initial load, GET ONE Article from Article API
+  On initial load, GET ONE Article from Article API and GET archives history
 */
   componentDidMount() {
     let myHeaders = new Headers({
@@ -25,47 +26,34 @@ class Institution extends React.Component {
 
     let myInit = { method: "GET", headers: myHeaders };
     let that = this;
+    let article_url =
+      `${process.env.HISTORYSERVICE}/api/articles/` +
+      that.props.params.articleId +
+      "/history";
+    let archives_url = "/api/articles/" + that.props.params.articleId;
 
-    fetch("/api/articles/" + that.props.params.articleId, myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-          StatusAlertService.showError(response.error.message);
-        } else {
-          that.setState({ article: response.data });
-        }
-        that.setState({ loading: false });
-      })
-      .then(() => {
-        let myHeaders = new Headers({
-          "Content-Type": "application/x-www-form-urlencoded",
-          "x-access-token": window.localStorage.getItem("userToken")
-        });
-
-        let myInit = { method: "GET", headers: myHeaders };
-        let that = this;
-
-        fetch(
-          `${process.env.USERSERVICE}/api/users/` +
-            that.state.article[0].user_id,
-          myInit
-        )
-          .then(function(response) {
+    Promise.all([fetch(archives_url, myInit), fetch(article_url, myInit)])
+      .then(function(responses) {
+        return Promise.all(
+          responses.map(function(response) {
             return response.json();
           })
-          .then(function(response) {
-            if (response.error.error) {
-              StatusAlertService.showError(response.error.message);
-            } else {
-              that.setState({ user: response.data });
-            }
-            that.setState({ loading: false });
-          });
+        );
+      })
+      .then(function(data) {
+        const article = data[0];
+        const archives = data[1];
+        that.setState({
+          article: article.data,
+          archives: archives.data,
+          loading: false
+        });
+      })
+
+      .catch(function(error) {
+        StatusAlertService.showError(response.error.message);
       });
   }
-
   /* --------------------------------------------------------------------------------------------------------------------------------------------
   deleteArticle() - takes id, sends Delete request to Article and redirects
   user back to home.
@@ -102,183 +90,101 @@ class Institution extends React.Component {
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
-  // archiveUpdate() - Clicking on archive sets the archive id to update in browse_archives
-  archiveUpdate(id) {
-    this.setState({ archive_id: id });
-  }
-
-  // --------------------------------------------------------------------------------------------------------------------------------------------
-  // Renders the history page as well as the browse_archive and simple_article components.
+  // Renders the institution page.
   render() {
     let user_name = "";
+    let article = [];
     if (this.state.loading) return <Loader />;
-    else
-      return (
-        <div className="container-fluid">
-          <StatusAlert />
-          <div className="row">
-            <div className="col-md-3 article-info-box">
-              <div className="card">
-                <div
-                  className="my-card-img-top"
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.article[0].photo
-                  }}
-                ></div>
-                <div className="list-group-item">
-                  Image License
-                  <p
-                    id="Baskerville"
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.article[0].photo_license
-                    }}
-                  ></p>
-                </div>
-
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">
-                    Last Updated By
-                    <p id="Baskerville">{user_name}</p>
+    else if (this.state.article[0]) {
+      article = this.state.article[0];
+    }
+    return (
+      <div className="container-fluid">
+        <StatusAlert />
+        <div className="row">
+          <InfoBox
+            photo={article.photo}
+            photo_license={article.photo_license}
+            user_name={user_name}
+            institution={article.institution}
+            artwork_type={article.artwork_type}
+            culture_group={article.culture_group}
+            material={article.material}
+            tags={article.tags}
+            what_changed={article.what_changed}
+            delete={this.deleteArticle}
+            display={false}
+          />
+          <div className="col-md-6 tabBar-content">
+            <div className="tabBar row justify-content-between align-items-end">
+              <nav aria-label="breadcrumb col">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item">
+                    <a href="#">Search</a>
                   </li>
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Holding Institution</p>
-                    <p
-                      id="Baskerville"
+                  <li className="breadcrumb-item">
+                    <a
+                      href="#"
                       dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].institution
+                        __html: article.artwork_type
                       }}
-                    ></p>
+                    ></a>
                   </li>
-
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Type</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].artwork_type
-                      }}
-                    ></p>
+                  <li className="breadcrumb-item active" aria-current="page">
+                    {article.title}
                   </li>
-
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Culture Group</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].culture_group
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Material</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].material
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Tags</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].tags
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <b>What Changed in last edit</b>
-                    {this.state.article[0].what_changed ? (
-                      <p id="Baskerville">
-                        {this.state.article[0].what_changed}
-                      </p>
-                    ) : (
-                      <p id="Baskerville">No information available</p>
-                    )}
-                  </li>
-                </ul>
-
-                {window.localStorage.getItem("admin") === "1" ? (
-                  <button
-                    className="btn btn-primary btn-block"
-                    onClick={this.deleteArticle}
-                  >
-                    Delete
-                  </button>
-                ) : (
-                  ""
-                )}
+                </ol>
+              </nav>
+              <div className="col tabBar-align">
+                <Link
+                  to={"/article/history/" + article.id}
+                  className="none-deco tabBar-tab history-tab"
+                  aria-label="Histyory tab, go to see the history of this article"
+                >
+                  Edit History
+                </Link>
+                <Link
+                  to={"/article/edit/" + article.id}
+                  className="none-deco tabBar-tab edit-tab"
+                  aria-label="Edit tab, go to edit the article"
+                >
+                  Edit
+                </Link>
+                <Link
+                  to={"/article/institution/" + article.id}
+                  className="bottom-align-text tabBar-tab institution-tab is-active"
+                  aria-label="Artwork article tab, see the current published state of the article"
+                >
+                  Institution
+                </Link>
+                <Link
+                  to={"/article/" + article.id}
+                  className="bottom-align-text tabBar-tab vpia-tab"
+                  aria-label="Artwork article tab, see the current published state of the article"
+                >
+                  VPIA
+                </Link>
               </div>
             </div>
+            <div class="tab-bar-card">
+              <div className="article-heading">
+                <h1 className="single-article-title">
+                  {article.title}- {article.institution} Record
+                </h1>
 
-            <div className="col-md-6 tabBar-content">
-              <div className="tabBar row justify-content-between align-items-end">
-                <nav aria-label="breadcrumb col">
-                  <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                      <a href="#">Search</a>
-                    </li>
-                    <li className="breadcrumb-item">
-                      <a
-                        href="#"
-                        dangerouslySetInnerHTML={{
-                          __html: this.state.article[0].artwork_type
-                        }}
-                      ></a>
-                    </li>
-                    <li className="breadcrumb-item active" aria-current="page">
-                      {this.state.article[0].title}
-                    </li>
-                  </ol>
-                </nav>
-                <div className="col tabBar-align">
-                  <Link
-                    to={"/article/history/" + this.state.article[0].id}
-                    className="none-deco tabBar-tab history-tab"
-                    aria-label="Histyory tab, go to see the history of this article"
-                  >
-                    Edit History
-                  </Link>
-                  <Link
-                    to={"/article/edit/" + this.state.article[0].id}
-                    className="none-deco tabBar-tab edit-tab"
-                    aria-label="Edit tab, go to edit the article"
-                  >
-                    Edit
-                  </Link>
-                  <Link
-                    to={"/article/institution/" + this.state.article[0].id}
-                    className="bottom-align-text tabBar-tab institution-tab is-active"
-                    aria-label="Artwork article tab, see the current published state of the article"
-                  >
-                    Institution
-                  </Link>
-                  <Link
-                    to={"/article/" + this.props.params.articleId}
-                    className="bottom-align-text tabBar-tab vpia-tab"
-                    aria-label="Artwork article tab, see the current published state of the article"
-                  >
-                    VPIA
-                  </Link>
-                </div>
-              </div>
-              <div class="tab-bar-card">
-                <div className="article-heading">
-                  <h1 className="single-article-title">
-                    {this.state.article[0].title}-{" "}
-                    {this.state.article[0].institution} Record
-                  </h1>
-                  <div className="article-body"></div>
-                </div>
+                <div
+                  className="single-article-body"
+                  dangerouslySetInnerHTML={{
+                    __html: this.state.archives[this.state.archives.length - 1]
+                      .body
+                  }}
+                ></div>
               </div>
             </div>
           </div>
         </div>
-      );
+      </div>
+    );
   }
 }
 
