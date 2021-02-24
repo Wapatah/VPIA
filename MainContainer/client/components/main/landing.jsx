@@ -32,7 +32,7 @@ class Landing extends React.Component {
                         <p className="lead">
                           Search and edit 2000 indigenous Artworks
                         </p>
-                        <p id="Baskerville">
+                        <p id="TradeGothic">
                           Help animate Indigenous collections from global
                           institutions by sharing your knowledge and experience
                           through the VPIA.

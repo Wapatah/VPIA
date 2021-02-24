@@ -44,13 +44,21 @@
   src: url("./fonts/MBaskerville-BoldItalic.otf");
   font-display: swap;
 }
-
+@font-face {
+  font-family: "TradeGothic";
+  src: url("./fonts/TradeGothicLTStd.otf");
+  font-display: swap;
+}
 #FuturaStdHeavy {
   font-family: "FuturaStdHeavy";
 }
 
 #Baskerville {
   font-family: "Baskerville";
+}
+
+#TradeGothic {
+  font-family: "TradeGothic";
 }
 
 .primary-logo {
@@ -469,7 +477,7 @@ h1.underline-brush {
 }
 
 .VPIA-intro-right p {
-  font-family: "FuturaStdLight";
+  font-family: "TradeGothic";
 }
 
 .VPIA-intro-right h2 {
@@ -571,7 +579,7 @@ ul.social-network li {
 }
 
 .card-description {
-  font-family: "Baskerville";
+  font-family: "TradeGothic";
   size: 1.25em;
 }
 

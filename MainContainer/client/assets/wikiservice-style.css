@@ -377,7 +377,9 @@ h3.single-article-title {
   padding-top: 1em;
   padding-left: 0;
 }
-
+#article-photo p {
+  font-family: "TradeGothic";
+}
 #article-photo img {
   width: 100%;
 }
