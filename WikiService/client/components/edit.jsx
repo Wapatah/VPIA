@@ -395,7 +395,7 @@ class EditArticle extends React.Component {
                     Institution
                   </Link>
                   <Link
-                  to={"/article/" + this.state.article[0].id}
+                    to={"/article/" + this.state.article[0].id}
                     className="bottom-align-text tabBar-tab vpia-tab"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
@@ -416,14 +416,18 @@ class EditArticle extends React.Component {
                     <Editor
                       initialValue={this.state.body}
                       init={{
-                        inline: true,
+                        inline: false,
                         menubar: false,
                         automatic_uploads: true,
                         images_upload_url: process.env.IMAGEUPLOAD,
                         plugins: Config.plugins,
                         toolbar: Config.toolbar,
                         quickbars_insert_toolbar: false,
-                        quickbars_selection_toolbar: false
+                        quickbars_selection_toolbar: false,
+                        a11y_advanced_options: true,
+                        image_caption: true,
+                        images_reuse_filename: true,
+                        paste_data_images: true
                       }}
                       onChange={editor => {
                         this.setState({ body: editor.level.content });
