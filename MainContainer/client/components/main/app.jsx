@@ -226,7 +226,7 @@ class App extends React.Component {
                           <a href="">Tutorials</a>
                         </li>
                         <li>
-                          <a href="">Contact Us</a>
+                          <Link to="contact">Contact Us</Link>
                         </li>
                       </ul>
                     </div>

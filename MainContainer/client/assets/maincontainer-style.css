@@ -792,6 +792,18 @@ img.about-img {
   background-color: white;
 }
 
+.contact {
+  background-color: #f3f3f2;
+  width: 67rem;
+  height: 54rem;
+  top: 33.6rem;
+  margin-bottom: 15rem;
+  box-shadow: 0px 3px 6px #00000029;
+}
+.heading-secondary {
+  font-size: 1rem;
+}
+
 @media (max-width: 768px) {
   #mainlogo {
     top: 1em;
