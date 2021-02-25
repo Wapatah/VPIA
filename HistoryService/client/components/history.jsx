@@ -11,7 +11,7 @@ class ArticleHistory extends React.Component {
   constructor(props) {
     super(props);
     this.archiveUpdate = this.archiveUpdate.bind(this);
-    this.state = { archive_id: "", article: {}, user: {}, loading: true };
+    this.state = { archive_id: "", loading: true };
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -29,7 +29,6 @@ class ArticleHistory extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Renders the history page as well as the browse_archive and simple_article components.
   render() {
-    let user_name = "";
     if (this.state.loading) return <Loader />;
     else
       return (

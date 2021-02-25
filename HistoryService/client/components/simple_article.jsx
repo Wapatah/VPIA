@@ -3,7 +3,6 @@
 */
 import React from "react";
 import { Link } from "react-router";
-import Loader from "./helpers/loader.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class SimpleArticle extends React.Component {
@@ -63,12 +62,15 @@ class SimpleArticle extends React.Component {
       });
   }
 
+  getRawMarkupBody() {
+    return { __html: this.state.article[0].body };
+  }
+
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Displays the article information in smaller detail.
   render() {
     let user_name = "";
-    if (this.state.loading) return <Loader />;
-    if (this.state.article[0] && this.state.article[0].user_id) {
+    if (this.state.article[0] && this.state.user[0] && this.props.archiveId) {
       if (this.state.user[0]) {
         user_name = this.state.user[0].name;
       }
@@ -126,7 +128,7 @@ class SimpleArticle extends React.Component {
           <hr />
           <p
             className="edit-history-text"
-            dangerouslySetInnerHTML={{ __html: this.state.article[0].body }}
+            dangerouslySetInnerHTML={this.getRawMarkupBody()}
           ></p>
         </div>
       );
