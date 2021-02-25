@@ -43,78 +43,115 @@ class NewArticle extends React.Component {
   }
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Take variables from admin input and create a new Article object and send POST
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
-    let body = this.state.body;
-    let title = this.state.title;
-    let culture_group = this.state.culture_group;
-    let material = this.state.material;
-    let artwork_type = this.state.artwork_type;
-    let photo = this.state.photo;
-    let institution = this.state.institution;
-    let photo_license = this.state.photo_license;
-    let tags = this.state.tags;
+    let record = {
+      body: encodeURIComponent(this.state.body),
+      title: encodeURIComponent(this.state.title),
+      culture_group: encodeURIComponent(this.state.culture_group),
+      material: encodeURIComponent(this.state.material),
+      artwork_type: encodeURIComponent(this.state.artwork_type),
+      photo: encodeURIComponent(this.state.photo),
+      institution: encodeURIComponent(this.state.institution),
+      photo_license: encodeURIComponent(this.state.photo_license),
+      tags: encodeURIComponent(this.state.tags)
+    };
 
-    if (
-      body &&
-      title &&
-      culture_group &&
-      material &&
-      artwork_type &&
-      institution &&
-      photo &&
-      photo_license &&
-      tags
-    ) {
-      let myHeaders = new Headers({
+    let article_id = "";
+    let what_changed = "";
+
+    if (record) {
+      let headers = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
         "x-access-token": window.localStorage.getItem("userToken")
       });
 
-      let myInit = {
+      // Build the Article API request
+      let article_request = {
         method: "POST",
-        headers: myHeaders,
+        headers: headers,
         body:
           "title=" +
-          encodeURIComponent(title) +
+          record.title +
           "&body=" +
-          encodeURIComponent(body) +
+          record.body +
           "&culture_group=" +
-          encodeURIComponent(culture_group) +
+          record.culture_group +
           "&material=" +
-          encodeURIComponent(material) +
+          record.material +
           "&artwork_type=" +
-          encodeURIComponent(artwork_type) +
+          record.artwork_type +
           "&photo=" +
-          encodeURIComponent(photo) +
+          record.photo +
           "&tags=" +
-          encodeURIComponent(tags) +
+          record.tags +
           "&institution=" +
-          encodeURIComponent(institution) +
+          record.institution +
           "&photo_license=" +
-          encodeURIComponent(photo_license) +
+          record.photo_license +
           "&user_id=" +
           window.localStorage.getItem("user_id")
       };
 
-      fetch("/api/articles/", myInit)
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(response) {
-          if (response.error.error) {
-            StatusAlertService.showError(response.error.message);
-          } else {
-            StatusAlertService.showSuccess(
-              "Article has been successfully saved"
-            );
-            hashHistory.push("article/" + response.data.id + "?new=true");
-          }
-        });
-    } else {
-      StatusAlertService.showError(
-        "Article Body, Title and Information is required."
-      );
+      // Create Article first with the request
+      const res = await fetch("/api/articles/", article_request);
+      const json = await res.json();
+      if (json.error.error) {
+        StatusAlertService.showError(json.error.message);
+      } else {
+        article_id = json.data.id;
+        what_changed = encodeURIComponent(json.data.what_changed);
+      }
+
+      // Then build the Archive API request
+      let archive_request = {
+        method: "POST",
+        headers: headers,
+        body:
+          "article_id=" +
+          article_id +
+          "&title=" +
+          record.title +
+          "&body=" +
+          record.body +
+          "&culture_group=" +
+          record.culture_group +
+          "&institution=" +
+          record.institution +
+          "&material=" +
+          record.material +
+          "&artwork_type=" +
+          record.artwork_type +
+          "&photo=" +
+          record.photo +
+          "&tags=" +
+          record.tags +
+          "&user_id=" +
+          window.localStorage.getItem("user_id") +
+          "&what_changed=" +
+          what_changed
+      };
+
+      // Create Archive after the article request
+      if (what_changed !== "" && article_id !== "") {
+        const res = await fetch(
+          `${process.env.HISTORYSERVICE}/api/archives/`,
+          archive_request
+        );
+        const json = await res.json();
+        if (json.error.error) {
+          StatusAlertService.showError(json.error.message);
+        } else {
+          StatusAlertService.showSuccess(
+            "Article + Original Institution Created Successfully!"
+          );
+          hashHistory.push("article/" + article_id + "?new=true");
+        }
+      } else {
+        StatusAlertService.showError(
+          "Something went wrong with creating the Article."
+        );
+      }
     }
   }
 
