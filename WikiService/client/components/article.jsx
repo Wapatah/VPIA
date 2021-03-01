@@ -5,6 +5,7 @@
 import React from "react";
 import { Link, hashHistory } from "react-router";
 import Loader from "./helpers/loader.jsx";
+import InfoBox from "./infobox.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class ViewArticle extends React.Component {
@@ -107,112 +108,32 @@ class ViewArticle extends React.Component {
 */
   render() {
     let user_name = "";
+    let article = [];
     if (this.state.loading) return <Loader />;
     else if (this.state.article[0] && this.state.article[0].user_id) {
       if (this.state.user[0]) {
         user_name = this.state.user[0].name;
       }
+      if (this.state.article[0]) {
+        article = this.state.article[0];
+      }
       return (
         <div className="container-fluid">
           <StatusAlert />
           <div className="row">
-            <div className="col-md-3 article-info-box">
-              <div className="card">
-                <div
-                  className="my-card-img-top"
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.article[0].photo
-                  }}
-                ></div>
-                <div className="list-group-item">
-                  Image License
-                  <p
-                    id="Baskerville"
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.article[0].photo_license
-                    }}
-                  ></p>
-                </div>
-
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">
-                    Last Updated By
-                    <p id="Baskerville">{user_name}</p>
-                  </li>
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Holding Institution</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].institution
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Type</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].artwork_type
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Culture Group</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].culture_group
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Material</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].material
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Tags</p>
-                    <p
-                      id="Baskerville"
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].tags
-                      }}
-                    ></p>
-                  </li>
-
-                  <li className="list-group-item">
-                    <b>What Changed in last edit</b>
-                    {this.state.article[0].what_changed ? (
-                      <p id="Baskerville">
-                        {this.state.article[0].what_changed}
-                      </p>
-                    ) : (
-                      <p id="Baskerville">No information available</p>
-                    )}
-                  </li>
-                </ul>
-
-                {window.localStorage.getItem("admin") === "1" ? (
-                  <button
-                    className="btn btn-primary btn-block"
-                    onClick={this.deleteArticle}
-                  >
-                    Delete
-                  </button>
-                ) : (
-                  ""
-                )}
-              </div>
-            </div>
+            <InfoBox
+              photo={article.photo}
+              photo_license={article.photo_license}
+              user_name={user_name}
+              institution={article.institution}
+              artwork_type={article.artwork_type}
+              culture_group={article.culture_group}
+              material={article.material}
+              tags={article.tags}
+              what_changed={article.what_changed}
+              delete={this.deleteArticle}
+              display={true}
+            />
 
             <div className="col-md-6 tabBar-content">
               <div className="tabBar row justify-content-between align-items-end">
@@ -225,32 +146,32 @@ class ViewArticle extends React.Component {
                       <a
                         href="#"
                         dangerouslySetInnerHTML={{
-                          __html: this.state.article[0].artwork_type
+                          __html: article.artwork_type
                         }}
                       ></a>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
-                      {this.state.article[0].title}
+                      {article.title}
                     </li>
                   </ol>
                 </nav>
                 <div className="col tabBar-align">
                   <Link
-                    to={"/article/history/" + this.state.article[0].id}
+                    to={"/article/history/" + article.id}
                     className="none-deco tabBar-tab history-tab"
                     aria-label="Histyory tab, go to see the history of this article"
                   >
                     Edit History
                   </Link>
                   <Link
-                    to={"/article/edit/" + this.state.article[0].id}
+                    to={"/article/edit/" + article.id}
                     className="none-deco tabBar-tab edit-tab"
                     aria-label="Edit tab, go to edit the article"
                   >
                     Edit
                   </Link>
                   <Link
-                    to={"/article/institution/" + this.state.article[0].id}
+                    to={"/article/institution/" + article.id}
                     className="bottom-align-text tabBar-tab institution-tab"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
@@ -267,8 +188,8 @@ class ViewArticle extends React.Component {
               <div className="tab-bar-card">
                 <div className="article-heading">
                   <h1 className="single-article-title">
-                    #{this.state.article[0].id}&nbsp;
-                    {this.state.article[0].title}
+                    #{article.id}&nbsp;
+                    {article.title}
                   </h1>
                   <div className="article-body">
                     <br />
@@ -278,7 +199,7 @@ class ViewArticle extends React.Component {
                       id="article-photo"
                       className="single-article-body"
                       dangerouslySetInnerHTML={{
-                        __html: this.state.article[0].body
+                        __html: article.body
                       }}
                     ></div>
                   </div>

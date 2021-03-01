@@ -1,6 +1,5 @@
 const express = require("express");
 const multer = require("multer");
-const upload = multer({ dest: __dirname + "/upload" });
 const path = require("path");
 let cors = require("cors");
 require("dotenv").config({ path: "../.env" });
@@ -14,6 +13,17 @@ const httpsOptions = {
 };
 
 const app = express();
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./upload");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  }
+});
+
+const upload = multer({ storage: storage });
 
 app.use(cors());
 app.use(express.static("upload"));
