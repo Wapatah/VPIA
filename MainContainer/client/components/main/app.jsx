@@ -164,18 +164,42 @@ class App extends React.Component {
                   ""
                 )}
                 <li className="nav-item px-2">
-                  <button type="button" className="btn btn-secondary btn-round">
-                    <Link to="user" className="btn-text">
-                      User Profile
-                    </Link>
-                  </button>
+                  <div class="btn-group">
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn-round dropdown-toggle"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      User
+                    </button>
+                    <div class="dropdown-menu">
+                      <Link
+                        to="user"
+                        className="btn-text btn-secondary dropdown-item"
+                      >
+                        Profile
+                      </Link>
+                      <div class="dropdown-divider"></div>
+                      <Link
+                        to="change_password"
+                        className="btn-text btn-secondary dropdown-item"
+                      >
+                        Settings
+                      </Link>
+                    </div>
+                  </div>
                 </li>
                 <li className="nav-item px-2">
-                  <button type="button" className="btn btn-secondary btn-round">
-                    <a href="" className="btn-text" onClick={this.handleLogout}>
+                  <a href="" className="btn-text" onClick={this.handleLogout}>
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-round"
+                    >
                       Logout
-                    </a>
-                  </button>
+                    </button>
+                  </a>
                 </li>
               </ul>
             </div>
