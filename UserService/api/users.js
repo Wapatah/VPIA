@@ -150,6 +150,36 @@ module.exports = app => {
     });
   });
 
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+    PUT /users/password - PUT endpoint which takes the user's ID, and password and changes the password.
+  */
+  app.put("/users/password", async (req, res) => {
+    bcrypt.hash(req.body.password, saltRounds, async (err, hash) => {
+      try {
+        const user = await Users.update(
+          {
+            id: req.body.id
+          },
+          {
+            password: hash
+          }
+        );
+        res.status(200).json({
+          error: {
+            error: false
+          }
+        });
+      } catch (err) {
+        res.status(500).json({
+          error: {
+            message: "PUT /users/password: " + err.message
+          },
+          data: {}
+        });
+      }
+    });
+  });
+
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // DELETE /users - endpoint for deleting a user from the database.
   app.delete("/users", async (req, res) => {
