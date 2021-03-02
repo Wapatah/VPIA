@@ -119,13 +119,13 @@ class About extends React.Component {
                   About the Virtual Platform for Indigenous Art
                 </h1>
                 <div className="About-initial-content">
-                  <p id="TradeGothic">
+                  <p>
                     The Virtual Platform for Indigenous Art (VPIA) was created
                     to help Indigenous and non-Indigenous communities build
                     relationships and share knowledge surrounding Indigenous
                     artworks.
                   </p>
-                  <p id="TradeGothic">
+                  <p>
                     Led by Dr. Gerald McMaster as part of the larger The
                     Entangled Gaze project at OCAD University’s Wapatah Centre
                     for Indigenous Visual Knowledge, the VPIA is designed to
@@ -154,7 +154,7 @@ class About extends React.Component {
             <div className="About-info-section">
               <div className="row About-bottom-content">
                 <div className="col-md-4">
-                  <p id="TradeGothic" className="about-content">
+                  <p className="about-content">
                     The pilot of the VPIA specifically documents collections of
                     historical and contemporary Indigenous artworks that depict
                     non-Indigenous people, technologies and traditions. These
@@ -164,7 +164,7 @@ class About extends React.Component {
                   </p>
                 </div>
                 <div className="col-md-4">
-                  <p id="TradeGothic" className="about-content">
+                  <p className="about-content">
                     The VPIA sees Indigenous artwork as a research tool that
                     allows a better understanding of how Indigenous and
                     non-Indigenous knowledge, material traditions, and social
@@ -181,7 +181,7 @@ class About extends React.Component {
                   </p>
                 </div>
                 <div className="col-md-4">
-                  <p id="TradeGothic" className="about-content">
+                  <p className="about-content">
                     The VPIA recognizes that Indigenous cultures continue to
                     change and grow. To ensure its continued relevance and
                     applicability, the VPIA has been designed through a

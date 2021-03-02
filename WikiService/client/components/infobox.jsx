@@ -20,7 +20,7 @@ class InfoBox extends React.Component {
             }}
           ></div>
           <div className="list-group-item">
-            Image License
+            <h6>Image License</h6>
             <p
               id="TradeGothic"
               dangerouslySetInnerHTML={{
@@ -32,14 +32,14 @@ class InfoBox extends React.Component {
           <ul className="list-group list-group-flush">
             {display ? (
               <li className="list-group-item">
-                Last Updated By {this.props.user_name}
-                <p id="TradeGothic"></p>
+                <h6>Last Updated By</h6>
+                <p id="TradeGothic">{this.props.user_name}</p>
               </li>
             ) : (
               ""
             )}
             <li className="list-group-item">
-              <p>Holding Institution</p>
+              <h6>Holding Institution</h6>
               <p
                 id="TradeGothic"
                 dangerouslySetInnerHTML={{
@@ -49,7 +49,7 @@ class InfoBox extends React.Component {
             </li>
 
             <li className="list-group-item">
-              <p>Type</p>
+              <h6>Type</h6>
               <p
                 id="TradeGothic"
                 dangerouslySetInnerHTML={{
@@ -59,7 +59,7 @@ class InfoBox extends React.Component {
             </li>
 
             <li className="list-group-item">
-              <p>Culture Group</p>
+              <h6>Culture Group</h6>
               <p
                 id="TradeGothic"
                 dangerouslySetInnerHTML={{
@@ -69,7 +69,7 @@ class InfoBox extends React.Component {
             </li>
 
             <li className="list-group-item">
-              <p>Material</p>
+              <h6>Material</h6>
               <p
                 id="TradeGothic"
                 dangerouslySetInnerHTML={{
@@ -79,7 +79,7 @@ class InfoBox extends React.Component {
             </li>
 
             <li className="list-group-item">
-              <p>Tags</p>
+              <h6>Tags</h6>
               <p
                 id="TradeGothic"
                 dangerouslySetInnerHTML={{
@@ -89,7 +89,7 @@ class InfoBox extends React.Component {
             </li>
 
             <li className="list-group-item">
-              <b>What Changed in last edit</b>
+              <h6>What Changed in last edit</h6>
               <p id="TradeGothic">{this.props.what_changed}</p>
             </li>
           </ul>
