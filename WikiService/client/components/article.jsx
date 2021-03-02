@@ -196,7 +196,6 @@ class ViewArticle extends React.Component {
                     <h3 className="single-article-title">Overview</h3>
                     <hr />
                     <div
-                      id="article-photo"
                       className="single-article-body"
                       dangerouslySetInnerHTML={{
                         __html: article.body

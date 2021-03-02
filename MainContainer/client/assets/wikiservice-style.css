@@ -371,18 +371,15 @@ h3.single-article-title {
   color: #595959;
 }
 .single-article-body {
-  font-family: "FuturaStdMedium";
   font-size: 0.875rem;
   margin-bottom: 2em;
   padding-top: 1em;
   padding-left: 0;
 }
-#article-photo p {
-  font-family: "TradeGothic";
+.single-article-body > p {
+  font-family: "TradeGothic" !important;
 }
-#article-photo img {
-  width: 100%;
-}
+
 /*
 Reponsive layout setting
 */
