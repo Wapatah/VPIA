@@ -29,10 +29,10 @@ class Landing extends React.Component {
                   <div className="intro-content">
                     <div className="row">
                       <div className="VPIA-intro col-lg-8 align-self-end">
-                        <p className="lead">
-                          Search and edit 2000 Indigenous Artworks
+                        <p id="FuturaStdHeavy" className="lead">
+                          Search and edit 2000 indigenous Artworks
                         </p>
-                        <p id="TradeGothic">
+                        <p>
                           Help animate Indigenous collections from global
                           institutions by sharing your knowledge and experience
                           through the VPIA.

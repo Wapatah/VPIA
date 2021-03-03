@@ -74,6 +74,10 @@ body {
   font-family: "FuturaStdHeavy";
 }
 
+p {
+  font-family: "TradeGothic";
+}
+
 html,
 body {
   height: 100%;
@@ -641,7 +645,7 @@ h1.About-header {
 }
 
 .About-initial-content {
-  font-family: "FuturaStdMedium";
+  font-family: "TradeGothic";
   letter-spacing: 0;
   text-align: center;
   color: #343638;
@@ -657,7 +661,7 @@ h1.About-header {
 
 .About-bottom-content {
   text-align: left;
-  font-family: "FuturaStdMedium";
+  font-family: "TradeGothic";
   letter-spacing: 0;
   color: #ffffff;
   opacity: 1;

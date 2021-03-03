@@ -174,7 +174,7 @@ class Results extends React.Component {
         <div className="row">
           <div className="left-side col-lg-3">
             <div className="col-lg-auto col-md-12 col-sm-12 float-right">
-              <p>Filter by</p>
+              <h5>Filter by</h5>
               <Filters handleClick={this.handleClick} />
             </div>
           </div>
