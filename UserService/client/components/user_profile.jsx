@@ -4,6 +4,7 @@
 import React from "react";
 import { StatusAlertService } from "react-status-alert";
 import Loader from "./helpers/loader.jsx";
+import ChangePassword from "./change_password.jsx";
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -67,7 +68,9 @@ class UserProfile extends React.Component {
                 </div>
               </div>
             </section>
-            <aside className="col-lg-6 col-lg-offset-3 align-self-end"></aside>
+            <aside className="col-lg-6 col-lg-offset-3">
+              <ChangePassword />
+            </aside>
           </div>
           <div className="profile__about row">
             <section className="col-lg-3">

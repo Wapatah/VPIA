@@ -31,6 +31,7 @@ import Contact from "./main/contact.jsx";
 import Results from "../../../SearchService/client/components/results.jsx";
 import Artwork from "../../../SearchService/client/components/artwork.jsx";
 import UserProfile from "../../../UserService/client/components/user_profile.jsx";
+import ChangePassword from "../../../UserService/client/components/change_password.jsx";
 
 // --------------------------------------------------------------------------------------------------------------------------------------------
 // Build a route path and limit access to certain pages
@@ -54,6 +55,7 @@ export default function() {
         <Route path="about" component={About} />
         <Route path="contact" component={Contact} />
         <Route path="user" component={UserProfile} />
+        <Route path="change_password" component={ChangePassword} />
       </Route>
       <Route path="login" component={Login} />
       <Route path="setup" component={Setup} />
