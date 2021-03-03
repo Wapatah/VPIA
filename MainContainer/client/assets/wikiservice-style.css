@@ -144,7 +144,7 @@
 .tabBar-content .tabBar-tab_last {
   margin-right: 16px;
 }
-.edit-tab {
+.yellow-tab {
   background-image: linear-gradient(0deg, #ffa500, #ffa500),
     radial-gradient(circle 7px at 6px -3px, transparent 6px, #ffa500 6px),
     radial-gradient(circle 7px at 0px -3px, transparent 6px, #ffa500 6px),
@@ -163,7 +163,7 @@
     linear-gradient(90deg, transparent 17px, #ffa500 17px, #ffa500),
     linear-gradient(-90deg, transparent 17px, #ffa500 17px, #ffa500);
 }
-.institution-tab {
+.darkgrey-tab {
   background-image: linear-gradient(0deg, #53555a, #53555a),
     radial-gradient(circle 7px at 6px -3px, transparent 6px, #53555a 6px),
     radial-gradient(circle 7px at 0px -3px, transparent 6px, #53555a 6px),
@@ -185,13 +185,13 @@
 .tabBar a {
   color: #000000 !important;
 }
-a.institution-tab {
+a.darkgrey-tab {
   color: white !important;
 }
-a.vpia-tab {
+a.green-tab {
   color: white !important;
 }
-.vpia-tab {
+.green-tab {
   background-image: linear-gradient(0deg, #208778, #208778),
     radial-gradient(circle 7px at 6px -3px, transparent 6px, #208778 6px),
     radial-gradient(circle 7px at 0px -3px, transparent 6px, #208778 6px),
@@ -210,7 +210,7 @@ a.vpia-tab {
     linear-gradient(90deg, transparent 17px, #208778 17px, #208778),
     linear-gradient(-90deg, transparent 17px, #208778 17px, #208778);
 }
-.history-tab {
+.lightgrey-tab {
   background-image: linear-gradient(0deg, #d0cfcd, #d0cfcd),
     radial-gradient(circle 7px at 6px -3px, transparent 6px, #d0cfcd 6px),
     radial-gradient(circle 7px at 0px -3px, transparent 6px, #d0cfcd 6px),

@@ -30,7 +30,7 @@ class Landing extends React.Component {
                     <div className="row">
                       <div className="VPIA-intro col-lg-8 align-self-end">
                         <p className="lead">
-                          Search and edit 2000 indigenous Artworks
+                          Search and edit 2000 Indigenous Artworks
                         </p>
                         <p id="TradeGothic">
                           Help animate Indigenous collections from global

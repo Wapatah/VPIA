@@ -158,27 +158,27 @@ class ViewArticle extends React.Component {
                 <div className="col tabBar-align">
                   <Link
                     to={"/article/history/" + article.id}
-                    className="none-deco tabBar-tab history-tab"
+                    className="none-deco tabBar-tab lightgrey-tab"
                     aria-label="Histyory tab, go to see the history of this article"
                   >
                     Edit History
                   </Link>
                   <Link
                     to={"/article/edit/" + article.id}
-                    className="none-deco tabBar-tab edit-tab"
+                    className="none-deco tabBar-tab yellow-tab"
                     aria-label="Edit tab, go to edit the article"
                   >
                     Edit
                   </Link>
                   <Link
                     to={"/article/institution/" + article.id}
-                    className="bottom-align-text tabBar-tab institution-tab"
+                    className="bottom-align-text tabBar-tab darkgrey-tab"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
                     Institution
                   </Link>
                   <Link
-                    className="bottom-align-text tabBar-tab vpia-tab is-active"
+                    className="bottom-align-text tabBar-tab green-tab is-active"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
                     VPIA

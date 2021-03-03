@@ -218,9 +218,9 @@ class App extends React.Component {
           <div className="footer-darkgrey">
             <div className="container bottom_border">
               <div id="full-page" className="row justify-content-between">
-                <div className="col-md-3">
+                <div className="col-md-5">
                   <div className="row">
-                    <div className="col-lg-4">
+                    <div className="col-lg-3">
                       <img
                         id="footer-logo"
                         src="../assets/images/VPIA-logo-white.png"
@@ -230,7 +230,7 @@ class App extends React.Component {
                     </div>
 
                     <div
-                      className="col-lg-6 align-self-center footer-list"
+                      className="col-lg-9 align-self-center footer-list"
                       aria-label="Additional links"
                     >
                       <ul className="footer_ul">
@@ -239,7 +239,7 @@ class App extends React.Component {
                         </li>
 
                         <li>
-                          <a href="">User Agreement</a>
+                          <Link to="agreement">Community Member Agreement</Link>
                         </li>
 
                         <li>
