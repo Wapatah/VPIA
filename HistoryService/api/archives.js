@@ -7,6 +7,7 @@
 // Importing the data models needed to manipulate
 const Archives = require("../models/archive.js");
 const isUserAuthenticated = require("../index.js");
+const isAdminAuthenticated = require("../index.js");
 
 module.exports = app => {
   /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -114,4 +115,46 @@ module.exports = app => {
       });
     }
   });
+
+  /* -------------------------------------------------------------
+    DELETE /archives/:article_id - Delete endpoint, this takes the article id and deletes all archive items
+    related to it.
+  */
+  app.delete(
+    "/articles/:id/history",
+    isAdminAuthenticated,
+    async (req, res) => {
+      try {
+        // Remove collection is finicky - you need an error callback for it to work, no other way.
+        const archive = Archives.remove(
+          {
+            where: { article_id: req.params.id }
+          },
+          err => {
+            if (err) {
+              res.status(500).json({
+                error: {
+                  message: "DELETE /articles/:id/history: " + err
+                },
+                data: {}
+              });
+            }
+          }
+        );
+        res.status(200).json({
+          error: {
+            error: false
+          },
+          data: {}
+        });
+      } catch (err) {
+        res.status(500).json({
+          error: {
+            message: "DELETE /articles/:id/history: " + err.message
+          },
+          data: {}
+        });
+      }
+    }
+  );
 };
