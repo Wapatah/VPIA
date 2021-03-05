@@ -41,6 +41,7 @@ class Agreement extends React.Component {
             <div className="tabBar row justify-content-between align-items-end">
               <div className="col tabBar-align">
                 <Link
+                  to="account_deletion"
                   className="bottom-align-text tabBar-tab yellow-tab"
                   aria-label="Account Deletion tab"
                 >

@@ -831,6 +831,9 @@ img.about-img {
 .anchor-arrow svg {
   fill: #d0cfcd;
 }
+ul.number-list {
+  list-style-type: decimal;
+}
 @media (max-width: 768px) {
   #mainlogo {
     top: 1em;
