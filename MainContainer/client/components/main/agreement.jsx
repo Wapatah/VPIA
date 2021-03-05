@@ -47,12 +47,14 @@ class Agreement extends React.Component {
                   Account Deletion
                 </Link>
                 <Link
+                  to="aup"
                   className="none-deco tabBar-tab green-tab"
                   aria-label="VPIA Acceptable Use Policy (AUP) tab"
                 >
                   VPIA Acceptable Use Policy (AUP)
                 </Link>
                 <Link
+                  to="agreement"
                   className="none-deco tabBar-tab lightgrey-tab is-active"
                   aria-label="Community-Member Agreement tab"
                 >

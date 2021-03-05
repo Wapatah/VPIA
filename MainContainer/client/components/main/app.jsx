@@ -245,7 +245,9 @@ class App extends React.Component {
                         <li>
                           <a href="">Privacy Policy</a>
                         </li>
-
+                        <li>
+                          <Link to="aup">Acceptable Use Policy</Link>
+                        </li>
                         <li>
                           <a href="">Tutorials</a>
                         </li>
