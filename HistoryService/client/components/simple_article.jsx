@@ -88,14 +88,6 @@ class SimpleArticle extends React.Component {
           </div>
           <hr />
           <div className="article-heading">
-            <div
-              id="article-photo"
-              className="col-12"
-              dangerouslySetInnerHTML={{
-                __html: this.state.article[0].photo
-              }}
-            ></div>
-            <br />
             <div className="single-article-meta">
               <h1 className="edit-history-h1">Object Type: </h1>
               <p

@@ -81,7 +81,7 @@ class Search extends React.Component {
           <StatusAlert />
           <div className="row">
             <div className="left-side col-md-1">
-              <p className="text-right edit-page-title">Search Results</p>
+              <h5 className="text-right edit-page-title">Search Results</h5>
               <p className="help-block text-right">
                 We found {this.state.articles.length} articles for your query
               </p>
