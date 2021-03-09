@@ -54,28 +54,28 @@ class ArticleHistory extends React.Component {
                 </nav>
                 <div className="col tabBar-align">
                   <Link
-                    className="none-deco tabBar-tab history-tab is-active"
+                    className="none-deco tabBar-tab lightgrey-tab is-active"
                     aria-label="Histyory tab, go to see the history of this article"
                   >
                     Edit History
                   </Link>
                   <Link
                     to={"/article/edit/" + this.props.params.articleId}
-                    className="none-deco tabBar-tab edit-tab"
+                    className="none-deco tabBar-tab yellow-tab"
                     aria-label="Edit tab, go to edit the article"
                   >
                     Edit
                   </Link>
                   <Link
                     to={"/article/institution/" + this.props.params.articleId}
-                    className="bottom-align-text tabBar-tab institution-tab"
+                    className="bottom-align-text tabBar-tab darkgrey-tab"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
                     Institution
                   </Link>
                   <Link
                     to={"/article/" + this.props.params.articleId}
-                    className="bottom-align-text tabBar-tab vpia-tab"
+                    className="bottom-align-text tabBar-tab green-tab"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
                     VPIA
