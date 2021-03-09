@@ -164,32 +164,14 @@ class App extends React.Component {
                   ""
                 )}
                 <li className="nav-item px-2">
-                  <div class="btn-group">
+                  <Link to="user" className="btn-text">
                     <button
                       type="button"
-                      class="btn btn-secondary btn-round dropdown-toggle"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
+                      className="btn btn-secondary btn-round"
                     >
                       User
                     </button>
-                    <div class="dropdown-menu">
-                      <Link
-                        to="user"
-                        className="btn-text btn-secondary dropdown-item"
-                      >
-                        Profile
-                      </Link>
-                      <div class="dropdown-divider"></div>
-                      <Link
-                        to="change_password"
-                        className="btn-text btn-secondary dropdown-item"
-                      >
-                        Settings
-                      </Link>
-                    </div>
-                  </div>
+                  </Link>
                 </li>
                 <li className="nav-item px-2">
                   <a href="" className="btn-text" onClick={this.handleLogout}>
