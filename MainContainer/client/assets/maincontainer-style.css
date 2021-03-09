@@ -76,6 +76,7 @@ body {
 
 p {
   font-family: "TradeGothic";
+  line-height: 1.6;
 }
 
 html,
@@ -796,6 +797,43 @@ img.about-img {
   background-color: white;
 }
 
+.contact {
+  background-color: #f3f3f2;
+  width: 67rem;
+  height: 54rem;
+  top: 33.6rem;
+  margin-bottom: 15rem;
+  box-shadow: 0px 3px 6px #00000029;
+}
+.heading-secondary {
+  font-size: 1rem;
+}
+.tab-bar-card.agreement p {
+  padding-bottom: 5%;
+}
+.anchor-button {
+  background-color: #f1f1f0;
+  border: 1px solid #d1d0ce;
+  border-radius: 0;
+  padding: 10%;
+  font-size: 1.25rem;
+  text-align: left;
+}
+.anchor-button:hover,
+.anchor-button:hover svg {
+  background-color: white;
+  border: none;
+  fill: #408275;
+}
+.anchor-button.btn-block {
+  margin-top: 0;
+}
+.anchor-arrow svg {
+  fill: #d0cfcd;
+}
+ul.number-list {
+  list-style-type: decimal;
+}
 @media (max-width: 768px) {
   #mainlogo {
     top: 1em;

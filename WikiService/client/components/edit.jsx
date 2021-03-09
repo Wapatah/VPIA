@@ -372,28 +372,28 @@ class EditArticle extends React.Component {
                 <div className="col tabBar-align">
                   <Link
                     to={"/article/history/" + this.state.article[0].id}
-                    className="none-deco tabBar-tab history-tab"
+                    className="none-deco tabBar-tab lightgrey-tab"
                     aria-label="Histyory tab, go to see the history of this article"
                   >
                     Edit History
                   </Link>
                   <Link
                     to={"/article/edit/" + this.state.article[0].id}
-                    className="none-deco tabBar-tab edit-tab is-active"
+                    className="none-deco tabBar-tab yellow-tab is-active"
                     aria-label="Edit tab, go to edit the article"
                   >
                     Edit
                   </Link>
                   <Link
                     to={"/article/institution/" + this.state.article[0].id}
-                    className="bottom-align-text tabBar-tab institution-tab"
+                    className="bottom-align-text tabBar-tab darkgrey-tab"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
                     Institution
                   </Link>
                   <Link
                     to={"/article/" + this.state.article[0].id}
-                    className="bottom-align-text tabBar-tab vpia-tab"
+                    className="bottom-align-text tabBar-tab green-tab"
                     aria-label="Artwork article tab, see the current published state of the article"
                   >
                     VPIA

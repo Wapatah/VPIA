@@ -293,7 +293,7 @@ class NewArticle extends React.Component {
               </nav>
               <div className="col tabBar-align">
                 <div
-                  className="bottom-align-text tabBar-tab vpia-tab is-active"
+                  className="bottom-align-text tabBar-tab green-tab is-active"
                   aria-label="Artwork article tab, see the current published state of the article"
                 >
                   VPIA
