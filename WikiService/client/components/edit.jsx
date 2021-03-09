@@ -219,9 +219,8 @@ class EditArticle extends React.Component {
                   }}
                 ></div>
                 <div className="list-group-item">
-                  Image License
+                  <h6>Image License</h6>
                   <p
-                    id="Baskerville"
                     dangerouslySetInnerHTML={{
                       __html: this.state.article[0].photo_license
                     }}
@@ -229,11 +228,9 @@ class EditArticle extends React.Component {
                 </div>
 
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item">Last Updated By</li>
                   <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Holding Institution</p>
+                    <h6>Holding Institution</h6>
                     <p
-                      id="Baskerville"
                       dangerouslySetInnerHTML={{
                         __html: this.state.article[0].institution
                       }}
@@ -241,8 +238,8 @@ class EditArticle extends React.Component {
                   </li>
 
                   <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Type</p>
-                    <div id="Baskerville">
+                    <h6>Type</h6>
+                    <div>
                       <Editor
                         initialValue={this.state.artwork_type}
                         init={{
@@ -263,8 +260,8 @@ class EditArticle extends React.Component {
                   </li>
 
                   <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Culture Group</p>
-                    <div id="Baskerville">
+                    <h6>Culture Group</h6>
+                    <div>
                       <Editor
                         initialValue={this.state.culture_group}
                         init={{
@@ -285,8 +282,8 @@ class EditArticle extends React.Component {
                   </li>
 
                   <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Material</p>
-                    <div id="Baskerville">
+                    <h6>Material</h6>
+                    <div>
                       <Editor
                         initialValue={this.state.material}
                         init={{
@@ -307,8 +304,8 @@ class EditArticle extends React.Component {
                   </li>
 
                   <li className="list-group-item">
-                    <p id="FuturaStdHeavy">Tags</p>
-                    <div id="Baskerville">
+                    <h6>Tags</h6>
+                    <div>
                       <Editor
                         initialValue={this.state.tags}
                         init={{

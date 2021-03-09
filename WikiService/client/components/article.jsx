@@ -12,6 +12,7 @@ class ViewArticle extends React.Component {
   constructor(props) {
     super(props);
     this.deleteArticle = this.deleteArticle.bind(this);
+    this.deleteArchives = this.deleteArchives.bind(this);
     this.state = { article: {}, user: {}, loading: true };
   }
 
@@ -71,34 +72,53 @@ class ViewArticle extends React.Component {
   deleteArticle() - takes id, sends Delete request to Article and redirects
   user back to home.
 */
-  deleteArticle(e) {
+  async deleteArticle(e) {
     e.preventDefault();
     let del = confirm("Are you sure you want to delete this article?");
 
     if (del) {
-      let myHeaders = new Headers({
+      let headers = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
         "x-access-token": window.localStorage.getItem("userToken")
       });
 
-      let myInit = {
+      let request = {
         method: "DELETE",
-        headers: myHeaders,
+        headers: headers,
         body: "id=" + this.state.article[0].id
       };
 
-      fetch("/api/articles/", myInit)
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(response) {
-          if (response.error.error) {
-            StatusAlertService.showError(response.error.message);
-          } else {
-            StatusAlertService.showSuccess("Article has been deleted");
-            hashHistory.push("home");
-          }
-        });
+      const res = await fetch("/api/articles/", request);
+      const json = await res.json();
+      if (json.error.error) {
+        StatusAlertService.showError(json.error.message);
+      } else {
+        try {
+          this.deleteArchives(headers, this.state.article[0].id);
+        } catch (err) {
+          StatusAlertService.showError(err);
+        }
+      }
+    }
+  }
+
+  async deleteArchives(headers, article_id) {
+    let request = {
+      method: "DELETE",
+      headers: headers,
+      body: "id=" + article_id
+    };
+
+    const res = await fetch(
+      `${process.env.HISTORYSERVICE}/api/articles/` + article_id + "/history",
+      request
+    );
+    const json = await res.json();
+    if (json.error.error) {
+      StatusAlertService.showError(json.error.message);
+    } else {
+      StatusAlertService.showSuccess("Article and archives have been deleted");
+      hashHistory.push("home");
     }
   }
 
@@ -196,7 +216,6 @@ class ViewArticle extends React.Component {
                     <h3 className="single-article-title">Overview</h3>
                     <hr />
                     <div
-                      id="article-photo"
                       className="single-article-body"
                       dangerouslySetInnerHTML={{
                         __html: article.body
