@@ -99,6 +99,13 @@ input#line[type="text"]:focus,
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+.page-custom.page-item:hover {
+  color: #208778;
+  cursor: pointer;
+}
+.page-active {
+  border-bottom: 2px solid #208778;
+}
 
 #line::placeholder {
   color: #208778;
@@ -179,14 +186,14 @@ p.filters {
   border-radius: 0.25em;
   padding: 0;
   max-height: 20em;
-  overflow:auto;
+  overflow: auto;
 }
 a.results {
   color: #208778;
   font-family: "FuturaStdHeavy";
   font-size: 1.25rem;
 }
-.card-text.results{
+.card-text.results {
   width: 25em;
   white-space: nowrap;
   overflow: hidden;
@@ -207,7 +214,7 @@ a.results {
 label .filters {
   font-family: "FuturaStdLight";
 }
-.text-truncate{
+.text-truncate {
   max-width: 6em;
 }
 @media (min-width: 768px) {

@@ -11,6 +11,7 @@ class Results extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handlePageClick = this.handlePageClick.bind(this);
     this.state = {
       articles: [],
       filterOption: [],
@@ -19,7 +20,9 @@ class Results extends React.Component {
       institution: "",
       material: "",
       url: "/api/articles",
-      loading: true
+      loading: true,
+      currentArticle: 1,
+      articlesPerPage: 3
     };
   }
 
@@ -90,6 +93,14 @@ class Results extends React.Component {
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
+  // handlePageClick() - Used for clicking through pagination numbers without building new components.
+  handlePageClick(event) {
+    this.setState({
+      currentArticle: Number(event.target.id)
+    });
+  }
+
+  // --------------------------------------------------------------------------------------------------------------------------------------------
   // Render the Search results along with the filters
   render() {
     var filteredItems = this.state.articles;
@@ -111,7 +122,16 @@ class Results extends React.Component {
       }
     });
 
-    const renderAll = filteredItems.map(item => (
+    const { currentArticle, articlesPerPage } = state;
+    const articles = filteredItems;
+    const indexOfLastArticle = currentArticle * articlesPerPage;
+    const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+    const currentArticles = articles.slice(
+      indexOfFirstArticle,
+      indexOfLastArticle
+    );
+
+    const renderAll = currentArticles.map(item => (
       <div key={item.id} className="col-md-10 col-sm-12">
         <div id="result" className="card">
           <div className="row no-gutters">
@@ -167,6 +187,24 @@ class Results extends React.Component {
       </div>
     ));
 
+    // Logic for displaying page numbers
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(articles.length / articlesPerPage); i++) {
+      pageNumbers.push(i);
+    }
+    const renderPageNumbers = pageNumbers.map(number => {
+      return (
+        <li
+          key={number}
+          className="page-item page-custom"
+          id={number}
+          onClick={this.handlePageClick}
+        >
+          {number}
+        </li>
+      );
+    });
+
     if (this.state.loading) return <Loader />;
     else;
     return (
@@ -178,7 +216,14 @@ class Results extends React.Component {
               <Filters handleClick={this.handleClick} />
             </div>
           </div>
-          <div className="col-lg-8 col-md-12 col-sm-12">{renderAll}</div>
+          <div className="col-lg-8 col-md-12 col-sm-12">
+            <nav aria-label="Page navigation example">
+              <ul id="pagination" className="justify-content-end pagination">
+                {renderPageNumbers}
+              </ul>
+            </nav>
+            {renderAll}
+          </div>
         </div>
       </div>
     );
