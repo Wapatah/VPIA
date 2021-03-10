@@ -9,7 +9,8 @@ import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class InfoBox extends React.Component {
   render() {
-    const display = this.props.display;
+    const displayUser = this.props.displayUser;
+    const displayDelete = this.props.displayDelete;
     return (
       <div className="col-md-3 article-info-box">
         <div className="card">
@@ -29,7 +30,7 @@ class InfoBox extends React.Component {
           </div>
 
           <ul className="list-group list-group-flush">
-            {display ? (
+            {displayUser ? (
               <li className="list-group-item">
                 <h6>Last Updated By</h6>
                 <p>{this.props.user_name}</p>
@@ -88,7 +89,7 @@ class InfoBox extends React.Component {
             </li>
           </ul>
 
-          {window.localStorage.getItem("admin") === "1" ? (
+          {displayDelete && window.localStorage.getItem("admin") === "1" ? (
             <button
               className="btn btn-primary btn-block"
               onClick={this.props.delete}
