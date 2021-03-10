@@ -99,12 +99,19 @@ input#line[type="text"]:focus,
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+.page-item {
+  padding-left: 1%;
+  padding-right: 1%;
+}
 .page-custom.page-item:hover {
   color: #208778;
   cursor: pointer;
 }
 .page-active {
   border-bottom: 2px solid #208778;
+}
+.arrow-active {
+  cursor: pointer;
 }
 
 #line::placeholder {
