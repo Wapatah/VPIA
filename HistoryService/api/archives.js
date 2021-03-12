@@ -157,4 +157,38 @@ module.exports = app => {
       }
     }
   );
+  /* --------------------------------------------------------------------------------------------------------------------------------------------
+  PUT /articles/:id/history - Edit the oldest archive/or Institution record
+*/
+  app.put("/articles/:id/history", isAdminAuthenticated, async (req, res) => {
+    try {
+      const institution = Archives.update(
+        {
+          where: {
+            what_changed: "Original Museum Record",
+            article_id: req.params.id
+          }
+        },
+        {
+          title: req.body.title,
+          body: req.body.body
+        }
+      );
+      res.json({
+        error: {
+          error: false
+        },
+        data: institution
+      });
+    } catch (err) {
+      res.status(500).json({
+        error: {
+          message:
+            "PUT: /articles/:id/history (error updating institution record) " +
+            err.message
+        },
+        data: {}
+      });
+    }
+  });
 };

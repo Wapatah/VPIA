@@ -4,116 +4,150 @@
 import React from "react";
 import { Link } from "react-router";
 import Loader from "./helpers/loader.jsx";
-import BrowseArchives from "./browse_archives.jsx";
 import InfoBox from "../../../WikiService/client/components/infobox.jsx";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+// Import Editor configurations - change general behaviour in the json, specific changes should be done in new.jsx and edit.jsx
+import Config from "../../config/editor.json";
+// TinyMCE Editor import
+import { Editor } from "@tinymce/tinymce-react";
 
 class Institution extends React.Component {
   constructor(props) {
     super(props);
-    this.deleteArticle = this.deleteArticle.bind(this);
-    this.state = { article: {}, user: {}, archives: {}, loading: true };
+    this.toggleEdit = this.toggleEdit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
+    this.state = {
+      article: {},
+      archives: {},
+      title: "",
+      body: "",
+      edit: true,
+      loading: true
+    };
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
   On initial load, GET ONE Article from Article API and GET archives history
 */
-  componentDidMount() {
-    let myHeaders = new Headers({
+  async componentDidMount() {
+    let headers = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       "x-access-token": window.localStorage.getItem("userToken")
     });
 
-    let myInit = { method: "GET", headers: myHeaders };
+    let request = { method: "GET", headers: headers };
     let that = this;
+
     let article_url =
       `${process.env.HISTORYSERVICE}/api/articles/` +
       that.props.params.articleId +
       "/history";
     let archives_url = "/api/articles/" + that.props.params.articleId;
 
-    Promise.all([fetch(archives_url, myInit), fetch(article_url, myInit)])
-      .then(function(responses) {
-        return Promise.all(
-          responses.map(function(response) {
-            return response.json();
-          })
-        );
+    let response = await Promise.all([
+      fetch(archives_url, request),
+      fetch(article_url, request)
+    ]);
+    let json = await Promise.all(
+      response.map(result => {
+        return result.json();
       })
-      .then(function(data) {
-        const article = data[0];
-        const archives = data[1];
-        that.setState({
-          article: article.data,
-          archives: archives.data,
-          loading: false
-        });
-      })
-
-      .catch(function(error) {
-        StatusAlertService.showError(response.error.message);
+    );
+    const article = json[0];
+    const archives = json[1];
+    if (article.error.error) {
+      StatusAlertService.showError(article.error.message);
+    } else if (archives.error.error) {
+      StatusAlertService.showError(archives.error.message);
+    } else {
+      that.setState({
+        article: article.data,
+        archives: archives.data,
+        loading: false
       });
+    }
   }
-  /* --------------------------------------------------------------------------------------------------------------------------------------------
-  deleteArticle() - takes id, sends Delete request to Article and redirects
-  user back to home.
-*/
-  deleteArticle(e) {
+
+  toggleEdit() {
+    this.setState({ edit: !this.state.edit });
+  }
+
+  onInputChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
+  async handleSubmit(e) {
     e.preventDefault();
-    let del = confirm("Are you sure you want to delete this article?");
+    let record = {
+      title: encodeURIComponent(this.state.title),
+      body: encodeURIComponent(this.state.body)
+    };
 
-    if (del) {
-      let myHeaders = new Headers({
-        "Content-Type": "application/x-www-form-urlencoded",
-        "x-access-token": window.localStorage.getItem("userToken")
-      });
+    let headers = new Headers({
+      "Content-Type": "application/x-www-form-urlencoded",
+      "x-access-token": window.localStorage.getItem("userToken")
+    });
 
-      let myInit = {
-        method: "DELETE",
-        headers: myHeaders,
-        body: "id=" + this.state.article[0].id
-      };
+    let that = this;
 
-      fetch("/api/articles/", myInit)
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(response) {
-          if (response.error.error) {
-            StatusAlertService.showError(response.error.message);
-          } else {
-            StatusAlertService.showSuccess("Article has been deleted");
-            hashHistory.push("home");
-          }
-        });
+    let request = {
+      method: "PUT",
+      headers: headers,
+      body:
+        "article_id=" +
+        that.props.params.articleId +
+        "&title=" +
+        record.title +
+        "&body=" +
+        record.body
+    };
+
+    let institution_url =
+      `${process.env.HISTORYSERVICE}/api/articles/` +
+      that.props.params.articleId +
+      "/history";
+
+    const res = await fetch(institution_url, request);
+    const json = await res.json();
+    if (json.error.error) {
+      StatusAlertService.showError(json.error.message);
+    } else {
+      StatusAlertService.showSuccess("Institution Record Updated Successfully");
+      this.setState({ edit: true });
     }
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Renders the institution page.
   render() {
-    let user_name = "";
-    let article = [];
+    let article = [],
+      archive = [];
     if (this.state.loading) return <Loader />;
-    else if (this.state.article[0]) {
+    else if (
+      this.state.article[0] &&
+      this.state.archives[this.state.archives.length - 1]
+    ) {
       article = this.state.article[0];
+      archive = this.state.archives[this.state.archives.length - 1];
     }
     return (
       <div className="container-fluid">
         <StatusAlert />
         <div className="row">
           <InfoBox
-            photo={article.photo}
-            photo_license={article.photo_license}
-            user_name={user_name}
-            institution={article.institution}
-            artwork_type={article.artwork_type}
-            culture_group={article.culture_group}
-            material={article.material}
-            tags={article.tags}
-            what_changed={article.what_changed}
-            delete={this.deleteArticle}
+            photo={archive.photo}
+            photo_license={archive.photo_license}
+            institution={archive.institution}
+            artwork_type={archive.artwork_type}
+            culture_group={archive.culture_group}
+            material={archive.material}
+            tags={archive.tags}
+            what_changed={archive.what_changed}
             display={false}
+            displayDelete={false}
           />
           <div className="col-md-6 tabBar-content">
             <div className="tabBar row justify-content-between align-items-end">
@@ -167,18 +201,79 @@ class Institution extends React.Component {
               </div>
             </div>
             <div class="tab-bar-card">
+              {window.localStorage.getItem("admin") === "1" ? (
+                <button
+                  className="btn btn-text float-right"
+                  type="button"
+                  aria-label="Edit Institution Record"
+                  onClick={this.toggleEdit}
+                >
+                  {this.state.edit ? (
+                    <i className="fa fa-edit"></i>
+                  ) : (
+                    <i className="fa fa-pencil"></i>
+                  )}
+                </button>
+              ) : (
+                ""
+              )}
               <div className="article-heading">
-                <h1 className="single-article-title">
-                  {article.title}- {article.institution} Record
-                </h1>
-
-                <div
-                  className="single-article-body"
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.archives[this.state.archives.length - 1]
-                      .body
-                  }}
-                ></div>
+                {this.state.edit ? (
+                  <h1 className="single-article-title">
+                    {archive.title}- {archive.institution} Record
+                  </h1>
+                ) : (
+                  <h1 className="single-article-title">
+                    <input
+                      name="title"
+                      value={this.state.title}
+                      onChange={this.onInputChange}
+                      className="form-control"
+                      placeholder="Change Institution title"
+                    />
+                    - {archive.institution} Record
+                  </h1>
+                )}
+                {this.state.edit ? (
+                  <div
+                    className="single-article-body"
+                    type={this.state.edit ? "password" : "text"}
+                    dangerouslySetInnerHTML={{
+                      __html: archive.body
+                    }}
+                  ></div>
+                ) : (
+                  <Editor
+                    initialValue={archive.body}
+                    init={{
+                      inline: false,
+                      menubar: false,
+                      automatic_uploads: true,
+                      images_upload_url: process.env.IMAGEUPLOAD,
+                      plugins: Config.plugins,
+                      toolbar: Config.toolbar,
+                      quickbars_insert_toolbar: false,
+                      quickbars_selection_toolbar: false,
+                      a11y_advanced_options: true,
+                      image_caption: true,
+                      images_reuse_filename: true,
+                      paste_data_images: true
+                    }}
+                    onChange={editor => {
+                      this.setState({ body: editor.level.content });
+                    }}
+                  />
+                )}
+                {this.state.edit ? (
+                  ""
+                ) : (
+                  <button
+                    className="btn btn-default btn-block btn-lg"
+                    onClick={this.handleSubmit}
+                  >
+                    Update Institution Record
+                  </button>
+                )}
               </div>
             </div>
           </div>
