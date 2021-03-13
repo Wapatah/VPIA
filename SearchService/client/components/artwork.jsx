@@ -2,7 +2,6 @@
   Artwork results page logic, after selecting filters, this logic adjusts what one sees
 */
 import React from "react";
-import ArtworkResults from "./artwork_results.jsx";
 import ArtworkCardDeck from "./artwork_carddeck.jsx";
 import Filters from "./filters.jsx";
 import Loader from "./helpers/loader.jsx";
