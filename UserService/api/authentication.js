@@ -20,11 +20,11 @@ module.exports = app => {
 */
     try {
       let user = await Users.find({ where: { email: req.body.email } });
-      if (!user) {
+      if (Object.entries(user).length === 0) {
         res.status(401).json({
           error: {
             error: true,
-            message: "User not found"
+            message: "No user is registered with that email."
           },
           data: {}
         });
@@ -79,7 +79,7 @@ module.exports = app => {
         res.status(401).json({
           error: {
             error: true,
-            message: "Email or Password is wrong"
+            message: "Password is incorrect."
           },
           data: {}
         });
