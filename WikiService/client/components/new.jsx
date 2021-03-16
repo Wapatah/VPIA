@@ -41,10 +41,14 @@ class NewArticle extends React.Component {
       [event.target.name]: event.target.value
     });
   }
+
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Take variables from admin input and create a new Article object and send POST
   async handleSubmit(e) {
-    e.preventDefault();
+    this.state.imageEditor.target.editorUpload.uploadImages();
+    this.state.imageEditorBody.target.editorUpload.uploadImages();
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
     let record = {
       body: encodeURIComponent(this.state.body),
       title: encodeURIComponent(this.state.title),
@@ -175,10 +179,15 @@ class NewArticle extends React.Component {
                     a11y_advanced_options: true,
                     images_reuse_filename: true,
                     plugins: ["image"],
-                    toolbar: "image | help"
+                    toolbar: "image | help",
+                    automatic_uploads: false,
+                    images_dataimg_filter: function(img) {
+                      return !img.hasAttribute("internal-blob");
+                    }
                   }}
                   onChange={editor => {
                     this.setState({ photo: editor.level.content });
+                    this.setState({ imageEditor: editor });
                   }}
                 />
               </div>
@@ -331,10 +340,15 @@ class NewArticle extends React.Component {
                             a11y_advanced_options: true,
                             image_caption: true,
                             images_reuse_filename: true,
-                            paste_data_images: true
+                            paste_data_images: true,
+                            automatic_uploads: false,
+                            images_dataimg_filter: function(img) {
+                              return !img.hasAttribute("internal-blob");
+                            }
                           }}
                           onChange={editor => {
                             this.setState({ body: editor.level.content });
+                            this.setState({ imageEditorBody: editor });
                           }}
                         />
                       </div>
