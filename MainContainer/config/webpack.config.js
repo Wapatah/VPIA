@@ -58,7 +58,7 @@ module.exports = {
     publicPath: "/public/"
   },
   node: {
-    fs: 'empty'
+    fs: "empty"
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

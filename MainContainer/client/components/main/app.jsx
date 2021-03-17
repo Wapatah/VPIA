@@ -41,9 +41,11 @@ class App extends React.Component {
   handleLogout() - Clears all localstorage variables on logout.
 */
   handleLogout() {
-    window.localStorage.setItem("userToken", "");
-    window.localStorage.setItem("user_id", "");
-    window.localStorage.setItem("admin", "");
+    window.localStorage.removeItem("userToken");
+    window.localStorage.removeItem("user_id");
+    window.localStorage.removeItem("userEmail");
+    window.localStorage.removeItem("admin");
+
     StatusAlertService.showSuccess("You've been successfully logged out");
   }
 
