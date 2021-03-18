@@ -57,6 +57,9 @@ module.exports = {
     contentBase: BUILD_DIR,
     publicPath: "/public/"
   },
+  node: {
+    fs: "empty"
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new Dotenv({

@@ -36,7 +36,7 @@ app.get("/api", function(req, res) {
 });
 
 // Limit the ability of non-users to access API routes.
-module.exports = function isUserAuthenticated(req, res, next) {
+exports.isUserAuthenticated = function(req, res, next) {
   // Check header or url parameters or post parameters for token
   let token =
     req.body.token || req.query.token || req.headers["x-access-token"];
@@ -49,9 +49,9 @@ module.exports = function isUserAuthenticated(req, res, next) {
         res.json({
           error: {
             error: true,
-            message: "Failed to authenticate token"
+            message: "Failed to authenticate User token"
           },
-          code: "B101",
+          code: "USERNOTAUTH",
           data: {}
         });
       } else {
@@ -65,16 +65,16 @@ module.exports = function isUserAuthenticated(req, res, next) {
     res.status(403).json({
       error: {
         error: true,
-        message: "No token provided"
+        message: "No User token provided"
       },
-      code: "B102",
+      code: "NOUSERTOKEN",
       data: {}
     });
   }
 };
 
 // Limit the ability of non-admin users to access API routes.
-module.exports = function isAdminAuthenticated(req, res, next) {
+exports.isAdminAuthenticated = function(req, res, next) {
   // Check header or url parameters or post parameters for token
   let token =
     req.body.token || req.query.token || req.headers["x-access-token"];
@@ -87,9 +87,9 @@ module.exports = function isAdminAuthenticated(req, res, next) {
         return res.json({
           error: {
             error: true,
-            message: "Failed to authenticate token"
+            message: "Failed to authenticate Admin token"
           },
-          code: "B101",
+          code: "ADMINNOTAUTH",
           data: {}
         });
       } else {
@@ -101,9 +101,9 @@ module.exports = function isAdminAuthenticated(req, res, next) {
           res.status(403).json({
             error: {
               error: true,
-              message: "You are not authorized to perform this action"
+              message: "Only Admins are authorized to perform this action"
             },
-            code: "BNOTADMIN",
+            code: "NOTADMIN",
             data: {}
           });
         }
@@ -114,9 +114,9 @@ module.exports = function isAdminAuthenticated(req, res, next) {
     res.status(403).json({
       error: {
         error: true,
-        message: "No token provided"
+        message: "No Admin token provided"
       },
-      code: "B102",
+      code: "NOADMINTOKEN",
       data: {}
     });
   }

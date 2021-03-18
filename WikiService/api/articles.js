@@ -4,8 +4,10 @@
 
 // Importing the data models needed to manipulate
 const Articles = require("../models/article.js");
-const isAdminAuthenticated = require("../../MainContainer/index.js");
-const isUserAuthenticated = require("../../MainContainer/index.js");
+const {
+  isAdminAuthenticated,
+  isUserAuthenticated
+} = require("../../MainContainer/index.js");
 
 module.exports = app => {
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -69,7 +71,7 @@ module.exports = app => {
   // PUT /articles - endpoint for updating an article information.
   app.put("/articles", isUserAuthenticated, async (req, res) => {
     try {
-      const article = Articles.update(
+      const article = await Articles.update(
         {
           id: req.body.id
         },
