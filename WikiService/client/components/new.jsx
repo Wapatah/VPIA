@@ -45,6 +45,7 @@ class NewArticle extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Take variables from admin input and create a new Article object and send POST
   async handleSubmit(e) {
+    e.preventDefault();
     this.state.imageEditor.target.editorUpload.uploadImages();
     this.state.imageEditorBody.target.editorUpload.uploadImages();
     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -331,7 +332,6 @@ class NewArticle extends React.Component {
                           init={{
                             inline: false,
                             menubar: false,
-                            automatic_uploads: true,
                             images_upload_url: process.env.IMAGEUPLOAD,
                             plugins: Config.plugins,
                             toolbar: Config.toolbar,
