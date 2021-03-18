@@ -377,13 +377,17 @@ class EditArticle extends React.Component {
                   >
                     Edit History
                   </Link>
-                  <Link
-                    to={"/article/edit/" + this.state.article[0].id}
-                    className="none-deco tabBar-tab yellow-tab is-active"
-                    aria-label="Edit tab, go to edit the article"
-                  >
-                    Edit
-                  </Link>
+                  {window.localStorage.getItem("userToken") ? (
+                    <Link
+                      to={"/article/edit/" + this.state.article[0].id}
+                      className="none-deco tabBar-tab yellow-tab is-active"
+                      aria-label="Edit tab, go to edit the article"
+                    >
+                      Edit
+                    </Link>
+                  ) : (
+                    ""
+                  )}
                   <Link
                     to={"/article/institution/" + this.state.article[0].id}
                     className="bottom-align-text tabBar-tab darkgrey-tab"
