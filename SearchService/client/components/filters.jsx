@@ -129,7 +129,7 @@ class Filters extends React.Component {
                 className="d-inline filters pr-2 form-check-label"
                 htmlFor="allCultureGroup"
               >
-                All
+                Reset
               </label>
             </label>
             {filteredCultureGroup.map((cultureGroup, i) => (
@@ -205,7 +205,7 @@ class Filters extends React.Component {
                 htmlFor="allArtworkType"
                 className="d-inline filters pr-2 form-check-label"
               >
-                All
+                Reset
               </label>
             </label>
             {filteredArtworkType.map((artworkType, i) => (
@@ -276,7 +276,7 @@ class Filters extends React.Component {
                 htmlFor="allMaterial"
                 className="d-inline filters pr-2 form-check-label"
               >
-                All
+                Reset
               </label>
             </label>
             {filteredMaterial.map((material, i) => (
@@ -350,7 +350,7 @@ class Filters extends React.Component {
                 htmlFor="allInstitution"
                 className="d-inline filters pr-2 form-check-label"
               >
-                All
+                Reset
               </label>
             </label>
             {filteredInstitution.map((institution, i) => (
