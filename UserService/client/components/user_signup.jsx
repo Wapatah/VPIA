@@ -130,13 +130,15 @@ class UserSignup extends React.Component {
             <IntroCarousel />
           </div>
           <div className="col-lg-4 right-panel">
-            <img
-              src="../assets/images/logo.png"
-              width="124px"
-              height="auto"
-              alt="VPIA logo"
-              aria-label="VPIA logo"
-            />
+            <Link to="landing">
+              <img
+                src="../assets/images/logo.png"
+                width="124px"
+                height="auto"
+                alt="VPIA logo"
+                aria-label="VPIA logo, back to landing page"
+              />
+            </Link>
             <div className="container signup-box row">
               <form className="col-sm-12 was-validated">
                 <label htmlFor="inputName">

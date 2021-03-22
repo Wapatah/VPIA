@@ -93,13 +93,15 @@ class Login extends React.Component {
             <IntroCarousel />
           </div>
           <div className="col-lg-4 right-panel">
-            <img
-              src="../assets/images/logo.png"
-              width="124px"
-              height="auto"
-              alt="VPIA logo"
-              aria-label="VPIA logo"
-            />
+            <Link to="landing">
+              <img
+                src="../assets/images/logo.png"
+                width="124px"
+                height="auto"
+                alt="VPIA logo"
+                aria-label="VPIA logo, back to landing page"
+              />
+            </Link>
             <div className="container login-box row">
               <div className="col-md-12 col-sm-12">
                 <div className="col-sm-12">
