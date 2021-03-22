@@ -224,7 +224,7 @@ class App extends React.Component {
                     >
                       <ul className="footer_ul">
                         <li>
-                          <a href="">About</a>
+                          <Link to="about">Acceptable Use Policy</Link>
                         </li>
 
                         <li>
@@ -232,14 +232,9 @@ class App extends React.Component {
                         </li>
 
                         <li>
-                          <a href="">Privacy Policy</a>
-                        </li>
-                        <li>
                           <Link to="aup">Acceptable Use Policy</Link>
                         </li>
-                        <li>
-                          <a href="">Tutorials</a>
-                        </li>
+
                         <li>
                           <Link to="contact">Contact Us</Link>
                         </li>
@@ -255,8 +250,11 @@ class App extends React.Component {
                   >
                     <ul className="social-network">
                       <li>
-                        <a href="#" aria-label="Instagram">
-                          <i className="fa fa-instagram"></i>
+                        <a
+                          href="https://www.youtube.com/channel/UCkj-suSgF-SrDjBJq8-za6w/"
+                          aria-label="Youtube"
+                        >
+                          <i className="fa fa-youtube"></i>
                         </a>
                       </li>
                       <li>
@@ -265,34 +263,16 @@ class App extends React.Component {
                         </a>
                       </li>
                       <li>
-                        <a href="#" aria-label="Facebook">
-                          <i className="fa fa-facebook"></i>
+                        <a href="#" aria-label="Instagram">
+                          <i className="fa fa-instagram"></i>
                         </a>
                       </li>
                       <li>
-                        <a href="#" aria-label="Website">
+                        <a href="https://wapatah.com/" aria-label="Website">
                           <i className="fa fa-globe"></i>
                         </a>
                       </li>
                     </ul>
-                  </div>
-                  <div className="input-group mb-3 email-form">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Stay in touch"
-                      ref="search"
-                      aria-label="Write an Email here"
-                    />
-                    <div className="input-group-append">
-                      <button
-                        type="submit"
-                        className="btn btn-outline-secondary email-button"
-                        aria-label="Email button"
-                      >
-                        <i className="fa fa-paper-plane"></i>
-                      </button>
-                    </div>
                   </div>
                 </div>
               </div>
