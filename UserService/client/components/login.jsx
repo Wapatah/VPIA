@@ -28,43 +28,40 @@ class Login extends React.Component {
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Authenticate the login input
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
-    let email = document.getElementById("inputEmail").value;
-    let password = document.getElementById("inputPassword").value;
+    let user = {
+      email: encodeURIComponent(document.getElementById("inputEmail").value),
+      password: encodeURIComponent(
+        document.getElementById("inputPassword").value
+      )
+    };
 
-    let myHeaders = new Headers({
+    let headers = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
 
-    let myInit = {
+    let request = {
       method: "POST",
-      headers: myHeaders,
-      body:
-        "email=" +
-        encodeURIComponent(email) +
-        "&password=" +
-        encodeURIComponent(password)
+      headers: headers,
+      body: "email=" + user.email + "&password=" + user.password
     };
 
-    let that = this;
-
-    fetch(`${process.env.USERSERVICE}/api/authenticate`, myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-          StatusAlertService.showError(response.error.message);
-        } else {
-          window.localStorage.setItem("userToken", response.data.token);
-          window.localStorage.setItem("admin", response.data.user.admin);
-          window.localStorage.setItem("user_id", response.data.user.id);
-          window.localStorage.setItem("userEmail", response.data.user.email);
-          hashHistory.push("welcome");
-          StatusAlertService.showSuccess("You are now logged in");
-        }
-      });
+    const res = await fetch(
+      `${process.env.USERSERVICE}/api/authenticate`,
+      request
+    );
+    const json = await res.json();
+    if (json.error.error) {
+      StatusAlertService.showError(json.error.message);
+    } else {
+      StatusAlertService.showSuccess("You are now logged in");
+      window.localStorage.setItem("userToken", json.data.token);
+      window.localStorage.setItem("admin", json.data.user.admin);
+      window.localStorage.setItem("user_id", json.data.user.id);
+      window.localStorage.setItem("userEmail", json.data.user.email);
+      hashHistory.push("landing");
+    }
   }
 
   handlePasswordChange(e) {
