@@ -781,12 +781,8 @@ img.about-img {
 }
 
 .navbar-dark .navbar-toggler {
-  color: #208778;
+  background-color: #208778;
   border-color: #208778;
-}
-.navbar-toggler-icon {
-  fill: #208778;
-  color: #208778;
 }
 
 .footer_ul a:hover {
