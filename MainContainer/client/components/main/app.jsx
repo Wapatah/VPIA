@@ -59,13 +59,18 @@ class App extends React.Component {
         <StatusAlert />
         <nav className="navbar navbar-expand-lg navbar-dark mainheader">
           <div
-            className="alert alert-secondary alert-dismissible fade show"
+            className="alert alert-light alert-dismissible fade show"
             role="alert"
           >
-            This platform is currently in Alpha - meaning that the design and
-            features are subject to change. If you identify any major bugs or
-            would like to comment on the platform's functionality, please{" "}
-            <a href="mailto:vpia@ocadu.ca">send us an email.</a>
+            This platform is in Perpetual Beta - meaning that the community is
+            invited to give their voices to how the VPIA changes over time. If
+            you identify any major bugs or would like to give your thoughts on
+            the platform's function, please{" "}
+            <a href="mailto:vpia@ocadu.ca">send us an email. </a>
+            <code>
+              For returning users, if you notice outdated content or unusual
+              visuals, please forcibly refresh your browser.
+            </code>
             <button
               type="button"
               className="close"
