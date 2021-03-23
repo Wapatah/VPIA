@@ -3,6 +3,7 @@
 */
 import React from "react";
 import { hashHistory, Link } from "react-router";
+import { unmountComponentAtNode } from "react-dom";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 import IntroCarousel from "./intro_carousel.jsx";
 
@@ -16,11 +17,16 @@ class Login extends React.Component {
     };
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.toggleShow = this.toggleShow.bind(this);
+    this.redirect = this.redirect.bind(this);
   }
+  abortController = new AbortController();
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // On load, if there is a user token, get redirected to home.
   componentDidMount() {
+    if (this.props.password) {
+      this.setState({ password: this.props.password });
+    }
     if (window.localStorage.getItem("userToken")) {
       hashHistory.push("landing");
     }
@@ -49,19 +55,28 @@ class Login extends React.Component {
 
     const res = await fetch(
       `${process.env.USERSERVICE}/api/authenticate`,
-      request
+      request,
+      { signal: this.abortController.signal }
     );
     const json = await res.json();
     if (json.error.error) {
       StatusAlertService.showError(json.error.message);
     } else {
-      StatusAlertService.showSuccess("You are now logged in");
       window.localStorage.setItem("userToken", json.data.token);
       window.localStorage.setItem("admin", json.data.user.admin);
       window.localStorage.setItem("user_id", json.data.user.id);
       window.localStorage.setItem("userEmail", json.data.user.email);
-      hashHistory.push("landing");
+      StatusAlertService.showSuccess("You are now logged in", {
+        autoHideTime: 600
+      });
+      setTimeout(() => {
+        this.redirect();
+      }, 650);
     }
+  }
+
+  redirect() {
+    hashHistory.push("landing");
   }
 
   handlePasswordChange(e) {
@@ -72,10 +87,8 @@ class Login extends React.Component {
     this.setState({ hidden: !this.state.hidden });
   }
 
-  componentDidMount() {
-    if (this.props.password) {
-      this.setState({ password: this.props.password });
-    }
+  componentWillUnmount() {
+    this.abortController.abort();
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
