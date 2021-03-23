@@ -83,7 +83,8 @@ class Search extends React.Component {
             <div className="left-side col-md-1">
               <h5 className="text-right edit-page-title">Search Results</h5>
               <p className="help-block text-right">
-                We found {this.state.articles.length} articles for your query
+                We found {this.state.articles.length} articles for "
+                {this.props.location.query.query}"
               </p>
             </div>
 

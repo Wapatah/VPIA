@@ -10,9 +10,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
-    this.state = { isFocused: false };
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -23,20 +20,7 @@ class App extends React.Component {
       hashHistory.push("landing");
     }
   }
-  // --------------------------------------------------------------------------------------------------------------------------------------------
-  // Set states when focusing(clicking) on the search bar
 
-  onBlur() {
-    if (this.state.isFocused) {
-      this.setState({
-        isFocused: false
-      });
-    }
-  }
-
-  onFocus() {
-    this.setState({ isFocused: true });
-  }
   /* --------------------------------------------------------------------------------------------------------------------------------------------
   handleLogout() - Clears all localstorage variables on logout.
 */
@@ -196,12 +180,7 @@ class App extends React.Component {
             <div />
           )}
         </nav>
-        <MainNav onBlur={this.onBlur} onFocus={this.onFocus} />
-        <div
-          className={
-            this.state.isFocused ? "SearchOverlay-focus" : "SearchOverlay-blur"
-          }
-        ></div>
+        <MainNav />
         <div>{that.props.children}</div>
         <footer aria-label="Footer" role="contentinfo">
           <div className="footer-darkgrey">
