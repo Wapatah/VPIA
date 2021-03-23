@@ -5,6 +5,7 @@ import React from "react";
 import Home from "./home.jsx";
 import { Link, hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+import ScrollToTop from "../helpers/ScrollToTop.jsx";
 
 class Landing extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class Landing extends React.Component {
   render() {
     return (
       <div role="main">
+        <ScrollToTop scroll={true} />
         <div className="VPIA-intro container-fluid">
           <StatusAlert />
           <div className="row">

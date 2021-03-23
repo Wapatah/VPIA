@@ -203,7 +203,7 @@ class App extends React.Component {
                     >
                       <ul className="footer_ul">
                         <li>
-                          <Link to="about">Acceptable Use Policy</Link>
+                          <Link to="about">About</Link>
                         </li>
 
                         <li>
@@ -237,12 +237,10 @@ class App extends React.Component {
                         </a>
                       </li>
                       <li>
-                        <a href="#" aria-label="Twitter">
-                          <i className="fa fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" aria-label="Instagram">
+                        <a
+                          href="https://www.instagram.com/wapatah.ocadu/"
+                          aria-label="Instagram"
+                        >
                           <i className="fa fa-instagram"></i>
                         </a>
                       </li>
