@@ -127,8 +127,9 @@ class SimpleArticle extends React.Component {
     } else {
       return (
         <center>
-          <p className="help-block">List of revisions done to this artwork can be found on the left. 
-          Please select one to see it displayed in this section.
+          <p className="help-block">
+            List of revisions done to this artwork can be found on the left.
+            Please select one to see it displayed in this section.
           </p>
         </center>
       );
