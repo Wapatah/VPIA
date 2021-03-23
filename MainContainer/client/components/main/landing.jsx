@@ -3,6 +3,7 @@
 */
 import React from "react";
 import Home from "./home.jsx";
+import { hashHistory, Link } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class Landing extends React.Component {
@@ -25,31 +26,41 @@ class Landing extends React.Component {
                 className="VPIA-intro col-lg-8"
                 aria-label="Search and edit 2000 indigenous artworks"
               >
-                <div className="VPIA-intro jumbotron">
-                  <div className="intro-content">
-                    <div className="row">
-                      <div className="VPIA-intro col-lg-8 align-self-end">
-                        <p id="FuturaStdHeavy" className="lead">
-                          Search and edit 2000 indigenous Artworks
-                        </p>
-                        <p>
-                          Help animate Indigenous collections from global
-                          institutions by sharing your knowledge and experience
-                          through the VPIA.
-                        </p>
-                      </div>
-                      <div className="col-lg-4 align-self-end">
-                        <a
-                          className="btn btn-outline-light btn-lg btn-round float-right"
-                          href="#"
-                          role="button"
-                        >
-                          Learn more
-                        </a>
+                <div className="VPIA-intro-container">
+                  <div className="VPIA-intro jumbotron">
+                    <div className="intro-content">
+                      <div className="row intro">
+                        <figure className="col-lg-8 figure VPIA-intro">
+                          <p id="FuturaStdHeavy" className="lead">
+                            Search and edit 2000 indigenous Artworks
+                          </p>
+                          <p>
+                            Help animate Indigenous collections from global
+                            institutions by sharing your knowledge and
+                            experience through the VPIA.
+                          </p>
+                        </figure>
+                        <div className="col-lg-4 align-self-end">
+                          <Link
+                            to="/user_signup"
+                            className="none-deco"
+                            className="btn btn-outline-light btn-lg btn-round float-right"
+                            href="#"
+                            role="button"
+                          >
+                            Learn more
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="image-tint"></div>
+                  <figcaption className="custom-caption d-flex align-items-end">
+                    Square bag with short rectangular flap decorated on one side
+                    with quillwork in a geometric design with human figures and
+                    edged with metal tubes (detail), <br />
+                    Pitt Rivers Museum, University of Oxford, Photograph by Dr.
+                    Gerald McMaster.
+                  </figcaption>
                 </div>
               </div>
               <div
