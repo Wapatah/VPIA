@@ -3,7 +3,7 @@
 */
 import React from "react";
 import Home from "./home.jsx";
-import { hashHistory, Link } from "react-router";
+import { Link } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class Landing extends React.Component {
