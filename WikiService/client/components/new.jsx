@@ -174,7 +174,7 @@ class NewArticle extends React.Component {
                     images_upload_url: process.env.IMAGEUPLOAD,
                     a11y_advanced_options: true,
                     images_reuse_filename: true,
-                    plugins: ["image"],
+                    plugins: ["image imagetools"],
                     toolbar: "image | help"
                   }}
                   onChange={editor => {
