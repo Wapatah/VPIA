@@ -243,6 +243,14 @@ a.none-deco {
   bottom: 4px;
   z-index: 9;
 }
+.container.signup-box {
+  display: flex;
+  flex-direction: column;
+}
+.container.signup-box img {
+  display: flex;
+  align-items: flex-start;
+}
 @media (min-width: 767px) {
   /* .BGimage::before {
     width: 0;
