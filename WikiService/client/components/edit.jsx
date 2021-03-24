@@ -190,10 +190,10 @@ class EditArticle extends React.Component {
                 StatusAlertService.showSuccess(
                   "Article has been successfully saved"
                 );
+                hashHistory.push("article/" + that.props.params.articleId);
               }
             });
         });
-      hashHistory.push("article/" + that.props.params.articleId);
     } else {
       StatusAlertService.showError(
         "Article Body, Title, and Change Info is required."
