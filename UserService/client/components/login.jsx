@@ -3,7 +3,6 @@
 */
 import React from "react";
 import { hashHistory, Link } from "react-router";
-import { unmountComponentAtNode } from "react-dom";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 import IntroCarousel from "./intro_carousel.jsx";
 
@@ -24,9 +23,6 @@ class Login extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // On load, if there is a user token, get redirected to home.
   componentDidMount() {
-    if (this.props.password) {
-      this.setState({ password: this.props.password });
-    }
     if (window.localStorage.getItem("userToken")) {
       hashHistory.push("landing");
     }
