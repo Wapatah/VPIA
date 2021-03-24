@@ -24,8 +24,6 @@ class SearchForm extends React.Component {
       <form onSubmit={this.searchWiki}>
         <div id="search-bar" className="input-group mb-3">
           <input
-            onFocus={this.props.onFocus}
-            onBlur={this.props.onBlur}
             type="text"
             className="form-control"
             id="line"
