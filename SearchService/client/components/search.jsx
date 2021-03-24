@@ -130,7 +130,6 @@ class Search extends React.Component {
               </div>
             ) : (
               <div className="no-results">
-                <i className="fa fa-frown-o"></i>
                 <p>Please try again with another query</p>
               </div>
             )}
