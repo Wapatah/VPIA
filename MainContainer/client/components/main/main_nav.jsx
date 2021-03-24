@@ -32,10 +32,7 @@ class MainNav extends React.Component {
             <div className="col-lg-6 col-lg-offset-3 align-self-end">
               <div className="row">
                 <div className="main-search col-md-12">
-                  <SearchForm
-                    onBlur={this.props.onBlur}
-                    onFocus={this.props.onFocus}
-                  />
+                  <SearchForm />
                 </div>
 
                 <nav className="row">

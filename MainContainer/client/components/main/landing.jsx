@@ -3,7 +3,9 @@
 */
 import React from "react";
 import Home from "./home.jsx";
+import { Link, hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+import ScrollToTop from "../helpers/ScrollToTop.jsx";
 
 class Landing extends React.Component {
   constructor(props) {
@@ -17,6 +19,7 @@ class Landing extends React.Component {
   render() {
     return (
       <div role="main">
+        <ScrollToTop scroll={true} />
         <div className="VPIA-intro container-fluid">
           <StatusAlert />
           <div className="row">
@@ -39,13 +42,15 @@ class Landing extends React.Component {
                         </p>
                       </div>
                       <div className="col-lg-4 align-self-end">
-                        <a
-                          className="btn btn-outline-light btn-lg btn-round float-right"
-                          href="#"
-                          role="button"
-                        >
-                          Learn more
-                        </a>
+                        <Link to="user_signup">
+                          <button
+                            type="button"
+                            className="btn btn-outline-light btn-lg btn-round float-right"
+                            aria-label="Learn more"
+                          >
+                            Learn more
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -61,9 +66,15 @@ class Landing extends React.Component {
                 </h1>
                 <h2>How to Use the VPIA</h2>
                 <p>
-                  Visit our About page and Introductory video for more
-                  information on how to use the VPIA to locate, engage with, and
-                  contribute to artwork records.
+                  Visit our About page and{" "}
+                  <a
+                    href="https://wapatah.com/virtual-platform-for-indigenous-art/"
+                    target="_blank"
+                  >
+                    Introductory video
+                  </a>{" "}
+                  for more information on how to use the VPIA to locate, engage
+                  with, and contribute to artwork records.
                 </p>
                 <h2>Language on the VPIA</h2>
                 <p>

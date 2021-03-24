@@ -27,6 +27,7 @@ class UserSignup extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.toggleShow = this.toggleShow.bind(this);
+    this.redirect = this.redirect.bind(this);
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -80,11 +81,19 @@ class UserSignup extends React.Component {
 
     try {
       const res = await fetch(`${process.env.USERSERVICE}/api/users`, request);
-      StatusAlertService.showSuccess("User Created Successfully!");
-      hashHistory.push("login");
+      StatusAlertService.showSuccess("User Created Successfully!", {
+        autoHideTime: 600
+      });
+      setTimeout(() => {
+        this.redirect();
+      }, 650);
     } catch (err) {
       StatusAlertService.showError(err);
     }
+  }
+
+  redirect() {
+    hashHistory.push("login");
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
