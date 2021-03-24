@@ -46,10 +46,9 @@ class NewArticle extends React.Component {
   // Take variables from admin input and create a new Article object and send POST
   async handleSubmit(e) {
     e.preventDefault();
-    this.state.imageEditor.target.editorUpload.uploadImages();
-    this.state.imageEditorBody.target.editorUpload.uploadImages();
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
+    const mainImageUpload = this.state.imageEditor.target.editorUpload.uploadImages();
+    const bodyImageUpload = this.state.imageEditorBody.target.editorUpload.uploadImages();
+    await Promise.all([mainImageUpload, bodyImageUpload]);
     let record = {
       body: encodeURIComponent(this.state.body),
       title: encodeURIComponent(this.state.title),
