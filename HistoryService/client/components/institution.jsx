@@ -153,17 +153,13 @@ class Institution extends React.Component {
             <div className="tabBar row justify-content-between align-items-end">
               <nav aria-label="breadcrumb col">
                 <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <a href="#">Search</a>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <a
-                      href="#"
-                      dangerouslySetInnerHTML={{
-                        __html: article.artwork_type
-                      }}
-                    ></a>
-                  </li>
+                  <li className="breadcrumb-item">Search</li>
+                  <li
+                    className="breadcrumb-item"
+                    dangerouslySetInnerHTML={{
+                      __html: article.artwork_type
+                    }}
+                  ></li>
                   <li className="breadcrumb-item active" aria-current="page">
                     {article.title}
                   </li>
