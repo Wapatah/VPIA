@@ -125,6 +125,7 @@ class Institution extends React.Component {
   render() {
     let article = [],
       archive = [];
+    const regex = /(<([^>]+)>)/gi;
     if (this.state.loading) return <Loader />;
     else if (
       this.state.article[0] &&
@@ -133,6 +134,7 @@ class Institution extends React.Component {
       article = this.state.article[0];
       archive = this.state.archives[this.state.archives.length - 1];
     }
+    const artwork_type = article.artwork_type.replace(regex, "");
     return (
       <div className="container-fluid">
         <StatusAlert />
@@ -153,17 +155,8 @@ class Institution extends React.Component {
             <div className="tabBar row justify-content-between align-items-end">
               <nav aria-label="breadcrumb col">
                 <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <a href="#">Search</a>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <a
-                      href="#"
-                      dangerouslySetInnerHTML={{
-                        __html: article.artwork_type
-                      }}
-                    ></a>
-                  </li>
+                  <li className="breadcrumb-item">Search</li>
+                  <li className="breadcrumb-item">{artwork_type}</li>
                   <li className="breadcrumb-item active" aria-current="page">
                     {article.title}
                   </li>
@@ -177,13 +170,17 @@ class Institution extends React.Component {
                 >
                   Edit History
                 </Link>
-                <Link
-                  to={"/article/edit/" + article.id}
-                  className="none-deco tabBar-tab yellow-tab"
-                  aria-label="Edit tab, go to edit the article"
-                >
-                  Edit
-                </Link>
+                {window.localStorage.getItem("userToken") ? (
+                  <Link
+                    to={"/article/edit/" + article.id}
+                    className="none-deco tabBar-tab yellow-tab"
+                    aria-label="Edit tab, go to edit the article"
+                  >
+                    Edit
+                  </Link>
+                ) : (
+                  ""
+                )}
                 <Link
                   to={"/article/institution/" + article.id}
                   className="bottom-align-text tabBar-tab darkgrey-tab is-active"

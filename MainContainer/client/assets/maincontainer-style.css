@@ -75,7 +75,6 @@ body {
 }
 
 p {
-  font-family: "TradeGothic";
   line-height: 1.6;
 }
 
@@ -463,7 +462,11 @@ select {
 }
 
 .VPIA-intro.jumbotron {
-  height: 23.65em;
+  height: 90%;
+  border-radius: 0;
+}
+.VPIA-intro-container {
+  height: 100%;
 }
 
 h1.title-primary {
@@ -487,6 +490,9 @@ h1.underline-brush {
 
 .VPIA-intro-right h2 {
   font-size: 20px;
+}
+.VPIA-intro p {
+  font-family: "TradeGothic";
 }
 
 #mainheader.container-fluid {
@@ -558,9 +564,8 @@ ul.social-network li {
   background-image: url("../assets/images/BG_L.jpg");
   background-blend-mode: multiply;
   -webkit-filter: grayscale(100%);
-  filter: grey;
   background-size: cover;
-  background-position: right 10px bottom 500px;
+  background-position: right 10px bottom 400px;
   margin-bottom: 0;
 }
 
@@ -570,10 +575,11 @@ ul.social-network li {
 
 .intro-content {
   position: relative;
-  top: 9em;
-  padding-left: 5%;
   color: white;
   z-index: 3;
+}
+.row.intro {
+  margin: 0;
 }
 
 .card-content {
@@ -674,6 +680,7 @@ h1.About-header {
 
 .about-content {
   padding: 5%;
+  font-family: "TradeGothic";
 }
 
 .right-align {
@@ -781,22 +788,26 @@ img.about-img {
 }
 
 .navbar-dark .navbar-toggler {
-  color: #208778;
+  background-color: #208778;
   border-color: #208778;
-}
-.navbar-toggler-icon {
-  fill: #208778;
-  color: #208778;
 }
 
 .footer_ul a:hover {
   color: #20877;
 }
+.custom-caption {
+  background-color: #208778;
+  color: white;
+  font-family: "TradeGothic";
+  font-size: 50%;
+  width: 100%;
+  height: 10%;
+  padding: 10px 32px;
+}
 
 .mainheader {
   background-color: white;
 }
-
 .contact {
   background-color: #f3f3f2;
   width: 67rem;
@@ -848,7 +859,6 @@ ul.number-list {
   .VPIA-intro p {
     margin: 3%;
   }
-
   #function-intro {
     height: auto;
   }
@@ -873,6 +883,12 @@ ul.number-list {
   }
   #fullpage.container-fluid {
     height: auto;
+  }
+  .custom-caption {
+    height: 20%;
+  }
+  .VPIA-intro.col-lg-8 {
+    padding-right: 0;
   }
 }
 @media (min-width: 768px) {

@@ -44,9 +44,7 @@ class ArticleHistory extends React.Component {
               <div className="tabBar row justify-content-between align-items-end">
                 <nav aria-label="breadcrumb col">
                   <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                      <a href="#">Edit</a>
-                    </li>
+                    <li className="breadcrumb-item">Search</li>
                     <li className="breadcrumb-item active" aria-current="page">
                       Edit History
                     </li>
@@ -59,13 +57,17 @@ class ArticleHistory extends React.Component {
                   >
                     Edit History
                   </Link>
-                  <Link
-                    to={"/article/edit/" + this.props.params.articleId}
-                    className="none-deco tabBar-tab yellow-tab"
-                    aria-label="Edit tab, go to edit the article"
-                  >
-                    Edit
-                  </Link>
+                  {window.localStorage.getItem("userToken") ? (
+                    <Link
+                      to={"/article/edit/" + this.props.params.articleId}
+                      className="none-deco tabBar-tab yellow-tab"
+                      aria-label="Edit tab, go to edit the article"
+                    >
+                      Edit
+                    </Link>
+                  ) : (
+                    ""
+                  )}
                   <Link
                     to={"/article/institution/" + this.props.params.articleId}
                     className="bottom-align-text tabBar-tab darkgrey-tab"

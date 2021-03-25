@@ -6,6 +6,7 @@
 const Users = require("../models/user.js");
 const bcrypt = require("bcryptjs");
 const saltRounds = 10;
+const { isUserAuthenticated, isAdminAuthenticated } = require("../index.js");
 
 module.exports = app => {
   //--------------------------------------------------------------------------------------------------------------------------------------------
@@ -115,7 +116,7 @@ module.exports = app => {
     PUT /users - PUT endpoint which takes the user's ID, name, email, password, and about to create
     a update the user profile of the given ID.
   */
-  app.put("/users", async (req, res) => {
+  app.put("/users", isAdminAuthenticated, async (req, res) => {
     bcrypt.hash(req.body.password, saltRounds, async (err, hash) => {
       try {
         const user = await Users.update(
@@ -182,7 +183,7 @@ module.exports = app => {
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // DELETE /users - endpoint for deleting a user from the database.
-  app.delete("/users", async (req, res) => {
+  app.delete("/users", isAdminAuthenticated, async (req, res) => {
     try {
       const user = await Users.destroyById(req.body.id);
       res.json({

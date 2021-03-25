@@ -187,11 +187,6 @@ p.filters {
   border: 2px solid #d0cfcd;
   border-radius: 6px;
   background-color: white;
-}
-.dropdown.dropdown-filter.expanded {
-  background: #ebededb1;
-  border-radius: 0.25em;
-  padding: 0;
   max-height: 20em;
   overflow: auto;
 }

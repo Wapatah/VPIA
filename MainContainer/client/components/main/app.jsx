@@ -10,9 +10,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
-    this.state = { isFocused: false };
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -23,27 +20,16 @@ class App extends React.Component {
       hashHistory.push("landing");
     }
   }
-  // --------------------------------------------------------------------------------------------------------------------------------------------
-  // Set states when focusing(clicking) on the search bar
 
-  onBlur() {
-    if (this.state.isFocused) {
-      this.setState({
-        isFocused: false
-      });
-    }
-  }
-
-  onFocus() {
-    this.setState({ isFocused: true });
-  }
   /* --------------------------------------------------------------------------------------------------------------------------------------------
   handleLogout() - Clears all localstorage variables on logout.
 */
   handleLogout() {
-    window.localStorage.setItem("userToken", "");
-    window.localStorage.setItem("user_id", "");
-    window.localStorage.setItem("admin", "");
+    window.localStorage.removeItem("userToken");
+    window.localStorage.removeItem("user_id");
+    window.localStorage.removeItem("userEmail");
+    window.localStorage.removeItem("admin");
+
     StatusAlertService.showSuccess("You've been successfully logged out");
   }
 
@@ -57,13 +43,18 @@ class App extends React.Component {
         <StatusAlert />
         <nav className="navbar navbar-expand-lg navbar-dark mainheader">
           <div
-            className="alert alert-secondary alert-dismissible fade show"
+            className="alert alert-light alert-dismissible fade show"
             role="alert"
           >
-            This platform is currently in Alpha - meaning that the design and
-            features are subject to change. If you identify any major bugs or
-            would like to comment on the platform's functionality, please{" "}
-            <a href="mailto:vpia@ocadu.ca">send us an email.</a>
+            This platform is in Perpetual Beta - meaning that the community is
+            invited to give their voices to how the VPIA changes over time. If
+            you identify any major bugs or would like to give your thoughts on
+            the platform's function, please{" "}
+            <a href="mailto:vpia@ocadu.ca">send us an email. </a>
+            <code>
+              For returning users, if you notice outdated content or unusual
+              visuals, please forcibly refresh your browser.
+            </code>
             <button
               type="button"
               className="close"
@@ -189,12 +180,7 @@ class App extends React.Component {
             <div />
           )}
         </nav>
-        <MainNav onBlur={this.onBlur} onFocus={this.onFocus} />
-        <div
-          className={
-            this.state.isFocused ? "SearchOverlay-focus" : "SearchOverlay-blur"
-          }
-        ></div>
+        <MainNav />
         <div>{that.props.children}</div>
         <footer aria-label="Footer" role="contentinfo">
           <div className="footer-darkgrey">
@@ -217,7 +203,7 @@ class App extends React.Component {
                     >
                       <ul className="footer_ul">
                         <li>
-                          <a href="">About</a>
+                          <Link to="about">About</Link>
                         </li>
 
                         <li>
@@ -225,14 +211,9 @@ class App extends React.Component {
                         </li>
 
                         <li>
-                          <a href="">Privacy Policy</a>
-                        </li>
-                        <li>
                           <Link to="aup">Acceptable Use Policy</Link>
                         </li>
-                        <li>
-                          <a href="">Tutorials</a>
-                        </li>
+
                         <li>
                           <Link to="contact">Contact Us</Link>
                         </li>
@@ -248,44 +229,27 @@ class App extends React.Component {
                   >
                     <ul className="social-network">
                       <li>
-                        <a href="#" aria-label="Instagram">
+                        <a
+                          href="https://www.youtube.com/channel/UCkj-suSgF-SrDjBJq8-za6w/"
+                          aria-label="Youtube"
+                        >
+                          <i className="fa fa-youtube"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.instagram.com/wapatah.ocadu/"
+                          aria-label="Instagram"
+                        >
                           <i className="fa fa-instagram"></i>
                         </a>
                       </li>
                       <li>
-                        <a href="#" aria-label="Twitter">
-                          <i className="fa fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" aria-label="Facebook">
-                          <i className="fa fa-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" aria-label="Website">
+                        <a href="https://wapatah.com/" aria-label="Website">
                           <i className="fa fa-globe"></i>
                         </a>
                       </li>
                     </ul>
-                  </div>
-                  <div className="input-group mb-3 email-form">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Stay in touch"
-                      ref="search"
-                      aria-label="Write an Email here"
-                    />
-                    <div className="input-group-append">
-                      <button
-                        type="submit"
-                        className="btn btn-outline-secondary email-button"
-                        aria-label="Email button"
-                      >
-                        <i className="fa fa-paper-plane"></i>
-                      </button>
-                    </div>
                   </div>
                 </div>
               </div>

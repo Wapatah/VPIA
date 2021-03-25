@@ -24,8 +24,8 @@ app.use(bodyParser.json());
 
 app.set("superSecret", process.env.AUTH_SECRET); // Secret variable
 
-// Limit the ability of non-users to access API routes.
-module.exports = function isUserAuthenticated(req, res, next) {
+/// Limit the ability of non-users to access API routes.
+exports.isUserAuthenticated = function(req, res, next) {
   // Check header or url parameters or post parameters for token
   let token =
     req.body.token || req.query.token || req.headers["x-access-token"];
@@ -33,13 +33,14 @@ module.exports = function isUserAuthenticated(req, res, next) {
   // Decode token
   if (token) {
     // Verifies secret and checks for expiration
-    jwt.verify(token, app.get("superSecret"), (err, decoded) => {
+    jwt.verify(token, app.get("superSecret"), function(err, decoded) {
       if (err) {
-        res.status(500).json({
+        res.json({
           error: {
             error: true,
-            message: "Failed to authenticate token"
+            message: "Failed to authenticate User token"
           },
+          code: "USERNOTAUTH",
           data: {}
         });
       } else {
@@ -53,8 +54,58 @@ module.exports = function isUserAuthenticated(req, res, next) {
     res.status(403).json({
       error: {
         error: true,
-        message: "No token provided"
+        message: "No User token provided"
       },
+      code: "NOUSERTOKEN",
+      data: {}
+    });
+  }
+};
+
+// Limit the ability of non-admin users to access API routes.
+exports.isAdminAuthenticated = function(req, res, next) {
+  // Check header or url parameters or post parameters for token
+  let token =
+    req.body.token || req.query.token || req.headers["x-access-token"];
+
+  // Decode token
+  if (token) {
+    // Verifies secret and checks for expiration
+    jwt.verify(token, app.get("superSecret"), function(err, decoded) {
+      if (err) {
+        return res.json({
+          error: {
+            error: true,
+            message: "Failed to authenticate Admin token"
+          },
+          code: "ADMINNOTAUTH",
+          data: {}
+        });
+      } else {
+        if (decoded[0].admin) {
+          // If everything is good, save to request for use in other routes
+          req.decoded = decoded;
+          next();
+        } else {
+          res.status(403).json({
+            error: {
+              error: true,
+              message: "Only Admins are authorized to perform this action"
+            },
+            code: "NOTADMIN",
+            data: {}
+          });
+        }
+      }
+    });
+  } else {
+    // If there is no token, return an error
+    res.status(403).json({
+      error: {
+        error: true,
+        message: "No Admin token provided"
+      },
+      code: "NOADMINTOKEN",
       data: {}
     });
   }

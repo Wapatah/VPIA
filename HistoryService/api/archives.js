@@ -6,8 +6,7 @@
 */
 // Importing the data models needed to manipulate
 const Archives = require("../models/archive.js");
-const isUserAuthenticated = require("../index.js");
-const isAdminAuthenticated = require("../index.js");
+const { isUserAuthenticated, isAdminAuthenticated } = require("../index.js");
 
 module.exports = app => {
   /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -126,7 +125,7 @@ module.exports = app => {
     async (req, res) => {
       try {
         // Remove collection is finicky - you need an error callback for it to work, no other way.
-        const archive = Archives.remove(
+        const archive = await Archives.remove(
           {
             where: { article_id: req.params.id }
           },
@@ -162,7 +161,7 @@ module.exports = app => {
 */
   app.put("/articles/:id/history", isAdminAuthenticated, async (req, res) => {
     try {
-      const institution = Archives.update(
+      const institution = await Archives.update(
         {
           where: {
             what_changed: "Original Museum Record",
