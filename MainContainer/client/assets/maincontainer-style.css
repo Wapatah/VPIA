@@ -561,9 +561,8 @@ ul.social-network li {
   padding-right: 1em;
 }
 .VPIA-intro.jumbotron {
-  background-image: url("../assets/images/BG_L.jpg");
+  background-image: url("../assets/images/BG_L.png");
   background-blend-mode: multiply;
-  -webkit-filter: grayscale(100%);
   background-size: cover;
   background-position: right 10px bottom 400px;
   margin-bottom: 0;
