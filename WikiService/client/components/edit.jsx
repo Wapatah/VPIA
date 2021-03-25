@@ -204,6 +204,7 @@ class EditArticle extends React.Component {
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Renders the editing article page with some modifiable elements.
   render() {
+    const regex = /(<([^>]+)>)/gi;
     if (this.state.loading) return <Loader />;
     else
       return (
@@ -353,16 +354,9 @@ class EditArticle extends React.Component {
               <div className="tabBar row justify-content-between align-items-end">
                 <nav aria-label="breadcrumb col">
                   <ol className="breadcrumb">
+                    <li className="breadcrumb-item">Search</li>
                     <li className="breadcrumb-item">
-                      <a href="#">Search</a>
-                    </li>
-                    <li className="breadcrumb-item">
-                      <a
-                        href="#"
-                        dangerouslySetInnerHTML={{
-                          __html: this.state.article[0].artwork_type
-                        }}
-                      ></a>
+                      {this.state.article[0].artwork_type.replace(regex, "")}
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
                       {this.state.article[0].title}

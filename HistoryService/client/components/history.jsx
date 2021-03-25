@@ -44,9 +44,7 @@ class ArticleHistory extends React.Component {
               <div className="tabBar row justify-content-between align-items-end">
                 <nav aria-label="breadcrumb col">
                   <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                      <a href="#">Edit</a>
-                    </li>
+                    <li className="breadcrumb-item">Search</li>
                     <li className="breadcrumb-item active" aria-current="page">
                       Edit History
                     </li>

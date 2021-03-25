@@ -12,8 +12,7 @@ class Filters extends React.Component {
     this.addActiveClass = this.addActiveClass.bind(this);
     this.state = {
       articles: [],
-      loading: true,
-      activeClasses: [false, false, false, false]
+      loading: true
     };
   }
 
@@ -86,17 +85,10 @@ class Filters extends React.Component {
     let filteredInstitution = Object.keys(groupByInstitution);
     let institutionCount = Object.values(groupByInstitution);
 
-    const activeClasses = this.state.activeClasses.slice();
-
     return (
       <div>
         <StatusAlert />
-        <div
-          className={`${
-            activeClasses[0] ? "expanded" : ""
-          } dropdown dropdown-filter mb-2`}
-          onClick={() => this.addActiveClass(0)}
-        >
+        <div className="dropdown dropdown-filter mb-2">
           <button
             className="btn dropdown btn-block dropdown-toggle"
             type="button"
@@ -159,7 +151,7 @@ class Filters extends React.Component {
                     __html: cultureGroup
                   }}
                 ></label>
-                <span className="d-inline-block badge badge-primary badge-pill">
+                <span className="d-inline-block badge badge-primary badge-pill align-top">
                   {cultureGroupCount[i]}
                 </span>
               </label>
@@ -167,12 +159,7 @@ class Filters extends React.Component {
           </div>
         </div>
 
-        <div
-          className={`${
-            activeClasses[1] ? "expanded" : ""
-          } dropdown dropdown-filter mb-2`}
-          onClick={() => this.addActiveClass(1)}
-        >
+        <div className="dropdown dropdown-filter mb-2">
           <button
             className="btn dropdown btn-block dropdown-toggle"
             type="button"
@@ -235,7 +222,7 @@ class Filters extends React.Component {
                     __html: artworkType
                   }}
                 ></label>
-                <span className="d-inline-block badge badge-primary badge-pill">
+                <span className="d-inline-block badge badge-primary badge-pill align-top">
                   {artworkTypeCount[i]}
                 </span>
               </label>
@@ -243,12 +230,7 @@ class Filters extends React.Component {
           </div>
         </div>
 
-        <div
-          className={`${
-            activeClasses[2] ? "expanded" : ""
-          } dropdown dropdown-filter mb-2`}
-          onClick={() => this.addActiveClass(2)}
-        >
+        <div className="dropdown dropdown-filter mb-2">
           <button
             className="btn dropdown btn-block dropdown-toggle"
             type="button"
@@ -305,7 +287,7 @@ class Filters extends React.Component {
                     __html: material
                   }}
                 ></label>
-                <span className="d-inline-block badge badge-primary badge-pill">
+                <span className="d-inline-block badge badge-primary badge-pill align-top">
                   {materialCount[i]}
                 </span>
               </label>
@@ -313,12 +295,7 @@ class Filters extends React.Component {
           </div>
         </div>
 
-        <div
-          className={`${
-            activeClasses[3] ? "expanded" : ""
-          } dropdown dropdown-filter mb-2`}
-          onClick={() => this.addActiveClass(3)}
-        >
+        <div className="dropdown dropdown-filter mb-2">
           <button
             className="btn dropdown btn-block dropdown-toggle"
             type="button"
@@ -379,7 +356,7 @@ class Filters extends React.Component {
                     __html: institution
                   }}
                 ></label>
-                <span className="d-inline-block badge badge-primary badge-pill">
+                <span className="d-inline-block badge badge-primary badge-pill align-top">
                   {institutionCount[i]}
                 </span>
               </label>

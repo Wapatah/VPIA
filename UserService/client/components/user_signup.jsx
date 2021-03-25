@@ -119,16 +119,19 @@ class UserSignup extends React.Component {
   // Sets password variable
   handlePasswordChange(event) {
     this.setState({ password: event.target.value });
+    const value = event.target.value;
+    const isValid = value.length >= (this.props.minLength || 6);
+    this.setState({ value, isValid });
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Renders the sign up form
   render() {
-    const { email, password } = this.state;
+    const { email, password, isValid } = this.state;
     const isEnabled =
       email.length > 0 &&
       emailPattern.test(this.state.email) &&
-      password.length > 0;
+      password.length > 6;
 
     return (
       <div className="fullpage container-fluid">
@@ -197,7 +200,11 @@ class UserSignup extends React.Component {
                 <div className="form-group input-group mycustom">
                   <input
                     type="password"
-                    className="form-control login-form"
+                    className={
+                      isValid
+                        ? "form-control login-form"
+                        : "form-control login-form is-invalid"
+                    }
                     ref="user_password"
                     id="inputUserPassword"
                     type={this.state.hidden ? "password" : "text"}
@@ -207,7 +214,7 @@ class UserSignup extends React.Component {
                   />
                   <div className="input-group-prepend">
                     <button
-                      className="btn btn-text append-light"
+                      className="btn btn-text append-light align-top"
                       type="button"
                       aria-label="show password"
                       onClick={this.toggleShow}
@@ -216,7 +223,7 @@ class UserSignup extends React.Component {
                     </button>
                   </div>
                   <div className="invalid-feedback">
-                    Please fill out this field.
+                    Please type more than 6 letters.
                   </div>
                 </div>
               </form>
@@ -227,7 +234,7 @@ class UserSignup extends React.Component {
                     <div className="form-group">
                       <div className="col-sm-11 float-right no-padding mb-3">
                         <label htmlFor="culture_group">
-                          Please specify <span className="text-danger">*</span>{" "}
+                          Please specify <span className="text-danger">*</span>
                           <i
                             className="fa fa-question-circle tooltip-btn"
                             aria-hidden="true"
