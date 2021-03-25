@@ -1,6 +1,6 @@
 {
   "name": "vpia",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Virtual Platform for Indigenous Art",
   "main": "./MainContainer/index.js",
   "scripts": {
