@@ -323,7 +323,11 @@ a.active-yellow span {
   width: 20%;
   height: auto;
 }
-
+.connect-icon {
+  fill: #343638;
+  width: 15%;
+  height: auto;
+}
 .intro-box {
   width: 82%;
   margin: 0 auto;
