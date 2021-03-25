@@ -44,6 +44,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message: "POST /api/authenticate: " + err.message
         },
         data: {}

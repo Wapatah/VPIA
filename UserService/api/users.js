@@ -37,6 +37,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message: "GET /users: " + err.message
         },
         data: {}
@@ -71,6 +72,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message: "GET /users/:id/: " + err.message
         },
         data: {}
@@ -104,6 +106,7 @@ module.exports = app => {
       } catch (err) {
         res.status(500).json({
           error: {
+            error: true,
             message: "POST /users: " + err.message
           },
           data: {}
@@ -143,6 +146,7 @@ module.exports = app => {
       } catch (err) {
         res.status(500).json({
           error: {
+            error: true,
             message: "PUT /users: " + err.message
           },
           data: {}
@@ -173,6 +177,7 @@ module.exports = app => {
       } catch (err) {
         res.status(500).json({
           error: {
+            error: true,
             message: "PUT /users/password: " + err.message
           },
           data: {}
@@ -195,6 +200,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message: "DELETE /users: " + err.message
         },
         data: {}

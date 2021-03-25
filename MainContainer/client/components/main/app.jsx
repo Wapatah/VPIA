@@ -2,7 +2,7 @@
   This is the main App container component along with the main headers and footer.
 */
 import React from "react";
-import { Link, hashHistory } from "react-router";
+import { Link } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
 import MainNav from "./main_nav.jsx";
 
@@ -10,15 +10,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
-  }
-
-  /* --------------------------------------------------------------------------------------------------------------------------------------------
-  Onload, If the user is not signed in, forcibly redirect them to the landing page.
-*/
-  componentWillMount() {
-    if (window.localStorage.getItem("userToken") == null) {
-      hashHistory.push("landing");
-    }
   }
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------

@@ -384,19 +384,13 @@ class UserSignup extends React.Component {
                   >
                     <small>
                       By clicking agree and join, you agree to the VPIA{" "}
-                      <a
-                        className="none-deco"
-                        href="https://foundation.wikimedia.org/wiki/Terms_of_Use/en"
-                      >
+                      <Link className="none-deco" to="agreement">
                         <u>User Agreement</u>
-                      </a>
+                      </Link>
                       , and{" "}
-                      <a
-                        className="none-deco"
-                        href="https://foundation.wikimedia.org/wiki/Terms_of_Use/en"
-                      >
+                      <Link className="none-deco" to="aup">
                         <u>Terms of Policy</u>
-                      </a>
+                      </Link>
                       .
                     </small>
                   </label>
