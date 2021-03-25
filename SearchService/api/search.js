@@ -49,6 +49,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message:
             "There was an error performing the search operation. Please try again. | " +
             err.message

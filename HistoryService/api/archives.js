@@ -61,6 +61,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message: "GET: /archives/ " + err.message
         },
         data: {}
@@ -82,6 +83,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message: "GET: /archives/:id/: " + err.message
         },
         data: {}
@@ -108,6 +110,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message: "GET /articles/:id/history: " + err.message
         },
         data: {}
@@ -149,6 +152,7 @@ module.exports = app => {
       } catch (err) {
         res.status(500).json({
           error: {
+            error: true,
             message: "DELETE /articles/:id/history: " + err.message
           },
           data: {}
@@ -182,6 +186,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message:
             "PUT: /articles/:id/history (error updating institution record) " +
             err.message
