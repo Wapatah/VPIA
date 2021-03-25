@@ -214,6 +214,10 @@ class ViewArticle extends React.Component {
                     #{article.id}&nbsp;
                     {article.title}
                   </h1>
+                  <div className="alert alert-success" role="alert">
+                    This is the VPIA record! As a VPIA community member, feel
+                    welcome to contribute your knowledge about this belonging.
+                  </div>
                   <div className="article-body">
                     <br />
                     <h3 className="single-article-title">Overview</h3>
