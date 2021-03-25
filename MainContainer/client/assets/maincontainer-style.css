@@ -367,6 +367,15 @@ a.active-yellow span {
   padding: 60px 10px 60px 10px;
   background-color: #75777b;
 }
+.agreement p {
+  font-family: "TradeGothic";
+}
+.AUP p {
+  font-family: "TradeGothic";
+}
+.account_deletion p {
+  font-family: "TradeGothic";
+}
 
 footer p {
   font-size: 13px;

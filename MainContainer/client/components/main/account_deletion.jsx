@@ -35,7 +35,7 @@ class AccountDeletion extends React.Component {
                   Community-Member Agreement
                 </Link>
               </div>
-              <div className="tab-bar-card">
+              <div className="tab-bar-card account_deletion">
                 <p>
                   If you want to permanently delete your VPIA account, let us
                   know.

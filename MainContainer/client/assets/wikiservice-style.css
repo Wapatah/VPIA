@@ -283,7 +283,9 @@ a.green-tab {
   padding-left: 4%;
   padding-right: 4%;
 }
-
+.info-text p {
+  font-family: "TradeGothic";
+}
 /* Clear Fix took for HTML 5 Boilerlate*/
 
 .clearfix:before,
