@@ -129,6 +129,7 @@ class ViewArticle extends React.Component {
   render() {
     let user_name = "";
     let article = [];
+    const regex = /(<([^>]+)>)/gi;
     if (this.state.loading) return <Loader />;
     else if (this.state.article[0] && this.state.article[0].user_id) {
       if (this.state.user[0]) {
@@ -137,6 +138,8 @@ class ViewArticle extends React.Component {
       if (this.state.article[0]) {
         article = this.state.article[0];
       }
+      const artwork_type = article.artwork_type.replace(regex, "");
+      console.log(artwork_type);
       return (
         <div className="container-fluid">
           <StatusAlert />
@@ -161,15 +164,14 @@ class ViewArticle extends React.Component {
                 <nav aria-label="breadcrumb col">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">Search</li>
+                    <li className="breadcrumb-item">{artwork_type}</li>
                     <li
-                      className="breadcrumb-item"
+                      className="breadcrumb-item active"
+                      aria-current="page"
                       dangerouslySetInnerHTML={{
-                        __html: article.artwork_type
+                        __html: article.title
                       }}
                     ></li>
-                    <li className="breadcrumb-item active" aria-current="page">
-                      {article.title}
-                    </li>
                   </ol>
                 </nav>
                 <div className="col tabBar-align">

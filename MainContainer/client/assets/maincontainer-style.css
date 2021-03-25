@@ -75,7 +75,6 @@ body {
 }
 
 p {
-  font-family: "TradeGothic";
   line-height: 1.6;
 }
 
@@ -492,6 +491,9 @@ h1.underline-brush {
 .VPIA-intro-right h2 {
   font-size: 20px;
 }
+.VPIA-intro p {
+  font-family: "TradeGothic";
+}
 
 #mainheader.container-fluid {
   background-color: white;
@@ -678,6 +680,7 @@ h1.About-header {
 
 .about-content {
   padding: 5%;
+  font-family: "TradeGothic";
 }
 
 .right-align {
