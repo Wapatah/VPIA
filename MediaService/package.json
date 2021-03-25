@@ -1,6 +1,6 @@
 {
-  "name": "vpia-storage",
-  "version": "0.0.1",
+  "name": "mediaservice",
+  "version": "1.0.0",
   "description": "File server for VPIA",
   "main": "server.js",
   "scripts": {

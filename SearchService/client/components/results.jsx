@@ -219,7 +219,7 @@ class Results extends React.Component {
       indexOfFirstArticle,
       indexOfLastArticle
     );
-
+    const regex = /(<([^>]+)>)/gi;
     const renderAll = currentArticles.map(item => (
       <div key={item.id} className="col-md-10 col-sm-12">
         <div id="result" className="card">
@@ -244,30 +244,18 @@ class Results extends React.Component {
                   </Link>
                 </p>
                 <div className="card-text">
-                  <span
-                    className="badge badge-pill badge-custom  mr-1"
-                    dangerouslySetInnerHTML={{
-                      __html: item.culture_group
-                    }}
-                  ></span>
-                  <span
-                    className="badge badge-pill badge-custom  mr-1"
-                    dangerouslySetInnerHTML={{
-                      __html: item.artwork_type
-                    }}
-                  ></span>
-                  <span
-                    className="badge badge-pill badge-custom  mr-1"
-                    dangerouslySetInnerHTML={{
-                      __html: item.material
-                    }}
-                  ></span>
-                  <span
-                    className="badge badge-pill badge-custom mr-1"
-                    dangerouslySetInnerHTML={{
-                      __html: item.institution
-                    }}
-                  ></span>
+                  <span className="badge badge-pill badge-custom  mr-1">
+                    {item.culture_group.replace(regex, "")}
+                  </span>
+                  <span className="badge badge-pill badge-custom  mr-1">
+                    {item.artwork_type.replace(regex, "")}
+                  </span>
+                  <span className="badge badge-pill badge-custom  mr-1">
+                    {item.material.replace(regex, "")}
+                  </span>
+                  <span className="badge badge-pill badge-custom mr-1">
+                    {item.institution.replace(regex, "")}
+                  </span>
                 </div>
               </div>
             </div>

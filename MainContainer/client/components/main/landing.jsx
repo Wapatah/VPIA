@@ -3,7 +3,9 @@
 */
 import React from "react";
 import Home from "./home.jsx";
+import { Link, hashHistory } from "react-router";
 import StatusAlert, { StatusAlertService } from "react-status-alert";
+import ScrollToTop from "../helpers/ScrollToTop.jsx";
 
 class Landing extends React.Component {
   constructor(props) {
@@ -17,6 +19,7 @@ class Landing extends React.Component {
   render() {
     return (
       <div role="main">
+        <ScrollToTop scroll={true} />
         <div className="VPIA-intro container-fluid">
           <StatusAlert />
           <div className="row">
@@ -25,31 +28,41 @@ class Landing extends React.Component {
                 className="VPIA-intro col-lg-8"
                 aria-label="Search and edit 2000 indigenous artworks"
               >
-                <div className="VPIA-intro jumbotron">
-                  <div className="intro-content">
-                    <div className="row">
-                      <div className="VPIA-intro col-lg-8 align-self-end">
-                        <p id="FuturaStdHeavy" className="lead">
-                          Search and edit 2000 indigenous Artworks
-                        </p>
-                        <p>
-                          Help animate Indigenous collections from global
-                          institutions by sharing your knowledge and experience
-                          through the VPIA.
-                        </p>
-                      </div>
-                      <div className="col-lg-4 align-self-end">
-                        <a
-                          className="btn btn-outline-light btn-lg btn-round float-right"
-                          href="#"
-                          role="button"
-                        >
-                          Learn more
-                        </a>
+                <div className="VPIA-intro-container">
+                  <div className="VPIA-intro jumbotron">
+                    <div className="intro-content">
+                      <div className="row intro">
+                        <figure className="col-lg-8 figure VPIA-intro">
+                          <p id="FuturaStdHeavy" className="lead">
+                            Search and edit 2000 indigenous Artworks
+                          </p>
+                          <p>
+                            Help animate Indigenous collections from global
+                            institutions by sharing your knowledge and
+                            experience through the VPIA.
+                          </p>
+                        </figure>
+                        <div className="col-lg-4 align-self-end">
+                          <Link
+                            to="/user_signup"
+                            className="none-deco"
+                            className="btn btn-outline-light btn-lg btn-round float-right"
+                            href="#"
+                            role="button"
+                          >
+                            Learn more
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="image-tint"></div>
+                  <figcaption className="custom-caption d-flex align-items-end">
+                    Square bag with short rectangular flap decorated on one side
+                    with quillwork in a geometric design with human figures and
+                    edged with metal tubes (detail), <br />
+                    Pitt Rivers Museum, University of Oxford, Photograph by Dr.
+                    Gerald McMaster.
+                  </figcaption>
                 </div>
               </div>
               <div
@@ -61,9 +74,15 @@ class Landing extends React.Component {
                 </h1>
                 <h2>How to Use the VPIA</h2>
                 <p>
-                  Visit our About page and Introductory video for more
-                  information on how to use the VPIA to locate, engage with, and
-                  contribute to artwork records.
+                  Visit our About page and{" "}
+                  <a
+                    href="https://wapatah.com/virtual-platform-for-indigenous-art/"
+                    target="_blank"
+                  >
+                    Introductory video
+                  </a>{" "}
+                  for more information on how to use the VPIA to locate, engage
+                  with, and contribute to artwork records.
                 </p>
                 <h2>Language on the VPIA</h2>
                 <p>

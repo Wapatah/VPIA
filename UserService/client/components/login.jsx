@@ -16,7 +16,9 @@ class Login extends React.Component {
     };
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.toggleShow = this.toggleShow.bind(this);
+    this.redirect = this.redirect.bind(this);
   }
+  abortController = new AbortController();
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // On load, if there is a user token, get redirected to home.
@@ -28,43 +30,49 @@ class Login extends React.Component {
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
   // Authenticate the login input
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
-    let email = document.getElementById("inputEmail").value;
-    let password = document.getElementById("inputPassword").value;
+    let user = {
+      email: encodeURIComponent(document.getElementById("inputEmail").value),
+      password: encodeURIComponent(
+        document.getElementById("inputPassword").value
+      )
+    };
 
-    let myHeaders = new Headers({
+    let headers = new Headers({
       "Content-Type": "application/x-www-form-urlencoded"
     });
 
-    let myInit = {
+    let request = {
       method: "POST",
-      headers: myHeaders,
-      body:
-        "email=" +
-        encodeURIComponent(email) +
-        "&password=" +
-        encodeURIComponent(password)
+      headers: headers,
+      body: "email=" + user.email + "&password=" + user.password
     };
 
-    let that = this;
-
-    fetch(`${process.env.USERSERVICE}/api/authenticate`, myInit)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.error.error) {
-          StatusAlertService.showError(response.error.message);
-        } else {
-          window.localStorage.setItem("userToken", response.data.token);
-          window.localStorage.setItem("admin", response.data.user.admin);
-          window.localStorage.setItem("user_id", response.data.user.id);
-          window.localStorage.setItem("userEmail", response.data.user.email);
-          hashHistory.push("welcome");
-          StatusAlertService.showSuccess("You are now logged in");
-        }
+    const res = await fetch(
+      `${process.env.USERSERVICE}/api/authenticate`,
+      request,
+      { signal: this.abortController.signal }
+    );
+    const json = await res.json();
+    if (json.error.error) {
+      StatusAlertService.showError(json.error.message);
+    } else {
+      window.localStorage.setItem("userToken", json.data.token);
+      window.localStorage.setItem("admin", json.data.user.admin);
+      window.localStorage.setItem("user_id", json.data.user.id);
+      window.localStorage.setItem("userEmail", json.data.user.email);
+      StatusAlertService.showSuccess("You are now logged in", {
+        autoHideTime: 600
       });
+      setTimeout(() => {
+        this.redirect();
+      }, 650);
+    }
+  }
+
+  redirect() {
+    hashHistory.push("landing");
   }
 
   handlePasswordChange(e) {
@@ -75,10 +83,8 @@ class Login extends React.Component {
     this.setState({ hidden: !this.state.hidden });
   }
 
-  componentDidMount() {
-    if (this.props.password) {
-      this.setState({ password: this.props.password });
-    }
+  componentWillUnmount() {
+    this.abortController.abort();
   }
 
   // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -93,13 +99,15 @@ class Login extends React.Component {
             <IntroCarousel />
           </div>
           <div className="col-lg-4 right-panel">
-            <img
-              src="../assets/images/logo.png"
-              width="124px"
-              height="auto"
-              alt="VPIA logo"
-              aria-label="VPIA logo"
-            />
+            <Link to="landing">
+              <img
+                src="../assets/images/logo.png"
+                width="124px"
+                height="auto"
+                alt="VPIA logo"
+                aria-label="VPIA logo, back to landing page"
+              />
+            </Link>
             <div className="container login-box row">
               <div className="col-md-12 col-sm-12">
                 <div className="col-sm-12">
