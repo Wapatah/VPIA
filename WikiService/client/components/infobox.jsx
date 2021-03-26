@@ -20,7 +20,7 @@ class InfoBox extends React.Component {
               __html: this.props.photo
             }}
           ></div>
-          <div className="list-group-item">
+          <div className="list-group-item info-text">
             <h6>Image License</h6>
             <p
               dangerouslySetInnerHTML={{
@@ -29,7 +29,7 @@ class InfoBox extends React.Component {
             ></p>
           </div>
 
-          <ul className="list-group list-group-flush">
+          <ul className="list-group list-group-flush info-text">
             {displayUser ? (
               <li className="list-group-item">
                 <h6>Last Updated By</h6>

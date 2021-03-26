@@ -48,7 +48,7 @@ class Aup extends React.Component {
                   Community-Member Agreement
                 </Link>
               </div>
-              <div className="tab-bar-card">
+              <div className="tab-bar-card AUP">
                 <p>
                   Responsible Use of Information Technology Use of this site is
                   governed by the VPIA’s Acceptable Use Policy (AUP):

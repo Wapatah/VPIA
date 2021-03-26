@@ -2,8 +2,6 @@
   Introduction carousel component on the log-in and sign-up pages
 */
 import React from "react";
-import { hashHistory, Link } from "react-router";
-import StatusAlert, { StatusAlertService } from "react-status-alert";
 
 class IntroCarousel extends React.Component {
   render() {
@@ -67,7 +65,6 @@ class IntroCarousel extends React.Component {
               Layer your knowledge, stories, and experiences into the community
               VPIA record and become a part of history-making.
             </p>
-            <button className="btn btn-outline-light">Learn More</button>
           </div>
           <div className="carousel-item">
             <div className="header-container">
@@ -98,7 +95,6 @@ class IntroCarousel extends React.Component {
               building the VPIA as an interactive space that sparks open
               dialogue and connects generations of knowledge.
             </p>
-            <button className="btn btn-outline-light">Learn More</button>
           </div>
           <div className="carousel-item">
             <div className="header-container">
@@ -137,7 +133,6 @@ class IntroCarousel extends React.Component {
                 </ul>
               </p>
             </div>
-            <button className="btn btn-outline-light">Learn More</button>
           </div>
         </div>
       </div>

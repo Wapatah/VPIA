@@ -31,6 +31,7 @@ module.exports = app => {
       } catch (err) {
         res.status(500).json({
           error: {
+            error: true,
             message:
               "There was an error creating the admin user. Chances are you've already set up | " +
               err.message

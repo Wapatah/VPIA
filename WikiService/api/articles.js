@@ -60,6 +60,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message: "GET: /articles/ " + err.message
         },
         data: {}
@@ -95,6 +96,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message: "PUT: /articles (error updating article) " + err.message
         },
         data: {}
@@ -120,6 +122,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message: "GET /articles/:id/: " + err.message
         },
         data: {}
@@ -141,6 +144,7 @@ module.exports = app => {
     } catch (err) {
       res.status(500).json({
         error: {
+          error: true,
           message: "DELETE /articles: " + err.message
         },
         data: {}
