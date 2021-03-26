@@ -26,7 +26,7 @@ class Welcome extends React.Component {
             />
             <div className="container signup-box row">
               <img
-                src="../assets/images/team_welcome.JPG"
+                src="../assets/images/team_welcome.png"
                 width="343px"
                 height="auto"
                 alt="VPIA team"
