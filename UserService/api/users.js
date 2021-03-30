@@ -85,9 +85,20 @@ module.exports = app => {
     a new user profile.
   */
   app.post("/users", async (req, res) => {
-    bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
-      try {
-        const user = Users.create({
+    const hash = await bcrypt.hash(req.body.password, saltRounds);
+    try {
+      const user = await Users.find({ where: { email: req.body.email } });
+      if (user.length !== 0) {
+        res.status(409).json({
+          error: {
+            error: true,
+            message:
+              "That email has already been registered with an existing User."
+          },
+          data: {}
+        });
+      } else {
+        const create = await Users.create({
           admin: false,
           name: req.body.name,
           email: req.body.email,
@@ -101,18 +112,18 @@ module.exports = app => {
           error: {
             error: false
           },
-          data: user
-        });
-      } catch (err) {
-        res.status(500).json({
-          error: {
-            error: true,
-            message: "POST /users: " + err.message
-          },
-          data: {}
+          data: create
         });
       }
-    });
+    } catch (err) {
+      res.status(500).json({
+        error: {
+          error: true,
+          message: "POST /users: " + err.message
+        },
+        data: {}
+      });
+    }
   });
 
   /* --------------------------------------------------------------------------------------------------------------------------------------------
