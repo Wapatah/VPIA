@@ -81,12 +81,17 @@ class UserSignup extends React.Component {
 
     try {
       const res = await fetch(`${process.env.USERSERVICE}/api/users`, request);
-      StatusAlertService.showSuccess("User Created Successfully!", {
-        autoHideTime: 600
-      });
-      setTimeout(() => {
-        this.redirect();
-      }, 650);
+      const json = await res.json();
+      if (json.error.error) {
+        StatusAlertService.showError(json.error.message);
+      } else {
+        StatusAlertService.showSuccess("User Created Successfully!", {
+          autoHideTime: 600
+        });
+        setTimeout(() => {
+          this.redirect();
+        }, 650);
+      }
     } catch (err) {
       StatusAlertService.showError(err);
     }
